@@ -44,7 +44,7 @@ function Signup() {
           </div>
 
           <div className="forgot">
-            <label>If you have an account <a href="#">Login now</a></label>
+            <label>If you have an account <a href="/">Login now</a></label>
           </div>
         </div>
       </div>
