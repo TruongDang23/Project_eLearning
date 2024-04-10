@@ -14,7 +14,7 @@ function System () {
         VD: /signup thì gọi ra màn hình Signup */}
       <div className="wrapper">
         <Routes>
-          <Route path = '/' element = {<Login/>} />
+          <Route path = '/login' element = {<Login/>} />
           <Route path = '/signup' element = {<Signup/>} />
         </Routes>
       </div>
