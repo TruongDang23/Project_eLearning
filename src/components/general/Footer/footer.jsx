@@ -52,7 +52,7 @@ export default function Footer() {
               Email: 21110940@student.hcmute.edu.vn
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Phone: +84 829 039 202
+              Phone: +84 911 685 322
             </Typography>
           </Grid>
           <Grid item xs={12} sm={2}>
