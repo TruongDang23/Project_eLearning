@@ -1,10 +1,13 @@
 //This is information screen of admin
-import React from 'react'
-
-function information() {
+import { GeneralFooter, HeaderAfterLogin } from '../../../components/general/index'
+function Information() {
   return (
-    <div>information</div>
+    <>
+      <HeaderAfterLogin/>
+      Trường
+      <GeneralFooter/>
+    </>
   )
 }
 
-export default information
+export default Information
