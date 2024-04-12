@@ -66,8 +66,8 @@ function Information() {
             <div style={{ width: '100%', marginTop: '30px' }}>
               <label style={{ textAlign: 'right' }}>Social Networks:</label>
               <ul className="list-group list-group-flush">
-                <a href="https://www.facebook.com/profile.php?id=100040342220491" className="list-group-item list-group-item-action">https://www.facebook.com/profile.php?id=100040342220491</a>
-                <a href="https://github.com/TruongDang23" className="list-group-item list-group-item-action">https://github.com/TruongDang23</a>
+                <a href="https://www.facebook.com/profile.php?id=100040342220491" className="list-group-item list-group-item-action" target="_blank" rel="noreferrer">https://www.facebook.com/profile.php?id=100040342220491</a>
+                <a href="https://github.com/TruongDang23" className="list-group-item list-group-item-action" target="_blank" rel="noreferrer">https://github.com/TruongDang23</a>
               </ul>
               <a href="#" style={{ marginLeft:'80%' }}>Add new</a>
             </div>
