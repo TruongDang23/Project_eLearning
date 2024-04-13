@@ -15,3 +15,12 @@ label {
     display: flex;
     justify-content: space-between;
 }
+
+.title {
+    color: #187BCE;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}

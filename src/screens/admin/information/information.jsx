@@ -10,6 +10,13 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import TextField from '@mui/material/TextField'
 import Autocomplete from '@mui/material/Autocomplete'
+import List from '@mui/material/List'
+import * as React from 'react';
+import ListItem from '@mui/material/ListItem'
+import Divider from '@mui/material/Divider'
+import ListItemText from '@mui/material/ListItemText'
+import ListItemAvatar from '@mui/material/ListItemAvatar'
+import Typography from '@mui/material/Typography'
 
 function Information() {
   return (
@@ -83,8 +90,322 @@ function Information() {
             </div>
           </div>
 
-          <div className="col-4" style={{ backgroundColor: 'yellow' }}>
-            One of two columns
+          <div className="col-4">
+            <p className="title">Operation History</p>
+            <List sx={{ width: '100%', height: '1030px', paddingLeft:'30px', paddingRight:'30px', bgcolor: 'background.paper', overflow:'auto' }}>
+              <ListItem alignItems="flex-start">
+                <ListItemText
+                  primary={
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      fontWeight={ 700 }
+                    >
+                      Login
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography
+                      sx={{ display: 'inline' }}
+                      component="span"
+                      variant="body1"
+                      color="text.primary"
+                    >
+                      20:24:30 PM 14/03/2024
+                    </Typography>
+                  }
+                />
+              </ListItem>
+              <Divider variant="fullWidth" component="li" />
+              <ListItem alignItems="flex-start">
+                <ListItemText
+                  primary={
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      fontWeight={ 700 }
+                    >
+                      Logout
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography
+                      sx={{ display: 'inline' }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      20:24:30 PM 14/03/2024
+                    </Typography>
+                  }
+                />
+              </ListItem>
+              <Divider variant="fullWidth" component="li" />
+              <ListItem alignItems="flex-start">
+                <ListItemText
+                  primary={
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      fontWeight={ 700 }
+                    >
+                      Login
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography
+                      sx={{ display: 'inline' }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      20:24:30 PM 14/03/2024
+                    </Typography>
+                  }
+                />
+              </ListItem>
+              <Divider variant="fullWidth" component="li" />
+              <ListItem alignItems="flex-start">
+                <ListItemText
+                  primary={
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      fontWeight={ 700 }
+                    >
+                      Add student S746 to course C873H
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography
+                      sx={{ display: 'inline' }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      20:24:30 PM 14/03/2024
+                    </Typography>
+                  }
+                />
+              </ListItem>
+              <Divider variant="fullWidth" component="li" />
+              <ListItem alignItems="flex-start">
+                <ListItemText
+                  primary={
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      fontWeight={ 700 }
+                    >
+                      Logout
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography
+                      sx={{ display: 'inline' }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      20:24:30 PM 14/03/2024
+                    </Typography>
+                  }
+                />
+              </ListItem>
+              <Divider variant="fullWidth" component="li" />
+              <ListItem alignItems="flex-start">
+                <ListItemText
+                  primary={
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      fontWeight={ 700 }
+                    >
+                      Login
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography
+                      sx={{ display: 'inline' }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      20:24:30 PM 14/03/2024
+                    </Typography>
+                  }
+                />
+              </ListItem>
+              <Divider variant="fullWidth" component="li" />
+              <ListItem alignItems="flex-start">
+                <ListItemText
+                  primary={
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      fontWeight={ 700 }
+                    >
+                      Update self information
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography
+                      sx={{ display: 'inline' }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      20:24:30 PM 14/03/2024
+                    </Typography>
+                  }
+                />
+              </ListItem>
+              <Divider variant="fullWidth" component="li" />
+              <ListItem alignItems="flex-start">
+                <ListItemText
+                  primary={
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      fontWeight={ 700 }
+                    >
+                      Login
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography
+                      sx={{ display: 'inline' }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      20:24:30 PM 14/03/2024
+                    </Typography>
+                  }
+                />
+              </ListItem>
+              <Divider variant="fullWidth" component="li" />
+              <ListItem alignItems="flex-start">
+                <ListItemText
+                  primary={
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      fontWeight={ 700 }
+                    >
+                      Stop course C837H
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography
+                      sx={{ display: 'inline' }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      20:24:30 PM 14/03/2024
+                    </Typography>
+                  }
+                />
+              </ListItem>
+              <Divider variant="fullWidth" component="li" />
+              <ListItem alignItems="flex-start">
+                <ListItemText
+                  primary={
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      fontWeight={ 700 }
+                    >
+                      Logout
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography
+                      sx={{ display: 'inline' }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      20:24:30 PM 14/03/2024
+                    </Typography>
+                  }
+                />
+              </ListItem>
+              <Divider variant="fullWidth" component="li" />
+              <ListItem alignItems="flex-start">
+                <ListItemText
+                  primary={
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      fontWeight={ 700 }
+                    >
+                      Login
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography
+                      sx={{ display: 'inline' }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      20:24:30 PM 14/03/2024
+                    </Typography>
+                  }
+                />
+              </ListItem>
+              <Divider variant="fullWidth" component="li" />
+              <ListItem alignItems="flex-start">
+                <ListItemText
+                  primary={
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      fontWeight={ 700 }
+                    >
+                      Upload new course
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography
+                      sx={{ display: 'inline' }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      20:24:30 PM 14/03/2024
+                    </Typography>
+                  }
+                />
+              </ListItem>
+              <Divider variant="fullWidth" component="li" />
+              <ListItem alignItems="flex-start">
+                <ListItemText
+                  primary={
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      fontWeight={ 700 }
+                    >
+                      Logout
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography
+                      sx={{ display: 'inline' }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      20:24:30 PM 14/03/2024
+                    </Typography>
+                  }
+                />
+              </ListItem>
+              <Divider variant="fullWidth" component="li" />
+            </List>
           </div>
         </div>
       </div>
