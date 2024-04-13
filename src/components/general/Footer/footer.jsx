@@ -52,7 +52,7 @@ export default function Footer() {
               Email: 21110940@student.hcmute.edu.vn
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Phone: +84 829 039 202
+              Phone: +84 911 685 322
             </Typography>
           </Grid>
           <Grid item xs={12} sm={2}>
@@ -60,32 +60,34 @@ export default function Footer() {
               <Typography variant="h6" color="text.primary" gutterBottom>
                 Mạng xã hội
               </Typography>
-              <Link href="https://www.facebook.com/profile.php?id=100040342220491" color="inherit">
+              <Link href="https://www.facebook.com/profile.php?id=100040342220491" target="_blank" rel="noreferrer" color="inherit">
                 <Facebook />
               </Link>
               <Link
                 href="https://github.com/TruongDang23"
                 color="inherit"
+                target="_blank" rel="noreferrer"
                 sx={{ pl: 1, pr: 1 }}
               >
                 <GitHubIcon />
               </Link>
-              <Link href="https://www.twitter.com/" color="inherit">
+              <Link href="https://www.twitter.com/" target="_blank" rel="noreferrer" color="inherit">
                 <Twitter />
               </Link>
             </div>
             <div style={{ marginTop:'65px' }}>
-              <Link href="https://www.facebook.com/profile.php?id=100016912685197" color="inherit">
+              <Link href="https://www.facebook.com/profile.php?id=100016912685197" target="_blank" rel="noreferrer"color="inherit">
                 <Facebook />
               </Link>
               <Link
                 href="https://github.com/Suzukisakae"
                 color="inherit"
+                target="_blank" rel="noreferrer"
                 sx={{ pl: 1, pr: 1 }}
               >
                 <GitHubIcon />
               </Link>
-              <Link href="https://www.twitter.com/" color="inherit">
+              <Link href="https://www.twitter.com/" target="_blank" rel="noreferrer" color="inherit">
                 <Twitter />
               </Link>
             </div>
@@ -94,7 +96,7 @@ export default function Footer() {
         <Box mt={5}>
           <Typography variant="body2" color="text.secondary" align="center">
             {'Copyright © '}
-            <Link color="inherit" href="https://hcmute.edu.vn/">
+            <Link color="inherit" href="https://hcmute.edu.vn/" target="_blank" rel="noreferrer">
               Trường Đại học Sư phạm Kỹ thuật TP.HCM
             </Link>{' '}
             {new Date().getFullYear()}
