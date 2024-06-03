@@ -37,6 +37,7 @@ function Feature() {
   ];
   return (
     <section className="feature-section">
+      <h2 className="heading-tertiary">Why Choose Us?</h2>
       <div className="features">
         {features.map((feature, index) => (
           <div className="feature" key={index}>
