@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./HeroSection.module.css";
-import heroImgPng from "../assets/test1.png";
+import heroImgPng from "../assets/hero.png";
 function HeroSection() {
   return (
     <section className={styles.sectionHero}>
