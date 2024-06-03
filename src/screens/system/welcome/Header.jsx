@@ -1,54 +1,40 @@
 import React from "react";
 import "./Header.css";
-import InputNav from "./InputNav";
-import DensityMediumIcon from "@mui/icons-material/DensityMedium";
 import logo from "../assets/logo.png";
 function Header() {
   return (
-    <header className="header">
-      <a href="#" className="logo">
-        <img src={logo} alt="Logo" className="logo-img" />
-        <span className="logo-text">Udemi</span>
+    <nav className="navbar">
+      <a className="brand">
+        <img
+          src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
+          alt="Udemy Logo"
+        />
       </a>
-      <nav className="main-nav">
-        <ul className="main-nav-list">
-          <li>
-            <a className="main-nav-link" href="#how">
-              Categories
-            </a>
-          </li>
-          <li>
-            <InputNav />
-          </li>
-          <li>
-            <a className="main-nav-link" href="#testimonials">
-              Teach on Udemi
-            </a>
-          </li>
-          <li>
-            <a className="main-nav-link nav-cta" href="#pricing">
-              Login
-            </a>
-          </li>
-          <li>
-            <a className="main-nav-link nav-cta" href="#pricing">
-              Sign up
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      <button className="btn-mobile-nav">
-        <DensityMediumIcon
-          className="icon-mobile-nav"
-          name="menu-outline"
-        ></DensityMediumIcon>
-        <DensityMediumIcon
-          className="icon-mobile-nav"
-          name="close-outline"
-        ></DensityMediumIcon>
-      </button>
-    </header>
+      <div className="nav-links">
+        <a href="#" className="link">
+          Categories
+        </a>
+        <div className="search-box">
+          <input type="text" placeholder="Search for anything" />
+          <a href="search">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/54/54481.png"
+              alt="Search Icon"
+            />
+          </a>
+        </div>
+        <a href="#" className="link">
+          Teach on Udemy
+        </a>
+        <a href="#" className="link">
+          My learning
+        </a>
+      </div>
+      <div className="auth-buttons">
+        <button className="login">Log in</button>
+        <button className="signup">Sign up</button>
+      </div>
+    </nav>
   );
 }
 

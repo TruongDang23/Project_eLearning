@@ -14,10 +14,10 @@ function HeroSection() {
             with our online courses. Gain skills that matter today and shape
             your future. Start learning with us now!
           </p>
-          <a href="#cta" className="btn btn--full margin-right-sm">
+          <a href="#Learning" className="hero-btn-primary">
             Start learning &rarr;
           </a>
-          <a href="#how" className="btn btn--outline">
+          <a href="#learnmore" className="hero-btn-outline">
             Learn more &darr;
           </a>
         </div>

@@ -1,0 +1,55 @@
+/* styles.css */
+/* Styles for the feature section */
+.feature-section {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.feature-section .features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-section .feature {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1 1 calc(33.333% - 20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.feature-section .feature img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+.feature-section .feature h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.feature-section .feature p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .feature-section .features {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .feature-section .feature {
+    flex: 1 1 100%;
+  }
+}

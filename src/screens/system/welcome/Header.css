@@ -1,135 +1,102 @@
-.header {
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #d0ebff;
-
-  /* Because we want header to be sticky later */
-  height: 9.6rem;
-  padding: 0 4.8rem;
-  position: relative;
+  padding: 10px 20px;
+  background-color: #fff;
+  /* background-color: #d0ebff; */
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
+.navbar .brand {
   display: flex;
   align-items: center;
-  gap: 1.6rem;
-  cursor: pointer;
-  /* không có dấu gạch dưới */
-  text-decoration: none;
-}
-.logo-img {
-  /* height: 2.2rem; */
-  height: 4.8rem;
 }
 
-.logo-text {
-  font-size: 2.4rem;
-  font-weight: 700;
-  /* Kiểu chữ in hoa */
-  text-transform: uppercase;
-  color: #333;
+.navbar .brand img {
+  width: 100px;
+  margin-right: 10px;
 }
 
-/**************************/
-/* NAVIGATION */
-/**************************/
-
-.main-nav-list {
-  list-style: none;
+.navbar .nav-links {
   display: flex;
   align-items: center;
-  gap: 4.8rem;
+  gap: 20px;
+  text-decoration: none !important;
 }
 
-.main-nav-link:link,
-.main-nav-link:visited {
-  display: inline-block;
-  text-decoration: none;
+.navbar .nav-links .link {
+  font-size: 16px;
   color: #333;
   font-weight: 500;
-  font-size: 1.8rem;
+  text-decoration: none;
+}
+
+.navbar .nav-links .link:hover {
+  color: #0073b1;
   transition: all 0.3s;
 }
 
-.main-nav-link:hover,
-.main-nav-link:active {
-  color: #1971c2;
+.navbar .search-box {
+  display: flex;
+  font-size: 16px;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid #0073b1;
+  border-radius: 5px;
+  background-color: #fff;
 }
 
-.main-nav-link.nav-cta:link,
-.main-nav-link.nav-cta:visited {
-  padding: 1.2rem 2.4rem;
-  border-radius: 9px;
-  color: #fff;
-  background-color: #1971c2;
-}
-
-.main-nav-link.nav-cta:hover,
-.main-nav-link.nav-cta:active {
-  background-color: #1971c2;
-}
-
-.main-nav-link-secondary:link,
-.main-nav-link-secondary:visited {
-  color: #1971c2;
-}
-
-.main-nav-link-secondary:hover,
-.main-nav-link-secondary:active {
-  color: #1971c2;
-}
-
-
-
-.main-nav-input {
+.navbar .search-box input {
   border: none;
-  background-color: #f5f5f5;
-  padding: 0.8rem 1.6rem;
-  border-radius: 4px;
-  font-size: 1.6rem;
-  color: #333;
-  width: 20rem;
-}
-
-
-/* MOBILE */
-.btn-mobile-nav {
-  border: none;
+  outline: none;
   background: none;
+  padding: 5px;
+  width: 400px;
+}
+
+.navbar .search-box img {
+  width: 20px;
+  height: 20px;
+}
+
+.navbar .auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar .auth-buttons .login,
+.navbar .auth-buttons .signup {
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
-
-  display: none;
 }
 
-.icon-mobile-nav {
-  height: 4.8rem;
-  width: 4.8rem;
-  color: #333;
+.navbar .auth-buttons .login {
+  background-color: #fff;
+  color: #0073b1;
+  border: 2px solid #0073b1;
 }
 
-.icon-mobile-nav[name="close-outline"] {
-  display: none;
+.navbar .auth-buttons .login:hover,
+.navbar .auth-buttons .login:visited {
+  background-color: #0073b1;
+  color: #fff;
+  transition: all 0.3s;
 }
 
-/* STICKY NAVIGATION */
-.sticky .header {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 8rem;
-  padding-top: 0;
-  padding-bottom: 0;
-  background-color: rgba(255, 255, 255, 0.97);
-  z-index: 999;
-  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
+.navbar .auth-buttons .signup {
+  background-color: #0073b1;
+  color: #fff;
+  border: none;
 }
 
-.sticky .section-hero {
-  margin-top: 9.6rem;
+.navbar .auth-buttons .signup:hover,
+.navbar .auth-buttons .signup:visited {
+  background-color: #005b8c;
+  transition: all 0.3s;
 }
-
-/**************************/
-/* Some component */
-/**************************/
