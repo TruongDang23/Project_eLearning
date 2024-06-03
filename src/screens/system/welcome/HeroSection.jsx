@@ -1,23 +1,23 @@
 import React from "react";
-import "./HeroSection.css";
+import styles from "./HeroSection.module.css";
 import heroImgPng from "../assets/test1.png";
 function HeroSection() {
   return (
-    <section className="section-hero">
-      <div className="hero">
+    <section className={styles.sectionHero}>
+      <div className={styles.hero}>
         <div className="hero-text-box">
-          <h1 className="heading-primary">
+          <h1 className={styles.headingPrimary}>
             Learn essential skills for today and tomorrow
           </h1>
-          <p className="hero-description">
+          <p className={styles.heroDescription}>
             Skills for your present (and your future). Unlock your potential
             with our online courses. Gain skills that matter today and shape
             your future. Start learning with us now!
           </p>
-          <a href="#Learning" className="hero-btn-primary">
+          <a href="#Learning" className={styles.heroBtnPrimary}>
             Start learning &rarr;
           </a>
-          <a href="#learnmore" className="hero-btn-outline">
+          <a href="#learnmore" className={styles.heroBtnOutline}>
             Learn more &darr;
           </a>
         </div>
@@ -27,7 +27,7 @@ function HeroSection() {
             <source srcSet={heroImgPng} type="image/png" />
             <img
               src={heroImgPng}
-              className="hero-img"
+              className={styles.heroImg}
               alt="Hero Section Image"
             />
           </picture>

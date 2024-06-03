@@ -6,7 +6,7 @@
   background-color: #fff;
   /* background-color: #d0ebff; */
   border-bottom: 1px solid #e0e0e0;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
 }
 
 .navbar .brand {
@@ -19,36 +19,36 @@
   margin-right: 10px;
 }
 
-.navbar .nav-links {
+.navbar .navLinks {
   display: flex;
   align-items: center;
   gap: 20px;
   text-decoration: none !important;
 }
 
-.navbar .nav-links .link {
+.navbar .navLinks .link {
   font-size: 16px;
   color: #333;
   font-weight: 500;
   text-decoration: none;
 }
 
-.navbar .nav-links .link:hover {
-  color: #0073b1;
+.navbar .navLinks .link:hover {
+  color: #1971c2;
   transition: all 0.3s;
 }
 
-.navbar .search-box {
+.navbar .searchBox {
   display: flex;
   font-size: 16px;
   align-items: center;
   padding: 5px 10px;
-  border: 1px solid #0073b1;
+  border: 1px solid #1971c2;
   border-radius: 5px;
   background-color: #fff;
 }
 
-.navbar .search-box input {
+.navbar .searchBox input {
   border: none;
   outline: none;
   background: none;
@@ -56,19 +56,19 @@
   width: 400px;
 }
 
-.navbar .search-box img {
+.navbar .searchBox img {
   width: 20px;
   height: 20px;
 }
 
-.navbar .auth-buttons {
+.navbar .authButtons {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.navbar .auth-buttons .login,
-.navbar .auth-buttons .signup {
+.navbar .authButtons .login,
+.navbar .authButtons .signup {
   padding: 8px 15px;
   border-radius: 5px;
   font-size: 16px;
@@ -76,27 +76,27 @@
   cursor: pointer;
 }
 
-.navbar .auth-buttons .login {
+.navbar .authButtons .login {
   background-color: #fff;
-  color: #0073b1;
-  border: 2px solid #0073b1;
+  color: #1971c2;
+  border: 2px solid #1971c2;
 }
 
-.navbar .auth-buttons .login:hover,
-.navbar .auth-buttons .login:visited {
-  background-color: #0073b1;
+.navbar .authButtons .login:hover,
+.navbar .authButtons .login:visited {
+  background-color: #1971c2;
   color: #fff;
   transition: all 0.3s;
 }
 
-.navbar .auth-buttons .signup {
-  background-color: #0073b1;
+.navbar .authButtons .signup {
+  background-color: #1971c2;
   color: #fff;
   border: none;
 }
 
-.navbar .auth-buttons .signup:hover,
-.navbar .auth-buttons .signup:visited {
-  background-color: #005b8c;
+.navbar .authButtons .signup:hover,
+.navbar .authButtons .signup:visited {
+  background-color: #155b96;
   transition: all 0.3s;
 }

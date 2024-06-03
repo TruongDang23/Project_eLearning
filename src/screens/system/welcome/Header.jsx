@@ -1,20 +1,19 @@
 import React from "react";
-import "./Header.css";
-import logo from "../assets/logo.png";
+import styles from "./Header.module.css";
 function Header() {
   return (
-    <nav className="navbar">
-      <a className="brand">
+    <nav className={styles.navbar}>
+      <a className={styles.brand}>
         <img
           src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
           alt="Udemy Logo"
         />
       </a>
-      <div className="nav-links">
-        <a href="#" className="link">
+      <div className={styles.navLinks}>
+        <a href="#" className={styles.link}>
           Categories
         </a>
-        <div className="search-box">
+        <div className={styles.searchBox}>
           <input type="text" placeholder="Search for anything" />
           <a href="search">
             <img
@@ -23,16 +22,16 @@ function Header() {
             />
           </a>
         </div>
-        <a href="#" className="link">
+        <a href="#" className={styles.link}>
           Teach on Udemy
         </a>
-        <a href="#" className="link">
+        <a href="#" className={styles.link}>
           My learning
         </a>
       </div>
-      <div className="auth-buttons">
-        <button className="login">Log in</button>
-        <button className="signup">Sign up</button>
+      <div className={styles.authButtons}>
+        <button className={styles.login}>Log in</button>
+        <button className={styles.signup}>Sign up</button>
       </div>
     </nav>
   );
