@@ -4,7 +4,7 @@ function App() {
   return (
     <>
       {/* <System/> */}
-      <AdminInformation/>
+      <System/>
     </>
   )
 }
