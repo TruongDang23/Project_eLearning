@@ -35,11 +35,14 @@ function Signup() {
     {
       const hassed = hashPassword(pass)
       const res = await axios.post('http://localhost:3000/s/signup', { username, pass:hassed, role })
-      alert(res.data)
+      if (res.data === true)
+        alert('Signup Successfully')
+      else
+        alert('Signup Failed')
     }
     catch (error) {
       alert('An error occurred while trying to sign up.')
-      console.error(error)
+      //console.error(error)
     }
   }
 

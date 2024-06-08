@@ -38,9 +38,9 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })
-    console.log('Connected to MongoDB')
+    //console.log('Connected to MongoDB')
   } catch (err) {
-    console.error('Error connecting to MongoDB', err)
+    //console.error('Error connecting to MongoDB', err)
     process.exit(1) // Dừng ứng dụng nếu không thể kết nối
   }
 }
@@ -112,18 +112,22 @@ const insertUserIntoMysql = (user, callback) => {
   })
 }
 
-const insertUserIntoMongo = (user) => {
+const insertUserIntoMongo = (user, callback) => {
   connectDB()
   const newUser = new User({
-    userID: user.userID
+    userID: user.userID,
+    self_introduce: ' '
   })
 
+  // Insert data into mongoDB
   newUser.save()
     .then(result => {
-      console.log('Document inserted successfully:', result)
+      callback(null, true)
+      return
     })
     .catch(error => {
-      console.error('Error inserting document:', error)
+      callback(error, null)
+      return
     })
 }
 
@@ -159,7 +163,6 @@ router.post('/login', (req, res) =>
 
 router.post('/signup', (req, res) => {
   const { username, pass, role } = req.body
-  let resultOfInsert = true
   let roleOfUser = ''
   if (role === 'Admin')
     roleOfUser = 'A'
@@ -194,13 +197,18 @@ router.post('/signup', (req, res) => {
 
     insertUserIntoMysql(user, (error, result) => {
       if (error || result === false)
-        resultOfInsert = false
+        res.send(false)
+      else {
+        insertUserIntoMongo(user, (error, result) => {
+          if (error || result === false)
+            res.send(false)
+          else
+            res.send(true)
+        })
+      }
     })
-
-    insertUserIntoMongo(user)
   }
   insertUser()
-  console.log(resultOfInsert)
 })
 
 // Export the router
