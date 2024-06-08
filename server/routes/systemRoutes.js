@@ -29,23 +29,25 @@ const pool = mysql.createPool({
 router.post('/login', (req, res) =>
 {
   const { username, pass, role } = req.body
+  let roleOfUser = ''
+  if (role === 'Admin')
+    roleOfUser = 'A'
+  else if (role === 'Student')
+    roleOfUser = 'S'
+  else if (role === 'Instructor')
+    roleOfUser = 'I'
+
   pool.getConnection((err, connection) =>
   {
     if (err) throw err
 
-    let query = 'SELECT userID, activity_status from account WHERE username = ? AND password = ?'
-    connection.query(query, [username, pass], (error, results) => {
+    let query = 'SELECT userID, activity_status from account WHERE username = ? AND password = ? AND LEFT(userID,1) = ?'
+    connection.query(query, [username, pass, roleOfUser], (error, results) => {
       connection.release()
       if (error) throw error
       if (results.length > 0) {
-        if (role==='Admin' && results[0].userID[0]==='A')
-          res.send( results )
-        else if (role==='Student' && results[0].userID[0]==='S')
-          res.send( results )
-        else if (role==='Instructor' && results[0].userID[0]==='I')
-          res.send( results )
-        else
-          res.send('User are not existed')
+        req.session.userID = results[0].userID
+        res.send( results )
       }
       else
         res.send('User are not existed')

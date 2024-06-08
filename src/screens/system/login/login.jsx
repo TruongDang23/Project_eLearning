@@ -15,6 +15,22 @@ function Login() {
   const [username, setUsername] = useState('')
   const [pass, setPass] = useState('')
   const [role, setRole] = useState('')
+  const [message, setMessage] = useState('')
+
+  const typeUsername = (e) => {
+    setUsername(e.target.value)
+    setMessage('')
+  }
+
+  const typePassword = (e) => {
+    setPass(e.target.value)
+    setMessage('')
+  }
+
+  const typeRole = (e) => {
+    setRole(e.target.value)
+    setMessage('')
+  }
 
   const hashPassword = (password) => {
     return CryptoJS.SHA512(password).toString(CryptoJS.enc.Hex)
@@ -26,7 +42,7 @@ function Login() {
       const res = await axios.post('http://localhost:3000/s/login', { username, pass:hassed, role })
 
       if (res.data === 'User are not existed')
-        alert('Username or Password is incorrect')
+        setMessage('Username or Password is incorrect')
       else
         alert('Login successfully with: ' + res.data[0].userID + ', status: ' + res.data[0].activity_status)
     } catch (error) {
@@ -47,22 +63,22 @@ function Login() {
             <label>Username/Email *</label>
             <br />
             <PersonOutlineIcon sx={{ fontSize: 40, color: '#187BCE', paddingBottom: '2px' }} />
-            <input type="text" required value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input type="text" required value={username} onChange={typeUsername} />
           </div>
 
           <div className="input-box">
             <label>Password *</label>
             <br />
             <LockIcon sx={{ fontSize: 40, color: '#187BCE', paddingBottom: '2px' }} />
-            <input type="password" required value={pass} onChange={(e) => setPass(e.target.value)} />
+            <input type="password" required value={pass} onChange={typePassword} />
           </div>
 
           <div className="role">
-            <label><input type="radio" value="Student" name="role" onChange={(e) => setRole(e.target.value)}></input> Student</label>
-            <label><input type="radio" value="Instructor" name="role" onChange={(e) => setRole(e.target.value)}></input> Instructor</label>
-            <label><input type="radio" value="Admin" name="role" onChange={(e) => setRole(e.target.value)}></input> Admin</label>
+            <label><input type="radio" value="Student" name="role" onChange={typeRole}></input> Student</label>
+            <label><input type="radio" value="Instructor" name="role" onChange={typeRole}></input> Instructor</label>
+            <label><input type="radio" value="Admin" name="role" onChange={typeRole}></input> Admin</label>
           </div>
-
+          {message && <p style={{ color: 'red', textAlign: 'center', marginTop: '20px' }}>{message}</p>}
           <div className="button">
             <button onClick={checkLogin} className="button-login"><ExitToAppIcon sx={{ paddingRight: '10px', fontSize: 40 }} />Log in</button>
             <button className="button-cancel"><CloseIcon sx={{ paddingRight: '10px', fontSize: 40, color: 'red' }} />Cancel</button>
