@@ -1,6 +1,6 @@
-import System from "./screens/system";
-import { AdminInformation } from "./screens/admin";
-import Welcome from "./screens/system/welcome/Welcome";
+import System from './screens/system'
+import { AdminInformation } from './screens/admin'
+import Welcome from './screens/system/welcome/welcome'
 function App() {
   return (
     <>
@@ -11,4 +11,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

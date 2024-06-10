@@ -1,10 +1,10 @@
-import React from "react";
-import Header from "./Header";
-import HeroSection from "./HeroSection";
-import Feature from "./Feature";
-import CourseList from "./CourseList";
-import Instructor from "./Instructor";
-import FooterNew from "~/components/general/Footer/FooterNew";
+import React from 'react'
+import Header from './Header'
+import HeroSection from './HeroSection'
+import Feature from './Feature'
+import CourseList from './CourseList'
+import Instructor from './Instructor'
+import FooterNew from '~/components/general/Footer/FooterNew'
 
 function Welcome() {
   return (
@@ -18,7 +18,7 @@ function Welcome() {
       </main>
       <FooterNew />
     </div>
-  );
+  )
 }
 
-export default Welcome;
+export default Welcome
