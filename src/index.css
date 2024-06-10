@@ -55,7 +55,7 @@ html {
   overflow-x: hidden;
 
   /* Does NOT work on Safari */
-  /* scroll-behavior: smooth; */
+  scroll-behavior: smooth;
 }
 
 body {
@@ -99,6 +99,11 @@ body {
   /* margin-bottom: 9.6rem; */
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+}
+
 /* .grid:last-child {
     margin-bottom: 0;
   } */
@@ -127,15 +132,15 @@ body {
   align-items: center;
 }
 
-.white_space_large {
+.white-space-large {
   margin-bottom: 12.8rem;
 }
 
-.white_space_medium {
+.white-space-medium {
   margin-bottom: 9.6rem;
 }
 
-.white_space_small {
+.white-space-small {
   margin-bottom: 6.4rem;
 }
 

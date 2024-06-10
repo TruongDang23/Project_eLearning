@@ -43,7 +43,7 @@ function Feature() {
   ];
 
   return (
-    <FeatureSection className="container white_space_large">
+    <FeatureSection className="container white-space-medium">
       <h2 className="heading-tertiary">Why Choose Us?</h2>
       <div className="features">
         {features.map((feature, index) => (

@@ -45,7 +45,7 @@ const Navbar = styled.nav`
   padding: 10px 20px;
   background-color: #fff;
   border-bottom: 1px solid #e0e0e0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   .brand {
     display: flex;
