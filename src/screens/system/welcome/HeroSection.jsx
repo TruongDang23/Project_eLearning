@@ -15,12 +15,14 @@ function HeroSection() {
             with our online courses. Gain skills that matter today and shape
             your future. Start learning with us now!
           </p>
-          <a href="#Learning" className="heroBtnPrimary">
-            Start learning &rarr;
-          </a>
-          <a href="#learnmore" className="heroBtnOutline">
-            Learn more &darr;
-          </a>
+          <div className="heroBtns">
+            <a href="#Learning" className="heroBtnPrimary">
+              Start learning &rarr;
+            </a>
+            <a href="#learnmore" className="heroBtnOutline">
+              Learn more &darr;
+            </a>
+          </div>
         </div>
         <div className="hero-img-box">
           <picture>
@@ -41,10 +43,9 @@ function HeroSection() {
 const SectionHero = styled.section`
   background-color: #d0ebff;
   padding: 4.8rem 0 9.6rem 0;
-  height: 90vh;
 
   .hero {
-    max-width: 130rem;
+    max-width: 120rem;
     margin: 0 auto;
     padding: 0 3.2rem;
     display: grid;
@@ -68,41 +69,53 @@ const SectionHero = styled.section`
         margin-bottom: 4.8rem;
       }
 
-      .heroBtnPrimary {
-        display: inline-block;
-        padding: 1.6rem 4.8rem;
-        font-size: 1.6rem;
-        font-weight: 500;
-        color: #fff;
-        background-color: #1971c2;
-        border: none;
-        border-radius: 5px;
-        text-transform: uppercase;
-        text-decoration: none;
-        margin-right: 1.6rem;
+      .heroBtns {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1.6rem;
 
-        &:hover {
-          background-color: #155b96;
-          transition: all 0.3s;
+        @media (max-width: 768px) {
+          flex-direction: column;
+          align-items: center;
         }
-      }
 
-      .heroBtnOutline {
-        display: inline-block;
-        padding: 1.6rem 4.8rem;
-        font-size: 1.6rem;
-        font-weight: 500;
-        color: #1971c2;
-        background-color: #fff;
-        border: 2px solid #1971c2;
-        border-radius: 5px;
-        text-transform: uppercase;
-        text-decoration: none;
-
-        &:hover {
-          background-color: #1971c2;
+        .heroBtnPrimary {
+          display: inline-block;
+          padding: 1.6rem 4.8rem;
+          font-size: 1.6rem;
+          font-weight: 500;
           color: #fff;
-          transition: all 0.3s;
+          background-color: #1971c2;
+          border: none;
+          border-radius: 5px;
+          text-transform: uppercase;
+          text-decoration: none;
+          margin-right: 1.6rem;
+
+          &:hover {
+            background-color: #155b96;
+            transition: all 0.3s;
+          }
+        }
+
+        .heroBtnOutline {
+          display: inline-block;
+          padding: 1.6rem 4.8rem;
+          font-size: 1.6rem;
+          font-weight: 500;
+          color: #1971c2;
+          background-color: #fff;
+          border: 2px solid #1971c2;
+          border-radius: 5px;
+          text-transform: uppercase;
+          text-decoration: none;
+
+          &:hover {
+            background-color: #1971c2;
+            color: #fff;
+            transition: all 0.3s;
+          }
         }
       }
     }
@@ -111,6 +124,24 @@ const SectionHero = styled.section`
       .heroImg {
         width: 100%;
       }
+    }
+  }
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 4.8rem;
+
+      .hero-text-box {
+        text-align: center;
+      }
+      .hero-img-box {
+        display: none;
+      }
+    }
+  }
+  @media (min-width: 1400px) {
+    .hero {
+      max-width: 140rem;
     }
   }
 `;

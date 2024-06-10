@@ -73,21 +73,21 @@ body {
 /**************************/
 
 /* container */
-.container{
+.container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.8rem;
 }
 
-@media screen and (min-width: 768px){
-  .container{
-      padding: 0 3.4rem;
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0 3.4rem;
   }
 }
 
-@media screen and (min-width: 1400px){
-  .container{
-      padding: 0 1rem;
+@media screen and (min-width: 1400px) {
+  .container {
+    padding: 0 1rem;
   }
 }
 
@@ -125,6 +125,18 @@ body {
 
 .grid--center-v {
   align-items: center;
+}
+
+.white_space_large {
+  margin-bottom: 12.8rem;
+}
+
+.white_space_medium {
+  margin-bottom: 9.6rem;
+}
+
+.white_space_small {
+  margin-bottom: 6.4rem;
 }
 
 /* .heading-primary,

@@ -1,4 +1,6 @@
+import React from "react";
 import styled from "styled-components";
+import Course from "./Course";
 import course_images from "../assets/images";
 
 const CourseData = [
@@ -74,37 +76,13 @@ const CourseListWrapper = styled.section`
   .courses {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 1rem;
+    grid-gap: 2.4rem;
   }
-
-  .course {
-    padding: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+  h2 {
+    font-size: 3.6rem;
     text-align: center;
-  }
-
-  .course img {
-    width: 100%;
-    border-radius: 5px;
-  }
-
-  .course h3 {
-    font-size: 1.8rem;
-    margin: 1rem 0;
-  }
-
-  .course p {
-    font-size: 1.6rem;
-    margin: 0.5rem 0;
-  }
-
-  .course p:first-child {
-    font-weight: bold;
-  }
-
-  .course p:last-child {
-    color: #555;
+    margin-bottom: 4rem;
+    color: #1971c2;
   }
 `;
 
@@ -113,17 +91,8 @@ function CourseList() {
     <CourseListWrapper className="container">
       <h2 className="heading-tertiary">Courses</h2>
       <div className="courses">
-        {CourseData.map((course, index) => (
-          <div className="course" key={index}>
-            <img src={course.imgSrc} alt={course.title} />
-            <h3>{course.title}</h3>
-            <p>{course.description}</p>
-            <p>Price: ${course.price}</p>
-            <p>
-              Rating: {course.rating_star} ({course.rating_count})
-            </p>
-            <p>Creater: {course.creater}</p>
-          </div>
+        {CourseData.map((course) => (
+          <Course key={course.course_id} course={course} />
         ))}
       </div>
     </CourseListWrapper>
