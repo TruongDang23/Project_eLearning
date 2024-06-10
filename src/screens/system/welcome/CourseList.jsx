@@ -24,7 +24,7 @@ const CourseData = [
     rating_star: 4.7,
     rating_count: 120,
     imgSrc: course_images.img_course2,
-    creater: "Jane Doe",
+    creater: "Jonelle Doe",
   },
   {
     course_id: "C003",
@@ -35,7 +35,7 @@ const CourseData = [
     rating_star: 4.8,
     rating_count: 130,
     imgSrc: course_images.img_course3,
-    creater: "John Doe",
+    creater: "Mary Doe",
   },
   {
     course_id: "C004",
@@ -46,7 +46,7 @@ const CourseData = [
     rating_star: 4.9,
     rating_count: 140,
     imgSrc: course_images.img_course4,
-    creater: "Jane Doe",
+    creater: "Micale Jackson",
   },
   {
     course_id: "C005",
@@ -54,10 +54,10 @@ const CourseData = [
     title: "MERN Stack for Beginners",
     description: "Learn MERN Stack from scratch with hands-on projects.",
     price: 89.99,
-    rating_star: 5.0,
+    rating_star: 3.0,
     rating_count: 150,
     imgSrc: course_images.img_course5,
-    creater: "John Doe",
+    creater: "Erling Haaland",
   },
   {
     course_id: "C006",
@@ -68,7 +68,7 @@ const CourseData = [
     rating_star: 5.0,
     rating_count: 160,
     imgSrc: course_images.img_course6,
-    creater: "Jane Doe",
+    creater: "Goerge Best",
   },
 ];
 

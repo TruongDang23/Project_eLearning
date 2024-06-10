@@ -22,7 +22,7 @@ function Course({ course }) {
       <div className="item-body">
         <h3 className="item-title">{title}</h3>
         <span className="item-creator">{creater}</span>
-        <div className="item-rating flex">
+        <div className="item-rating">
           <span className="rating-star-val">{rating_star}</span>
           <StarRating rating_star={rating_star} />
           <span className="rating-count">({rating_count})</span>
@@ -80,7 +80,6 @@ const CourseWrapper = styled.div`
       justify-content: flex-start;
 
       .rating-star-val {
-        margin-bottom: 5px;
         font-size: 1.6rem;
         font-weight: 800;
         color: #b4690e;
