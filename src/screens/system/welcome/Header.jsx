@@ -1,6 +1,43 @@
 import React from "react";
 import styled from "styled-components";
 
+function Header() {
+  return (
+    <Navbar>
+      <a className="brand">
+        <img
+          src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
+          alt="Udemy Logo"
+        />
+      </a>
+      <div className="navLinks">
+        <a href="#" className="link">
+          Categories
+        </a>
+        <div className="searchBox">
+          <input type="text" placeholder="Search for anything" />
+          <a href="search">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/54/54481.png"
+              alt="Search Icon"
+            />
+          </a>
+        </div>
+        <a href="#" className="link">
+          Teach on Udemy
+        </a>
+        <a href="#" className="link">
+          My learning
+        </a>
+      </div>
+      <div className="authButtons">
+        <button className="login">Log in</button>
+        <button className="signup">Sign up</button>
+      </div>
+    </Navbar>
+  );
+}
+
 const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -101,42 +138,5 @@ const Navbar = styled.nav`
     }
   }
 `;
-
-function Header() {
-  return (
-    <Navbar>
-      <a className="brand">
-        <img
-          src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
-          alt="Udemy Logo"
-        />
-      </a>
-      <div className="navLinks">
-        <a href="#" className="link">
-          Categories
-        </a>
-        <div className="searchBox">
-          <input type="text" placeholder="Search for anything" />
-          <a href="search">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/54/54481.png"
-              alt="Search Icon"
-            />
-          </a>
-        </div>
-        <a href="#" className="link">
-          Teach on Udemy
-        </a>
-        <a href="#" className="link">
-          My learning
-        </a>
-      </div>
-      <div className="authButtons">
-        <button className="login">Log in</button>
-        <button className="signup">Sign up</button>
-      </div>
-    </Navbar>
-  );
-}
 
 export default Header;

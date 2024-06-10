@@ -2,6 +2,42 @@ import React from "react";
 import styled from "styled-components";
 import heroImgPng from "../assets/hero.png";
 
+function HeroSection() {
+  return (
+    <SectionHero>
+      <div className="hero">
+        <div className="hero-text-box">
+          <h1 className="headingPrimary">
+            Learn essential skills for today and tomorrow
+          </h1>
+          <p className="heroDescription">
+            Skills for your present (and your future). Unlock your potential
+            with our online courses. Gain skills that matter today and shape
+            your future. Start learning with us now!
+          </p>
+          <a href="#Learning" className="heroBtnPrimary">
+            Start learning &rarr;
+          </a>
+          <a href="#learnmore" className="heroBtnOutline">
+            Learn more &darr;
+          </a>
+        </div>
+        <div className="hero-img-box">
+          <picture>
+            {/* <source srcSet={heroImgWebp} type="image/webp" /> */}
+            <source srcSet={heroImgPng} type="image/png" />
+            <img
+              src={heroImgPng}
+              className="heroImg"
+              alt="Hero Section Image"
+            />
+          </picture>
+        </div>
+      </div>
+    </SectionHero>
+  );
+}
+
 const SectionHero = styled.section`
   background-color: #d0ebff;
   padding: 4.8rem 0 9.6rem 0;
@@ -78,41 +114,5 @@ const SectionHero = styled.section`
     }
   }
 `;
-
-function HeroSection() {
-  return (
-    <SectionHero>
-      <div className="hero">
-        <div className="hero-text-box">
-          <h1 className="headingPrimary">
-            Learn essential skills for today and tomorrow
-          </h1>
-          <p className="heroDescription">
-            Skills for your present (and your future). Unlock your potential
-            with our online courses. Gain skills that matter today and shape
-            your future. Start learning with us now!
-          </p>
-          <a href="#Learning" className="heroBtnPrimary">
-            Start learning &rarr;
-          </a>
-          <a href="#learnmore" className="heroBtnOutline">
-            Learn more &darr;
-          </a>
-        </div>
-        <div className="hero-img-box">
-          <picture>
-            {/* <source srcSet={heroImgWebp} type="image/webp" /> */}
-            <source srcSet={heroImgPng} type="image/png" />
-            <img
-              src={heroImgPng}
-              className="heroImg"
-              alt="Hero Section Image"
-            />
-          </picture>
-        </div>
-      </div>
-    </SectionHero>
-  );
-}
 
 export default HeroSection;
