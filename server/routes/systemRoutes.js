@@ -5,6 +5,7 @@ const cors = require('cors')
 //import database (khi nào cần connect database nào thì gọi cái phù hợp)
 const mysql = require('mysql2')
 const mongo = require('mongoose')
+const { HmacSHA224 } = require('crypto-js')
 
 //Khởi tạo tham số router và cấp quyền CORS
 const router = express.Router()
@@ -18,7 +19,7 @@ const pool = mysql.createPool({
   host: 'localhost',
   port: '3306',
   user: 'root',
-  password: 'root',
+  password: 'truong050123',
   database: 'projectelearning',
   waitForConnections: true,
   connectionLimit: 10,
@@ -53,5 +54,8 @@ router.post('/login', (req, res) =>
   })
 })
 
+router.post('/signup', (req, res) => {
+  const session = req.session
+})
 // Export the router
 module.exports = router
