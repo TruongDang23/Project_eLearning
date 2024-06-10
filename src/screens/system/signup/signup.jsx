@@ -24,35 +24,12 @@ function Signup() {
   const typeRepass = (e) => {
     setRepass(e.target.value)
     if (e.target.value !== pass) {
-<<<<<<< HEAD
-      setMessage('Password does not match')
-=======
       setMessage('Passwords do not match')
->>>>>>> 1ef4161ab82edd9234847fbec1bacb9b51359549
     } else {
       setMessage('')
     }
   }
 
-<<<<<<< HEAD
-  const signup = async() => {
-    try
-    {
-      if (message === 'Password does not match')
-      {
-        //
-      }
-      else
-      {
-        const hased = hashPassword(pass)
-      }
-    }
-    catch (error)
-    {
-      //
-    }
-  }
-=======
   const createUser = async () => {
     try
     {
@@ -69,7 +46,6 @@ function Signup() {
     }
   }
 
->>>>>>> 1ef4161ab82edd9234847fbec1bacb9b51359549
   return (
     <>
       <div className="container">
@@ -80,53 +56,26 @@ function Signup() {
           <h1>Sign Up</h1>
           <div className="input-box">
             <label>Username/Email *</label>
-<<<<<<< HEAD
-            <br/>
-            <PersonOutlineIcon sx={{ fontSize: 40, color: '#187BCE', paddingBottom: '2px' }}/>
-=======
             <br />
             <PersonOutlineIcon sx={{ fontSize: 40, color: '#187BCE', paddingBottom: '2px' }} />
->>>>>>> 1ef4161ab82edd9234847fbec1bacb9b51359549
             <input type="text" required value={username} onChange={(e) => setUsername(e.target.value)} />
           </div>
 
           <div className="input-box">
             <label>Password *</label>
-<<<<<<< HEAD
-            <br/>
-            <LockIcon sx={{ fontSize: 40, color: '#187BCE', paddingBottom: '2px' }}/>
-=======
             <br />
             <LockIcon sx={{ fontSize: 40, color: '#187BCE', paddingBottom: '2px' }} />
->>>>>>> 1ef4161ab82edd9234847fbec1bacb9b51359549
             <input type="password" required value={pass} onChange={(e) => setPass(e.target.value)} />
           </div>
 
           <div className="input-box">
             <label>Re-password *</label>
-<<<<<<< HEAD
-            <br/>
-            <LockIcon sx={{ fontSize: 40, color: '#187BCE', paddingBottom: '2px' }}/>
-=======
             <br />
             <LockIcon sx={{ fontSize: 40, color: '#187BCE', paddingBottom: '2px' }} />
->>>>>>> 1ef4161ab82edd9234847fbec1bacb9b51359549
             <input type="password" required value={repass} onChange={typeRepass} />
           </div>
 
           <div className="role">
-<<<<<<< HEAD
-            <label><input type="radio" value="Student" name="role" onChange={(e) => setRole(e.target.value)} ></input> Student</label>
-            <label><input type="radio" value="Instructor" name="role" onChange={(e) => setRole(e.target.value)} ></input> Instructor</label>
-            <label><input type="radio" value="Admin" name="role" onChange={(e) => setRole(e.target.value)} ></input> Admin</label>
-          </div>
-
-          {message && <p style={{ color: 'red', textAlign: 'center', paddingTop: '20px' }}>{message}</p>}
-
-          <div className="button">
-            <button className="button-login" onClick={signup}><PersonAddAltIcon sx={{ paddingRight: '10px', fontSize: 40 }}/>Create</button>
-            <button className="button-cancel"><CloseIcon sx={{ paddingRight: '10px', fontSize: 40, color: 'red' }}/>Cancel</button>
-=======
             <label><input type="radio" value="Student" name="role" onChange={(e) => setRole(e.target.value)}></input> Student</label>
             <label><input type="radio" value="Instructor" name="role" onChange={(e) => setRole(e.target.value)}></input> Instructor</label>
             <label><input type="radio" value="Admin" name="role" onChange={(e) => setRole(e.target.value)}></input> Admin</label>
@@ -136,7 +85,6 @@ function Signup() {
           <div className="button">
             <button onClick={createUser} className="button-login"><PersonAddAltIcon sx={{ paddingRight: '10px', fontSize: 40 }} />Create</button>
             <button className="button-cancel"><CloseIcon sx={{ paddingRight: '10px', fontSize: 40, color: 'red' }} />Cancel</button>
->>>>>>> 1ef4161ab82edd9234847fbec1bacb9b51359549
           </div>
           <div className="forgot">
             <label>If you have an account <a href="/login">Login now</a></label>
