@@ -118,6 +118,7 @@ const CourseWrapper = styled.div`
       font-weight: 700;
       border-radius: 5px;
       text-decoration: none;
+      transition: all 0.3s;
 
       &.see-details-btn {
         background-color: #1971c2;

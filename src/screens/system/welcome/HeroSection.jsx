@@ -74,6 +74,7 @@ const SectionHero = styled.section`
         flex-direction: row;
         flex-wrap: wrap;
         gap: 1.6rem;
+        
 
         @media (max-width: 768px) {
           flex-direction: column;
@@ -92,6 +93,7 @@ const SectionHero = styled.section`
           text-transform: uppercase;
           text-decoration: none;
           margin-right: 1.6rem;
+          transition: all 0.3s;
 
           &:hover {
             background-color: #155b96;
@@ -110,6 +112,7 @@ const SectionHero = styled.section`
           border-radius: 5px;
           text-transform: uppercase;
           text-decoration: none;
+          transition: all 0.3s;
 
           &:hover {
             background-color: #1971c2;

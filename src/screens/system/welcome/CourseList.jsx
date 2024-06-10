@@ -88,7 +88,7 @@ const CourseListWrapper = styled.section`
 
 function CourseList() {
   return (
-    <CourseListWrapper className="container">
+    <CourseListWrapper className="container white-space-medium">
       <h2 className="heading-tertiary">Courses</h2>
       <div className="courses">
         {CourseData.map((course) => (

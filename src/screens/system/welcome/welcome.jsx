@@ -3,6 +3,7 @@ import Header from "./Header";
 import HeroSection from "./HeroSection";
 import Feature from "./Feature";
 import CourseList from "./CourseList";
+import Instructor from "./Instructor";
 
 function Welcome() {
   return (
@@ -12,6 +13,7 @@ function Welcome() {
         <HeroSection />
         <Feature />
         <CourseList />
+        <Instructor />
       </main>
     </div>
   );
