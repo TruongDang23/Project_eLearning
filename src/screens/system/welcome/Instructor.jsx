@@ -1,6 +1,5 @@
-import React from "react";
-import styled from "styled-components";
-import featureInstructor from "../assets/Instructor.png";
+import styled from 'styled-components'
+import featureInstructor from '../assets/Instructor.png'
 
 function Instructor() {
   return (
@@ -20,7 +19,7 @@ function Instructor() {
         </div>
       </div>
     </InstructorWrapper>
-  );
+  )
 }
 
 const InstructorWrapper = styled.section`
@@ -105,6 +104,6 @@ const InstructorWrapper = styled.section`
       }
     }
   }
-`;
+`
 
-export default Instructor;
+export default Instructor

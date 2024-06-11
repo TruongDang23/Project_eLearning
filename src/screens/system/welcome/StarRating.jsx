@@ -1,9 +1,8 @@
-import React from "react";
-import { BsStar, BsStarHalf, BsStarFill } from "react-icons/bs";
-import styled from "styled-components";
+import { BsStar, BsStarHalf, BsStarFill } from 'react-icons/bs'
+import styled from 'styled-components'
 function StarRating({ rating_star }) {
   const stars = Array.from({ length: 5 }, (_, idx) => {
-    const val = idx + 0.5;
+    const val = idx + 0.5
     return (
       <Star key={idx}>
         {rating_star >= idx + 1 ? (
@@ -14,10 +13,10 @@ function StarRating({ rating_star }) {
           <BsStar />
         )}
       </Star>
-    );
-  });
+    )
+  })
 
-  return <div>{stars}</div>;
+  return <div>{stars}</div>
 }
 
 const Star = styled.span`
@@ -25,6 +24,6 @@ const Star = styled.span`
   margin-right: 2px;
   font-size: 13px;
   margin-bottom: -5px !important;
-`;
+`
 
-export default StarRating;
+export default StarRating

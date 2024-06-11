@@ -1,6 +1,5 @@
-import React from "react";
-import styled from "styled-components";
-
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 function Header() {
   return (
     <Navbar>
@@ -31,11 +30,16 @@ function Header() {
         </a>
       </div>
       <div className="authButtons">
-        <button className="login">Log in</button>
-        <button className="signup">Sign up</button>
+        <Link to='/login'>
+          <button className="login">Log in</button>
+        </Link>
+
+        <Link to='/signup'>
+          <button className="signup">Sign up</button>
+        </Link>
       </div>
     </Navbar>
-  );
+  )
 }
 
 const Navbar = styled.nav`
@@ -137,6 +141,6 @@ const Navbar = styled.nav`
       }
     }
   }
-`;
+`
 
-export default Header;
+export default Header

@@ -1,6 +1,5 @@
-import React from "react";
-import styled from "styled-components";
-import heroImgPng from "../assets/hero.png";
+import styled from 'styled-components'
+import heroImgPng from '../assets/hero.png'
 
 function HeroSection() {
   return (
@@ -37,7 +36,7 @@ function HeroSection() {
         </div>
       </div>
     </SectionHero>
-  );
+  )
 }
 
 const SectionHero = styled.section`
@@ -147,6 +146,6 @@ const SectionHero = styled.section`
       max-width: 140rem;
     }
   }
-`;
+`
 
-export default HeroSection;
+export default HeroSection
