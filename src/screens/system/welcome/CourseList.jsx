@@ -1,24 +1,21 @@
 import styled from 'styled-components'
 import Course from './Course'
 import course_images from '../assets/images'
+import axios from 'axios'
 
 const CourseData = [
   {
     course_id: 'C001',
-    type_of_course: 'React',
     title: 'React for Beginners',
-    description: 'Learn React from scratch with hands-on projects.',
     price: 49.99,
     rating_star: 4.5,
     rating_count: 100,
-    imgSrc: course_images.img_course1,
+    imgSrc: 'https://th.bing.com/th/id/R.e4764a69fbcdad81466dc87e56828111?rik=ssloj%2fcULHvTtA&pid=ImgRaw&r=0',
     creater: 'John Doe'
   },
   {
     course_id: 'C002',
-    type_of_course: 'Node.js',
     title: 'Node.js for Beginners',
-    description: 'Learn Node.js from scratch with hands-on projects.',
     price: 59.99,
     rating_star: 4.7,
     rating_count: 120,
@@ -27,9 +24,7 @@ const CourseData = [
   },
   {
     course_id: 'C003',
-    type_of_course: 'MongoDB',
     title: 'MongoDB for Beginners',
-    description: 'Learn MongoDB from scratch with hands-on projects.',
     price: 69.99,
     rating_star: 4.8,
     rating_count: 130,
@@ -38,9 +33,7 @@ const CourseData = [
   },
   {
     course_id: 'C004',
-    type_of_course: 'Express.js',
     title: 'SQL for Beginners: Learn SQL using MySQL and Database Design',
-    description: 'Learn Express.js from scratch with hands-on projects.',
     price: 79.99,
     rating_star: 4.9,
     rating_count: 140,
@@ -49,9 +42,7 @@ const CourseData = [
   },
   {
     course_id: 'C005',
-    type_of_course: 'MERN',
     title: 'MERN Stack for Beginners',
-    description: 'Learn MERN Stack from scratch with hands-on projects.',
     price: 89.99,
     rating_star: 3.0,
     rating_count: 150,
@@ -60,9 +51,7 @@ const CourseData = [
   },
   {
     course_id: 'C006',
-    type_of_course: 'React Native',
     title: 'Live Accounting App by C# .NET Core in Windows Forms and SQL',
-    description: 'Learn React Native from scratch with hands-on projects.',
     price: 99.99,
     rating_star: 5.0,
     rating_count: 160,

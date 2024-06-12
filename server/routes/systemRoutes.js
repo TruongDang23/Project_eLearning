@@ -11,6 +11,8 @@ const { format } = require('date-fns')
 
 //import model user for inserting into mongoDB
 const User = require('../models/user')
+const Course = require('../models/courseInfor')
+const { LocalConvenienceStoreOutlined } = require('@mui/icons-material')
 
 //Khởi tạo tham số router và cấp quyền CORS
 const router = express.Router()
@@ -24,7 +26,7 @@ const pool = mysql.createPool({
   host: 'localhost',
   port: '3306',
   user: 'root',
-  password: 'truong050123',
+  password: 'root',
   database: 'projectelearning',
   waitForConnections: true,
   connectionLimit: 10,
@@ -38,7 +40,7 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })
-    //console.log('Connected to MongoDB')
+    console.log('Connected to MongoDB')
   } catch (err) {
     //console.error('Error connecting to MongoDB', err)
     process.exit(1) // Dừng ứng dụng nếu không thể kết nối
@@ -211,5 +213,45 @@ router.post('/signup', (req, res) => {
   insertUser()
 })
 
+
+router.get('/loadCourseWelcome', (req, res) => {
+  pool.getConnection((err, connection) => {
+    if (err) {
+      console.log(err)
+    }
+
+    let query = 'SELECT course.courseID, title, fullname, star, raters, price FROM avg_rating\
+                INNER JOIN published_course ON avg_rating.courseID = published_course.courseID\
+                INNER JOIN course ON avg_rating.courseID = course.courseID\
+                INNER JOIN user ON published_course.userID = user.userID\
+                LIMIT 9'
+    connection.query(query, async (error, courses) => {
+      connection.release() //Giải phóng connection khi truy vấn xong
+      if (error) {
+        console.log(error)
+      }
+
+      //List courseIDs which is results of previous query
+      const courseIDs = courses.map(course => course.courseID)
+
+      //Connect to MongoDB server
+      await connectDB()
+
+      //Get image_introduce of each courseID
+      const mongoData = await Course.find({ courseID: { $in: courseIDs } }).select('courseID image_introduce')
+
+      //Merge data with Mysql and MongoDB
+      const mergeData = courses.map(course => {
+        const data = mongoData.find(mc => mc.courseID === course.courseID)
+        return {
+          ...course,
+          image_introduce: data ? data.image_introduce : null
+        }
+      })
+
+      res.send(mergeData)
+    })
+  })
+})
 // Export the router
 module.exports = router

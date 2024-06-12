@@ -4,9 +4,7 @@ import StarRating from './StarRating'
 function Course({ course }) {
   const {
     course_id,
-    type_of_course,
     title,
-    description,
     price,
     rating_star,
     rating_count,
