@@ -1,4 +1,5 @@
 //This is information screen of admin
+import { useState } from 'react'
 import { GeneralFooter, HeaderAfterLogin } from '~/components/general/index'
 import './information.css'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -17,6 +18,18 @@ import ListItemText from '@mui/material/ListItemText'
 import Typography from '@mui/material/Typography'
 
 function Information() {
+  const [userInfo, setUserInfor] = useState({
+    userID: 'A000',
+    fullname: 'Dang Quang Truong',
+    dob: '05-01-2003',
+    street: 'Ly Thai To',
+    province: 'Dong Nai',
+    country: 'Viet Nam',
+    language: 'Vietnamese',
+    socialnets: ['facebook.com', 'github.com', 'linkedin.com'],
+    activity_status: 'active'
+  })
+
   return (
     <>
       <HeaderAfterLogin/>
@@ -32,7 +45,7 @@ function Information() {
 
             <div style={{ width: '100%', marginTop: '30px' }}>
               <label style={{ textAlign:'right' }}>User ID:</label>
-              <input type="text" className="form-control" id="user_id" placeholder="admin005GN" style={{ borderWidth: '2px', borderRadius: '15px', borderColor:'black', height:'50px' }}/>
+              <input type="text" className="form-control" id="user_id" placeholder='A000' style={{ borderWidth: '2px', borderRadius: '15px', borderColor:'black', height:'50px' }}/>
             </div>
 
             <div style={{ width: '100%', marginTop: '30px' }}>

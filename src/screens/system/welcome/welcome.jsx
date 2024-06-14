@@ -1,4 +1,4 @@
-import Header from './Header'
+import { HeaderBeforeLogin } from '~/components/general'
 import HeroSection from './HeroSection'
 import Feature from './Feature'
 import CourseList from './CourseList'
@@ -8,7 +8,7 @@ import FooterNew from '~/components/general/Footer/FooterNew'
 function Welcome() {
   return (
     <div>
-      <Header />
+      <HeaderBeforeLogin />
       <main>
         <HeroSection />
         <Feature />

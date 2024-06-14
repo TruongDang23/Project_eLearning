@@ -1,6 +1,6 @@
 import HeaderBe from './HeaderBeforeLogin/header'
 import HeaderAf from './HeaderAfterLogin/header'
-import Footer from './Footer/footer'
+import Footer from './Footer/FooterNew'
 export function HeaderBeforeLogin() {
   return (
     <HeaderBe />
