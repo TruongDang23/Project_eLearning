@@ -55,6 +55,8 @@ const NotifyData = [
 
 function ListNotifications() {
   const [selectedNotify, setSelectedNotify] = useState(null);
+  // dùng useState để thay đổi isRead khi click vào một notify
+
 
   const handleSelectNotify = (notify) => {
     setSelectedNotify(notify);
