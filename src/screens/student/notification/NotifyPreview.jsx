@@ -47,6 +47,14 @@ const NotifyPreviewWrapper = styled.div`
     gap: 3.2rem;
     align-items: center;
     width: 100%;
+    padding: 1.6rem;
+    tranlate: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #e0e0e0;
+      tranlate: all 0.3s;
+    }
 
     &.read {
       background-color: #f0f0f0;

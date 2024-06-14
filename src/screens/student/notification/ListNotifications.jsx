@@ -69,6 +69,7 @@ function ListNotifications() {
             <NotifyPreview
               key={notify.notifyID}
               notify={notify}
+              className="notification-item"
               onClick={() => handleSelectNotify(notify)}
             />
           ))}
@@ -89,7 +90,9 @@ function ListNotifications() {
               </a>
             </>
           ) : (
-            <p className="no-select">Select a notification to see the details</p>
+            <p className="no-select">
+              Select a notification to see the details
+            </p>
           )}
         </div>
       </div>
@@ -120,16 +123,12 @@ const NotificationWrapper = styled.section`
     border-radius: 10px;
   }
   .notification-item {
-    padding: 1.6rem;
     background-color: #fff;
     border-radius: 0.4rem;
     cursor: pointer;
     transition: all 0.3s;
     display: flex;
     align-items: center;
-    &:hover {
-      background-color: #f9f9f9;
-    }
   }
   .notification-content {
     padding: 1.6rem;
