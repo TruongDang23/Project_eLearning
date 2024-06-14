@@ -18,7 +18,6 @@ function Login() {
   const [pass, setPass] = useState('')
   const [role, setRole] = useState('')
   const [message, setMessage] = useState('')
-  const [token, setToken] = useState({})
 
   const typeUsername = (e) => {
     setUsername(e.target.value)
@@ -53,8 +52,7 @@ function Login() {
       if (res.data === 'User are not existed')
         setMessage('Username or Password is incorrect')
       else {
-        console.log(res.data)
-        //alert('Login successfully')
+        alert('Login successfully')
         localStorage.setItem('token', res.data)
       }
 

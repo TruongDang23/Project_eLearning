@@ -19,9 +19,13 @@ const CourseListWrapper = styled.section`
 
 function CourseList() {
   const [courses, setCourse] = useState([])
-
+  const token = localStorage.getItem('token')
   useEffect(() => {
-    axios.get('http://localhost:3000/s/loadCourseWelcome')
+    axios.get('http://localhost:3000/s/loadCourseWelcome', {
+      headers: {
+        'Authorization': token // Thêm token vào header Authorization
+      }
+    })
       .then(response => {
         setCourse(response.data)
       })

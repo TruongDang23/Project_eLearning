@@ -31,10 +31,6 @@ function Signup() {
     }
   }
 
-  // Lấy đối tượng
-  const storedUser = localStorage.getItem('token')
-  console.log(storedUser) // { id: 123, name: 'John Doe' }
-
   const createUser = async () => {
     try
     {
