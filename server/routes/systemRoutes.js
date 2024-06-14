@@ -1,6 +1,9 @@
 //import express framework (bắt buộc)
 const express = require('express')
 const cors = require('cors')
+const jwt = require('jsonwebtoken')
+
+const KEY = 'd6cb109246bc06e7b4e88fc0579fa6f5eaf770a93e42e33934419bed7b3a944e629e5f28a6ef0678ccdd5c63ab106838b34fda2ea21a1250fe5c2d1c7f70ceb0'
 
 //import database (khi nào cần connect database nào thì gọi cái phù hợp)
 const mysql = require('mysql2')
@@ -12,7 +15,6 @@ const { format } = require('date-fns')
 //import model user for inserting into mongoDB
 const User = require('../models/user')
 const Course = require('../models/courseInfor')
-const { LocalConvenienceStoreOutlined } = require('@mui/icons-material')
 
 //Khởi tạo tham số router và cấp quyền CORS
 const router = express.Router()
@@ -26,7 +28,7 @@ const pool = mysql.createPool({
   host: 'localhost',
   port: '3306',
   user: 'root',
-  password: 'root',
+  password: 'truong050123',
   database: 'projectelearning',
   waitForConnections: true,
   connectionLimit: 10,
@@ -154,11 +156,11 @@ router.post('/login', (req, res) =>
       connection.release()
       if (error) throw error
       if (results.length > 0) {
-        req.session.userID = results[0].userID
-        res.send( results )
+        const token = jwt.sign({ userID: results[0].userID, role: results[0].roleOfUser }, KEY, { expiresIn: 86400 })
+        res.send(token)
       }
       else
-        res.send('User are not existed')
+        res.status(404).send('User are not existed')
     })
   })
 })

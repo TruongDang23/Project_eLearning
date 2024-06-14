@@ -18,6 +18,7 @@ function Login() {
   const [pass, setPass] = useState('')
   const [role, setRole] = useState('')
   const [message, setMessage] = useState('')
+  const [token, setToken] = useState({})
 
   const typeUsername = (e) => {
     setUsername(e.target.value)
@@ -38,6 +39,12 @@ function Login() {
     return CryptoJS.SHA512(password).toString(CryptoJS.enc.Hex)
   }
 
+  //Thử nghiệm localStorage để lưu trữ thông tin người dùng
+  // Lưu đối tượng
+  const user = { id: 124, name: 'Truong Dang' }
+  localStorage.setItem('user', JSON.stringify(user))
+  //Kết thúc thử nghiệm
+
   const checkLogin = async () => {
     try {
       const hassed = hashPassword(pass)
@@ -45,8 +52,12 @@ function Login() {
 
       if (res.data === 'User are not existed')
         setMessage('Username or Password is incorrect')
-      else
-        alert('Login successfully with: ' + res.data[0].userID + ', status: ' + res.data[0].activity_status)
+      else {
+        console.log(res.data)
+        //alert('Login successfully')
+        localStorage.setItem('token', res.data)
+      }
+
     } catch (error) {
       alert('An error occurred while trying to log in.')
       //console.error(error)
