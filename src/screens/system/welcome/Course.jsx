@@ -3,28 +3,26 @@ import StarRating from "./StarRating";
 
 function Course({ course }) {
   const {
-    course_id,
-    type_of_course,
+    courseID,
     title,
-    description,
     price,
-    rating_star,
-    rating_count,
-    imgSrc,
-    creater,
-  } = course;
+    star,
+    raters,
+    image_introduce,
+    fullname
+  } = course
   return (
     <CourseWrapper>
       <div className="item-img">
-        <img src={imgSrc} alt={title} />
+        <img src={image_introduce} alt={title} />
       </div>
       <div className="item-body">
         <h3 className="item-title">{title}</h3>
-        <span className="item-creator">{creater}</span>
+        <span className="item-creator">{fullname}</span>
         <div className="item-rating">
-          <span className="rating-star-val">{rating_star}</span>
-          <StarRating rating_star={rating_star} />
-          <span className="rating-count">({rating_count})</span>
+          <span className="rating-star-val">{star}</span>
+          <StarRating rating_star={star} />
+          <span className="rating-count">({raters})</span>
         </div>
         <div className="item-price">
           <span className="item-price-new">Free</span>
