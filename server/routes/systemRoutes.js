@@ -1,6 +1,7 @@
 //import express framework (bắt buộc)
 const express = require('express')
 const cors = require('cors')
+const jwt = require('jsonwebtoken')
 
 //import database (khi nào cần connect database nào thì gọi cái phù hợp)
 const mysql = require('mysql2')
@@ -12,12 +13,32 @@ const { format } = require('date-fns')
 //import model user for inserting into mongoDB
 const User = require('../models/user')
 const Course = require('../models/courseInfor')
-const { LocalConvenienceStoreOutlined } = require('@mui/icons-material')
 
 //Khởi tạo tham số router và cấp quyền CORS
 const router = express.Router()
 router.use(cors())
 router.use(express.json())
+
+//Cấu hình JWT: Tạo KEY mã hóa và Function xác thực JWT (project_elearning SHA-512)
+const KEY = 'd6cb109246bc06e7b4e88fc0579fa6f5eaf770a93e42e33934419bed7b3a944e629e5f28a6ef0678ccdd5c63ab106838b34fda2ea21a1250fe5c2d1c7f70ceb0'
+
+//Tạo middleware function xác thực JWT. Function được gọi trước khi thực hiện một chức năng bất kỳ
+const verifyToken = (req, res, next) => {
+  const token = req.headers['authorization']
+  if (!token) {
+    return res.status(403).send({ message: 'No token provided!' })
+  }
+
+  jwt.verify(token, KEY, (err, decoded) => {
+    if (err) {
+      return res.status(500).send({ message: 'Failed to authenticate token!' })
+    }
+
+    req.userID = decoded.userID
+    req.role = decoded.role
+    next()
+  })
+}
 
 // Sử dụng kỹ thuật pooling để tạo tối đa 10 connection đến mysql
 // Các connection sẽ được luân phiên sử dụng.
@@ -26,7 +47,7 @@ const pool = mysql.createPool({
   host: 'localhost',
   port: '3306',
   user: 'root',
-  password: 'root',
+  password: 'truong050123',
   database: 'projectelearning',
   waitForConnections: true,
   connectionLimit: 10,
@@ -154,11 +175,11 @@ router.post('/login', (req, res) =>
       connection.release()
       if (error) throw error
       if (results.length > 0) {
-        req.session.userID = results[0].userID
-        res.send( results )
+        const token = jwt.sign({ userID: results[0].userID, role: results[0].roleOfUser }, KEY, { expiresIn: 86400 })
+        res.send(token)
       }
       else
-        res.send('User are not existed')
+        res.status(404).send('User are not existed')
     })
   })
 })
@@ -217,7 +238,7 @@ router.post('/signup', (req, res) => {
 router.get('/loadCourseWelcome', (req, res) => {
   pool.getConnection((err, connection) => {
     if (err) {
-      console.log(err)
+      res.status(500).send(err)
     }
 
     let query = 'SELECT course.courseID, title, fullname, star, raters, price FROM avg_rating\
@@ -228,7 +249,7 @@ router.get('/loadCourseWelcome', (req, res) => {
     connection.query(query, async (error, courses) => {
       connection.release() //Giải phóng connection khi truy vấn xong
       if (error) {
-        console.log(error)
+        res.status(500).send(error)
       }
 
       //List courseIDs which is results of previous query
