@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import StarRating from './StarRating'
+import styled from "styled-components";
+import StarRating from "./StarRating";
 
 function Course({ course }) {
   const {
@@ -11,8 +11,8 @@ function Course({ course }) {
     rating_star,
     rating_count,
     imgSrc,
-    creater
-  } = course
+    creater,
+  } = course;
   return (
     <CourseWrapper>
       <div className="item-img">
@@ -36,7 +36,7 @@ function Course({ course }) {
         <button className="item-btn add-to-cart-btn">Add to Cart</button>
       </div>
     </CourseWrapper>
-  )
+  );
 }
 
 const CourseWrapper = styled.div`
@@ -51,7 +51,7 @@ const CourseWrapper = styled.div`
       width: 100%;
       height: 200px;
       object-fit: cover;
-      ${'' /* bo hai góc trên của ảnh */}
+      ${"" /* bo hai góc trên của ảnh */}
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
     }
@@ -142,6 +142,6 @@ const CourseWrapper = styled.div`
       }
     }
   }
-`
+`;
 
-export default Course
+export default Course;

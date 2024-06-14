@@ -1,12 +1,14 @@
-import System from './screens/system'
-import { AdminInformation } from './screens/admin'
+import System from "./screens/system";
+import { AdminInformation } from "./screens/admin";
+import Notication from "./screens/student/notification/Notication";
 function App() {
   return (
     <>
-      <System/>
+      {/* <System/> */}
       {/* <AdminInformation/> */}
+      <Notication />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

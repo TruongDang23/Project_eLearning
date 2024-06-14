@@ -1,6 +1,11 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-function Header() {
+import Badge from "@mui/material/Badge";
+import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined"; // import AccountCircle from "@mui/icons-material/AccountCircle";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import Avatar from "@mui/material/Avatar";
+import AvatarImg from "./avatar.png";
+
+function HeaderAfterLogin() {
   return (
     <Navbar>
       <a className="brand">
@@ -28,15 +33,19 @@ function Header() {
         <a href="#" className="link">
           My learning
         </a>
-      </div>
-      <div className="authButtons">
-        <Link to="/login">
-          <button className="login">Log in</button>
-        </Link>
-
-        <Link to="/signup">
-          <button className="signup">Sign up</button>
-        </Link>
+        <a>
+          <StyledBadge badgeContent={4} color="error">
+            <ShoppingCartOutlinedIcon />
+          </StyledBadge>
+        </a>
+        <a>
+          <StyledBadge badgeContent={17} color="error">
+            <NotificationsOutlinedIcon />
+          </StyledBadge>
+        </a>
+        <a>
+          <StyledAvatar src={AvatarImg} />
+        </a>
       </div>
     </Navbar>
   );
@@ -101,46 +110,34 @@ const Navbar = styled.nav`
       }
     }
   }
-
-  .authButtons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    .login,
-    .signup {
-      padding: 8px 15px;
-      border-radius: 5px;
-      font-size: 16px;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    .login {
-      background-color: #fff;
+`;
+const StyledBadge = styled(Badge)`
+  cursor: pointer;
+  color: #555;
+  transition: all 0.3s;
+  ${"" /* giảm kích thước của badge */}
+  .MuiBadge-badge {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0 2px;
+  }
+  .MuiSvgIcon-root {
+    width: 2.6rem;
+    height: 2.6rem;
+    &:hover, &:focus {
       color: #1971c2;
-      border: 2px solid #1971c2;
-
-      &:hover,
-      &:visited {
-        background-color: #1971c2;
-        color: #fff;
-        transition: all 0.3s;
-      }
-    }
-
-    .signup {
-      background-color: #1971c2;
-      color: #fff;
-      border: none;
-
-      &:hover,
-      &:visited {
-        background-color: #155b96;
-        transition: all 0.3s;
-      }
+      ${"" /* Phóng to một chút */}
+      transform: scale(1.1);
+      transition: all 0.3s;
     }
   }
 `;
 
-export default Header;
+const StyledAvatar = styled(Avatar)`
+  cursor: pointer;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 2px solid #1971c2;
+`;
+
+export default HeaderAfterLogin;
