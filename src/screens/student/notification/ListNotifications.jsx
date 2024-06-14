@@ -7,7 +7,8 @@ import React, { useState } from "react";
 const NotifyData = [
   {
     notifyID: 1,
-    title: "New Course Added",
+    title:
+      "New Course Added ew course on ReactJS has been addedew course on ReactJS has been added",
     message: "New course on ReactJS has been added",
     route: "/course/1",
     isRead: false,
@@ -56,10 +57,17 @@ const NotifyData = [
 function ListNotifications() {
   const [selectedNotify, setSelectedNotify] = useState(null);
   // dùng useState để thay đổi isRead khi click vào một notify
-
+  const [notifyData, setNotifyData] = useState(NotifyData);
 
   const handleSelectNotify = (notify) => {
     setSelectedNotify(notify);
+    const updatedNotifyData = notifyData.map((item) => {
+      if (item.notifyID === notify.notifyID) {
+        return { ...item, isRead: true };
+      }
+      return item;
+    });
+    setNotifyData(updatedNotifyData);
   };
 
   return (
@@ -67,7 +75,7 @@ function ListNotifications() {
       <h2 className="heading-tertiary">Notifications</h2>
       <div className="notifications">
         <div className="notification-list">
-          {NotifyData.map((notify) => (
+          {notifyData.map((notify) => (
             <NotifyPreview
               key={notify.notifyID}
               notify={notify}

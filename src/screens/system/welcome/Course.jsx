@@ -109,6 +109,7 @@ const CourseWrapper = styled.div`
     gap: 10px;
     justify-content: space-between;
     padding: 4px 8px 20px 18px;
+
     margin-top: auto;
     .item-btn {
       display: inline-block;

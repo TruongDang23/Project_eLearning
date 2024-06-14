@@ -21,7 +21,7 @@ function NotifyPreview({ notify, onClick }) {
 
   return (
     <NotifyPreviewWrapper onClick={onClick}>
-      <div className={`notification-item ${isRead ? "read" : ""}`}>
+      <div className={`notification-item ${!isRead ? "not-read" : ""}`}>
         <div className="notification-item__avatar">
           <Avatar src={imgInstructor} />
         </div>
@@ -52,7 +52,7 @@ const NotifyPreviewWrapper = styled.div`
       background-color: #e0e0e0;
       tranlate: all 0.3s;
     }
-    &.read {
+    &.not-read {
       border-left: 4px solid #1971c2;
     }
 
