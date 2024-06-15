@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import AvatarImg from "./a2.png";
-import Avatar from "@mui/material/Avatar";
 import NotifyPreview from "./NotifyPreview";
-import React, { useState } from "react";
-
+import { useState } from "react";
 const NotifyData = [
   {
     notifyID: 1,
@@ -13,7 +11,7 @@ const NotifyData = [
     route: "/course/1",
     isRead: false,
     imgInstructor: AvatarImg,
-    dateTimeRecive: "2024-06-10T10:00:00",
+    dateTimeRecive: "2024-06-10T10:00:00"
   },
   {
     notifyID: 2,
@@ -22,7 +20,7 @@ const NotifyData = [
     route: "/course/2",
     isRead: true,
     imgInstructor: AvatarImg,
-    dateTimeRecive: "2024-06-14T10:00:00",
+    dateTimeRecive: "2024-06-14T10:00:00"
   },
   {
     notifyID: 3,
@@ -31,7 +29,7 @@ const NotifyData = [
     route: "/course/3",
     isRead: false,
     imgInstructor: AvatarImg,
-    dateTimeRecive: "2023-10-10T10:00:00",
+    dateTimeRecive: "2023-10-10T10:00:00"
   },
   {
     notifyID: 4,
@@ -40,7 +38,7 @@ const NotifyData = [
     route: "/course/4",
     isRead: true,
     imgInstructor: AvatarImg,
-    dateTimeRecive: "2023-10-10T10:00:00",
+    dateTimeRecive: "2023-10-10T10:00:00"
   },
   {
     notifyID: 5,
@@ -50,8 +48,8 @@ const NotifyData = [
     route: "/course/5",
     isRead: false,
     imgInstructor: AvatarImg,
-    dateTimeRecive: "2024-10-10T10:00:00",
-  },
+    dateTimeRecive: "2024-10-10T10:00:00"
+  }
 ];
 
 function ListNotifications() {

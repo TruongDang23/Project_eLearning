@@ -1,6 +1,4 @@
-import React from "react";
 import styled from "styled-components";
-import AvatarImg from "./a2.png";
 import Avatar from "@mui/material/Avatar";
 import { formatDistanceToNow } from "date-fns";
 
@@ -12,11 +10,11 @@ function NotifyPreview({ notify, onClick }) {
     route,
     isRead,
     imgInstructor,
-    dateTimeRecive,
+    dateTimeRecive
   } = notify;
 
   const timeAgo = formatDistanceToNow(new Date(dateTimeRecive), {
-    addSuffix: true,
+    addSuffix: true
   });
 
   return (
@@ -45,12 +43,12 @@ const NotifyPreviewWrapper = styled.div`
     align-items: center;
     width: 100%;
     padding: 1.6rem;
-    tranlate: all 0.3s;
+    translate: all 0.3s;
     cursor: pointer;
 
     &:hover {
       background-color: #e0e0e0;
-      tranlate: all 0.3s;
+      translate: all 0.3s;
     }
     &.not-read {
       border-left: 4px solid #1971c2;
