@@ -11,7 +11,7 @@ const course_images = {
   img_course3,
   img_course4,
   img_course5,
-  img_course6,
+  img_course6
 };
 
 export default course_images;
