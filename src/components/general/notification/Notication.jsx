@@ -1,6 +1,4 @@
-import FooterNew from "~/components/general/Footer/FooterNew";
-import HeaderAfterLogin from "~/components/general/HeaderAfterLogin/HeaderAfterLogin";
-import Header from "~/screens/system/welcome/Header";
+import { GeneralFooter, HeaderAfterLogin } from '~/components/general'
 import ListNotifications from "./ListNotifications";
 
 function Notication() {
@@ -10,7 +8,7 @@ function Notication() {
       <main>
         <ListNotifications />
       </main>
-      <FooterNew />
+      <GeneralFooter />
     </div>
   );
 }

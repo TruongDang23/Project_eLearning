@@ -1,529 +1,100 @@
 //This is information screen of admin
 import { useState } from 'react'
-import { GeneralFooter, HeaderAfterLogin } from '~/components/general/index'
-import './information.css'
-import 'bootstrap/dist/css/bootstrap.css'
-import Avatar from '@mui/material/Avatar'
-import avt from '~/assets/avatar.jpg'
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { DatePicker } from '@mui/x-date-pickers/DatePicker'
-import TextField from '@mui/material/TextField'
-import Autocomplete from '@mui/material/Autocomplete'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import Divider from '@mui/material/Divider'
-import ListItemText from '@mui/material/ListItemText'
-import Typography from '@mui/material/Typography'
+import { GeneralFooter, HeaderAfterLogin } from '~/components/general'
+import styled from 'styled-components'
+import UserProfile from './UserProfile'
+import UserActivity from './HistoryActivity'
 
 function Information() {
-  const [userInfo, setUserInfor] = useState({
-    userID: 'A000',
-    fullname: 'Dang Quang Truong',
-    dob: '05-01-2003',
-    street: 'Ly Thai To',
-    province: 'Dong Nai',
-    country: 'Viet Nam',
-    language: 'Vietnamese',
-    socialnets: ['facebook.com', 'github.com', 'linkedin.com'],
-    activity_status: 'active'
-  })
+  const user = {
+    avatar: 'https://via.placeholder.com/150',
+    userID: 'user123',
+    fullname: 'John Doe',
+    dob: '1990-01-01',
+    street: '123 Main St',
+    province: 'Ontario',
+    country: 'Canada',
+    language: 'English',
+    socialNetworks: {
+      facebook: 'john.doe',
+      twitter: 'johndoe',
+      instagram: 'johndoe'
+    },
+    status: 'Active'
+  };
 
+  const activities = [
+    'Logged in',
+    'Updated profile picture',
+    'Posted a new status',
+    'Liked a post',
+    'Commented on a post'
+  ];
   return (
     <>
-      <HeaderAfterLogin/>
-
-      <div style={{ backgroundColor:'#F1F3F5' }}>
-        <div className="row justify-content-around" style={{ paddingTop: '70px', paddingBottom: '70px' }}>
-          <div className="col-4" style={{ display:'flex', flexDirection:'column', alignItems:'center', backgroundColor:'white', borderRadius:'10px' }}>
-            <Avatar
-              alt="Avatar"
-              src={avt}
-              sx={{ width: 200, height: 200, marginTop:'20px' }}
-            />
-
-            <div style={{ width: '100%', marginTop: '30px' }}>
-              <label style={{ textAlign:'right' }}>User ID:</label>
-              <input type="text" className="form-control" id="user_id" placeholder='A000' style={{ borderWidth: '2px', borderRadius: '15px', borderColor:'black', height:'50px' }}/>
-            </div>
-
-            <div style={{ width: '100%', marginTop: '30px' }}>
-              <label style={{ textAlign:'right' }}>Full Name:</label>
-              <input type="text" className="form-control" id="full_name" placeholder="Đặng Quang Trường" style={{ borderWidth: '2px', borderRadius: '15px', borderColor:'black', height:'50px' }}/>
-            </div>
-
-            <div style={{ width: '100%', marginTop: '30px', display:'flex', alignItems:'center' }}>
-              <label style={{ textAlign: 'right', marginRight:'30px' }}>Date of Birth:</label>
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoContainer components={['DatePicker']}>
-                  <DatePicker label="Date of Birth" format='DD/MM/YYYY' id="dob" />
-                </DemoContainer>
-              </LocalizationProvider>
-            </div>
-
-            <div style={{ width: '100%', marginTop: '30px' }}>
-              <label style={{ textAlign:'right' }}>Location:</label>
-              <br/>
-              <TextField id="street" label="Street" variant="standard" sx={{ width:'32%', marginRight:'5px' }}/>
-              <TextField id="province" label="Province" variant="standard" sx={{ width:'32%', marginRight:'5px' }} />
-              <TextField id="country" label="Country" variant="standard" sx={{ width:'32%', marginRight:'5px' }} />
-            </div>
-
-            <div style={{ width: '100%', marginTop: '30px', display: 'flex', alignItems: 'center' }}>
-              <label style={{ textAlign: 'right', marginRight: '30px' }}>Language:</label>
-              <Autocomplete
-                disablePortal
-                id="language"
-                options={languages}
-                sx={{ width: 300 }}
-                renderInput={(params) => <TextField {...params} label="Language" />}
-              />
-            </div>
-
-            <div style={{ width: '100%', marginTop: '30px' }}>
-              <label style={{ textAlign: 'right' }}>Social Networks:</label>
-              <ul className="list-group list-group-flush">
-                <a href="https://www.facebook.com/profile.php?id=100040342220491" className="list-group-item list-group-item-action" target="_blank" rel="noreferrer">https://www.facebook.com/profile.php?id=100040342220491</a>
-                <a href="https://github.com/TruongDang23" className="list-group-item list-group-item-action" target="_blank" rel="noreferrer">https://github.com/TruongDang23</a>
-              </ul>
-              <a href="#" style={{ marginLeft:'80%' }}>Add new</a>
-            </div>
-
-            <div style={{ width: '100%', marginTop: '30px' }}>
-              <label style={{ textAlign:'right' }}>Activity Status:</label>
-              <input type="text" className="form-control" id="activity_status" placeholder="Working" style={{ borderWidth: '2px', borderRadius: '15px', borderColor:'black', height:'50px' }}/>
-            </div>
-
-            <div className="button_custom">
-              <input className="btn btn-primary" type="submit" value="SAVE" id="btnSave"/>
-              <button type="button" className="btn btn-outline-danger" id="btnCancel">CANCEL</button>
-            </div>
-          </div>
-
-          <div className="col-4">
-            <p className="title">Operation History</p>
-            <List sx={{ width: '100%', height: '1030px', paddingLeft:'30px', paddingRight:'30px', bgcolor: 'background.paper', overflow:'auto' }}>
-              <ListItem alignItems="flex-start">
-                <ListItemText
-                  primary={
-                    <Typography
-                      variant="h6"
-                      color="text.primary"
-                      fontWeight={ 700 }
-                    >
-                      Login
-                    </Typography>
-                  }
-                  secondary={
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body1"
-                      color="text.primary"
-                    >
-                      20:24:30 PM 14/03/2024
-                    </Typography>
-                  }
-                />
-              </ListItem>
-              <Divider variant="fullWidth" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemText
-                  primary={
-                    <Typography
-                      variant="h6"
-                      color="text.primary"
-                      fontWeight={ 700 }
-                    >
-                      Logout
-                    </Typography>
-                  }
-                  secondary={
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      20:24:30 PM 14/03/2024
-                    </Typography>
-                  }
-                />
-              </ListItem>
-              <Divider variant="fullWidth" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemText
-                  primary={
-                    <Typography
-                      variant="h6"
-                      color="text.primary"
-                      fontWeight={ 700 }
-                    >
-                      Login
-                    </Typography>
-                  }
-                  secondary={
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      20:24:30 PM 14/03/2024
-                    </Typography>
-                  }
-                />
-              </ListItem>
-              <Divider variant="fullWidth" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemText
-                  primary={
-                    <Typography
-                      variant="h6"
-                      color="text.primary"
-                      fontWeight={ 700 }
-                    >
-                      Add student S746 to course C873H
-                    </Typography>
-                  }
-                  secondary={
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      20:24:30 PM 14/03/2024
-                    </Typography>
-                  }
-                />
-              </ListItem>
-              <Divider variant="fullWidth" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemText
-                  primary={
-                    <Typography
-                      variant="h6"
-                      color="text.primary"
-                      fontWeight={ 700 }
-                    >
-                      Logout
-                    </Typography>
-                  }
-                  secondary={
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      20:24:30 PM 14/03/2024
-                    </Typography>
-                  }
-                />
-              </ListItem>
-              <Divider variant="fullWidth" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemText
-                  primary={
-                    <Typography
-                      variant="h6"
-                      color="text.primary"
-                      fontWeight={ 700 }
-                    >
-                      Login
-                    </Typography>
-                  }
-                  secondary={
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      20:24:30 PM 14/03/2024
-                    </Typography>
-                  }
-                />
-              </ListItem>
-              <Divider variant="fullWidth" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemText
-                  primary={
-                    <Typography
-                      variant="h6"
-                      color="text.primary"
-                      fontWeight={ 700 }
-                    >
-                      Update self information
-                    </Typography>
-                  }
-                  secondary={
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      20:24:30 PM 14/03/2024
-                    </Typography>
-                  }
-                />
-              </ListItem>
-              <Divider variant="fullWidth" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemText
-                  primary={
-                    <Typography
-                      variant="h6"
-                      color="text.primary"
-                      fontWeight={ 700 }
-                    >
-                      Login
-                    </Typography>
-                  }
-                  secondary={
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      20:24:30 PM 14/03/2024
-                    </Typography>
-                  }
-                />
-              </ListItem>
-              <Divider variant="fullWidth" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemText
-                  primary={
-                    <Typography
-                      variant="h6"
-                      color="text.primary"
-                      fontWeight={ 700 }
-                    >
-                      Stop course C837H
-                    </Typography>
-                  }
-                  secondary={
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      20:24:30 PM 14/03/2024
-                    </Typography>
-                  }
-                />
-              </ListItem>
-              <Divider variant="fullWidth" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemText
-                  primary={
-                    <Typography
-                      variant="h6"
-                      color="text.primary"
-                      fontWeight={ 700 }
-                    >
-                      Logout
-                    </Typography>
-                  }
-                  secondary={
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      20:24:30 PM 14/03/2024
-                    </Typography>
-                  }
-                />
-              </ListItem>
-              <Divider variant="fullWidth" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemText
-                  primary={
-                    <Typography
-                      variant="h6"
-                      color="text.primary"
-                      fontWeight={ 700 }
-                    >
-                      Login
-                    </Typography>
-                  }
-                  secondary={
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      20:24:30 PM 14/03/2024
-                    </Typography>
-                  }
-                />
-              </ListItem>
-              <Divider variant="fullWidth" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemText
-                  primary={
-                    <Typography
-                      variant="h6"
-                      color="text.primary"
-                      fontWeight={ 700 }
-                    >
-                      Upload new course
-                    </Typography>
-                  }
-                  secondary={
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      20:24:30 PM 14/03/2024
-                    </Typography>
-                  }
-                />
-              </ListItem>
-              <Divider variant="fullWidth" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemText
-                  primary={
-                    <Typography
-                      variant="h6"
-                      color="text.primary"
-                      fontWeight={ 700 }
-                    >
-                      Logout
-                    </Typography>
-                  }
-                  secondary={
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      20:24:30 PM 14/03/2024
-                    </Typography>
-                  }
-                />
-              </ListItem>
-              <Divider variant="fullWidth" component="li" />
-            </List>
-          </div>
-        </div>
+      <div>
+        <HeaderAfterLogin />
+        <main>
+          <Container>
+            <RightPane>
+              <UserProfile user={user} />
+            </RightPane>
+            <LeftPane>
+              <UserActivity activities={activities} />
+            </LeftPane>
+          </Container>
+        </main>
+        <GeneralFooter />
       </div>
-
-      <GeneralFooter/>
     </>
   )
 }
 
-const languages = [
-  { label: 'English' },
-  { label: 'Spanish' },
-  { label: 'Mandarin Chinese' },
-  { label: 'Hindi' },
-  { label: 'French' },
-  { label: 'Standard Arabic' },
-  { label: 'Bengali' },
-  { label: 'Russian' },
-  { label: 'Portuguese' },
-  { label: 'Urdu' },
-  { label: 'Indonesian' },
-  { label: 'German' },
-  { label: 'Japanese' },
-  { label: 'Swahili' },
-  { label: 'Marathi' },
-  { label: 'Telugu' },
-  { label: 'Turkish' },
-  { label: 'Tamil' },
-  { label: 'Yoruba' },
-  { label: 'Italian' },
-  { label: 'Vietnamese' },
-  { label: 'Thai' },
-  { label: 'Korean' },
-  { label: 'Javanese' },
-  { label: 'Filipino' },
-  { label: 'Amharic' },
-  { label: 'Oromo' },
-  { label: 'Burmese' },
-  { label: 'Swedish' },
-  { label: 'Dutch' },
-  { label: 'Pashto' },
-  { label: 'Ukrainian' },
-  { label: 'Gujarati' },
-  { label: 'Polish' },
-  { label: 'Xhosa' },
-  { label: 'Malayalam' },
-  { label: 'Sindhi' },
-  { label: 'Farsi (Persian)' },
-  { label: 'Romanian' },
-  { label: 'Maithili' },
-  { label: 'Hausa' },
-  { label: 'Burmese' },
-  { label: 'Kannada' },
-  { label: 'Serbo-Croatian' },
-  { label: 'Nepali' },
-  { label: 'Sinhala' },
-  { label: 'Uzbek' },
-  { label: 'Kurdish' },
-  { label: 'Bhojpuri' },
-  { label: 'Zulu' },
-  { label: 'Fulfulde' },
-  { label: 'Tagalog' },
-  { label: 'Yiddish' },
-  { label: 'Igbo' },
-  { label: 'Azerbaijani' },
-  { label: 'Slovak' },
-  { label: 'Tigrinya' },
-  { label: 'Danish' },
-  { label: 'Hungarian' },
-  { label: 'Latvian' },
-  { label: 'Czech' },
-  { label: 'Tswana' },
-  { label: 'Akan' },
-  { label: 'Icelandic' },
-  { label: 'Greek' },
-  { label: 'Tatar' },
-  { label: 'Catalan' },
-  { label: 'Slovenian' },
-  { label: 'Kinyarwanda' },
-  { label: 'Lithuanian' },
-  { label: 'Albanian' },
-  { label: 'Norwegian' },
-  { label: 'Bosnian' },
-  { label: 'Georgian' },
-  { label: 'Malagasy' },
-  { label: 'Armenian' },
-  { label: 'Sundanese' },
-  { label: 'Macedonian' },
-  { label: 'Pashto' },
-  { label: 'Bulgarian' },
-  { label: 'Tajik' },
-  { label: 'Chichewa' },
-  { label: 'Lao' },
-  { label: 'Kinyarwanda' },
-  { label: 'Kazakh' },
-  { label: 'Cebuano' },
-  { label: 'Kurdish' },
-  { label: 'Corsican' },
-  { label: 'Somali' },
-  { label: 'Luxembourgish' },
-  { label: 'Fijian' },
-  { label: 'Haitian Creole' },
-  { label: 'Maltese' },
-  { label: 'Gaelic (Scottish)' },
-  { label: 'Tsonga' },
-  { label: 'Sesotho' },
-  { label: 'Kirundi' }
-]
-
 export default Information
+const Container = styled.div`
+  width: 1450px;
+  margin: 0 auto;
+  display: grid;
+  height:100vh;
+  overflow-y: auto;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 4.8rem;
+
+  @media (max-width: 1200px) {
+    width: 80%;
+  }
+
+  @media (max-width: 992px) {
+    width: 90%;
+  }
+
+  @media (max-width: 768px) {
+    width: 95%;
+    flex-direction: column;
+    height: auto;
+  }
+
+  @media (max-width: 576px) {
+    width: 100%;
+    padding: 0 10px;
+  }
+`;
+
+const LeftPane = styled.div`
+  flex: 2;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+`;
+
+const RightPane = styled.div`
+  flex: 1;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+`;

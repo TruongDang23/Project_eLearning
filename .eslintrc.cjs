@@ -31,8 +31,8 @@ module.exports = {
     'space-before-blocks': ['error', 'always'], //Trước các khối code sẽ phải có khoảng trắng
     'object-curly-spacing': [1, 'always'],
     'indent': ['warn', 2], //Khoảng cách khi tab là 2
-    'semi': [1, 'never'], //Không có dấu ;
-    'quotes': ['warn', 'single'], //Dùng nháy đơn thay vì nháy kép cho BIẾN kiểu chuỗi
+    //'semi': [1, 'never'], //Không có dấu ;
+    //'quotes': ['warn', 'single'], //Dùng nháy đơn thay vì nháy kép cho BIẾN kiểu chuỗi
     'array-bracket-spacing': 1, //Không thừa khoảng trắng trong khai báo array
     'linebreak-style': 0,
     'no-unexpected-multiline': 'warn',

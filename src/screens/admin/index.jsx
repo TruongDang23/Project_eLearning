@@ -1,4 +1,4 @@
-import Information from './information/information'
+import Information from './information/Information'
 import { Route, Routes } from 'react-router-dom'
 
 export function Admin() {
