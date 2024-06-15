@@ -1,35 +1,52 @@
 //This is information screen of admin
-import { useState } from 'react'
 import { GeneralFooter, HeaderAfterLogin } from '~/components/general'
 import styled from 'styled-components'
 import UserProfile from './UserProfile'
 import UserActivity from './HistoryActivity'
 
 function Information() {
-  const user = {
-    avatar: 'https://via.placeholder.com/150',
-    userID: 'user123',
-    fullname: 'John Doe',
-    dob: '1990-01-01',
-    street: '123 Main St',
-    province: 'Ontario',
-    country: 'Canada',
-    language: 'English',
-    socialNetworks: {
-      facebook: 'john.doe',
-      twitter: 'johndoe',
-      instagram: 'johndoe'
-    },
-    status: 'Active'
-  };
-
   const activities = [
-    'Logged in',
-    'Updated profile picture',
-    'Posted a new status',
-    'Liked a post',
-    'Commented on a post'
-  ];
+    {
+      action: 'Logged in',
+      time: '2024-01-05 14:30:33'
+    },
+    {
+      action: 'Updated profile picture',
+      time: '2024-01-05 14:30:33'
+    },
+    {
+      action: 'Posted a new status',
+      time: '2024-01-05 14:30:33'
+    },
+    {
+      action: 'Liked a post',
+      time: '2024-01-05 14:30:33'
+    },
+    {
+      action: 'Commented on a post',
+      time: '2024-01-05 14:30:33'
+    }
+  ]
+
+  const userProfile = [
+    {
+      userID: 'A000',
+      avatar: 'https://wallpapercave.com/wp/wp7046651.jpg',
+      fullname: 'Đặng Quang Trường',
+      date_of_birth: '2003-01-05',
+      street: 'Lý Thái Tổ',
+      province: 'Đồng Nai',
+      country: 'Việt Nam',
+      language: 'English',
+      social_network: [
+        'https://www.facebook.com',
+        'https://www.github.com',
+        'https://www.youtube.com'
+      ],
+      activity_status: 'active'
+    }
+  ]
+
   return (
     <>
       <div>
@@ -37,10 +54,10 @@ function Information() {
         <main>
           <Container>
             <RightPane>
-              <UserProfile user={user} />
+              <UserProfile profile={ userProfile }/>
             </RightPane>
             <LeftPane>
-              <UserActivity activities={activities} />
+              <UserActivity activities={ activities } />
             </LeftPane>
           </Container>
         </main>

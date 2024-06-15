@@ -1,7 +1,7 @@
 export const languages = [
   'English',
   'Spanish',
-  'Mandarin Chinese',
+  'Chinese',
   'Hindi',
   'French',
   'Standard Arabic',

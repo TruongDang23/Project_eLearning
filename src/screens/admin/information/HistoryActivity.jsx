@@ -3,19 +3,34 @@ import styled from 'styled-components'
 const ActivityContainer = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const ActivityItem = styled.div`
-  margin-bottom: 10px;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+  h3{
+    font-size: 2.2rem;
+    color: #187bce;
+    margin-bottom: 30px;    
+  }
+  .content{
+    margin-bottom: 30px;
+    padding: 10px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #ddd;
+    h4{
+      font-size: 2rem;
+      color: #898989;
+    }
+  }
 `;
 
 const UserActivity = ({ activities }) => {
   return (
     <ActivityContainer>
-      {activities.map((activity, index) => (
-        <ActivityItem key={index}>{activity}</ActivityItem>
+      <h3>Operation History</h3>
+      {activities.map((activity) => (
+        <>
+          <div className="content">
+            <h4>{activity.action}</h4>
+            <p>{activity.time}</p>
+          </div>
+        </>
       ))}
     </ActivityContainer>
   );

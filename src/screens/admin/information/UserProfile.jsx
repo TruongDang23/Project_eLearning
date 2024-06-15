@@ -1,10 +1,126 @@
 // src/UserProfile.js
 import styled from 'styled-components'
-import img from '~/assets/avatar.jpg'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import { useState } from 'react'
 import { languages } from '~/constants/listLanguage'
+
+function UserProfile({ profile }) {
+  const [user, setUser] = useState({
+    userID: profile[0].userID,
+    avatar: profile[0].avatar,
+    fullname: profile[0].fullname,
+    date_of_birth: new Date(profile[0].date_of_birth),
+    street: profile[0].street,
+    province: profile[0].province,
+    country: profile[0].country,
+    language: profile[0].language,
+    social_network: profile[0].social_network,
+    activity_status: profile[0].activity_status
+  })
+
+  const [isReadOnly, setIsReadOnly] = useState(true)
+
+  return (
+    <>
+      <ProfileContainer>
+        <div className="avt">
+          <img src={ user.avatar } alt='avatar' />
+        </div>
+        <div className="content">
+          <h3>UserID: </h3>
+          <input
+            type="text"
+            value={ user.userID }
+            readOnly={ isReadOnly }
+          />
+
+          <h3>Full name:</h3>
+          <input
+            type="text"
+            value={ user.fullname }
+            readOnly={ isReadOnly }
+          />
+
+          <h3>Date of birth:</h3>
+          <Calendar
+            //onChange={handleDateChange}
+            value={ user.date_of_birth }
+            view="month" // Hiển thị lịch tháng
+            showNeighboringMonth={false} // Ẩn các ngày của tháng liền kề
+          />
+          <h3>Location:</h3>
+          <div className="location">
+            <input
+              type="text"
+              value={ user.street }
+              readOnly={ isReadOnly }
+            />
+            <input
+              type="text"
+              value={ user.province }
+              readOnly={ isReadOnly }
+            />
+            <input
+              type="text"
+              value={ user.country }
+              readOnly={ isReadOnly }
+            />
+          </div>
+          <h3>Language:</h3>
+          <select
+            id="language"
+            value={ user.language }
+            className="language-select"
+            disabled={ isReadOnly }
+          >
+            {languages.map((language, index) => (
+              <option key={index} value={language}>
+                {language}
+              </option>
+            ))}
+          </select>
+
+          <h3>Social networks:</h3>
+          <input
+            type="text"
+            placeholder='Link to social profile'
+            value={ user.social_network[0] }
+            readOnly={ isReadOnly }
+          />
+          <input
+            type="text"
+            placeholder='Link to social profile'
+            value={ user.social_network[1] }
+            readOnly={ isReadOnly }
+          />
+          <input
+            type="text"
+            placeholder='Link to social profile'
+            value={ user.social_network[2] }
+            readOnly={ isReadOnly }
+          />
+          <input
+            type="text"
+            placeholder='Link to social profile'
+            value={ user.social_network[3] }
+            readOnly={ isReadOnly }
+          />
+          <h3>Activity status:</h3>
+          <input
+            type="text"
+            value={ user.activity_status }
+            readOnly={ isReadOnly }
+          />
+          <div className="item-btns">
+            <button className="item-btn save-btn" onClick={() => setIsReadOnly(true)}>Save</button>
+            <button className="item-btn update-btn" onClick={() => setIsReadOnly(false)}>Update</button>
+          </div>
+        </div>
+      </ProfileContainer>
+    </>
+  )
+}
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -15,8 +131,8 @@ const ProfileContainer = styled.div`
     margin-top: 20px;
     margin-bottom: 20px;
     img{
-      width: 300px;
-      height: 300px;
+      width: 200px;
+      height: 200px;
       object-fit: cover;
       ${"" /* bo hai góc trên của ảnh */}
       border-top-left-radius: 40%;
@@ -31,17 +147,18 @@ const ProfileContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
     h3 {
-      font-size: 2.4rem;
+      font-size: 2.2rem;
       color: #898989;
     }
     input {
       width: 90%;
       height: 50px;
       padding: 8px;
-      font-size: 2.2rem;
+      font-size: 2rem;
       border: 1px solid #ccc;
       border-radius: 15px;
       transition: border-color 0.3s, border-width 0.3s;
+      margin: 0 auto;
       margin-bottom: 20px;
     }
     input:focus{
@@ -51,8 +168,9 @@ const ProfileContainer = styled.div`
     }
   }
   .react-calendar {
-    width: 90%;
+    width: 300px;
     font-size: 1.8rem;
+    margin: 0 auto;
     border: none;
     font-family: Arial, Helvetica, sans-serif;
     border-radius: 15px;
@@ -85,6 +203,7 @@ const ProfileContainer = styled.div`
     height: 50px;
     padding: 8px;
     font-size: 2.2rem;
+    margin: 0 auto;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 15px;
@@ -103,6 +222,7 @@ const ProfileContainer = styled.div`
     flex-direction: row;
     justify-items: center;
     align-items: center;
+    margin: 0 auto;
     margin-bottom: 20px;
     input {
       margin: 0 5px;
@@ -154,92 +274,4 @@ const ProfileContainer = styled.div`
   }
 `;
 
-function UserProfile() {
-  const [date, setDate] = useState(new Date("2003-01-05"));
-  const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
-
-  const handleChange = (event) => {
-    setSelectedLanguage(event.target.value);
-  };
-
-  return (
-    <>
-      <ProfileContainer>
-        <div className="avt">
-          <img src={ img } alt='test' />
-        </div>
-        <div className="content">
-          <h3>UserID: </h3>
-          <input
-            type="text"
-          />
-
-          <h3>Full name:</h3>
-          <input
-            type="text"
-          />
-
-          <h3>Date of birth:</h3>
-          <Calendar
-            //onChange={handleDateChange}
-            value={date}
-            view="month" // Hiển thị lịch tháng
-            showNeighboringMonth={false} // Ẩn các ngày của tháng liền kề
-          />
-          <h3>Location:</h3>
-          <div className="location">
-            <input
-              type="text"
-            />
-            <input
-              type="text"
-            />
-            <input
-              type="text"
-            />
-          </div>
-          <h3>Language:</h3>
-          <select
-            id="language"
-            value={selectedLanguage}
-            onChange={handleChange}
-            className="language-select"
-          >
-            {languages.map((language, index) => (
-              <option key={index} value={language}>
-                {language}
-              </option>
-            ))}
-          </select>
-
-          <h3>Social networks:</h3>
-          <input
-            type="text"
-            placeholder='Link to social profile'
-          />
-          <input
-            type="text"
-            placeholder='Link to social profile'
-          />
-          <input
-            type="text"
-            placeholder='Link to social profile'
-          />
-          <input
-            type="text"
-            placeholder='Link to social profile'
-          />
-          <h3>Activity status:</h3>
-          <input
-            type="text"
-          />
-          <div className="item-btns">
-            <button className="item-btn save-btn">Save</button>
-            <button className="item-btn update-btn">Update</button>
-          </div>
-        </div>
-      </ProfileContainer>
-    </>
-  )
-}
 export default UserProfile;
