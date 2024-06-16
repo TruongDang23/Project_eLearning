@@ -3,32 +3,9 @@ import { GeneralFooter, HeaderAfterLogin } from '~/components/general'
 import styled from 'styled-components'
 import UserProfile from './UserProfile'
 import UserActivity from './HistoryActivity'
-
+import { useState } from 'react'
 function Information() {
-  const activities = [
-    {
-      action: 'Logged in',
-      time: '2024-01-05 14:30:33'
-    },
-    {
-      action: 'Updated profile picture',
-      time: '2024-01-05 14:30:33'
-    },
-    {
-      action: 'Posted a new status',
-      time: '2024-01-05 14:30:33'
-    },
-    {
-      action: 'Liked a post',
-      time: '2024-01-05 14:30:33'
-    },
-    {
-      action: 'Commented on a post',
-      time: '2024-01-05 14:30:33'
-    }
-  ]
-
-  const userProfile = [
+  const [userProfile, setUserProfile] = useState(
     {
       userID: 'A000',
       avatar: 'https://wallpapercave.com/wp/wp7046651.jpg',
@@ -43,10 +20,37 @@ function Information() {
         'https://www.github.com',
         'https://www.youtube.com'
       ],
-      activity_status: 'active'
+      activity_status: 'active',
+      activities: 
+      [
+        {
+          action: 'Logged in',
+          time: '2024-01-05 14:30:33'
+        },
+        {
+          action: 'Updated profile picture',
+          time: '2024-01-05 14:30:33'
+        },
+        {
+          action: 'Posted a new status',
+          time: '2024-01-05 14:30:33'
+        },
+        {
+          action: 'Liked a post',
+          time: '2024-01-05 14:30:33'
+        },
+        {
+          action: 'Commented on a post',
+          time: '2024-01-05 14:30:33'
+        }
+      ]
     }
-  ]
-//
+  )
+
+  const updateInformation = (newProfile) => {
+    setUserProfile(newProfile)
+  }
+
   return (
     <>
       <div>
@@ -54,10 +58,10 @@ function Information() {
         <main>
           <Container>
             <RightPane>
-              <UserProfile profile={ userProfile }/>
+              <UserProfile profile={ userProfile } setUserProfile={ updateInformation }/>
             </RightPane>
             <LeftPane>
-              <UserActivity activities={ activities } />
+              <UserActivity profile={ userProfile } setUserProfile={ updateInformation } />
             </LeftPane>
           </Container>
         </main>

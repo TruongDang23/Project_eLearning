@@ -20,11 +20,11 @@ const ActivityContainer = styled.div`
   }
 `;
 
-const UserActivity = ({ activities }) => {
+const UserActivity = ({ profile, setProfile }) => {
   return (
     <ActivityContainer>
       <h3>Operation History</h3>
-      {activities.map((activity) => (
+      {profile.activities.map((activity) => (
         <>
           <div className="content">
             <h4>{activity.action}</h4>
