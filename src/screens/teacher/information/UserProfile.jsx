@@ -5,76 +5,117 @@ import 'react-calendar/dist/Calendar.css'
 import { useState } from 'react'
 import { languages } from '~/constants/listLanguage'
 
-function UserProfile({ profile }) {
-  const [user, setUser] = useState({
-    userID: profile[0].userID,
-    avatar: profile[0].avatar,
-    fullname: profile[0].fullname,
-    date_of_birth: new Date(profile[0].date_of_birth),
-    street: profile[0].street,
-    province: profile[0].province,
-    country: profile[0].country,
-    language: profile[0].language,
-    social_network: profile[0].social_network,
-    activity_status: profile[0].activity_status
-  })
-
+function UserProfile({ profile, setProfile }) {
   const [isReadOnly, setIsReadOnly] = useState(true)
+
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero indexed
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+  const handleSocialNetworkChange = (index, newUrl) => {
+    setProfile((prevProfile) => {
+      const updatedSocialNetwork = [...prevProfile.social_network];
+      updatedSocialNetwork[index] = newUrl;
+      return {
+        ...prevProfile,
+        social_network: updatedSocialNetwork
+      };
+    });
+  };
 
   return (
     <>
       <ProfileContainer>
         <div className="avt">
-          <img src={ user.avatar } alt='avatar' />
+          <img src={ profile.avatar } alt='avatar' />
         </div>
         <div className="content">
           <h3>UserID: </h3>
           <input
             type="text"
-            value={ user.userID }
+            value={ profile.userID }
             readOnly={ true }
           />
 
           <h3>Full name:</h3>
           <input
             type="text"
-            value={ user.fullname }
+            value={ profile.fullname }
+            onChange={(e) => {
+              setProfile((prevProfile) => ({
+                ...prevProfile,
+                fullname: e.target.value
+              }))
+            }}
             readOnly={ isReadOnly }
           />
 
           <h3>Date of birth:</h3>
           <Calendar
             //onChange={handleDateChange}
-            value={ user.date_of_birth }
+            value={ profile.date_of_birth }
             view="month" // Hiển thị lịch tháng
             showNeighboringMonth={false} // Ẩn các ngày của tháng liền kề
+            onChange={(date) => {
+              setProfile((prevProfile) => ({
+                ...prevProfile,
+                date_of_birth: formatDate(date)
+              }))
+            }}
           />
 
           <h3>Location:</h3>
           <div className="location">
             <input
               type="text"
-              value={ user.street }
+              value={ profile.street }
               readOnly={ isReadOnly }
+              onChange={(e) => {
+                setProfile((prevProfile) => ({
+                  ...prevProfile,
+                  street: e.target.value
+                }))
+              }}
             />
             <input
               type="text"
-              value={ user.province }
+              value={ profile.province }
               readOnly={ isReadOnly }
+              onChange={(e) => {
+                setProfile((prevProfile) => ({
+                  ...prevProfile,
+                  province: e.target.value
+                }))
+              }}
             />
             <input
               type="text"
-              value={ user.country }
+              value={ profile.country }
               readOnly={ isReadOnly }
+              onChange={(e) => {
+                setProfile((prevProfile) => ({
+                  ...prevProfile,
+                  country: e.target.value
+                }))
+              }}
             />
           </div>
 
           <h3>Language:</h3>
           <select
             id="language"
-            value={ user.language }
+            value={ profile.language }
             className="language-select"
             disabled={ isReadOnly }
+            onChange={(e) => {
+              setProfile((prevProfile) => ({
+                ...prevProfile,
+                language: e.target.value
+              }))
+            }}
           >
             {languages.map((language, index) => (
               <option key={index} value={language}>
@@ -87,33 +128,37 @@ function UserProfile({ profile }) {
           <input
             type="text"
             placeholder='Link to social profile'
-            value={ user.social_network[0] }
+            value={ profile.social_network[0] }
             readOnly={ isReadOnly }
+            onChange={(e) => handleSocialNetworkChange(0, e.target.value)}
           />
           <input
             type="text"
             placeholder='Link to social profile'
-            value={ user.social_network[1] }
+            value={ profile.social_network[1] }
             readOnly={ isReadOnly }
+            onChange={(e) => handleSocialNetworkChange(1, e.target.value)}
           />
           <input
             type="text"
             placeholder='Link to social profile'
-            value={ user.social_network[2] }
+            value={ profile.social_network[2] }
             readOnly={ isReadOnly }
+            onChange={(e) => handleSocialNetworkChange(2, e.target.value)}
           />
           <input
             type="text"
             placeholder='Link to social profile'
-            value={ user.social_network[3] }
+            value={ profile.social_network[3] }
             readOnly={ isReadOnly }
+            onChange={(e) => handleSocialNetworkChange(3, e.target.value)}
           />
 
           <h3>Activity status:</h3>
           <input
             type="text"
-            value={ user.activity_status }
-            readOnly={ isReadOnly }
+            value={ profile.activity_status }
+            readOnly={ true }
           />
 
           <div className="item-btns">
