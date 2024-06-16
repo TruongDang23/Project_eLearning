@@ -21,13 +21,19 @@ const Wrapper = styled.section`
   }
 `;
 
-function SelfIntroduce ({ profile }) {
+function SelfIntroduce ({ profile, setProfile }) {
   return (
     <Wrapper>
       <textarea
-        value='alskdjflaksjdlfkjasldkjflaksa'
+        value={ profile.self_introduce }
         rows='3'
         cols='10'
+        onChange={(e) => {
+          setProfile((prevProfile) => ({
+            ...prevProfile,
+            self_introduce: e.target.value
+          }))
+        }}
       />
     </Wrapper>
   )

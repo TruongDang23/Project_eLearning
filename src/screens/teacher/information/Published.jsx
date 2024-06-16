@@ -1,39 +1,17 @@
 import styled from 'styled-components'
 import { useState } from 'react';
 
-function Published ({ profile }) {
-  const [courses, setCourse] = useState([
-    {
-      title: 'Database Basic',
-      time: '2023-04-21',
-      method: 'Self - directed study'
-    },
-    {
-      title: 'Database Basic',
-      time: '2023-04-21',
-      method: 'Self - directed study'
-    },
-    {
-      title: 'Database Basic',
-      time: '2023-04-21',
-      method: 'Self - directed study'
-    },
-    {
-      title: 'Database Basic',
-      time: '2023-04-21',
-      method: 'Self - directed study'
-    }
-  ]);
+function Published ({ profile, setProfile }) {
 
   return (
     <Wrapper>
       <div className="course">
         <div className="content-course">
-          {courses.map((course, index) => (
+          {profile.course_published.map((course, index) => (
             <div key={index} className="course-item">
-              <p><strong>School:</strong> {course.title}</p>
-              <p><strong>Faculty:</strong> {course.time}</p>
-              <p><strong>Period:</strong> {course.method}</p>
+              <p><strong>Course name:</strong> {course.title}</p>
+              <p><strong>Published time:</strong> {course.time}</p>
+              <p><strong>Method:</strong> {course.method}</p>
             </div>
           ))}
         </div>

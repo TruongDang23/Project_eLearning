@@ -101,7 +101,6 @@ const LeftPane = styled.div`
   flex: 2;
   padding: 20px;
   border-right: 1px solid #ddd;
-  overflow-y: auto;
 
   @media (max-width: 768px) {
     border-right: none;
@@ -114,4 +113,5 @@ const RightPane = styled.div`
   padding: 20px;
   border-right: 1px solid #ddd;
   border-left: 1px solid #ddd;
+  overflow-y: auto;
 `;

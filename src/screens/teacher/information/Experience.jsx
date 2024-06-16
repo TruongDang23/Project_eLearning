@@ -1,37 +1,32 @@
 import styled from 'styled-components'
 import { useState } from 'react';
 
-function Experience ({ profile }) {
-  const [degrees, setDegrees] = useState([
-    { school: 'Harvard University', faculty: 'Computer Science', period: '2015 - 2019' },
-    { school: 'MIT', faculty: 'Mechanical Engineering', period: '2012 - 2016' },
-    { school: 'Stanford University', faculty: 'Electrical Engineering', period: '2010 - 2014' }
-  ]);
+function Experience ({ profile, setProfile }) {
 
   return (
     <Wrapper>
-      <div className="degree">
+      <div className="experience">
         <h4>Projects:</h4>
-        <div className="content-degree">
-          {degrees.map((degree, index) => (
-            <div key={index} className="degree-item">
-              <p><strong>School:</strong> {degree.school}</p>
-              <p><strong>Faculty:</strong> {degree.faculty}</p>
-              <p><strong>Period:</strong> {degree.period}</p>
+        <div className="content-experience">
+          {profile.projects.map((project, index) => (
+            <div key={index} className="experience-item">
+              <p><strong>Title:</strong> {project.title}</p>
+              <p><strong>Link:</strong> {project.link}</p>
+              <p><strong>Description:</strong> {project.description}</p>
             </div>
           ))}
         </div>
         <button>Add new</button>
       </div>
 
-      <div className="degree">
+      <div className="experience">
         <h4>Working History:</h4>
-        <div className="content-degree">
-          {degrees.map((degree, index) => (
-            <div key={index} className="degree-item">
-              <p><strong>School:</strong> {degree.school}</p>
-              <p><strong>Faculty:</strong> {degree.faculty}</p>
-              <p><strong>Period:</strong> {degree.period}</p>
+        <div className="content-experience">
+          {profile.working_history.map((work, index) => (
+            <div key={index} className="experience-item">
+              <p><strong>Company:</strong> {work.company}</p>
+              <p><strong>Period:</strong> {work.begin_time} - {work.end_time}</p>
+              <p><strong>Description:</strong> {work.description}</p>
             </div>
           ))}
         </div>
@@ -49,7 +44,7 @@ const Wrapper = styled.section`
       font-size: 2.2rem;
   }
 
-  .degree{
+  .experience{
     height:auto;
     max-height: 400px;
     width: 100%;
@@ -60,7 +55,7 @@ const Wrapper = styled.section`
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 10px;
-    .content-degree{
+    .content-experience{
       max-height: 300px;
       width: 100%;
       max-width: 600px;
@@ -80,19 +75,7 @@ const Wrapper = styled.section`
         transform: scale(1.05);
       }
     }
-    label{
-      margin-right: 10px;
-      height: 50px;
-      padding-left: 10px;
-      padding-right: 10px;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      display:flex;
-      align-items: center;
-      color: white;
-      background-color: #187bce;
-    }
-    .degree-item {
+    .experience-item {
       padding: 10px;
       margin: 10px 0;
       border-bottom: 1px solid #ccc;
@@ -101,11 +84,11 @@ const Wrapper = styled.section`
       max-width: 600px;
     }
 
-    .degree-item p {
+    .experience-item p {
       margin: 5px 0;
     }
 
-    .degree-item strong {
+    .experience-item strong {
       color: #333;
     }
   }

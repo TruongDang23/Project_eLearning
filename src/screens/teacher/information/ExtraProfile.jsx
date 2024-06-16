@@ -15,17 +15,17 @@ const Wrapper = styled.div`
   }
 `;
 
-function ExtraProfile ({ profile }) {
+function ExtraProfile ({ profile, setProfile }) {
   return (
     <Wrapper>
       <h3>Self - Introduce</h3>
-      <SelfIntroduce/>
+      <SelfIntroduce profile={ profile } setProfile={setProfile}/>
       <h3>Education</h3>
-      <Education/>
+      <Education profile={ profile } setProfile={setProfile}/>
       <h3>Experience</h3>
-      <Experience/>
+      <Experience profile={ profile } setProfile={setProfile}/>
       <h3>Courses Published</h3>
-      <Published/>
+      <Published profile={ profile } setProfile={setProfile}/>
     </Wrapper>
   )
 }

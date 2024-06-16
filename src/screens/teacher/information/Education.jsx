@@ -1,25 +1,14 @@
 import styled from 'styled-components'
 import { useState } from 'react';
 
-function Education ({ profile }) {
-  const [degrees, setDegrees] = useState([
-    { school: 'Harvard University', faculty: 'Computer Science', period: '2015 - 2019' },
-    { school: 'MIT', faculty: 'Mechanical Engineering', period: '2012 - 2016' },
-    { school: 'Stanford University', faculty: 'Electrical Engineering', period: '2010 - 2014' }
-  ]);
-
-  const [expertise, setExpertise] = useState([
-    'C#',
-    'OOP',
-    'Java'
-  ])
+function Education ({ profile, setProfile }) {
 
   return (
     <Wrapper>
       <div className="expertise">
         <h4>Expertise:</h4>
         <div className="content-expertise">
-          {expertise.map((exp, index) => (
+          {profile.expertise.map((exp, index) => (
             <label key={ index }>{ exp }</label>
           ))}
         </div>
@@ -29,11 +18,11 @@ function Education ({ profile }) {
       <div className="degree">
         <h4>Degree:</h4>
         <div className="content-degree">
-          {degrees.map((degree, index) => (
+          {profile.degrees.map((degree, index) => (
             <div key={index} className="degree-item">
               <p><strong>School:</strong> {degree.school}</p>
-              <p><strong>Faculty:</strong> {degree.faculty}</p>
-              <p><strong>Period:</strong> {degree.period}</p>
+              <p><strong>Faculty:</strong> {degree.falcuty}</p>
+              <p><strong>Period:</strong> {degree.begin_time} - {degree.end_time}</p>
             </div>
           ))}
         </div>
