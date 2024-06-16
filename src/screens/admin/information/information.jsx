@@ -46,7 +46,7 @@ function Information() {
       activity_status: 'active'
     }
   ]
-
+//
   return (
     <>
       <div>
