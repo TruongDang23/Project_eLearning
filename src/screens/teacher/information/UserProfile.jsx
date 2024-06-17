@@ -5,7 +5,7 @@ import 'react-calendar/dist/Calendar.css'
 import { useState } from 'react'
 import { languages } from '~/constants/listLanguage'
 
-function UserProfile({ profile, setUserProfile }) {
+function UserProfile({ profile, setProfile }) {
   const [isReadOnly, setIsReadOnly] = useState(true)
 
   const formatDate = (date) => {
@@ -16,7 +16,7 @@ function UserProfile({ profile, setUserProfile }) {
   };
 
   const handleSocialNetworkChange = (index, newUrl) => {
-    setUserProfile((prevProfile) => {
+    setProfile((prevProfile) => {
       const updatedSocialNetwork = [...prevProfile.social_network];
       updatedSocialNetwork[index] = newUrl;
       return {
@@ -45,7 +45,7 @@ function UserProfile({ profile, setUserProfile }) {
             type="text"
             value={ profile.fullname }
             onChange={(e) => {
-              setUserProfile((prevProfile) => ({
+              setProfile((prevProfile) => ({
                 ...prevProfile,
                 fullname: e.target.value
               }))
@@ -60,7 +60,7 @@ function UserProfile({ profile, setUserProfile }) {
             view="month" // Hiển thị lịch tháng
             showNeighboringMonth={false} // Ẩn các ngày của tháng liền kề
             onChange={(date) => {
-              setUserProfile((prevProfile) => ({
+              setProfile((prevProfile) => ({
                 ...prevProfile,
                 date_of_birth: formatDate(date)
               }))
@@ -74,7 +74,7 @@ function UserProfile({ profile, setUserProfile }) {
               value={ profile.street }
               readOnly={ isReadOnly }
               onChange={(e) => {
-                setUserProfile((prevProfile) => ({
+                setProfile((prevProfile) => ({
                   ...prevProfile,
                   street: e.target.value
                 }))
@@ -85,7 +85,7 @@ function UserProfile({ profile, setUserProfile }) {
               value={ profile.province }
               readOnly={ isReadOnly }
               onChange={(e) => {
-                setUserProfile((prevProfile) => ({
+                setProfile((prevProfile) => ({
                   ...prevProfile,
                   province: e.target.value
                 }))
@@ -96,7 +96,7 @@ function UserProfile({ profile, setUserProfile }) {
               value={ profile.country }
               readOnly={ isReadOnly }
               onChange={(e) => {
-                setUserProfile((prevProfile) => ({
+                setProfile((prevProfile) => ({
                   ...prevProfile,
                   country: e.target.value
                 }))
@@ -111,7 +111,7 @@ function UserProfile({ profile, setUserProfile }) {
             className="language-select"
             disabled={ isReadOnly }
             onChange={(e) => {
-              setUserProfile((prevProfile) => ({
+              setProfile((prevProfile) => ({
                 ...prevProfile,
                 language: e.target.value
               }))
