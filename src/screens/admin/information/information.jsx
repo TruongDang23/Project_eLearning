@@ -46,19 +46,19 @@ function Information() {
       activity_status: 'active'
     }
   ]
-//
+
   return (
     <>
       <div>
         <HeaderAfterLogin />
         <main>
           <Container>
-            <RightPane>
-              <UserProfile profile={ userProfile }/>
-            </RightPane>
             <LeftPane>
-              <UserActivity activities={ activities } />
+              <UserProfile profile={ userProfile }/>
             </LeftPane>
+            <RightPane>
+              <UserActivity activities={ activities } />
+            </RightPane>
           </Container>
         </main>
         <GeneralFooter />
@@ -97,7 +97,7 @@ const Container = styled.div`
   }
 `;
 
-const LeftPane = styled.div`
+const RightPane = styled.div`
   flex: 2;
   padding: 20px;
   border-right: 1px solid #ddd;
@@ -109,7 +109,7 @@ const LeftPane = styled.div`
   }
 `;
 
-const RightPane = styled.div`
+const LeftPane = styled.div`
   flex: 1;
   padding: 20px;
   border-right: 1px solid #ddd;
