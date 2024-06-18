@@ -23,7 +23,8 @@ const userSchema = new mongoose.Schema({
     end_time:  { type: String },
     description:  { type: String }
   }],
-  course_enrolled:[{ type: String }]
+  course_enrolled:[{ type: String }],
+  course_published: [{ type: String }]
 })
 
 const User = mongoose.model('user', userSchema, 'user')

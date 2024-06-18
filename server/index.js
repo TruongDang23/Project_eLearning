@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 // Import routes
 const adminRoutes = require('./routes/adminRoutes')
 const studentRoutes = require('./routes/studentRoutes')
+const instructorRoutes = require('./routes/instructorRoutes')
 const systemRoutes = require('./routes/systemRoutes')
 
 const app = express()
@@ -27,6 +28,7 @@ app.use(sessionMiddleware)
 // Use routes
 app.use('/ad', sessionMiddleware, adminRoutes) // All admin routes will have a prefix of /ad
 app.use('/st', sessionMiddleware, studentRoutes)
+app.use('/in', sessionMiddleware, instructorRoutes)
 app.use('/s', sessionMiddleware, systemRoutes)
 
 // Cấu hình CORS

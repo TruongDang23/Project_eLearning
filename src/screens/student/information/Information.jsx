@@ -8,115 +8,7 @@ import axios from 'axios'
 
 function Information() {
 
-  const [userProfile, setUserProfile] = useState(
-    {
-      userID: 'S000',
-      avatar: 'https://wallpapercave.com/wp/wp7046651.jpg',
-      fullname: 'Đặng Quang Trường',
-      date_of_birth: '2003-01-05',
-      street: 'Lý Thái Tổ',
-      province: 'Đồng Nai',
-      country: 'Việt Nam',
-      language: 'English',
-      social_network:
-      [
-        'https://www.facebook.com',
-        'https://www.github.com',
-        'https://www.youtube.com'
-      ],
-      activity_status: 'active',
-      self_introduce: 'My name is Dang Quang Truong',
-      expertise:
-      [
-        'C#',
-        'OOP',
-        'Java',
-        'Python'
-      ],
-      degrees:
-      [
-        {
-          school: 'Harvard University',
-          falcuty: 'Computer Science',
-          begin_time: '29/05/2002',
-          end_time: '21/01/2008'
-        },
-        {
-          school: 'MIT',
-          falcuty: 'Mechanical Engineering',
-          begin_time: '29/05/2002',
-          end_time: '21/01/2008'
-        },
-        {
-          school: 'Stanford University',
-          falcuty: 'Electrical Engineering',
-          begin_time: '29/05/2002',
-          end_time: '21/01/2008'
-        }
-      ],
-      projects:
-      [
-        {
-          title: 'Computer Science',
-          link: 'github.com',
-          description: 'Work with ML'
-        },
-        {
-          title: 'Computer Science',
-          link: 'github.com',
-          description: 'Work with ML'
-        },
-        {
-          title: 'Computer Science',
-          link: 'github.com',
-          description: 'Work with ML'
-        }
-      ],
-      working_history:
-      [
-        {
-          company: 'FPT',
-          begin_time: '29/05/2002',
-          end_time: '21/01/2008',
-          description: 'Funny'
-        },
-        {
-          company: 'FPT',
-          begin_time: '29/05/2002',
-          end_time: '21/01/2008',
-          description: 'Funny'
-        },
-        {
-          company: 'FPT',
-          begin_time: '29/05/2002',
-          end_time: '21/01/2008',
-          description: 'Funny'
-        }
-      ],
-      course_enrolled:
-      [
-        {
-          course_name: 'Database Basic',
-          instructor: 'Dang Quang Truong',
-          route: 'https://'
-        },
-        {
-          course_name: 'Database Basic',
-          instructor: 'Dang Quang Truong',
-          route: 'https://'
-        },
-        {
-          course_name: 'Database Basic',
-          instructor: 'Dang Quang Truong',
-          route: 'https://'
-        },
-        {
-          course_name: 'Database Basic',
-          instructor: 'Dang Quang Truong',
-          route: 'https://'
-        }
-      ]
-    })
+  const [userProfile, setUserProfile] = useState()
 
   const updateInformation = (newProfile) => {
     setUserProfile(newProfile)
@@ -133,7 +25,6 @@ function Information() {
       }
     })
       .then(response => {
-        console.log(response.data)
         setUserProfile(response.data)
         setIsLoad(false) //Data is loaded successfully
       })

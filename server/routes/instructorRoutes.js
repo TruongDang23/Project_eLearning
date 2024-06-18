@@ -28,10 +28,9 @@ const getCourseEnroll = (courseID) => {
       }
 
       //Get information of course with courseID is an array
-      let query = 'SELECT c.courseID as route,title as course_name, fullname as instructor\
+      let query = 'SELECT c.courseID, title, time, method\
                     FROM course as c\
                     INNER JOIN published_course as pc ON c.courseID = pc.courseID\
-                    INNER JOIN user as u ON u.userID = pc.userID\
                     WHERE c.courseID IN (?)'
       connection.query(query, [courseID], (error, results) => {
         connection.release() //Giải phóng connection khi truy vấn xong
@@ -65,11 +64,11 @@ router.get('/loadInformation', verifyToken, (req, res) => {
       const mongoData = await User.findOne({ userID: req.userID }).select()
 
       //Get information of course user enrolled
-      let enrolled
+      let published
       try
       {
-        const courseInfo = await getCourseEnroll(mongoData.course_enrolled)
-        enrolled = courseInfo
+        const courseInfo = await getCourseEnroll(mongoData.course_published)
+        published = courseInfo
       }
       catch (error)
       {
@@ -90,9 +89,10 @@ router.get('/loadInformation', verifyToken, (req, res) => {
           degrees: mongoData.degrees,
           projects: mongoData.projects,
           working_history: mongoData.working_history,
-          course_enrolled: enrolled
+          course_published: published
         }
       })
+      //console.log(mergeData)
       res.send(mergeData[0])
     })
   })

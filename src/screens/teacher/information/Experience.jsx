@@ -11,7 +11,7 @@ function Experience ({ profile, setProfile }) {
           {profile.projects.map((project, index) => (
             <div key={index} className="experience-item">
               <p><strong>Title:</strong> {project.title}</p>
-              <p><strong>Link:</strong> {project.link}</p>
+              <p><strong>Link:</strong><a href={project.link} target="_blank" rel="noreferrer">{project.link}</a></p>
               <p><strong>Description:</strong> {project.description}</p>
             </div>
           ))}

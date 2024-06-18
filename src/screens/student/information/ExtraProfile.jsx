@@ -25,7 +25,7 @@ function ExtraProfile ({ profile, setProfile }) {
       <h3>Experience</h3>
       <Experience profile={ profile } setProfile={setProfile}/>
       <h3>Courses Enrolled</h3>
-      <Enrolled profile={ profile } setProfile={setProfile}/>
+      <Enrolled profile={ profile }/>
     </Wrapper>
   )
 }
