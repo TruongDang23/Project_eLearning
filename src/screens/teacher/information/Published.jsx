@@ -1,19 +1,23 @@
 import styled from 'styled-components'
-import { useState } from 'react';
+import { format, parseISO } from 'date-fns'
 
-function Published ({ profile, setProfile }) {
-
+function Published ({ profile }) {
   return (
     <Wrapper>
       <div className="course">
         <div className="content-course">
-          {profile.course_published.map((course, index) => (
-            <div key={index} className="course-item">
-              <p><strong>Course name:</strong> {course.title}</p>
-              <p><strong>Published time:</strong> {course.time}</p>
-              <p><strong>Method:</strong> {course.method}</p>
-            </div>
-          ))}
+          {profile.course_published.map((course, index) => {
+            // Assuming course.time is in ISO format
+            const formattedTime = course.time ? format(parseISO(course.time), 'dd-MM-yyyy') : 'N/A';
+
+            return (
+              <div key={index} className="course-item">
+                <p><strong>Course name:</strong> {course.title}</p>
+                <p><strong>Published time:</strong> {formattedTime}</p>
+                <p><strong>Method:</strong> {course.method}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </Wrapper>

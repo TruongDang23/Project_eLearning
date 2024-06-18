@@ -128,7 +128,7 @@ function UserProfile({ profile, setUserProfile }) {
           <input
             type="text"
             placeholder='Link to social profile'
-            value={ profile.social_network[0] }
+            value={ profile.social_network[1] }
             readOnly={ isReadOnly }
             onChange={(e) => handleSocialNetworkChange(0, e.target.value)}
           />

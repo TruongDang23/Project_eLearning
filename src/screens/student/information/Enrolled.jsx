@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import { useState } from 'react';
 
-function Enrolled ({ profile, setProfile }) {
+function Enrolled ({ profile }) {
 
   return (
     <Wrapper>
@@ -11,7 +10,7 @@ function Enrolled ({ profile, setProfile }) {
             <div key={index} className="course-item">
               <p><strong>Course name:</strong> {course.course_name}</p>
               <p><strong>Instructor:</strong> {course.instructor}</p>
-              <a href={ course.route }>Go to course</a>
+              <a href={ course.route } target="_blank" rel="noreferrer">Go to course</a>
             </div>
           ))}
         </div>

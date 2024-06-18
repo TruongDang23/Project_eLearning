@@ -47,10 +47,10 @@ function Login() {
         setMessage('Username or Password is incorrect')
       else {
         const { token, userID, role } = res.data
+        const userData = JSON.stringify({ userID, role })
         alert('Login successfully')
         localStorage.setItem('token', token)
-        localStorage.setItem('userID', userID)
-        localStorage.setItem('role', role)
+        localStorage.setItem('userAuth', userData)
         navigate(`/${role}/information`)
       }
 
