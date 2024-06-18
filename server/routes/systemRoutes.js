@@ -113,7 +113,10 @@ const insertUserIntoMongo = (user, callback) => {
 // Define user-related routes (that is API)
 router.post('/login', (req, res) =>
 {
+  //Get username, pass, role from Client
   const { username, pass, role } = req.body
+
+  //Handle role
   let roleOfUser = ''
   if (role === 'Admin')
     roleOfUser = 'A'
@@ -126,16 +129,23 @@ router.post('/login', (req, res) =>
   {
     if (err) throw err
 
-    let query = 'SELECT userID, activity_status from account WHERE username = ? AND password = ? AND LEFT(userID,1) = ?'
+    let query = 'SELECT userID from account WHERE username = ? AND password = ? AND LEFT(userID,1) = ? AND activity_status <> "locked"'
     connection.query(query, [username, pass, roleOfUser], (error, results) => {
       connection.release()
       if (error) throw error
       if (results.length > 0) {
-        const token = jwt.sign({ userID: results[0].userID, role: results[0].roleOfUser }, KEY, { expiresIn: 86400 })
-        res.send(token)
+        //sign JWT token. Sign 2 value: userID & role. JWT using for authentication when user handle any function
+        const token = jwt.sign({ userID: results[0].userID, role: role }, KEY, { expiresIn: 86400 })
+        //Respond 3 value to the client: token, userID, role
+        //When user handle any function. We will decode JWT then compare with userID & role. If its equal --> process, if not --> cancel
+        res.json({
+          token: token,
+          userID: results[0].userID,
+          role: role
+        })
       }
       else
-        res.status(404).send('User are not existed')
+        res.send('User are not existed')
     })
   })
 })
