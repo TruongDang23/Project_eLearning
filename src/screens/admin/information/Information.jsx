@@ -21,7 +21,7 @@ function Information() {
         'https://www.youtube.com'
       ],
       activity_status: 'active',
-      activities: 
+      activities:
       [
         {
           action: 'Logged in',

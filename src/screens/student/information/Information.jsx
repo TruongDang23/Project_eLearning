@@ -116,7 +116,7 @@ function Information() {
         }
       ]
     })
-  console.log(userProfile)
+
   const updateInformation = (newProfile) => {
     setUserProfile(newProfile)
   }
