@@ -4,11 +4,17 @@ const session = require('express-session')
 const express = require('express')
 const bodyParser = require('body-parser')
 
+//import database (khi nào cần connect database nào thì gọi cái phù hợp)
+const connMysql = require('./connMySql')
+
+const mongo = require('./connMongo')
+const connMongo = mongo()
+
 // Import routes
-const adminRoutes = require('./routes/adminRoutes')
-const studentRoutes = require('./routes/studentRoutes')
-const instructorRoutes = require('./routes/instructorRoutes')
-const systemRoutes = require('./routes/systemRoutes')
+const adminRoutes = require('./routes/adminRoutes')(connMysql) //Truyền các connection cần thiết vào các Route
+const studentRoutes = require('./routes/studentRoutes')(connMysql, connMongo)
+const instructorRoutes = require('./routes/instructorRoutes')(connMysql, connMongo)
+const systemRoutes = require('./routes/systemRoutes')(connMysql, connMongo)
 
 const app = express()
 const port = 3000
