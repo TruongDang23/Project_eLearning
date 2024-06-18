@@ -5,13 +5,18 @@ const KEY = 'd6cb109246bc06e7b4e88fc0579fa6f5eaf770a93e42e33934419bed7b3a944e629
 
 //Tạo middleware function xác thực JWT. Function được gọi trước khi thực hiện một chức năng bất kỳ
 const verifyToken = (req, res, next) => {
-  const token = req.headers['authorization']
+  const token = req.headers['token']
+  const user = JSON.parse(req.headers['user'])
+
   if (!token) {
     return res.status(403).send({ message: 'No token provided!' })
   }
 
   jwt.verify(token, KEY, (err, decoded) => {
-    if (err) {
+    //Nếu sinh ra lỗi hoặc userID và role sau khi decode không trùng khớp với giá trị truyền từ header
+    //Phòng hờ trường hợp bị can thiệp trong quá trình gửi gói tin
+    if (err || decoded.userID !== user.userID || decoded.role !== user.role)
+    {
       return res.status(500).send({ message: 'Failed to authenticate token!' })
     }
 

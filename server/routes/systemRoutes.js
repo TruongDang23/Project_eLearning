@@ -4,7 +4,7 @@ const cors = require('cors')
 
 //import jwt library & verifyToken fuction
 const jwt = require('jsonwebtoken')
-const { verifyToken, KEY } = require('../authenticate')
+const { KEY } = require('../authenticate')
 
 //import database (khi nào cần connect database nào thì gọi cái phù hợp)
 const connMysql = require('../connMySql')

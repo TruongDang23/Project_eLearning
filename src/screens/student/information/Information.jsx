@@ -3,7 +3,8 @@ import { GeneralFooter, HeaderAfterLogin } from '~/components/general'
 import styled from 'styled-components'
 import UserProfile from './UserProfile'
 import ExtraProfile from './ExtraProfile'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 function Information() {
 
@@ -120,6 +121,27 @@ function Information() {
   const updateInformation = (newProfile) => {
     setUserProfile(newProfile)
   }
+  const [isLoad, setIsLoad] = useState(true) //Data is loading
+  const token = localStorage.getItem('token')
+  const userAuth = localStorage.getItem('userAuth')
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/st/loadInformation', {
+      headers: {
+        'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
+        'User': userAuth
+      }
+    })
+      .then(response => {
+        console.log(response.data)
+        setUserProfile(response.data)
+        setIsLoad(false) //Data is loaded successfully
+      })
+      .catch(error => {
+        alert('Lỗi đọc dữ liệu: ' + error)
+        setIsLoad(false)
+      })
+  }, [token, userAuth])
 
   return (
     <>
@@ -128,10 +150,24 @@ function Information() {
         <main>
           <Container>
             <LeftPane>
-              <UserProfile profile={ userProfile } setProfile={updateInformation}/>
+              {
+                //Ràng điều kiện nếu dữ liệu đang load thì ko gọi thẻ UserProfile
+                //Vì react chạy bất đồng bộ nên chưa có dữ liệu mà gọi thẻ là sẽ bị null
+                isLoad ? ( <p>Loading...</p> ) :
+                  (
+                    <UserProfile profile={ userProfile } setProfile={updateInformation}/>
+                  )
+              }
             </LeftPane>
             <RightPane>
-              <ExtraProfile profile={ userProfile } setProfile={updateInformation}/>
+              {
+                //Ràng điều kiện nếu dữ liệu đang load thì ko gọi thẻ UserProfile
+                //Vì react chạy bất đồng bộ nên chưa có dữ liệu mà gọi thẻ là sẽ bị null
+                isLoad ? ( <p>Loading...</p> ) :
+                  (
+                    <ExtraProfile profile={ userProfile } setProfile={updateInformation}/>
+                  )
+              }
             </RightPane>
           </Container>
         </main>

@@ -20,7 +20,7 @@ const ActivityContainer = styled.div`
   }
 `;
 
-const UserActivity = ({ profile, setProfile }) => {
+const UserActivity = ({ profile }) => {
   return (
     <ActivityContainer>
       <h3>Operation History</h3>
