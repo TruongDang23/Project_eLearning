@@ -1,17 +1,13 @@
 import { HeaderAfterLogin } from "~/components/general";
 import FooterNew from "~/components/general/Footer/FooterNew";
-import InforCourseData from "./InforCourseData";
 import IntroCourse from "./IntroCourse";
 
-
-function InforCourse() {
-
-
+function InforCourse({ inforCourseData }) {
   return (
     <div>
       <HeaderAfterLogin />
       <main>
-        <IntroCourse InforCourse={InforCourseData} />
+        <IntroCourse inforCourseData={inforCourseData} />
       </main>
       <FooterNew />
     </div>
