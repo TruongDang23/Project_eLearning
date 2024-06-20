@@ -3,7 +3,7 @@ import { Admin } from "./screens/admin";
 import { Instructor } from "./screens/teacher";
 import { Student } from "./screens/student";
 import InforCourse from "./screens/system/inforCourse/InforCourse";
-import inforCourseData from "~/data/InforCourseData";
+import InforCourseData from "~/data/InforCourseData";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Admin/>
       <Instructor/>
       <Student/> */}
-      <InforCourse inforCourseData={inforCourseData} />
+      <InforCourse inforCourseData={InforCourseData} />
     </>
   );
 }

@@ -1,7 +1,7 @@
-import React from "react";
 import styled from "styled-components";
+import DoneRoundedIcon from "@mui/icons-material/DoneRounded";
 
-// const InforCourseData = {
+// const inforCourseData = {
 //   instructor: "John Doe",
 //   type_of_course: "Course",
 //   title: "Introduction to Database",
@@ -103,59 +103,49 @@ import styled from "styled-components";
 //   ],
 // };
 
-function IntroCourse({ inforCourseData }) {
-  const { title, image_introduce, keywords } = inforCourseData;
+function MainContentCourse({ inforCourseData }) {
   return (
-    <IntroCourseWrapper>
-      <div className="container intro-course">
-        <div className="intro-course-detail">
-          <h3>{title}</h3>
-          <div className="intro-course-keyword">
-            {keywords.map((keyword, index) => (
-              <span key={index}>{keyword}</span>
-            ))}
-          </div>
-        </div>
-        <div className="intro-course-img">
-          <img src={image_introduce} alt="Course Introduction" />
-        </div>
+    <MainContentCourseWrapper>
+      <div className="what-will-you-learn">
+        <h3>What you will learning in this course ?</h3>
+        <ul>
+          {inforCourseData.targets.map((target, index) => (
+            <li key={index}>
+              <DoneRoundedIcon />
+              {target}
+            </li>
+          ))}
+        </ul>
       </div>
-    </IntroCourseWrapper>
+      <div className="course-requirment"></div>
+      <div className="course-content"></div>
+    </MainContentCourseWrapper>
   );
 }
 
-const IntroCourseWrapper = styled.section`
-  background-color: #2d2f31;
-  color: #fff;
-  .intro-course {
-    display: grid;
-    ${"" /* Phần đầu tiên chiếm 2 phần, phần còn lại là 1 phần */}
-    grid-template-columns: 2fr 1fr;
-    .intro-course-detail {
-      padding: 20px;
-      h3 {
-        font-size: 2.8rem;
-      }
-      .intro-course-keyword {
+const MainContentCourseWrapper = styled.section`
+  padding: 20px;
+  .what-will-you-learn {
+    border: 1px solid #ccc;
+    padding: 20px;
+    h3 {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+    }
+    ul {
+      list-style-type: none;
+      li {
         display: flex;
         gap: 10px;
-        margin-top: 10px;
-        span {
-          background-color: #4a4a4a;
-          padding: 5px 10px;
-          border-radius: 5px;
+        margin-bottom: 10px;
+        font-size: 1.8rem;
+        svg {
+          color: #007bff;
+          font-size: 2.4rem;
         }
-      }
-    }
-    .intro-course-img {
-      padding: 20px;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
       }
     }
   }
 `;
 
-export default IntroCourse;
+export default MainContentCourse;
