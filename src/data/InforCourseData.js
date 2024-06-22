@@ -89,6 +89,35 @@ const InforCourseData = {
         },
       ],
     },
+    {
+      chapter_name: "Database Design",
+      lectures: [
+        {
+          id: 5,
+          name: "Database Normalization",
+          description: "Introduction to database normalization",
+          type: "video",
+          source: "https://example.com/lecture5.mp4",
+          QnA: [],
+        },
+        {
+          id: 6,
+          name: "Entity-Relationship Diagrams",
+          description: "Introduction to ER diagrams",
+          type: "file",
+          source: "https://example.com/lecture6.pdf",
+          QnA: [],
+        },
+        {
+          id: 7,
+          name: "Database Design Project",
+          description: "Design a simple database",
+          type: "assignment",
+          source: "https://example.com/project.pdf",
+          QnA: [],
+        },
+      ],
+    },
   ],
   review: [
     {
