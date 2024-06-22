@@ -4,8 +4,12 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import { useState } from 'react'
 import { languages } from '~/constants/listLanguage'
+import axios from 'axios'
 
 function UserProfile({ profile, setProfile }) {
+  const token = localStorage.getItem('token')
+  const userAuth = localStorage.getItem('userAuth')
+
   const [isReadOnly, setIsReadOnly] = useState(true)
 
   const formatDate = (date) => {
@@ -25,6 +29,29 @@ function UserProfile({ profile, setProfile }) {
       };
     });
   };
+
+  const updateInfor = async() => {
+    try
+    {
+      const res = await axios.post('http://localhost:3000/in/updateInformation',
+        { profile },
+        {
+          headers: {
+            'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
+            'user': userAuth
+          }
+        }
+      )
+      if (res.data === true)
+        alert('Update Successfully')
+      else
+        alert('Update Failed')
+    }
+    catch (error) {
+      alert('An error occurred while trying to update information.')
+      //console.error(error)
+    }
+  }
 
   return (
     <>
@@ -162,7 +189,7 @@ function UserProfile({ profile, setProfile }) {
           />
 
           <div className="item-btns">
-            <button className="item-btn save-btn" onClick={() => setIsReadOnly(true)}>Save</button>
+            <button className="item-btn save-btn" onClick={() => {setIsReadOnly(true); updateInfor()}}>Save</button>
             <button className="item-btn update-btn" onClick={() => setIsReadOnly(false)}>Update</button>
           </div>
         </div>
