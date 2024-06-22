@@ -11,7 +11,7 @@ const mongo = require('./connMongo')
 const connMongo = mongo()
 
 // Import routes
-const adminRoutes = require('./routes/adminRoutes')(connMysql) //Truyền các connection cần thiết vào các Route
+const adminRoutes = require('./routes/adminRoutes')(connMysql, connMongo) //Truyền các connection cần thiết vào các Route
 const studentRoutes = require('./routes/studentRoutes')(connMysql, connMongo)
 const instructorRoutes = require('./routes/instructorRoutes')(connMysql, connMongo)
 const systemRoutes = require('./routes/systemRoutes')(connMysql, connMongo)

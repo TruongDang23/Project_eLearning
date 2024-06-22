@@ -7,7 +7,6 @@ const KEY = 'd6cb109246bc06e7b4e88fc0579fa6f5eaf770a93e42e33934419bed7b3a944e629
 const verifyToken = (req, res, next) => {
   const token = req.headers['token']
   const user = JSON.parse(req.headers['user'])
-
   if (!token) {
     return res.status(403).send({ message: 'No token provided!' })
   }
