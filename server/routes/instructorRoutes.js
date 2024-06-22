@@ -14,6 +14,14 @@ module.exports = (connMysql, connMongo) => {
   //import model user for query in mongoDB
   const User = require('../models/user')
 
+  //Function format 1981-05-11T17:00:00.000Z to 1981-05-12
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0') // Months are zero indexed
+    const day = String(date.getDate()).padStart(2, '0')
+    return `${year}-${month}-${day}`
+  }
+
   const getCourseEnroll = (courseID) => {
     return new Promise((resolve, reject) => {
       connMysql.getConnection((err, connection) => {
@@ -72,7 +80,7 @@ module.exports = (connMysql, connMongo) => {
         const mergeData = infor.map(inf => {
           return {
             ...inf,
-
+            date_of_birth: formatDate(inf.date_of_birth),
             //Câu query không có lấy activity_status. Tuy nhiên login thành công <=> activity_status = active
             activity_status: 'active',
 
@@ -90,5 +98,51 @@ module.exports = (connMysql, connMongo) => {
       })
     })
   })
+
+  router.post('/updateInformation', verifyToken, async (req, res) => {
+    const inf = req.body.profile
+    //Theo tính toán: các lệnh xử lý trong mongoDB luôn nhanh hơn Mysql
+    //Vì vậy trong sự kiện bất đồng bộ thì mysql sẽ thực hiện xong cuối cùng
+    await connMongo
+    try {
+      await User.updateOne(
+        { userID: inf.userID },
+        {
+          $set:
+          {
+            social_networks: inf.social_network,
+            self_introduce: inf.self_introduce,
+            expertise: inf.expertise,
+            degrees: inf.degrees,
+            projects: inf.projects,
+            working_history: inf.working_history
+          }
+        }
+      );
+    }
+    catch (error) {
+      res.send(false)
+    }
+
+    connMysql.getConnection((err, connection) => {
+      if (err) {
+        res.status(500).send(err)
+      }
+      //Get information from mysql
+      let query = 'UPDATE user SET avatar = ?, fullname = ?, date_of_birth = ?, street = ?,\
+                   province = ?, country = ?, language = ? WHERE userID = ?'
+      connection.query(query, [inf.avatar, inf.fullname, inf.date_of_birth, inf.street,
+        inf.province, inf.country, inf.language, inf.userID], async (error, results) => {
+        connection.release() //Giải phóng connection khi truy vấn xong
+        if (error) {
+          res.send(false)
+        }
+        //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
+        if (results.affectedRows > 0)
+          res.send(true)
+      })
+    })
+  })
+
   return router
 }

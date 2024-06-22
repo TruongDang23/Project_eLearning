@@ -34,6 +34,7 @@ function Information() {
       })
   }, [token, userAuth])
 
+  //console.log(userProfile)
   return (
     <>
       <div>
