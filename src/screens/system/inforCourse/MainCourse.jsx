@@ -4,7 +4,7 @@ import SideBar from "./SideBar";
 
 function MainCourse({ inforCourseData }) {
   return (
-    <MainCourseWrapper className="container">
+    <MainCourseWrapper className="container white-space-small">
       <MainContentCourse inforCourseData={inforCourseData} />
       <SideBar inforCourseData={inforCourseData} />
     </MainCourseWrapper>
