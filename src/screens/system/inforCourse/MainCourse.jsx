@@ -14,7 +14,6 @@ function MainCourse({ inforCourseData }) {
 const MainCourseWrapper = styled.section`
   display: grid;
   grid-template-columns: 2fr 1fr;
-  height: 1000px;
 `;
 
 export default MainCourse;

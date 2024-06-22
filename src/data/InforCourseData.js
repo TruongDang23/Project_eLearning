@@ -98,7 +98,7 @@ const InforCourseData = {
       reviewerName: "Đặng Quang Trường",
       message: "I learned a lot from this course.",
       star: 4.0,
-      date: "2024-06-01 13:00:00",
+      date: "2024-06-07 13:00:00",
     },
   ],
 };
