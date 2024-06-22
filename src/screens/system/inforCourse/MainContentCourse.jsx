@@ -3,6 +3,7 @@ import DoneRoundedIcon from "@mui/icons-material/DoneRounded";
 import StarRating from "~/components/general/Other/StarRating";
 import Avatar from "@mui/material/Avatar";
 import { formatDistanceToNow } from "date-fns";
+import AccordionCourse from "./AccordionCourse";
 
 // const inforCourseData = {
 //   instructor: "John Doe",
@@ -132,19 +133,8 @@ function MainContentCourse({ inforCourseData }) {
         </ul>
       </div>
       <div className="course-content">
-        <h3>Course Content</h3>
-        {inforCourseData.chapters.map((chapter, index) => (
-          <div key={index}>
-            <h4>{chapter.chapter_name}</h4>
-            <ul>
-              {chapter.lectures.map((lecture, index) => (
-                <li key={index}>
-                  <a href={lecture.source}>{lecture.name}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        <h3 className="course-content-h3">Course Content</h3>
+        <AccordionCourse inforCourseData={inforCourseData} />
       </div>
       <div className="course-review">
         <div className="course-rating">
@@ -191,6 +181,7 @@ const MainContentCourseWrapper = styled.section`
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
     h3 {
+      color: #2d2f31;
       font-size: 2.4rem;
       margin-bottom: 20px;
       animation: fadeIn 1s ease-in-out;
@@ -247,6 +238,7 @@ const MainContentCourseWrapper = styled.section`
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
     h3 {
+      color: #2d2f31;
       font-size: 2.4rem;
       margin-bottom: 20px;
       animation: fadeIn 1s ease-in-out;
@@ -294,25 +286,19 @@ const MainContentCourseWrapper = styled.section`
   }
 
   .course-content {
-    border: 1px solid #ccc;
     padding: 20px;
     margin-top: 20px;
-    h3 {
+    border: 1px solid #ccc;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    .course-content-h3 {
+      color: #2d2f31;
       font-size: 2.4rem;
       margin-bottom: 20px;
-    }
-    h4 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-    ul {
-      list-style-type: none;
-      li {
-        font-size: 1.8rem;
-        a {
-          color: #007bff;
-        }
-      }
+      animation: fadeIn 1s ease-in-out;
     }
   }
   .course-review {
@@ -341,6 +327,7 @@ const MainContentCourseWrapper = styled.section`
         display: block;
       }
       h3 {
+        color: #2d2f31;
         align-items: center;
         font-size: 2.4rem;
         margin-bottom: 20px;
@@ -364,6 +351,7 @@ const MainContentCourseWrapper = styled.section`
         align-items: center;
         h4 {
           font-size: 1.8rem;
+          color: #2d2f31;
         }
         span {
           font-size: 1.6rem;
