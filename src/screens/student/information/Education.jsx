@@ -1,34 +1,44 @@
 import styled from 'styled-components'
 import { useState } from 'react';
+import { AddExpertise, AddCredential } from '~/components/popup/index'
 
 function Education ({ profile, setProfile }) {
+  const [openExp, setopenExp] = useState(false)
+  const [openCre, setopenCre] = useState(false)
+
+  const toggleExp = () => { setopenExp(!openExp) }
+  const toggleCre = () => { setopenCre(!openCre) }
 
   return (
-    <Wrapper>
-      <div className="expertise">
-        <h4>Expertise:</h4>
-        <div className="content-expertise">
-          {profile.expertise.map((exp, index) => (
-            <label key={ index }>{ exp }</label>
-          ))}
+    <>
+      <Wrapper>
+        <div className="expertise">
+          <h4>Expertise:</h4>
+          <div className="content-expertise">
+            {profile.expertise.map((exp, index) => (
+              <label key={index}>{exp}</label>
+            ))}
+          </div>
+          <button onClick={toggleExp}>Add Expertise</button>
         </div>
-        <button>Add Expertise</button>
-      </div>
 
-      <div className="degree">
-        <h4>Degree:</h4>
-        <div className="content-degree">
-          {profile.degrees.map((degree, index) => (
-            <div key={index} className="degree-item">
-              <p><strong>School:</strong> {degree.school}</p>
-              <p><strong>Faculty:</strong> {degree.falcuty}</p>
-              <p><strong>Period:</strong> {degree.begin_time} - {degree.end_time}</p>
-            </div>
-          ))}
+        <div className="degree">
+          <h4>Degree:</h4>
+          <div className="content-degree">
+            {profile.degrees.map((degree, index) => (
+              <div key={index} className="degree-item">
+                <p><strong>School:</strong> {degree.school}</p>
+                <p><strong>Faculty:</strong> {degree.falcuty}</p>
+                <p><strong>Period:</strong> {degree.begin_time} - {degree.end_time}</p>
+              </div>
+            ))}
+          </div>
+          <button onClick={toggleCre}>Add Credential</button>
         </div>
-        <button>Add Credential</button>
-      </div>
-    </Wrapper>
+      </Wrapper>
+      {openExp && <AddExpertise handleClose={toggleExp} handleSave={setProfile} />}
+      {openCre && <AddCredential handleClose={toggleCre} handleSave={setProfile} />}
+    </>
   )
 }
 

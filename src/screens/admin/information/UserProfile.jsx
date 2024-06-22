@@ -48,7 +48,7 @@ function UserProfile({ profile, setUserProfile }) {
     }
     catch (error) {
       alert('An error occurred while trying to update information.')
-      console.error(error)
+      //console.error(error)
     }
   }
 

@@ -1,37 +1,48 @@
 import styled from 'styled-components'
+import { useState } from 'react'
+import { AddProject, AddWorking } from '~/components/popup/index'
 
 function Experience ({ profile, setProfile }) {
+  const [openPro, setopenPro] = useState(false)
+  const [openWork, setopenWork] = useState(false)
+
+  const togglePro = () => { setopenPro(!openPro) }
+  const toggleWork = () => { setopenWork(!openWork) }
 
   return (
-    <Wrapper>
-      <div className="experience">
-        <h4>Projects:</h4>
-        <div className="content-experience">
-          {profile.projects.map((project, index) => (
-            <div key={index} className="experience-item">
-              <p><strong>Title:</strong> {project.title}</p>
-              <p><strong>Link:</strong><a href={project.link} target="_blank" rel="noreferrer">{project.link}</a></p>
-              <p><strong>Description:</strong> {project.description}</p>
-            </div>
-          ))}
+    <>
+      <Wrapper>
+        <div className="experience">
+          <h4>Projects:</h4>
+          <div className="content-experience">
+            {profile.projects.map((project, index) => (
+              <div key={index} className="experience-item">
+                <p><strong>Title:</strong> {project.title}</p>
+                <p><strong>Link:</strong><a href={project.link} target="_blank" rel="noreferrer">{project.link}</a></p>
+                <p><strong>Description:</strong> {project.description}</p>
+              </div>
+            ))}
+          </div>
+          <button onClick={togglePro}>Add new</button>
         </div>
-        <button>Add new</button>
-      </div>
 
-      <div className="experience">
-        <h4>Working History:</h4>
-        <div className="content-experience">
-          {profile.working_history.map((work, index) => (
-            <div key={index} className="experience-item">
-              <p><strong>Company:</strong> {work.company}</p>
-              <p><strong>Period:</strong> {work.begin_time} - {work.end_time}</p>
-              <p><strong>Description:</strong> {work.description}</p>
-            </div>
-          ))}
+        <div className="experience">
+          <h4>Working History:</h4>
+          <div className="content-experience">
+            {profile.working_history.map((work, index) => (
+              <div key={index} className="experience-item">
+                <p><strong>Company:</strong> {work.company}</p>
+                <p><strong>Period:</strong> {work.begin_time} - {work.end_time}</p>
+                <p><strong>Description:</strong> {work.description}</p>
+              </div>
+            ))}
+          </div>
+          <button onClick={toggleWork}>Add new</button>
         </div>
-        <button>Add new</button>
-      </div>
-    </Wrapper>
+      </Wrapper>
+      {openPro && <AddProject handleClose={togglePro} handleSave={setProfile} />}
+      {openWork && <AddWorking handleClose={toggleWork} handleSave={setProfile} />}
+    </>
   )
 }
 
