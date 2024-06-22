@@ -204,7 +204,7 @@ const MainContentCourseWrapper = styled.section`
         margin-bottom: 10px;
         font-size: 1.8rem;
         svg {
-          color: #007bff;
+          color: #1971c2;
           font-size: 2.4rem;
           transition: transform 0.3s ease;
         }
@@ -324,11 +324,7 @@ const MainContentCourseWrapper = styled.section`
       transform: translateY(-10px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
-    h3 {
-      font-size: 2.4rem;
-      margin-bottom: 20px;
-      animation: fadeIn 1s ease-in-out;
-    }
+
     h4 {
       display: flex;
       justify-content: space-between;
@@ -344,6 +340,12 @@ const MainContentCourseWrapper = styled.section`
       h4 {
         display: block;
       }
+      h3 {
+        align-items: center;
+        font-size: 2.4rem;
+        margin-bottom: 20px;
+        animation: fadeIn 1s ease-in-out;
+      }
     }
     .course-list-review {
       margin-top: 20px;
@@ -351,6 +353,7 @@ const MainContentCourseWrapper = styled.section`
     .course-personal-review {
       padding: 20px;
       margin-top: 20px;
+      border-top: 0.5px solid #ccc;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -360,7 +363,7 @@ const MainContentCourseWrapper = styled.section`
         gap: 10px;
         align-items: center;
         h4 {
-          font-size: 2rem;
+          font-size: 1.8rem;
         }
         span {
           font-size: 1.6rem;
@@ -372,7 +375,7 @@ const MainContentCourseWrapper = styled.section`
       .course-personal-review-content {
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 10px;
         .course-personal-review-content-star {
           display: flex;
           align-items: center;
@@ -382,7 +385,7 @@ const MainContentCourseWrapper = styled.section`
           }
         }
         p {
-          font-size: 1.8rem;
+          font-size: 1.6rem;
         }
       }
     }

@@ -14,6 +14,20 @@ function MainCourse({ inforCourseData }) {
 const MainCourseWrapper = styled.section`
   display: grid;
   grid-template-columns: 2fr 1fr;
+  margin-top: 50px;
+
+  @media (max-width: 1440px) {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 10px;
+  }
 `;
 
 export default MainCourse;

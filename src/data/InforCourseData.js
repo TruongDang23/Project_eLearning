@@ -1,5 +1,6 @@
 import videoIntro from "../assets/inforCourseIntro.mp4";
 import imageIntro from "../assets/imageIntro.png";
+import { duration } from "@mui/material";
 
 const InforCourseData = {
   instructor: "John Doe",
@@ -7,7 +8,7 @@ const InforCourseData = {
   title: "Introduction to Database",
   method: "Self-directed study",
   language: "English",
-  price: 49.99,
+  price: 0,
   currency: "USD",
   program: "Knowledge",
   category: "Database",
@@ -15,6 +16,9 @@ const InforCourseData = {
   status: "published",
   num_lecture: 10,
   star: 4.5,
+  number_enrolled: 100,
+  duration: 10,
+
   image_introduce: imageIntro,
   video_introduce: videoIntro,
   keywords: ["Database", "SQL", "Beginner"],
