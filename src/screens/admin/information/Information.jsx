@@ -3,49 +3,35 @@ import { GeneralFooter, HeaderAfterLogin } from '~/components/general'
 import styled from 'styled-components'
 import UserProfile from './UserProfile'
 import UserActivity from './HistoryActivity'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 function Information() {
-  const activities = [
-    {
-      action: 'Logged in',
-      time: '2024-01-05 14:30:33'
-    },
-    {
-      action: 'Updated profile picture',
-      time: '2024-01-05 14:30:33'
-    },
-    {
-      action: 'Posted a new status',
-      time: '2024-01-05 14:30:33'
-    },
-    {
-      action: 'Liked a post',
-      time: '2024-01-05 14:30:33'
-    },
-    {
-      action: 'Commented on a post',
-      time: '2024-01-05 14:30:33'
-    }
-  ]
+  const [userProfile, setUserProfile] = useState()
+  const [isLoad, setIsLoad] = useState(true) //Data is loading
+  const token = localStorage.getItem('token')
+  const userAuth = localStorage.getItem('userAuth')
 
-  const userProfile = [
-    {
-      userID: 'A000',
-      avatar: 'https://wallpapercave.com/wp/wp7046651.jpg',
-      fullname: 'Đặng Quang Trường',
-      date_of_birth: '2003-01-05',
-      street: 'Lý Thái Tổ',
-      province: 'Đồng Nai',
-      country: 'Việt Nam',
-      language: 'English',
-      social_network: [
-        'https://www.facebook.com',
-        'https://www.github.com',
-        'https://www.youtube.com'
-      ],
-      activity_status: 'active'
-    }
-  ]
+  useEffect(() => {
+    axios.get('http://localhost:3000/ad/loadInformation', {
+      headers: {
+        'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
+        'User': userAuth
+      }
+    })
+      .then(response => {
+        setUserProfile(response.data)
+        setIsLoad(false) //Data is loaded successfully
+      })
+      .catch(error => {
+        alert('Lỗi đọc dữ liệu: ' + error)
+        setIsLoad(false)
+      })
+  }, [token, userAuth])
+
+  const updateInformation = (newProfile) => {
+    setUserProfile(newProfile)
+  }
 
   return (
     <>
@@ -54,10 +40,22 @@ function Information() {
         <main>
           <Container>
             <LeftPane>
-              <UserProfile profile={ userProfile }/>
+              {
+                //Ràng điều kiện nếu dữ liệu đang load thì ko gọi thẻ UserProfile
+                //Vì react chạy bất đồng bộ nên chưa có dữ liệu mà gọi thẻ là sẽ bị null
+                isLoad ? ( <p>Loading...</p> ) :
+                  (
+                    <UserProfile profile={userProfile} setUserProfile={updateInformation} />
+                  )
+              }
             </LeftPane>
             <RightPane>
-              <UserActivity activities={ activities } />
+              {
+                isLoad ? ( <p>Loading...</p> ) :
+                  (
+                    <UserActivity profile={ userProfile } />
+                  )
+              }
             </RightPane>
           </Container>
         </main>

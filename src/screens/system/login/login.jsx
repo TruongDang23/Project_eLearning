@@ -4,7 +4,7 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline'
 import LockIcon from '@mui/icons-material/Lock'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'
 import CloseIcon from '@mui/icons-material/Close'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
 import styled from 'styled-components'
 import { useState } from 'react'
@@ -18,6 +18,7 @@ function Login() {
   const [pass, setPass] = useState('')
   const [role, setRole] = useState('')
   const [message, setMessage] = useState('')
+  const navigate = useNavigate()
 
   const typeUsername = (e) => {
     setUsername(e.target.value)
@@ -38,22 +39,19 @@ function Login() {
     return CryptoJS.SHA512(password).toString(CryptoJS.enc.Hex)
   }
 
-  //Thử nghiệm localStorage để lưu trữ thông tin người dùng
-  // Lưu đối tượng
-  const user = { id: 124, name: 'Truong Dang' }
-  localStorage.setItem('user', JSON.stringify(user))
-  //Kết thúc thử nghiệm
-
   const checkLogin = async () => {
     try {
       const hassed = hashPassword(pass)
       const res = await axios.post('http://localhost:3000/s/login', { username, pass:hassed, role })
-
       if (res.data === 'User are not existed')
         setMessage('Username or Password is incorrect')
       else {
+        const { token, userID, role } = res.data
+        const userData = JSON.stringify({ userID, role })
         alert('Login successfully')
-        localStorage.setItem('token', res.data)
+        localStorage.setItem('token', token)
+        localStorage.setItem('userAuth', userData)
+        navigate(`/${role}/information`)
       }
 
     } catch (error) {

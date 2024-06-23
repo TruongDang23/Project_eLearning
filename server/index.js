@@ -4,9 +4,17 @@ const session = require('express-session')
 const express = require('express')
 const bodyParser = require('body-parser')
 
+//import database (khi nào cần connect database nào thì gọi cái phù hợp)
+const connMysql = require('./connMySql')
+
+const mongo = require('./connMongo')
+const connMongo = mongo()
+
 // Import routes
-const userRoutes = require('./routes/userRoutes')
-const systemRoutes = require('./routes/systemRoutes')
+const adminRoutes = require('./routes/adminRoutes')(connMysql, connMongo) //Truyền các connection cần thiết vào các Route
+const studentRoutes = require('./routes/studentRoutes')(connMysql, connMongo)
+const instructorRoutes = require('./routes/instructorRoutes')(connMysql, connMongo)
+const systemRoutes = require('./routes/systemRoutes')(connMysql, connMongo)
 
 const app = express()
 const port = 3000
@@ -24,8 +32,10 @@ var sessionMiddleware = session({
 app.use(sessionMiddleware)
 
 // Use routes
-app.use('/u', sessionMiddleware, userRoutes) // All user routes will have a prefix of /u
-app.use('/s', sessionMiddleware, systemRoutes) // All system routes will have a prefix of /s
+app.use('/ad', sessionMiddleware, adminRoutes) // All admin routes will have a prefix of /ad
+app.use('/st', sessionMiddleware, studentRoutes)
+app.use('/in', sessionMiddleware, instructorRoutes)
+app.use('/s', sessionMiddleware, systemRoutes)
 
 // Cấu hình CORS
 app.use(cors())
