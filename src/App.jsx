@@ -4,6 +4,8 @@ import { Instructor } from "./screens/teacher";
 import { Student } from "./screens/student";
 import InforCourse from "./screens/system/inforCourse/InforCourse";
 import InforCourseData from "~/data/InforCourseData";
+import AccessCourseData from "./data/AccessCourseData";
+import AccessCourse from "./screens/student/accessCourse/AccessCourse";
 
 function App() {
   return (
@@ -12,7 +14,8 @@ function App() {
       <Admin/>
       <Instructor/>
       <Student/> */}
-      <InforCourse inforCourseData={InforCourseData} />
+      {/* <InforCourse inforCourseData={InforCourseData} /> */}
+      <AccessCourse accessCourseData={AccessCourseData} />
     </>
   );
 }

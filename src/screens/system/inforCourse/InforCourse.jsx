@@ -5,14 +5,14 @@ import MainCourse from "./MainCourse";
 
 function InforCourse({ inforCourseData }) {
   return (
-    <div>
+    <>
       <HeaderAfterLogin />
       <main>
         <IntroCourse inforCourseData={inforCourseData} />
         <MainCourse inforCourseData={inforCourseData} />
       </main>
       <FooterNew />
-    </div>
+    </>
   );
 }
 
