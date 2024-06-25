@@ -1,35 +1,11 @@
-import videoIntro from "../assets/inforCourseIntro.mp4";
-import imageIntro from "../assets/imageIntro.png";
-
-const InforCourseData = {
+const AccessCourseData = {
   instructor: "John Doe",
   type_of_course: "Course",
   title: "Introduction to Database",
-  method: "Self-directed study",
-  language: "English",
-  price: 0,
-  currency: "USD",
-  program: "Knowledge",
-  category: "Database",
-  course_for: "Beginner",
   status: "published",
-  num_lecture: 10,
-  star: 4.5,
-  number_enrolled: 100,
-  duration: 10,
-
-  image_introduce: imageIntro,
-  video_introduce: videoIntro,
-  keywords: ["Database", "SQL", "Beginner"],
-  targets: [
-    "Understand basic database concepts",
-    "Write simple SQL queries",
-    "Design a simple database",
-  ],
-  requirements: [
-    "Basic understanding of computer science",
-    "No prior knowledge of databases is required",
-  ],
+  image_introduce:
+    "https://th.bing.com/th/id/R.e4764a69fbcdad81466dc87e56828111?rik=ssloj%2fcULHvTtA&pid=ImgRaw&r=0",
+  video_introduce: "https://youtu.be/wR0jg0eQsZA?si=JNvUj8Q1GFeCWwlg",
   chapters: [
     {
       chapter_name: "Introduction",
@@ -39,7 +15,8 @@ const InforCourseData = {
           name: "What is a Database?",
           description: "Overview of databases",
           type: "video",
-          source: "https://example.com/lecture1.mp4",
+          source:
+            "https://storage.googleapis.com/e-learning-bucket/C000/CT01/video1.mp4",
           QnA: [
             {
               questionerID: 1,
@@ -62,7 +39,8 @@ const InforCourseData = {
           name: "Database Management Systems",
           description: "Introduction to DBMS",
           type: "file",
-          source: "https://example.com/lecture2.pdf",
+          source:
+            "https://storage.googleapis.com/e-learning-bucket/C000/CT01/01-intro.pdf",
           QnA: [],
         },
       ],
@@ -75,7 +53,8 @@ const InforCourseData = {
           name: "Introduction to SQL",
           description: "Overview of SQL",
           type: "video",
-          source: "https://example.com/lecture3.mp4",
+          source:
+            "https://storage.googleapis.com/e-learning-bucket/C000/CT02/video2.mp4",
           QnA: [],
         },
         {
@@ -83,7 +62,8 @@ const InforCourseData = {
           name: "Basic SQL Queries",
           description: "Introduction to SQL queries",
           type: "file",
-          source: "https://example.com/lecture4.pdf",
+          source:
+            "https://storage.googleapis.com/e-learning-bucket/C000/CT02/02-database.pdf",
           QnA: [],
         },
       ],
@@ -96,7 +76,8 @@ const InforCourseData = {
           name: "Database Normalization",
           description: "Introduction to database normalization",
           type: "video",
-          source: "https://example.com/lecture5.mp4",
+          source:
+            "https://storage.googleapis.com/e-learning-bucket/C000/CT03/video3.mp4",
           QnA: [],
         },
         {
@@ -104,7 +85,8 @@ const InforCourseData = {
           name: "Entity-Relationship Diagrams",
           description: "Introduction to ER diagrams",
           type: "file",
-          source: "https://example.com/lecture6.pdf",
+          source:
+            "https://storage.googleapis.com/e-learning-bucket/C000/CT03/03-dbms.pdf",
           QnA: [],
         },
         {
@@ -112,12 +94,53 @@ const InforCourseData = {
           name: "Database Design Project",
           description: "Design a simple database",
           type: "assignment",
-          source: "https://example.com/project.pdf",
+          source:
+            "https://storage.googleapis.com/e-learning-bucket/C000/CT04/04-model.pdf",
           QnA: [],
         },
       ],
     },
   ],
+  userProgress: {
+    userID: 1,
+    progress: [
+      {
+        lectureID: 1,
+        time: "2024-06-01 10:30:00",
+        percent: 50.0,
+      },
+      {
+        lectureID: 2,
+        time: "2024-06-01 11:30:00",
+        percent: 100.0,
+      },
+      {
+        lectureID: 3,
+        time: "2024-06-01 12:30:00",
+        percent: 0.0,
+      },
+      {
+        lectureID: 4,
+        time: "2024-06-01 13:30:00",
+        percent: 0.0,
+      },
+      {
+        lectureID: 5,
+        time: "2024-06-01 14:30:00",
+        percent: 0.0,
+      },
+      {
+        lectureID: 6,
+        time: "2024-06-01 15:30:00",
+        percent: 0.0,
+      },
+      {
+        lectureID: 7,
+        time: "2024-06-01 16:30:00",
+        percent: 0.0,
+      },
+    ],
+  },
   review: [
     {
       reviewerName: "Le Thanh Vinh",
@@ -135,4 +158,4 @@ const InforCourseData = {
   ],
 };
 
-export default InforCourseData;
+export default AccessCourseData;
