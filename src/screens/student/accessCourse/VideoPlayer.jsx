@@ -1,5 +1,5 @@
 import ReactPlayer from "react-player";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import screenfull from "screenfull";
 import styled from "styled-components";
 
@@ -15,7 +15,14 @@ function VideoPlayer({ video }) {
   const [volumeMenuOpen, setVolumeMenuOpen] = useState(false);
   const [videoEnded, setVideoEnded] = useState(false);
 
+  useEffect(() => {
+    document.documentElement.style.setProperty("--value", `${played * 100}%`);
+  }, [played]);
+
   const handlePlayPause = () => {
+    if (videoEnded) {
+      setVideoEnded(false); // Đặt lại trạng thái khi bắt đầu chơi lại video
+    }
     setPlaying(!playing);
   };
 
@@ -107,6 +114,7 @@ function VideoPlayer({ video }) {
           step="any"
           value={played}
           onChange={handleSeekChange}
+          className="seek-bar"
         />
         <div>
           {formatTime(played * duration)} / {formatTime(duration)}
@@ -134,7 +142,10 @@ function VideoPlayer({ video }) {
         </div>
       </div>
       {videoEnded && (
-        <div className="video-ended-message">Bạn đã xem hết video</div>
+        <div className="video-ended-message">
+          Bạn đã xem hết video.{" "}
+          <button onClick={() => setVideoEnded(false)}>Xem lại</button>
+        </div>
       )}
     </VideoPlayerWrapper>
   );
@@ -175,29 +186,36 @@ const VideoPlayerWrapper = styled.div`
     -webkit-appearance: none; /* Loại bỏ giao diện mặc định của trình duyệt */
     width: 100px;
     height: 8px; /* Chiều cao của thanh trượt */
-    background: #ddd; /* Màu nền của thanh trượt */
+    background: linear-gradient(
+      to right,
+      #2196f3 0%,
+      #2196f3 var(--value),
+      #ddd var(--value),
+      #ddd 100%
+    ); /* Gradient cho thanh trượt */
     outline: none;
     border-radius: 5px;
     padding: 0;
     margin: 0;
   }
-  .controls input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 16px; /* Chiều rộng của nút trượt */
-  height: 16px; /* Chiều cao của nút trượt */
-  background: #000; /* Màu của nút trượt */
-  cursor: pointer;
-  border-radius: 50%;
-  margin-top: -4px; /* Để nút trượt căn giữa với thanh trượt */
-}
 
-.controls input[type="range"]::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  background: #000;
-  cursor: pointer;
-  border-radius: 50%;
-}
+  .controls input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px; /* Chiều rộng của nút trượt */
+    height: 16px; /* Chiều cao của nút trượt */
+    background: #000; /* Màu của nút trượt */
+    cursor: pointer;
+    border-radius: 50%;
+    margin-top: -4px; /* Để nút trượt căn giữa với thanh trượt */
+  }
+
+  .controls input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #000;
+    cursor: pointer;
+    border-radius: 50%;
+  }
 
   .controls div {
     color: white;
