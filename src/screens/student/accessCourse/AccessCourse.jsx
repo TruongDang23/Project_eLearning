@@ -1,6 +1,7 @@
 import { HeaderAfterLogin } from "~/components/general";
 import FooterNew from "~/components/general/Footer/FooterNew";
 import CourseBanner from "./CourseBanner";
+import VideoPlayer from "./VideoPlayer";
 
 function AccessCourse({ accessCourseData }) {
   return (
@@ -8,7 +9,7 @@ function AccessCourse({ accessCourseData }) {
       <HeaderAfterLogin />
       <main>
         <CourseBanner accessCourseData={accessCourseData} />
-        <h1>AccessCourse</h1>
+        <VideoPlayer video={accessCourseData.video_introduce} />
       </main>
       <FooterNew />
     </>

@@ -1,3 +1,7 @@
+import videoIntro from "../assets/inforCourseIntro.mp4";
+
+// video_introduce: "https://youtu.be/wR0jg0eQsZA?si=JNvUj8Q1GFeCWwlg",
+
 const AccessCourseData = {
   instructor: "John Doe",
   type_of_course: "Course",
@@ -6,7 +10,7 @@ const AccessCourseData = {
   progress: 30,
   image_introduce:
     "https://th.bing.com/th/id/R.e4764a69fbcdad81466dc87e56828111?rik=ssloj%2fcULHvTtA&pid=ImgRaw&r=0",
-  video_introduce: "https://youtu.be/wR0jg0eQsZA?si=JNvUj8Q1GFeCWwlg",
+  video_introduce: videoIntro,
   chapters: [
     {
       chapter_name: "Introduction",
