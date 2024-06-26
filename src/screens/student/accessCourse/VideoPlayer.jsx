@@ -133,6 +133,7 @@ function VideoPlayer({ video }) {
                 step="any"
                 value={volume}
                 onChange={handleVolumeChange}
+                className="volume-bar"
               />
               <button onClick={() => setMuted(!muted)}>
                 {muted ? "Unmute" : "Mute"}
@@ -163,10 +164,13 @@ const VideoPlayerWrapper = styled.div`
     position: absolute;
     bottom: 10px;
     left: 10px;
+    right: 10px;
+
     display: flex;
     flex-direction: row;
     gap: 10px;
     align-items: center;
+    justify-content: space-between;
     background: rgba(0, 0, 0, 0.5);
     padding: 10px;
     border-radius: 5px;
@@ -182,9 +186,9 @@ const VideoPlayerWrapper = styled.div`
     border-radius: 5px;
   }
 
-  .controls input[type="range"] {
+  .controls input[type="range"].seek-bar {
     -webkit-appearance: none; /* Loại bỏ giao diện mặc định của trình duyệt */
-    width: 100px;
+    width: 100%; /* Chiều rộng của thanh trượt */
     height: 8px; /* Chiều cao của thanh trượt */
     background: linear-gradient(
       to right,
@@ -203,7 +207,7 @@ const VideoPlayerWrapper = styled.div`
     -webkit-appearance: none;
     width: 16px; /* Chiều rộng của nút trượt */
     height: 16px; /* Chiều cao của nút trượt */
-    background: #000; /* Màu của nút trượt */
+    background: #1971c2; /* Màu của nút trượt */
     cursor: pointer;
     border-radius: 50%;
     margin-top: -4px; /* Để nút trượt căn giữa với thanh trượt */
@@ -230,7 +234,7 @@ const VideoPlayerWrapper = styled.div`
   .volume-menu {
     position: absolute;
     bottom: 30px; /* Đổi từ top: 30px sang bottom: 30px để menu đổ phía trên */
-    left: 0;
+    right: 0;
     background: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
     display: flex;
@@ -264,6 +268,45 @@ const VideoPlayerWrapper = styled.div`
     padding: 20px;
     border-radius: 5px;
     text-align: center;
+  }
+
+  .video-ended-message button {
+    background: #1971c2;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  @media (min-width: 1440px) {
+    .controls input[type="range"].seek-bar {
+      width: 900px; /* Chiều rộng khi màn hình có độ rộng từ 1440px trở lên */
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .controls input[type="range"].seek-bar {
+      width: 400px; /* Chiều rộng khi màn hình có độ rộng từ 1024px đến 1439px */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .controls input[type="range"].seek-bar {
+      width: 200px; /* Chiều rộng khi màn hình có độ rộng từ 768px đến 1023px */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .controls {
+      gap: 5px;
+      padding: 5px;
+    }
+
+    .controls input[type="range"].seek-bar {
+      width: 100%; /* Chiều rộng khi màn hình có độ rộng từ 480px đến 767px */
+    }
   }
 `;
 
