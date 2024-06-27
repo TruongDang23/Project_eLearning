@@ -21,6 +21,7 @@ function VideoPlayer({ video }) {
   const [speedMenuOpen, setSpeedMenuOpen] = useState(false);
   const [volumeMenuOpen, setVolumeMenuOpen] = useState(false);
   const [videoEnded, setVideoEnded] = useState(false);
+  const [controlsVisible, setControlsVisible] = useState(false);
 
   useEffect(() => {
     document.documentElement.style.setProperty("--value", `${played * 100}%`);
@@ -81,7 +82,10 @@ function VideoPlayer({ video }) {
   };
 
   return (
-    <VideoPlayerWrapper>
+    <VideoPlayerWrapper
+      onMouseEnter={() => setControlsVisible(true)}
+      onMouseLeave={() => setControlsVisible(false)}
+    >
       <ReactPlayer
         ref={playerRef}
         className="react-player"
@@ -97,7 +101,7 @@ function VideoPlayer({ video }) {
         width="100%"
         height="100%"
       />
-      <div className="controls">
+      <div className={`controls ${controlsVisible ? "visible" : ""}`}>
         <div className="controls-right">
           <button id="main" onClick={handlePlayPause} title="Play/Pause">
             {playing ? <PauseIcon /> : <PlayArrowIcon />}
@@ -182,6 +186,7 @@ function VideoPlayer({ video }) {
     </VideoPlayerWrapper>
   );
 }
+
 const VideoPlayerWrapper = styled.div`
   position: relative;
   padding-top: 56.25%; /* 16:9 Aspect Ratio */
@@ -196,7 +201,6 @@ const VideoPlayerWrapper = styled.div`
     bottom: 10px;
     left: 10px;
     right: 10px;
-
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -205,6 +209,11 @@ const VideoPlayerWrapper = styled.div`
     background: rgba(0, 0, 0, 0.5);
     padding: 10px;
     border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  .controls.visible {
+    opacity: 1;
   }
   .controls-right,
   .controls-left {
