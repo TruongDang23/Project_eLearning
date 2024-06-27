@@ -10,7 +10,8 @@ const AccessCourseData = {
   progress: 30,
   image_introduce:
     "https://th.bing.com/th/id/R.e4764a69fbcdad81466dc87e56828111?rik=ssloj%2fcULHvTtA&pid=ImgRaw&r=0",
-  video_introduce: videoIntro,
+  video_introduce:
+    "https://storage.googleapis.com/e-learning-bucket/C000/CT01/video1.mp4",
   chapters: [
     {
       chapter_name: "Introduction",
