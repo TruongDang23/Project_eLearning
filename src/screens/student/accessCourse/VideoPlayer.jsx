@@ -188,6 +188,7 @@ function VideoPlayer({ video }) {
 }
 
 const VideoPlayerWrapper = styled.div`
+  background-color: #2d2f31;
   position: relative;
   padding-top: 56.25%; /* 16:9 Aspect Ratio */
   .react-player {

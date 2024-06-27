@@ -1,16 +1,14 @@
 import styled from "styled-components";
-import { CircularProgressbar } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
 
 // const AccessCourseData = {
 //   instructor: "John Doe",
 //   type_of_course: "Course",
 //   title: "Introduction to Database",
-//   progress: 30,
 //   status: "published",
+//   progress: 30,
 //   image_introduce:
 //     "https://th.bing.com/th/id/R.e4764a69fbcdad81466dc87e56828111?rik=ssloj%2fcULHvTtA&pid=ImgRaw&r=0",
-//   video_introduce: "https://youtu.be/wR0jg0eQsZA?si=JNvUj8Q1GFeCWwlg",
+//   video_introduce: videoIntro,
 //   chapters: [
 //     {
 //       chapter_name: "Introduction",
@@ -163,52 +161,14 @@ import "react-circular-progressbar/dist/styles.css";
 //   ],
 // };
 
-function CourseBanner({ accessCourseData }) {
+function TabOverview({ accessCourseData }) {
   return (
-    <CourseBannerWrapper>
-      <div className="course-banner">
-        <h1>
-          {accessCourseData.title} | <span> {accessCourseData.instructor}</span>
-        </h1>
-        <div className="course-banner-progress">
-          <span>Your Progress:</span>
-          <CircularProgressbar
-            value={accessCourseData.progress}
-            text={`${accessCourseData.progress}%`}
-            styles={{
-              root: { width: 50 },
-              backgroundColor: "#f9f9f9",
-            }}
-          />
-        </div>
-      </div>
-    </CourseBannerWrapper>
+    <TabOverviewWrapper>
+      <h3>Overview</h3>
+    </TabOverviewWrapper>
   );
 }
-const CourseBannerWrapper = styled.section`
-  background-color: #2d2f31;
-  color: #f9f9f9;
-  .course-banner {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 20px;
-    align-items: center;
-    border-bottom: 1px solid #f9f9f9;
-    border-top: 1px solid #f9f9f9;
-    h1 {
-      font-size: 2.4rem;
-      span {
-        font-size: 1.6rem;
-      }
-    }
-    .course-banner-progress {
-      border-left: 1px solid #f9f9f9;
-      padding-left: 20px;
-      font-size: 1.5rem;
-      span {
-        margin-right: 10px;
-      }
-    }
-  }
-`;
-export default CourseBanner;
+
+const TabOverviewWrapper = styled.div``;
+
+export default TabOverview;

@@ -7,12 +7,11 @@ function MainContentAccessCourse({ accessCourseData }) {
   return (
     <MainAccessCourseWrapper>
       <VideoPlayer video={accessCourseData.video_introduce} />
-      <TabviewAccessCourse />
+      <TabviewAccessCourse accessCourseData={accessCourseData} />
     </MainAccessCourseWrapper>
   );
 }
 const MainAccessCourseWrapper = styled.section`
-  padding: 0px 20px;
 `;
 
 export default MainContentAccessCourse;
