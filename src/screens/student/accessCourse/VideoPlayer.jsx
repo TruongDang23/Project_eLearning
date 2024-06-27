@@ -1,6 +1,13 @@
 import ReactPlayer from "react-player";
 import React, { useState, useRef, useEffect } from "react";
 import screenfull from "screenfull";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PauseIcon from "@mui/icons-material/Pause";
+import Replay5Icon from "@mui/icons-material/Replay5";
+import Forward5Icon from "@mui/icons-material/Forward5";
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
+import SpeedIcon from "@mui/icons-material/Speed";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import styled from "styled-components";
 
 function VideoPlayer({ video }) {
@@ -91,61 +98,75 @@ function VideoPlayer({ video }) {
         height="100%"
       />
       <div className="controls">
-        <button onClick={handlePlayPause}>{playing ? "Pause" : "Play"}</button>
-        <button onClick={handleRewind}>Rewind 5s</button>
-        <button onClick={handleFastForward}>Forward 5s</button>
-        <div className="speed-control">
-          <button onClick={() => setSpeedMenuOpen(!speedMenuOpen)}>
-            Speed
+        <div className="controls-right">
+          <button id="main" onClick={handlePlayPause}>
+            {playing ? <PauseIcon /> : <PlayArrowIcon />}
           </button>
-          {speedMenuOpen && (
-            <div className="speed-menu">
-              <button onClick={() => handleSpeedChange(0.5)}>0.5x</button>
-              <button onClick={() => handleSpeedChange(1)}>1x</button>
-              <button onClick={() => handleSpeedChange(1.5)}>1.5x</button>
-              <button onClick={() => handleSpeedChange(2)}>2x</button>
-            </div>
-          )}
-        </div>
-        <input
-          type="range"
-          min={0}
-          max={1}
-          step="any"
-          value={played}
-          onChange={handleSeekChange}
-          className="seek-bar"
-        />
-        <div>
-          {formatTime(played * duration)} / {formatTime(duration)}
-        </div>
-        <button onClick={handleFullscreen}>Fullscreen</button>
-        <div className="volume-control">
-          <button onClick={() => setVolumeMenuOpen(!volumeMenuOpen)}>
-            Volume
+          <button onClick={handleRewind}>
+            <Replay5Icon />
           </button>
-          {volumeMenuOpen && (
-            <div className="volume-menu">
-              <input
-                type="range"
-                min={0}
-                max={1}
-                step="any"
-                value={volume}
-                onChange={handleVolumeChange}
-                className="volume-bar"
-              />
-              <button onClick={() => setMuted(!muted)}>
-                {muted ? "Unmute" : "Mute"}
-              </button>
-            </div>
-          )}
+          <button onClick={handleFastForward}>
+            <Forward5Icon></Forward5Icon>
+          </button>
+          <div className="speed-control">
+            <button onClick={() => setSpeedMenuOpen(!speedMenuOpen)}>
+              <SpeedIcon />
+            </button>
+            {speedMenuOpen && (
+              <div className="speed-menu">
+                <button onClick={() => handleSpeedChange(0.5)}>0.5x</button>
+                <button onClick={() => handleSpeedChange(1)}>1x</button>
+                <button onClick={() => handleSpeedChange(1.5)}>1.5x</button>
+                <button onClick={() => handleSpeedChange(2)}>2x</button>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="controls-center">
+          <input
+            type="range"
+            min={0}
+            max={1}
+            step="any"
+            value={played}
+            onChange={handleSeekChange}
+            className="seek-bar"
+          />
+          <div className="controls-center-time">
+            {formatTime(played * duration)} / {formatTime(duration)}
+          </div>
+        </div>
+        <div className="controls-left">
+          <div className="volume-control">
+            <button onClick={() => setVolumeMenuOpen(!volumeMenuOpen)}>
+              <VolumeUpIcon />
+            </button>
+            {volumeMenuOpen && (
+              <div className="volume-menu">
+                <input
+                  type="range"
+                  min={0}
+                  max={1}
+                  step="any"
+                  value={volume}
+                  onChange={handleVolumeChange}
+                  className="volume-bar"
+                />
+                <button onClick={() => setMuted(!muted)}>
+                  {muted ? "Unmute" : "Mute"}
+                </button>
+              </div>
+            )}
+          </div>
+          <button onClick={handleFullscreen}>
+            <FullscreenIcon />
+          </button>
         </div>
       </div>
       {videoEnded && (
         <div className="video-ended-message">
-          Bạn đã xem hết video.{" "}
-          <button onClick={() => setVideoEnded(false)}>Xem lại</button>
+          <p>Video ended. </p>
+          <button onClick={() => setVideoEnded(false)}>Replay</button>
         </div>
       )}
     </VideoPlayerWrapper>
@@ -174,6 +195,22 @@ const VideoPlayerWrapper = styled.div`
     background: rgba(0, 0, 0, 0.5);
     padding: 10px;
     border-radius: 5px;
+  }
+  .controls-right,
+  .controls-left {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .controls-center {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-grow: 1;
+    .controls-center-time {
+      color: white;
+      min-width: 60px;
+    }
   }
 
   .controls button,
@@ -210,7 +247,7 @@ const VideoPlayerWrapper = styled.div`
     background: #1971c2; /* Màu của nút trượt */
     cursor: pointer;
     border-radius: 50%;
-    margin-top: -4px; /* Để nút trượt căn giữa với thanh trượt */
+    margin-top: -5px; /* Để nút trượt căn giữa với thanh trượt */
   }
 
   .controls input[type="range"]::-moz-range-thumb {
@@ -248,8 +285,8 @@ const VideoPlayerWrapper = styled.div`
     background: none;
     border: none;
     color: white;
-    padding: 5px 10px;
     cursor: pointer;
+    padding: 5px 0px !important;
     text-align: left;
   }
 
@@ -270,6 +307,12 @@ const VideoPlayerWrapper = styled.div`
     text-align: center;
   }
 
+  .video-ended-message p {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
   .video-ended-message button {
     background: #1971c2;
     border: none;
@@ -280,32 +323,14 @@ const VideoPlayerWrapper = styled.div`
     margin-top: 10px;
   }
 
-  @media (min-width: 1440px) {
-    .controls input[type="range"].seek-bar {
-      width: 900px; /* Chiều rộng khi màn hình có độ rộng từ 1440px trở lên */
-    }
-  }
-
-  @media (max-width: 1024px) {
-    .controls input[type="range"].seek-bar {
-      width: 400px; /* Chiều rộng khi màn hình có độ rộng từ 1024px đến 1439px */
-    }
-  }
-
   @media (max-width: 768px) {
-    .controls input[type="range"].seek-bar {
-      width: 200px; /* Chiều rộng khi màn hình có độ rộng từ 768px đến 1023px */
-    }
-  }
-
-  @media (max-width: 480px) {
     .controls {
-      gap: 5px;
-      padding: 5px;
-    }
-
-    .controls input[type="range"].seek-bar {
-      width: 100%; /* Chiều rộng khi màn hình có độ rộng từ 480px đến 767px */
+      gap: 3px;
+      .controls-right {
+        button:not(#main) {
+          display: none;
+        }
+      }
     }
   }
 `;
