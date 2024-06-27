@@ -99,17 +99,20 @@ function VideoPlayer({ video }) {
       />
       <div className="controls">
         <div className="controls-right">
-          <button id="main" onClick={handlePlayPause}>
+          <button id="main" onClick={handlePlayPause} title="Play/Pause">
             {playing ? <PauseIcon /> : <PlayArrowIcon />}
           </button>
-          <button onClick={handleRewind}>
+          <button onClick={handleRewind} title="Rewind 5s">
             <Replay5Icon />
           </button>
-          <button onClick={handleFastForward}>
+          <button onClick={handleFastForward} title="Forward 5s">
             <Forward5Icon></Forward5Icon>
           </button>
           <div className="speed-control">
-            <button onClick={() => setSpeedMenuOpen(!speedMenuOpen)}>
+            <button
+              onClick={() => setSpeedMenuOpen(!speedMenuOpen)}
+              title="Change Speed"
+            >
               <SpeedIcon />
             </button>
             {speedMenuOpen && (
@@ -131,6 +134,7 @@ function VideoPlayer({ video }) {
             value={played}
             onChange={handleSeekChange}
             className="seek-bar"
+            title="Seek"
           />
           <div className="controls-center-time">
             {formatTime(played * duration)} / {formatTime(duration)}
@@ -138,7 +142,10 @@ function VideoPlayer({ video }) {
         </div>
         <div className="controls-left">
           <div className="volume-control">
-            <button onClick={() => setVolumeMenuOpen(!volumeMenuOpen)}>
+            <button
+              onClick={() => setVolumeMenuOpen(!volumeMenuOpen)}
+              title="Volume Control"
+            >
               <VolumeUpIcon />
             </button>
             {volumeMenuOpen && (
@@ -152,13 +159,16 @@ function VideoPlayer({ video }) {
                   onChange={handleVolumeChange}
                   className="volume-bar"
                 />
-                <button onClick={() => setMuted(!muted)}>
+                <button
+                  onClick={() => setMuted(!muted)}
+                  title={muted ? "Unmute" : "Mute"}
+                >
                   {muted ? "Unmute" : "Mute"}
                 </button>
               </div>
             )}
           </div>
-          <button onClick={handleFullscreen}>
+          <button onClick={handleFullscreen} title="Fullscreen">
             <FullscreenIcon />
           </button>
         </div>
@@ -247,7 +257,7 @@ const VideoPlayerWrapper = styled.div`
     background: #1971c2; /* Màu của nút trượt */
     cursor: pointer;
     border-radius: 50%;
-    margin-top: -5px; /* Để nút trượt căn giữa với thanh trượt */
+    margin-top: -3px; /* Để nút trượt căn giữa với thanh trượt */
   }
 
   .controls input[type="range"]::-moz-range-thumb {
