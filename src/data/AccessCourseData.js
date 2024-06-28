@@ -7,7 +7,15 @@ const AccessCourseData = {
   type_of_course: "Course",
   title: "Introduction to Database",
   status: "published",
+  program: "Knowledge",
+  category: "Database",
+  course_for: "Beginner",
   progress: 30,
+  star: 4.5,
+  number_star: 2,
+  keywords: ["Database", "SQL", "Beginner"],
+  number_enrolled: 100,
+  duration: 10,
   image_introduce:
     "https://th.bing.com/th/id/R.e4764a69fbcdad81466dc87e56828111?rik=ssloj%2fcULHvTtA&pid=ImgRaw&r=0",
   video_introduce:

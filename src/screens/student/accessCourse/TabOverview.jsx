@@ -1,174 +1,125 @@
-import styled from "styled-components";
+import StarRating from "~/components/general/Other/StarRating";
+import StarIcon from "@mui/icons-material/Star";
+import styled, { keyframes } from "styled-components";
 
 // const AccessCourseData = {
-//   instructor: "John Doe",
-//   type_of_course: "Course",
-//   title: "Introduction to Database",
-//   status: "published",
-//   progress: 30,
-//   image_introduce:
-//     "https://th.bing.com/th/id/R.e4764a69fbcdad81466dc87e56828111?rik=ssloj%2fcULHvTtA&pid=ImgRaw&r=0",
-//   video_introduce: videoIntro,
-//   chapters: [
-//     {
-//       chapter_name: "Introduction",
-//       lectures: [
-//         {
-//           id: 1,
-//           name: "What is a Database?",
-//           description: "Overview of databases",
-//           type: "video",
-//           source:
-//             "https://storage.googleapis.com/e-learning-bucket/C000/CT01/video1.mp4",
-//           QnA: [
-//             {
-//               questionerID: 1,
-//               question:
-//                 "What is the difference between a database and a spreadsheet?",
-//               date: "2024-06-01 10:00:00",
-//               responses: [
-//                 {
-//                   responseID: 2,
-//                   response:
-//                     "A database can handle more complex queries and is more scalable.",
-//                   date: "2024-06-01 11:00:00",
-//                 },
-//               ],
-//             },
-//           ],
-//         },
-//         {
-//           id: 2,
-//           name: "Database Management Systems",
-//           description: "Introduction to DBMS",
-//           type: "file",
-//           source:
-//             "https://storage.googleapis.com/e-learning-bucket/C000/CT01/01-intro.pdf",
-//           QnA: [],
-//         },
-//       ],
-//     },
-//     {
-//       chapter_name: "SQL",
-//       lectures: [
-//         {
-//           id: 3,
-//           name: "Introduction to SQL",
-//           description: "Overview of SQL",
-//           type: "video",
-//           source:
-//             "https://storage.googleapis.com/e-learning-bucket/C000/CT02/video2.mp4",
-//           QnA: [],
-//         },
-//         {
-//           id: 4,
-//           name: "Basic SQL Queries",
-//           description: "Introduction to SQL queries",
-//           type: "file",
-//           source:
-//             "https://storage.googleapis.com/e-learning-bucket/C000/CT02/02-database.pdf",
-//           QnA: [],
-//         },
-//       ],
-//     },
-//     {
-//       chapter_name: "Database Design",
-//       lectures: [
-//         {
-//           id: 5,
-//           name: "Database Normalization",
-//           description: "Introduction to database normalization",
-//           type: "video",
-//           source:
-//             "https://storage.googleapis.com/e-learning-bucket/C000/CT03/video3.mp4",
-//           QnA: [],
-//         },
-//         {
-//           id: 6,
-//           name: "Entity-Relationship Diagrams",
-//           description: "Introduction to ER diagrams",
-//           type: "file",
-//           source:
-//             "https://storage.googleapis.com/e-learning-bucket/C000/CT03/03-dbms.pdf",
-//           QnA: [],
-//         },
-//         {
-//           id: 7,
-//           name: "Database Design Project",
-//           description: "Design a simple database",
-//           type: "assignment",
-//           source:
-//             "https://storage.googleapis.com/e-learning-bucket/C000/CT04/04-model.pdf",
-//           QnA: [],
-//         },
-//       ],
-//     },
-//   ],
-//   userProgress: {
-//     userID: 1,
-//     progress: [
-//       {
-//         lectureID: 1,
-//         time: "2024-06-01 10:30:00",
-//         percent: 50.0,
-//       },
-//       {
-//         lectureID: 2,
-//         time: "2024-06-01 11:30:00",
-//         percent: 100.0,
-//       },
-//       {
-//         lectureID: 3,
-//         time: "2024-06-01 12:30:00",
-//         percent: 0.0,
-//       },
-//       {
-//         lectureID: 4,
-//         time: "2024-06-01 13:30:00",
-//         percent: 0.0,
-//       },
-//       {
-//         lectureID: 5,
-//         time: "2024-06-01 14:30:00",
-//         percent: 0.0,
-//       },
-//       {
-//         lectureID: 6,
-//         time: "2024-06-01 15:30:00",
-//         percent: 0.0,
-//       },
-//       {
-//         lectureID: 7,
-//         time: "2024-06-01 16:30:00",
-//         percent: 0.0,
-//       },
-//     ],
-//   },
-//   review: [
-//     {
-//       reviewerName: "Le Thanh Vinh",
-//       message:
-//         "Great course! The instructor explains concepts clearly and concisely.",
-//       star: 4.5,
-//       date: "2024-06-01 12:00:00",
-//     },
-//     {
-//       reviewerName: "Dang Quang Truong",
-//       message: "I learned a lot from this course.",
-//       star: 4.0,
-//       date: "2024-06-07 13:00:00",
-//     },
-//   ],
+//   ... // dữ liệu mẫu ở trên
 // };
 
 function TabOverview({ accessCourseData }) {
   return (
     <TabOverviewWrapper>
-      <h3>Overview</h3>
+      <div className="overview">
+        <h2 className="overview-title">Course: {accessCourseData.title}</h2>
+        <div className="overview-stats">
+          <div className="stats-star">
+            <div className="stats-star-number">
+              {accessCourseData.star} <StarIcon />
+            </div>
+            <p>{accessCourseData.review.length} ratings</p>
+          </div>
+          <div className="stats-student">
+            <span>{accessCourseData.number_enrolled}</span>
+            <p>Students</p>
+          </div>
+          <div className="stats-duration">
+            <span>{accessCourseData.duration}</span>
+            <p>Hours</p>
+          </div>
+        </div>
+        <div className="overview-description">
+          <h2>Description</h2>
+          <div className="description">
+            <p>
+              <strong>Instructor:</strong> {accessCourseData.instructor}
+            </p>
+            <p>
+              <strong>Course Type:</strong> {accessCourseData.type_of_course}
+            </p>
+            <p>
+              <strong>Program:</strong> {accessCourseData.program}
+            </p>
+            <p>
+              <strong>Category:</strong> {accessCourseData.category}
+            </p>
+            <p>
+              <strong>Course For:</strong> {accessCourseData.course_for}
+            </p>
+          </div>
+        </div>
+      </div>
     </TabOverviewWrapper>
   );
 }
 
-const TabOverviewWrapper = styled.div``;
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const TabOverviewWrapper = styled.div`
+  .overview {
+    animation: ${fadeIn} 0.5s ease-in-out;
+    h2 {
+      margin-bottom: 10px;
+      font-size: 2.4rem;
+    }
+    .overview-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 20px;
+      .stats-star {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .stats-star-number {
+          display: flex;
+          gap: 5px;
+          margin-bottom: 5px;
+          font-weight: bold;
+          ${"" /* style cho material icon */}
+          svg {
+            color: #e59819;
+          }
+        }
+      }
+      .stats-student {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        span {
+          margin-bottom: 5px;
+          font-weight: bold;
+        }
+      }
+      .stats-duration {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        span {
+          margin-bottom: 5px;
+          font-weight: bold;
+        }
+      }
+    }
+    .overview-description {
+      margin-top: 20px;
+      animation: ${fadeIn} 0.5s ease-in-out;
+      h2 {
+        font-size: 2.4rem;
+      }
+      .description {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 20px;
+      }
+    }
+  }
+`;
 
 export default TabOverview;
