@@ -3,14 +3,11 @@ import { GeneralFooter, HeaderAfterLogin } from '~/components/general'
 import PublishedCourse from './PublishedCourse'
 import MonitoringCourse from './Monitoring'
 import TerminatedCourse from './Terminated'
-
 import styled from 'styled-components'
-
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 function ManageCourse() {
-
   const token = localStorage.getItem('token')
   const userAuth = localStorage.getItem('userAuth')
 
@@ -19,6 +16,55 @@ function ManageCourse() {
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
+
+  const [pub, setPub] = useState([])
+  const [monitor, setMonitor] = useState([])
+  const [ter, setTer] = useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/c/getPublishCourse', {
+      headers: {
+        'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
+        'User': userAuth
+      }
+    })
+      .then(response => {
+        setPub(response.data)
+      })
+      .catch(error => {
+        alert('Lỗi đọc dữ liệu: ' + error)
+      })
+  }, [token, userAuth])
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/c/getMonitorCourse', {
+      headers: {
+        'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
+        'User': userAuth
+      }
+    })
+      .then(response => {
+        setMonitor(response.data)
+      })
+      .catch(error => {
+        alert('Lỗi đọc dữ liệu: ' + error)
+      })
+  }, [token, userAuth])
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/c/getTerminateCourse', {
+      headers: {
+        'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
+        'User': userAuth
+      }
+    })
+      .then(response => {
+        setTer(response.data)
+      })
+      .catch(error => {
+        alert('Lỗi đọc dữ liệu: ' + error)
+      })
+  }, [token, userAuth])
 
   return (
     <>
@@ -48,9 +94,9 @@ function ManageCourse() {
                 </button>
               </div>
               <div className="tab-content">
-                {activeTab === 'Tab1' && <PublishedCourse/>}
-                {activeTab === 'Tab2' && <MonitoringCourse/>}
-                {activeTab === 'Tab3' && <TerminatedCourse/>}
+                {activeTab === 'Tab1' && <PublishedCourse course={ pub } />}
+                {activeTab === 'Tab2' && <MonitoringCourse course={ monitor } />}
+                {activeTab === 'Tab3' && <TerminatedCourse course={ ter } />}
               </div>
             </div>
           </Container>

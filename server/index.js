@@ -15,6 +15,7 @@ const adminRoutes = require('./routes/adminRoutes')(connMysql, connMongo) //Truy
 const studentRoutes = require('./routes/studentRoutes')(connMysql, connMongo)
 const instructorRoutes = require('./routes/instructorRoutes')(connMysql, connMongo)
 const systemRoutes = require('./routes/systemRoutes')(connMysql, connMongo)
+const courseRoutes = require('./routes/courseRoutes')(connMysql, connMongo)
 
 const app = express()
 const port = 3000
@@ -36,6 +37,7 @@ app.use('/ad', sessionMiddleware, adminRoutes) // All admin routes will have a p
 app.use('/st', sessionMiddleware, studentRoutes)
 app.use('/in', sessionMiddleware, instructorRoutes)
 app.use('/s', sessionMiddleware, systemRoutes)
+app.use('/c', sessionMiddleware, courseRoutes)
 
 // Cấu hình CORS
 app.use(cors())
