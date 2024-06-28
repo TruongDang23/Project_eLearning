@@ -12,7 +12,11 @@ export function Items({ courseItem }) {
           <h2>{courseItem.title}</h2>
           <p><strong>Teacher:</strong> {courseItem.teacher}</p>
           <p><strong>Method:</strong> {courseItem.method}</p>
-          <p><strong>Published Date:</strong> {courseItem.time}</p>
+          <p><strong>Terminated Date: </strong>
+            <strong style={{ color: 'red', fontWeight: 'bold' }}>{courseItem.to_time} </strong>
+							to
+            <strong style={{ color: 'red', fontWeight: 'bold' }}> {courseItem.end_time}</strong>
+          </p>
           <p><strong>Program:</strong> {courseItem.program}</p>
         </div>
 

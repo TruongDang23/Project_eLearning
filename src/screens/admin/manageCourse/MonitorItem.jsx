@@ -12,7 +12,7 @@ export function Items({ courseItem }) {
           <h2>{courseItem.title}</h2>
           <p><strong>Teacher:</strong> {courseItem.teacher}</p>
           <p><strong>Method:</strong> {courseItem.method}</p>
-          <p><strong>Published Date:</strong> {courseItem.time}</p>
+          <p><strong>Sending Date:</strong> {courseItem.time}</p>
           <p><strong>Program:</strong> {courseItem.program}</p>
         </div>
 

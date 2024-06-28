@@ -1,6 +1,5 @@
 import videoIntro from "../assets/inforCourseIntro.mp4";
 import imageIntro from "../assets/imageIntro.png";
-import { duration } from "@mui/material";
 
 const InforCourseData = {
   instructor: "John Doe",
@@ -25,11 +24,11 @@ const InforCourseData = {
   targets: [
     "Understand basic database concepts",
     "Write simple SQL queries",
-    "Design a simple database",
+    "Design a simple database"
   ],
   requirements: [
     "Basic understanding of computer science",
-    "No prior knowledge of databases is required",
+    "No prior knowledge of databases is required"
   ],
   chapters: [
     {
@@ -52,11 +51,11 @@ const InforCourseData = {
                   responseID: 2,
                   response:
                     "A database can handle more complex queries and is more scalable.",
-                  date: "2024-06-01 11:00:00",
-                },
-              ],
-            },
-          ],
+                  date: "2024-06-01 11:00:00"
+                }
+              ]
+            }
+          ]
         },
         {
           id: 2,
@@ -64,9 +63,9 @@ const InforCourseData = {
           description: "Introduction to DBMS",
           type: "file",
           source: "https://example.com/lecture2.pdf",
-          QnA: [],
-        },
-      ],
+          QnA: []
+        }
+      ]
     },
     {
       chapter_name: "SQL",
@@ -77,7 +76,7 @@ const InforCourseData = {
           description: "Overview of SQL",
           type: "video",
           source: "https://example.com/lecture3.mp4",
-          QnA: [],
+          QnA: []
         },
         {
           id: 4,
@@ -85,9 +84,9 @@ const InforCourseData = {
           description: "Introduction to SQL queries",
           type: "file",
           source: "https://example.com/lecture4.pdf",
-          QnA: [],
-        },
-      ],
+          QnA: []
+        }
+      ]
     },
     {
       chapter_name: "Database Design",
@@ -98,7 +97,7 @@ const InforCourseData = {
           description: "Introduction to database normalization",
           type: "video",
           source: "https://example.com/lecture5.mp4",
-          QnA: [],
+          QnA: []
         },
         {
           id: 6,
@@ -106,7 +105,7 @@ const InforCourseData = {
           description: "Introduction to ER diagrams",
           type: "file",
           source: "https://example.com/lecture6.pdf",
-          QnA: [],
+          QnA: []
         },
         {
           id: 7,
@@ -114,10 +113,10 @@ const InforCourseData = {
           description: "Design a simple database",
           type: "assignment",
           source: "https://example.com/project.pdf",
-          QnA: [],
-        },
-      ],
-    },
+          QnA: []
+        }
+      ]
+    }
   ],
   review: [
     {
@@ -125,15 +124,15 @@ const InforCourseData = {
       message:
         "Great course! The instructor explains concepts clearly and concisely.",
       star: 4.5,
-      date: "2024-06-01 12:00:00",
+      date: "2024-06-01 12:00:00"
     },
     {
       reviewerName: "Đặng Quang Trường",
       message: "I learned a lot from this course.",
       star: 4.0,
-      date: "2024-06-07 13:00:00",
-    },
-  ],
+      date: "2024-06-07 13:00:00"
+    }
+  ]
 };
 
 export default InforCourseData;
