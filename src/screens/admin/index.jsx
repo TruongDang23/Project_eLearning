@@ -1,4 +1,5 @@
 import Information from './information/Information'
+import ManageCourse from './manageCourse/MainManage'
 import { Route, Routes } from 'react-router-dom'
 
 export function Admin() {
@@ -8,6 +9,7 @@ export function Admin() {
       VD: /signup thì gọi ra màn hình Signup */}
       <Routes>
         <Route path='/admin/information' element={<Information />} />
+        <Route path='/admin/manageCourse' element={<ManageCourse />} />
       </Routes>
     </>
   )
