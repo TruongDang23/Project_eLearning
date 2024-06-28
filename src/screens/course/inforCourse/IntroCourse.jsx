@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import StarRating from "~/components/general/Other/StarRating";
 import VideoCameraFrontIcon from "@mui/icons-material/VideoCameraFront";

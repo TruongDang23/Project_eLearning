@@ -70,8 +70,6 @@ const Container = styled.div`
   width: 1450px;
   margin: 0 auto;
   display: grid;
-  height:100vh;
-  overflow-y: auto;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 4.8rem;
 

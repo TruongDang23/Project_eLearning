@@ -50,7 +50,7 @@ function MainContentCourse({ inforCourseData }) {
               <h4>{review.reviewerName}</h4>
               <span>
                 {formatDistanceToNow(new Date(review.date), {
-                  addSuffix: true,
+                  addSuffix: true
                 })}
               </span>
             </div>

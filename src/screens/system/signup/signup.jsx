@@ -178,6 +178,20 @@ const SignupWrapper = styled.section`
         }
       }
     }
+      
+    .role {
+      display: flex;
+      justify-content: space-between;
+      color: #7A7A7A;
+      font-family: Montserrat;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      width: 300px;
+      margin: 0 auto;
+      align-items: center;
+    }
 
     .button {
       display: flex;
