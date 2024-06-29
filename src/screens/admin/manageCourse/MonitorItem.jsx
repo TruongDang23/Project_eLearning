@@ -1,32 +1,43 @@
 import styled from "styled-components";
+import { useState } from 'react'
+import { PublishCourse } from '~/components/popup/index'
 
 export function Items({ courseItem }) {
+  const [openPub, setopenPub] = useState(false)
+  const [openReject, setopenReject] = useState(false)
+
+  const togglePub = () => { setopenPub(!openPub) }
+  const toggleReject = () => { setopenReject(!openReject) }
   return (
-    <Wrapper>
-      <div key={courseItem.courseID} className="course-item">
-        <div className="image">
-          <img src={courseItem.image_introduce} alt='image' />
-        </div>
+    <>
+      <Wrapper>
+        <div key={courseItem.courseID} className="course-item">
+          <div className="image">
+            <img src={courseItem.image_introduce} alt='image' />
+          </div>
 
-        <div className="center_infor">
-          <h2>{courseItem.title}</h2>
-          <p><strong>Teacher:</strong> {courseItem.teacher}</p>
-          <p><strong>Method:</strong> {courseItem.method}</p>
-          <p><strong>Sending Date:</strong> {courseItem.time}</p>
-          <p><strong>Program:</strong> {courseItem.program}</p>
-        </div>
+          <div className="center_infor">
+            <h2>{courseItem.title}</h2>
+            <p><strong>Teacher:</strong> {courseItem.teacher}</p>
+            <p><strong>Method:</strong> {courseItem.method}</p>
+            <p><strong>Sending Date:</strong> {courseItem.time}</p>
+            <p><strong>Program:</strong> {courseItem.program}</p>
+          </div>
 
-        <div className="right_infor">
-          <h2>{courseItem.courseID}</h2>
-          <p>Monitoring</p>
-          <div className="button">
-            <button>Go to course</button>
-            <button>Accept</button>
-            <button>Reject</button>
+          <div className="right_infor">
+            <h2>{courseItem.courseID}</h2>
+            <p>Monitoring</p>
+            <div className="button">
+              <button>Go to course</button>
+              <button onClick={togglePub}>Accept</button>
+              <button>Reject</button>
+            </div>
           </div>
         </div>
-      </div>
-    </Wrapper>
+      </Wrapper>
+      {openPub && <PublishCourse handleClose={togglePub} course={courseItem.courseID} />}
+      {/* {openReject && <AddWorking handleClose={toggleWork} handleSave={setProfile} />} */}
+    </>
   )
 }
 
