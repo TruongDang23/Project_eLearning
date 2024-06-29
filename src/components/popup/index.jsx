@@ -3,6 +3,9 @@ import PopupCre from './popupAddCre'
 import PopupPro from './popupAddPro'
 import PopupWork from './popupAddWork'
 import PopupPub from './popupPublish'
+import PopupReject from './popupReject'
+import PopupRePub from './popupRePublish'
+import PopupTerminate from './popupTerminate'
 
 export function AddExpertise({ handleClose, handleSave }) {
   return (
@@ -31,5 +34,23 @@ export function AddWorking({ handleClose, handleSave }) {
 export function PublishCourse({ handleClose, course }) {
   return (
     <PopupPub handleClose={handleClose} course={course}/>
+  )
+}
+
+export function RejectCourse({ handleClose, course }) {
+  return (
+    <PopupReject handleClose={handleClose} course={course}/>
+  )
+}
+
+export function RePublishCourse({ handleClose, course }) {
+  return (
+    <PopupRePub handleClose={handleClose} course={course}/>
+  )
+}
+
+export function TerminateCourse({ handleClose, course }) {
+  return (
+    <PopupTerminate handleClose={handleClose} course={course}/>
   )
 }

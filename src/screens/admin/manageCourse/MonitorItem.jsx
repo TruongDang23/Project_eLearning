@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from 'react'
-import { PublishCourse } from '~/components/popup/index'
+import { PublishCourse, RejectCourse } from '~/components/popup/index'
 
 export function Items({ courseItem }) {
   const [openPub, setopenPub] = useState(false)
@@ -30,13 +30,13 @@ export function Items({ courseItem }) {
             <div className="button">
               <button>Go to course</button>
               <button onClick={togglePub}>Accept</button>
-              <button>Reject</button>
+              <button onClick={toggleReject}>Reject</button>
             </div>
           </div>
         </div>
       </Wrapper>
       {openPub && <PublishCourse handleClose={togglePub} course={courseItem.courseID} />}
-      {/* {openReject && <AddWorking handleClose={toggleWork} handleSave={setProfile} />} */}
+      {openReject && <RejectCourse handleClose={toggleReject} course={courseItem.courseID} />}
     </>
   )
 }

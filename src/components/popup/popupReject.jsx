@@ -1,15 +1,15 @@
 import styled from "styled-components"
-import CloudUploadIcon from '@mui/icons-material/CloudUpload'
+import CancelIcon from '@mui/icons-material/Cancel';
 
-const PopupPub = ({ handleClose, course }) => {
+const PopupReject = ({ handleClose, course }) => {
   return (
     <WrapperPopup>
       <div className="popup-box">
         <div className="box">
           <span className="close-icon" onClick={handleClose}>x</span>
           <label>
-            <CloudUploadIcon sx={{ color: '#008105', fontSize: '3.0rem', margin: 'auto' }}/>
-            <h1>The course <strong>{course}</strong> will be published</h1>
+            <CancelIcon sx={{ color: '#E20000', fontSize: '3.0rem', margin: 'auto' }}/>
+            <h1>The course <strong>{course}</strong> will be rejected</h1>
           </label>
           <div className="item-btns">
             <button className="item-btn" onClick={() => {
@@ -78,7 +78,7 @@ label{
   display: flex;
   justify-content: center;
   h1{
-    color: #008105;
+    color: #E20000;
     text-align: center;
     strong{
       font-weight: bold;
@@ -86,4 +86,4 @@ label{
   }
 }
 `
-export default PopupPub;
+export default PopupReject;

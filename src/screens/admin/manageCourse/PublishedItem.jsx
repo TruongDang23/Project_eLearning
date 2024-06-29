@@ -1,6 +1,12 @@
 import styled from "styled-components";
+import { useState } from 'react'
+import { TerminateCourse } from '~/components/popup/index'
 
 export function Items({ courseItem }) {
+  const [openTer, setopenTer] = useState(false)
+
+  const toggleTer = () => { setopenTer(!openTer) }
+
   return (
     <>
       <Wrapper>
@@ -22,11 +28,12 @@ export function Items({ courseItem }) {
             <p>Published</p>
             <div className="button">
               <button>Go to course</button>
-              <button>Terminate</button>
+              <button onClick={toggleTer}>Terminate</button>
             </div>
           </div>
         </div>
       </Wrapper>
+      {openTer && <TerminateCourse handleClose={toggleTer} course={courseItem.courseID} />}
     </>
   )
 }

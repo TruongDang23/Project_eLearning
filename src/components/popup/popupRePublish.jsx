@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 
-const PopupPub = ({ handleClose, course }) => {
+const PopupRePub = ({ handleClose, course }) => {
   return (
     <WrapperPopup>
       <div className="popup-box">
@@ -9,7 +9,7 @@ const PopupPub = ({ handleClose, course }) => {
           <span className="close-icon" onClick={handleClose}>x</span>
           <label>
             <CloudUploadIcon sx={{ color: '#008105', fontSize: '3.0rem', margin: 'auto' }}/>
-            <h1>The course <strong>{course}</strong> will be published</h1>
+            <h1>The course <strong>{course}</strong> will be re-published</h1>
           </label>
           <div className="item-btns">
             <button className="item-btn" onClick={() => {
@@ -86,4 +86,4 @@ label{
   }
 }
 `
-export default PopupPub;
+export default PopupRePub;

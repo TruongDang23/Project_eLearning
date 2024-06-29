@@ -1,35 +1,44 @@
 import styled from "styled-components";
+import { useState } from 'react'
+import { RePublishCourse } from '~/components/popup'
 
 export function Items({ courseItem }) {
+  const [openRePub, setopenRePub] = useState(false)
+
+  const toggleRePub = () => { setopenRePub(!openRePub) }
+
   return (
-    <Wrapper>
-      <div key={courseItem.courseID} className="course-item">
-        <div className="image">
-          <img src={courseItem.image_introduce} alt='image' />
-        </div>
+    <>
+      <Wrapper>
+        <div key={courseItem.courseID} className="course-item">
+          <div className="image">
+            <img src={courseItem.image_introduce} alt='image' />
+          </div>
 
-        <div className="center_infor">
-          <h2>{courseItem.title}</h2>
-          <p><strong>Teacher:</strong> {courseItem.teacher}</p>
-          <p><strong>Method:</strong> {courseItem.method}</p>
-          <p><strong>Terminated Date: </strong>
-            <strong style={{ color: 'red', fontWeight: 'bold' }}>{courseItem.to_time} </strong>
+          <div className="center_infor">
+            <h2>{courseItem.title}</h2>
+            <p><strong>Teacher:</strong> {courseItem.teacher}</p>
+            <p><strong>Method:</strong> {courseItem.method}</p>
+            <p><strong>Terminated Date: </strong>
+              <strong style={{ color: 'red', fontWeight: 'bold' }}>{courseItem.to_time} </strong>
 							to
-            <strong style={{ color: 'red', fontWeight: 'bold' }}> {courseItem.end_time}</strong>
-          </p>
-          <p><strong>Program:</strong> {courseItem.program}</p>
-        </div>
+              <strong style={{ color: 'red', fontWeight: 'bold' }}> {courseItem.end_time}</strong>
+            </p>
+            <p><strong>Program:</strong> {courseItem.program}</p>
+          </div>
 
-        <div className="right_infor">
-          <h2>{courseItem.courseID}</h2>
-          <p>Terminated</p>
-          <div className="button">
-            <button>Go to course</button>
-            <button>Re-Publish</button>
+          <div className="right_infor">
+            <h2>{courseItem.courseID}</h2>
+            <p>Terminated</p>
+            <div className="button">
+              <button>Go to course</button>
+              <button onClick={toggleRePub}>Re-Publish</button>
+            </div>
           </div>
         </div>
-      </div>
-    </Wrapper>
+      </Wrapper>
+      {openRePub && <RePublishCourse handleClose={toggleRePub} course={courseItem.courseID} />}
+    </>
   )
 }
 

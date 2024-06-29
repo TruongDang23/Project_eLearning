@@ -22,6 +22,74 @@ module.exports = (connMysql, connMongo) => {
     return `${day}-${month}-${year}`
   }
 
+  // Define your asynchronous functions
+  const updateStatusOfCourse = async (courseID) => {
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          reject(err)
+        }
+        //Get information from mysql
+        let query = 'UPDATE course SET status = "published" WHERE courseID = ?'
+        connection.query(query, [courseID], async (error, results) => {
+          connection.release() //Giải phóng connection khi truy vấn xong
+          if (error) {
+            reject(err)
+          }
+          //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
+          if (results.affectedRows > 0)
+            resolve(true)
+        })
+      })
+    })
+  }
+
+  const deletePublishCourse = async (courseID) => {
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          reject(err)
+        }
+        //Get information from mysql
+        let query = 'DELETE FROM published_course WHERE courseID = ?'
+        connection.query(query, [courseID], async (error, results) => {
+          connection.release() //Giải phóng connection khi truy vấn xong
+          if (error) {
+            reject(err)
+          }
+          //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
+          if (results.affectedRows > 0)
+            resolve(true)
+        })
+      })
+    })
+  };
+
+  const addTerminateCourse = async (courseID, dateRange) => {
+    const to_time = dateRange[0]
+    const end_time = (dateRange[1] == '' ? null : dateRange[1])
+
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          reject(err)
+        }
+        //Get information from mysql
+        let query = 'INSERT INTO terminated_course (courseID, to_time, end_time)\
+                     VALUES (?, ?, ?)'
+        connection.query(query, [courseID, to_time, end_time], async (error, results) => {
+          connection.release() //Giải phóng connection khi truy vấn xong
+          if (error) {
+            reject(err)
+          }
+          //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
+          if (results.affectedRows > 0)
+            resolve(true)
+        })
+      })
+    })
+  };
+
   // Define user-related routes
   router.get('/getPublishCourse', verifyToken, (req, res) => {
     connMysql.getConnection((err, connection) => {
@@ -32,7 +100,7 @@ module.exports = (connMysql, connMongo) => {
       let query = 'SELECT s.courseID, title, method, program, u.fullname AS teacher, s.time\
                   FROM published_course AS s\
                   LEFT JOIN course AS c ON s.courseID = c.courseID\
-                  LEFT JOIN user AS u ON s.userID = u.userID\
+                  LEFT JOIN user AS u ON c.userID = u.userID\
                   ORDER BY s.time DESC'
       connection.query(query, async (error, courses) => {
         connection.release() //Giải phóng connection khi truy vấn xong
@@ -71,7 +139,7 @@ module.exports = (connMysql, connMongo) => {
       let query = 'SELECT s.courseID, title, method, program, u.fullname AS teacher, s.time\
                   FROM send_mornitor AS s\
                   LEFT JOIN course AS c ON s.courseID = c.courseID\
-                  LEFT JOIN user AS u ON s.userID = u.userID\
+                  LEFT JOIN user AS u ON c.userID = u.userID\
                   ORDER BY s.time DESC'
       connection.query(query, async (error, courses) => {
         connection.release() //Giải phóng connection khi truy vấn xong
@@ -110,7 +178,7 @@ module.exports = (connMysql, connMongo) => {
       let query = 'SELECT s.courseID, title, method, program, u.fullname AS teacher, s.to_time, s.end_time\
                   FROM terminated_course AS s\
                   LEFT JOIN course AS c ON s.courseID = c.courseID\
-                  LEFT JOIN user AS u ON s.userID = u.userID\
+                  LEFT JOIN user AS u ON c.userID = u.userID\
                   ORDER BY s.to_time DESC, s.end_time ASC'
       connection.query(query, async (error, courses) => {
         connection.release() //Giải phóng connection khi truy vấn xong
@@ -139,6 +207,24 @@ module.exports = (connMysql, connMongo) => {
         res.send(mergeData)
       })
     })
+  })
+
+  router.post('/terminated', verifyToken, async (req, res) => {
+    const courseID = req.body.course
+    const dateRange = req.body.dateRange
+
+    try {
+      await Promise.all([
+        updateStatusOfCourse(courseID),
+        deletePublishCourse(courseID),
+        addTerminateCourse(courseID, dateRange)
+      ]);
+      // Proceed to the next step here
+      res.send(true)
+    } catch (error) {
+      res.send(false)
+    }
+
   })
   return router
 }
