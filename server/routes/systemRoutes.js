@@ -202,7 +202,7 @@ module.exports = (connMysql, connMongo) => {
       let query = 'SELECT course.courseID, title, fullname, star, raters, price FROM avg_rating\
                 INNER JOIN published_course ON avg_rating.courseID = published_course.courseID\
                 INNER JOIN course ON avg_rating.courseID = course.courseID\
-                INNER JOIN user ON published_course.userID = user.userID\
+                INNER JOIN user ON course.userID = user.userID\
                 LIMIT 9'
       connection.query(query, async (error, courses) => {
         connection.release() //Giải phóng connection khi truy vấn xong

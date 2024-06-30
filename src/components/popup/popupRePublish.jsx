@@ -1,7 +1,34 @@
 import styled from "styled-components"
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
+import axios from "axios"
 
 const PopupRePub = ({ handleClose, course }) => {
+  const token = localStorage.getItem('token')
+  const userAuth = localStorage.getItem('userAuth')
+
+  const handleSave = async() => {
+    try
+    {
+      const res = await axios.post('http://localhost:3000/c/republish',
+        { course },
+        {
+          headers: {
+            'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
+            'user': userAuth
+          }
+        }
+      )
+      if (res.data === true)
+        alert('Action Successfully')
+      else
+        alert('Action Failed')
+    }
+    catch (error) {
+      alert('An error occurred while trying to re-publish course.')
+      //console.error(error)
+    }
+  }
+
   return (
     <WrapperPopup>
       <div className="popup-box">
@@ -13,6 +40,7 @@ const PopupRePub = ({ handleClose, course }) => {
           </label>
           <div className="item-btns">
             <button className="item-btn" onClick={() => {
+              handleSave()
               handleClose()
             }}>Save</button>
           </div>

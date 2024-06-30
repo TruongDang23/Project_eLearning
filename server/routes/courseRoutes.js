@@ -22,16 +22,26 @@ module.exports = (connMysql, connMongo) => {
     return `${day}-${month}-${year}`
   }
 
+  //Function format 1981-05-11T17:00:00.000Z to 1981-05-12 12:00:00
+  const formatDateTime = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero indexed
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  }
   // Define your asynchronous functions
-  const updateStatusOfCourse = async (courseID) => {
+  const updateStatusOfCourse = async (courseID, status) => {
     return new Promise((resolve, reject) => {
       connMysql.getConnection((err, connection) => {
         if (err) {
           reject(err)
         }
         //Get information from mysql
-        let query = 'UPDATE course SET status = "published" WHERE courseID = ?'
-        connection.query(query, [courseID], async (error, results) => {
+        let query = 'UPDATE course SET status = ? WHERE courseID = ?'
+        connection.query(query, [status, courseID], async (error, results) => {
           connection.release() //Giải phóng connection khi truy vấn xong
           if (error) {
             reject(err)
@@ -44,15 +54,15 @@ module.exports = (connMysql, connMongo) => {
     })
   }
 
-  const deletePublishCourse = async (courseID) => {
+  const deleteCourse = async (database_table, courseID) => {
     return new Promise((resolve, reject) => {
       connMysql.getConnection((err, connection) => {
         if (err) {
           reject(err)
         }
         //Get information from mysql
-        let query = 'DELETE FROM published_course WHERE courseID = ?'
-        connection.query(query, [courseID], async (error, results) => {
+        let query = 'DELETE FROM ?? WHERE courseID = ?'
+        connection.query(query, [database_table, courseID], async (error, results) => {
           connection.release() //Giải phóng connection khi truy vấn xong
           if (error) {
             reject(err)
@@ -63,7 +73,7 @@ module.exports = (connMysql, connMongo) => {
         })
       })
     })
-  };
+  }
 
   const addTerminateCourse = async (courseID, dateRange) => {
     const to_time = dateRange[0]
@@ -88,7 +98,52 @@ module.exports = (connMysql, connMongo) => {
         })
       })
     })
-  };
+  }
+
+  const addPublishCourse = async (courseID, time) => {
+
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          reject(err)
+        }
+        //Get information from mysql
+        let query = 'INSERT INTO published_course (courseID, time)\
+                     VALUES (?, ?)'
+        connection.query(query, [courseID, time], async (error, results) => {
+          connection.release() //Giải phóng connection khi truy vấn xong
+          if (error) {
+            reject(err)
+          }
+          //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
+          if (results.affectedRows > 0)
+            resolve(true)
+        })
+      })
+    })
+  }
+
+  const addCreateCourse = async (courseID, time) => {
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          reject(err)
+        }
+        //Get information from mysql
+        let query = 'INSERT INTO created_course (courseID, time)\
+                     VALUES (?, ?)'
+        connection.query(query, [courseID, time], async (error, results) => {
+          connection.release() //Giải phóng connection khi truy vấn xong
+          if (error) {
+            reject(err)
+          }
+          //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
+          if (results.affectedRows > 0)
+            resolve(true)
+        })
+      })
+    })
+  }
 
   // Define user-related routes
   router.get('/getPublishCourse', verifyToken, (req, res) => {
@@ -215,8 +270,8 @@ module.exports = (connMysql, connMongo) => {
 
     try {
       await Promise.all([
-        updateStatusOfCourse(courseID),
-        deletePublishCourse(courseID),
+        updateStatusOfCourse(courseID, 'terminated'),
+        deleteCourse('published_course', courseID),
         addTerminateCourse(courseID, dateRange)
       ]);
       // Proceed to the next step here
@@ -226,5 +281,60 @@ module.exports = (connMysql, connMongo) => {
     }
 
   })
+
+  router.post('/republish', verifyToken, async (req, res) => {
+    const courseID = req.body.course
+    const time = formatDateTime(new Date())
+
+    try {
+      await Promise.all([
+        updateStatusOfCourse(courseID, 'published'),
+        deleteCourse('terminated_course', courseID),
+        addPublishCourse(courseID, time)
+      ]);
+      // Proceed to the next step here
+      res.send(true)
+    } catch (error) {
+      res.send(false)
+    }
+
+  })
+
+  router.post('/publish', verifyToken, async (req, res) => {
+    const courseID = req.body.course
+    const time = formatDateTime(new Date())
+
+    try {
+      await Promise.all([
+        updateStatusOfCourse(courseID, 'published'),
+        deleteCourse('send_mornitor', courseID),
+        addPublishCourse(courseID, time)
+      ]);
+      // Proceed to the next step here
+      res.send(true)
+    } catch (error) {
+      res.send(false)
+    }
+
+  })
+
+  router.post('/reject', verifyToken, async (req, res) => {
+    const courseID = req.body.course
+    const time = formatDateTime(new Date())
+
+    try {
+      await Promise.all([
+        updateStatusOfCourse(courseID, 'created'),
+        deleteCourse('send_mornitor', courseID),
+        addCreateCourse(courseID, time)
+      ]);
+      // Proceed to the next step here
+      res.send(true)
+    } catch (error) {
+      res.send(false)
+    }
+
+  })
+
   return router
 }

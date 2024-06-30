@@ -15,9 +15,9 @@ const PopupTerminate = ({ handleClose, course }) => {
 
   const handleDateChange = (date) => {
     if (currentInput === 'from') {
-      setDateRange([dayjs(date).format('DD-MM-YYYY'), dateRange[1]])
+      setDateRange([dayjs(date).format('YYYY-MM-DD hh:mm:ss'), dateRange[1]])
     } else {
-      setDateRange([dateRange[0], dayjs(date).format('DD-MM-YYYY')])
+      setDateRange([dateRange[0], dayjs(date).format('YYYY-MM-DD hh:mm:ss')])
     }
     setShowCalendar(false)
   }
