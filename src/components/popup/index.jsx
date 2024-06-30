@@ -1,7 +1,11 @@
-import PopupExp from './AddExpertise/popup'
-import PopupCre from './AddCredential/popup'
-import PopupPro from './AddProject/popup'
-import PopupWork from './AddWorking/popup'
+import PopupExp from './popupAddExp'
+import PopupCre from './popupAddCre'
+import PopupPro from './popupAddPro'
+import PopupWork from './popupAddWork'
+import PopupPub from './popupPublish'
+import PopupReject from './popupReject'
+import PopupRePub from './popupRePublish'
+import PopupTerminate from './popupTerminate'
 
 export function AddExpertise({ handleClose, handleSave }) {
   return (
@@ -24,5 +28,29 @@ export function AddProject({ handleClose, handleSave }) {
 export function AddWorking({ handleClose, handleSave }) {
   return (
     <PopupWork handleClose={handleClose} handleSave={handleSave}/>
+  )
+}
+
+export function PublishCourse({ handleClose, course }) {
+  return (
+    <PopupPub handleClose={handleClose} course={course}/>
+  )
+}
+
+export function RejectCourse({ handleClose, course }) {
+  return (
+    <PopupReject handleClose={handleClose} course={course}/>
+  )
+}
+
+export function RePublishCourse({ handleClose, course }) {
+  return (
+    <PopupRePub handleClose={handleClose} course={course}/>
+  )
+}
+
+export function TerminateCourse({ handleClose, course }) {
+  return (
+    <PopupTerminate handleClose={handleClose} course={course}/>
   )
 }

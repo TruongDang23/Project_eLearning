@@ -76,7 +76,10 @@ CREATE TABLE `course` (
   `course_for` varchar(50) DEFAULT NULL,
   `status` varchar(50) DEFAULT NULL,
   `num_lecture` int DEFAULT NULL,
-  PRIMARY KEY (`courseID`)
+  `userID` varchar(4) DEFAULT NULL,
+  PRIMARY KEY (`courseID`),
+  KEY `userID_idx` (`userID`),
+  CONSTRAINT `` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -86,7 +89,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES ('C000','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Beginner','published',43),('C001','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Master','published',43),('C002','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Master','published',43),('C003','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Beginner','published',43),('C004','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Certificate','Database','Master','published',43),('C005','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Beginner','published',43),('C006','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Degree','Database','Beginner','published',43),('C007','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Beginner','published',43),('C008','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Master','published',43),('C009','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Degree','Database','Beginner','published',11),('C010','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Beginner','published',11),('C011','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Degree','Database','Beginner','published',11),('C012','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Master','published',11),('C013','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Beginner','published',11),('C014','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Degree','Database','Beginner','published',11),('C015','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Master','published',11),('C016','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Degree','Database','Master','published',11),('C017','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Beginner','published',11),('C018','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Degree','Machine Learning','Master','published',20),('C019','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Certificate','Machine Learning','Beginner','published',20),('C020','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Knowledge','Machine Learning','Master','published',20),('C021','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Certificate','Machine Learning','Beginner','published',20),('C022','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Knowledge','Machine Learning','Beginner','published',20),('C023','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Degree','Machine Learning','Master','published',20),('C024','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Knowledge','Machine Learning','Beginner','published',20),('C025','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Degree','Machine Learning','Master','published',20),('C026','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Knowledge','Machine Learning','Beginner','published',20),('C027','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Certificate','Web development','Master','published',63),('C028','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Knowledge','Web development','Master','published',63),('C029','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Knowledge','Web development','Master','published',63),('C030','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Degree','Web development','Master','published',63),('C031','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Certificate','Web development','Beginner','published',63),('C032','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Degree','Web development','Beginner','published',63),('C033','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Knowledge','Web development','Master','published',63),('C034','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Degree','Web development','Master','published',63),('C035','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Knowledge','Web development','Beginner','terminated',63),('C036','Course','C# programing','Self-directed study','English',0.00,'VND','Knowledge','Web development','Beginner','terminated',26),('C037','Course','C# programing','Self-directed study','English',0.00,'VND','Certificate','Web development','Master','mornitor',26),('C038','Course','C# programing','Self-directed study','English',0.00,'VND','Knowledge','Web development','Beginner','mornitor',26),('C039','Course','C# programing','Self-directed study','English',0.00,'VND','Degree','Web development','Beginner','mornitor',26),('C040','Course','C# programing','Self-directed study','English',0.00,'VND','Knowledge','Web development','Beginner','created',26),('C041','Course','C# programing','Self-directed study','English',0.00,'VND','Knowledge','Web development','Master','created',26),('C042','Course','C# programing','Self-directed study','English',0.00,'VND','Degree','Web development','Beginner','created',26),('C043','Course','C# programing','Self-directed study','English',0.00,'VND','Certificate','Web development','Beginner','created',26),('C044','Course','C# programing','Self-directed study','English',0.00,'VND','Knowledge','Web development','Beginner','created',26);
+INSERT INTO `course` VALUES ('C000','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Beginner','published',43,'I000'),('C001','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Master','published',43,'I001'),('C002','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Master','published',43,'I002'),('C003','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Beginner','published',43,'I003'),('C004','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Certificate','Database','Master','published',43,'I004'),('C005','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Beginner','published',43,'I005'),('C006','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Degree','Database','Beginner','published',43,'I006'),('C007','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Beginner','published',43,'I007'),('C008','Course','Nhập môn cơ sở dữ liệu','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Master','published',43,'I008'),('C009','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Degree','Database','Beginner','published',11,'I009'),('C010','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Beginner','published',11,'I000'),('C011','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Degree','Database','Beginner','published',11,'I001'),('C012','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Master','published',11,'I002'),('C013','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Beginner','published',11,'I003'),('C014','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Degree','Database','Beginner','published',11,'I004'),('C015','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Master','published',11,'I005'),('C016','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Degree','Database','Master','published',11,'I006'),('C017','Course','Cơ sở dữ liệu (cơ bản)','Self-directed study','Vietnamese',0.00,'VND','Knowledge','Database','Beginner','published',11,'I007'),('C018','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Degree','Machine Learning','Master','published',20,'I008'),('C019','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Certificate','Machine Learning','Beginner','published',20,'I009'),('C020','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Knowledge','Machine Learning','Master','published',20,'I000'),('C021','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Certificate','Machine Learning','Beginner','published',20,'I001'),('C022','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Knowledge','Machine Learning','Beginner','published',20,'I002'),('C023','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Degree','Machine Learning','Master','published',20,'I003'),('C024','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Knowledge','Machine Learning','Beginner','published',20,'I004'),('C025','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Degree','Machine Learning','Master','published',20,'I005'),('C026','Course','Làm chủ ChatGPT','Self-directed study','English',0.00,'VND','Knowledge','Machine Learning','Beginner','published',20,'I006'),('C027','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Certificate','Web development','Master','published',63,'I007'),('C028','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Knowledge','Web development','Master','published',63,'I008'),('C029','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Knowledge','Web development','Master','published',63,'I009'),('C030','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Degree','Web development','Master','published',63,'I000'),('C031','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Certificate','Web development','Beginner','published',63,'I001'),('C032','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Degree','Web development','Beginner','published',63,'I002'),('C033','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Knowledge','Web development','Master','published',63,'I003'),('C034','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Degree','Web development','Master','published',63,'I004'),('C035','Course','HTML, CSS, Javascript for web developer','Self-directed study','English',0.00,'VND','Knowledge','Web development','Beginner','terminated',63,'I001'),('C036','Course','C# programing','Self-directed study','English',0.00,'VND','Knowledge','Web development','Beginner','terminated',26,'I002'),('C037','Course','C# programing','Self-directed study','English',0.00,'VND','Certificate','Web development','Master','mornitor',26,'I009'),('C038','Course','C# programing','Self-directed study','English',0.00,'VND','Knowledge','Web development','Beginner','mornitor',26,'I002'),('C039','Course','C# programing','Self-directed study','English',0.00,'VND','Degree','Web development','Beginner','mornitor',26,'I003'),('C040','Course','C# programing','Self-directed study','English',0.00,'VND','Knowledge','Web development','Beginner','created',26,'I009'),('C041','Course','C# programing','Self-directed study','English',0.00,'VND','Knowledge','Web development','Master','created',26,'I001'),('C042','Course','C# programing','Self-directed study','English',0.00,'VND','Degree','Web development','Beginner','created',26,'I002'),('C043','Course','C# programing','Self-directed study','English',0.00,'VND','Certificate','Web development','Beginner','created',26,'I003'),('C044','Course','C# programing','Self-directed study','English',0.00,'VND','Knowledge','Web development','Beginner','created',26,'I004');
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -99,12 +102,9 @@ DROP TABLE IF EXISTS `created_course`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `created_course` (
   `courseID` varchar(4) NOT NULL,
-  `userID` varchar(4) NOT NULL,
   `time` datetime NOT NULL,
   PRIMARY KEY (`courseID`),
-  KEY `userID` (`userID`),
-  CONSTRAINT `created_course_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `course` (`courseID`),
-  CONSTRAINT `created_course_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`)
+  CONSTRAINT `created_course_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `course` (`courseID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -114,7 +114,7 @@ CREATE TABLE `created_course` (
 
 LOCK TABLES `created_course` WRITE;
 /*!40000 ALTER TABLE `created_course` DISABLE KEYS */;
-INSERT INTO `created_course` VALUES ('C040','I009','2023-01-17 10:03:00'),('C041','I001','2024-02-20 11:11:11'),('C042','I002','2023-03-25 12:02:50'),('C043','I003','2024-04-21 13:00:04'),('C044','I004','2023-05-25 14:20:10');
+INSERT INTO `created_course` VALUES ('C040','2023-01-17 10:03:00'),('C041','2024-02-20 11:11:11'),('C042','2023-03-25 12:02:50'),('C043','2024-04-21 13:00:04'),('C044','2023-05-25 14:20:10');
 /*!40000 ALTER TABLE `created_course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,12 +210,9 @@ DROP TABLE IF EXISTS `published_course`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `published_course` (
   `courseID` varchar(4) NOT NULL,
-  `userID` varchar(4) NOT NULL,
   `time` datetime NOT NULL,
   PRIMARY KEY (`courseID`),
-  KEY `userID` (`userID`),
-  CONSTRAINT `published_course_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `course` (`courseID`),
-  CONSTRAINT `published_course_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`)
+  CONSTRAINT `published_course_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `course` (`courseID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -225,7 +222,7 @@ CREATE TABLE `published_course` (
 
 LOCK TABLES `published_course` WRITE;
 /*!40000 ALTER TABLE `published_course` DISABLE KEYS */;
-INSERT INTO `published_course` VALUES ('C000','I000','2013-01-15 10:00:00'),('C001','I001','2013-02-20 11:00:00'),('C002','I002','2013-03-25 12:00:00'),('C003','I003','2013-04-30 13:00:00'),('C004','I004','2013-05-15 14:00:00'),('C005','I005','2013-06-20 15:00:00'),('C006','I006','2013-07-25 16:00:00'),('C007','I007','2013-08-30 17:00:00'),('C008','I008','2013-09-15 18:00:00'),('C009','I009','2013-10-20 19:00:00'),('C010','I000','2014-01-15 10:00:00'),('C011','I001','2014-02-20 11:00:00'),('C012','I002','2014-03-25 12:00:00'),('C013','I003','2014-04-30 13:00:00'),('C014','I004','2014-05-15 14:00:00'),('C015','I005','2014-06-20 15:00:00'),('C016','I006','2014-07-25 16:00:00'),('C017','I007','2014-08-30 17:00:00'),('C018','I008','2014-09-15 18:00:00'),('C019','I009','2014-10-20 19:00:00'),('C020','I000','2015-01-15 10:00:00'),('C021','I001','2015-02-20 11:00:00'),('C022','I002','2015-03-25 12:00:00'),('C023','I003','2015-04-30 13:00:00'),('C024','I004','2015-05-15 14:00:00'),('C025','I005','2015-06-20 15:00:00'),('C026','I006','2015-07-25 16:00:00'),('C027','I007','2015-08-30 17:00:00'),('C028','I008','2015-09-15 18:00:00'),('C029','I009','2015-10-20 19:00:00'),('C030','I000','2015-11-15 20:00:00'),('C031','I001','2015-12-20 21:00:00'),('C032','I002','2015-12-20 21:30:00'),('C033','I003','2015-12-20 21:40:00'),('C034','I004','2015-12-20 21:40:01');
+INSERT INTO `published_course` VALUES ('C000','2013-01-15 10:00:00'),('C001','2013-02-20 11:00:00'),('C002','2013-03-25 12:00:00'),('C003','2013-04-30 13:00:00'),('C004','2013-05-15 14:00:00'),('C005','2013-06-20 15:00:00'),('C006','2013-07-25 16:00:00'),('C007','2013-08-30 17:00:00'),('C008','2013-09-15 18:00:00'),('C009','2013-10-20 19:00:00'),('C010','2014-01-15 10:00:00'),('C011','2014-02-20 11:00:00'),('C012','2014-03-25 12:00:00'),('C013','2014-04-30 13:00:00'),('C014','2014-05-15 14:00:00'),('C015','2014-06-20 15:00:00'),('C016','2014-07-25 16:00:00'),('C017','2014-08-30 17:00:00'),('C018','2014-09-15 18:00:00'),('C019','2014-10-20 19:00:00'),('C020','2015-01-15 10:00:00'),('C021','2015-02-20 11:00:00'),('C022','2015-03-25 12:00:00'),('C023','2015-04-30 13:00:00'),('C024','2015-05-15 14:00:00'),('C025','2015-06-20 15:00:00'),('C026','2015-07-25 16:00:00'),('C027','2015-08-30 17:00:00'),('C028','2015-09-15 18:00:00'),('C029','2015-10-20 19:00:00'),('C030','2015-11-15 20:00:00'),('C031','2015-12-20 21:00:00'),('C032','2015-12-20 21:30:00'),('C033','2015-12-20 21:40:00'),('C034','2015-12-20 21:40:01');
 /*!40000 ALTER TABLE `published_course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -295,12 +292,9 @@ DROP TABLE IF EXISTS `send_mornitor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `send_mornitor` (
   `courseID` varchar(4) NOT NULL,
-  `userID` varchar(4) NOT NULL,
   `time` datetime NOT NULL,
   PRIMARY KEY (`courseID`),
-  KEY `userID` (`userID`),
-  CONSTRAINT `send_mornitor_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `course` (`courseID`),
-  CONSTRAINT `send_mornitor_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`)
+  CONSTRAINT `send_mornitor_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `course` (`courseID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -310,7 +304,7 @@ CREATE TABLE `send_mornitor` (
 
 LOCK TABLES `send_mornitor` WRITE;
 /*!40000 ALTER TABLE `send_mornitor` DISABLE KEYS */;
-INSERT INTO `send_mornitor` VALUES ('C037','I009','2024-10-25 19:04:40'),('C038','I002','2024-01-12 22:30:04'),('C039','I003','2024-02-28 10:15:00');
+INSERT INTO `send_mornitor` VALUES ('C037','2024-10-25 19:04:40'),('C038','2024-01-12 22:30:04'),('C039','2024-02-28 10:15:00');
 /*!40000 ALTER TABLE `send_mornitor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -323,13 +317,10 @@ DROP TABLE IF EXISTS `terminated_course`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `terminated_course` (
   `courseID` varchar(4) NOT NULL,
-  `userID` varchar(4) NOT NULL,
   `to_time` datetime NOT NULL,
   `end_time` datetime DEFAULT NULL,
   PRIMARY KEY (`courseID`),
-  KEY `userID` (`userID`),
-  CONSTRAINT `terminated_course_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `course` (`courseID`),
-  CONSTRAINT `terminated_course_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`)
+  CONSTRAINT `terminated_course_ibfk_1` FOREIGN KEY (`courseID`) REFERENCES `course` (`courseID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -339,7 +330,7 @@ CREATE TABLE `terminated_course` (
 
 LOCK TABLES `terminated_course` WRITE;
 /*!40000 ALTER TABLE `terminated_course` DISABLE KEYS */;
-INSERT INTO `terminated_course` VALUES ('C035','I001','2024-05-25 10:00:00','2024-06-01 10:00:00'),('C036','I002','2024-05-25 11:00:00',NULL);
+INSERT INTO `terminated_course` VALUES ('C035','2024-05-25 10:00:00','2024-06-01 10:00:00'),('C036','2024-05-25 11:00:00',NULL);
 /*!40000 ALTER TABLE `terminated_course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -403,4 +394,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-29  6:47:40
+-- Dump completed on 2024-06-29 22:53:19

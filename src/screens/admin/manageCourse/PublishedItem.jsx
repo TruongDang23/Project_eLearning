@@ -1,31 +1,40 @@
 import styled from "styled-components";
+import { useState } from 'react'
+import { TerminateCourse } from '~/components/popup/index'
 
 export function Items({ courseItem }) {
+  const [openTer, setopenTer] = useState(false)
+
+  const toggleTer = () => { setopenTer(!openTer) }
+
   return (
-    <Wrapper>
-      <div key={courseItem.courseID} className="course-item">
-        <div className="image">
-          <img src={courseItem.image_introduce} alt='image' />
-        </div>
+    <>
+      <Wrapper>
+        <div key={courseItem.courseID} className="course-item">
+          <div className="image">
+            <img src={courseItem.image_introduce} alt='image' />
+          </div>
 
-        <div className="center_infor">
-          <h2>{courseItem.title}</h2>
-          <p><strong>Teacher:</strong> {courseItem.teacher}</p>
-          <p><strong>Method:</strong> {courseItem.method}</p>
-          <p><strong>Published Date:</strong> {courseItem.time}</p>
-          <p><strong>Program:</strong> {courseItem.program}</p>
-        </div>
+          <div className="center_infor">
+            <h2>{courseItem.title}</h2>
+            <p><strong>Teacher:</strong> {courseItem.teacher}</p>
+            <p><strong>Method:</strong> {courseItem.method}</p>
+            <p><strong>Published Date:</strong> {courseItem.time}</p>
+            <p><strong>Program:</strong> {courseItem.program}</p>
+          </div>
 
-        <div className="right_infor">
-          <h2>{courseItem.courseID}</h2>
-          <p>Published</p>
-          <div className="button">
-            <button>Go to course</button>
-            <button>Terminate</button>
+          <div className="right_infor">
+            <h2>{courseItem.courseID}</h2>
+            <p>Published</p>
+            <div className="button">
+              <button>Go to course</button>
+              <button onClick={toggleTer}>Terminate</button>
+            </div>
           </div>
         </div>
-      </div>
-    </Wrapper>
+      </Wrapper>
+      {openTer && <TerminateCourse handleClose={toggleTer} course={courseItem.courseID} />}
+    </>
   )
 }
 

@@ -19,7 +19,7 @@
     "bootstrap": "^5.3.3",
     "crypto-js": "^4.2.0",
     "date-fns": "^3.6.0",
-    "dayjs": "^1.11.10",
+    "dayjs": "^1.11.11",
     "express": "^4.19.2",
     "react": "^18.2.0",
     "react-calendar": "^5.0.0",
