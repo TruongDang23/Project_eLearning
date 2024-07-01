@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import StarRating from "./StarRating";
+import { Link } from 'react-router-dom'
 
 function Course({ course }) {
   const {
@@ -30,7 +31,9 @@ function Course({ course }) {
         </div>
       </div>
       <div className="item-btns">
-        <button className="item-btn see-details-btn">See Details</button>
+        <Link to={`/course/infor/${courseID}`}>
+          <button className="item-btn see-details-btn">See Details</button>
+        </Link>
         <button className="item-btn add-to-cart-btn">Add to Cart</button>
       </div>
     </CourseWrapper>

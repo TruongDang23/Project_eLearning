@@ -336,5 +336,69 @@ module.exports = (connMysql, connMongo) => {
 
   })
 
+  router.get('/loadDetailCourse', async (req, res) => {
+    const { courseID } = req.query;
+    connMysql.getConnection((err, connection) => {
+      if (err) {
+        res.status(500).send(err)
+      }
+      //Get detail information of course
+      let query = 'SELECT c.courseID,\
+                    u.fullname AS instructor,\
+                    type_of_course,\
+                    title,\
+                    method,\
+                    c.language,\
+                    price,\
+                    currency,\
+                    program,\
+                    category,\
+                    course_for,\
+                    status,\
+                    num_lecture,\
+                    avg.star,\
+                    num.number_enrolled\
+                  FROM course AS c\
+                  LEFT JOIN user AS u ON c.userID = u.userID\
+                  LEFT JOIN avg_rating AS avg ON c.courseID = avg.courseID\
+                  LEFT JOIN (SELECT courseID, count(*) AS number_enrolled\
+                              FROM enroll\
+                              GROUP BY courseID) AS num\
+                              ON num.courseID = c.courseID\
+                  WHERE c.courseID = ?'
+      connection.query(query, [courseID], async (error, courseInfor) => {
+        connection.release() //Giải phóng connection khi truy vấn xong
+        if (error) {
+          res.status(500).send(error)
+        }
+
+        //List courseIDs which is results of previous query
+        const courseIDs = courseInfor.map(course => course.courseID)
+
+        //Connect to MongoDB server
+        await connMongo
+        //Get image_introduce of each courseID
+        const mongoData = await Course.find({ courseID: { $in: courseIDs } }).select()
+
+        //Merge data with Mysql and MongoDB
+        const mergeData = courseInfor.map(course => {
+          const data = mongoData.find(mc => mc.courseID === course.courseID)
+          return {
+            ...course,
+            duration: 10, //chưa xử lý
+            review: [], //chưa xử lý
+            image_introduce: data.image_introduce,
+            video_introduce: data.video_introduce,
+            keywords: data.keywords,
+            targets: data.targets,
+            requirements: data.requirements,
+            chapters: data.chapters
+          }
+        })
+        res.send(mergeData)
+      })
+    })
+  })
+
   return router
 }

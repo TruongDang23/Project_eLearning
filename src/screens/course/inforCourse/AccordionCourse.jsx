@@ -46,7 +46,8 @@ function AccordionCourse({ inforCourseData }) {
             }}
           >
             <h3>
-              Chapter {index + 1}: {chapter.chapter_name}
+              {/* Chapter {index + 1}: {chapter.chapter_name} */}
+              Chapter {chapter.chapter_name}
             </h3>
           </AccordionSummary>
           <AccordionDetails>
