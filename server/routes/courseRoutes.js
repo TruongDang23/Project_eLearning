@@ -145,6 +145,37 @@ module.exports = (connMysql, connMongo) => {
     })
   }
 
+  const getReview = async (courseID) => {
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          return reject(err)
+        }
+
+        const query =
+        ` SELECT u.fullname AS reviewerName, message, star, time AS date
+          FROM rating AS r
+          LEFT JOIN user AS u ON r.userID = u.userID
+          WHERE courseID = ?`
+        connection.query(query, [courseID], (error, reviews) => {
+          connection.release()
+          if (error) {
+            return reject(error)
+          }
+
+          const finalData = reviews.map(rv => {
+            return {
+              ...rv,
+              date: formatDateTime(rv.date)
+            }
+          })
+
+          resolve(finalData)
+        })
+      })
+    })
+  }
+
   // Define user-related routes
   router.get('/getPublishCourse', verifyToken, (req, res) => {
     connMysql.getConnection((err, connection) => {
@@ -372,27 +403,26 @@ module.exports = (connMysql, connMongo) => {
           res.status(500).send(error)
         }
 
-        //List courseIDs which is results of previous query
-        const courseIDs = courseInfor.map(course => course.courseID)
-
         //Connect to MongoDB server
         await connMongo
-        //Get image_introduce of each courseID
-        const mongoData = await Course.find({ courseID: { $in: courseIDs } }).select()
+        //Get mongoData. MongoData wil be return an array which 1 element so we will get data at index 0
+        const mongoData = await Course.find({ courseID: { $in: courseID } }).select()
 
-        //Merge data with Mysql and MongoDB
+        //Get review of this course
+        const review = await getReview(courseID)
+
+        //Merge data with Mysql + MongoDB + Reviewer
         const mergeData = courseInfor.map(course => {
-          const data = mongoData.find(mc => mc.courseID === course.courseID)
           return {
             ...course,
             duration: 10, //chưa xử lý
-            review: [], //chưa xử lý
-            image_introduce: data.image_introduce,
-            video_introduce: data.video_introduce,
-            keywords: data.keywords,
-            targets: data.targets,
-            requirements: data.requirements,
-            chapters: data.chapters
+            review: review,
+            image_introduce: mongoData[0].image_introduce,
+            video_introduce: mongoData[0].video_introduce,
+            keywords: mongoData[0].keywords,
+            targets: mongoData[0].targets,
+            requirements: mongoData[0].requirements,
+            chapters: mongoData[0].chapters
           }
         })
         res.send(mergeData)
