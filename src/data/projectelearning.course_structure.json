@@ -1925,6 +1925,7 @@
         {
           "id": 1,
           "name": "Video chapter 1",
+          "description": "Video giới thiệu cơ bản về dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT01/Ba%CC%80i%201%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -1955,6 +1956,7 @@
         {
           "id": 2,
           "name": "Video chapter 2",
+          "description": "Định nghĩa 2 loại dữ liệu: Có cấu trúc | Phi cấu trúc",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT02/Bai%202%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20co%CC%81%20c%C3%A2%CC%81u%20tru%CC%81c%20va%CC%80%20phi%20c%C3%A2%CC%81u%20%20tru%CC%81c%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -1985,6 +1987,7 @@
         {
           "id": 3,
           "name": "Video chapter 3",
+          "description": "Video giới thiệu về một số khái niệm liên quan đến database",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT03/Ba%CC%80i%203%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -1997,6 +2000,7 @@
         {
           "id": 4,
           "name": "Video chapter 4",
+          "description": "Table là khái niệm quan trọng nhất của database. Nơi lưu trữ dữ liệu của ứng dụng. Các bạn cần hiểu rõ khái niệm này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT04/Ba%CC%80i%204%20Table%20trong%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2016,6 +2020,7 @@
         {
           "id": 5,
           "name": "Video chapter 5",
+          "description": "Kiểu dữ liệu là một nội dung cần được hiểu sâu nhằm dễ dàng thao tác trong ứng dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT05/Ba%CC%80i%205%20Ki%C3%AA%CC%89u%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -2028,6 +2033,7 @@
         {
           "id": 6,
           "name": "Video chapter 6",
+          "description": "Primary key đóng vai trò kết nối các table lại với nhau. Foreign key đóng vai trò đảm bảo tính ràng buộc và đúng đắn của dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT06/Ba%CC%80i%206%20Kho%CC%81a%20chi%CC%81nh%20-%20Primary%20Key%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -2040,6 +2046,7 @@
         {
           "id": 7,
           "name": "Video chapter 7",
+          "description": "Constraint là một khái niệm quan trọng trong database.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT07/Ba%CC%80i%207%20Ra%CC%80ng%20bu%C3%B4%CC%A3c%20-%20Constraint%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2059,6 +2066,7 @@
         {
           "id": 8,
           "name": "Video chapter 8",
+          "description": "Video giải thích về khóa ngoại. Những kiến thức cần biết về loại khóa quan trọng này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT08/Ba%CC%80i%208%20Kho%CC%81a%20ngoa%CC%A3i%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2078,6 +2086,7 @@
         {
           "id": 9,
           "name": "Video chapter 9",
+          "description": "Kết hợp dữ liệu, hay còn gọi là Join sẽ đóng vai trò quan trọng trong việc phân chia dữ liệu ra nhiều table khác nhau và kết hợp chúng lại để hiển thị",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT09/Ba%CC%80i%209%20Kha%CC%81i%20ni%C3%AA%CC%A3m%20v%C3%AA%CC%80%20k%C3%AA%CC%81t%20h%C6%A1%CC%A3p%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20(Join)%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2097,6 +2106,7 @@
         {
           "id": 10,
           "name": "Video chapter 10",
+          "description": "Cách vẽ lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT10/Ba%CC%80i%2010%20Diagram%20trong%20Database%20la%CC%80%20gi%CC%80%20%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2194,6 +2204,7 @@
         {
           "id": 1,
           "name": "Video chapter 1",
+          "description": "Video giới thiệu cơ bản về dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT01/Ba%CC%80i%201%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2224,6 +2235,7 @@
         {
           "id": 2,
           "name": "Video chapter 2",
+          "description": "Định nghĩa 2 loại dữ liệu: Có cấu trúc | Phi cấu trúc",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT02/Bai%202%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20co%CC%81%20c%C3%A2%CC%81u%20tru%CC%81c%20va%CC%80%20phi%20c%C3%A2%CC%81u%20%20tru%CC%81c%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2254,6 +2266,7 @@
         {
           "id": 3,
           "name": "Video chapter 3",
+          "description": "Video giới thiệu về một số khái niệm liên quan đến database",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT03/Ba%CC%80i%203%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -2266,6 +2279,7 @@
         {
           "id": 4,
           "name": "Video chapter 4",
+          "description": "Table là khái niệm quan trọng nhất của database. Nơi lưu trữ dữ liệu của ứng dụng. Các bạn cần hiểu rõ khái niệm này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT04/Ba%CC%80i%204%20Table%20trong%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2285,6 +2299,7 @@
         {
           "id": 5,
           "name": "Video chapter 5",
+          "description": "Kiểu dữ liệu là một nội dung cần được hiểu sâu nhằm dễ dàng thao tác trong ứng dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT05/Ba%CC%80i%205%20Ki%C3%AA%CC%89u%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -2297,6 +2312,7 @@
         {
           "id": 6,
           "name": "Video chapter 6",
+          "description": "Primary key đóng vai trò kết nối các table lại với nhau. Foreign key đóng vai trò đảm bảo tính ràng buộc và đúng đắn của dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT06/Ba%CC%80i%206%20Kho%CC%81a%20chi%CC%81nh%20-%20Primary%20Key%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -2309,6 +2325,7 @@
         {
           "id": 7,
           "name": "Video chapter 7",
+          "description": "Constraint là một khái niệm quan trọng trong database.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT07/Ba%CC%80i%207%20Ra%CC%80ng%20bu%C3%B4%CC%A3c%20-%20Constraint%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2328,6 +2345,7 @@
         {
           "id": 8,
           "name": "Video chapter 8",
+          "description": "Video giải thích về khóa ngoại. Những kiến thức cần biết về loại khóa quan trọng này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT08/Ba%CC%80i%208%20Kho%CC%81a%20ngoa%CC%A3i%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2347,6 +2365,7 @@
         {
           "id": 9,
           "name": "Video chapter 9",
+          "description": "Kết hợp dữ liệu, hay còn gọi là Join sẽ đóng vai trò quan trọng trong việc phân chia dữ liệu ra nhiều table khác nhau và kết hợp chúng lại để hiển thị",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT09/Ba%CC%80i%209%20Kha%CC%81i%20ni%C3%AA%CC%A3m%20v%C3%AA%CC%80%20k%C3%AA%CC%81t%20h%C6%A1%CC%A3p%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20(Join)%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2366,6 +2385,7 @@
         {
           "id": 10,
           "name": "Video chapter 10",
+          "description": "Cách vẽ lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT10/Ba%CC%80i%2010%20Diagram%20trong%20Database%20la%CC%80%20gi%CC%80%20%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2463,6 +2483,7 @@
         {
           "id": 1,
           "name": "Video chapter 1",
+          "description": "Video giới thiệu cơ bản về dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT01/Ba%CC%80i%201%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2493,6 +2514,7 @@
         {
           "id": 2,
           "name": "Video chapter 2",
+          "description": "Định nghĩa 2 loại dữ liệu: Có cấu trúc | Phi cấu trúc",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT02/Bai%202%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20co%CC%81%20c%C3%A2%CC%81u%20tru%CC%81c%20va%CC%80%20phi%20c%C3%A2%CC%81u%20%20tru%CC%81c%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2523,6 +2545,7 @@
         {
           "id": 3,
           "name": "Video chapter 3",
+          "description": "Video giới thiệu về một số khái niệm liên quan đến database",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT03/Ba%CC%80i%203%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -2535,6 +2558,7 @@
         {
           "id": 4,
           "name": "Video chapter 4",
+          "description": "Table là khái niệm quan trọng nhất của database. Nơi lưu trữ dữ liệu của ứng dụng. Các bạn cần hiểu rõ khái niệm này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT04/Ba%CC%80i%204%20Table%20trong%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2554,6 +2578,7 @@
         {
           "id": 5,
           "name": "Video chapter 5",
+          "description": "Kiểu dữ liệu là một nội dung cần được hiểu sâu nhằm dễ dàng thao tác trong ứng dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT05/Ba%CC%80i%205%20Ki%C3%AA%CC%89u%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -2566,6 +2591,7 @@
         {
           "id": 6,
           "name": "Video chapter 6",
+          "description": "Primary key đóng vai trò kết nối các table lại với nhau. Foreign key đóng vai trò đảm bảo tính ràng buộc và đúng đắn của dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT06/Ba%CC%80i%206%20Kho%CC%81a%20chi%CC%81nh%20-%20Primary%20Key%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -2578,6 +2604,7 @@
         {
           "id": 7,
           "name": "Video chapter 7",
+          "description": "Constraint là một khái niệm quan trọng trong database.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT07/Ba%CC%80i%207%20Ra%CC%80ng%20bu%C3%B4%CC%A3c%20-%20Constraint%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2597,6 +2624,7 @@
         {
           "id": 8,
           "name": "Video chapter 8",
+          "description": "Video giải thích về khóa ngoại. Những kiến thức cần biết về loại khóa quan trọng này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT08/Ba%CC%80i%208%20Kho%CC%81a%20ngoa%CC%A3i%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2616,6 +2644,7 @@
         {
           "id": 9,
           "name": "Video chapter 9",
+          "description": "Kết hợp dữ liệu, hay còn gọi là Join sẽ đóng vai trò quan trọng trong việc phân chia dữ liệu ra nhiều table khác nhau và kết hợp chúng lại để hiển thị",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT09/Ba%CC%80i%209%20Kha%CC%81i%20ni%C3%AA%CC%A3m%20v%C3%AA%CC%80%20k%C3%AA%CC%81t%20h%C6%A1%CC%A3p%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20(Join)%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -2635,6 +2664,7 @@
         {
           "id": 10,
           "name": "Video chapter 10",
+          "description": "Cách vẽ lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT10/Ba%CC%80i%2010%20Diagram%20trong%20Database%20la%CC%80%20gi%CC%80%20%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -5052,6 +5082,7 @@
         {
           "id": 1,
           "name": "Video chapter 1",
+          "description": "Video giới thiệu cơ bản về dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT01/Ba%CC%80i%201%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -5082,6 +5113,7 @@
         {
           "id": 2,
           "name": "Video chapter 2",
+          "description": "Định nghĩa 2 loại dữ liệu: Có cấu trúc | Phi cấu trúc",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT02/Bai%202%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20co%CC%81%20c%C3%A2%CC%81u%20tru%CC%81c%20va%CC%80%20phi%20c%C3%A2%CC%81u%20%20tru%CC%81c%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -5112,6 +5144,7 @@
         {
           "id": 3,
           "name": "Video chapter 3",
+          "description": "Video giới thiệu về một số khái niệm liên quan đến database",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT03/Ba%CC%80i%203%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -5124,6 +5157,7 @@
         {
           "id": 4,
           "name": "Video chapter 4",
+          "description": "Table là khái niệm quan trọng nhất của database. Nơi lưu trữ dữ liệu của ứng dụng. Các bạn cần hiểu rõ khái niệm này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT04/Ba%CC%80i%204%20Table%20trong%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -5143,6 +5177,7 @@
         {
           "id": 5,
           "name": "Video chapter 5",
+          "description": "Kiểu dữ liệu là một nội dung cần được hiểu sâu nhằm dễ dàng thao tác trong ứng dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT05/Ba%CC%80i%205%20Ki%C3%AA%CC%89u%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -5155,6 +5190,7 @@
         {
           "id": 6,
           "name": "Video chapter 6",
+          "description": "Primary key đóng vai trò kết nối các table lại với nhau. Foreign key đóng vai trò đảm bảo tính ràng buộc và đúng đắn của dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT06/Ba%CC%80i%206%20Kho%CC%81a%20chi%CC%81nh%20-%20Primary%20Key%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -5167,6 +5203,7 @@
         {
           "id": 7,
           "name": "Video chapter 7",
+          "description": "Constraint là một khái niệm quan trọng trong database.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT07/Ba%CC%80i%207%20Ra%CC%80ng%20bu%C3%B4%CC%A3c%20-%20Constraint%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -5186,6 +5223,7 @@
         {
           "id": 8,
           "name": "Video chapter 8",
+          "description": "Video giải thích về khóa ngoại. Những kiến thức cần biết về loại khóa quan trọng này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT08/Ba%CC%80i%208%20Kho%CC%81a%20ngoa%CC%A3i%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -5205,6 +5243,7 @@
         {
           "id": 9,
           "name": "Video chapter 9",
+          "description": "Kết hợp dữ liệu, hay còn gọi là Join sẽ đóng vai trò quan trọng trong việc phân chia dữ liệu ra nhiều table khác nhau và kết hợp chúng lại để hiển thị",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT09/Ba%CC%80i%209%20Kha%CC%81i%20ni%C3%AA%CC%A3m%20v%C3%AA%CC%80%20k%C3%AA%CC%81t%20h%C6%A1%CC%A3p%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20(Join)%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -5224,6 +5263,7 @@
         {
           "id": 10,
           "name": "Video chapter 10",
+          "description": "Cách vẽ lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT10/Ba%CC%80i%2010%20Diagram%20trong%20Database%20la%CC%80%20gi%CC%80%20%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -5321,6 +5361,7 @@
         {
           "id": 1,
           "name": "Video chapter 1",
+          "description": "Video giới thiệu cơ bản về dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT01/Ba%CC%80i%201%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -5351,6 +5392,7 @@
         {
           "id": 2,
           "name": "Video chapter 2",
+          "description": "Định nghĩa 2 loại dữ liệu: Có cấu trúc | Phi cấu trúc",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT02/Bai%202%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20co%CC%81%20c%C3%A2%CC%81u%20tru%CC%81c%20va%CC%80%20phi%20c%C3%A2%CC%81u%20%20tru%CC%81c%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -5381,6 +5423,7 @@
         {
           "id": 3,
           "name": "Video chapter 3",
+          "description": "Video giới thiệu về một số khái niệm liên quan đến database",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT03/Ba%CC%80i%203%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -5393,6 +5436,7 @@
         {
           "id": 4,
           "name": "Video chapter 4",
+          "description": "Table là khái niệm quan trọng nhất của database. Nơi lưu trữ dữ liệu của ứng dụng. Các bạn cần hiểu rõ khái niệm này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT04/Ba%CC%80i%204%20Table%20trong%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -5412,6 +5456,7 @@
         {
           "id": 5,
           "name": "Video chapter 5",
+          "description": "Kiểu dữ liệu là một nội dung cần được hiểu sâu nhằm dễ dàng thao tác trong ứng dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT05/Ba%CC%80i%205%20Ki%C3%AA%CC%89u%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -5424,6 +5469,7 @@
         {
           "id": 6,
           "name": "Video chapter 6",
+          "description": "Primary key đóng vai trò kết nối các table lại với nhau. Foreign key đóng vai trò đảm bảo tính ràng buộc và đúng đắn của dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT06/Ba%CC%80i%206%20Kho%CC%81a%20chi%CC%81nh%20-%20Primary%20Key%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -5436,6 +5482,7 @@
         {
           "id": 7,
           "name": "Video chapter 7",
+          "description": "Constraint là một khái niệm quan trọng trong database.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT07/Ba%CC%80i%207%20Ra%CC%80ng%20bu%C3%B4%CC%A3c%20-%20Constraint%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -5455,6 +5502,7 @@
         {
           "id": 8,
           "name": "Video chapter 8",
+          "description": "Video giải thích về khóa ngoại. Những kiến thức cần biết về loại khóa quan trọng này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT08/Ba%CC%80i%208%20Kho%CC%81a%20ngoa%CC%A3i%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -5474,6 +5522,7 @@
         {
           "id": 9,
           "name": "Video chapter 9",
+          "description": "Kết hợp dữ liệu, hay còn gọi là Join sẽ đóng vai trò quan trọng trong việc phân chia dữ liệu ra nhiều table khác nhau và kết hợp chúng lại để hiển thị",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT09/Ba%CC%80i%209%20Kha%CC%81i%20ni%C3%AA%CC%A3m%20v%C3%AA%CC%80%20k%C3%AA%CC%81t%20h%C6%A1%CC%A3p%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20(Join)%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -5493,6 +5542,7 @@
         {
           "id": 10,
           "name": "Video chapter 10",
+          "description": "Cách vẽ lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT10/Ba%CC%80i%2010%20Diagram%20trong%20Database%20la%CC%80%20gi%CC%80%20%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -7458,6 +7508,7 @@
         {
           "id": 1,
           "name": "Video chapter 1",
+          "description": "Video giới thiệu cơ bản về dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT01/Ba%CC%80i%201%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -7488,6 +7539,7 @@
         {
           "id": 2,
           "name": "Video chapter 2",
+          "description": "Định nghĩa 2 loại dữ liệu: Có cấu trúc | Phi cấu trúc",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT02/Bai%202%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20co%CC%81%20c%C3%A2%CC%81u%20tru%CC%81c%20va%CC%80%20phi%20c%C3%A2%CC%81u%20%20tru%CC%81c%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -7518,6 +7570,7 @@
         {
           "id": 3,
           "name": "Video chapter 3",
+          "description": "Video giới thiệu về một số khái niệm liên quan đến database",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT03/Ba%CC%80i%203%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -7530,6 +7583,7 @@
         {
           "id": 4,
           "name": "Video chapter 4",
+          "description": "Table là khái niệm quan trọng nhất của database. Nơi lưu trữ dữ liệu của ứng dụng. Các bạn cần hiểu rõ khái niệm này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT04/Ba%CC%80i%204%20Table%20trong%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -7549,6 +7603,7 @@
         {
           "id": 5,
           "name": "Video chapter 5",
+          "description": "Kiểu dữ liệu là một nội dung cần được hiểu sâu nhằm dễ dàng thao tác trong ứng dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT05/Ba%CC%80i%205%20Ki%C3%AA%CC%89u%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -7561,6 +7616,7 @@
         {
           "id": 6,
           "name": "Video chapter 6",
+          "description": "Primary key đóng vai trò kết nối các table lại với nhau. Foreign key đóng vai trò đảm bảo tính ràng buộc và đúng đắn của dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT06/Ba%CC%80i%206%20Kho%CC%81a%20chi%CC%81nh%20-%20Primary%20Key%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -7573,6 +7629,7 @@
         {
           "id": 7,
           "name": "Video chapter 7",
+          "description": "Constraint là một khái niệm quan trọng trong database.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT07/Ba%CC%80i%207%20Ra%CC%80ng%20bu%C3%B4%CC%A3c%20-%20Constraint%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -7592,6 +7649,7 @@
         {
           "id": 8,
           "name": "Video chapter 8",
+          "description": "Video giải thích về khóa ngoại. Những kiến thức cần biết về loại khóa quan trọng này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT08/Ba%CC%80i%208%20Kho%CC%81a%20ngoa%CC%A3i%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -7611,6 +7669,7 @@
         {
           "id": 9,
           "name": "Video chapter 9",
+          "description": "Kết hợp dữ liệu, hay còn gọi là Join sẽ đóng vai trò quan trọng trong việc phân chia dữ liệu ra nhiều table khác nhau và kết hợp chúng lại để hiển thị",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT09/Ba%CC%80i%209%20Kha%CC%81i%20ni%C3%AA%CC%A3m%20v%C3%AA%CC%80%20k%C3%AA%CC%81t%20h%C6%A1%CC%A3p%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20(Join)%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -7630,6 +7689,7 @@
         {
           "id": 10,
           "name": "Video chapter 10",
+          "description": "Cách vẽ lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT10/Ba%CC%80i%2010%20Diagram%20trong%20Database%20la%CC%80%20gi%CC%80%20%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -7727,6 +7787,7 @@
         {
           "id": 1,
           "name": "Video chapter 1",
+          "description": "Video giới thiệu cơ bản về dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT01/Ba%CC%80i%201%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -7757,6 +7818,7 @@
         {
           "id": 2,
           "name": "Video chapter 2",
+          "description": "Định nghĩa 2 loại dữ liệu: Có cấu trúc | Phi cấu trúc",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT02/Bai%202%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20co%CC%81%20c%C3%A2%CC%81u%20tru%CC%81c%20va%CC%80%20phi%20c%C3%A2%CC%81u%20%20tru%CC%81c%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -7787,6 +7849,7 @@
         {
           "id": 3,
           "name": "Video chapter 3",
+          "description": "Video giới thiệu về một số khái niệm liên quan đến database",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT03/Ba%CC%80i%203%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -7799,6 +7862,7 @@
         {
           "id": 4,
           "name": "Video chapter 4",
+          "description": "Table là khái niệm quan trọng nhất của database. Nơi lưu trữ dữ liệu của ứng dụng. Các bạn cần hiểu rõ khái niệm này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT04/Ba%CC%80i%204%20Table%20trong%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -7818,6 +7882,7 @@
         {
           "id": 5,
           "name": "Video chapter 5",
+          "description": "Kiểu dữ liệu là một nội dung cần được hiểu sâu nhằm dễ dàng thao tác trong ứng dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT05/Ba%CC%80i%205%20Ki%C3%AA%CC%89u%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -7830,6 +7895,7 @@
         {
           "id": 6,
           "name": "Video chapter 6",
+          "description": "Primary key đóng vai trò kết nối các table lại với nhau. Foreign key đóng vai trò đảm bảo tính ràng buộc và đúng đắn của dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT06/Ba%CC%80i%206%20Kho%CC%81a%20chi%CC%81nh%20-%20Primary%20Key%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -7842,6 +7908,7 @@
         {
           "id": 7,
           "name": "Video chapter 7",
+          "description": "Constraint là một khái niệm quan trọng trong database.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT07/Ba%CC%80i%207%20Ra%CC%80ng%20bu%C3%B4%CC%A3c%20-%20Constraint%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -7861,6 +7928,7 @@
         {
           "id": 8,
           "name": "Video chapter 8",
+          "description": "Video giải thích về khóa ngoại. Những kiến thức cần biết về loại khóa quan trọng này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT08/Ba%CC%80i%208%20Kho%CC%81a%20ngoa%CC%A3i%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -7880,6 +7948,7 @@
         {
           "id": 9,
           "name": "Video chapter 9",
+          "description": "Kết hợp dữ liệu, hay còn gọi là Join sẽ đóng vai trò quan trọng trong việc phân chia dữ liệu ra nhiều table khác nhau và kết hợp chúng lại để hiển thị",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT09/Ba%CC%80i%209%20Kha%CC%81i%20ni%C3%AA%CC%A3m%20v%C3%AA%CC%80%20k%C3%AA%CC%81t%20h%C6%A1%CC%A3p%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20(Join)%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -7899,6 +7968,7 @@
         {
           "id": 10,
           "name": "Video chapter 10",
+          "description": "Cách vẽ lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT10/Ba%CC%80i%2010%20Diagram%20trong%20Database%20la%CC%80%20gi%CC%80%20%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -7996,6 +8066,7 @@
         {
           "id": 1,
           "name": "Video chapter 1",
+          "description": "Video giới thiệu cơ bản về dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT01/Ba%CC%80i%201%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -8026,6 +8097,7 @@
         {
           "id": 2,
           "name": "Video chapter 2",
+          "description": "Định nghĩa 2 loại dữ liệu: Có cấu trúc | Phi cấu trúc",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT02/Bai%202%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20co%CC%81%20c%C3%A2%CC%81u%20tru%CC%81c%20va%CC%80%20phi%20c%C3%A2%CC%81u%20%20tru%CC%81c%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -8056,6 +8128,7 @@
         {
           "id": 3,
           "name": "Video chapter 3",
+          "description": "Video giới thiệu về một số khái niệm liên quan đến database",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT03/Ba%CC%80i%203%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -8068,6 +8141,7 @@
         {
           "id": 4,
           "name": "Video chapter 4",
+          "description": "Table là khái niệm quan trọng nhất của database. Nơi lưu trữ dữ liệu của ứng dụng. Các bạn cần hiểu rõ khái niệm này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT04/Ba%CC%80i%204%20Table%20trong%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -8087,6 +8161,7 @@
         {
           "id": 5,
           "name": "Video chapter 5",
+          "description": "Kiểu dữ liệu là một nội dung cần được hiểu sâu nhằm dễ dàng thao tác trong ứng dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT05/Ba%CC%80i%205%20Ki%C3%AA%CC%89u%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -8099,6 +8174,7 @@
         {
           "id": 6,
           "name": "Video chapter 6",
+          "description": "Primary key đóng vai trò kết nối các table lại với nhau. Foreign key đóng vai trò đảm bảo tính ràng buộc và đúng đắn của dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT06/Ba%CC%80i%206%20Kho%CC%81a%20chi%CC%81nh%20-%20Primary%20Key%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -8111,6 +8187,7 @@
         {
           "id": 7,
           "name": "Video chapter 7",
+          "description": "Constraint là một khái niệm quan trọng trong database.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT07/Ba%CC%80i%207%20Ra%CC%80ng%20bu%C3%B4%CC%A3c%20-%20Constraint%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -8130,6 +8207,7 @@
         {
           "id": 8,
           "name": "Video chapter 8",
+          "description": "Video giải thích về khóa ngoại. Những kiến thức cần biết về loại khóa quan trọng này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT08/Ba%CC%80i%208%20Kho%CC%81a%20ngoa%CC%A3i%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -8149,6 +8227,7 @@
         {
           "id": 9,
           "name": "Video chapter 9",
+          "description": "Kết hợp dữ liệu, hay còn gọi là Join sẽ đóng vai trò quan trọng trong việc phân chia dữ liệu ra nhiều table khác nhau và kết hợp chúng lại để hiển thị",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT09/Ba%CC%80i%209%20Kha%CC%81i%20ni%C3%AA%CC%A3m%20v%C3%AA%CC%80%20k%C3%AA%CC%81t%20h%C6%A1%CC%A3p%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20(Join)%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -8168,6 +8247,7 @@
         {
           "id": 10,
           "name": "Video chapter 10",
+          "description": "Cách vẽ lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT10/Ba%CC%80i%2010%20Diagram%20trong%20Database%20la%CC%80%20gi%CC%80%20%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -8265,6 +8345,7 @@
         {
           "id": 1,
           "name": "Video chapter 1",
+          "description": "Video giới thiệu cơ bản về dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT01/Ba%CC%80i%201%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -8295,6 +8376,7 @@
         {
           "id": 2,
           "name": "Video chapter 2",
+          "description": "Định nghĩa 2 loại dữ liệu: Có cấu trúc | Phi cấu trúc",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT02/Bai%202%20D%C6%B0%CC%83%20li%C3%AA%CC%A3u%20co%CC%81%20c%C3%A2%CC%81u%20tru%CC%81c%20va%CC%80%20phi%20c%C3%A2%CC%81u%20%20tru%CC%81c%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -8325,6 +8407,7 @@
         {
           "id": 3,
           "name": "Video chapter 3",
+          "description": "Video giới thiệu về một số khái niệm liên quan đến database",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT03/Ba%CC%80i%203%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -8337,6 +8420,7 @@
         {
           "id": 4,
           "name": "Video chapter 4",
+          "description": "Table là khái niệm quan trọng nhất của database. Nơi lưu trữ dữ liệu của ứng dụng. Các bạn cần hiểu rõ khái niệm này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT04/Ba%CC%80i%204%20Table%20trong%20Database%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -8356,6 +8440,7 @@
         {
           "id": 5,
           "name": "Video chapter 5",
+          "description": "Kiểu dữ liệu là một nội dung cần được hiểu sâu nhằm dễ dàng thao tác trong ứng dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT05/Ba%CC%80i%205%20Ki%C3%AA%CC%89u%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -8368,6 +8453,7 @@
         {
           "id": 6,
           "name": "Video chapter 6",
+          "description": "Primary key đóng vai trò kết nối các table lại với nhau. Foreign key đóng vai trò đảm bảo tính ràng buộc và đúng đắn của dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT06/Ba%CC%80i%206%20Kho%CC%81a%20chi%CC%81nh%20-%20Primary%20Key%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": []
@@ -8380,6 +8466,7 @@
         {
           "id": 7,
           "name": "Video chapter 7",
+          "description": "Constraint là một khái niệm quan trọng trong database.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT07/Ba%CC%80i%207%20Ra%CC%80ng%20bu%C3%B4%CC%A3c%20-%20Constraint%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -8399,6 +8486,7 @@
         {
           "id": 8,
           "name": "Video chapter 8",
+          "description": "Video giải thích về khóa ngoại. Những kiến thức cần biết về loại khóa quan trọng này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT08/Ba%CC%80i%208%20Kho%CC%81a%20ngoa%CC%A3i%20la%CC%80%20gi%CC%80%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -8418,6 +8506,7 @@
         {
           "id": 9,
           "name": "Video chapter 9",
+          "description": "Kết hợp dữ liệu, hay còn gọi là Join sẽ đóng vai trò quan trọng trong việc phân chia dữ liệu ra nhiều table khác nhau và kết hợp chúng lại để hiển thị",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT09/Ba%CC%80i%209%20Kha%CC%81i%20ni%C3%AA%CC%A3m%20v%C3%AA%CC%80%20k%C3%AA%CC%81t%20h%C6%A1%CC%A3p%20d%C6%B0%CC%83%20li%C3%AA%CC%A3u%20(Join)%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
@@ -8437,6 +8526,7 @@
         {
           "id": 10,
           "name": "Video chapter 10",
+          "description": "Cách vẽ lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C001/CT10/Ba%CC%80i%2010%20Diagram%20trong%20Database%20la%CC%80%20gi%CC%80%20%20_%20Nh%C6%B0%CC%83ng%20kha%CC%81i%20ni%C3%AA%CC%A3m%20pha%CC%89i%20bi%C3%AA%CC%81t%20v%C3%AA%CC%80%20database.mp4",
           "QnA": [
