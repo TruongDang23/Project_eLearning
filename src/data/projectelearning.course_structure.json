@@ -764,6 +764,7 @@
         {
           "id": 1,
           "name": "Trò chuyện về AI",
+          "description": "Cùng trò chuyện về lĩnh vực mới nổi gần đây nhé. Sẽ giúp cho các bạn có định hướng về AI đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%201%20Tr%C3%B2%20chuy%E1%BB%87n%20v%E1%BB%81%20AI.mp4",
           "QnA": []
@@ -771,6 +772,7 @@
         {
           "id": 2,
           "name": "Tổng quan về AI và ChatGPT",
+          "description": "AI là gì? Cùng làm rõ trong video lần này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%202%20T%E1%BB%95ng%20quan%20v%E1%BB%81%20AI%20v%C3%A0%20Chat%20GPT.mp4",
           "QnA": [
@@ -823,6 +825,7 @@
         {
           "id": 3,
           "name": "Tại sao AI và ChatGPT lại là xu hướng của Thế Giới?",
+          "description": "Cùng xem GPT là gì? Và tại sao nó lại tạo ra một làn sóng công nghệ nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%203%20T%E1%BA%A1i%20sao%20AI%20v%C3%A0%20Chat%20GPT%20l%E1%BA%A1i%20l%C3%A0%20xu%20h%C6%B0%E1%BB%9Bng%20c%E1%BB%A7a%20Th%E1%BA%BF%20gi%E1%BB%9Bi.mp4",
           "QnA": [
@@ -880,6 +883,7 @@
         {
           "id": 4,
           "name": "Cơ bản về câu lệnh",
+          "description": "Hỏi như thế nào để GPT đưa ra câu trả lời tốt nhất? Cùng học phương pháp đặt câu hỏi nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%204%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -887,6 +891,7 @@
         {
           "id": 5,
           "name": "Các mẹo hay về câu lệnh",
+          "description": "Những mẹo hay có thể ứng dụng trong lúc đặt câu hỏi cho GPT",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%205%20C%C3%A1c%20m%E1%BA%B9o%20hay%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -894,6 +899,7 @@
         {
           "id": 6,
           "name": "Các promt hay nhất định bạn cần biết",
+          "description": "Promt là một khái niệm quan trọng để bạn hiểu được cách mà mô hình hiểu câu hỏi của bạn. Thông qua kiến thức về promt, bạn có thể tối ưu cách đặt câu hỏi của mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%206%20C%C3%A1c%20Promt%20hay%20nh%E1%BA%A5t%20%C4%91%E1%BB%8Bnh%20b%E1%BA%A1n%20c%E1%BA%A7n%20bi%E1%BA%BFt.mp4",
           "QnA": []
@@ -901,6 +907,7 @@
         {
           "id": 7,
           "name": "Chia nhỏ kết quả cuối cùng thành nhiều bước",
+          "description": "Việc lặp đi lặp lại quá trình đặt câu hỏi sẽ giúp cho mô hình đưa ra câu trả lời tốt nhất",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%207%20Chia%20nh%E1%BB%8F%20k%E1%BA%BFt%20qu%E1%BA%A3%20cu%E1%BB%91i%20c%C3%B9ng%20th%C3%A0nh%20nhi%E1%BB%81u%20b%C6%B0%E1%BB%9Bc.mp4",
           "QnA": []
@@ -936,6 +943,7 @@
         {
           "id": 12,
           "name": "Trợ lý nghiên cứu đắc lực",
+          "description": "Sử dụng Chat GPT có thể giúp bạn hiểu được nhiều thể loại kiến thức một cách tổng quan. Nếu biết cách khai thác, đây sẽ là một trợ thủ đắc lực",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2012%20Tr%E1%BB%A3%20l%C3%BD%20nghi%C3%AAn%20c%E1%BB%A9u%20%C4%91%E1%BA%AFc%20l%E1%BB%B1c.mp4",
           "QnA": []
@@ -985,6 +993,7 @@
         {
           "id": 19,
           "name": "Những chia sẻ của học viên trước",
+          "description": "Cùng xem những học viên trước đánh giá khóa học này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2019%20Chia%20s%E1%BA%BB%20c%E1%BB%A7a%20h%E1%BB%8Dc%20vi%C3%AAn.mp4",
           "QnA": []
@@ -1160,6 +1169,7 @@
         {
           "id": 1,
           "name": "Trò chuyện về AI",
+          "description": "Cùng trò chuyện về lĩnh vực mới nổi gần đây nhé. Sẽ giúp cho các bạn có định hướng về AI đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%201%20Tr%C3%B2%20chuy%E1%BB%87n%20v%E1%BB%81%20AI.mp4",
           "QnA": []
@@ -1167,6 +1177,7 @@
         {
           "id": 2,
           "name": "Tổng quan về AI và ChatGPT",
+          "description": "AI là gì? Cùng làm rõ trong video lần này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%202%20T%E1%BB%95ng%20quan%20v%E1%BB%81%20AI%20v%C3%A0%20Chat%20GPT.mp4",
           "QnA": [
@@ -1219,6 +1230,7 @@
         {
           "id": 3,
           "name": "Tại sao AI và ChatGPT lại là xu hướng của Thế Giới?",
+          "description": "Cùng xem GPT là gì? Và tại sao nó lại tạo ra một làn sóng công nghệ nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%203%20T%E1%BA%A1i%20sao%20AI%20v%C3%A0%20Chat%20GPT%20l%E1%BA%A1i%20l%C3%A0%20xu%20h%C6%B0%E1%BB%9Bng%20c%E1%BB%A7a%20Th%E1%BA%BF%20gi%E1%BB%9Bi.mp4",
           "QnA": [
@@ -1276,6 +1288,7 @@
         {
           "id": 4,
           "name": "Cơ bản về câu lệnh",
+          "description": "Hỏi như thế nào để GPT đưa ra câu trả lời tốt nhất? Cùng học phương pháp đặt câu hỏi nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%204%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -1283,6 +1296,7 @@
         {
           "id": 5,
           "name": "Các mẹo hay về câu lệnh",
+          "description": "Những mẹo hay có thể ứng dụng trong lúc đặt câu hỏi cho GPT",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%205%20C%C3%A1c%20m%E1%BA%B9o%20hay%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -1290,6 +1304,7 @@
         {
           "id": 6,
           "name": "Các promt hay nhất định bạn cần biết",
+          "description": "Promt là một khái niệm quan trọng để bạn hiểu được cách mà mô hình hiểu câu hỏi của bạn. Thông qua kiến thức về promt, bạn có thể tối ưu cách đặt câu hỏi của mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%206%20C%C3%A1c%20Promt%20hay%20nh%E1%BA%A5t%20%C4%91%E1%BB%8Bnh%20b%E1%BA%A1n%20c%E1%BA%A7n%20bi%E1%BA%BFt.mp4",
           "QnA": []
@@ -1297,6 +1312,7 @@
         {
           "id": 7,
           "name": "Chia nhỏ kết quả cuối cùng thành nhiều bước",
+          "description": "Việc lặp đi lặp lại quá trình đặt câu hỏi sẽ giúp cho mô hình đưa ra câu trả lời tốt nhất",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%207%20Chia%20nh%E1%BB%8F%20k%E1%BA%BFt%20qu%E1%BA%A3%20cu%E1%BB%91i%20c%C3%B9ng%20th%C3%A0nh%20nhi%E1%BB%81u%20b%C6%B0%E1%BB%9Bc.mp4",
           "QnA": []
@@ -1332,6 +1348,7 @@
         {
           "id": 12,
           "name": "Trợ lý nghiên cứu đắc lực",
+          "description": "Sử dụng Chat GPT có thể giúp bạn hiểu được nhiều thể loại kiến thức một cách tổng quan. Nếu biết cách khai thác, đây sẽ là một trợ thủ đắc lực",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2012%20Tr%E1%BB%A3%20l%C3%BD%20nghi%C3%AAn%20c%E1%BB%A9u%20%C4%91%E1%BA%AFc%20l%E1%BB%B1c.mp4",
           "QnA": []
@@ -1381,6 +1398,7 @@
         {
           "id": 19,
           "name": "Những chia sẻ của học viên trước",
+          "description": "Cùng xem những học viên trước đánh giá khóa học này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2019%20Chia%20s%E1%BA%BB%20c%E1%BB%A7a%20h%E1%BB%8Dc%20vi%C3%AAn.mp4",
           "QnA": []
@@ -2761,6 +2779,7 @@
         {
           "id": 1,
           "name": "Trò chuyện về AI",
+          "description": "Cùng trò chuyện về lĩnh vực mới nổi gần đây nhé. Sẽ giúp cho các bạn có định hướng về AI đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%201%20Tr%C3%B2%20chuy%E1%BB%87n%20v%E1%BB%81%20AI.mp4",
           "QnA": []
@@ -2768,6 +2787,7 @@
         {
           "id": 2,
           "name": "Tổng quan về AI và ChatGPT",
+          "description": "AI là gì? Cùng làm rõ trong video lần này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%202%20T%E1%BB%95ng%20quan%20v%E1%BB%81%20AI%20v%C3%A0%20Chat%20GPT.mp4",
           "QnA": [
@@ -2820,6 +2840,7 @@
         {
           "id": 3,
           "name": "Tại sao AI và ChatGPT lại là xu hướng của Thế Giới?",
+          "description": "Cùng xem GPT là gì? Và tại sao nó lại tạo ra một làn sóng công nghệ nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%203%20T%E1%BA%A1i%20sao%20AI%20v%C3%A0%20Chat%20GPT%20l%E1%BA%A1i%20l%C3%A0%20xu%20h%C6%B0%E1%BB%9Bng%20c%E1%BB%A7a%20Th%E1%BA%BF%20gi%E1%BB%9Bi.mp4",
           "QnA": [
@@ -2877,6 +2898,7 @@
         {
           "id": 4,
           "name": "Cơ bản về câu lệnh",
+          "description": "Hỏi như thế nào để GPT đưa ra câu trả lời tốt nhất? Cùng học phương pháp đặt câu hỏi nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%204%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -2884,6 +2906,7 @@
         {
           "id": 5,
           "name": "Các mẹo hay về câu lệnh",
+          "description": "Những mẹo hay có thể ứng dụng trong lúc đặt câu hỏi cho GPT",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%205%20C%C3%A1c%20m%E1%BA%B9o%20hay%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -2891,6 +2914,7 @@
         {
           "id": 6,
           "name": "Các promt hay nhất định bạn cần biết",
+          "description": "Promt là một khái niệm quan trọng để bạn hiểu được cách mà mô hình hiểu câu hỏi của bạn. Thông qua kiến thức về promt, bạn có thể tối ưu cách đặt câu hỏi của mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%206%20C%C3%A1c%20Promt%20hay%20nh%E1%BA%A5t%20%C4%91%E1%BB%8Bnh%20b%E1%BA%A1n%20c%E1%BA%A7n%20bi%E1%BA%BFt.mp4",
           "QnA": []
@@ -2898,6 +2922,7 @@
         {
           "id": 7,
           "name": "Chia nhỏ kết quả cuối cùng thành nhiều bước",
+          "description": "Việc lặp đi lặp lại quá trình đặt câu hỏi sẽ giúp cho mô hình đưa ra câu trả lời tốt nhất",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%207%20Chia%20nh%E1%BB%8F%20k%E1%BA%BFt%20qu%E1%BA%A3%20cu%E1%BB%91i%20c%C3%B9ng%20th%C3%A0nh%20nhi%E1%BB%81u%20b%C6%B0%E1%BB%9Bc.mp4",
           "QnA": []
@@ -2933,6 +2958,7 @@
         {
           "id": 12,
           "name": "Trợ lý nghiên cứu đắc lực",
+          "description": "Sử dụng Chat GPT có thể giúp bạn hiểu được nhiều thể loại kiến thức một cách tổng quan. Nếu biết cách khai thác, đây sẽ là một trợ thủ đắc lực",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2012%20Tr%E1%BB%A3%20l%C3%BD%20nghi%C3%AAn%20c%E1%BB%A9u%20%C4%91%E1%BA%AFc%20l%E1%BB%B1c.mp4",
           "QnA": []
@@ -2982,6 +3008,7 @@
         {
           "id": 19,
           "name": "Những chia sẻ của học viên trước",
+          "description": "Cùng xem những học viên trước đánh giá khóa học này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2019%20Chia%20s%E1%BA%BB%20c%E1%BB%A7a%20h%E1%BB%8Dc%20vi%C3%AAn.mp4",
           "QnA": []
@@ -3157,6 +3184,7 @@
         {
           "id": 1,
           "name": "Trò chuyện về AI",
+          "description": "Cùng trò chuyện về lĩnh vực mới nổi gần đây nhé. Sẽ giúp cho các bạn có định hướng về AI đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%201%20Tr%C3%B2%20chuy%E1%BB%87n%20v%E1%BB%81%20AI.mp4",
           "QnA": []
@@ -3164,6 +3192,7 @@
         {
           "id": 2,
           "name": "Tổng quan về AI và ChatGPT",
+          "description": "AI là gì? Cùng làm rõ trong video lần này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%202%20T%E1%BB%95ng%20quan%20v%E1%BB%81%20AI%20v%C3%A0%20Chat%20GPT.mp4",
           "QnA": [
@@ -3216,6 +3245,7 @@
         {
           "id": 3,
           "name": "Tại sao AI và ChatGPT lại là xu hướng của Thế Giới?",
+          "description": "Cùng xem GPT là gì? Và tại sao nó lại tạo ra một làn sóng công nghệ nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%203%20T%E1%BA%A1i%20sao%20AI%20v%C3%A0%20Chat%20GPT%20l%E1%BA%A1i%20l%C3%A0%20xu%20h%C6%B0%E1%BB%9Bng%20c%E1%BB%A7a%20Th%E1%BA%BF%20gi%E1%BB%9Bi.mp4",
           "QnA": [
@@ -3273,6 +3303,7 @@
         {
           "id": 4,
           "name": "Cơ bản về câu lệnh",
+          "description": "Hỏi như thế nào để GPT đưa ra câu trả lời tốt nhất? Cùng học phương pháp đặt câu hỏi nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%204%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -3280,6 +3311,7 @@
         {
           "id": 5,
           "name": "Các mẹo hay về câu lệnh",
+          "description": "Những mẹo hay có thể ứng dụng trong lúc đặt câu hỏi cho GPT",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%205%20C%C3%A1c%20m%E1%BA%B9o%20hay%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -3287,6 +3319,7 @@
         {
           "id": 6,
           "name": "Các promt hay nhất định bạn cần biết",
+          "description": "Promt là một khái niệm quan trọng để bạn hiểu được cách mà mô hình hiểu câu hỏi của bạn. Thông qua kiến thức về promt, bạn có thể tối ưu cách đặt câu hỏi của mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%206%20C%C3%A1c%20Promt%20hay%20nh%E1%BA%A5t%20%C4%91%E1%BB%8Bnh%20b%E1%BA%A1n%20c%E1%BA%A7n%20bi%E1%BA%BFt.mp4",
           "QnA": []
@@ -3294,6 +3327,7 @@
         {
           "id": 7,
           "name": "Chia nhỏ kết quả cuối cùng thành nhiều bước",
+          "description": "Việc lặp đi lặp lại quá trình đặt câu hỏi sẽ giúp cho mô hình đưa ra câu trả lời tốt nhất",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%207%20Chia%20nh%E1%BB%8F%20k%E1%BA%BFt%20qu%E1%BA%A3%20cu%E1%BB%91i%20c%C3%B9ng%20th%C3%A0nh%20nhi%E1%BB%81u%20b%C6%B0%E1%BB%9Bc.mp4",
           "QnA": []
@@ -3329,6 +3363,7 @@
         {
           "id": 12,
           "name": "Trợ lý nghiên cứu đắc lực",
+          "description": "Sử dụng Chat GPT có thể giúp bạn hiểu được nhiều thể loại kiến thức một cách tổng quan. Nếu biết cách khai thác, đây sẽ là một trợ thủ đắc lực",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2012%20Tr%E1%BB%A3%20l%C3%BD%20nghi%C3%AAn%20c%E1%BB%A9u%20%C4%91%E1%BA%AFc%20l%E1%BB%B1c.mp4",
           "QnA": []
@@ -3378,6 +3413,7 @@
         {
           "id": 19,
           "name": "Những chia sẻ của học viên trước",
+          "description": "Cùng xem những học viên trước đánh giá khóa học này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2019%20Chia%20s%E1%BA%BB%20c%E1%BB%A7a%20h%E1%BB%8Dc%20vi%C3%AAn.mp4",
           "QnA": []
@@ -3553,6 +3589,7 @@
         {
           "id": 1,
           "name": "Trò chuyện về AI",
+          "description": "Cùng trò chuyện về lĩnh vực mới nổi gần đây nhé. Sẽ giúp cho các bạn có định hướng về AI đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%201%20Tr%C3%B2%20chuy%E1%BB%87n%20v%E1%BB%81%20AI.mp4",
           "QnA": []
@@ -3560,6 +3597,7 @@
         {
           "id": 2,
           "name": "Tổng quan về AI và ChatGPT",
+          "description": "AI là gì? Cùng làm rõ trong video lần này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%202%20T%E1%BB%95ng%20quan%20v%E1%BB%81%20AI%20v%C3%A0%20Chat%20GPT.mp4",
           "QnA": [
@@ -3612,6 +3650,7 @@
         {
           "id": 3,
           "name": "Tại sao AI và ChatGPT lại là xu hướng của Thế Giới?",
+          "description": "Cùng xem GPT là gì? Và tại sao nó lại tạo ra một làn sóng công nghệ nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%203%20T%E1%BA%A1i%20sao%20AI%20v%C3%A0%20Chat%20GPT%20l%E1%BA%A1i%20l%C3%A0%20xu%20h%C6%B0%E1%BB%9Bng%20c%E1%BB%A7a%20Th%E1%BA%BF%20gi%E1%BB%9Bi.mp4",
           "QnA": [
@@ -3669,6 +3708,7 @@
         {
           "id": 4,
           "name": "Cơ bản về câu lệnh",
+          "description": "Hỏi như thế nào để GPT đưa ra câu trả lời tốt nhất? Cùng học phương pháp đặt câu hỏi nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%204%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -3676,6 +3716,7 @@
         {
           "id": 5,
           "name": "Các mẹo hay về câu lệnh",
+          "description": "Những mẹo hay có thể ứng dụng trong lúc đặt câu hỏi cho GPT",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%205%20C%C3%A1c%20m%E1%BA%B9o%20hay%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -3683,6 +3724,7 @@
         {
           "id": 6,
           "name": "Các promt hay nhất định bạn cần biết",
+          "description": "Promt là một khái niệm quan trọng để bạn hiểu được cách mà mô hình hiểu câu hỏi của bạn. Thông qua kiến thức về promt, bạn có thể tối ưu cách đặt câu hỏi của mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%206%20C%C3%A1c%20Promt%20hay%20nh%E1%BA%A5t%20%C4%91%E1%BB%8Bnh%20b%E1%BA%A1n%20c%E1%BA%A7n%20bi%E1%BA%BFt.mp4",
           "QnA": []
@@ -3690,6 +3732,7 @@
         {
           "id": 7,
           "name": "Chia nhỏ kết quả cuối cùng thành nhiều bước",
+          "description": "Việc lặp đi lặp lại quá trình đặt câu hỏi sẽ giúp cho mô hình đưa ra câu trả lời tốt nhất",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%207%20Chia%20nh%E1%BB%8F%20k%E1%BA%BFt%20qu%E1%BA%A3%20cu%E1%BB%91i%20c%C3%B9ng%20th%C3%A0nh%20nhi%E1%BB%81u%20b%C6%B0%E1%BB%9Bc.mp4",
           "QnA": []
@@ -3725,6 +3768,7 @@
         {
           "id": 12,
           "name": "Trợ lý nghiên cứu đắc lực",
+          "description": "Sử dụng Chat GPT có thể giúp bạn hiểu được nhiều thể loại kiến thức một cách tổng quan. Nếu biết cách khai thác, đây sẽ là một trợ thủ đắc lực",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2012%20Tr%E1%BB%A3%20l%C3%BD%20nghi%C3%AAn%20c%E1%BB%A9u%20%C4%91%E1%BA%AFc%20l%E1%BB%B1c.mp4",
           "QnA": []
@@ -3774,6 +3818,7 @@
         {
           "id": 19,
           "name": "Những chia sẻ của học viên trước",
+          "description": "Cùng xem những học viên trước đánh giá khóa học này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2019%20Chia%20s%E1%BA%BB%20c%E1%BB%A7a%20h%E1%BB%8Dc%20vi%C3%AAn.mp4",
           "QnA": []
@@ -3949,6 +3994,7 @@
         {
           "id": 1,
           "name": "Trò chuyện về AI",
+          "description": "Cùng trò chuyện về lĩnh vực mới nổi gần đây nhé. Sẽ giúp cho các bạn có định hướng về AI đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%201%20Tr%C3%B2%20chuy%E1%BB%87n%20v%E1%BB%81%20AI.mp4",
           "QnA": []
@@ -3956,6 +4002,7 @@
         {
           "id": 2,
           "name": "Tổng quan về AI và ChatGPT",
+          "description": "AI là gì? Cùng làm rõ trong video lần này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%202%20T%E1%BB%95ng%20quan%20v%E1%BB%81%20AI%20v%C3%A0%20Chat%20GPT.mp4",
           "QnA": [
@@ -4008,6 +4055,7 @@
         {
           "id": 3,
           "name": "Tại sao AI và ChatGPT lại là xu hướng của Thế Giới?",
+          "description": "Cùng xem GPT là gì? Và tại sao nó lại tạo ra một làn sóng công nghệ nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%203%20T%E1%BA%A1i%20sao%20AI%20v%C3%A0%20Chat%20GPT%20l%E1%BA%A1i%20l%C3%A0%20xu%20h%C6%B0%E1%BB%9Bng%20c%E1%BB%A7a%20Th%E1%BA%BF%20gi%E1%BB%9Bi.mp4",
           "QnA": [
@@ -4065,6 +4113,7 @@
         {
           "id": 4,
           "name": "Cơ bản về câu lệnh",
+          "description": "Hỏi như thế nào để GPT đưa ra câu trả lời tốt nhất? Cùng học phương pháp đặt câu hỏi nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%204%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -4072,6 +4121,7 @@
         {
           "id": 5,
           "name": "Các mẹo hay về câu lệnh",
+          "description": "Những mẹo hay có thể ứng dụng trong lúc đặt câu hỏi cho GPT",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%205%20C%C3%A1c%20m%E1%BA%B9o%20hay%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -4079,6 +4129,7 @@
         {
           "id": 6,
           "name": "Các promt hay nhất định bạn cần biết",
+          "description": "Promt là một khái niệm quan trọng để bạn hiểu được cách mà mô hình hiểu câu hỏi của bạn. Thông qua kiến thức về promt, bạn có thể tối ưu cách đặt câu hỏi của mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%206%20C%C3%A1c%20Promt%20hay%20nh%E1%BA%A5t%20%C4%91%E1%BB%8Bnh%20b%E1%BA%A1n%20c%E1%BA%A7n%20bi%E1%BA%BFt.mp4",
           "QnA": []
@@ -4086,6 +4137,7 @@
         {
           "id": 7,
           "name": "Chia nhỏ kết quả cuối cùng thành nhiều bước",
+          "description": "Việc lặp đi lặp lại quá trình đặt câu hỏi sẽ giúp cho mô hình đưa ra câu trả lời tốt nhất",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%207%20Chia%20nh%E1%BB%8F%20k%E1%BA%BFt%20qu%E1%BA%A3%20cu%E1%BB%91i%20c%C3%B9ng%20th%C3%A0nh%20nhi%E1%BB%81u%20b%C6%B0%E1%BB%9Bc.mp4",
           "QnA": []
@@ -4121,6 +4173,7 @@
         {
           "id": 12,
           "name": "Trợ lý nghiên cứu đắc lực",
+          "description": "Sử dụng Chat GPT có thể giúp bạn hiểu được nhiều thể loại kiến thức một cách tổng quan. Nếu biết cách khai thác, đây sẽ là một trợ thủ đắc lực",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2012%20Tr%E1%BB%A3%20l%C3%BD%20nghi%C3%AAn%20c%E1%BB%A9u%20%C4%91%E1%BA%AFc%20l%E1%BB%B1c.mp4",
           "QnA": []
@@ -4170,6 +4223,7 @@
         {
           "id": 19,
           "name": "Những chia sẻ của học viên trước",
+          "description": "Cùng xem những học viên trước đánh giá khóa học này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2019%20Chia%20s%E1%BA%BB%20c%E1%BB%A7a%20h%E1%BB%8Dc%20vi%C3%AAn.mp4",
           "QnA": []
@@ -5639,6 +5693,7 @@
         {
           "id": 1,
           "name": "Trò chuyện về AI",
+          "description": "Cùng trò chuyện về lĩnh vực mới nổi gần đây nhé. Sẽ giúp cho các bạn có định hướng về AI đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%201%20Tr%C3%B2%20chuy%E1%BB%87n%20v%E1%BB%81%20AI.mp4",
           "QnA": []
@@ -5646,6 +5701,7 @@
         {
           "id": 2,
           "name": "Tổng quan về AI và ChatGPT",
+          "description": "AI là gì? Cùng làm rõ trong video lần này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%202%20T%E1%BB%95ng%20quan%20v%E1%BB%81%20AI%20v%C3%A0%20Chat%20GPT.mp4",
           "QnA": [
@@ -5698,6 +5754,7 @@
         {
           "id": 3,
           "name": "Tại sao AI và ChatGPT lại là xu hướng của Thế Giới?",
+          "description": "Cùng xem GPT là gì? Và tại sao nó lại tạo ra một làn sóng công nghệ nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%203%20T%E1%BA%A1i%20sao%20AI%20v%C3%A0%20Chat%20GPT%20l%E1%BA%A1i%20l%C3%A0%20xu%20h%C6%B0%E1%BB%9Bng%20c%E1%BB%A7a%20Th%E1%BA%BF%20gi%E1%BB%9Bi.mp4",
           "QnA": [
@@ -5755,6 +5812,7 @@
         {
           "id": 4,
           "name": "Cơ bản về câu lệnh",
+          "description": "Hỏi như thế nào để GPT đưa ra câu trả lời tốt nhất? Cùng học phương pháp đặt câu hỏi nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%204%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -5762,6 +5820,7 @@
         {
           "id": 5,
           "name": "Các mẹo hay về câu lệnh",
+          "description": "Những mẹo hay có thể ứng dụng trong lúc đặt câu hỏi cho GPT",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%205%20C%C3%A1c%20m%E1%BA%B9o%20hay%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -5769,6 +5828,7 @@
         {
           "id": 6,
           "name": "Các promt hay nhất định bạn cần biết",
+          "description": "Promt là một khái niệm quan trọng để bạn hiểu được cách mà mô hình hiểu câu hỏi của bạn. Thông qua kiến thức về promt, bạn có thể tối ưu cách đặt câu hỏi của mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%206%20C%C3%A1c%20Promt%20hay%20nh%E1%BA%A5t%20%C4%91%E1%BB%8Bnh%20b%E1%BA%A1n%20c%E1%BA%A7n%20bi%E1%BA%BFt.mp4",
           "QnA": []
@@ -5776,6 +5836,7 @@
         {
           "id": 7,
           "name": "Chia nhỏ kết quả cuối cùng thành nhiều bước",
+          "description": "Việc lặp đi lặp lại quá trình đặt câu hỏi sẽ giúp cho mô hình đưa ra câu trả lời tốt nhất",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%207%20Chia%20nh%E1%BB%8F%20k%E1%BA%BFt%20qu%E1%BA%A3%20cu%E1%BB%91i%20c%C3%B9ng%20th%C3%A0nh%20nhi%E1%BB%81u%20b%C6%B0%E1%BB%9Bc.mp4",
           "QnA": []
@@ -5811,6 +5872,7 @@
         {
           "id": 12,
           "name": "Trợ lý nghiên cứu đắc lực",
+          "description": "Sử dụng Chat GPT có thể giúp bạn hiểu được nhiều thể loại kiến thức một cách tổng quan. Nếu biết cách khai thác, đây sẽ là một trợ thủ đắc lực",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2012%20Tr%E1%BB%A3%20l%C3%BD%20nghi%C3%AAn%20c%E1%BB%A9u%20%C4%91%E1%BA%AFc%20l%E1%BB%B1c.mp4",
           "QnA": []
@@ -5860,6 +5922,7 @@
         {
           "id": 19,
           "name": "Những chia sẻ của học viên trước",
+          "description": "Cùng xem những học viên trước đánh giá khóa học này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2019%20Chia%20s%E1%BA%BB%20c%E1%BB%A7a%20h%E1%BB%8Dc%20vi%C3%AAn.mp4",
           "QnA": []
@@ -8623,6 +8686,7 @@
         {
           "id": 1,
           "name": "Trò chuyện về AI",
+          "description": "Cùng trò chuyện về lĩnh vực mới nổi gần đây nhé. Sẽ giúp cho các bạn có định hướng về AI đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%201%20Tr%C3%B2%20chuy%E1%BB%87n%20v%E1%BB%81%20AI.mp4",
           "QnA": []
@@ -8630,6 +8694,7 @@
         {
           "id": 2,
           "name": "Tổng quan về AI và ChatGPT",
+          "description": "AI là gì? Cùng làm rõ trong video lần này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%202%20T%E1%BB%95ng%20quan%20v%E1%BB%81%20AI%20v%C3%A0%20Chat%20GPT.mp4",
           "QnA": [
@@ -8682,6 +8747,7 @@
         {
           "id": 3,
           "name": "Tại sao AI và ChatGPT lại là xu hướng của Thế Giới?",
+          "description": "Cùng xem GPT là gì? Và tại sao nó lại tạo ra một làn sóng công nghệ nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%203%20T%E1%BA%A1i%20sao%20AI%20v%C3%A0%20Chat%20GPT%20l%E1%BA%A1i%20l%C3%A0%20xu%20h%C6%B0%E1%BB%9Bng%20c%E1%BB%A7a%20Th%E1%BA%BF%20gi%E1%BB%9Bi.mp4",
           "QnA": [
@@ -8739,6 +8805,7 @@
         {
           "id": 4,
           "name": "Cơ bản về câu lệnh",
+          "description": "Hỏi như thế nào để GPT đưa ra câu trả lời tốt nhất? Cùng học phương pháp đặt câu hỏi nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%204%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -8746,6 +8813,7 @@
         {
           "id": 5,
           "name": "Các mẹo hay về câu lệnh",
+          "description": "Những mẹo hay có thể ứng dụng trong lúc đặt câu hỏi cho GPT",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%205%20C%C3%A1c%20m%E1%BA%B9o%20hay%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -8753,6 +8821,7 @@
         {
           "id": 6,
           "name": "Các promt hay nhất định bạn cần biết",
+          "description": "Promt là một khái niệm quan trọng để bạn hiểu được cách mà mô hình hiểu câu hỏi của bạn. Thông qua kiến thức về promt, bạn có thể tối ưu cách đặt câu hỏi của mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%206%20C%C3%A1c%20Promt%20hay%20nh%E1%BA%A5t%20%C4%91%E1%BB%8Bnh%20b%E1%BA%A1n%20c%E1%BA%A7n%20bi%E1%BA%BFt.mp4",
           "QnA": []
@@ -8760,6 +8829,7 @@
         {
           "id": 7,
           "name": "Chia nhỏ kết quả cuối cùng thành nhiều bước",
+          "description": "Việc lặp đi lặp lại quá trình đặt câu hỏi sẽ giúp cho mô hình đưa ra câu trả lời tốt nhất",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%207%20Chia%20nh%E1%BB%8F%20k%E1%BA%BFt%20qu%E1%BA%A3%20cu%E1%BB%91i%20c%C3%B9ng%20th%C3%A0nh%20nhi%E1%BB%81u%20b%C6%B0%E1%BB%9Bc.mp4",
           "QnA": []
@@ -8795,6 +8865,7 @@
         {
           "id": 12,
           "name": "Trợ lý nghiên cứu đắc lực",
+          "description": "Sử dụng Chat GPT có thể giúp bạn hiểu được nhiều thể loại kiến thức một cách tổng quan. Nếu biết cách khai thác, đây sẽ là một trợ thủ đắc lực",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2012%20Tr%E1%BB%A3%20l%C3%BD%20nghi%C3%AAn%20c%E1%BB%A9u%20%C4%91%E1%BA%AFc%20l%E1%BB%B1c.mp4",
           "QnA": []
@@ -8844,6 +8915,7 @@
         {
           "id": 19,
           "name": "Những chia sẻ của học viên trước",
+          "description": "Cùng xem những học viên trước đánh giá khóa học này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2019%20Chia%20s%E1%BA%BB%20c%E1%BB%A7a%20h%E1%BB%8Dc%20vi%C3%AAn.mp4",
           "QnA": []
@@ -9019,6 +9091,7 @@
         {
           "id": 1,
           "name": "Trò chuyện về AI",
+          "description": "Cùng trò chuyện về lĩnh vực mới nổi gần đây nhé. Sẽ giúp cho các bạn có định hướng về AI đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%201%20Tr%C3%B2%20chuy%E1%BB%87n%20v%E1%BB%81%20AI.mp4",
           "QnA": []
@@ -9026,6 +9099,7 @@
         {
           "id": 2,
           "name": "Tổng quan về AI và ChatGPT",
+          "description": "AI là gì? Cùng làm rõ trong video lần này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%202%20T%E1%BB%95ng%20quan%20v%E1%BB%81%20AI%20v%C3%A0%20Chat%20GPT.mp4",
           "QnA": [
@@ -9078,6 +9152,7 @@
         {
           "id": 3,
           "name": "Tại sao AI và ChatGPT lại là xu hướng của Thế Giới?",
+          "description": "Cùng xem GPT là gì? Và tại sao nó lại tạo ra một làn sóng công nghệ nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT01/B%C3%A0i%203%20T%E1%BA%A1i%20sao%20AI%20v%C3%A0%20Chat%20GPT%20l%E1%BA%A1i%20l%C3%A0%20xu%20h%C6%B0%E1%BB%9Bng%20c%E1%BB%A7a%20Th%E1%BA%BF%20gi%E1%BB%9Bi.mp4",
           "QnA": [
@@ -9135,6 +9210,7 @@
         {
           "id": 4,
           "name": "Cơ bản về câu lệnh",
+          "description": "Hỏi như thế nào để GPT đưa ra câu trả lời tốt nhất? Cùng học phương pháp đặt câu hỏi nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%204%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -9142,6 +9218,7 @@
         {
           "id": 5,
           "name": "Các mẹo hay về câu lệnh",
+          "description": "Những mẹo hay có thể ứng dụng trong lúc đặt câu hỏi cho GPT",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%205%20C%C3%A1c%20m%E1%BA%B9o%20hay%20v%E1%BB%81%20c%C3%A2u%20l%E1%BB%87nh.mp4",
           "QnA": []
@@ -9149,6 +9226,7 @@
         {
           "id": 6,
           "name": "Các promt hay nhất định bạn cần biết",
+          "description": "Promt là một khái niệm quan trọng để bạn hiểu được cách mà mô hình hiểu câu hỏi của bạn. Thông qua kiến thức về promt, bạn có thể tối ưu cách đặt câu hỏi của mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%206%20C%C3%A1c%20Promt%20hay%20nh%E1%BA%A5t%20%C4%91%E1%BB%8Bnh%20b%E1%BA%A1n%20c%E1%BA%A7n%20bi%E1%BA%BFt.mp4",
           "QnA": []
@@ -9156,6 +9234,7 @@
         {
           "id": 7,
           "name": "Chia nhỏ kết quả cuối cùng thành nhiều bước",
+          "description": "Việc lặp đi lặp lại quá trình đặt câu hỏi sẽ giúp cho mô hình đưa ra câu trả lời tốt nhất",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%207%20Chia%20nh%E1%BB%8F%20k%E1%BA%BFt%20qu%E1%BA%A3%20cu%E1%BB%91i%20c%C3%B9ng%20th%C3%A0nh%20nhi%E1%BB%81u%20b%C6%B0%E1%BB%9Bc.mp4",
           "QnA": []
@@ -9191,6 +9270,7 @@
         {
           "id": 12,
           "name": "Trợ lý nghiên cứu đắc lực",
+          "description": "Sử dụng Chat GPT có thể giúp bạn hiểu được nhiều thể loại kiến thức một cách tổng quan. Nếu biết cách khai thác, đây sẽ là một trợ thủ đắc lực",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2012%20Tr%E1%BB%A3%20l%C3%BD%20nghi%C3%AAn%20c%E1%BB%A9u%20%C4%91%E1%BA%AFc%20l%E1%BB%B1c.mp4",
           "QnA": []
@@ -9240,6 +9320,7 @@
         {
           "id": 19,
           "name": "Những chia sẻ của học viên trước",
+          "description": "Cùng xem những học viên trước đánh giá khóa học này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C002/CT02/B%C3%A0i%2019%20Chia%20s%E1%BA%BB%20c%E1%BB%A7a%20h%E1%BB%8Dc%20vi%C3%AAn.mp4",
           "QnA": []
