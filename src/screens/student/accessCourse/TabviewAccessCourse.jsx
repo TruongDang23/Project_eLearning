@@ -3,6 +3,7 @@ import { AppBar, Tabs, Tab, Box } from "@mui/material";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import TabOverview from "./TabOverview";
+import TabReview from "./TabReview";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,7 +54,7 @@ function TabviewAccessCourse({ accessCourseData }) {
           >
             <TabStyled label="Overview" {...a11yProps(0)} />
             <TabStyled label="Chat AI" {...a11yProps(1)} />
-            <TabStyled label="Ratings" {...a11yProps(2)} />
+            <TabStyled label="Reviews" {...a11yProps(2)} />
             <TabStyled label="Q&A" {...a11yProps(3)} />
           </Tabs>
         </AppBar>
@@ -64,7 +65,7 @@ function TabviewAccessCourse({ accessCourseData }) {
           Đây là phần Chat AI
         </TabPanel>
         <TabPanel value={value} index={2}>
-          Đây là phần Ratings
+          <TabReview accessCourseData={accessCourseData} />
         </TabPanel>
         <TabPanel value={value} index={3}>
           Đây là phần Q&A

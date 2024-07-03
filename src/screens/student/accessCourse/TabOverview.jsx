@@ -2,10 +2,6 @@ import StarRating from "~/components/general/Other/StarRating";
 import StarIcon from "@mui/icons-material/Star";
 import styled, { keyframes } from "styled-components";
 
-// const AccessCourseData = {
-//   ... // dữ liệu mẫu ở trên
-// };
-
 function TabOverview({ accessCourseData }) {
   return (
     <TabOverviewWrapper>
