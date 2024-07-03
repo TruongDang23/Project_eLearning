@@ -36,6 +36,7 @@
         {
           "id": 2,
           "name": "Slide introduce",
+          "description": "Slide giới thiệu tổng quan môn học",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT01/01-intro.pdf"
         }
@@ -54,6 +55,7 @@
         {
           "id": 4,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu database",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT02/02-database.pdf"
         }
@@ -72,6 +74,7 @@
         {
           "id": 6,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu về RDBMS",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT03/03-dbms.pdf"
         }
@@ -149,54 +152,63 @@
         {
           "id": 15,
           "name": "Slide erdiagram",
+          "description": "Slide bài giảng về Slide erdiagram. Các bạn chú ý kỹ phần này nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erdiagram.pdf"
         },
         {
           "id": 16,
           "name": "Slide ví dụ",
+          "description": "Bài tập cho các nội dung đã học. Kết quả đã có phía dưới rồi, các bạn tự check nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erexample.pdf"
         },
         {
           "id": 17,
           "name": "file",
+          "description": "Slide bài giảng về ERtips. Phần này không có video, các bạn chịu khó đọc nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-ertips.pdf"
         },
         {
           "id": 18,
           "name": "Video 6.2",
+          "description": "Video bài giảng về Mô hình thực thể liên kết. Đây là phần quan trọng nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.2.mp4"
         },
         {
           "id": 19,
           "name": "Video 6.3",
+          "description": "Video bổ sung cho bài giảng về Mô hình thực thể kết hợp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.3.mp4"
         },
         {
           "id": 20,
           "name": "Video 6.4",
+          "description": "Cách vẽ sơ đồ ERD",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.4.mp4"
         },
         {
           "id": 21,
           "name": "Video 6.5",
+          "description": "Video hướng dẫn chuyển đổi liên kết cấp 3 sang liên kết cấp 2",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.5.mp4"
         },
         {
           "id": 22,
           "name": "Video 6.6",
+          "description": "Phương pháp chọn mô hình thực thể liên kết",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.6.mp4"
         },
         {
           "id": 23,
           "name": "Video 6.7",
+          "description": "Xây dựng mô hình thực thể liên kết mở rộng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.7.mp4"
         }
@@ -222,66 +234,77 @@
         {
           "id": 26,
           "name": "Video 7.2",
+          "description": "Các phép toán trên mô hình quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.2.mp4"
         },
         {
           "id": 27,
           "name": "Slide 7.2",
+          "description": "Slide bài giảng các phép toán trên mô hình quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation2.pdf"
         },
         {
           "id": 28,
           "name": "Video 7.3",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.3.mp4"
         },
         {
           "id": 29,
           "name": "Slide 7.3",
+          "description": "Slide bài giảng hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation3.pdf"
         },
         {
           "id": 30,
           "name": "Video 7.4",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.4.mp4"
         },
         {
           "id": 31,
           "name": "Slide 7.4",
+          "description": "Slide hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation4.pdf"
         },
         {
           "id": 32,
           "name": "Video 7.5",
+          "description": "Video hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.5.mp4"
         },
         {
           "id": 33,
           "name": "Slide 7.5",
+          "description": "Slide hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation5.pdf"
         },
         {
           "id": 34,
           "name": "Video 7.6",
+          "description": "Video hướng dẫn tạo khóa ngoại tham chiếu. Đây là nội dung chủ chốt của RDBMS. Các bạn chú ý kỹ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.6.mp4"
         },
         {
           "id": 35,
           "name": "Slide 7.6",
+          "description": "Slide bài giảng đi kèm",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation6.pdf"
         },
         {
           "id": 36,
           "name": "Video 7.7",
+          "description": "Video hướng dẫn một số câu lệnh SQL cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.7.mp4"
         }
@@ -300,36 +323,42 @@
         {
           "id": 38,
           "name": "Slide 8.1",
+          "description": "Slide bài giảng về Normalize",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-designguide.pdf"
         },
         {
           "id": 39,
           "name": "Slide 8.2",
+          "description": "File mẫu mô phỏng",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-fd.pdf"
         },
         {
           "id": 40,
           "name": "Slide 8.3",
+          "description": "File mô phỏng việc normalize data",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-normalize.pdf"
         },
         {
           "id": 41,
           "name": "Video 8.2",
+          "description": "Video bài giảng về phụ thuộc hàm, các quy tắc suy diễn. Nội dung này giúp ta có thể xác định các khóa chính cho table",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.2.mp4"
         },
         {
           "id": 42,
           "name": "Video 8.3",
+          "description": "Chuẩn hóa dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.3.mp4"
         },
         {
           "id": 43,
           "name": "Video 8.4",
+          "description": "Khái niệm về bao đóng của tập thuộc tính",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.4.mp4"
         }
@@ -375,6 +404,7 @@
         {
           "id": 2,
           "name": "Slide introduce",
+          "description": "Slide giới thiệu tổng quan môn học",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT01/01-intro.pdf"
         }
@@ -393,6 +423,7 @@
         {
           "id": 4,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu database",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT02/02-database.pdf"
         }
@@ -411,6 +442,7 @@
         {
           "id": 6,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu về RDBMS",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT03/03-dbms.pdf"
         }
@@ -488,54 +520,63 @@
         {
           "id": 15,
           "name": "Slide erdiagram",
+          "description": "Slide bài giảng về Slide erdiagram. Các bạn chú ý kỹ phần này nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erdiagram.pdf"
         },
         {
           "id": 16,
           "name": "Slide ví dụ",
+          "description": "Bài tập cho các nội dung đã học. Kết quả đã có phía dưới rồi, các bạn tự check nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erexample.pdf"
         },
         {
           "id": 17,
           "name": "file",
+          "description": "Slide bài giảng về ERtips. Phần này không có video, các bạn chịu khó đọc nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-ertips.pdf"
         },
         {
           "id": 18,
           "name": "Video 6.2",
+          "description": "Video bài giảng về Mô hình thực thể liên kết. Đây là phần quan trọng nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.2.mp4"
         },
         {
           "id": 19,
           "name": "Video 6.3",
+          "description": "Video bổ sung cho bài giảng về Mô hình thực thể kết hợp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.3.mp4"
         },
         {
           "id": 20,
           "name": "Video 6.4",
+          "description": "Cách vẽ sơ đồ ERD",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.4.mp4"
         },
         {
           "id": 21,
           "name": "Video 6.5",
+          "description": "Video hướng dẫn chuyển đổi liên kết cấp 3 sang liên kết cấp 2",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.5.mp4"
         },
         {
           "id": 22,
           "name": "Video 6.6",
+          "description": "Phương pháp chọn mô hình thực thể liên kết",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.6.mp4"
         },
         {
           "id": 23,
           "name": "Video 6.7",
+          "description": "Xây dựng mô hình thực thể liên kết mở rộng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.7.mp4"
         }
@@ -561,66 +602,77 @@
         {
           "id": 26,
           "name": "Video 7.2",
+          "description": "Các phép toán trên mô hình quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.2.mp4"
         },
         {
           "id": 27,
           "name": "Slide 7.2",
+          "description": "Slide bài giảng các phép toán trên mô hình quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation2.pdf"
         },
         {
           "id": 28,
           "name": "Video 7.3",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.3.mp4"
         },
         {
           "id": 29,
           "name": "Slide 7.3",
+          "description": "Slide bài giảng hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation3.pdf"
         },
         {
           "id": 30,
           "name": "Video 7.4",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.4.mp4"
         },
         {
           "id": 31,
           "name": "Slide 7.4",
+          "description": "Slide hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation4.pdf"
         },
         {
           "id": 32,
           "name": "Video 7.5",
+          "description": "Video hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.5.mp4"
         },
         {
           "id": 33,
           "name": "Slide 7.5",
+          "description": "Slide hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation5.pdf"
         },
         {
           "id": 34,
           "name": "Video 7.6",
+          "description": "Video hướng dẫn tạo khóa ngoại tham chiếu. Đây là nội dung chủ chốt của RDBMS. Các bạn chú ý kỹ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.6.mp4"
         },
         {
           "id": 35,
           "name": "Slide 7.6",
+          "description": "Slide bài giảng đi kèm",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation6.pdf"
         },
         {
           "id": 36,
           "name": "Video 7.7",
+          "description": "Video hướng dẫn một số câu lệnh SQL cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.7.mp4"
         }
@@ -639,36 +691,42 @@
         {
           "id": 38,
           "name": "Slide 8.1",
+          "description": "Slide bài giảng về Normalize",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-designguide.pdf"
         },
         {
           "id": 39,
           "name": "Slide 8.2",
+          "description": "File mẫu mô phỏng",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-fd.pdf"
         },
         {
           "id": 40,
           "name": "Slide 8.3",
+          "description": "File mô phỏng việc normalize data",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-normalize.pdf"
         },
         {
           "id": 41,
           "name": "Video 8.2",
+          "description": "Video bài giảng về phụ thuộc hàm, các quy tắc suy diễn. Nội dung này giúp ta có thể xác định các khóa chính cho table",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.2.mp4"
         },
         {
           "id": 42,
           "name": "Video 8.3",
+          "description": "Chuẩn hóa dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.3.mp4"
         },
         {
           "id": 43,
           "name": "Video 8.4",
+          "description": "Khái niệm về bao đóng của tập thuộc tính",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.4.mp4"
         }
@@ -1506,6 +1564,7 @@
         {
           "id": 2,
           "name": "Slide introduce",
+          "description": "Slide giới thiệu tổng quan môn học",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT01/01-intro.pdf"
         }
@@ -1524,6 +1583,7 @@
         {
           "id": 4,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu database",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT02/02-database.pdf"
         }
@@ -1542,6 +1602,7 @@
         {
           "id": 6,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu về RDBMS",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT03/03-dbms.pdf"
         }
@@ -1619,54 +1680,63 @@
         {
           "id": 15,
           "name": "Slide erdiagram",
+          "description": "Slide bài giảng về Slide erdiagram. Các bạn chú ý kỹ phần này nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erdiagram.pdf"
         },
         {
           "id": 16,
           "name": "Slide ví dụ",
+          "description": "Bài tập cho các nội dung đã học. Kết quả đã có phía dưới rồi, các bạn tự check nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erexample.pdf"
         },
         {
           "id": 17,
           "name": "file",
+          "description": "Slide bài giảng về ERtips. Phần này không có video, các bạn chịu khó đọc nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-ertips.pdf"
         },
         {
           "id": 18,
           "name": "Video 6.2",
+          "description": "Video bài giảng về Mô hình thực thể liên kết. Đây là phần quan trọng nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.2.mp4"
         },
         {
           "id": 19,
           "name": "Video 6.3",
+          "description": "Video bổ sung cho bài giảng về Mô hình thực thể kết hợp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.3.mp4"
         },
         {
           "id": 20,
           "name": "Video 6.4",
+          "description": "Cách vẽ sơ đồ ERD",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.4.mp4"
         },
         {
           "id": 21,
           "name": "Video 6.5",
+          "description": "Video hướng dẫn chuyển đổi liên kết cấp 3 sang liên kết cấp 2",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.5.mp4"
         },
         {
           "id": 22,
           "name": "Video 6.6",
+          "description": "Phương pháp chọn mô hình thực thể liên kết",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.6.mp4"
         },
         {
           "id": 23,
           "name": "Video 6.7",
+          "description": "Xây dựng mô hình thực thể liên kết mở rộng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.7.mp4"
         }
@@ -1692,66 +1762,77 @@
         {
           "id": 26,
           "name": "Video 7.2",
+          "description": "Các phép toán trên mô hình quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.2.mp4"
         },
         {
           "id": 27,
           "name": "Slide 7.2",
+          "description": "Slide bài giảng các phép toán trên mô hình quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation2.pdf"
         },
         {
           "id": 28,
           "name": "Video 7.3",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.3.mp4"
         },
         {
           "id": 29,
           "name": "Slide 7.3",
+          "description": "Slide bài giảng hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation3.pdf"
         },
         {
           "id": 30,
           "name": "Video 7.4",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.4.mp4"
         },
         {
           "id": 31,
           "name": "Slide 7.4",
+          "description": "Slide hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation4.pdf"
         },
         {
           "id": 32,
           "name": "Video 7.5",
+          "description": "Video hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.5.mp4"
         },
         {
           "id": 33,
           "name": "Slide 7.5",
+          "description": "Slide hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation5.pdf"
         },
         {
           "id": 34,
           "name": "Video 7.6",
+          "description": "Video hướng dẫn tạo khóa ngoại tham chiếu. Đây là nội dung chủ chốt của RDBMS. Các bạn chú ý kỹ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.6.mp4"
         },
         {
           "id": 35,
           "name": "Slide 7.6",
+          "description": "Slide bài giảng đi kèm",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation6.pdf"
         },
         {
           "id": 36,
           "name": "Video 7.7",
+          "description": "Video hướng dẫn một số câu lệnh SQL cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.7.mp4"
         }
@@ -1770,36 +1851,42 @@
         {
           "id": 38,
           "name": "Slide 8.1",
+          "description": "Slide bài giảng về Normalize",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-designguide.pdf"
         },
         {
           "id": 39,
           "name": "Slide 8.2",
+          "description": "File mẫu mô phỏng",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-fd.pdf"
         },
         {
           "id": 40,
           "name": "Slide 8.3",
+          "description": "File mô phỏng việc normalize data",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-normalize.pdf"
         },
         {
           "id": 41,
           "name": "Video 8.2",
+          "description": "Video bài giảng về phụ thuộc hàm, các quy tắc suy diễn. Nội dung này giúp ta có thể xác định các khóa chính cho table",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.2.mp4"
         },
         {
           "id": 42,
           "name": "Video 8.3",
+          "description": "Chuẩn hóa dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.3.mp4"
         },
         {
           "id": 43,
           "name": "Video 8.4",
+          "description": "Khái niệm về bao đóng của tập thuộc tính",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.4.mp4"
         }
@@ -4236,6 +4323,7 @@
         {
           "id": 2,
           "name": "Slide introduce",
+          "description": "Slide giới thiệu tổng quan môn học",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT01/01-intro.pdf"
         }
@@ -4254,6 +4342,7 @@
         {
           "id": 4,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu database",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT02/02-database.pdf"
         }
@@ -4272,6 +4361,7 @@
         {
           "id": 6,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu về RDBMS",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT03/03-dbms.pdf"
         }
@@ -4349,54 +4439,63 @@
         {
           "id": 15,
           "name": "Slide erdiagram",
+          "description": "Slide bài giảng về Slide erdiagram. Các bạn chú ý kỹ phần này nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erdiagram.pdf"
         },
         {
           "id": 16,
           "name": "Slide ví dụ",
+          "description": "Bài tập cho các nội dung đã học. Kết quả đã có phía dưới rồi, các bạn tự check nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erexample.pdf"
         },
         {
           "id": 17,
           "name": "file",
+          "description": "Slide bài giảng về ERtips. Phần này không có video, các bạn chịu khó đọc nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-ertips.pdf"
         },
         {
           "id": 18,
           "name": "Video 6.2",
+          "description": "Video bài giảng về Mô hình thực thể liên kết. Đây là phần quan trọng nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.2.mp4"
         },
         {
           "id": 19,
           "name": "Video 6.3",
+          "description": "Video bổ sung cho bài giảng về Mô hình thực thể kết hợp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.3.mp4"
         },
         {
           "id": 20,
           "name": "Video 6.4",
+          "description": "Cách vẽ sơ đồ ERD",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.4.mp4"
         },
         {
           "id": 21,
           "name": "Video 6.5",
+          "description": "Video hướng dẫn chuyển đổi liên kết cấp 3 sang liên kết cấp 2",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.5.mp4"
         },
         {
           "id": 22,
           "name": "Video 6.6",
+          "description": "Phương pháp chọn mô hình thực thể liên kết",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.6.mp4"
         },
         {
           "id": 23,
           "name": "Video 6.7",
+          "description": "Xây dựng mô hình thực thể liên kết mở rộng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.7.mp4"
         }
@@ -4422,66 +4521,77 @@
         {
           "id": 26,
           "name": "Video 7.2",
+          "description": "Các phép toán trên mô hình quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.2.mp4"
         },
         {
           "id": 27,
           "name": "Slide 7.2",
+          "description": "Slide bài giảng các phép toán trên mô hình quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation2.pdf"
         },
         {
           "id": 28,
           "name": "Video 7.3",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.3.mp4"
         },
         {
           "id": 29,
           "name": "Slide 7.3",
+          "description": "Slide bài giảng hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation3.pdf"
         },
         {
           "id": 30,
           "name": "Video 7.4",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.4.mp4"
         },
         {
           "id": 31,
           "name": "Slide 7.4",
+          "description": "Slide hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation4.pdf"
         },
         {
           "id": 32,
           "name": "Video 7.5",
+          "description": "Video hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.5.mp4"
         },
         {
           "id": 33,
           "name": "Slide 7.5",
+          "description": "Slide hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation5.pdf"
         },
         {
           "id": 34,
           "name": "Video 7.6",
+          "description": "Video hướng dẫn tạo khóa ngoại tham chiếu. Đây là nội dung chủ chốt của RDBMS. Các bạn chú ý kỹ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.6.mp4"
         },
         {
           "id": 35,
           "name": "Slide 7.6",
+          "description": "Slide bài giảng đi kèm",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation6.pdf"
         },
         {
           "id": 36,
           "name": "Video 7.7",
+          "description": "Video hướng dẫn một số câu lệnh SQL cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.7.mp4"
         }
@@ -4500,36 +4610,42 @@
         {
           "id": 38,
           "name": "Slide 8.1",
+          "description": "Slide bài giảng về Normalize",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-designguide.pdf"
         },
         {
           "id": 39,
           "name": "Slide 8.2",
+          "description": "File mẫu mô phỏng",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-fd.pdf"
         },
         {
           "id": 40,
           "name": "Slide 8.3",
+          "description": "File mô phỏng việc normalize data",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-normalize.pdf"
         },
         {
           "id": 41,
           "name": "Video 8.2",
+          "description": "Video bài giảng về phụ thuộc hàm, các quy tắc suy diễn. Nội dung này giúp ta có thể xác định các khóa chính cho table",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.2.mp4"
         },
         {
           "id": 42,
           "name": "Video 8.3",
+          "description": "Chuẩn hóa dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.3.mp4"
         },
         {
           "id": 43,
           "name": "Video 8.4",
+          "description": "Khái niệm về bao đóng của tập thuộc tính",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.4.mp4"
         }
@@ -4575,6 +4691,7 @@
         {
           "id": 2,
           "name": "Slide introduce",
+          "description": "Slide giới thiệu tổng quan môn học",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT01/01-intro.pdf"
         }
@@ -4593,6 +4710,7 @@
         {
           "id": 4,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu database",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT02/02-database.pdf"
         }
@@ -4611,6 +4729,7 @@
         {
           "id": 6,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu về RDBMS",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT03/03-dbms.pdf"
         }
@@ -4688,54 +4807,63 @@
         {
           "id": 15,
           "name": "Slide erdiagram",
+          "description": "Slide bài giảng về Slide erdiagram. Các bạn chú ý kỹ phần này nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erdiagram.pdf"
         },
         {
           "id": 16,
           "name": "Slide ví dụ",
+          "description": "Bài tập cho các nội dung đã học. Kết quả đã có phía dưới rồi, các bạn tự check nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erexample.pdf"
         },
         {
           "id": 17,
           "name": "file",
+          "description": "Slide bài giảng về ERtips. Phần này không có video, các bạn chịu khó đọc nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-ertips.pdf"
         },
         {
           "id": 18,
           "name": "Video 6.2",
+          "description": "Video bài giảng về Mô hình thực thể liên kết. Đây là phần quan trọng nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.2.mp4"
         },
         {
           "id": 19,
           "name": "Video 6.3",
+          "description": "Video bổ sung cho bài giảng về Mô hình thực thể kết hợp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.3.mp4"
         },
         {
           "id": 20,
           "name": "Video 6.4",
+          "description": "Cách vẽ sơ đồ ERD",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.4.mp4"
         },
         {
           "id": 21,
           "name": "Video 6.5",
+          "description": "Video hướng dẫn chuyển đổi liên kết cấp 3 sang liên kết cấp 2",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.5.mp4"
         },
         {
           "id": 22,
           "name": "Video 6.6",
+          "description": "Phương pháp chọn mô hình thực thể liên kết",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.6.mp4"
         },
         {
           "id": 23,
           "name": "Video 6.7",
+          "description": "Xây dựng mô hình thực thể liên kết mở rộng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.7.mp4"
         }
@@ -4761,66 +4889,77 @@
         {
           "id": 26,
           "name": "Video 7.2",
+          "description": "Các phép toán trên mô hình quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.2.mp4"
         },
         {
           "id": 27,
           "name": "Slide 7.2",
+          "description": "Slide bài giảng các phép toán trên mô hình quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation2.pdf"
         },
         {
           "id": 28,
           "name": "Video 7.3",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.3.mp4"
         },
         {
           "id": 29,
           "name": "Slide 7.3",
+          "description": "Slide bài giảng hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation3.pdf"
         },
         {
           "id": 30,
           "name": "Video 7.4",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.4.mp4"
         },
         {
           "id": 31,
           "name": "Slide 7.4",
+          "description": "Slide hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation4.pdf"
         },
         {
           "id": 32,
           "name": "Video 7.5",
+          "description": "Video hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.5.mp4"
         },
         {
           "id": 33,
           "name": "Slide 7.5",
+          "description": "Slide hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation5.pdf"
         },
         {
           "id": 34,
           "name": "Video 7.6",
+          "description": "Video hướng dẫn tạo khóa ngoại tham chiếu. Đây là nội dung chủ chốt của RDBMS. Các bạn chú ý kỹ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.6.mp4"
         },
         {
           "id": 35,
           "name": "Slide 7.6",
+          "description": "Slide bài giảng đi kèm",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation6.pdf"
         },
         {
           "id": 36,
           "name": "Video 7.7",
+          "description": "Video hướng dẫn một số câu lệnh SQL cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.7.mp4"
         }
@@ -4839,36 +4978,42 @@
         {
           "id": 38,
           "name": "Slide 8.1",
+          "description": "Slide bài giảng về Normalize",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-designguide.pdf"
         },
         {
           "id": 39,
           "name": "Slide 8.2",
+          "description": "File mẫu mô phỏng",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-fd.pdf"
         },
         {
           "id": 40,
           "name": "Slide 8.3",
+          "description": "File mô phỏng việc normalize data",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-normalize.pdf"
         },
         {
           "id": 41,
           "name": "Video 8.2",
+          "description": "Video bài giảng về phụ thuộc hàm, các quy tắc suy diễn. Nội dung này giúp ta có thể xác định các khóa chính cho table",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.2.mp4"
         },
         {
           "id": 42,
           "name": "Video 8.3",
+          "description": "Chuẩn hóa dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.3.mp4"
         },
         {
           "id": 43,
           "name": "Video 8.4",
+          "description": "Khái niệm về bao đóng của tập thuộc tính",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.4.mp4"
         }
@@ -5848,6 +5993,7 @@
         {
           "id": 2,
           "name": "Slide introduce",
+          "description": "Slide giới thiệu tổng quan môn học",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT01/01-intro.pdf"
         }
@@ -5866,6 +6012,7 @@
         {
           "id": 4,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu database",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT02/02-database.pdf"
         }
@@ -5884,6 +6031,7 @@
         {
           "id": 6,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu về RDBMS",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT03/03-dbms.pdf"
         }
@@ -5961,54 +6109,63 @@
         {
           "id": 15,
           "name": "Slide erdiagram",
+          "description": "Slide bài giảng về Slide erdiagram. Các bạn chú ý kỹ phần này nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erdiagram.pdf"
         },
         {
           "id": 16,
           "name": "Slide ví dụ",
+          "description": "Bài tập cho các nội dung đã học. Kết quả đã có phía dưới rồi, các bạn tự check nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erexample.pdf"
         },
         {
           "id": 17,
           "name": "file",
+          "description": "Slide bài giảng về ERtips. Phần này không có video, các bạn chịu khó đọc nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-ertips.pdf"
         },
         {
           "id": 18,
           "name": "Video 6.2",
+          "description": "Video bài giảng về Mô hình thực thể liên kết. Đây là phần quan trọng nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.2.mp4"
         },
         {
           "id": 19,
           "name": "Video 6.3",
+          "description": "Video bổ sung cho bài giảng về Mô hình thực thể kết hợp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.3.mp4"
         },
         {
           "id": 20,
           "name": "Video 6.4",
+          "description": "Cách vẽ sơ đồ ERD",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.4.mp4"
         },
         {
           "id": 21,
           "name": "Video 6.5",
+          "description": "Video hướng dẫn chuyển đổi liên kết cấp 3 sang liên kết cấp 2",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.5.mp4"
         },
         {
           "id": 22,
           "name": "Video 6.6",
+          "description": "Phương pháp chọn mô hình thực thể liên kết",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.6.mp4"
         },
         {
           "id": 23,
           "name": "Video 6.7",
+          "description": "Xây dựng mô hình thực thể liên kết mở rộng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.7.mp4"
         }
@@ -6034,66 +6191,77 @@
         {
           "id": 26,
           "name": "Video 7.2",
+          "description": "Các phép toán trên mô hình quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.2.mp4"
         },
         {
           "id": 27,
           "name": "Slide 7.2",
+          "description": "Slide bài giảng các phép toán trên mô hình quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation2.pdf"
         },
         {
           "id": 28,
           "name": "Video 7.3",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.3.mp4"
         },
         {
           "id": 29,
           "name": "Slide 7.3",
+          "description": "Slide bài giảng hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation3.pdf"
         },
         {
           "id": 30,
           "name": "Video 7.4",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.4.mp4"
         },
         {
           "id": 31,
           "name": "Slide 7.4",
+          "description": "Slide hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation4.pdf"
         },
         {
           "id": 32,
           "name": "Video 7.5",
+          "description": "Video hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.5.mp4"
         },
         {
           "id": 33,
           "name": "Slide 7.5",
+          "description": "Slide hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation5.pdf"
         },
         {
           "id": 34,
           "name": "Video 7.6",
+          "description": "Video hướng dẫn tạo khóa ngoại tham chiếu. Đây là nội dung chủ chốt của RDBMS. Các bạn chú ý kỹ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.6.mp4"
         },
         {
           "id": 35,
           "name": "Slide 7.6",
+          "description": "Slide bài giảng đi kèm",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation6.pdf"
         },
         {
           "id": 36,
           "name": "Video 7.7",
+          "description": "Video hướng dẫn một số câu lệnh SQL cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.7.mp4"
         }
@@ -6112,36 +6280,42 @@
         {
           "id": 38,
           "name": "Slide 8.1",
+          "description": "Slide bài giảng về Normalize",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-designguide.pdf"
         },
         {
           "id": 39,
           "name": "Slide 8.2",
+          "description": "File mẫu mô phỏng",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-fd.pdf"
         },
         {
           "id": 40,
           "name": "Slide 8.3",
+          "description": "File mô phỏng việc normalize data",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-normalize.pdf"
         },
         {
           "id": 41,
           "name": "Video 8.2",
+          "description": "Video bài giảng về phụ thuộc hàm, các quy tắc suy diễn. Nội dung này giúp ta có thể xác định các khóa chính cho table",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.2.mp4"
         },
         {
           "id": 42,
           "name": "Video 8.3",
+          "description": "Chuẩn hóa dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.3.mp4"
         },
         {
           "id": 43,
           "name": "Video 8.4",
+          "description": "Khái niệm về bao đóng của tập thuộc tính",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.4.mp4"
         }
@@ -6187,6 +6361,7 @@
         {
           "id": 2,
           "name": "Slide introduce",
+          "description": "Slide giới thiệu tổng quan môn học",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT01/01-intro.pdf"
         }
@@ -6205,6 +6380,7 @@
         {
           "id": 4,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu database",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT02/02-database.pdf"
         }
@@ -6223,6 +6399,7 @@
         {
           "id": 6,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu về RDBMS",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT03/03-dbms.pdf"
         }
@@ -6300,54 +6477,63 @@
         {
           "id": 15,
           "name": "Slide erdiagram",
+          "description": "Slide bài giảng về Slide erdiagram. Các bạn chú ý kỹ phần này nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erdiagram.pdf"
         },
         {
           "id": 16,
           "name": "Slide ví dụ",
+          "description": "Bài tập cho các nội dung đã học. Kết quả đã có phía dưới rồi, các bạn tự check nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erexample.pdf"
         },
         {
           "id": 17,
           "name": "file",
+          "description": "Slide bài giảng về ERtips. Phần này không có video, các bạn chịu khó đọc nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-ertips.pdf"
         },
         {
           "id": 18,
           "name": "Video 6.2",
+          "description": "Video bài giảng về Mô hình thực thể liên kết. Đây là phần quan trọng nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.2.mp4"
         },
         {
           "id": 19,
           "name": "Video 6.3",
+          "description": "Video bổ sung cho bài giảng về Mô hình thực thể kết hợp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.3.mp4"
         },
         {
           "id": 20,
           "name": "Video 6.4",
+          "description": "Cách vẽ sơ đồ ERD",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.4.mp4"
         },
         {
           "id": 21,
           "name": "Video 6.5",
+          "description": "Video hướng dẫn chuyển đổi liên kết cấp 3 sang liên kết cấp 2",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.5.mp4"
         },
         {
           "id": 22,
           "name": "Video 6.6",
+          "description": "Phương pháp chọn mô hình thực thể liên kết",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.6.mp4"
         },
         {
           "id": 23,
           "name": "Video 6.7",
+          "description": "Xây dựng mô hình thực thể liên kết mở rộng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.7.mp4"
         }
@@ -6373,66 +6559,77 @@
         {
           "id": 26,
           "name": "Video 7.2",
+          "description": "Các phép toán trên mô hình quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.2.mp4"
         },
         {
           "id": 27,
           "name": "Slide 7.2",
+          "description": "Slide bài giảng các phép toán trên mô hình quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation2.pdf"
         },
         {
           "id": 28,
           "name": "Video 7.3",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.3.mp4"
         },
         {
           "id": 29,
           "name": "Slide 7.3",
+          "description": "Slide bài giảng hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation3.pdf"
         },
         {
           "id": 30,
           "name": "Video 7.4",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.4.mp4"
         },
         {
           "id": 31,
           "name": "Slide 7.4",
+          "description": "Slide hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation4.pdf"
         },
         {
           "id": 32,
           "name": "Video 7.5",
+          "description": "Video hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.5.mp4"
         },
         {
           "id": 33,
           "name": "Slide 7.5",
+          "description": "Slide hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation5.pdf"
         },
         {
           "id": 34,
           "name": "Video 7.6",
+          "description": "Video hướng dẫn tạo khóa ngoại tham chiếu. Đây là nội dung chủ chốt của RDBMS. Các bạn chú ý kỹ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.6.mp4"
         },
         {
           "id": 35,
           "name": "Slide 7.6",
+          "description": "Slide bài giảng đi kèm",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation6.pdf"
         },
         {
           "id": 36,
           "name": "Video 7.7",
+          "description": "Video hướng dẫn một số câu lệnh SQL cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.7.mp4"
         }
@@ -6451,36 +6648,42 @@
         {
           "id": 38,
           "name": "Slide 8.1",
+          "description": "Slide bài giảng về Normalize",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-designguide.pdf"
         },
         {
           "id": 39,
           "name": "Slide 8.2",
+          "description": "File mẫu mô phỏng",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-fd.pdf"
         },
         {
           "id": 40,
           "name": "Slide 8.3",
+          "description": "File mô phỏng việc normalize data",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-normalize.pdf"
         },
         {
           "id": 41,
           "name": "Video 8.2",
+          "description": "Video bài giảng về phụ thuộc hàm, các quy tắc suy diễn. Nội dung này giúp ta có thể xác định các khóa chính cho table",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.2.mp4"
         },
         {
           "id": 42,
           "name": "Video 8.3",
+          "description": "Chuẩn hóa dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.3.mp4"
         },
         {
           "id": 43,
           "name": "Video 8.4",
+          "description": "Khái niệm về bao đóng của tập thuộc tính",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.4.mp4"
         }
@@ -6526,6 +6729,7 @@
         {
           "id": 2,
           "name": "Slide introduce",
+          "description": "Slide giới thiệu tổng quan môn học",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT01/01-intro.pdf"
         }
@@ -6544,6 +6748,7 @@
         {
           "id": 4,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu database",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT02/02-database.pdf"
         }
@@ -6562,6 +6767,7 @@
         {
           "id": 6,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu về RDBMS",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT03/03-dbms.pdf"
         }
@@ -6639,54 +6845,63 @@
         {
           "id": 15,
           "name": "Slide erdiagram",
+          "description": "Slide bài giảng về Slide erdiagram. Các bạn chú ý kỹ phần này nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erdiagram.pdf"
         },
         {
           "id": 16,
           "name": "Slide ví dụ",
+          "description": "Bài tập cho các nội dung đã học. Kết quả đã có phía dưới rồi, các bạn tự check nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erexample.pdf"
         },
         {
           "id": 17,
           "name": "file",
+          "description": "Slide bài giảng về ERtips. Phần này không có video, các bạn chịu khó đọc nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-ertips.pdf"
         },
         {
           "id": 18,
           "name": "Video 6.2",
+          "description": "Video bài giảng về Mô hình thực thể liên kết. Đây là phần quan trọng nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.2.mp4"
         },
         {
           "id": 19,
           "name": "Video 6.3",
+          "description": "Video bổ sung cho bài giảng về Mô hình thực thể kết hợp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.3.mp4"
         },
         {
           "id": 20,
           "name": "Video 6.4",
+          "description": "Cách vẽ sơ đồ ERD",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.4.mp4"
         },
         {
           "id": 21,
           "name": "Video 6.5",
+          "description": "Video hướng dẫn chuyển đổi liên kết cấp 3 sang liên kết cấp 2",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.5.mp4"
         },
         {
           "id": 22,
           "name": "Video 6.6",
+          "description": "Phương pháp chọn mô hình thực thể liên kết",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.6.mp4"
         },
         {
           "id": 23,
           "name": "Video 6.7",
+          "description": "Xây dựng mô hình thực thể liên kết mở rộng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.7.mp4"
         }
@@ -6712,66 +6927,77 @@
         {
           "id": 26,
           "name": "Video 7.2",
+          "description": "Các phép toán trên mô hình quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.2.mp4"
         },
         {
           "id": 27,
           "name": "Slide 7.2",
+          "description": "Slide bài giảng các phép toán trên mô hình quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation2.pdf"
         },
         {
           "id": 28,
           "name": "Video 7.3",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.3.mp4"
         },
         {
           "id": 29,
           "name": "Slide 7.3",
+          "description": "Slide bài giảng hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation3.pdf"
         },
         {
           "id": 30,
           "name": "Video 7.4",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.4.mp4"
         },
         {
           "id": 31,
           "name": "Slide 7.4",
+          "description": "Slide hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation4.pdf"
         },
         {
           "id": 32,
           "name": "Video 7.5",
+          "description": "Video hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.5.mp4"
         },
         {
           "id": 33,
           "name": "Slide 7.5",
+          "description": "Slide hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation5.pdf"
         },
         {
           "id": 34,
           "name": "Video 7.6",
+          "description": "Video hướng dẫn tạo khóa ngoại tham chiếu. Đây là nội dung chủ chốt của RDBMS. Các bạn chú ý kỹ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.6.mp4"
         },
         {
           "id": 35,
           "name": "Slide 7.6",
+          "description": "Slide bài giảng đi kèm",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation6.pdf"
         },
         {
           "id": 36,
           "name": "Video 7.7",
+          "description": "Video hướng dẫn một số câu lệnh SQL cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.7.mp4"
         }
@@ -6790,36 +7016,42 @@
         {
           "id": 38,
           "name": "Slide 8.1",
+          "description": "Slide bài giảng về Normalize",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-designguide.pdf"
         },
         {
           "id": 39,
           "name": "Slide 8.2",
+          "description": "File mẫu mô phỏng",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-fd.pdf"
         },
         {
           "id": 40,
           "name": "Slide 8.3",
+          "description": "File mô phỏng việc normalize data",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-normalize.pdf"
         },
         {
           "id": 41,
           "name": "Video 8.2",
+          "description": "Video bài giảng về phụ thuộc hàm, các quy tắc suy diễn. Nội dung này giúp ta có thể xác định các khóa chính cho table",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.2.mp4"
         },
         {
           "id": 42,
           "name": "Video 8.3",
+          "description": "Chuẩn hóa dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.3.mp4"
         },
         {
           "id": 43,
           "name": "Video 8.4",
+          "description": "Khái niệm về bao đóng của tập thuộc tính",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.4.mp4"
         }
@@ -6865,6 +7097,7 @@
         {
           "id": 2,
           "name": "Slide introduce",
+          "description": "Slide giới thiệu tổng quan môn học",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT01/01-intro.pdf"
         }
@@ -6883,6 +7116,7 @@
         {
           "id": 4,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu database",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT02/02-database.pdf"
         }
@@ -6901,6 +7135,7 @@
         {
           "id": 6,
           "name": "Slide database",
+          "description": "Slide bài giảng giới thiệu về RDBMS",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT03/03-dbms.pdf"
         }
@@ -6978,54 +7213,63 @@
         {
           "id": 15,
           "name": "Slide erdiagram",
+          "description": "Slide bài giảng về Slide erdiagram. Các bạn chú ý kỹ phần này nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erdiagram.pdf"
         },
         {
           "id": 16,
           "name": "Slide ví dụ",
+          "description": "Bài tập cho các nội dung đã học. Kết quả đã có phía dưới rồi, các bạn tự check nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-erexample.pdf"
         },
         {
           "id": 17,
           "name": "file",
+          "description": "Slide bài giảng về ERtips. Phần này không có video, các bạn chịu khó đọc nhé",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/06-ertips.pdf"
         },
         {
           "id": 18,
           "name": "Video 6.2",
+          "description": "Video bài giảng về Mô hình thực thể liên kết. Đây là phần quan trọng nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.2.mp4"
         },
         {
           "id": 19,
           "name": "Video 6.3",
+          "description": "Video bổ sung cho bài giảng về Mô hình thực thể kết hợp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.3.mp4"
         },
         {
           "id": 20,
           "name": "Video 6.4",
+          "description": "Cách vẽ sơ đồ ERD",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.4.mp4"
         },
         {
           "id": 21,
           "name": "Video 6.5",
+          "description": "Video hướng dẫn chuyển đổi liên kết cấp 3 sang liên kết cấp 2",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.5.mp4"
         },
         {
           "id": 22,
           "name": "Video 6.6",
+          "description": "Phương pháp chọn mô hình thực thể liên kết",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.6.mp4"
         },
         {
           "id": 23,
           "name": "Video 6.7",
+          "description": "Xây dựng mô hình thực thể liên kết mở rộng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT06/video6.7.mp4"
         }
@@ -7051,66 +7295,77 @@
         {
           "id": 26,
           "name": "Video 7.2",
+          "description": "Các phép toán trên mô hình quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.2.mp4"
         },
         {
           "id": 27,
           "name": "Slide 7.2",
+          "description": "Slide bài giảng các phép toán trên mô hình quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation2.pdf"
         },
         {
           "id": 28,
           "name": "Video 7.3",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.3.mp4"
         },
         {
           "id": 29,
           "name": "Slide 7.3",
+          "description": "Slide bài giảng hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation3.pdf"
         },
         {
           "id": 30,
           "name": "Video 7.4",
+          "description": "Video hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.4.mp4"
         },
         {
           "id": 31,
           "name": "Slide 7.4",
+          "description": "Slide hướng dẫn chuyển đổi mô hình ERD sang lược đồ quan hệ (Part 2)",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation4.pdf"
         },
         {
           "id": 32,
           "name": "Video 7.5",
+          "description": "Video hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.5.mp4"
         },
         {
           "id": 33,
           "name": "Slide 7.5",
+          "description": "Slide hướng dẫn chuyển đổi mô hình EER sang lược đồ quan hệ",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation5.pdf"
         },
         {
           "id": 34,
           "name": "Video 7.6",
+          "description": "Video hướng dẫn tạo khóa ngoại tham chiếu. Đây là nội dung chủ chốt của RDBMS. Các bạn chú ý kỹ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.6.mp4"
         },
         {
           "id": 35,
           "name": "Slide 7.6",
+          "description": "Slide bài giảng đi kèm",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/07-relation6.pdf"
         },
         {
           "id": 36,
           "name": "Video 7.7",
+          "description": "Video hướng dẫn một số câu lệnh SQL cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT07/video7.7.mp4"
         }
@@ -7129,36 +7384,42 @@
         {
           "id": 38,
           "name": "Slide 8.1",
+          "description": "Slide bài giảng về Normalize",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-designguide.pdf"
         },
         {
           "id": 39,
           "name": "Slide 8.2",
+          "description": "File mẫu mô phỏng",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-fd.pdf"
         },
         {
           "id": 40,
           "name": "Slide 8.3",
+          "description": "File mô phỏng việc normalize data",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/08-normalize.pdf"
         },
         {
           "id": 41,
           "name": "Video 8.2",
+          "description": "Video bài giảng về phụ thuộc hàm, các quy tắc suy diễn. Nội dung này giúp ta có thể xác định các khóa chính cho table",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.2.mp4"
         },
         {
           "id": 42,
           "name": "Video 8.3",
+          "description": "Chuẩn hóa dữ liệu",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.3.mp4"
         },
         {
           "id": 43,
           "name": "Video 8.4",
+          "description": "Khái niệm về bao đóng của tập thuộc tính",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C000/CT08/video8.4.mp4"
         }
