@@ -10797,6 +10797,7 @@
         {
           "id": 1,
           "name": "Video 1",
+          "description": "Video giới thiệu về cách sử dụng Visual Studio. Đây là IDE lập trình C# nha. Các bạn cần phải cài đặt IDE này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/001%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20Visual%20Studio%20v%C3%A0%20C%23.mp4",
           "QnA": [
@@ -10849,6 +10850,7 @@
         {
           "id": 2,
           "name": "Video 2",
+          "description": "Video này sẽ hướng dẫn các bạn Console.Write và Console.Read. Đây là 2 hàm quan trọng bậc nhất để phục vụ việc I/O trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/002%20Console.Write%2C%20Console.WriteLine%2C%20Comment%20m%E1%BB%99t%20d%C3%B2ng%2C%20Comment%20nhi%E1%BB%81u%20d%C3%B2ng.mp4",
           "QnA": []
@@ -10856,6 +10858,7 @@
         {
           "id": 3,
           "name": "Video 3",
+          "description": "Biến, hay tham số là thành phần không thể thiếu trong lập trình. Vậy khai báo biến trong C# như thế nào mới đúng? Cùng xem video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/003%20Khai%20b%C3%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20bi%E1%BA%BFn%20(variable)%2C%20h%E1%BA%B1ng%20(constant).mp4",
           "QnA": []
@@ -10863,6 +10866,7 @@
         {
           "id": 4,
           "name": "Video 4",
+          "description": "Biến nullable",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/004%20Nullable.mp4",
           "QnA": []
@@ -10875,6 +10879,7 @@
         {
           "id": 5,
           "name": "Video 5",
+          "description": "Dynamic variable là biến có dữ liệu động. Dữ liệu động khi có một thao tác nào đó được thực hiện",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/005%20var%20v%C3%A0%20dynamic.mp4",
           "QnA": []
@@ -10882,6 +10887,7 @@
         {
           "id": 6,
           "name": "Video 6",
+          "description": "Đôi khi dữ liệu của mình nhập vào không đúng format thì cần phải chuyển đổi format của các dữ liệu. Video này sẽ giải đáp vấn đề đó nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/006%20Nh%E1%BA%ADp%20li%E1%BB%87u%20v%E1%BB%9Bi%20Convert.To...%2C%20Parse%2C%20TryParse.mp4",
           "QnA": []
@@ -10889,6 +10895,7 @@
         {
           "id": 7,
           "name": "Video 7",
+          "description": "Các phép tính toán cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/007%20Ph%C3%A9p%20to%C3%A1n%20s%E1%BB%91%20h%E1%BB%8Dc%20(Arithmetic%20Operations).mp4",
           "QnA": []
@@ -10896,6 +10903,7 @@
         {
           "id": 8,
           "name": "Video 8",
+          "description": "Các phép tính toán so sánh",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/008%20Ph%C3%A9p%20to%C3%A1n%20so%20s%C3%A1nh%20(comparison)%2C%20logic%20(logical)%20v%C3%A0%20logic%20nh%E1%BB%8B%20ph%C3%A2n%20(bitwise%20logic.mp4",
           "QnA": []
@@ -10903,6 +10911,7 @@
         {
           "id": 9,
           "name": "Video 9",
+          "description": "Điều kiện rẽ nhánh: if-else. Rẽ nhánh là phần khá quan trọng trong lĩnh vực lập trình nhé các bạn, để ý kỹ nội dung này giúp mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/009%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20if-else.mp4",
           "QnA": []
@@ -10910,6 +10919,7 @@
         {
           "id": 10,
           "name": "Video 10",
+          "description": "Điều kiện rẽ nhánh: switch-case. Một cách viết khác của if-else. Học nhiều biết nhiều kkk",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/010%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20switch-case.mp4",
           "QnA": []
@@ -10917,6 +10927,7 @@
         {
           "id": 11,
           "name": "Video 11",
+          "description": "Vòng lặp while.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/011%20V%C3%B2ng%20l%E1%BA%B7p%20while.mp4",
           "QnA": []
@@ -10924,6 +10935,7 @@
         {
           "id": 12,
           "name": "Video 12",
+          "description": "Vòng lặp do-while. Do-while và While cũng là vòng lặp nhưng nó khác nhau ý tưởng nha các bạn. Để ý kỹ, không là bị lầm đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/012%20V%C3%B2ng%20l%E1%BA%B7p%20do-while.mp4",
           "QnA": []
@@ -10931,6 +10943,7 @@
         {
           "id": 13,
           "name": "Video 13",
+          "description": "Vòng lặp for. Vòng lặp For khá phổ biến trong lập trình, dùng for hay while là tùy vào mục đích sử dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/013%20V%C3%B2ng%20l%E1%BA%B7p%20for.mp4",
           "QnA": []
@@ -10938,6 +10951,7 @@
         {
           "id": 14,
           "name": "Video 14",
+          "description": "Break. Câu lệnh ngắt vòng lặp. Trong một số trường hợp, khi chưa lặp xong mà muốn thoát khỏi điều kiện lặp thì ta sử dụng break",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/014%20C%C3%A2u%20l%E1%BB%87nh%20break_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20%C3%A1p%20d%E1%BB%A5ng.mp4",
           "QnA": []
@@ -10945,6 +10959,7 @@
         {
           "id": 15,
           "name": "Video 15",
+          "description": "Continue. Tương tự với break nhưng nó chỉ bỏ qua lần lặp đó thôi chứ không thoát hoàn toàn khỏi điều kiện lặp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/015%20C%C3%A2u%20l%E1%BB%87nh%20continue_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20minh%20h%E1%BB%8Da.mp4",
           "QnA": []
@@ -10957,6 +10972,7 @@
         {
           "id": 16,
           "name": "Video 16",
+          "description": "Mảng một chiều là gì? Cách khai báo mảng một chiều trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/016%20M%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20Khai%20b%C3%A1o%20(5%20c%C3%A1ch)%2C%20nh%E1%BA%ADp%20li%E1%BB%87u%2C%20Hi%E1%BB%83n%20th%E1%BB%8B%20m%E1%BA%A3ng%20s%E1%BB%AD%20d%E1%BB%A5ng%20foreach.mp4",
           "QnA": []
@@ -10964,6 +10980,7 @@
         {
           "id": 17,
           "name": "Video 17",
+          "description": "Các phép tính toán, tìm kiếm, sắp xếp trong mảng một chiều",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/017%20T%C3%ADnh%20to%C3%A1n%2C%20t%C3%ACm%20ki%E1%BA%BFm%20v%C3%A0%20s%E1%BA%AFp%20x%E1%BA%BFp%20m%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20d%E1%BB%B1a%20tr%C3%AAn%20c%C3%A1c%20h%C3%A0m%20c%C3%B3%20s%E1%BA%B5n.mp4",
           "QnA": []
@@ -10971,6 +10988,7 @@
         {
           "id": 18,
           "name": "Video 18",
+          "description": "Mảng 2 chiều. Một kiến thức khá khó nhưng đối với một số bạn có tư duy hình học tốt thì không thành vấn đề",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/018%20M%E1%BA%A3ng%20hai%20chi%E1%BB%81u.mp4",
           "QnA": []
@@ -10978,6 +10996,7 @@
         {
           "id": 19,
           "name": "Video 19",
+          "description": "Mảng răng cưa",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/019%20M%E1%BA%A3ng%20r%C4%83ng%20c%C6%B0a%20(Jagged%20Array).mp4",
           "QnA": []
@@ -10985,6 +11004,7 @@
         {
           "id": 20,
           "name": "Video 20",
+          "description": "Cùng demo một bài tập nhỏ với mảng nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/020%20T%E1%BA%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20m%E1%BA%A3ng%20v%E1%BB%9Bi%20Array.mp4",
           "QnA": []
@@ -10997,6 +11017,7 @@
         {
           "id": 21,
           "name": "Video 21",
+          "description": "Để lập trình thì không thể thiếu Hàm (Function). Video này sẽ hướng dẫn các bạn tạo hàm trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/021%20H%C3%A0m%20(Function)%20%C4%90%E1%BB%8Bnh%20ngh%C4%A9a%2C%20L%E1%BB%9Di%20g%E1%BB%8Di%20h%C3%A0m%2C%20Truy%E1%BB%81n%20nh%E1%BA%ADn%20d%E1%BB%AF%20li%E1%BB%87u%20v%E1%BB%9Bi%20%C4%91%E1%BB%91i%20s%E1%BB%91%2C%20tham%20s%E1%BB%91.mp4",
           "QnA": []
@@ -11004,6 +11025,7 @@
         {
           "id": 22,
           "name": "Video 22",
+          "description": "Biến local và biến global. Cùng làm rõ trong video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/022%20Bi%E1%BA%BFn%20local%20v%C3%A0%20bi%E1%BA%BFn%20global.mp4",
           "QnA": []
@@ -11011,6 +11033,7 @@
         {
           "id": 23,
           "name": "Video 23",
+          "description": "Cách sử dụng out và ref",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/023%20C%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20out%20v%C3%A0%20ref.mp4",
           "QnA": []
@@ -11018,6 +11041,7 @@
         {
           "id": 24,
           "name": "Video 24",
+          "description": "Từ khóa params",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/024%20T%E1%BB%AB%20kh%C3%B3a%20params.mp4",
           "QnA": []
@@ -11338,6 +11362,7 @@
         {
           "id": 1,
           "name": "Video 1",
+          "description": "Video giới thiệu về cách sử dụng Visual Studio. Đây là IDE lập trình C# nha. Các bạn cần phải cài đặt IDE này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/001%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20Visual%20Studio%20v%C3%A0%20C%23.mp4",
           "QnA": [
@@ -11390,6 +11415,7 @@
         {
           "id": 2,
           "name": "Video 2",
+          "description": "Video này sẽ hướng dẫn các bạn Console.Write và Console.Read. Đây là 2 hàm quan trọng bậc nhất để phục vụ việc I/O trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/002%20Console.Write%2C%20Console.WriteLine%2C%20Comment%20m%E1%BB%99t%20d%C3%B2ng%2C%20Comment%20nhi%E1%BB%81u%20d%C3%B2ng.mp4",
           "QnA": []
@@ -11397,6 +11423,7 @@
         {
           "id": 3,
           "name": "Video 3",
+          "description": "Biến, hay tham số là thành phần không thể thiếu trong lập trình. Vậy khai báo biến trong C# như thế nào mới đúng? Cùng xem video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/003%20Khai%20b%C3%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20bi%E1%BA%BFn%20(variable)%2C%20h%E1%BA%B1ng%20(constant).mp4",
           "QnA": []
@@ -11404,6 +11431,7 @@
         {
           "id": 4,
           "name": "Video 4",
+          "description": "Biến nullable",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/004%20Nullable.mp4",
           "QnA": []
@@ -11416,6 +11444,7 @@
         {
           "id": 5,
           "name": "Video 5",
+          "description": "Dynamic variable là biến có dữ liệu động. Dữ liệu động khi có một thao tác nào đó được thực hiện",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/005%20var%20v%C3%A0%20dynamic.mp4",
           "QnA": []
@@ -11423,6 +11452,7 @@
         {
           "id": 6,
           "name": "Video 6",
+          "description": "Đôi khi dữ liệu của mình nhập vào không đúng format thì cần phải chuyển đổi format của các dữ liệu. Video này sẽ giải đáp vấn đề đó nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/006%20Nh%E1%BA%ADp%20li%E1%BB%87u%20v%E1%BB%9Bi%20Convert.To...%2C%20Parse%2C%20TryParse.mp4",
           "QnA": []
@@ -11430,6 +11460,7 @@
         {
           "id": 7,
           "name": "Video 7",
+          "description": "Các phép tính toán cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/007%20Ph%C3%A9p%20to%C3%A1n%20s%E1%BB%91%20h%E1%BB%8Dc%20(Arithmetic%20Operations).mp4",
           "QnA": []
@@ -11437,6 +11468,7 @@
         {
           "id": 8,
           "name": "Video 8",
+          "description": "Các phép tính toán so sánh",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/008%20Ph%C3%A9p%20to%C3%A1n%20so%20s%C3%A1nh%20(comparison)%2C%20logic%20(logical)%20v%C3%A0%20logic%20nh%E1%BB%8B%20ph%C3%A2n%20(bitwise%20logic.mp4",
           "QnA": []
@@ -11444,6 +11476,7 @@
         {
           "id": 9,
           "name": "Video 9",
+          "description": "Điều kiện rẽ nhánh: if-else. Rẽ nhánh là phần khá quan trọng trong lĩnh vực lập trình nhé các bạn, để ý kỹ nội dung này giúp mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/009%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20if-else.mp4",
           "QnA": []
@@ -11451,6 +11484,7 @@
         {
           "id": 10,
           "name": "Video 10",
+          "description": "Điều kiện rẽ nhánh: switch-case. Một cách viết khác của if-else. Học nhiều biết nhiều kkk",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/010%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20switch-case.mp4",
           "QnA": []
@@ -11458,6 +11492,7 @@
         {
           "id": 11,
           "name": "Video 11",
+          "description": "Vòng lặp while.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/011%20V%C3%B2ng%20l%E1%BA%B7p%20while.mp4",
           "QnA": []
@@ -11465,6 +11500,7 @@
         {
           "id": 12,
           "name": "Video 12",
+          "description": "Vòng lặp do-while. Do-while và While cũng là vòng lặp nhưng nó khác nhau ý tưởng nha các bạn. Để ý kỹ, không là bị lầm đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/012%20V%C3%B2ng%20l%E1%BA%B7p%20do-while.mp4",
           "QnA": []
@@ -11472,6 +11508,7 @@
         {
           "id": 13,
           "name": "Video 13",
+          "description": "Vòng lặp for. Vòng lặp For khá phổ biến trong lập trình, dùng for hay while là tùy vào mục đích sử dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/013%20V%C3%B2ng%20l%E1%BA%B7p%20for.mp4",
           "QnA": []
@@ -11479,6 +11516,7 @@
         {
           "id": 14,
           "name": "Video 14",
+          "description": "Break. Câu lệnh ngắt vòng lặp. Trong một số trường hợp, khi chưa lặp xong mà muốn thoát khỏi điều kiện lặp thì ta sử dụng break",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/014%20C%C3%A2u%20l%E1%BB%87nh%20break_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20%C3%A1p%20d%E1%BB%A5ng.mp4",
           "QnA": []
@@ -11486,6 +11524,7 @@
         {
           "id": 15,
           "name": "Video 15",
+          "description": "Continue. Tương tự với break nhưng nó chỉ bỏ qua lần lặp đó thôi chứ không thoát hoàn toàn khỏi điều kiện lặp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/015%20C%C3%A2u%20l%E1%BB%87nh%20continue_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20minh%20h%E1%BB%8Da.mp4",
           "QnA": []
@@ -11498,6 +11537,7 @@
         {
           "id": 16,
           "name": "Video 16",
+          "description": "Mảng một chiều là gì? Cách khai báo mảng một chiều trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/016%20M%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20Khai%20b%C3%A1o%20(5%20c%C3%A1ch)%2C%20nh%E1%BA%ADp%20li%E1%BB%87u%2C%20Hi%E1%BB%83n%20th%E1%BB%8B%20m%E1%BA%A3ng%20s%E1%BB%AD%20d%E1%BB%A5ng%20foreach.mp4",
           "QnA": []
@@ -11505,6 +11545,7 @@
         {
           "id": 17,
           "name": "Video 17",
+          "description": "Các phép tính toán, tìm kiếm, sắp xếp trong mảng một chiều",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/017%20T%C3%ADnh%20to%C3%A1n%2C%20t%C3%ACm%20ki%E1%BA%BFm%20v%C3%A0%20s%E1%BA%AFp%20x%E1%BA%BFp%20m%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20d%E1%BB%B1a%20tr%C3%AAn%20c%C3%A1c%20h%C3%A0m%20c%C3%B3%20s%E1%BA%B5n.mp4",
           "QnA": []
@@ -11512,6 +11553,7 @@
         {
           "id": 18,
           "name": "Video 18",
+          "description": "Mảng 2 chiều. Một kiến thức khá khó nhưng đối với một số bạn có tư duy hình học tốt thì không thành vấn đề",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/018%20M%E1%BA%A3ng%20hai%20chi%E1%BB%81u.mp4",
           "QnA": []
@@ -11519,6 +11561,7 @@
         {
           "id": 19,
           "name": "Video 19",
+          "description": "Mảng răng cưa",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/019%20M%E1%BA%A3ng%20r%C4%83ng%20c%C6%B0a%20(Jagged%20Array).mp4",
           "QnA": []
@@ -11526,6 +11569,7 @@
         {
           "id": 20,
           "name": "Video 20",
+          "description": "Cùng demo một bài tập nhỏ với mảng nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/020%20T%E1%BA%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20m%E1%BA%A3ng%20v%E1%BB%9Bi%20Array.mp4",
           "QnA": []
@@ -11538,6 +11582,7 @@
         {
           "id": 21,
           "name": "Video 21",
+          "description": "Để lập trình thì không thể thiếu Hàm (Function). Video này sẽ hướng dẫn các bạn tạo hàm trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/021%20H%C3%A0m%20(Function)%20%C4%90%E1%BB%8Bnh%20ngh%C4%A9a%2C%20L%E1%BB%9Di%20g%E1%BB%8Di%20h%C3%A0m%2C%20Truy%E1%BB%81n%20nh%E1%BA%ADn%20d%E1%BB%AF%20li%E1%BB%87u%20v%E1%BB%9Bi%20%C4%91%E1%BB%91i%20s%E1%BB%91%2C%20tham%20s%E1%BB%91.mp4",
           "QnA": []
@@ -11545,6 +11590,7 @@
         {
           "id": 22,
           "name": "Video 22",
+          "description": "Biến local và biến global. Cùng làm rõ trong video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/022%20Bi%E1%BA%BFn%20local%20v%C3%A0%20bi%E1%BA%BFn%20global.mp4",
           "QnA": []
@@ -11552,6 +11598,7 @@
         {
           "id": 23,
           "name": "Video 23",
+          "description": "Cách sử dụng out và ref",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/023%20C%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20out%20v%C3%A0%20ref.mp4",
           "QnA": []
@@ -11559,6 +11606,7 @@
         {
           "id": 24,
           "name": "Video 24",
+          "description": "Từ khóa params",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/024%20T%E1%BB%AB%20kh%C3%B3a%20params.mp4",
           "QnA": []
@@ -11879,6 +11927,7 @@
         {
           "id": 1,
           "name": "Video 1",
+          "description": "Video giới thiệu về cách sử dụng Visual Studio. Đây là IDE lập trình C# nha. Các bạn cần phải cài đặt IDE này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/001%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20Visual%20Studio%20v%C3%A0%20C%23.mp4",
           "QnA": [
@@ -11931,6 +11980,7 @@
         {
           "id": 2,
           "name": "Video 2",
+          "description": "Video này sẽ hướng dẫn các bạn Console.Write và Console.Read. Đây là 2 hàm quan trọng bậc nhất để phục vụ việc I/O trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/002%20Console.Write%2C%20Console.WriteLine%2C%20Comment%20m%E1%BB%99t%20d%C3%B2ng%2C%20Comment%20nhi%E1%BB%81u%20d%C3%B2ng.mp4",
           "QnA": []
@@ -11938,6 +11988,7 @@
         {
           "id": 3,
           "name": "Video 3",
+          "description": "Biến, hay tham số là thành phần không thể thiếu trong lập trình. Vậy khai báo biến trong C# như thế nào mới đúng? Cùng xem video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/003%20Khai%20b%C3%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20bi%E1%BA%BFn%20(variable)%2C%20h%E1%BA%B1ng%20(constant).mp4",
           "QnA": []
@@ -11945,6 +11996,7 @@
         {
           "id": 4,
           "name": "Video 4",
+          "description": "Biến nullable",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/004%20Nullable.mp4",
           "QnA": []
@@ -11957,6 +12009,7 @@
         {
           "id": 5,
           "name": "Video 5",
+          "description": "Dynamic variable là biến có dữ liệu động. Dữ liệu động khi có một thao tác nào đó được thực hiện",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/005%20var%20v%C3%A0%20dynamic.mp4",
           "QnA": []
@@ -11964,6 +12017,7 @@
         {
           "id": 6,
           "name": "Video 6",
+          "description": "Đôi khi dữ liệu của mình nhập vào không đúng format thì cần phải chuyển đổi format của các dữ liệu. Video này sẽ giải đáp vấn đề đó nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/006%20Nh%E1%BA%ADp%20li%E1%BB%87u%20v%E1%BB%9Bi%20Convert.To...%2C%20Parse%2C%20TryParse.mp4",
           "QnA": []
@@ -11971,6 +12025,7 @@
         {
           "id": 7,
           "name": "Video 7",
+          "description": "Các phép tính toán cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/007%20Ph%C3%A9p%20to%C3%A1n%20s%E1%BB%91%20h%E1%BB%8Dc%20(Arithmetic%20Operations).mp4",
           "QnA": []
@@ -11978,6 +12033,7 @@
         {
           "id": 8,
           "name": "Video 8",
+          "description": "Các phép tính toán so sánh",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/008%20Ph%C3%A9p%20to%C3%A1n%20so%20s%C3%A1nh%20(comparison)%2C%20logic%20(logical)%20v%C3%A0%20logic%20nh%E1%BB%8B%20ph%C3%A2n%20(bitwise%20logic.mp4",
           "QnA": []
@@ -11985,6 +12041,7 @@
         {
           "id": 9,
           "name": "Video 9",
+          "description": "Điều kiện rẽ nhánh: if-else. Rẽ nhánh là phần khá quan trọng trong lĩnh vực lập trình nhé các bạn, để ý kỹ nội dung này giúp mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/009%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20if-else.mp4",
           "QnA": []
@@ -11992,6 +12049,7 @@
         {
           "id": 10,
           "name": "Video 10",
+          "description": "Điều kiện rẽ nhánh: switch-case. Một cách viết khác của if-else. Học nhiều biết nhiều kkk",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/010%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20switch-case.mp4",
           "QnA": []
@@ -11999,6 +12057,7 @@
         {
           "id": 11,
           "name": "Video 11",
+          "description": "Vòng lặp while.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/011%20V%C3%B2ng%20l%E1%BA%B7p%20while.mp4",
           "QnA": []
@@ -12006,6 +12065,7 @@
         {
           "id": 12,
           "name": "Video 12",
+          "description": "Vòng lặp do-while. Do-while và While cũng là vòng lặp nhưng nó khác nhau ý tưởng nha các bạn. Để ý kỹ, không là bị lầm đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/012%20V%C3%B2ng%20l%E1%BA%B7p%20do-while.mp4",
           "QnA": []
@@ -12013,6 +12073,7 @@
         {
           "id": 13,
           "name": "Video 13",
+          "description": "Vòng lặp for. Vòng lặp For khá phổ biến trong lập trình, dùng for hay while là tùy vào mục đích sử dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/013%20V%C3%B2ng%20l%E1%BA%B7p%20for.mp4",
           "QnA": []
@@ -12020,6 +12081,7 @@
         {
           "id": 14,
           "name": "Video 14",
+          "description": "Break. Câu lệnh ngắt vòng lặp. Trong một số trường hợp, khi chưa lặp xong mà muốn thoát khỏi điều kiện lặp thì ta sử dụng break",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/014%20C%C3%A2u%20l%E1%BB%87nh%20break_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20%C3%A1p%20d%E1%BB%A5ng.mp4",
           "QnA": []
@@ -12027,6 +12089,7 @@
         {
           "id": 15,
           "name": "Video 15",
+          "description": "Continue. Tương tự với break nhưng nó chỉ bỏ qua lần lặp đó thôi chứ không thoát hoàn toàn khỏi điều kiện lặp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/015%20C%C3%A2u%20l%E1%BB%87nh%20continue_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20minh%20h%E1%BB%8Da.mp4",
           "QnA": []
@@ -12039,6 +12102,7 @@
         {
           "id": 16,
           "name": "Video 16",
+          "description": "Mảng một chiều là gì? Cách khai báo mảng một chiều trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/016%20M%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20Khai%20b%C3%A1o%20(5%20c%C3%A1ch)%2C%20nh%E1%BA%ADp%20li%E1%BB%87u%2C%20Hi%E1%BB%83n%20th%E1%BB%8B%20m%E1%BA%A3ng%20s%E1%BB%AD%20d%E1%BB%A5ng%20foreach.mp4",
           "QnA": []
@@ -12046,6 +12110,7 @@
         {
           "id": 17,
           "name": "Video 17",
+          "description": "Các phép tính toán, tìm kiếm, sắp xếp trong mảng một chiều",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/017%20T%C3%ADnh%20to%C3%A1n%2C%20t%C3%ACm%20ki%E1%BA%BFm%20v%C3%A0%20s%E1%BA%AFp%20x%E1%BA%BFp%20m%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20d%E1%BB%B1a%20tr%C3%AAn%20c%C3%A1c%20h%C3%A0m%20c%C3%B3%20s%E1%BA%B5n.mp4",
           "QnA": []
@@ -12053,6 +12118,7 @@
         {
           "id": 18,
           "name": "Video 18",
+          "description": "Mảng 2 chiều. Một kiến thức khá khó nhưng đối với một số bạn có tư duy hình học tốt thì không thành vấn đề",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/018%20M%E1%BA%A3ng%20hai%20chi%E1%BB%81u.mp4",
           "QnA": []
@@ -12060,6 +12126,7 @@
         {
           "id": 19,
           "name": "Video 19",
+          "description": "Mảng răng cưa",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/019%20M%E1%BA%A3ng%20r%C4%83ng%20c%C6%B0a%20(Jagged%20Array).mp4",
           "QnA": []
@@ -12067,6 +12134,7 @@
         {
           "id": 20,
           "name": "Video 20",
+          "description": "Cùng demo một bài tập nhỏ với mảng nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/020%20T%E1%BA%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20m%E1%BA%A3ng%20v%E1%BB%9Bi%20Array.mp4",
           "QnA": []
@@ -12079,6 +12147,7 @@
         {
           "id": 21,
           "name": "Video 21",
+          "description": "Để lập trình thì không thể thiếu Hàm (Function). Video này sẽ hướng dẫn các bạn tạo hàm trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/021%20H%C3%A0m%20(Function)%20%C4%90%E1%BB%8Bnh%20ngh%C4%A9a%2C%20L%E1%BB%9Di%20g%E1%BB%8Di%20h%C3%A0m%2C%20Truy%E1%BB%81n%20nh%E1%BA%ADn%20d%E1%BB%AF%20li%E1%BB%87u%20v%E1%BB%9Bi%20%C4%91%E1%BB%91i%20s%E1%BB%91%2C%20tham%20s%E1%BB%91.mp4",
           "QnA": []
@@ -12086,6 +12155,7 @@
         {
           "id": 22,
           "name": "Video 22",
+          "description": "Biến local và biến global. Cùng làm rõ trong video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/022%20Bi%E1%BA%BFn%20local%20v%C3%A0%20bi%E1%BA%BFn%20global.mp4",
           "QnA": []
@@ -12093,6 +12163,7 @@
         {
           "id": 23,
           "name": "Video 23",
+          "description": "Cách sử dụng out và ref",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/023%20C%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20out%20v%C3%A0%20ref.mp4",
           "QnA": []
@@ -12100,6 +12171,7 @@
         {
           "id": 24,
           "name": "Video 24",
+          "description": "Từ khóa params",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/024%20T%E1%BB%AB%20kh%C3%B3a%20params.mp4",
           "QnA": []
@@ -15010,6 +15082,7 @@
         {
           "id": 1,
           "name": "Video 1",
+          "description": "Video giới thiệu về cách sử dụng Visual Studio. Đây là IDE lập trình C# nha. Các bạn cần phải cài đặt IDE này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/001%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20Visual%20Studio%20v%C3%A0%20C%23.mp4",
           "QnA": [
@@ -15062,6 +15135,7 @@
         {
           "id": 2,
           "name": "Video 2",
+          "description": "Video này sẽ hướng dẫn các bạn Console.Write và Console.Read. Đây là 2 hàm quan trọng bậc nhất để phục vụ việc I/O trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/002%20Console.Write%2C%20Console.WriteLine%2C%20Comment%20m%E1%BB%99t%20d%C3%B2ng%2C%20Comment%20nhi%E1%BB%81u%20d%C3%B2ng.mp4",
           "QnA": []
@@ -15069,6 +15143,7 @@
         {
           "id": 3,
           "name": "Video 3",
+          "description": "Biến, hay tham số là thành phần không thể thiếu trong lập trình. Vậy khai báo biến trong C# như thế nào mới đúng? Cùng xem video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/003%20Khai%20b%C3%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20bi%E1%BA%BFn%20(variable)%2C%20h%E1%BA%B1ng%20(constant).mp4",
           "QnA": []
@@ -15076,6 +15151,7 @@
         {
           "id": 4,
           "name": "Video 4",
+          "description": "Biến nullable",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/004%20Nullable.mp4",
           "QnA": []
@@ -15088,6 +15164,7 @@
         {
           "id": 5,
           "name": "Video 5",
+          "description": "Dynamic variable là biến có dữ liệu động. Dữ liệu động khi có một thao tác nào đó được thực hiện",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/005%20var%20v%C3%A0%20dynamic.mp4",
           "QnA": []
@@ -15095,6 +15172,7 @@
         {
           "id": 6,
           "name": "Video 6",
+          "description": "Đôi khi dữ liệu của mình nhập vào không đúng format thì cần phải chuyển đổi format của các dữ liệu. Video này sẽ giải đáp vấn đề đó nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/006%20Nh%E1%BA%ADp%20li%E1%BB%87u%20v%E1%BB%9Bi%20Convert.To...%2C%20Parse%2C%20TryParse.mp4",
           "QnA": []
@@ -15102,6 +15180,7 @@
         {
           "id": 7,
           "name": "Video 7",
+          "description": "Các phép tính toán cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/007%20Ph%C3%A9p%20to%C3%A1n%20s%E1%BB%91%20h%E1%BB%8Dc%20(Arithmetic%20Operations).mp4",
           "QnA": []
@@ -15109,6 +15188,7 @@
         {
           "id": 8,
           "name": "Video 8",
+          "description": "Các phép tính toán so sánh",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/008%20Ph%C3%A9p%20to%C3%A1n%20so%20s%C3%A1nh%20(comparison)%2C%20logic%20(logical)%20v%C3%A0%20logic%20nh%E1%BB%8B%20ph%C3%A2n%20(bitwise%20logic.mp4",
           "QnA": []
@@ -15116,6 +15196,7 @@
         {
           "id": 9,
           "name": "Video 9",
+          "description": "Điều kiện rẽ nhánh: if-else. Rẽ nhánh là phần khá quan trọng trong lĩnh vực lập trình nhé các bạn, để ý kỹ nội dung này giúp mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/009%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20if-else.mp4",
           "QnA": []
@@ -15123,6 +15204,7 @@
         {
           "id": 10,
           "name": "Video 10",
+          "description": "Điều kiện rẽ nhánh: switch-case. Một cách viết khác của if-else. Học nhiều biết nhiều kkk",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/010%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20switch-case.mp4",
           "QnA": []
@@ -15130,6 +15212,7 @@
         {
           "id": 11,
           "name": "Video 11",
+          "description": "Vòng lặp while.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/011%20V%C3%B2ng%20l%E1%BA%B7p%20while.mp4",
           "QnA": []
@@ -15137,6 +15220,7 @@
         {
           "id": 12,
           "name": "Video 12",
+          "description": "Vòng lặp do-while. Do-while và While cũng là vòng lặp nhưng nó khác nhau ý tưởng nha các bạn. Để ý kỹ, không là bị lầm đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/012%20V%C3%B2ng%20l%E1%BA%B7p%20do-while.mp4",
           "QnA": []
@@ -15144,6 +15228,7 @@
         {
           "id": 13,
           "name": "Video 13",
+          "description": "Vòng lặp for. Vòng lặp For khá phổ biến trong lập trình, dùng for hay while là tùy vào mục đích sử dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/013%20V%C3%B2ng%20l%E1%BA%B7p%20for.mp4",
           "QnA": []
@@ -15151,6 +15236,7 @@
         {
           "id": 14,
           "name": "Video 14",
+          "description": "Break. Câu lệnh ngắt vòng lặp. Trong một số trường hợp, khi chưa lặp xong mà muốn thoát khỏi điều kiện lặp thì ta sử dụng break",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/014%20C%C3%A2u%20l%E1%BB%87nh%20break_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20%C3%A1p%20d%E1%BB%A5ng.mp4",
           "QnA": []
@@ -15158,6 +15244,7 @@
         {
           "id": 15,
           "name": "Video 15",
+          "description": "Continue. Tương tự với break nhưng nó chỉ bỏ qua lần lặp đó thôi chứ không thoát hoàn toàn khỏi điều kiện lặp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/015%20C%C3%A2u%20l%E1%BB%87nh%20continue_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20minh%20h%E1%BB%8Da.mp4",
           "QnA": []
@@ -15170,6 +15257,7 @@
         {
           "id": 16,
           "name": "Video 16",
+          "description": "Mảng một chiều là gì? Cách khai báo mảng một chiều trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/016%20M%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20Khai%20b%C3%A1o%20(5%20c%C3%A1ch)%2C%20nh%E1%BA%ADp%20li%E1%BB%87u%2C%20Hi%E1%BB%83n%20th%E1%BB%8B%20m%E1%BA%A3ng%20s%E1%BB%AD%20d%E1%BB%A5ng%20foreach.mp4",
           "QnA": []
@@ -15177,6 +15265,7 @@
         {
           "id": 17,
           "name": "Video 17",
+          "description": "Các phép tính toán, tìm kiếm, sắp xếp trong mảng một chiều",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/017%20T%C3%ADnh%20to%C3%A1n%2C%20t%C3%ACm%20ki%E1%BA%BFm%20v%C3%A0%20s%E1%BA%AFp%20x%E1%BA%BFp%20m%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20d%E1%BB%B1a%20tr%C3%AAn%20c%C3%A1c%20h%C3%A0m%20c%C3%B3%20s%E1%BA%B5n.mp4",
           "QnA": []
@@ -15184,6 +15273,7 @@
         {
           "id": 18,
           "name": "Video 18",
+          "description": "Mảng 2 chiều. Một kiến thức khá khó nhưng đối với một số bạn có tư duy hình học tốt thì không thành vấn đề",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/018%20M%E1%BA%A3ng%20hai%20chi%E1%BB%81u.mp4",
           "QnA": []
@@ -15191,6 +15281,7 @@
         {
           "id": 19,
           "name": "Video 19",
+          "description": "Mảng răng cưa",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/019%20M%E1%BA%A3ng%20r%C4%83ng%20c%C6%B0a%20(Jagged%20Array).mp4",
           "QnA": []
@@ -15198,6 +15289,7 @@
         {
           "id": 20,
           "name": "Video 20",
+          "description": "Cùng demo một bài tập nhỏ với mảng nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/020%20T%E1%BA%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20m%E1%BA%A3ng%20v%E1%BB%9Bi%20Array.mp4",
           "QnA": []
@@ -15210,6 +15302,7 @@
         {
           "id": 21,
           "name": "Video 21",
+          "description": "Để lập trình thì không thể thiếu Hàm (Function). Video này sẽ hướng dẫn các bạn tạo hàm trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/021%20H%C3%A0m%20(Function)%20%C4%90%E1%BB%8Bnh%20ngh%C4%A9a%2C%20L%E1%BB%9Di%20g%E1%BB%8Di%20h%C3%A0m%2C%20Truy%E1%BB%81n%20nh%E1%BA%ADn%20d%E1%BB%AF%20li%E1%BB%87u%20v%E1%BB%9Bi%20%C4%91%E1%BB%91i%20s%E1%BB%91%2C%20tham%20s%E1%BB%91.mp4",
           "QnA": []
@@ -15217,6 +15310,7 @@
         {
           "id": 22,
           "name": "Video 22",
+          "description": "Biến local và biến global. Cùng làm rõ trong video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/022%20Bi%E1%BA%BFn%20local%20v%C3%A0%20bi%E1%BA%BFn%20global.mp4",
           "QnA": []
@@ -15224,6 +15318,7 @@
         {
           "id": 23,
           "name": "Video 23",
+          "description": "Cách sử dụng out và ref",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/023%20C%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20out%20v%C3%A0%20ref.mp4",
           "QnA": []
@@ -15231,6 +15326,7 @@
         {
           "id": 24,
           "name": "Video 24",
+          "description": "Từ khóa params",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/024%20T%E1%BB%AB%20kh%C3%B3a%20params.mp4",
           "QnA": []
@@ -15551,6 +15647,7 @@
         {
           "id": 1,
           "name": "Video 1",
+          "description": "Video giới thiệu về cách sử dụng Visual Studio. Đây là IDE lập trình C# nha. Các bạn cần phải cài đặt IDE này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/001%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20Visual%20Studio%20v%C3%A0%20C%23.mp4",
           "QnA": [
@@ -15603,6 +15700,7 @@
         {
           "id": 2,
           "name": "Video 2",
+          "description": "Video này sẽ hướng dẫn các bạn Console.Write và Console.Read. Đây là 2 hàm quan trọng bậc nhất để phục vụ việc I/O trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/002%20Console.Write%2C%20Console.WriteLine%2C%20Comment%20m%E1%BB%99t%20d%C3%B2ng%2C%20Comment%20nhi%E1%BB%81u%20d%C3%B2ng.mp4",
           "QnA": []
@@ -15610,6 +15708,7 @@
         {
           "id": 3,
           "name": "Video 3",
+          "description": "Biến, hay tham số là thành phần không thể thiếu trong lập trình. Vậy khai báo biến trong C# như thế nào mới đúng? Cùng xem video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/003%20Khai%20b%C3%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20bi%E1%BA%BFn%20(variable)%2C%20h%E1%BA%B1ng%20(constant).mp4",
           "QnA": []
@@ -15617,6 +15716,7 @@
         {
           "id": 4,
           "name": "Video 4",
+          "description": "Biến nullable",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/004%20Nullable.mp4",
           "QnA": []
@@ -15629,6 +15729,7 @@
         {
           "id": 5,
           "name": "Video 5",
+          "description": "Dynamic variable là biến có dữ liệu động. Dữ liệu động khi có một thao tác nào đó được thực hiện",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/005%20var%20v%C3%A0%20dynamic.mp4",
           "QnA": []
@@ -15636,6 +15737,7 @@
         {
           "id": 6,
           "name": "Video 6",
+          "description": "Đôi khi dữ liệu của mình nhập vào không đúng format thì cần phải chuyển đổi format của các dữ liệu. Video này sẽ giải đáp vấn đề đó nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/006%20Nh%E1%BA%ADp%20li%E1%BB%87u%20v%E1%BB%9Bi%20Convert.To...%2C%20Parse%2C%20TryParse.mp4",
           "QnA": []
@@ -15643,6 +15745,7 @@
         {
           "id": 7,
           "name": "Video 7",
+          "description": "Các phép tính toán cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/007%20Ph%C3%A9p%20to%C3%A1n%20s%E1%BB%91%20h%E1%BB%8Dc%20(Arithmetic%20Operations).mp4",
           "QnA": []
@@ -15650,6 +15753,7 @@
         {
           "id": 8,
           "name": "Video 8",
+          "description": "Các phép tính toán so sánh",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/008%20Ph%C3%A9p%20to%C3%A1n%20so%20s%C3%A1nh%20(comparison)%2C%20logic%20(logical)%20v%C3%A0%20logic%20nh%E1%BB%8B%20ph%C3%A2n%20(bitwise%20logic.mp4",
           "QnA": []
@@ -15657,6 +15761,7 @@
         {
           "id": 9,
           "name": "Video 9",
+          "description": "Điều kiện rẽ nhánh: if-else. Rẽ nhánh là phần khá quan trọng trong lĩnh vực lập trình nhé các bạn, để ý kỹ nội dung này giúp mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/009%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20if-else.mp4",
           "QnA": []
@@ -15664,6 +15769,7 @@
         {
           "id": 10,
           "name": "Video 10",
+          "description": "Điều kiện rẽ nhánh: switch-case. Một cách viết khác của if-else. Học nhiều biết nhiều kkk",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/010%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20switch-case.mp4",
           "QnA": []
@@ -15671,6 +15777,7 @@
         {
           "id": 11,
           "name": "Video 11",
+          "description": "Vòng lặp while.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/011%20V%C3%B2ng%20l%E1%BA%B7p%20while.mp4",
           "QnA": []
@@ -15678,6 +15785,7 @@
         {
           "id": 12,
           "name": "Video 12",
+          "description": "Vòng lặp do-while. Do-while và While cũng là vòng lặp nhưng nó khác nhau ý tưởng nha các bạn. Để ý kỹ, không là bị lầm đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/012%20V%C3%B2ng%20l%E1%BA%B7p%20do-while.mp4",
           "QnA": []
@@ -15685,6 +15793,7 @@
         {
           "id": 13,
           "name": "Video 13",
+          "description": "Vòng lặp for. Vòng lặp For khá phổ biến trong lập trình, dùng for hay while là tùy vào mục đích sử dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/013%20V%C3%B2ng%20l%E1%BA%B7p%20for.mp4",
           "QnA": []
@@ -15692,6 +15801,7 @@
         {
           "id": 14,
           "name": "Video 14",
+          "description": "Break. Câu lệnh ngắt vòng lặp. Trong một số trường hợp, khi chưa lặp xong mà muốn thoát khỏi điều kiện lặp thì ta sử dụng break",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/014%20C%C3%A2u%20l%E1%BB%87nh%20break_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20%C3%A1p%20d%E1%BB%A5ng.mp4",
           "QnA": []
@@ -15699,6 +15809,7 @@
         {
           "id": 15,
           "name": "Video 15",
+          "description": "Continue. Tương tự với break nhưng nó chỉ bỏ qua lần lặp đó thôi chứ không thoát hoàn toàn khỏi điều kiện lặp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/015%20C%C3%A2u%20l%E1%BB%87nh%20continue_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20minh%20h%E1%BB%8Da.mp4",
           "QnA": []
@@ -15711,6 +15822,7 @@
         {
           "id": 16,
           "name": "Video 16",
+          "description": "Mảng một chiều là gì? Cách khai báo mảng một chiều trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/016%20M%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20Khai%20b%C3%A1o%20(5%20c%C3%A1ch)%2C%20nh%E1%BA%ADp%20li%E1%BB%87u%2C%20Hi%E1%BB%83n%20th%E1%BB%8B%20m%E1%BA%A3ng%20s%E1%BB%AD%20d%E1%BB%A5ng%20foreach.mp4",
           "QnA": []
@@ -15718,6 +15830,7 @@
         {
           "id": 17,
           "name": "Video 17",
+          "description": "Các phép tính toán, tìm kiếm, sắp xếp trong mảng một chiều",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/017%20T%C3%ADnh%20to%C3%A1n%2C%20t%C3%ACm%20ki%E1%BA%BFm%20v%C3%A0%20s%E1%BA%AFp%20x%E1%BA%BFp%20m%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20d%E1%BB%B1a%20tr%C3%AAn%20c%C3%A1c%20h%C3%A0m%20c%C3%B3%20s%E1%BA%B5n.mp4",
           "QnA": []
@@ -15725,6 +15838,7 @@
         {
           "id": 18,
           "name": "Video 18",
+          "description": "Mảng 2 chiều. Một kiến thức khá khó nhưng đối với một số bạn có tư duy hình học tốt thì không thành vấn đề",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/018%20M%E1%BA%A3ng%20hai%20chi%E1%BB%81u.mp4",
           "QnA": []
@@ -15732,6 +15846,7 @@
         {
           "id": 19,
           "name": "Video 19",
+          "description": "Mảng răng cưa",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/019%20M%E1%BA%A3ng%20r%C4%83ng%20c%C6%B0a%20(Jagged%20Array).mp4",
           "QnA": []
@@ -15739,6 +15854,7 @@
         {
           "id": 20,
           "name": "Video 20",
+          "description": "Cùng demo một bài tập nhỏ với mảng nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/020%20T%E1%BA%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20m%E1%BA%A3ng%20v%E1%BB%9Bi%20Array.mp4",
           "QnA": []
@@ -15751,6 +15867,7 @@
         {
           "id": 21,
           "name": "Video 21",
+          "description": "Để lập trình thì không thể thiếu Hàm (Function). Video này sẽ hướng dẫn các bạn tạo hàm trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/021%20H%C3%A0m%20(Function)%20%C4%90%E1%BB%8Bnh%20ngh%C4%A9a%2C%20L%E1%BB%9Di%20g%E1%BB%8Di%20h%C3%A0m%2C%20Truy%E1%BB%81n%20nh%E1%BA%ADn%20d%E1%BB%AF%20li%E1%BB%87u%20v%E1%BB%9Bi%20%C4%91%E1%BB%91i%20s%E1%BB%91%2C%20tham%20s%E1%BB%91.mp4",
           "QnA": []
@@ -15758,6 +15875,7 @@
         {
           "id": 22,
           "name": "Video 22",
+          "description": "Biến local và biến global. Cùng làm rõ trong video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/022%20Bi%E1%BA%BFn%20local%20v%C3%A0%20bi%E1%BA%BFn%20global.mp4",
           "QnA": []
@@ -15765,6 +15883,7 @@
         {
           "id": 23,
           "name": "Video 23",
+          "description": "Cách sử dụng out và ref",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/023%20C%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20out%20v%C3%A0%20ref.mp4",
           "QnA": []
@@ -15772,6 +15891,7 @@
         {
           "id": 24,
           "name": "Video 24",
+          "description": "Từ khóa params",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/024%20T%E1%BB%AB%20kh%C3%B3a%20params.mp4",
           "QnA": []
@@ -19977,6 +20097,7 @@
         {
           "id": 1,
           "name": "Video 1",
+          "description": "Video giới thiệu về cách sử dụng Visual Studio. Đây là IDE lập trình C# nha. Các bạn cần phải cài đặt IDE này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/001%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20Visual%20Studio%20v%C3%A0%20C%23.mp4",
           "QnA": [
@@ -20029,6 +20150,7 @@
         {
           "id": 2,
           "name": "Video 2",
+          "description": "Video này sẽ hướng dẫn các bạn Console.Write và Console.Read. Đây là 2 hàm quan trọng bậc nhất để phục vụ việc I/O trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/002%20Console.Write%2C%20Console.WriteLine%2C%20Comment%20m%E1%BB%99t%20d%C3%B2ng%2C%20Comment%20nhi%E1%BB%81u%20d%C3%B2ng.mp4",
           "QnA": []
@@ -20036,6 +20158,7 @@
         {
           "id": 3,
           "name": "Video 3",
+          "description": "Biến, hay tham số là thành phần không thể thiếu trong lập trình. Vậy khai báo biến trong C# như thế nào mới đúng? Cùng xem video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/003%20Khai%20b%C3%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20bi%E1%BA%BFn%20(variable)%2C%20h%E1%BA%B1ng%20(constant).mp4",
           "QnA": []
@@ -20043,6 +20166,7 @@
         {
           "id": 4,
           "name": "Video 4",
+          "description": "Biến nullable",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/004%20Nullable.mp4",
           "QnA": []
@@ -20055,6 +20179,7 @@
         {
           "id": 5,
           "name": "Video 5",
+          "description": "Dynamic variable là biến có dữ liệu động. Dữ liệu động khi có một thao tác nào đó được thực hiện",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/005%20var%20v%C3%A0%20dynamic.mp4",
           "QnA": []
@@ -20062,6 +20187,7 @@
         {
           "id": 6,
           "name": "Video 6",
+          "description": "Đôi khi dữ liệu của mình nhập vào không đúng format thì cần phải chuyển đổi format của các dữ liệu. Video này sẽ giải đáp vấn đề đó nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/006%20Nh%E1%BA%ADp%20li%E1%BB%87u%20v%E1%BB%9Bi%20Convert.To...%2C%20Parse%2C%20TryParse.mp4",
           "QnA": []
@@ -20069,6 +20195,7 @@
         {
           "id": 7,
           "name": "Video 7",
+          "description": "Các phép tính toán cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/007%20Ph%C3%A9p%20to%C3%A1n%20s%E1%BB%91%20h%E1%BB%8Dc%20(Arithmetic%20Operations).mp4",
           "QnA": []
@@ -20076,6 +20203,7 @@
         {
           "id": 8,
           "name": "Video 8",
+          "description": "Các phép tính toán so sánh",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/008%20Ph%C3%A9p%20to%C3%A1n%20so%20s%C3%A1nh%20(comparison)%2C%20logic%20(logical)%20v%C3%A0%20logic%20nh%E1%BB%8B%20ph%C3%A2n%20(bitwise%20logic.mp4",
           "QnA": []
@@ -20083,6 +20211,7 @@
         {
           "id": 9,
           "name": "Video 9",
+          "description": "Điều kiện rẽ nhánh: if-else. Rẽ nhánh là phần khá quan trọng trong lĩnh vực lập trình nhé các bạn, để ý kỹ nội dung này giúp mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/009%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20if-else.mp4",
           "QnA": []
@@ -20090,6 +20219,7 @@
         {
           "id": 10,
           "name": "Video 10",
+          "description": "Điều kiện rẽ nhánh: switch-case. Một cách viết khác của if-else. Học nhiều biết nhiều kkk",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/010%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20switch-case.mp4",
           "QnA": []
@@ -20097,6 +20227,7 @@
         {
           "id": 11,
           "name": "Video 11",
+          "description": "Vòng lặp while.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/011%20V%C3%B2ng%20l%E1%BA%B7p%20while.mp4",
           "QnA": []
@@ -20104,6 +20235,7 @@
         {
           "id": 12,
           "name": "Video 12",
+          "description": "Vòng lặp do-while. Do-while và While cũng là vòng lặp nhưng nó khác nhau ý tưởng nha các bạn. Để ý kỹ, không là bị lầm đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/012%20V%C3%B2ng%20l%E1%BA%B7p%20do-while.mp4",
           "QnA": []
@@ -20111,6 +20243,7 @@
         {
           "id": 13,
           "name": "Video 13",
+          "description": "Vòng lặp for. Vòng lặp For khá phổ biến trong lập trình, dùng for hay while là tùy vào mục đích sử dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/013%20V%C3%B2ng%20l%E1%BA%B7p%20for.mp4",
           "QnA": []
@@ -20118,6 +20251,7 @@
         {
           "id": 14,
           "name": "Video 14",
+          "description": "Break. Câu lệnh ngắt vòng lặp. Trong một số trường hợp, khi chưa lặp xong mà muốn thoát khỏi điều kiện lặp thì ta sử dụng break",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/014%20C%C3%A2u%20l%E1%BB%87nh%20break_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20%C3%A1p%20d%E1%BB%A5ng.mp4",
           "QnA": []
@@ -20125,6 +20259,7 @@
         {
           "id": 15,
           "name": "Video 15",
+          "description": "Continue. Tương tự với break nhưng nó chỉ bỏ qua lần lặp đó thôi chứ không thoát hoàn toàn khỏi điều kiện lặp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/015%20C%C3%A2u%20l%E1%BB%87nh%20continue_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20minh%20h%E1%BB%8Da.mp4",
           "QnA": []
@@ -20137,6 +20272,7 @@
         {
           "id": 16,
           "name": "Video 16",
+          "description": "Mảng một chiều là gì? Cách khai báo mảng một chiều trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/016%20M%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20Khai%20b%C3%A1o%20(5%20c%C3%A1ch)%2C%20nh%E1%BA%ADp%20li%E1%BB%87u%2C%20Hi%E1%BB%83n%20th%E1%BB%8B%20m%E1%BA%A3ng%20s%E1%BB%AD%20d%E1%BB%A5ng%20foreach.mp4",
           "QnA": []
@@ -20144,6 +20280,7 @@
         {
           "id": 17,
           "name": "Video 17",
+          "description": "Các phép tính toán, tìm kiếm, sắp xếp trong mảng một chiều",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/017%20T%C3%ADnh%20to%C3%A1n%2C%20t%C3%ACm%20ki%E1%BA%BFm%20v%C3%A0%20s%E1%BA%AFp%20x%E1%BA%BFp%20m%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20d%E1%BB%B1a%20tr%C3%AAn%20c%C3%A1c%20h%C3%A0m%20c%C3%B3%20s%E1%BA%B5n.mp4",
           "QnA": []
@@ -20151,6 +20288,7 @@
         {
           "id": 18,
           "name": "Video 18",
+          "description": "Mảng 2 chiều. Một kiến thức khá khó nhưng đối với một số bạn có tư duy hình học tốt thì không thành vấn đề",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/018%20M%E1%BA%A3ng%20hai%20chi%E1%BB%81u.mp4",
           "QnA": []
@@ -20158,6 +20296,7 @@
         {
           "id": 19,
           "name": "Video 19",
+          "description": "Mảng răng cưa",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/019%20M%E1%BA%A3ng%20r%C4%83ng%20c%C6%B0a%20(Jagged%20Array).mp4",
           "QnA": []
@@ -20165,6 +20304,7 @@
         {
           "id": 20,
           "name": "Video 20",
+          "description": "Cùng demo một bài tập nhỏ với mảng nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/020%20T%E1%BA%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20m%E1%BA%A3ng%20v%E1%BB%9Bi%20Array.mp4",
           "QnA": []
@@ -20177,6 +20317,7 @@
         {
           "id": 21,
           "name": "Video 21",
+          "description": "Để lập trình thì không thể thiếu Hàm (Function). Video này sẽ hướng dẫn các bạn tạo hàm trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/021%20H%C3%A0m%20(Function)%20%C4%90%E1%BB%8Bnh%20ngh%C4%A9a%2C%20L%E1%BB%9Di%20g%E1%BB%8Di%20h%C3%A0m%2C%20Truy%E1%BB%81n%20nh%E1%BA%ADn%20d%E1%BB%AF%20li%E1%BB%87u%20v%E1%BB%9Bi%20%C4%91%E1%BB%91i%20s%E1%BB%91%2C%20tham%20s%E1%BB%91.mp4",
           "QnA": []
@@ -20184,6 +20325,7 @@
         {
           "id": 22,
           "name": "Video 22",
+          "description": "Biến local và biến global. Cùng làm rõ trong video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/022%20Bi%E1%BA%BFn%20local%20v%C3%A0%20bi%E1%BA%BFn%20global.mp4",
           "QnA": []
@@ -20191,6 +20333,7 @@
         {
           "id": 23,
           "name": "Video 23",
+          "description": "Cách sử dụng out và ref",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/023%20C%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20out%20v%C3%A0%20ref.mp4",
           "QnA": []
@@ -20198,6 +20341,7 @@
         {
           "id": 24,
           "name": "Video 24",
+          "description": "Từ khóa params",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/024%20T%E1%BB%AB%20kh%C3%B3a%20params.mp4",
           "QnA": []
@@ -20518,6 +20662,7 @@
         {
           "id": 1,
           "name": "Video 1",
+          "description": "Video giới thiệu về cách sử dụng Visual Studio. Đây là IDE lập trình C# nha. Các bạn cần phải cài đặt IDE này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/001%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20Visual%20Studio%20v%C3%A0%20C%23.mp4",
           "QnA": [
@@ -20570,6 +20715,7 @@
         {
           "id": 2,
           "name": "Video 2",
+          "description": "Video này sẽ hướng dẫn các bạn Console.Write và Console.Read. Đây là 2 hàm quan trọng bậc nhất để phục vụ việc I/O trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/002%20Console.Write%2C%20Console.WriteLine%2C%20Comment%20m%E1%BB%99t%20d%C3%B2ng%2C%20Comment%20nhi%E1%BB%81u%20d%C3%B2ng.mp4",
           "QnA": []
@@ -20577,6 +20723,7 @@
         {
           "id": 3,
           "name": "Video 3",
+          "description": "Biến, hay tham số là thành phần không thể thiếu trong lập trình. Vậy khai báo biến trong C# như thế nào mới đúng? Cùng xem video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/003%20Khai%20b%C3%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20bi%E1%BA%BFn%20(variable)%2C%20h%E1%BA%B1ng%20(constant).mp4",
           "QnA": []
@@ -20584,6 +20731,7 @@
         {
           "id": 4,
           "name": "Video 4",
+          "description": "Biến nullable",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/004%20Nullable.mp4",
           "QnA": []
@@ -20596,6 +20744,7 @@
         {
           "id": 5,
           "name": "Video 5",
+          "description": "Dynamic variable là biến có dữ liệu động. Dữ liệu động khi có một thao tác nào đó được thực hiện",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/005%20var%20v%C3%A0%20dynamic.mp4",
           "QnA": []
@@ -20603,6 +20752,7 @@
         {
           "id": 6,
           "name": "Video 6",
+          "description": "Đôi khi dữ liệu của mình nhập vào không đúng format thì cần phải chuyển đổi format của các dữ liệu. Video này sẽ giải đáp vấn đề đó nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/006%20Nh%E1%BA%ADp%20li%E1%BB%87u%20v%E1%BB%9Bi%20Convert.To...%2C%20Parse%2C%20TryParse.mp4",
           "QnA": []
@@ -20610,6 +20760,7 @@
         {
           "id": 7,
           "name": "Video 7",
+          "description": "Các phép tính toán cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/007%20Ph%C3%A9p%20to%C3%A1n%20s%E1%BB%91%20h%E1%BB%8Dc%20(Arithmetic%20Operations).mp4",
           "QnA": []
@@ -20617,6 +20768,7 @@
         {
           "id": 8,
           "name": "Video 8",
+          "description": "Các phép tính toán so sánh",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/008%20Ph%C3%A9p%20to%C3%A1n%20so%20s%C3%A1nh%20(comparison)%2C%20logic%20(logical)%20v%C3%A0%20logic%20nh%E1%BB%8B%20ph%C3%A2n%20(bitwise%20logic.mp4",
           "QnA": []
@@ -20624,6 +20776,7 @@
         {
           "id": 9,
           "name": "Video 9",
+          "description": "Điều kiện rẽ nhánh: if-else. Rẽ nhánh là phần khá quan trọng trong lĩnh vực lập trình nhé các bạn, để ý kỹ nội dung này giúp mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/009%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20if-else.mp4",
           "QnA": []
@@ -20631,6 +20784,7 @@
         {
           "id": 10,
           "name": "Video 10",
+          "description": "Điều kiện rẽ nhánh: switch-case. Một cách viết khác của if-else. Học nhiều biết nhiều kkk",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/010%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20switch-case.mp4",
           "QnA": []
@@ -20638,6 +20792,7 @@
         {
           "id": 11,
           "name": "Video 11",
+          "description": "Vòng lặp while.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/011%20V%C3%B2ng%20l%E1%BA%B7p%20while.mp4",
           "QnA": []
@@ -20645,6 +20800,7 @@
         {
           "id": 12,
           "name": "Video 12",
+          "description": "Vòng lặp do-while. Do-while và While cũng là vòng lặp nhưng nó khác nhau ý tưởng nha các bạn. Để ý kỹ, không là bị lầm đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/012%20V%C3%B2ng%20l%E1%BA%B7p%20do-while.mp4",
           "QnA": []
@@ -20652,6 +20808,7 @@
         {
           "id": 13,
           "name": "Video 13",
+          "description": "Vòng lặp for. Vòng lặp For khá phổ biến trong lập trình, dùng for hay while là tùy vào mục đích sử dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/013%20V%C3%B2ng%20l%E1%BA%B7p%20for.mp4",
           "QnA": []
@@ -20659,6 +20816,7 @@
         {
           "id": 14,
           "name": "Video 14",
+          "description": "Break. Câu lệnh ngắt vòng lặp. Trong một số trường hợp, khi chưa lặp xong mà muốn thoát khỏi điều kiện lặp thì ta sử dụng break",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/014%20C%C3%A2u%20l%E1%BB%87nh%20break_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20%C3%A1p%20d%E1%BB%A5ng.mp4",
           "QnA": []
@@ -20666,6 +20824,7 @@
         {
           "id": 15,
           "name": "Video 15",
+          "description": "Continue. Tương tự với break nhưng nó chỉ bỏ qua lần lặp đó thôi chứ không thoát hoàn toàn khỏi điều kiện lặp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/015%20C%C3%A2u%20l%E1%BB%87nh%20continue_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20minh%20h%E1%BB%8Da.mp4",
           "QnA": []
@@ -20678,6 +20837,7 @@
         {
           "id": 16,
           "name": "Video 16",
+          "description": "Mảng một chiều là gì? Cách khai báo mảng một chiều trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/016%20M%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20Khai%20b%C3%A1o%20(5%20c%C3%A1ch)%2C%20nh%E1%BA%ADp%20li%E1%BB%87u%2C%20Hi%E1%BB%83n%20th%E1%BB%8B%20m%E1%BA%A3ng%20s%E1%BB%AD%20d%E1%BB%A5ng%20foreach.mp4",
           "QnA": []
@@ -20685,6 +20845,7 @@
         {
           "id": 17,
           "name": "Video 17",
+          "description": "Các phép tính toán, tìm kiếm, sắp xếp trong mảng một chiều",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/017%20T%C3%ADnh%20to%C3%A1n%2C%20t%C3%ACm%20ki%E1%BA%BFm%20v%C3%A0%20s%E1%BA%AFp%20x%E1%BA%BFp%20m%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20d%E1%BB%B1a%20tr%C3%AAn%20c%C3%A1c%20h%C3%A0m%20c%C3%B3%20s%E1%BA%B5n.mp4",
           "QnA": []
@@ -20692,6 +20853,7 @@
         {
           "id": 18,
           "name": "Video 18",
+          "description": "Mảng 2 chiều. Một kiến thức khá khó nhưng đối với một số bạn có tư duy hình học tốt thì không thành vấn đề",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/018%20M%E1%BA%A3ng%20hai%20chi%E1%BB%81u.mp4",
           "QnA": []
@@ -20699,6 +20861,7 @@
         {
           "id": 19,
           "name": "Video 19",
+          "description": "Mảng răng cưa",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/019%20M%E1%BA%A3ng%20r%C4%83ng%20c%C6%B0a%20(Jagged%20Array).mp4",
           "QnA": []
@@ -20706,6 +20869,7 @@
         {
           "id": 20,
           "name": "Video 20",
+          "description": "Cùng demo một bài tập nhỏ với mảng nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/020%20T%E1%BA%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20m%E1%BA%A3ng%20v%E1%BB%9Bi%20Array.mp4",
           "QnA": []
@@ -20718,6 +20882,7 @@
         {
           "id": 21,
           "name": "Video 21",
+          "description": "Để lập trình thì không thể thiếu Hàm (Function). Video này sẽ hướng dẫn các bạn tạo hàm trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/021%20H%C3%A0m%20(Function)%20%C4%90%E1%BB%8Bnh%20ngh%C4%A9a%2C%20L%E1%BB%9Di%20g%E1%BB%8Di%20h%C3%A0m%2C%20Truy%E1%BB%81n%20nh%E1%BA%ADn%20d%E1%BB%AF%20li%E1%BB%87u%20v%E1%BB%9Bi%20%C4%91%E1%BB%91i%20s%E1%BB%91%2C%20tham%20s%E1%BB%91.mp4",
           "QnA": []
@@ -20725,6 +20890,7 @@
         {
           "id": 22,
           "name": "Video 22",
+          "description": "Biến local và biến global. Cùng làm rõ trong video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/022%20Bi%E1%BA%BFn%20local%20v%C3%A0%20bi%E1%BA%BFn%20global.mp4",
           "QnA": []
@@ -20732,6 +20898,7 @@
         {
           "id": 23,
           "name": "Video 23",
+          "description": "Cách sử dụng out và ref",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/023%20C%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20out%20v%C3%A0%20ref.mp4",
           "QnA": []
@@ -20739,6 +20906,7 @@
         {
           "id": 24,
           "name": "Video 24",
+          "description": "Từ khóa params",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/024%20T%E1%BB%AB%20kh%C3%B3a%20params.mp4",
           "QnA": []
@@ -24944,6 +25112,7 @@
         {
           "id": 1,
           "name": "Video 1",
+          "description": "Video giới thiệu về cách sử dụng Visual Studio. Đây là IDE lập trình C# nha. Các bạn cần phải cài đặt IDE này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/001%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20Visual%20Studio%20v%C3%A0%20C%23.mp4",
           "QnA": [
@@ -24996,6 +25165,7 @@
         {
           "id": 2,
           "name": "Video 2",
+          "description": "Video này sẽ hướng dẫn các bạn Console.Write và Console.Read. Đây là 2 hàm quan trọng bậc nhất để phục vụ việc I/O trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/002%20Console.Write%2C%20Console.WriteLine%2C%20Comment%20m%E1%BB%99t%20d%C3%B2ng%2C%20Comment%20nhi%E1%BB%81u%20d%C3%B2ng.mp4",
           "QnA": []
@@ -25003,6 +25173,7 @@
         {
           "id": 3,
           "name": "Video 3",
+          "description": "Biến, hay tham số là thành phần không thể thiếu trong lập trình. Vậy khai báo biến trong C# như thế nào mới đúng? Cùng xem video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/003%20Khai%20b%C3%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20bi%E1%BA%BFn%20(variable)%2C%20h%E1%BA%B1ng%20(constant).mp4",
           "QnA": []
@@ -25010,6 +25181,7 @@
         {
           "id": 4,
           "name": "Video 4",
+          "description": "Biến nullable",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/004%20Nullable.mp4",
           "QnA": []
@@ -25022,6 +25194,7 @@
         {
           "id": 5,
           "name": "Video 5",
+          "description": "Dynamic variable là biến có dữ liệu động. Dữ liệu động khi có một thao tác nào đó được thực hiện",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/005%20var%20v%C3%A0%20dynamic.mp4",
           "QnA": []
@@ -25029,6 +25202,7 @@
         {
           "id": 6,
           "name": "Video 6",
+          "description": "Đôi khi dữ liệu của mình nhập vào không đúng format thì cần phải chuyển đổi format của các dữ liệu. Video này sẽ giải đáp vấn đề đó nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/006%20Nh%E1%BA%ADp%20li%E1%BB%87u%20v%E1%BB%9Bi%20Convert.To...%2C%20Parse%2C%20TryParse.mp4",
           "QnA": []
@@ -25036,6 +25210,7 @@
         {
           "id": 7,
           "name": "Video 7",
+          "description": "Các phép tính toán cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/007%20Ph%C3%A9p%20to%C3%A1n%20s%E1%BB%91%20h%E1%BB%8Dc%20(Arithmetic%20Operations).mp4",
           "QnA": []
@@ -25043,6 +25218,7 @@
         {
           "id": 8,
           "name": "Video 8",
+          "description": "Các phép tính toán so sánh",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/008%20Ph%C3%A9p%20to%C3%A1n%20so%20s%C3%A1nh%20(comparison)%2C%20logic%20(logical)%20v%C3%A0%20logic%20nh%E1%BB%8B%20ph%C3%A2n%20(bitwise%20logic.mp4",
           "QnA": []
@@ -25050,6 +25226,7 @@
         {
           "id": 9,
           "name": "Video 9",
+          "description": "Điều kiện rẽ nhánh: if-else. Rẽ nhánh là phần khá quan trọng trong lĩnh vực lập trình nhé các bạn, để ý kỹ nội dung này giúp mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/009%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20if-else.mp4",
           "QnA": []
@@ -25057,6 +25234,7 @@
         {
           "id": 10,
           "name": "Video 10",
+          "description": "Điều kiện rẽ nhánh: switch-case. Một cách viết khác của if-else. Học nhiều biết nhiều kkk",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/010%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20switch-case.mp4",
           "QnA": []
@@ -25064,6 +25242,7 @@
         {
           "id": 11,
           "name": "Video 11",
+          "description": "Vòng lặp while.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/011%20V%C3%B2ng%20l%E1%BA%B7p%20while.mp4",
           "QnA": []
@@ -25071,6 +25250,7 @@
         {
           "id": 12,
           "name": "Video 12",
+          "description": "Vòng lặp do-while. Do-while và While cũng là vòng lặp nhưng nó khác nhau ý tưởng nha các bạn. Để ý kỹ, không là bị lầm đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/012%20V%C3%B2ng%20l%E1%BA%B7p%20do-while.mp4",
           "QnA": []
@@ -25078,6 +25258,7 @@
         {
           "id": 13,
           "name": "Video 13",
+          "description": "Vòng lặp for. Vòng lặp For khá phổ biến trong lập trình, dùng for hay while là tùy vào mục đích sử dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/013%20V%C3%B2ng%20l%E1%BA%B7p%20for.mp4",
           "QnA": []
@@ -25085,6 +25266,7 @@
         {
           "id": 14,
           "name": "Video 14",
+          "description": "Break. Câu lệnh ngắt vòng lặp. Trong một số trường hợp, khi chưa lặp xong mà muốn thoát khỏi điều kiện lặp thì ta sử dụng break",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/014%20C%C3%A2u%20l%E1%BB%87nh%20break_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20%C3%A1p%20d%E1%BB%A5ng.mp4",
           "QnA": []
@@ -25092,6 +25274,7 @@
         {
           "id": 15,
           "name": "Video 15",
+          "description": "Continue. Tương tự với break nhưng nó chỉ bỏ qua lần lặp đó thôi chứ không thoát hoàn toàn khỏi điều kiện lặp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/015%20C%C3%A2u%20l%E1%BB%87nh%20continue_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20minh%20h%E1%BB%8Da.mp4",
           "QnA": []
@@ -25104,6 +25287,7 @@
         {
           "id": 16,
           "name": "Video 16",
+          "description": "Mảng một chiều là gì? Cách khai báo mảng một chiều trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/016%20M%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20Khai%20b%C3%A1o%20(5%20c%C3%A1ch)%2C%20nh%E1%BA%ADp%20li%E1%BB%87u%2C%20Hi%E1%BB%83n%20th%E1%BB%8B%20m%E1%BA%A3ng%20s%E1%BB%AD%20d%E1%BB%A5ng%20foreach.mp4",
           "QnA": []
@@ -25111,6 +25295,7 @@
         {
           "id": 17,
           "name": "Video 17",
+          "description": "Các phép tính toán, tìm kiếm, sắp xếp trong mảng một chiều",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/017%20T%C3%ADnh%20to%C3%A1n%2C%20t%C3%ACm%20ki%E1%BA%BFm%20v%C3%A0%20s%E1%BA%AFp%20x%E1%BA%BFp%20m%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20d%E1%BB%B1a%20tr%C3%AAn%20c%C3%A1c%20h%C3%A0m%20c%C3%B3%20s%E1%BA%B5n.mp4",
           "QnA": []
@@ -25118,6 +25303,7 @@
         {
           "id": 18,
           "name": "Video 18",
+          "description": "Mảng 2 chiều. Một kiến thức khá khó nhưng đối với một số bạn có tư duy hình học tốt thì không thành vấn đề",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/018%20M%E1%BA%A3ng%20hai%20chi%E1%BB%81u.mp4",
           "QnA": []
@@ -25125,6 +25311,7 @@
         {
           "id": 19,
           "name": "Video 19",
+          "description": "Mảng răng cưa",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/019%20M%E1%BA%A3ng%20r%C4%83ng%20c%C6%B0a%20(Jagged%20Array).mp4",
           "QnA": []
@@ -25132,6 +25319,7 @@
         {
           "id": 20,
           "name": "Video 20",
+          "description": "Cùng demo một bài tập nhỏ với mảng nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/020%20T%E1%BA%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20m%E1%BA%A3ng%20v%E1%BB%9Bi%20Array.mp4",
           "QnA": []
@@ -25144,6 +25332,7 @@
         {
           "id": 21,
           "name": "Video 21",
+          "description": "Để lập trình thì không thể thiếu Hàm (Function). Video này sẽ hướng dẫn các bạn tạo hàm trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/021%20H%C3%A0m%20(Function)%20%C4%90%E1%BB%8Bnh%20ngh%C4%A9a%2C%20L%E1%BB%9Di%20g%E1%BB%8Di%20h%C3%A0m%2C%20Truy%E1%BB%81n%20nh%E1%BA%ADn%20d%E1%BB%AF%20li%E1%BB%87u%20v%E1%BB%9Bi%20%C4%91%E1%BB%91i%20s%E1%BB%91%2C%20tham%20s%E1%BB%91.mp4",
           "QnA": []
@@ -25151,6 +25340,7 @@
         {
           "id": 22,
           "name": "Video 22",
+          "description": "Biến local và biến global. Cùng làm rõ trong video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/022%20Bi%E1%BA%BFn%20local%20v%C3%A0%20bi%E1%BA%BFn%20global.mp4",
           "QnA": []
@@ -25158,6 +25348,7 @@
         {
           "id": 23,
           "name": "Video 23",
+          "description": "Cách sử dụng out và ref",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/023%20C%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20out%20v%C3%A0%20ref.mp4",
           "QnA": []
@@ -25165,6 +25356,7 @@
         {
           "id": 24,
           "name": "Video 24",
+          "description": "Từ khóa params",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/024%20T%E1%BB%AB%20kh%C3%B3a%20params.mp4",
           "QnA": []
@@ -25485,6 +25677,7 @@
         {
           "id": 1,
           "name": "Video 1",
+          "description": "Video giới thiệu về cách sử dụng Visual Studio. Đây là IDE lập trình C# nha. Các bạn cần phải cài đặt IDE này",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/001%20C%C6%A1%20b%E1%BA%A3n%20v%E1%BB%81%20c%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20Visual%20Studio%20v%C3%A0%20C%23.mp4",
           "QnA": [
@@ -25537,6 +25730,7 @@
         {
           "id": 2,
           "name": "Video 2",
+          "description": "Video này sẽ hướng dẫn các bạn Console.Write và Console.Read. Đây là 2 hàm quan trọng bậc nhất để phục vụ việc I/O trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/002%20Console.Write%2C%20Console.WriteLine%2C%20Comment%20m%E1%BB%99t%20d%C3%B2ng%2C%20Comment%20nhi%E1%BB%81u%20d%C3%B2ng.mp4",
           "QnA": []
@@ -25544,6 +25738,7 @@
         {
           "id": 3,
           "name": "Video 3",
+          "description": "Biến, hay tham số là thành phần không thể thiếu trong lập trình. Vậy khai báo biến trong C# như thế nào mới đúng? Cùng xem video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/003%20Khai%20b%C3%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20bi%E1%BA%BFn%20(variable)%2C%20h%E1%BA%B1ng%20(constant).mp4",
           "QnA": []
@@ -25551,6 +25746,7 @@
         {
           "id": 4,
           "name": "Video 4",
+          "description": "Biến nullable",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT01/004%20Nullable.mp4",
           "QnA": []
@@ -25563,6 +25759,7 @@
         {
           "id": 5,
           "name": "Video 5",
+          "description": "Dynamic variable là biến có dữ liệu động. Dữ liệu động khi có một thao tác nào đó được thực hiện",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/005%20var%20v%C3%A0%20dynamic.mp4",
           "QnA": []
@@ -25570,6 +25767,7 @@
         {
           "id": 6,
           "name": "Video 6",
+          "description": "Đôi khi dữ liệu của mình nhập vào không đúng format thì cần phải chuyển đổi format của các dữ liệu. Video này sẽ giải đáp vấn đề đó nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/006%20Nh%E1%BA%ADp%20li%E1%BB%87u%20v%E1%BB%9Bi%20Convert.To...%2C%20Parse%2C%20TryParse.mp4",
           "QnA": []
@@ -25577,6 +25775,7 @@
         {
           "id": 7,
           "name": "Video 7",
+          "description": "Các phép tính toán cơ bản",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/007%20Ph%C3%A9p%20to%C3%A1n%20s%E1%BB%91%20h%E1%BB%8Dc%20(Arithmetic%20Operations).mp4",
           "QnA": []
@@ -25584,6 +25783,7 @@
         {
           "id": 8,
           "name": "Video 8",
+          "description": "Các phép tính toán so sánh",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/008%20Ph%C3%A9p%20to%C3%A1n%20so%20s%C3%A1nh%20(comparison)%2C%20logic%20(logical)%20v%C3%A0%20logic%20nh%E1%BB%8B%20ph%C3%A2n%20(bitwise%20logic.mp4",
           "QnA": []
@@ -25591,6 +25791,7 @@
         {
           "id": 9,
           "name": "Video 9",
+          "description": "Điều kiện rẽ nhánh: if-else. Rẽ nhánh là phần khá quan trọng trong lĩnh vực lập trình nhé các bạn, để ý kỹ nội dung này giúp mình",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/009%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20if-else.mp4",
           "QnA": []
@@ -25598,6 +25799,7 @@
         {
           "id": 10,
           "name": "Video 10",
+          "description": "Điều kiện rẽ nhánh: switch-case. Một cách viết khác của if-else. Học nhiều biết nhiều kkk",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/010%20%C4%90i%E1%BB%81u%20ki%E1%BB%87n%20switch-case.mp4",
           "QnA": []
@@ -25605,6 +25807,7 @@
         {
           "id": 11,
           "name": "Video 11",
+          "description": "Vòng lặp while.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/011%20V%C3%B2ng%20l%E1%BA%B7p%20while.mp4",
           "QnA": []
@@ -25612,6 +25815,7 @@
         {
           "id": 12,
           "name": "Video 12",
+          "description": "Vòng lặp do-while. Do-while và While cũng là vòng lặp nhưng nó khác nhau ý tưởng nha các bạn. Để ý kỹ, không là bị lầm đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/012%20V%C3%B2ng%20l%E1%BA%B7p%20do-while.mp4",
           "QnA": []
@@ -25619,6 +25823,7 @@
         {
           "id": 13,
           "name": "Video 13",
+          "description": "Vòng lặp for. Vòng lặp For khá phổ biến trong lập trình, dùng for hay while là tùy vào mục đích sử dụng",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/013%20V%C3%B2ng%20l%E1%BA%B7p%20for.mp4",
           "QnA": []
@@ -25626,6 +25831,7 @@
         {
           "id": 14,
           "name": "Video 14",
+          "description": "Break. Câu lệnh ngắt vòng lặp. Trong một số trường hợp, khi chưa lặp xong mà muốn thoát khỏi điều kiện lặp thì ta sử dụng break",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/014%20C%C3%A2u%20l%E1%BB%87nh%20break_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20%C3%A1p%20d%E1%BB%A5ng.mp4",
           "QnA": []
@@ -25633,6 +25839,7 @@
         {
           "id": 15,
           "name": "Video 15",
+          "description": "Continue. Tương tự với break nhưng nó chỉ bỏ qua lần lặp đó thôi chứ không thoát hoàn toàn khỏi điều kiện lặp",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT02/015%20C%C3%A2u%20l%E1%BB%87nh%20continue_%20v%C3%A0%20v%C3%AD%20d%E1%BB%A5%20minh%20h%E1%BB%8Da.mp4",
           "QnA": []
@@ -25645,6 +25852,7 @@
         {
           "id": 16,
           "name": "Video 16",
+          "description": "Mảng một chiều là gì? Cách khai báo mảng một chiều trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/016%20M%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20Khai%20b%C3%A1o%20(5%20c%C3%A1ch)%2C%20nh%E1%BA%ADp%20li%E1%BB%87u%2C%20Hi%E1%BB%83n%20th%E1%BB%8B%20m%E1%BA%A3ng%20s%E1%BB%AD%20d%E1%BB%A5ng%20foreach.mp4",
           "QnA": []
@@ -25652,6 +25860,7 @@
         {
           "id": 17,
           "name": "Video 17",
+          "description": "Các phép tính toán, tìm kiếm, sắp xếp trong mảng một chiều",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/017%20T%C3%ADnh%20to%C3%A1n%2C%20t%C3%ACm%20ki%E1%BA%BFm%20v%C3%A0%20s%E1%BA%AFp%20x%E1%BA%BFp%20m%E1%BA%A3ng%20m%E1%BB%99t%20chi%E1%BB%81u%20d%E1%BB%B1a%20tr%C3%AAn%20c%C3%A1c%20h%C3%A0m%20c%C3%B3%20s%E1%BA%B5n.mp4",
           "QnA": []
@@ -25659,6 +25868,7 @@
         {
           "id": 18,
           "name": "Video 18",
+          "description": "Mảng 2 chiều. Một kiến thức khá khó nhưng đối với một số bạn có tư duy hình học tốt thì không thành vấn đề",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/018%20M%E1%BA%A3ng%20hai%20chi%E1%BB%81u.mp4",
           "QnA": []
@@ -25666,6 +25876,7 @@
         {
           "id": 19,
           "name": "Video 19",
+          "description": "Mảng răng cưa",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/019%20M%E1%BA%A3ng%20r%C4%83ng%20c%C6%B0a%20(Jagged%20Array).mp4",
           "QnA": []
@@ -25673,6 +25884,7 @@
         {
           "id": 20,
           "name": "Video 20",
+          "description": "Cùng demo một bài tập nhỏ với mảng nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT03/020%20T%E1%BA%A1o%20v%C3%A0%20s%E1%BB%AD%20d%E1%BB%A5ng%20m%E1%BA%A3ng%20v%E1%BB%9Bi%20Array.mp4",
           "QnA": []
@@ -25685,6 +25897,7 @@
         {
           "id": 21,
           "name": "Video 21",
+          "description": "Để lập trình thì không thể thiếu Hàm (Function). Video này sẽ hướng dẫn các bạn tạo hàm trong C#",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/021%20H%C3%A0m%20(Function)%20%C4%90%E1%BB%8Bnh%20ngh%C4%A9a%2C%20L%E1%BB%9Di%20g%E1%BB%8Di%20h%C3%A0m%2C%20Truy%E1%BB%81n%20nh%E1%BA%ADn%20d%E1%BB%AF%20li%E1%BB%87u%20v%E1%BB%9Bi%20%C4%91%E1%BB%91i%20s%E1%BB%91%2C%20tham%20s%E1%BB%91.mp4",
           "QnA": []
@@ -25692,6 +25905,7 @@
         {
           "id": 22,
           "name": "Video 22",
+          "description": "Biến local và biến global. Cùng làm rõ trong video này nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/022%20Bi%E1%BA%BFn%20local%20v%C3%A0%20bi%E1%BA%BFn%20global.mp4",
           "QnA": []
@@ -25699,6 +25913,7 @@
         {
           "id": 23,
           "name": "Video 23",
+          "description": "Cách sử dụng out và ref",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/023%20C%C3%A1ch%20s%E1%BB%AD%20d%E1%BB%A5ng%20out%20v%C3%A0%20ref.mp4",
           "QnA": []
@@ -25706,6 +25921,7 @@
         {
           "id": 24,
           "name": "Video 24",
+          "description": "Từ khóa params",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C004/CT04/024%20T%E1%BB%AB%20kh%C3%B3a%20params.mp4",
           "QnA": []
