@@ -57,11 +57,11 @@ export default function StarDynamic({
           />
         ))}
       </div>
-      <p style={textStyles}>
+      <span style={textStyles}>
         {messages.length === maxRating
           ? messages[tempRating ? tempRating - 1 : rating - 1]
           : tempRating || rating || ""}
-      </p>
+      </span>
     </div>
   );
 }
