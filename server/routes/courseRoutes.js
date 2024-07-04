@@ -8,6 +8,24 @@ const { verifyToken } = require('../authenticate')
 //import model Course
 const Course = require('../models/courseInfor')
 
+const { Storage } = require('@google-cloud/storage')
+const storage = new Storage({
+  projectId: 'project-elearning-424401',
+  credentials: {
+    "type": "service_account",
+    "project_id": "project-elearning-424401",
+    "private_key_id": "24be9edf7c340e3d0ac5a882dc0028e07ba630a9",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDB/9iCxagjIiJ8\nLrd6Yix+Rz0/T62vkvcvtTXWr65D4Yud2BKfRjxNeR2zLmC0iQnJzZ4UOwNlkLVz\nvzKF3yfXGnbnTLobw54MfRa1PriS2FodKw35hsZjpShlzhcZUGXgOCTfrAF/LjA8\nzq5EPOxreShDO+wJ1ywVWkdpvoNjES7PywjzkhkzvGdt8lYLDqjZ29SUPM0Tkevn\nyvDyZx9v3k6GskzhNC+jHj8pgF60b68yZBsa3xRIAnM5CQeFPykaHlDhVz72oxZI\nfNtXNJEb8DNyipJWHUk3mAPuGHw6XjJZc4cUa7hbJn1qbDnjEAxreY77TOBCCz5i\nmEVnmWZnAgMBAAECggEABZrkQQb/8B/s2iSpZW5PtchOIzWkoYWAAc9dAlpqEQkD\ntShIhXSMinp82q/02FJ7R2ra7d+0nesb6v+zsH19k6/ujok/eUziFJ9KmCr7Pzbk\nB6K2USbNNZTQgXx+W1tgziUhH5tDIc8OUrtv+oW+GO7TtHmXPMOMQQOuO4ZnGmYY\nS//hC8CDLDI5SbgScyQUOsvLYNavTN9HsoD31uoFCcR4+NyF2T9aAGwBpx6MJEXI\n0o0CrIBUT/xoM0yearJQKsTH94twTrVhqfB/rOcfsMFPBiXzmh7HgmSC27RNqA58\nvTwffkyD+rdiilxaMZ8XeOS4C3WgioS3I90EFHDJ6QKBgQDrcNxLLM5gtMkp9hqP\n0T/WcZIwGqfyfZWtPgsRq6+Aa4nE8KJsAeKnXhmOnDaBKQvumwZvTc/Ev5QpiefC\n3FSNYrT757C2TUgIPLLojHzj0KuU71gruMk5ExzSQfLKJFDLo44KDNktkeIRC82J\n6RcLj71mWZWrCQf7h9CXyEoHCQKBgQDS8JYLXPaQ2rJqBii8ZSKpurA8N921IMGx\nresW7Tv838Hhn5ghh1gflpwrokjziemWOoGr3fWUk8IExapDd87X3n23FfzPnw4T\nem103fFk+o3cCLWlRQ8pVXz8PVRbtnJsOULhW6pMssZh/l9W0Oar0eg9+BW2UYRJ\nmptXKw5t7wKBgQCd+AeW2OVPtX0TjnCb9kXi2CjB5eCxrtlyd6JtpMgIXh796IbR\n+SHeMiDrspxPZP8AhTt4CrlQxUnf5Qt/jt2cT5InQnkqmAewnylbJofVQvkc4MpD\n66P3i39XA7CnOF6Ng5uV2rENBkisL0MlOSOhOjxWI91r+I9GkQXAET66IQKBgQC3\n/KczNBvQTyEtfz/Ky4AHgVG0xJm6Id8wpl0We0hGkbjfnj+ohw/jRY/kM0HkQpee\ntFtkWE6bEKI7XVncTUT6XxNSPXhsc/RoIvIT7H5gMHbJxEMD64+E4w8ISEorUKDP\nKsbeIAETsx98W842wDFjDsy+OIRfqQx00sjJqEGGuwKBgQCWtJh6zku3KTXkTBN6\nhRRlxRt590AcKMoLTx7xpdewvX3jL8VGNJsOgCvDld5kc1BVkeSLCTVzeAm6+OOe\n5D7TtZhYI4MKJen+hx3Mu/uLfWjI5b4MXKTJk/DS0wiF4I7SlghWJBINH6u1uj4T\n2yh5gKlpS4tH3JyqjrlR4fEDTA==\n-----END PRIVATE KEY-----\n",
+    "client_email": "nodejs-goocloudstorage@project-elearning-424401.iam.gserviceaccount.com",
+    "client_id": "112818077253194123938",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/nodejs-goocloudstorage%40project-elearning-424401.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+  }
+})
+
 module.exports = (connMysql, connMongo) => {
   //Khởi tạo tham số router và cấp quyền CORS
   const router = express.Router()
@@ -173,6 +191,16 @@ module.exports = (connMysql, connMongo) => {
           resolve(finalData)
         })
       })
+    })
+  }
+
+  const getDurationTime = async (courseID) => {
+    return new Promise( (resolve, reject) => {
+      const [bucket] = storage.bucket('e-learning-bucket').getFiles()
+      bucket.forEach(file => {
+        console.log(file.name)
+      })
+      resolve(bucket)
     })
   }
 
@@ -411,11 +439,15 @@ module.exports = (connMysql, connMongo) => {
         //Get review of this course
         const review = await getReview(courseID)
 
+        //Get duraion time of course
+        const duration = await getDurationTime(courseID)
+        // console.log('test: ', duration)
+
         //Merge data with Mysql + MongoDB + Reviewer
         const mergeData = courseInfor.map(course => {
           return {
             ...course,
-            duration: 10, //chưa xử lý
+            duration: 0,
             review: review,
             image_introduce: mongoData[0].image_introduce,
             video_introduce: mongoData[0].video_introduce,
@@ -426,6 +458,7 @@ module.exports = (connMysql, connMongo) => {
           }
         })
         res.send(mergeData)
+        // console.log(mergeData)
       })
     })
   })
