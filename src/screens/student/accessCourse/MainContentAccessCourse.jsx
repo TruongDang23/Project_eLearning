@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import VideoPlayer from "./VideoPlayer";
+import Quizz from "./Quiz/Quizz";
 
 import TabviewAccessCourse from "./TabviewAccessCourse";
 import PdfViewer from "./PdfViewer";
@@ -10,8 +11,9 @@ function MainContentAccessCourse({ accessCourseData }) {
   console.log(pdfUrl);
   return (
     <MainAccessCourseWrapper>
-      <VideoPlayer video={accessCourseData.video_introduce} />
+      {/* <VideoPlayer video={accessCourseData.video_introduce} /> */}
       {/* <PdfViewer pdfUrl={pdfUrl} /> */}
+      <Quizz />
       <TabviewAccessCourse accessCourseData={accessCourseData} />
     </MainAccessCourseWrapper>
   );

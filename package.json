@@ -7,7 +7,8 @@
     "dev": "vite --host",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "json-server --watch src/data/questions.json"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -21,6 +22,7 @@
     "date-fns": "^3.6.0",
     "dayjs": "^1.11.10",
     "express": "^4.19.2",
+    "json-server": "^1.0.0-beta.1",
     "react": "^18.2.0",
     "react-calendar": "^5.0.0",
     "react-circular-progressbar": "^2.1.0",
