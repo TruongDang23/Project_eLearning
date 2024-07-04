@@ -9499,6 +9499,7 @@
         {
           "id": 1,
           "name": "Introduction to HTML & CSS",
+          "description": "Khi hiểu tổng quan về HTML & CSS, các bạn sẽ biết được mục đích mình sử dụng 2 ngôn ngữ này để làm gì.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/1%20The%20Missing%20Introduction%20to%20HTML%20%20CSS.mp4",
           "QnA": [
@@ -9669,6 +9670,7 @@
         {
           "id": 3,
           "name": "Link github",
+          "description": "Link github nhé các bạn. Các bạn có thể clone code từ đây về để tham khảo.",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/Link%20Github.txt",
           "QnA": []
@@ -9681,6 +9683,7 @@
         {
           "id": 4,
           "name": "HTML syntax",
+          "description": "Những cú pháp quan trọng để bạn có thể tự tạo ra một static web basic. Hãy ghi nhớ các loại thẻ thường dùng nhé.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/2%20HTML%20Syntax.mp4",
           "QnA": [
@@ -9711,6 +9714,7 @@
         {
           "id": 5,
           "name": "Page Structure",
+          "description": "Cấu trúc của một trang web cũng vô cùng quan trọng. Nó giúp các bạn có thể thiết kế layout tốt hơn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/3%20Page%20Structure.mp4",
           "QnA": []
@@ -9718,6 +9722,7 @@
         {
           "id": 6,
           "name": "Head Information",
+          "description": "Header là nơi mình dùng để khai báo các thư viện về layout, khai báo các quy chuẩn mà mình thiết kế cho một page.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/4%20Head%20Information.mp4",
           "QnA": [
@@ -9774,6 +9779,7 @@
         {
           "id": 10,
           "name": "Paragraph Text",
+          "description": "Các thẻ về paragraph vô cùng quan trọng nha các bạn. Nó giúp hiển thị các đoạn text lên giao diện đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/6%20Paragraphs%20%20Text.mp4",
           "QnA": []
@@ -9781,6 +9787,7 @@
         {
           "id": 11,
           "name": "Button Element",
+          "description": "Button là thành phần để người dùng click vào và hệ thống sẽ gọi đến các hàm xử lý tương ứng. Cũng vô cùng quan trọng đó nha",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/9%20Button%20Element.mp4",
           "QnA": []
@@ -9788,6 +9795,7 @@
         {
           "id": 12,
           "name": "Image Element",
+          "description": "Image để hiển thị các loại hình ảnh lên trang web theo ý muốn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/10%20Image%20Element.mp4",
           "QnA": [
@@ -9844,6 +9852,7 @@
         {
           "id": 16,
           "name": "Navigation Element",
+          "description": "Navigation là thành phần link giữa giao diện này với các giao diện khác. Một trang web không thể nào chỉ có 1 giao diện được mà phải là sự kết hợp của nhiều giao diện khác nhau",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT04/14%20Navigation%20Element.mp4",
           "QnA": [
@@ -9953,6 +9962,7 @@
         {
           "id": 21,
           "name": "Form Element",
+          "description": "Form là nơi giúp chúng ta gói gọn các thành phần liên quan lại với nhau để cùng xử lý nghiệp vụ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/19%20Form%20Element.mp4",
           "QnA": [
@@ -9983,6 +9993,7 @@
         {
           "id": 22,
           "name": "Input Element",
+          "description": "Thẻ input là thẻ tạo ra nơi để người dùng nhập dữ liệu vào. Một ứng dụng phải có I/O thì input tag chính là I",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/20%20Input%20Element.mp4",
           "QnA": []
@@ -10065,6 +10076,7 @@
         {
           "id": 29,
           "name": "Project Introduction",
+          "description": "Trong chương này. Mình cùng với các bạn sẽ tạo ra một static web project nào !!!",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/27%20Project%20Introduction.mp4",
           "QnA": []
@@ -10072,6 +10084,7 @@
         {
           "id": 30,
           "name": "Setup the Page Structure",
+          "description": "Việc thiết kế cấu trúc của giao diện là vô cùng quan trọng. Các bạn hãy cùng xem video này hướng dẫn như thế nào nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/28%20Setup%20the%20Page%20Structure.mp4",
           "QnA": []
@@ -10267,6 +10280,7 @@
         {
           "id": 38,
           "name": "CSS Syntax",
+          "description": "CSS là một ngôn ngữ giúp tinh chỉnh giao diện để đáp ứng được nhu cầu về UX. HTML thì phải đi kèm với CSS nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/35%20CSS%20Syntax.mp4",
           "QnA": []
@@ -10274,6 +10288,7 @@
         {
           "id": 39,
           "name": "Style vs File",
+          "description": "Trong một số trường hợp mà bạn có nhu cầu sử dụng template có sẵn của bootstrap hoặc thư viện nào đó thì video này sẽ giúp bạn làm điều đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/36%20Style%20vs%20File.mp4",
           "QnA": []
@@ -10286,6 +10301,7 @@
         {
           "id": 40,
           "name": "Border property",
+          "description": "Border là viền của các element nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/37%20Border%20Property.mp4",
           "QnA": []
@@ -10293,6 +10309,7 @@
         {
           "id": 41,
           "name": "Corlor Values",
+          "description": "Cùng mình custom màu sắc cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/38%20Color%20Values.mp4",
           "QnA": []
@@ -10300,6 +10317,7 @@
         {
           "id": 42,
           "name": "Background Property",
+          "description": "Cùng mình custom background cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/39%20Background%20Property.mp4",
           "QnA": []
@@ -10307,6 +10325,7 @@
         {
           "id": 43,
           "name": "Borderadius Property",
+          "description": "Border radius là bo 4 góc của viền nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/40%20Borderradius%20Property.mp4",
           "QnA": []
@@ -10314,6 +10333,7 @@
         {
           "id": 44,
           "name": "Boxshadow Property",
+          "description": "Boxshadow là đổ bóng cho các element",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/41%20Boxshadow%20Property.mp4",
           "QnA": []
@@ -10326,6 +10346,7 @@
         {
           "id": 45,
           "name": "Importing Fonts",
+          "description": "Đôi khi chúng ta không muốn dùng fort chữ chuẩn của CSS đúng không? Video này sẽ giải đáp thắc mắc đó của các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT10/42%20Importing%20Fonts.mp4",
           "QnA": []
@@ -10352,6 +10373,7 @@
         {
           "id": 48,
           "name": "Margin Padding Properties",
+          "description": "Margin và Padding là 2 thuộc tính khá dễ nhầm lẫn nhé các bạn. Cùng mình làm rõ trong video lần này nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT11/45%20Margin%20%20Padding%20Properties.mp4",
           "QnA": []
@@ -12395,6 +12417,7 @@
         {
           "id": 1,
           "name": "Introduction to HTML & CSS",
+          "description": "Khi hiểu tổng quan về HTML & CSS, các bạn sẽ biết được mục đích mình sử dụng 2 ngôn ngữ này để làm gì.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/1%20The%20Missing%20Introduction%20to%20HTML%20%20CSS.mp4",
           "QnA": [
@@ -12565,6 +12588,7 @@
         {
           "id": 3,
           "name": "Link github",
+          "description": "Link github nhé các bạn. Các bạn có thể clone code từ đây về để tham khảo.",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/Link%20Github.txt",
           "QnA": []
@@ -12577,6 +12601,7 @@
         {
           "id": 4,
           "name": "HTML syntax",
+          "description": "Những cú pháp quan trọng để bạn có thể tự tạo ra một static web basic. Hãy ghi nhớ các loại thẻ thường dùng nhé.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/2%20HTML%20Syntax.mp4",
           "QnA": [
@@ -12607,6 +12632,7 @@
         {
           "id": 5,
           "name": "Page Structure",
+          "description": "Cấu trúc của một trang web cũng vô cùng quan trọng. Nó giúp các bạn có thể thiết kế layout tốt hơn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/3%20Page%20Structure.mp4",
           "QnA": []
@@ -12614,6 +12640,7 @@
         {
           "id": 6,
           "name": "Head Information",
+          "description": "Header là nơi mình dùng để khai báo các thư viện về layout, khai báo các quy chuẩn mà mình thiết kế cho một page.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/4%20Head%20Information.mp4",
           "QnA": [
@@ -12670,6 +12697,7 @@
         {
           "id": 10,
           "name": "Paragraph Text",
+          "description": "Các thẻ về paragraph vô cùng quan trọng nha các bạn. Nó giúp hiển thị các đoạn text lên giao diện đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/6%20Paragraphs%20%20Text.mp4",
           "QnA": []
@@ -12677,6 +12705,7 @@
         {
           "id": 11,
           "name": "Button Element",
+          "description": "Button là thành phần để người dùng click vào và hệ thống sẽ gọi đến các hàm xử lý tương ứng. Cũng vô cùng quan trọng đó nha",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/9%20Button%20Element.mp4",
           "QnA": []
@@ -12684,6 +12713,7 @@
         {
           "id": 12,
           "name": "Image Element",
+          "description": "Image để hiển thị các loại hình ảnh lên trang web theo ý muốn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/10%20Image%20Element.mp4",
           "QnA": [
@@ -12740,6 +12770,7 @@
         {
           "id": 16,
           "name": "Navigation Element",
+          "description": "Navigation là thành phần link giữa giao diện này với các giao diện khác. Một trang web không thể nào chỉ có 1 giao diện được mà phải là sự kết hợp của nhiều giao diện khác nhau",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT04/14%20Navigation%20Element.mp4",
           "QnA": [
@@ -12849,6 +12880,7 @@
         {
           "id": 21,
           "name": "Form Element",
+          "description": "Form là nơi giúp chúng ta gói gọn các thành phần liên quan lại với nhau để cùng xử lý nghiệp vụ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/19%20Form%20Element.mp4",
           "QnA": [
@@ -12879,6 +12911,7 @@
         {
           "id": 22,
           "name": "Input Element",
+          "description": "Thẻ input là thẻ tạo ra nơi để người dùng nhập dữ liệu vào. Một ứng dụng phải có I/O thì input tag chính là I",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/20%20Input%20Element.mp4",
           "QnA": []
@@ -12961,6 +12994,7 @@
         {
           "id": 29,
           "name": "Project Introduction",
+          "description": "Trong chương này. Mình cùng với các bạn sẽ tạo ra một static web project nào !!!",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/27%20Project%20Introduction.mp4",
           "QnA": []
@@ -12968,6 +13002,7 @@
         {
           "id": 30,
           "name": "Setup the Page Structure",
+          "description": "Việc thiết kế cấu trúc của giao diện là vô cùng quan trọng. Các bạn hãy cùng xem video này hướng dẫn như thế nào nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/28%20Setup%20the%20Page%20Structure.mp4",
           "QnA": []
@@ -13163,6 +13198,7 @@
         {
           "id": 38,
           "name": "CSS Syntax",
+          "description": "CSS là một ngôn ngữ giúp tinh chỉnh giao diện để đáp ứng được nhu cầu về UX. HTML thì phải đi kèm với CSS nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/35%20CSS%20Syntax.mp4",
           "QnA": []
@@ -13170,6 +13206,7 @@
         {
           "id": 39,
           "name": "Style vs File",
+          "description": "Trong một số trường hợp mà bạn có nhu cầu sử dụng template có sẵn của bootstrap hoặc thư viện nào đó thì video này sẽ giúp bạn làm điều đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/36%20Style%20vs%20File.mp4",
           "QnA": []
@@ -13182,6 +13219,7 @@
         {
           "id": 40,
           "name": "Border property",
+          "description": "Border là viền của các element nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/37%20Border%20Property.mp4",
           "QnA": []
@@ -13189,6 +13227,7 @@
         {
           "id": 41,
           "name": "Corlor Values",
+          "description": "Cùng mình custom màu sắc cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/38%20Color%20Values.mp4",
           "QnA": []
@@ -13196,6 +13235,7 @@
         {
           "id": 42,
           "name": "Background Property",
+          "description": "Cùng mình custom background cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/39%20Background%20Property.mp4",
           "QnA": []
@@ -13203,6 +13243,7 @@
         {
           "id": 43,
           "name": "Borderadius Property",
+          "description": "Border radius là bo 4 góc của viền nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/40%20Borderradius%20Property.mp4",
           "QnA": []
@@ -13210,6 +13251,7 @@
         {
           "id": 44,
           "name": "Boxshadow Property",
+          "description": "Boxshadow là đổ bóng cho các element",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/41%20Boxshadow%20Property.mp4",
           "QnA": []
@@ -13222,6 +13264,7 @@
         {
           "id": 45,
           "name": "Importing Fonts",
+          "description": "Đôi khi chúng ta không muốn dùng fort chữ chuẩn của CSS đúng không? Video này sẽ giải đáp thắc mắc đó của các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT10/42%20Importing%20Fonts.mp4",
           "QnA": []
@@ -13248,6 +13291,7 @@
         {
           "id": 48,
           "name": "Margin Padding Properties",
+          "description": "Margin và Padding là 2 thuộc tính khá dễ nhầm lẫn nhé các bạn. Cùng mình làm rõ trong video lần này nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT11/45%20Margin%20%20Padding%20Properties.mp4",
           "QnA": []
@@ -13668,6 +13712,7 @@
         {
           "id": 1,
           "name": "Introduction to HTML & CSS",
+          "description": "Khi hiểu tổng quan về HTML & CSS, các bạn sẽ biết được mục đích mình sử dụng 2 ngôn ngữ này để làm gì.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/1%20The%20Missing%20Introduction%20to%20HTML%20%20CSS.mp4",
           "QnA": [
@@ -13838,6 +13883,7 @@
         {
           "id": 3,
           "name": "Link github",
+          "description": "Link github nhé các bạn. Các bạn có thể clone code từ đây về để tham khảo.",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/Link%20Github.txt",
           "QnA": []
@@ -13850,6 +13896,7 @@
         {
           "id": 4,
           "name": "HTML syntax",
+          "description": "Những cú pháp quan trọng để bạn có thể tự tạo ra một static web basic. Hãy ghi nhớ các loại thẻ thường dùng nhé.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/2%20HTML%20Syntax.mp4",
           "QnA": [
@@ -13880,6 +13927,7 @@
         {
           "id": 5,
           "name": "Page Structure",
+          "description": "Cấu trúc của một trang web cũng vô cùng quan trọng. Nó giúp các bạn có thể thiết kế layout tốt hơn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/3%20Page%20Structure.mp4",
           "QnA": []
@@ -13887,6 +13935,7 @@
         {
           "id": 6,
           "name": "Head Information",
+          "description": "Header là nơi mình dùng để khai báo các thư viện về layout, khai báo các quy chuẩn mà mình thiết kế cho một page.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/4%20Head%20Information.mp4",
           "QnA": [
@@ -13943,6 +13992,7 @@
         {
           "id": 10,
           "name": "Paragraph Text",
+          "description": "Các thẻ về paragraph vô cùng quan trọng nha các bạn. Nó giúp hiển thị các đoạn text lên giao diện đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/6%20Paragraphs%20%20Text.mp4",
           "QnA": []
@@ -13950,6 +14000,7 @@
         {
           "id": 11,
           "name": "Button Element",
+          "description": "Button là thành phần để người dùng click vào và hệ thống sẽ gọi đến các hàm xử lý tương ứng. Cũng vô cùng quan trọng đó nha",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/9%20Button%20Element.mp4",
           "QnA": []
@@ -13957,6 +14008,7 @@
         {
           "id": 12,
           "name": "Image Element",
+          "description": "Image để hiển thị các loại hình ảnh lên trang web theo ý muốn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/10%20Image%20Element.mp4",
           "QnA": [
@@ -14013,6 +14065,7 @@
         {
           "id": 16,
           "name": "Navigation Element",
+          "description": "Navigation là thành phần link giữa giao diện này với các giao diện khác. Một trang web không thể nào chỉ có 1 giao diện được mà phải là sự kết hợp của nhiều giao diện khác nhau",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT04/14%20Navigation%20Element.mp4",
           "QnA": [
@@ -14122,6 +14175,7 @@
         {
           "id": 21,
           "name": "Form Element",
+          "description": "Form là nơi giúp chúng ta gói gọn các thành phần liên quan lại với nhau để cùng xử lý nghiệp vụ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/19%20Form%20Element.mp4",
           "QnA": [
@@ -14152,6 +14206,7 @@
         {
           "id": 22,
           "name": "Input Element",
+          "description": "Thẻ input là thẻ tạo ra nơi để người dùng nhập dữ liệu vào. Một ứng dụng phải có I/O thì input tag chính là I",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/20%20Input%20Element.mp4",
           "QnA": []
@@ -14234,6 +14289,7 @@
         {
           "id": 29,
           "name": "Project Introduction",
+          "description": "Trong chương này. Mình cùng với các bạn sẽ tạo ra một static web project nào !!!",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/27%20Project%20Introduction.mp4",
           "QnA": []
@@ -14241,6 +14297,7 @@
         {
           "id": 30,
           "name": "Setup the Page Structure",
+          "description": "Việc thiết kế cấu trúc của giao diện là vô cùng quan trọng. Các bạn hãy cùng xem video này hướng dẫn như thế nào nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/28%20Setup%20the%20Page%20Structure.mp4",
           "QnA": []
@@ -14436,6 +14493,7 @@
         {
           "id": 38,
           "name": "CSS Syntax",
+          "description": "CSS là một ngôn ngữ giúp tinh chỉnh giao diện để đáp ứng được nhu cầu về UX. HTML thì phải đi kèm với CSS nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/35%20CSS%20Syntax.mp4",
           "QnA": []
@@ -14443,6 +14501,7 @@
         {
           "id": 39,
           "name": "Style vs File",
+          "description": "Trong một số trường hợp mà bạn có nhu cầu sử dụng template có sẵn của bootstrap hoặc thư viện nào đó thì video này sẽ giúp bạn làm điều đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/36%20Style%20vs%20File.mp4",
           "QnA": []
@@ -14455,6 +14514,7 @@
         {
           "id": 40,
           "name": "Border property",
+          "description": "Border là viền của các element nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/37%20Border%20Property.mp4",
           "QnA": []
@@ -14462,6 +14522,7 @@
         {
           "id": 41,
           "name": "Corlor Values",
+          "description": "Cùng mình custom màu sắc cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/38%20Color%20Values.mp4",
           "QnA": []
@@ -14469,6 +14530,7 @@
         {
           "id": 42,
           "name": "Background Property",
+          "description": "Cùng mình custom background cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/39%20Background%20Property.mp4",
           "QnA": []
@@ -14476,6 +14538,7 @@
         {
           "id": 43,
           "name": "Borderadius Property",
+          "description": "Border radius là bo 4 góc của viền nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/40%20Borderradius%20Property.mp4",
           "QnA": []
@@ -14483,6 +14546,7 @@
         {
           "id": 44,
           "name": "Boxshadow Property",
+          "description": "Boxshadow là đổ bóng cho các element",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/41%20Boxshadow%20Property.mp4",
           "QnA": []
@@ -14495,6 +14559,7 @@
         {
           "id": 45,
           "name": "Importing Fonts",
+          "description": "Đôi khi chúng ta không muốn dùng fort chữ chuẩn của CSS đúng không? Video này sẽ giải đáp thắc mắc đó của các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT10/42%20Importing%20Fonts.mp4",
           "QnA": []
@@ -14521,6 +14586,7 @@
         {
           "id": 48,
           "name": "Margin Padding Properties",
+          "description": "Margin và Padding là 2 thuộc tính khá dễ nhầm lẫn nhé các bạn. Cùng mình làm rõ trong video lần này nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT11/45%20Margin%20%20Padding%20Properties.mp4",
           "QnA": []
@@ -16023,6 +16089,7 @@
         {
           "id": 1,
           "name": "Introduction to HTML & CSS",
+          "description": "Khi hiểu tổng quan về HTML & CSS, các bạn sẽ biết được mục đích mình sử dụng 2 ngôn ngữ này để làm gì.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/1%20The%20Missing%20Introduction%20to%20HTML%20%20CSS.mp4",
           "QnA": [
@@ -16193,6 +16260,7 @@
         {
           "id": 3,
           "name": "Link github",
+          "description": "Link github nhé các bạn. Các bạn có thể clone code từ đây về để tham khảo.",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/Link%20Github.txt",
           "QnA": []
@@ -16205,6 +16273,7 @@
         {
           "id": 4,
           "name": "HTML syntax",
+          "description": "Những cú pháp quan trọng để bạn có thể tự tạo ra một static web basic. Hãy ghi nhớ các loại thẻ thường dùng nhé.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/2%20HTML%20Syntax.mp4",
           "QnA": [
@@ -16235,6 +16304,7 @@
         {
           "id": 5,
           "name": "Page Structure",
+          "description": "Cấu trúc của một trang web cũng vô cùng quan trọng. Nó giúp các bạn có thể thiết kế layout tốt hơn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/3%20Page%20Structure.mp4",
           "QnA": []
@@ -16242,6 +16312,7 @@
         {
           "id": 6,
           "name": "Head Information",
+          "description": "Header là nơi mình dùng để khai báo các thư viện về layout, khai báo các quy chuẩn mà mình thiết kế cho một page.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/4%20Head%20Information.mp4",
           "QnA": [
@@ -16298,6 +16369,7 @@
         {
           "id": 10,
           "name": "Paragraph Text",
+          "description": "Các thẻ về paragraph vô cùng quan trọng nha các bạn. Nó giúp hiển thị các đoạn text lên giao diện đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/6%20Paragraphs%20%20Text.mp4",
           "QnA": []
@@ -16305,6 +16377,7 @@
         {
           "id": 11,
           "name": "Button Element",
+          "description": "Button là thành phần để người dùng click vào và hệ thống sẽ gọi đến các hàm xử lý tương ứng. Cũng vô cùng quan trọng đó nha",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/9%20Button%20Element.mp4",
           "QnA": []
@@ -16312,6 +16385,7 @@
         {
           "id": 12,
           "name": "Image Element",
+          "description": "Image để hiển thị các loại hình ảnh lên trang web theo ý muốn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/10%20Image%20Element.mp4",
           "QnA": [
@@ -16368,6 +16442,7 @@
         {
           "id": 16,
           "name": "Navigation Element",
+          "description": "Navigation là thành phần link giữa giao diện này với các giao diện khác. Một trang web không thể nào chỉ có 1 giao diện được mà phải là sự kết hợp của nhiều giao diện khác nhau",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT04/14%20Navigation%20Element.mp4",
           "QnA": [
@@ -16477,6 +16552,7 @@
         {
           "id": 21,
           "name": "Form Element",
+          "description": "Form là nơi giúp chúng ta gói gọn các thành phần liên quan lại với nhau để cùng xử lý nghiệp vụ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/19%20Form%20Element.mp4",
           "QnA": [
@@ -16507,6 +16583,7 @@
         {
           "id": 22,
           "name": "Input Element",
+          "description": "Thẻ input là thẻ tạo ra nơi để người dùng nhập dữ liệu vào. Một ứng dụng phải có I/O thì input tag chính là I",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/20%20Input%20Element.mp4",
           "QnA": []
@@ -16589,6 +16666,7 @@
         {
           "id": 29,
           "name": "Project Introduction",
+          "description": "Trong chương này. Mình cùng với các bạn sẽ tạo ra một static web project nào !!!",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/27%20Project%20Introduction.mp4",
           "QnA": []
@@ -16596,6 +16674,7 @@
         {
           "id": 30,
           "name": "Setup the Page Structure",
+          "description": "Việc thiết kế cấu trúc của giao diện là vô cùng quan trọng. Các bạn hãy cùng xem video này hướng dẫn như thế nào nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/28%20Setup%20the%20Page%20Structure.mp4",
           "QnA": []
@@ -16791,6 +16870,7 @@
         {
           "id": 38,
           "name": "CSS Syntax",
+          "description": "CSS là một ngôn ngữ giúp tinh chỉnh giao diện để đáp ứng được nhu cầu về UX. HTML thì phải đi kèm với CSS nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/35%20CSS%20Syntax.mp4",
           "QnA": []
@@ -16798,6 +16878,7 @@
         {
           "id": 39,
           "name": "Style vs File",
+          "description": "Trong một số trường hợp mà bạn có nhu cầu sử dụng template có sẵn của bootstrap hoặc thư viện nào đó thì video này sẽ giúp bạn làm điều đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/36%20Style%20vs%20File.mp4",
           "QnA": []
@@ -16810,6 +16891,7 @@
         {
           "id": 40,
           "name": "Border property",
+          "description": "Border là viền của các element nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/37%20Border%20Property.mp4",
           "QnA": []
@@ -16817,6 +16899,7 @@
         {
           "id": 41,
           "name": "Corlor Values",
+          "description": "Cùng mình custom màu sắc cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/38%20Color%20Values.mp4",
           "QnA": []
@@ -16824,6 +16907,7 @@
         {
           "id": 42,
           "name": "Background Property",
+          "description": "Cùng mình custom background cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/39%20Background%20Property.mp4",
           "QnA": []
@@ -16831,6 +16915,7 @@
         {
           "id": 43,
           "name": "Borderadius Property",
+          "description": "Border radius là bo 4 góc của viền nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/40%20Borderradius%20Property.mp4",
           "QnA": []
@@ -16838,6 +16923,7 @@
         {
           "id": 44,
           "name": "Boxshadow Property",
+          "description": "Boxshadow là đổ bóng cho các element",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/41%20Boxshadow%20Property.mp4",
           "QnA": []
@@ -16850,6 +16936,7 @@
         {
           "id": 45,
           "name": "Importing Fonts",
+          "description": "Đôi khi chúng ta không muốn dùng fort chữ chuẩn của CSS đúng không? Video này sẽ giải đáp thắc mắc đó của các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT10/42%20Importing%20Fonts.mp4",
           "QnA": []
@@ -16876,6 +16963,7 @@
         {
           "id": 48,
           "name": "Margin Padding Properties",
+          "description": "Margin và Padding là 2 thuộc tính khá dễ nhầm lẫn nhé các bạn. Cùng mình làm rõ trong video lần này nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT11/45%20Margin%20%20Padding%20Properties.mp4",
           "QnA": []
@@ -17296,6 +17384,7 @@
         {
           "id": 1,
           "name": "Introduction to HTML & CSS",
+          "description": "Khi hiểu tổng quan về HTML & CSS, các bạn sẽ biết được mục đích mình sử dụng 2 ngôn ngữ này để làm gì.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/1%20The%20Missing%20Introduction%20to%20HTML%20%20CSS.mp4",
           "QnA": [
@@ -17466,6 +17555,7 @@
         {
           "id": 3,
           "name": "Link github",
+          "description": "Link github nhé các bạn. Các bạn có thể clone code từ đây về để tham khảo.",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/Link%20Github.txt",
           "QnA": []
@@ -17478,6 +17568,7 @@
         {
           "id": 4,
           "name": "HTML syntax",
+          "description": "Những cú pháp quan trọng để bạn có thể tự tạo ra một static web basic. Hãy ghi nhớ các loại thẻ thường dùng nhé.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/2%20HTML%20Syntax.mp4",
           "QnA": [
@@ -17508,6 +17599,7 @@
         {
           "id": 5,
           "name": "Page Structure",
+          "description": "Cấu trúc của một trang web cũng vô cùng quan trọng. Nó giúp các bạn có thể thiết kế layout tốt hơn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/3%20Page%20Structure.mp4",
           "QnA": []
@@ -17515,6 +17607,7 @@
         {
           "id": 6,
           "name": "Head Information",
+          "description": "Header là nơi mình dùng để khai báo các thư viện về layout, khai báo các quy chuẩn mà mình thiết kế cho một page.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/4%20Head%20Information.mp4",
           "QnA": [
@@ -17571,6 +17664,7 @@
         {
           "id": 10,
           "name": "Paragraph Text",
+          "description": "Các thẻ về paragraph vô cùng quan trọng nha các bạn. Nó giúp hiển thị các đoạn text lên giao diện đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/6%20Paragraphs%20%20Text.mp4",
           "QnA": []
@@ -17578,6 +17672,7 @@
         {
           "id": 11,
           "name": "Button Element",
+          "description": "Button là thành phần để người dùng click vào và hệ thống sẽ gọi đến các hàm xử lý tương ứng. Cũng vô cùng quan trọng đó nha",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/9%20Button%20Element.mp4",
           "QnA": []
@@ -17585,6 +17680,7 @@
         {
           "id": 12,
           "name": "Image Element",
+          "description": "Image để hiển thị các loại hình ảnh lên trang web theo ý muốn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/10%20Image%20Element.mp4",
           "QnA": [
@@ -17641,6 +17737,7 @@
         {
           "id": 16,
           "name": "Navigation Element",
+          "description": "Navigation là thành phần link giữa giao diện này với các giao diện khác. Một trang web không thể nào chỉ có 1 giao diện được mà phải là sự kết hợp của nhiều giao diện khác nhau",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT04/14%20Navigation%20Element.mp4",
           "QnA": [
@@ -17750,6 +17847,7 @@
         {
           "id": 21,
           "name": "Form Element",
+          "description": "Form là nơi giúp chúng ta gói gọn các thành phần liên quan lại với nhau để cùng xử lý nghiệp vụ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/19%20Form%20Element.mp4",
           "QnA": [
@@ -17780,6 +17878,7 @@
         {
           "id": 22,
           "name": "Input Element",
+          "description": "Thẻ input là thẻ tạo ra nơi để người dùng nhập dữ liệu vào. Một ứng dụng phải có I/O thì input tag chính là I",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/20%20Input%20Element.mp4",
           "QnA": []
@@ -17862,6 +17961,7 @@
         {
           "id": 29,
           "name": "Project Introduction",
+          "description": "Trong chương này. Mình cùng với các bạn sẽ tạo ra một static web project nào !!!",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/27%20Project%20Introduction.mp4",
           "QnA": []
@@ -17869,6 +17969,7 @@
         {
           "id": 30,
           "name": "Setup the Page Structure",
+          "description": "Việc thiết kế cấu trúc của giao diện là vô cùng quan trọng. Các bạn hãy cùng xem video này hướng dẫn như thế nào nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/28%20Setup%20the%20Page%20Structure.mp4",
           "QnA": []
@@ -18064,6 +18165,7 @@
         {
           "id": 38,
           "name": "CSS Syntax",
+          "description": "CSS là một ngôn ngữ giúp tinh chỉnh giao diện để đáp ứng được nhu cầu về UX. HTML thì phải đi kèm với CSS nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/35%20CSS%20Syntax.mp4",
           "QnA": []
@@ -18071,6 +18173,7 @@
         {
           "id": 39,
           "name": "Style vs File",
+          "description": "Trong một số trường hợp mà bạn có nhu cầu sử dụng template có sẵn của bootstrap hoặc thư viện nào đó thì video này sẽ giúp bạn làm điều đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/36%20Style%20vs%20File.mp4",
           "QnA": []
@@ -18083,6 +18186,7 @@
         {
           "id": 40,
           "name": "Border property",
+          "description": "Border là viền của các element nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/37%20Border%20Property.mp4",
           "QnA": []
@@ -18090,6 +18194,7 @@
         {
           "id": 41,
           "name": "Corlor Values",
+          "description": "Cùng mình custom màu sắc cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/38%20Color%20Values.mp4",
           "QnA": []
@@ -18097,6 +18202,7 @@
         {
           "id": 42,
           "name": "Background Property",
+          "description": "Cùng mình custom background cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/39%20Background%20Property.mp4",
           "QnA": []
@@ -18104,6 +18210,7 @@
         {
           "id": 43,
           "name": "Borderadius Property",
+          "description": "Border radius là bo 4 góc của viền nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/40%20Borderradius%20Property.mp4",
           "QnA": []
@@ -18111,6 +18218,7 @@
         {
           "id": 44,
           "name": "Boxshadow Property",
+          "description": "Boxshadow là đổ bóng cho các element",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/41%20Boxshadow%20Property.mp4",
           "QnA": []
@@ -18123,6 +18231,7 @@
         {
           "id": 45,
           "name": "Importing Fonts",
+          "description": "Đôi khi chúng ta không muốn dùng fort chữ chuẩn của CSS đúng không? Video này sẽ giải đáp thắc mắc đó của các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT10/42%20Importing%20Fonts.mp4",
           "QnA": []
@@ -18149,6 +18258,7 @@
         {
           "id": 48,
           "name": "Margin Padding Properties",
+          "description": "Margin và Padding là 2 thuộc tính khá dễ nhầm lẫn nhé các bạn. Cùng mình làm rõ trong video lần này nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT11/45%20Margin%20%20Padding%20Properties.mp4",
           "QnA": []
@@ -18569,6 +18679,7 @@
         {
           "id": 1,
           "name": "Introduction to HTML & CSS",
+          "description": "Khi hiểu tổng quan về HTML & CSS, các bạn sẽ biết được mục đích mình sử dụng 2 ngôn ngữ này để làm gì.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/1%20The%20Missing%20Introduction%20to%20HTML%20%20CSS.mp4",
           "QnA": [
@@ -18739,6 +18850,7 @@
         {
           "id": 3,
           "name": "Link github",
+          "description": "Link github nhé các bạn. Các bạn có thể clone code từ đây về để tham khảo.",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/Link%20Github.txt",
           "QnA": []
@@ -18751,6 +18863,7 @@
         {
           "id": 4,
           "name": "HTML syntax",
+          "description": "Những cú pháp quan trọng để bạn có thể tự tạo ra một static web basic. Hãy ghi nhớ các loại thẻ thường dùng nhé.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/2%20HTML%20Syntax.mp4",
           "QnA": [
@@ -18781,6 +18894,7 @@
         {
           "id": 5,
           "name": "Page Structure",
+          "description": "Cấu trúc của một trang web cũng vô cùng quan trọng. Nó giúp các bạn có thể thiết kế layout tốt hơn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/3%20Page%20Structure.mp4",
           "QnA": []
@@ -18788,6 +18902,7 @@
         {
           "id": 6,
           "name": "Head Information",
+          "description": "Header là nơi mình dùng để khai báo các thư viện về layout, khai báo các quy chuẩn mà mình thiết kế cho một page.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/4%20Head%20Information.mp4",
           "QnA": [
@@ -18844,6 +18959,7 @@
         {
           "id": 10,
           "name": "Paragraph Text",
+          "description": "Các thẻ về paragraph vô cùng quan trọng nha các bạn. Nó giúp hiển thị các đoạn text lên giao diện đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/6%20Paragraphs%20%20Text.mp4",
           "QnA": []
@@ -18851,6 +18967,7 @@
         {
           "id": 11,
           "name": "Button Element",
+          "description": "Button là thành phần để người dùng click vào và hệ thống sẽ gọi đến các hàm xử lý tương ứng. Cũng vô cùng quan trọng đó nha",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/9%20Button%20Element.mp4",
           "QnA": []
@@ -18858,6 +18975,7 @@
         {
           "id": 12,
           "name": "Image Element",
+          "description": "Image để hiển thị các loại hình ảnh lên trang web theo ý muốn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/10%20Image%20Element.mp4",
           "QnA": [
@@ -18914,6 +19032,7 @@
         {
           "id": 16,
           "name": "Navigation Element",
+          "description": "Navigation là thành phần link giữa giao diện này với các giao diện khác. Một trang web không thể nào chỉ có 1 giao diện được mà phải là sự kết hợp của nhiều giao diện khác nhau",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT04/14%20Navigation%20Element.mp4",
           "QnA": [
@@ -19023,6 +19142,7 @@
         {
           "id": 21,
           "name": "Form Element",
+          "description": "Form là nơi giúp chúng ta gói gọn các thành phần liên quan lại với nhau để cùng xử lý nghiệp vụ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/19%20Form%20Element.mp4",
           "QnA": [
@@ -19053,6 +19173,7 @@
         {
           "id": 22,
           "name": "Input Element",
+          "description": "Thẻ input là thẻ tạo ra nơi để người dùng nhập dữ liệu vào. Một ứng dụng phải có I/O thì input tag chính là I",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/20%20Input%20Element.mp4",
           "QnA": []
@@ -19135,6 +19256,7 @@
         {
           "id": 29,
           "name": "Project Introduction",
+          "description": "Trong chương này. Mình cùng với các bạn sẽ tạo ra một static web project nào !!!",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/27%20Project%20Introduction.mp4",
           "QnA": []
@@ -19142,6 +19264,7 @@
         {
           "id": 30,
           "name": "Setup the Page Structure",
+          "description": "Việc thiết kế cấu trúc của giao diện là vô cùng quan trọng. Các bạn hãy cùng xem video này hướng dẫn như thế nào nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/28%20Setup%20the%20Page%20Structure.mp4",
           "QnA": []
@@ -19337,6 +19460,7 @@
         {
           "id": 38,
           "name": "CSS Syntax",
+          "description": "CSS là một ngôn ngữ giúp tinh chỉnh giao diện để đáp ứng được nhu cầu về UX. HTML thì phải đi kèm với CSS nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/35%20CSS%20Syntax.mp4",
           "QnA": []
@@ -19344,6 +19468,7 @@
         {
           "id": 39,
           "name": "Style vs File",
+          "description": "Trong một số trường hợp mà bạn có nhu cầu sử dụng template có sẵn của bootstrap hoặc thư viện nào đó thì video này sẽ giúp bạn làm điều đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/36%20Style%20vs%20File.mp4",
           "QnA": []
@@ -19356,6 +19481,7 @@
         {
           "id": 40,
           "name": "Border property",
+          "description": "Border là viền của các element nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/37%20Border%20Property.mp4",
           "QnA": []
@@ -19363,6 +19489,7 @@
         {
           "id": 41,
           "name": "Corlor Values",
+          "description": "Cùng mình custom màu sắc cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/38%20Color%20Values.mp4",
           "QnA": []
@@ -19370,6 +19497,7 @@
         {
           "id": 42,
           "name": "Background Property",
+          "description": "Cùng mình custom background cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/39%20Background%20Property.mp4",
           "QnA": []
@@ -19377,6 +19505,7 @@
         {
           "id": 43,
           "name": "Borderadius Property",
+          "description": "Border radius là bo 4 góc của viền nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/40%20Borderradius%20Property.mp4",
           "QnA": []
@@ -19384,6 +19513,7 @@
         {
           "id": 44,
           "name": "Boxshadow Property",
+          "description": "Boxshadow là đổ bóng cho các element",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/41%20Boxshadow%20Property.mp4",
           "QnA": []
@@ -19396,6 +19526,7 @@
         {
           "id": 45,
           "name": "Importing Fonts",
+          "description": "Đôi khi chúng ta không muốn dùng fort chữ chuẩn của CSS đúng không? Video này sẽ giải đáp thắc mắc đó của các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT10/42%20Importing%20Fonts.mp4",
           "QnA": []
@@ -19422,6 +19553,7 @@
         {
           "id": 48,
           "name": "Margin Padding Properties",
+          "description": "Margin và Padding là 2 thuộc tính khá dễ nhầm lẫn nhé các bạn. Cùng mình làm rõ trong video lần này nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT11/45%20Margin%20%20Padding%20Properties.mp4",
           "QnA": []
@@ -20924,6 +21056,7 @@
         {
           "id": 1,
           "name": "Introduction to HTML & CSS",
+          "description": "Khi hiểu tổng quan về HTML & CSS, các bạn sẽ biết được mục đích mình sử dụng 2 ngôn ngữ này để làm gì.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/1%20The%20Missing%20Introduction%20to%20HTML%20%20CSS.mp4",
           "QnA": [
@@ -21094,6 +21227,7 @@
         {
           "id": 3,
           "name": "Link github",
+          "description": "Link github nhé các bạn. Các bạn có thể clone code từ đây về để tham khảo.",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/Link%20Github.txt",
           "QnA": []
@@ -21106,6 +21240,7 @@
         {
           "id": 4,
           "name": "HTML syntax",
+          "description": "Những cú pháp quan trọng để bạn có thể tự tạo ra một static web basic. Hãy ghi nhớ các loại thẻ thường dùng nhé.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/2%20HTML%20Syntax.mp4",
           "QnA": [
@@ -21136,6 +21271,7 @@
         {
           "id": 5,
           "name": "Page Structure",
+          "description": "Cấu trúc của một trang web cũng vô cùng quan trọng. Nó giúp các bạn có thể thiết kế layout tốt hơn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/3%20Page%20Structure.mp4",
           "QnA": []
@@ -21143,6 +21279,7 @@
         {
           "id": 6,
           "name": "Head Information",
+          "description": "Header là nơi mình dùng để khai báo các thư viện về layout, khai báo các quy chuẩn mà mình thiết kế cho một page.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/4%20Head%20Information.mp4",
           "QnA": [
@@ -21199,6 +21336,7 @@
         {
           "id": 10,
           "name": "Paragraph Text",
+          "description": "Các thẻ về paragraph vô cùng quan trọng nha các bạn. Nó giúp hiển thị các đoạn text lên giao diện đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/6%20Paragraphs%20%20Text.mp4",
           "QnA": []
@@ -21206,6 +21344,7 @@
         {
           "id": 11,
           "name": "Button Element",
+          "description": "Button là thành phần để người dùng click vào và hệ thống sẽ gọi đến các hàm xử lý tương ứng. Cũng vô cùng quan trọng đó nha",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/9%20Button%20Element.mp4",
           "QnA": []
@@ -21213,6 +21352,7 @@
         {
           "id": 12,
           "name": "Image Element",
+          "description": "Image để hiển thị các loại hình ảnh lên trang web theo ý muốn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/10%20Image%20Element.mp4",
           "QnA": [
@@ -21269,6 +21409,7 @@
         {
           "id": 16,
           "name": "Navigation Element",
+          "description": "Navigation là thành phần link giữa giao diện này với các giao diện khác. Một trang web không thể nào chỉ có 1 giao diện được mà phải là sự kết hợp của nhiều giao diện khác nhau",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT04/14%20Navigation%20Element.mp4",
           "QnA": [
@@ -21378,6 +21519,7 @@
         {
           "id": 21,
           "name": "Form Element",
+          "description": "Form là nơi giúp chúng ta gói gọn các thành phần liên quan lại với nhau để cùng xử lý nghiệp vụ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/19%20Form%20Element.mp4",
           "QnA": [
@@ -21408,6 +21550,7 @@
         {
           "id": 22,
           "name": "Input Element",
+          "description": "Thẻ input là thẻ tạo ra nơi để người dùng nhập dữ liệu vào. Một ứng dụng phải có I/O thì input tag chính là I",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/20%20Input%20Element.mp4",
           "QnA": []
@@ -21490,6 +21633,7 @@
         {
           "id": 29,
           "name": "Project Introduction",
+          "description": "Trong chương này. Mình cùng với các bạn sẽ tạo ra một static web project nào !!!",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/27%20Project%20Introduction.mp4",
           "QnA": []
@@ -21497,6 +21641,7 @@
         {
           "id": 30,
           "name": "Setup the Page Structure",
+          "description": "Việc thiết kế cấu trúc của giao diện là vô cùng quan trọng. Các bạn hãy cùng xem video này hướng dẫn như thế nào nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/28%20Setup%20the%20Page%20Structure.mp4",
           "QnA": []
@@ -21692,6 +21837,7 @@
         {
           "id": 38,
           "name": "CSS Syntax",
+          "description": "CSS là một ngôn ngữ giúp tinh chỉnh giao diện để đáp ứng được nhu cầu về UX. HTML thì phải đi kèm với CSS nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/35%20CSS%20Syntax.mp4",
           "QnA": []
@@ -21699,6 +21845,7 @@
         {
           "id": 39,
           "name": "Style vs File",
+          "description": "Trong một số trường hợp mà bạn có nhu cầu sử dụng template có sẵn của bootstrap hoặc thư viện nào đó thì video này sẽ giúp bạn làm điều đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/36%20Style%20vs%20File.mp4",
           "QnA": []
@@ -21711,6 +21858,7 @@
         {
           "id": 40,
           "name": "Border property",
+          "description": "Border là viền của các element nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/37%20Border%20Property.mp4",
           "QnA": []
@@ -21718,6 +21866,7 @@
         {
           "id": 41,
           "name": "Corlor Values",
+          "description": "Cùng mình custom màu sắc cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/38%20Color%20Values.mp4",
           "QnA": []
@@ -21725,6 +21874,7 @@
         {
           "id": 42,
           "name": "Background Property",
+          "description": "Cùng mình custom background cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/39%20Background%20Property.mp4",
           "QnA": []
@@ -21732,6 +21882,7 @@
         {
           "id": 43,
           "name": "Borderadius Property",
+          "description": "Border radius là bo 4 góc của viền nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/40%20Borderradius%20Property.mp4",
           "QnA": []
@@ -21739,6 +21890,7 @@
         {
           "id": 44,
           "name": "Boxshadow Property",
+          "description": "Boxshadow là đổ bóng cho các element",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/41%20Boxshadow%20Property.mp4",
           "QnA": []
@@ -21751,6 +21903,7 @@
         {
           "id": 45,
           "name": "Importing Fonts",
+          "description": "Đôi khi chúng ta không muốn dùng fort chữ chuẩn của CSS đúng không? Video này sẽ giải đáp thắc mắc đó của các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT10/42%20Importing%20Fonts.mp4",
           "QnA": []
@@ -21777,6 +21930,7 @@
         {
           "id": 48,
           "name": "Margin Padding Properties",
+          "description": "Margin và Padding là 2 thuộc tính khá dễ nhầm lẫn nhé các bạn. Cùng mình làm rõ trong video lần này nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT11/45%20Margin%20%20Padding%20Properties.mp4",
           "QnA": []
@@ -22197,6 +22351,7 @@
         {
           "id": 1,
           "name": "Introduction to HTML & CSS",
+          "description": "Khi hiểu tổng quan về HTML & CSS, các bạn sẽ biết được mục đích mình sử dụng 2 ngôn ngữ này để làm gì.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/1%20The%20Missing%20Introduction%20to%20HTML%20%20CSS.mp4",
           "QnA": [
@@ -22367,6 +22522,7 @@
         {
           "id": 3,
           "name": "Link github",
+          "description": "Link github nhé các bạn. Các bạn có thể clone code từ đây về để tham khảo.",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/Link%20Github.txt",
           "QnA": []
@@ -22379,6 +22535,7 @@
         {
           "id": 4,
           "name": "HTML syntax",
+          "description": "Những cú pháp quan trọng để bạn có thể tự tạo ra một static web basic. Hãy ghi nhớ các loại thẻ thường dùng nhé.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/2%20HTML%20Syntax.mp4",
           "QnA": [
@@ -22409,6 +22566,7 @@
         {
           "id": 5,
           "name": "Page Structure",
+          "description": "Cấu trúc của một trang web cũng vô cùng quan trọng. Nó giúp các bạn có thể thiết kế layout tốt hơn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/3%20Page%20Structure.mp4",
           "QnA": []
@@ -22416,6 +22574,7 @@
         {
           "id": 6,
           "name": "Head Information",
+          "description": "Header là nơi mình dùng để khai báo các thư viện về layout, khai báo các quy chuẩn mà mình thiết kế cho một page.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/4%20Head%20Information.mp4",
           "QnA": [
@@ -22472,6 +22631,7 @@
         {
           "id": 10,
           "name": "Paragraph Text",
+          "description": "Các thẻ về paragraph vô cùng quan trọng nha các bạn. Nó giúp hiển thị các đoạn text lên giao diện đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/6%20Paragraphs%20%20Text.mp4",
           "QnA": []
@@ -22479,6 +22639,7 @@
         {
           "id": 11,
           "name": "Button Element",
+          "description": "Button là thành phần để người dùng click vào và hệ thống sẽ gọi đến các hàm xử lý tương ứng. Cũng vô cùng quan trọng đó nha",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/9%20Button%20Element.mp4",
           "QnA": []
@@ -22486,6 +22647,7 @@
         {
           "id": 12,
           "name": "Image Element",
+          "description": "Image để hiển thị các loại hình ảnh lên trang web theo ý muốn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/10%20Image%20Element.mp4",
           "QnA": [
@@ -22542,6 +22704,7 @@
         {
           "id": 16,
           "name": "Navigation Element",
+          "description": "Navigation là thành phần link giữa giao diện này với các giao diện khác. Một trang web không thể nào chỉ có 1 giao diện được mà phải là sự kết hợp của nhiều giao diện khác nhau",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT04/14%20Navigation%20Element.mp4",
           "QnA": [
@@ -22651,6 +22814,7 @@
         {
           "id": 21,
           "name": "Form Element",
+          "description": "Form là nơi giúp chúng ta gói gọn các thành phần liên quan lại với nhau để cùng xử lý nghiệp vụ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/19%20Form%20Element.mp4",
           "QnA": [
@@ -22681,6 +22845,7 @@
         {
           "id": 22,
           "name": "Input Element",
+          "description": "Thẻ input là thẻ tạo ra nơi để người dùng nhập dữ liệu vào. Một ứng dụng phải có I/O thì input tag chính là I",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/20%20Input%20Element.mp4",
           "QnA": []
@@ -22763,6 +22928,7 @@
         {
           "id": 29,
           "name": "Project Introduction",
+          "description": "Trong chương này. Mình cùng với các bạn sẽ tạo ra một static web project nào !!!",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/27%20Project%20Introduction.mp4",
           "QnA": []
@@ -22770,6 +22936,7 @@
         {
           "id": 30,
           "name": "Setup the Page Structure",
+          "description": "Việc thiết kế cấu trúc của giao diện là vô cùng quan trọng. Các bạn hãy cùng xem video này hướng dẫn như thế nào nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/28%20Setup%20the%20Page%20Structure.mp4",
           "QnA": []
@@ -22965,6 +23132,7 @@
         {
           "id": 38,
           "name": "CSS Syntax",
+          "description": "CSS là một ngôn ngữ giúp tinh chỉnh giao diện để đáp ứng được nhu cầu về UX. HTML thì phải đi kèm với CSS nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/35%20CSS%20Syntax.mp4",
           "QnA": []
@@ -22972,6 +23140,7 @@
         {
           "id": 39,
           "name": "Style vs File",
+          "description": "Trong một số trường hợp mà bạn có nhu cầu sử dụng template có sẵn của bootstrap hoặc thư viện nào đó thì video này sẽ giúp bạn làm điều đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/36%20Style%20vs%20File.mp4",
           "QnA": []
@@ -22984,6 +23153,7 @@
         {
           "id": 40,
           "name": "Border property",
+          "description": "Border là viền của các element nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/37%20Border%20Property.mp4",
           "QnA": []
@@ -22991,6 +23161,7 @@
         {
           "id": 41,
           "name": "Corlor Values",
+          "description": "Cùng mình custom màu sắc cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/38%20Color%20Values.mp4",
           "QnA": []
@@ -22998,6 +23169,7 @@
         {
           "id": 42,
           "name": "Background Property",
+          "description": "Cùng mình custom background cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/39%20Background%20Property.mp4",
           "QnA": []
@@ -23005,6 +23177,7 @@
         {
           "id": 43,
           "name": "Borderadius Property",
+          "description": "Border radius là bo 4 góc của viền nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/40%20Borderradius%20Property.mp4",
           "QnA": []
@@ -23012,6 +23185,7 @@
         {
           "id": 44,
           "name": "Boxshadow Property",
+          "description": "Boxshadow là đổ bóng cho các element",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/41%20Boxshadow%20Property.mp4",
           "QnA": []
@@ -23024,6 +23198,7 @@
         {
           "id": 45,
           "name": "Importing Fonts",
+          "description": "Đôi khi chúng ta không muốn dùng fort chữ chuẩn của CSS đúng không? Video này sẽ giải đáp thắc mắc đó của các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT10/42%20Importing%20Fonts.mp4",
           "QnA": []
@@ -23050,6 +23225,7 @@
         {
           "id": 48,
           "name": "Margin Padding Properties",
+          "description": "Margin và Padding là 2 thuộc tính khá dễ nhầm lẫn nhé các bạn. Cùng mình làm rõ trong video lần này nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT11/45%20Margin%20%20Padding%20Properties.mp4",
           "QnA": []
@@ -23470,6 +23646,7 @@
         {
           "id": 1,
           "name": "Introduction to HTML & CSS",
+          "description": "Khi hiểu tổng quan về HTML & CSS, các bạn sẽ biết được mục đích mình sử dụng 2 ngôn ngữ này để làm gì.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/1%20The%20Missing%20Introduction%20to%20HTML%20%20CSS.mp4",
           "QnA": [
@@ -23640,6 +23817,7 @@
         {
           "id": 3,
           "name": "Link github",
+          "description": "Link github nhé các bạn. Các bạn có thể clone code từ đây về để tham khảo.",
           "type": "file",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT01/Link%20Github.txt",
           "QnA": []
@@ -23652,6 +23830,7 @@
         {
           "id": 4,
           "name": "HTML syntax",
+          "description": "Những cú pháp quan trọng để bạn có thể tự tạo ra một static web basic. Hãy ghi nhớ các loại thẻ thường dùng nhé.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/2%20HTML%20Syntax.mp4",
           "QnA": [
@@ -23682,6 +23861,7 @@
         {
           "id": 5,
           "name": "Page Structure",
+          "description": "Cấu trúc của một trang web cũng vô cùng quan trọng. Nó giúp các bạn có thể thiết kế layout tốt hơn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/3%20Page%20Structure.mp4",
           "QnA": []
@@ -23689,6 +23869,7 @@
         {
           "id": 6,
           "name": "Head Information",
+          "description": "Header là nơi mình dùng để khai báo các thư viện về layout, khai báo các quy chuẩn mà mình thiết kế cho một page.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT02/4%20Head%20Information.mp4",
           "QnA": [
@@ -23745,6 +23926,7 @@
         {
           "id": 10,
           "name": "Paragraph Text",
+          "description": "Các thẻ về paragraph vô cùng quan trọng nha các bạn. Nó giúp hiển thị các đoạn text lên giao diện đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/6%20Paragraphs%20%20Text.mp4",
           "QnA": []
@@ -23752,6 +23934,7 @@
         {
           "id": 11,
           "name": "Button Element",
+          "description": "Button là thành phần để người dùng click vào và hệ thống sẽ gọi đến các hàm xử lý tương ứng. Cũng vô cùng quan trọng đó nha",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/9%20Button%20Element.mp4",
           "QnA": []
@@ -23759,6 +23942,7 @@
         {
           "id": 12,
           "name": "Image Element",
+          "description": "Image để hiển thị các loại hình ảnh lên trang web theo ý muốn.",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT03/10%20Image%20Element.mp4",
           "QnA": [
@@ -23815,6 +23999,7 @@
         {
           "id": 16,
           "name": "Navigation Element",
+          "description": "Navigation là thành phần link giữa giao diện này với các giao diện khác. Một trang web không thể nào chỉ có 1 giao diện được mà phải là sự kết hợp của nhiều giao diện khác nhau",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT04/14%20Navigation%20Element.mp4",
           "QnA": [
@@ -23924,6 +24109,7 @@
         {
           "id": 21,
           "name": "Form Element",
+          "description": "Form là nơi giúp chúng ta gói gọn các thành phần liên quan lại với nhau để cùng xử lý nghiệp vụ",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/19%20Form%20Element.mp4",
           "QnA": [
@@ -23954,6 +24140,7 @@
         {
           "id": 22,
           "name": "Input Element",
+          "description": "Thẻ input là thẻ tạo ra nơi để người dùng nhập dữ liệu vào. Một ứng dụng phải có I/O thì input tag chính là I",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT05/20%20Input%20Element.mp4",
           "QnA": []
@@ -24036,6 +24223,7 @@
         {
           "id": 29,
           "name": "Project Introduction",
+          "description": "Trong chương này. Mình cùng với các bạn sẽ tạo ra một static web project nào !!!",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/27%20Project%20Introduction.mp4",
           "QnA": []
@@ -24043,6 +24231,7 @@
         {
           "id": 30,
           "name": "Setup the Page Structure",
+          "description": "Việc thiết kế cấu trúc của giao diện là vô cùng quan trọng. Các bạn hãy cùng xem video này hướng dẫn như thế nào nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT07/28%20Setup%20the%20Page%20Structure.mp4",
           "QnA": []
@@ -24238,6 +24427,7 @@
         {
           "id": 38,
           "name": "CSS Syntax",
+          "description": "CSS là một ngôn ngữ giúp tinh chỉnh giao diện để đáp ứng được nhu cầu về UX. HTML thì phải đi kèm với CSS nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/35%20CSS%20Syntax.mp4",
           "QnA": []
@@ -24245,6 +24435,7 @@
         {
           "id": 39,
           "name": "Style vs File",
+          "description": "Trong một số trường hợp mà bạn có nhu cầu sử dụng template có sẵn của bootstrap hoặc thư viện nào đó thì video này sẽ giúp bạn làm điều đó",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT08/36%20Style%20vs%20File.mp4",
           "QnA": []
@@ -24257,6 +24448,7 @@
         {
           "id": 40,
           "name": "Border property",
+          "description": "Border là viền của các element nha các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/37%20Border%20Property.mp4",
           "QnA": []
@@ -24264,6 +24456,7 @@
         {
           "id": 41,
           "name": "Corlor Values",
+          "description": "Cùng mình custom màu sắc cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/38%20Color%20Values.mp4",
           "QnA": []
@@ -24271,6 +24464,7 @@
         {
           "id": 42,
           "name": "Background Property",
+          "description": "Cùng mình custom background cho các element nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/39%20Background%20Property.mp4",
           "QnA": []
@@ -24278,6 +24472,7 @@
         {
           "id": 43,
           "name": "Borderadius Property",
+          "description": "Border radius là bo 4 góc của viền nhé",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/40%20Borderradius%20Property.mp4",
           "QnA": []
@@ -24285,6 +24480,7 @@
         {
           "id": 44,
           "name": "Boxshadow Property",
+          "description": "Boxshadow là đổ bóng cho các element",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT09/41%20Boxshadow%20Property.mp4",
           "QnA": []
@@ -24297,6 +24493,7 @@
         {
           "id": 45,
           "name": "Importing Fonts",
+          "description": "Đôi khi chúng ta không muốn dùng fort chữ chuẩn của CSS đúng không? Video này sẽ giải đáp thắc mắc đó của các bạn",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT10/42%20Importing%20Fonts.mp4",
           "QnA": []
@@ -24323,6 +24520,7 @@
         {
           "id": 48,
           "name": "Margin Padding Properties",
+          "description": "Margin và Padding là 2 thuộc tính khá dễ nhầm lẫn nhé các bạn. Cùng mình làm rõ trong video lần này nào",
           "type": "video",
           "source": "https://storage.googleapis.com/e-learning-bucket/C003/CT11/45%20Margin%20%20Padding%20Properties.mp4",
           "QnA": []
