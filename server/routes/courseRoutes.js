@@ -8,7 +8,18 @@ const { verifyToken } = require('../authenticate')
 //import model Course
 const Course = require('../models/courseInfor')
 
+//import library to connect ggcloud storage
 const { Storage } = require('@google-cloud/storage')
+
+//import library to read stream file in ggcloud storage
+const ffmpeg = require('fluent-ffmpeg')
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path
+// Set the path for ffprobe explicitly
+const ffprobePath = require('@ffprobe-installer/ffprobe').path
+ffmpeg.setFfmpegPath(ffmpegPath);
+ffmpeg.setFfprobePath(ffprobePath);
+
+//authenticate ggcloud storage
 const storage = new Storage({
   projectId: 'project-elearning-424401',
   credentials: {
@@ -194,13 +205,36 @@ module.exports = (connMysql, connMongo) => {
     })
   }
 
-  const getDurationTime = async (courseID) => {
-    return new Promise( (resolve, reject) => {
-      const [bucket] = storage.bucket('e-learning-bucket').getFiles()
-      bucket.forEach(file => {
-        console.log(file.name)
+  async function getVideoDuration(stream) {
+    return new Promise((resolve, reject) => {
+      ffmpeg(stream).ffprobe((err, metadata) => {
+        if (err) {
+          reject(err);
+        } else {
+          const duration = metadata.format.duration;
+          resolve(duration);
+        }
       })
-      resolve(bucket)
+    })
+  }
+
+  const getDurationTime = async (courseID) => {
+    // eslint-disable-next-line no-async-promise-executor
+    return new Promise( async (resolve, reject) => {
+      const [files] = await storage.bucket('e-learning-bucket').getFiles({ prefix: courseID });
+
+      let totalDuration = 0;
+
+      for (const file of files) {
+        if (file.name.endsWith('.mp4')) {
+          totalDuration += 1
+          // const stream = file.createReadStream();
+          // const duration = await getVideoDuration(stream);
+          // totalDuration += duration;
+          // console.log(duration)
+        }
+      }
+      resolve(totalDuration)
     })
   }
 
@@ -441,13 +475,13 @@ module.exports = (connMysql, connMongo) => {
 
         //Get duraion time of course
         const duration = await getDurationTime(courseID)
-        // console.log('test: ', duration)
+        console.log('test: ', duration)
 
         //Merge data with Mysql + MongoDB + Reviewer
         const mergeData = courseInfor.map(course => {
           return {
             ...course,
-            duration: 0,
+            duration: duration,
             review: review,
             image_introduce: mongoData[0].image_introduce,
             video_introduce: mongoData[0].video_introduce,
