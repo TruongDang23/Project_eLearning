@@ -18,7 +18,7 @@ function SideBar({ inforCourseData }) {
         <ul>
           <li>
             <VideoLibraryIcon />
-            <span>{inforCourseData.videos} videos on course</span>
+            <span>{inforCourseData.videos} videos</span>
           </li>
           <li>
             <AssignmentIcon />
