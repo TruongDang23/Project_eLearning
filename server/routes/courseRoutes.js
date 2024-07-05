@@ -207,7 +207,7 @@ module.exports = (connMysql, connMongo) => {
 
   const getDurationTime = async (courseID) => {
     // eslint-disable-next-line no-async-promise-executor
-    return new Promise( async (resolve, reject) => {
+    return new Promise( async (resolve) => {
       const [files] = await storage.bucket('e-learning-bucket').getFiles({ prefix: courseID });
 
       let totalVideo = 0;
