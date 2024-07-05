@@ -205,36 +205,19 @@ module.exports = (connMysql, connMongo) => {
     })
   }
 
-  async function getVideoDuration(stream) {
-    return new Promise((resolve, reject) => {
-      ffmpeg(stream).ffprobe((err, metadata) => {
-        if (err) {
-          reject(err);
-        } else {
-          const duration = metadata.format.duration;
-          resolve(duration);
-        }
-      })
-    })
-  }
-
   const getDurationTime = async (courseID) => {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise( async (resolve, reject) => {
       const [files] = await storage.bucket('e-learning-bucket').getFiles({ prefix: courseID });
 
-      let totalDuration = 0;
+      let totalVideo = 0;
 
       for (const file of files) {
         if (file.name.endsWith('.mp4')) {
-          totalDuration += 1
-          // const stream = file.createReadStream();
-          // const duration = await getVideoDuration(stream);
-          // totalDuration += duration;
-          // console.log(duration)
+          totalVideo += 1
         }
       }
-      resolve(totalDuration)
+      resolve(totalVideo)
     })
   }
 
@@ -474,14 +457,13 @@ module.exports = (connMysql, connMongo) => {
         const review = await getReview(courseID)
 
         //Get duraion time of course
-        const duration = await getDurationTime(courseID)
-        console.log('test: ', duration)
+        const videos = await getDurationTime(courseID)
 
         //Merge data with Mysql + MongoDB + Reviewer
         const mergeData = courseInfor.map(course => {
           return {
             ...course,
-            duration: duration,
+            videos: videos,
             review: review,
             image_introduce: mongoData[0].image_introduce,
             video_introduce: mongoData[0].video_introduce,
