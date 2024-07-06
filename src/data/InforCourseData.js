@@ -16,7 +16,7 @@ const InforCourseData = {
   num_lecture: 10,
   star: 4.5,
   number_enrolled: 100,
-  duration: 10,
+  duration: 10, //get from ggcloud storage
 
   image_introduce: imageIntro,
   video_introduce: videoIntro,
@@ -118,7 +118,7 @@ const InforCourseData = {
       ]
     }
   ],
-  review: [
+  review: [ //rating.userID INNER JOIN user.userID => fullname AS reviewerName
     {
       reviewerName: "Lê Thành Vinh",
       message:

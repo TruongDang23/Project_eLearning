@@ -46,7 +46,7 @@ function AccordionCourse({ inforCourseData }) {
             }}
           >
             <h3>
-              Chapter {index + 1}: {chapter.chapter_name}
+              Chapter {chapter.chapter_name}
             </h3>
           </AccordionSummary>
           <AccordionDetails>
@@ -57,44 +57,44 @@ function AccordionCourse({ inforCourseData }) {
                     <h4>
                       {index + 1}
                       {": "}
-                      {lecture.name}
+                      {lecture.type === "video" ? (
+                        <>
+                          <OndemandVideoIcon />
+                          <a
+                            href={lecture.source}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {lecture.name}
+                          </a>
+                        </>
+                      ) : lecture.type === "file" ? (
+                        <>
+                          <AttachFileIcon />
+                          <a
+                            href={lecture.source}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {lecture.name}
+                          </a>
+                        </>
+                      ) : (
+                        <>
+                          <QuizIcon />
+                          <a
+                            href={lecture.source}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {lecture.name}
+                          </a>
+                        </>
+                      )}
                     </h4>
                   </div>
                   <div>
-                    {lecture.type === "video" ? (
-                      <>
-                        <OndemandVideoIcon />
-                        <a
-                          href={lecture.source}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {lecture.description}
-                        </a>
-                      </>
-                    ) : lecture.type === "file" ? (
-                      <>
-                        <AttachFileIcon />
-                        <a
-                          href={lecture.source}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {lecture.description}
-                        </a>
-                      </>
-                    ) : (
-                      <>
-                        <QuizIcon />
-                        <a
-                          href={lecture.source}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {lecture.description}
-                        </a>
-                      </>
-                    )}
+                    <p>{lecture.description}</p>
                   </div>
                 </li>
               ))}
@@ -133,7 +133,7 @@ const AccordionCourseWrapper = styled.section`
         }
 
         a {
-          margin-left: 1.6rem;
+          margin-left: 0.5rem;
           text-decoration: none;
           color: #333;
           font-size: 1.6rem;
@@ -141,6 +141,11 @@ const AccordionCourseWrapper = styled.section`
           &:hover {
             color: #1971c2;
           }
+        }
+
+        p{
+          margin-left: 1.5rem;
+          font-size: 1.5rem;
         }
       }
     }
