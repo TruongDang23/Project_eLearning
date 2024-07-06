@@ -18,6 +18,7 @@
 --
 -- Table structure for table `account`
 --
+use projectelearning;
 
 DROP TABLE IF EXISTS `account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
