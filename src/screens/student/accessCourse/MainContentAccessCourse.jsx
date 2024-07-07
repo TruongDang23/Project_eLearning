@@ -11,9 +11,9 @@ function MainContentAccessCourse({ accessCourseData }) {
   console.log(pdfUrl);
   return (
     <MainAccessCourseWrapper>
-      {/* <VideoPlayer video={accessCourseData.video_introduce} /> */}
+      <VideoPlayer video={accessCourseData.video_introduce} />
       {/* <PdfViewer pdfUrl={pdfUrl} /> */}
-      <Quizz />
+      {/* <Quizz /> */}
       <TabviewAccessCourse accessCourseData={accessCourseData} />
     </MainAccessCourseWrapper>
   );
