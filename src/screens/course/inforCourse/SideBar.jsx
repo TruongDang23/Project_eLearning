@@ -15,7 +15,7 @@ function SideBar({ inforCourseData }) {
         ></iframe>
       </div>
       <div className="sidebar-detail">
-      
+
         <ul>
           <li>
             <VideoLibraryIcon />

@@ -1,7 +1,4 @@
 import videoIntro from "../assets/inforCourseIntro.mp4";
-
-// video_introduce: "https://youtu.be/wR0jg0eQsZA?si=JNvUj8Q1GFeCWwlg",
-
 const AccessCourseData = {
   instructor: "John Doe",
   type_of_course: "Course",

@@ -1,13 +1,18 @@
-import React from "react";
-import styled from "styled-components";
-import MainContentAccessCourse from "./MainContentAccessCourse";
-import SideBarAccessCourse from "./SideBarAccessCourse";
+import styled from "styled-components"
+import MainContentAccessCourse from "./MainContentAccessCourse"
+import SideBarAccessCourse from "./SideBarAccessCourse"
+import { useState } from "react"
 
 function MainAccessCourse({ accessCourseData }) {
+  const [lecture, setLecture] = useState({
+    type: accessCourseData.chapters[0].lectures[0].type,
+    source: accessCourseData.chapters[0].lectures[0].source
+  })
+
   return (
     <MainAccessCourseWrapper className="white-space-small">
-      <MainContentAccessCourse accessCourseData={accessCourseData} />
-      <SideBarAccessCourse accessCourseData={accessCourseData} />
+      <MainContentAccessCourse accessCourseData={accessCourseData} lecture={lecture}/>
+      <SideBarAccessCourse accessCourseData={accessCourseData} setLecture={setLecture}/>
     </MainAccessCourseWrapper>
   );
 }

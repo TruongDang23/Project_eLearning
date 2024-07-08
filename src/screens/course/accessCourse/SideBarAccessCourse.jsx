@@ -8,12 +8,12 @@ import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import QuizIcon from "@mui/icons-material/Quiz";
 
-function SideBarAccessCourse({ accessCourseData }) {
+function SideBarAccessCourse({ accessCourseData, setLecture }) {
   const [expanded, setExpanded] = useState(false);
   const handleExpansion = (panel) => (event, isExpanded) => {
     setExpanded((prevExpanded) => ({
       ...prevExpanded,
-      [panel]: isExpanded,
+      [panel]: isExpanded
     }));
   };
   return (
@@ -33,8 +33,8 @@ function SideBarAccessCourse({ accessCourseData }) {
               fontSize: "1rem !important",
               padding: "0px 20px",
               "&:before": {
-                display: "none",
-              },
+                display: "none"
+              }
             }}
           >
             <AccordionSummary
@@ -44,8 +44,8 @@ function SideBarAccessCourse({ accessCourseData }) {
               sx={{
                 padding: "10px 0",
                 "& .MuiAccordionSummary-content": {
-                  margin: 0,
-                },
+                  margin: 0
+                }
               }}
             >
               <h3>
@@ -60,44 +60,56 @@ function SideBarAccessCourse({ accessCourseData }) {
                       <h4>
                         {index + 1}
                         {": "}
-                        {lecture.name}
+                        {lecture.type === "video" ? (
+                          <>
+                            <OndemandVideoIcon />
+                            <a
+                              onClick={() => {
+                                setLecture((prevdata) => ({
+                                  ...prevdata,
+                                  type: 'video',
+                                  source: lecture.source
+                                }))
+                              }}
+                            >
+                              {lecture.name}
+                            </a>
+                          </>
+                        ) : lecture.type === "file" ? (
+                          <>
+                            <AttachFileIcon />
+                            <a
+                              onClick={() => {
+                                setLecture((prevdata) => ({
+                                  ...prevdata,
+                                  type: 'file',
+                                  source: lecture.source
+                                }))
+                              }}
+                            >
+                              {lecture.name}
+                            </a>
+                          </>
+                        ) : (
+                          <>
+                            <QuizIcon />
+                            <a
+                              onClick={() => {
+                                setLecture((prevdata) => ({
+                                  ...prevdata,
+                                  type: 'quizz',
+                                  source: lecture.source
+                                }))
+                              }}
+                            >
+                              {lecture.name}
+                            </a>
+                          </>
+                        )}
                       </h4>
                     </div>
                     <div>
-                      {lecture.type === "video" ? (
-                        <>
-                          <OndemandVideoIcon />
-                          <a
-                            href={lecture.source}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            {lecture.description}
-                          </a>
-                        </>
-                      ) : lecture.type === "file" ? (
-                        <>
-                          <AttachFileIcon />
-                          <a
-                            href={lecture.source}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            {lecture.description}
-                          </a>
-                        </>
-                      ) : (
-                        <>
-                          <QuizIcon />
-                          <a
-                            href={lecture.source}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            {lecture.description}
-                          </a>
-                        </>
-                      )}
+                      <p>{lecture.description}</p>
                     </div>
                   </li>
                 ))}
@@ -151,10 +163,16 @@ const SideBarAccessCourseWrapper = styled.section`
             text-decoration: none;
             color: #333;
             font-size: 1.6rem;
+            cursor: pointer;
             transition: color 0.3s ease;
             &:hover {
               color: #1971c2;
             }
+          }
+          
+          p{
+            margin-left: 1.5rem;
+            font-size: 1.5rem;
           }
         }
       }
