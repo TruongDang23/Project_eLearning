@@ -120,14 +120,14 @@ const InforCourseData = {
   ],
   review: [ //rating.userID INNER JOIN user.userID => fullname AS reviewerName
     {
-      reviewerName: "Lê Thành Vinh",
+      reviewerName: "Le Thanh Vinh",
       message:
         "Great course! The instructor explains concepts clearly and concisely.",
       star: 4.5,
       date: "2024-06-01 12:00:00"
     },
     {
-      reviewerName: "Đặng Quang Trường",
+      reviewerName: "Dang Quang Truong",
       message: "I learned a lot from this course.",
       star: 4.0,
       date: "2024-06-07 13:00:00"
