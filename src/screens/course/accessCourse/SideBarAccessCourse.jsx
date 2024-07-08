@@ -49,7 +49,7 @@ function SideBarAccessCourse({ accessCourseData, setParams }) {
               }}
             >
               <h3>
-                Chapter {index + 1}: {chapter.chapter_name}
+                Chapter {chapter.chapter_name}
               </h3>
             </AccordionSummary>
             <AccordionDetails>
