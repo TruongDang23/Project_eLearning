@@ -39,11 +39,11 @@ const AccessCourseData = {
                   responseID: 2,
                   response:
                     "A database can handle more complex queries and is more scalable.",
-                  date: "2024-06-01 11:00:00",
-                },
-              ],
-            },
-          ],
+                  date: "2024-06-01 11:00:00"
+                }
+              ]
+            }
+          ]
         },
         {
           id: 2,
@@ -52,9 +52,9 @@ const AccessCourseData = {
           type: "file",
           source:
             "https://storage.googleapis.com/e-learning-bucket/C000/CT01/01-intro.pdf",
-          QnA: [],
-        },
-      ],
+          QnA: []
+        }
+      ]
     },
     {
       chapter_name: "SQL",
@@ -66,7 +66,7 @@ const AccessCourseData = {
           type: "video",
           source:
             "https://storage.googleapis.com/e-learning-bucket/C000/CT02/video2.mp4",
-          QnA: [],
+          QnA: []
         },
         {
           id: 4,
@@ -75,9 +75,9 @@ const AccessCourseData = {
           type: "file",
           source:
             "https://storage.googleapis.com/e-learning-bucket/C000/CT02/02-database.pdf",
-          QnA: [],
-        },
-      ],
+          QnA: []
+        }
+      ]
     },
     {
       chapter_name: "Database Design",
@@ -89,7 +89,7 @@ const AccessCourseData = {
           type: "video",
           source:
             "https://storage.googleapis.com/e-learning-bucket/C000/CT03/video3.mp4",
-          QnA: [],
+          QnA: []
         },
         {
           id: 6,
@@ -98,7 +98,7 @@ const AccessCourseData = {
           type: "file",
           source:
             "https://storage.googleapis.com/e-learning-bucket/C000/CT03/03-dbms.pdf",
-          QnA: [],
+          QnA: []
         },
         {
           id: 7,
@@ -107,10 +107,10 @@ const AccessCourseData = {
           type: "assignment",
           source:
             "https://storage.googleapis.com/e-learning-bucket/C000/CT04/04-model.pdf",
-          QnA: [],
-        },
-      ],
-    },
+          QnA: []
+        }
+      ]
+    }
   ],
   userProgress: {
     userID: 1,
@@ -118,39 +118,39 @@ const AccessCourseData = {
       {
         lectureID: 1,
         time: "2024-06-01 10:30:00",
-        percent: 50.0,
+        percent: 50.0
       },
       {
         lectureID: 2,
         time: "2024-06-01 11:30:00",
-        percent: 100.0,
+        percent: 100.0
       },
       {
         lectureID: 3,
         time: "2024-06-01 12:30:00",
-        percent: 0.0,
+        percent: 0.0
       },
       {
         lectureID: 4,
         time: "2024-06-01 13:30:00",
-        percent: 0.0,
+        percent: 0.0
       },
       {
         lectureID: 5,
         time: "2024-06-01 14:30:00",
-        percent: 0.0,
+        percent: 0.0
       },
       {
         lectureID: 6,
         time: "2024-06-01 15:30:00",
-        percent: 0.0,
+        percent: 0.0
       },
       {
         lectureID: 7,
         time: "2024-06-01 16:30:00",
-        percent: 0.0,
-      },
-    ],
+        percent: 0.0
+      }
+    ]
   },
   review: [
     {
@@ -158,15 +158,15 @@ const AccessCourseData = {
       message:
         "Great course! The instructor explains concepts clearly and concisely.",
       star: 4.5,
-      date: "2024-06-01 12:00:00",
+      date: "2024-06-01 12:00:00"
     },
     {
       reviewerName: "Dang Quang Truong",
       message: "I learned a lot from this course.",
       star: 4.0,
-      date: "2024-06-07 13:00:00",
-    },
-  ],
+      date: "2024-06-07 13:00:00"
+    }
+  ]
 };
 
 export default AccessCourseData;
