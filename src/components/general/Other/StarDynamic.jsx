@@ -6,10 +6,10 @@ const containerStyles = {
   justifyContent: "space-between",
   alignItems: "center",
   gap: "16px",
-  width: "100px",
+  width: "100px"
 };
 const starContainerStyles = {
-  display: "flex",
+  display: "flex"
 };
 
 StarDynamic.propTypes = {
@@ -19,7 +19,7 @@ StarDynamic.propTypes = {
   className: PropTypes.string,
   messages: PropTypes.arrayOf(PropTypes.string),
   defaultRating: PropTypes.number,
-  onSetRating: PropTypes.func,
+  onSetRating: PropTypes.func
 };
 
 export default function StarDynamic({
@@ -29,7 +29,7 @@ export default function StarDynamic({
   className = "",
   messages = [],
   defaultRating = 0,
-  onSetRating,
+  onSetRating
 }) {
   const [rating, setRating] = useState(defaultRating);
   const [tempRating, setTempRating] = useState(0);
@@ -40,7 +40,7 @@ export default function StarDynamic({
   const textStyles = {
     fontWeight: "bold",
     color,
-    fontSize: `${size / 1.5}px`,
+    fontSize: `${size / 1.5}px`
   };
   return (
     <div style={containerStyles} className={className}>
@@ -70,7 +70,7 @@ function Star({ onRate, full, onHoverIn, onHoverOut, color, size }) {
     width: `${size}px`,
     height: `${size}px`,
     display: "block",
-    cursor: "pointer",
+    cursor: "pointer"
   };
   return (
     <span

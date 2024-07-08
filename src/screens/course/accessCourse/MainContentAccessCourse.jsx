@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import VideoPlayer from "./VideoPlayer";
 import Quizz from "./Quiz/Quizz";
@@ -6,14 +5,19 @@ import Quizz from "./Quiz/Quizz";
 import TabviewAccessCourse from "./TabviewAccessCourse";
 import PdfViewer from "./PdfViewer";
 
-function MainContentAccessCourse({ accessCourseData }) {
-  const pdfUrl = accessCourseData.chapters[0].lectures[1].source;
-  console.log(pdfUrl);
+function MainContentAccessCourse({ accessCourseData, params }) {
+  const type = params.get('type')
+  const source = params.get('source')
   return (
     <MainAccessCourseWrapper>
-      <VideoPlayer video={accessCourseData.video_introduce} />
-      {/* <PdfViewer pdfUrl={pdfUrl} /> */}
-      {/* <Quizz /> */}
+      {
+        type === 'video' ?
+          ( <VideoPlayer video={source} /> ) :
+          type === 'file' ?
+            ( <PdfViewer pdfUrl={source} /> ) :
+            type === 'quizz' ?
+              ( <Quizz /> ) : ( <p>Loading...</p> )
+      }
       <TabviewAccessCourse accessCourseData={accessCourseData} />
     </MainAccessCourseWrapper>
   );

@@ -5,18 +5,18 @@ const initialState = { count: 0, step: 1 };
 function reducer(state, action) {
   console.log(state, action);
   switch (action.type) {
-    case "inc":
-      return { ...state, count: state.count + state.step };
-    case "dec":
-      return { ...state, count: state.count - state.step };
-    case "setCount":
-      return { ...state, count: action.payload };
-    case "setStep":
-      return { ...state, step: action.payload };
-    case "reset":
-      return initialState;
-    default:
-      throw new Error("Invalid action type");
+  case "inc":
+    return { ...state, count: state.count + state.step };
+  case "dec":
+    return { ...state, count: state.count - state.step };
+  case "setCount":
+    return { ...state, count: action.payload };
+  case "setStep":
+    return { ...state, step: action.payload };
+  case "reset":
+    return initialState;
+  default:
+    throw new Error("Invalid action type");
   }
   // if (action.type === "inc") {
   //   return state + action.payload;

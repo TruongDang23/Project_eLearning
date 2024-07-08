@@ -1,13 +1,17 @@
-import React from "react";
-import styled from "styled-components";
-import MainContentAccessCourse from "./MainContentAccessCourse";
-import SideBarAccessCourse from "./SideBarAccessCourse";
-
+import styled from "styled-components"
+import MainContentAccessCourse from "./MainContentAccessCourse"
+import SideBarAccessCourse from "./SideBarAccessCourse"
+import { useSearchParams } from "react-router-dom"
 function MainAccessCourse({ accessCourseData }) {
+  const [searchParams, setSearchParams] = useSearchParams({
+    type: accessCourseData.chapters[0].lectures[0].type,
+    source: accessCourseData.chapters[0].lectures[0].source
+  })
+
   return (
     <MainAccessCourseWrapper className="white-space-small">
-      <MainContentAccessCourse accessCourseData={accessCourseData} />
-      <SideBarAccessCourse accessCourseData={accessCourseData} />
+      <MainContentAccessCourse accessCourseData={accessCourseData} params={searchParams} />
+      <SideBarAccessCourse accessCourseData={accessCourseData} setParams={setSearchParams}/>
     </MainAccessCourseWrapper>
   );
 }

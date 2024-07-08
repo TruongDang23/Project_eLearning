@@ -16,7 +16,7 @@ function CourseBanner({ accessCourseData }) {
             text={`${accessCourseData.progress}%`}
             styles={{
               root: { width: 50 },
-              backgroundColor: "#f9f9f9",
+              backgroundColor: "#f9f9f9"
             }}
           />
         </div>
