@@ -1,21 +1,21 @@
-import { useState } from "react";
-import styled from "styled-components";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
-import AttachFileIcon from "@mui/icons-material/AttachFile";
-import QuizIcon from "@mui/icons-material/Quiz";
+import { useState } from "react"
+import styled from "styled-components"
+import Accordion from "@mui/material/Accordion"
+import AccordionSummary from "@mui/material/AccordionSummary"
+import AccordionDetails from "@mui/material/AccordionDetails"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import OndemandVideoIcon from "@mui/icons-material/OndemandVideo"
+import AttachFileIcon from "@mui/icons-material/AttachFile"
+import QuizIcon from "@mui/icons-material/Quiz"
+function SideBarAccessCourse({ accessCourseData, setParams }) {
 
-function SideBarAccessCourse({ accessCourseData, setLecture }) {
   const [expanded, setExpanded] = useState(false);
   const handleExpansion = (panel) => (event, isExpanded) => {
     setExpanded((prevExpanded) => ({
       ...prevExpanded,
       [panel]: isExpanded
-    }));
-  };
+    }))
+  }
   return (
     <SideBarAccessCourseWrapper>
       <div className="course-content">
@@ -65,11 +65,7 @@ function SideBarAccessCourse({ accessCourseData, setLecture }) {
                             <OndemandVideoIcon />
                             <a
                               onClick={() => {
-                                setLecture((prevdata) => ({
-                                  ...prevdata,
-                                  type: 'video',
-                                  source: lecture.source
-                                }))
+                                setParams({ 'type': lecture.type, 'source': lecture.source })
                               }}
                             >
                               {lecture.name}
@@ -80,11 +76,7 @@ function SideBarAccessCourse({ accessCourseData, setLecture }) {
                             <AttachFileIcon />
                             <a
                               onClick={() => {
-                                setLecture((prevdata) => ({
-                                  ...prevdata,
-                                  type: 'file',
-                                  source: lecture.source
-                                }))
+                                setParams({ 'type': lecture.type, 'source': lecture.source })
                               }}
                             >
                               {lecture.name}
@@ -95,11 +87,7 @@ function SideBarAccessCourse({ accessCourseData, setLecture }) {
                             <QuizIcon />
                             <a
                               onClick={() => {
-                                setLecture((prevdata) => ({
-                                  ...prevdata,
-                                  type: 'quizz',
-                                  source: lecture.source
-                                }))
+                                setParams({ 'type': lecture.type, 'source': lecture.source })
                               }}
                             >
                               {lecture.name}
