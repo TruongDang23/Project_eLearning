@@ -1,5 +1,10 @@
+import styled from "styled-components";
 function Main({ children }) {
-  return <main className="main">{children}</main>;
+  return <MainWrapper>{children}</MainWrapper>;
 }
+
+const MainWrapper = styled.main`
+  width: 50rem;
+`;
 
 export default Main;
