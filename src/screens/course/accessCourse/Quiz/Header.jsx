@@ -13,6 +13,7 @@ function Header({ title, description }) {
 const HeaderWrapper = styled.header`
   @import url("https://fonts.googleapis.com/css2?family=Codystar&display=swap");
   text-align: center;
+  margin-top: 2.4rem;
   h1 {
     font-family: "Codystar";
     font-size: 5.6rem;

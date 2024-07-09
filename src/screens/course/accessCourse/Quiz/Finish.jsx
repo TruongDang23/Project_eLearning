@@ -23,15 +23,18 @@ function Finish({ points, maxPossiblePoints, highscore, dispatch }) {
   }
   return (
     <FinishWrapper>
-      <p className="result">
-        <span>{emoji}</span>
-        Your score is <strong>{points}</strong> out of {maxPossiblePoints}{" "}
-        question.
-      </p>
-      <p className="highscore">That is {percentage}%.</p>
+      <div className="result">
+        <p>
+          <span>{emoji}</span>
+          Your score is <strong>{points}</strong> out of {maxPossiblePoints}{" "}
+          question.
+        </p>
+        <p className="highscore">That is {percentage}%.</p>
+      </div>
       <div className="image-result">
         <img src={image} alt="gif" />
       </div>
+
       <button
         className="btn btn-ui"
         onClick={() => dispatch({ type: "restart" })}
@@ -43,6 +46,8 @@ function Finish({ points, maxPossiblePoints, highscore, dispatch }) {
 }
 
 const FinishWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 2.4rem;
   padding: 2.4rem;
   .image-result {
@@ -59,27 +64,32 @@ const FinishWrapper = styled.div`
     padding: 2rem 0;
     font-size: 2rem;
     font-weight: 500;
-    margin-bottom: 1.6rem;
+    .highscore {
+      font-size: 2.2rem;
+      margin-right: 4px;
+    }
   }
   span {
     font-size: 2.2rem;
     margin-right: 4px;
   }
-  .highscore {
-    font-size: 2.2rem;
-    margin-right: 4px;
-  }
+
   .btn {
-    float: right;
+    float: center;
     padding: 1rem 2rem;
+    margin: 0 10rem;
     font-size: 2rem;
     color: #fff;
     border: 2px solid #495057;
     background-color: #495057;
-    padding: 1.2rem 2.4rem;
     cursor: pointer;
     border-radius: 100px;
     transition: all 0.3s ease-in-out;
+    &:hover {
+      background-color: #6c757d;
+      border-color: #6c757d;
+      transform: scale(1.05);
+    }
   }
 `;
 

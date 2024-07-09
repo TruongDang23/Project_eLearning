@@ -8,7 +8,7 @@ function Progress({ index, numQuestion, points, maxPossiblePoints, answer }) {
         Question <strong>{index + 1}</strong> / {numQuestion}
       </p>
       <p>
-        <strong>{points}</strong> / {maxPossiblePoints}
+        <strong>Correct: {points}</strong> / {maxPossiblePoints}
       </p>
     </ProgressWrapper>
   );

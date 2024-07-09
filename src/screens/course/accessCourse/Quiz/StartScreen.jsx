@@ -1,14 +1,14 @@
 import styled, { keyframes } from "styled-components";
 
 function StartScreen({ numberOfQuestions, passpoint, during_time, dispatch }) {
-  const percentage = (passpoint / numberOfQuestions) * 100;
+  const percentage = Math.round((passpoint / numberOfQuestions) * 100);
   return (
     <StartScreenWrapper>
       <h3>Instructions:</h3>
       <ul>
         <li>There are {numberOfQuestions} questions in total.</li>
         <li>You need to do at least {percentage}% to pass.</li>
-        <li>You have {during_time} minutes to answer each question.</li>
+        <li>You have {during_time} minutes to answer all questions.</li>
       </ul>
       <button
         className="btn btn-ui"

@@ -37,10 +37,6 @@ const OptionsWrapper = styled.div`
     border-radius: 100px;
     transition: 0.3s;
   }
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-  margin-bottom: 3.2rem;
 
   .btn {
     padding: 1rem 2rem;
@@ -83,6 +79,15 @@ const OptionsWrapper = styled.div`
     &:disabled {
       cursor: not-allowed;
       opacity: 0.6;
+    }
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    button {
+      padding: 0;
+      font-size: 0.6rem;
     }
   }
 `;
