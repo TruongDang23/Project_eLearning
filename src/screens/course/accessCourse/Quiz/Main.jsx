@@ -4,7 +4,10 @@ function Main({ children }) {
 }
 
 const MainWrapper = styled.main`
-  width: 50rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin-top: 1rem;
 `;
 
 export default Main;

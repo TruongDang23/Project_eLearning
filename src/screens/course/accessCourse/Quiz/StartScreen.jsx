@@ -1,42 +1,79 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-function StartScreen({ numberOfQuestions, dispatch }) {
+function StartScreen({ numberOfQuestions, passpoint, during_time, dispatch }) {
+  const percentage = (passpoint / numberOfQuestions) * 100;
   return (
-    <div>
-      <h2>Welcome to The React Quizz</h2>
-      <h3>{numberOfQuestions} questions to test your React mastery</h3>
+    <StartScreenWrapper>
+      <h3>Instructions:</h3>
+      <ul>
+        <li>There are {numberOfQuestions} questions in total.</li>
+        <li>You need to do at least {percentage}% to pass.</li>
+        <li>You have {during_time} minutes to answer each question.</li>
+      </ul>
       <button
         className="btn btn-ui"
         onClick={() => dispatch({ type: "start" })}
       >
-        Let is start
+        Start
       </button>
-    </div>
+    </StartScreenWrapper>
   );
 }
 
+const pulse = keyframes`
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+`;
+
 const StartScreenWrapper = styled.div`
-  text-align: center;
-  margin-bottom: 2rem;
-  h2 {
-    font-size: 2.4rem;
-    margin-bottom: 1.6rem;
-  }
+  display: flex;
+  flex-direction: column;
+  margin-top: 3.4rem;
   h3 {
-    font-size: 1.8rem;
+    font-size: 2.4rem;
+    font-weight: 600;
     margin-bottom: 2.4rem;
+    text-align: center;
   }
+  ul {
+    list-style: none;
+    max-width: 600px;
+    text-align: center;
+    li {
+      font-size: 1.6rem;
+      margin-bottom: 1.3rem;
+    }
+  }
+
   .btn {
-    display: block;
-    font-family: inherit;
-    color: inherit;
+    padding: 1rem 2rem;
     font-size: 2rem;
-    border: 2px solid var(--color-dark);
-    background-color: var(--color-dark);
+    color: #fff;
+    border: 2px solid #495057;
+    background-color: #495057;
     padding: 1.2rem 2.4rem;
     cursor: pointer;
     border-radius: 100px;
-    transition: 0.3s;
+    transition: all 0.3s ease-in-out;
+    animation: ${pulse} 2s infinite;
+    &:hover {
+      background-color: #6c757d;
+      border-color: #6c757d;
+      transform: scale(1.05);
+    }
+    &:active {
+      transform: scale(0.95);
+    }
   }
 `;
 

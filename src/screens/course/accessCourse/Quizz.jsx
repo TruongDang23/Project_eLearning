@@ -10,6 +10,7 @@ import Progress from "./Quiz/Progress";
 import Finish from "./Quiz/Finish";
 import Timer from "./Quiz/Timer";
 import Footer from "./Quiz/Footer";
+import Quizzbackground from "./Quiz/quizz.png";
 import styled from "styled-components";
 
 const SECS_PER_QUESTION = 20;
@@ -45,14 +46,12 @@ function reducer(state, action) {
         secoundsRemaining: state.questions.length * SECS_PER_QUESTION,
       };
     case "newAnswer": {
-      const question = state.questions.at(state.index);
+      const question = state.questions[state.index];
       return {
         ...state,
         answer: action.payload,
         points:
-          action.payload === question.correctOption
-            ? state.points + question.points
-            : state.points,
+          action.payload === question.key ? state.points + 1 : state.points,
       };
     }
     case "nextQuestion":
@@ -74,13 +73,6 @@ function reducer(state, action) {
         questions: state.questions,
         status: "ready",
       };
-    // return {
-    //   ...state,
-    //   status: "ready",
-    //   index: 0,
-    //   answer: null,
-    //   points: 0,
-    // }
     case "tick":
       return {
         ...state,
@@ -102,21 +94,20 @@ function Quizz({ quizzData }) {
     status: "ready",
   });
   const numberOfQuestions = questions.length;
-  const maxPossiblePoints = questions.reduce(
-    (prev, curr) => prev + curr.points,
-    0
-  );
+  const maxPossiblePoints = numberOfQuestions;
 
   return (
     <QuizWrapper>
       <div className="app">
-        <Header />
+        <Header title={quizzData.name} description={quizzData.description} />
         <Main>
           {status === "loading" && <Loader />}
           {status === "error" && <Error />}
           {status === "ready" && (
             <StartScreen
               numberOfQuestions={numberOfQuestions}
+              passpoint={quizzData.passpoint}
+              during_time={quizzData.during_time}
               dispatch={dispatch}
             />
           )}
@@ -165,8 +156,9 @@ function Quizz({ quizzData }) {
 const QuizWrapper = styled.div`
   height: 52rem;
   color: #f1f3f5;
-  background-color: #495057;
-  padding: 3.2rem;
+  background-image: linear-gradient(rgba(35, 33, 33, 0.484), rgb(23, 22, 22)),
+    url(${Quizzbackground});
+  background-size: cover;
   .app {
     display: flex;
     flex-direction: column;

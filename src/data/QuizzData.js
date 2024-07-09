@@ -2,7 +2,7 @@ const QuizzData = {
   name: "Quizz about Introduction",
   description: "Test your knowledge",
   type: "quizz",
-  passpoint: 7,
+  passpoint: 2,
   during_time: 7,
   title: "Introduction to Database",
   questions: [
