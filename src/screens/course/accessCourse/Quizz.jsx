@@ -43,7 +43,7 @@ function reducer(state, action) {
       return {
         ...state,
         status: "active",
-        secoundsRemaining: state.questions.length * SECS_PER_QUESTION,
+        // secoundsRemaining: state.questions.length * SECS_PER_QUESTION,
       };
     case "newAnswer": {
       const question = state.questions[state.index];
@@ -91,6 +91,7 @@ function Quizz({ quizzData }) {
   ] = useReducer(reducer, {
     ...initialState,
     questions: quizzData.questions,
+    secoundsRemaining: quizzData.during_time * 60,
     status: "ready",
   });
   const numberOfQuestions = questions.length;
@@ -99,17 +100,22 @@ function Quizz({ quizzData }) {
   return (
     <QuizWrapper>
       <div className="app">
-        <Header title={quizzData.name} description={quizzData.description} />
         <Main>
           {status === "loading" && <Loader />}
           {status === "error" && <Error />}
           {status === "ready" && (
-            <StartScreen
-              numberOfQuestions={numberOfQuestions}
-              passpoint={quizzData.passpoint}
-              during_time={quizzData.during_time}
-              dispatch={dispatch}
-            />
+            <>
+              <Header
+                title={quizzData.name}
+                description={quizzData.description}
+              />
+              <StartScreen
+                numberOfQuestions={numberOfQuestions}
+                passpoint={quizzData.passpoint}
+                during_time={quizzData.during_time}
+                dispatch={dispatch}
+              />
+            </>
           )}
           {status === "active" && (
             <>

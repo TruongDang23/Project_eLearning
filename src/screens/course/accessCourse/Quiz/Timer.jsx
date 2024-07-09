@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import styled from "styled-components";
 
 function Timer({ dispatch, secoundsRemaining }) {
   const mins = Math.floor(secoundsRemaining / 60);
@@ -13,12 +14,21 @@ function Timer({ dispatch, secoundsRemaining }) {
     [dispatch]
   );
   return (
-    <div className="timer">
+    <TimerWrapper>
       {mins < 10 && "0"}
       {mins}:{secs < 10 && "0"}
       {secs}
-    </div>
+    </TimerWrapper>
   );
 }
+
+const TimerWrapper = styled.div`
+  float: left;
+  font-size: 1.8rem;
+  color: var(--color-medium);
+  border: 2px solid var(--color-dark);
+  padding: 1.35rem 2.8rem;
+  border-radius: 100px;
+`;
 
 export default Timer;
