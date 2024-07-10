@@ -4,15 +4,13 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Avatar from "@mui/material/Avatar";
 import AvatarImg from "./avatar.png";
+import Logo from "../../../assets/Logo.png";
 
 function HeaderAfterLogin() {
   return (
     <Navbar>
       <a className="brand">
-        <img
-          src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
-          alt="Udemy Logo"
-        />
+        <img src={Logo} alt="Udemy Logo" />
       </a>
       <div className="navLinks">
         <a href="#" className="link">
@@ -124,7 +122,8 @@ const StyledBadge = styled(Badge)`
   .MuiSvgIcon-root {
     width: 2.6rem;
     height: 2.6rem;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: #1971c2;
       ${"" /* Phóng to một chút */}
       transform: scale(1.1);

@@ -49,6 +49,7 @@ const StartScreenWrapper = styled.div`
     list-style: none;
     max-width: 600px;
     text-align: center;
+    margin: 0 auto;
     li {
       font-size: 1.6rem;
       margin-bottom: 1.3rem;
@@ -57,11 +58,11 @@ const StartScreenWrapper = styled.div`
 
   .btn {
     padding: 1rem 2rem;
+    margin: 2rem 20rem;
     font-size: 2rem;
     color: #fff;
     border: 2px solid #495057;
     background-color: #495057;
-    padding: 1.2rem 2.4rem;
     cursor: pointer;
     border-radius: 100px;
     transition: all 0.3s ease-in-out;

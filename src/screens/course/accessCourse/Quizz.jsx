@@ -71,6 +71,7 @@ function reducer(state, action) {
       return {
         ...initialState,
         questions: state.questions,
+        secoundsRemaining: action.payload.during_time * 60,
         status: "ready",
       };
     case "tick":
@@ -96,6 +97,7 @@ function Quizz({ quizzData }) {
   });
   const numberOfQuestions = questions.length;
   const maxPossiblePoints = numberOfQuestions;
+  const timerRemind = quizzData.during_time * 60;
 
   return (
     <QuizWrapper>
@@ -151,6 +153,7 @@ function Quizz({ quizzData }) {
               maxPossiblePoints={maxPossiblePoints}
               highscore={highscore}
               dispatch={dispatch}
+              timerRemind={timerRemind}
             />
           )}
         </Main>

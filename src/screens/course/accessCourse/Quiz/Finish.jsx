@@ -4,7 +4,13 @@ import image80 from "./g80.gif";
 import image100 from "./g100.gif";
 import styled from "styled-components";
 
-function Finish({ points, maxPossiblePoints, highscore, dispatch }) {
+function Finish({
+  points,
+  maxPossiblePoints,
+  highscore,
+  dispatch,
+  timerRemind,
+}) {
   const percentage = Math.round((points / maxPossiblePoints) * 100, 2);
   let image;
   let emoji;
@@ -37,7 +43,14 @@ function Finish({ points, maxPossiblePoints, highscore, dispatch }) {
 
       <button
         className="btn btn-ui"
-        onClick={() => dispatch({ type: "restart" })}
+        onClick={() =>
+          dispatch({
+            type: "restart",
+            payload: {
+              during_time: timerRemind / 60,
+            },
+          })
+        }
       >
         Restart
       </button>
@@ -54,7 +67,7 @@ const FinishWrapper = styled.div`
     text-align: center;
     margin-bottom: 2.4rem;
     img {
-      width: 50%;
+      width: 18rem;
     }
   }
   .result {
@@ -77,7 +90,7 @@ const FinishWrapper = styled.div`
   .btn {
     float: center;
     padding: 1rem 2rem;
-    margin: 0 10rem;
+    margin: 0 20rem;
     font-size: 2rem;
     color: #fff;
     border: 2px solid #495057;

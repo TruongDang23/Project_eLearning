@@ -7,6 +7,8 @@ const MainWrapper = styled.main`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  ${"" /* Tạo kích thước cho main là 32rem */}
+  width:100rem;
   max-width: 800px;
   margin-top: 1rem;
 
