@@ -221,6 +221,58 @@ module.exports = (connMysql, connMongo) => {
     })
   }
 
+  const getProgress = async (courseID, userID) => {
+    // eslint-disable-next-line no-async-promise-executor
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          return reject(err)
+        }
+
+        const query =
+        ` SELECT FORMAT(SUM(percent)/num_lecture,1) AS progress
+          from course inner join (
+            SELECT lectureID, courseID, MAX(percent) AS percent 
+              FROM learning
+              where userID = ?
+            group by lectureID, courseID
+          ) AS list_progress
+          ON course.courseID = list_progress.courseID
+          where course.courseID = ?`
+        connection.query(query, [userID, courseID], (error, data) => {
+          connection.release()
+          if (error) {
+            return reject(error)
+          }
+          resolve(data[0].progress)
+        })
+      })
+    })
+  }
+
+  const getListLearning = async (courseID, userID) => {
+    // eslint-disable-next-line no-async-promise-executor
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          return reject(err)
+        }
+
+        const query =
+        ` SELECT lectureID, MAX(percent) AS progress FROM learning
+          where courseID = ? and userID = ?
+          group by lectureID `
+        connection.query(query, [courseID, userID], (error, learning) => {
+          connection.release()
+          if (error) {
+            return reject(error)
+          }
+          resolve(learning)
+        })
+      })
+    })
+  }
+
   // Define user-related routes
   router.get('/getPublishCourse', verifyToken, (req, res) => {
     connMysql.getConnection((err, connection) => {
@@ -459,7 +511,7 @@ module.exports = (connMysql, connMongo) => {
         //Get duraion time of course
         const videos = await getTotalVideo(courseID)
 
-        //Merge data with Mysql + MongoDB + Reviewer
+        //Merge data with Mysql + MongoDB + Reviewer + Duration
         const mergeData = courseInfor.map(course => {
           return {
             ...course,
@@ -521,15 +573,21 @@ module.exports = (connMysql, connMongo) => {
         //Get duraion time of course
         const videos = await getTotalVideo(courseID)
 
-        //Merge data with Mysql + MongoDB + Reviewer
+        //Get total_progress of user for this course
+        const progress = await getProgress(courseID, 'S000')
+
+        const list_learning = await getListLearning(courseID, 'S000')
+
+        //Merge data with Mysql + MongoDB + Reviewer + Duration + Progress + Learning
         const mergeData = courseInfor.map(course => {
           return {
             ...course,
-            progress: 30, //Chua xu ly
+            progress: progress ? progress : 0,
             videos: videos,
             review: review,
             keywords: mongoData[0].keywords,
-            chapters: mongoData[0].chapters
+            chapters: mongoData[0].chapters,
+            learning: list_learning
           }
         })
         res.send(mergeData)

@@ -106,46 +106,37 @@ const AccessCourseData = {
       ]
     }
   ],
-  userProgress: {
-    userID: 1,
-    progress: [
-      {
-        lectureID: 1,
-        time: "2024-06-01 10:30:00",
-        percent: 50.0
-      },
-      {
-        lectureID: 2,
-        time: "2024-06-01 11:30:00",
-        percent: 100.0
-      },
-      {
-        lectureID: 3,
-        time: "2024-06-01 12:30:00",
-        percent: 0.0
-      },
-      {
-        lectureID: 4,
-        time: "2024-06-01 13:30:00",
-        percent: 0.0
-      },
-      {
-        lectureID: 5,
-        time: "2024-06-01 14:30:00",
-        percent: 0.0
-      },
-      {
-        lectureID: 6,
-        time: "2024-06-01 15:30:00",
-        percent: 0.0
-      },
-      {
-        lectureID: 7,
-        time: "2024-06-01 16:30:00",
-        percent: 0.0
-      }
-    ]
-  },
+  learning:
+  [
+    {
+      lectureID: 1,
+      percent: 50.0
+    },
+    {
+      lectureID: 2,
+      percent: 100.0
+    },
+    {
+      lectureID: 3,
+      percent: 0.0
+    },
+    {
+      lectureID: 4,
+      percent: 0.0
+    },
+    {
+      lectureID: 5,
+      percent: 0.0
+    },
+    {
+      lectureID: 6,
+      percent: 0.0
+    },
+    {
+      lectureID: 7,
+      percent: 0.0
+    }
+  ],
   review: [
     {
       reviewerName: "Le Thanh Vinh",
