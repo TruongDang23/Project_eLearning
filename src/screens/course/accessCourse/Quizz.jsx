@@ -165,9 +165,12 @@ function Quizz({ quizzData }) {
 const QuizWrapper = styled.div`
   height: 52rem;
   color: #f1f3f5;
-  background-image: linear-gradient(rgba(35, 33, 33, 0.484), rgb(23, 22, 22)),
+  ${
+    "" /* background-image: linear-gradient(rgba(35, 33, 33, 0.484), rgb(23, 22, 22)),
     url(${Quizzbackground});
-  background-size: cover;
+  background-size: cover; */
+  }
+  background-color: #343a40;
   .app {
     display: flex;
     flex-direction: column;

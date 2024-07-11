@@ -3,7 +3,7 @@ const QuizzData = {
   description: "Test your knowledge",
   type: "quizz",
   passpoint: 5,
-  during_time: 5,
+  during_time: 1,
   title: "Introduction to Database",
   questions: [
     {

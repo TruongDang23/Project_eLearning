@@ -61,7 +61,7 @@ const StartScreenWrapper = styled.div`
     margin: 2rem 20rem;
     font-size: 2rem;
     color: #fff;
-    border: 2px solid #495057;
+    border: 2px solid #fff;
     background-color: #495057;
     cursor: pointer;
     border-radius: 100px;
