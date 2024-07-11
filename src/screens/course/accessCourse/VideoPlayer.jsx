@@ -32,6 +32,7 @@ function VideoPlayer({ video }) {
       setVideoEnded(false); // Đặt lại trạng thái khi bắt đầu chơi lại video
     }
     setPlaying(!playing);
+    console.log(playerRef.current.getCurrentTime())
   };
 
   const handleSpeedChange = (rate) => {
