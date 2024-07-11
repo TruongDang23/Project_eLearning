@@ -110,31 +110,31 @@ const AccessCourseData = {
   [
     {
       lectureID: 1,
-      percent: 50.0
+      progress: 50.0
     },
     {
       lectureID: 2,
-      percent: 100.0
+      progress: 100.0
     },
     {
       lectureID: 3,
-      percent: 0.0
+      progress: 0.0
     },
     {
       lectureID: 4,
-      percent: 0.0
+      progress: 0.0
     },
     {
       lectureID: 5,
-      percent: 0.0
+      progress: 0.0
     },
     {
       lectureID: 6,
-      percent: 0.0
+      progress: 0.0
     },
     {
       lectureID: 7,
-      percent: 0.0
+      progress: 0.0
     }
   ],
   review: [

@@ -7,6 +7,10 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo"
 import AttachFileIcon from "@mui/icons-material/AttachFile"
 import QuizIcon from "@mui/icons-material/Quiz"
+import { CircularProgressbar } from "react-circular-progressbar"
+import "react-circular-progressbar/dist/styles.css"
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+
 function SideBarAccessCourse({ accessCourseData, setParams }) {
 
   const [expanded, setExpanded] = useState(false);
@@ -16,6 +20,7 @@ function SideBarAccessCourse({ accessCourseData, setParams }) {
       [panel]: isExpanded
     }))
   }
+  console.log(accessCourseData.learning[2])
   return (
     <SideBarAccessCourseWrapper>
       <div className="course-content">
@@ -57,44 +62,61 @@ function SideBarAccessCourse({ accessCourseData, setParams }) {
                 {chapter.lectures.map((lecture, index) => (
                   <li key={index}>
                     <div>
-                      <h4>
-                        {index + 1}
-                        {": "}
-                        {lecture.type === "video" ? (
-                          <>
-                            <OndemandVideoIcon />
-                            <a
-                              onClick={() => {
-                                setParams({ 'type': lecture.type, 'source': lecture.source })
-                              }}
-                            >
-                              {lecture.name}
-                            </a>
-                          </>
-                        ) : lecture.type === "file" ? (
-                          <>
-                            <AttachFileIcon />
-                            <a
-                              onClick={() => {
-                                setParams({ 'type': lecture.type, 'source': lecture.source })
-                              }}
-                            >
-                              {lecture.name}
-                            </a>
-                          </>
+                      <div style={{ flex: 0.9 }}>
+                        <h4>
+                          {index + 1}
+                          {": "}
+                          {lecture.type === "video" ? (
+                            <>
+                              <OndemandVideoIcon />
+                              <a
+                                onClick={() => {
+                                  setParams({ 'type': lecture.type, 'source': lecture.source })
+                                }}
+                              >
+                                {lecture.name}
+                              </a>
+                            </>
+                          ) : lecture.type === "file" ? (
+                            <>
+                              <AttachFileIcon />
+                              <a
+                                onClick={() => {
+                                  setParams({ 'type': lecture.type, 'source': lecture.source })
+                                }}
+                              >
+                                {lecture.name}
+                              </a>
+                            </>
+                          ) : (
+                            <>
+                              <QuizIcon />
+                              <a
+                                onClick={() => {
+                                  setParams({ 'type': lecture.type, 'source': lecture.source })
+                                }}
+                              >
+                                {lecture.name}
+                              </a>
+                            </>
+                          )}
+                        </h4>
+                      </div>
+                      <div style={{ flex: 0.1 }}>
+                        {accessCourseData.learning[lecture.id]?.progress === 100 ? (
+                          <CheckCircleIcon
+                            style={{ color: '#599cde', fontSize: '30px' }}
+                          />
                         ) : (
-                          <>
-                            <QuizIcon />
-                            <a
-                              onClick={() => {
-                                setParams({ 'type': lecture.type, 'source': lecture.source })
-                              }}
-                            >
-                              {lecture.name}
-                            </a>
-                          </>
+                          <CircularProgressbar
+                            value={accessCourseData.learning[lecture.id]?.progress || 0}
+                            styles={{
+                              root: { width: 25 },
+                              backgroundColor: "#f9f9f9"
+                            }}
+                          />
                         )}
-                      </h4>
+                      </div>
                     </div>
                     <div>
                       <p>{lecture.description}</p>
