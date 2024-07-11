@@ -4,11 +4,11 @@ const mysql = require("mysql2");
 // Hạn chế việc connect liên tục đến database, đảm bảo hiệu suất ctrinh
 
 const connectMysql = mysql.createPool({
-  host: "localhost",
-  port: "3306",
-  user: "root",
-  password: "12345", //Truong 1: truong050123 //Truong 2: root //Vinh: 12345
-  database: "projectelearning",
+  host: 'localhost',
+  port: '3306',
+  user: 'root',
+  password: 'root', //Truong 1: truong050123 //Truong 2: root //Vinh: 12345
+  database: 'projectelearning',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,

@@ -1,23 +1,17 @@
-import videoIntro from "../assets/inforCourseIntro.mp4";
 const AccessCourseData = {
   instructor: "John Doe",
   type_of_course: "Course",
   title: "Introduction to Database",
-  status: "published",
+  // status: "published",
   program: "Knowledge",
   category: "Database",
   course_for: "Beginner",
   progress: 30,
   star: 4.5,
-  number_star: 2,
-  keywords: ["Database", "SQL", "Beginner"],
+  keywords: ["Database", "SQL", "Beginner"], //mongo
   number_enrolled: 100,
-  duration: 10,
-  image_introduce:
-    "https://th.bing.com/th/id/R.e4764a69fbcdad81466dc87e56828111?rik=ssloj%2fcULHvTtA&pid=ImgRaw&r=0",
-  video_introduce:
-    "https://storage.googleapis.com/e-learning-bucket/C000/CT01/video1.mp4",
-  chapters: [
+  videos: 10,
+  chapters: [ //mongo
     {
       chapter_name: "Introduction",
       lectures: [
@@ -164,46 +158,37 @@ const AccessCourseData = {
       ],
     },
   ],
-  userProgress: {
-    userID: 1,
-    progress: [
-      {
-        lectureID: 1,
-        time: "2024-06-01 10:30:00",
-        percent: 50.0,
-      },
-      {
-        lectureID: 2,
-        time: "2024-06-01 11:30:00",
-        percent: 100.0,
-      },
-      {
-        lectureID: 3,
-        time: "2024-06-01 12:30:00",
-        percent: 0.0,
-      },
-      {
-        lectureID: 4,
-        time: "2024-06-01 13:30:00",
-        percent: 0.0,
-      },
-      {
-        lectureID: 5,
-        time: "2024-06-01 14:30:00",
-        percent: 0.0,
-      },
-      {
-        lectureID: 6,
-        time: "2024-06-01 15:30:00",
-        percent: 0.0,
-      },
-      {
-        lectureID: 7,
-        time: "2024-06-01 16:30:00",
-        percent: 0.0,
-      },
-    ],
-  },
+  learning:
+  [
+    {
+      lectureID: 1,
+      progress: 50.0
+    },
+    {
+      lectureID: 2,
+      progress: 100.0
+    },
+    {
+      lectureID: 3,
+      progress: 0.0
+    },
+    {
+      lectureID: 4,
+      progress: 0.0
+    },
+    {
+      lectureID: 5,
+      progress: 0.0
+    },
+    {
+      lectureID: 6,
+      progress: 0.0
+    },
+    {
+      lectureID: 7,
+      progress: 0.0
+    }
+  ],
   review: [
     {
       reviewerName: "Le Thanh Vinh",

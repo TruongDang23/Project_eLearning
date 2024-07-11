@@ -205,7 +205,7 @@ module.exports = (connMysql, connMongo) => {
     })
   }
 
-  const getDurationTime = async (courseID) => {
+  const getTotalVideo = async (courseID) => {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise( async (resolve) => {
       const [files] = await storage.bucket('e-learning-bucket').getFiles({ prefix: courseID });
@@ -218,6 +218,58 @@ module.exports = (connMysql, connMongo) => {
         }
       }
       resolve(totalVideo)
+    })
+  }
+
+  const getProgress = async (courseID, userID) => {
+    // eslint-disable-next-line no-async-promise-executor
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          return reject(err)
+        }
+
+        const query =
+        ` SELECT FORMAT(SUM(percent)/num_lecture,1) AS progress
+          from course inner join (
+            SELECT lectureID, courseID, MAX(percent) AS percent 
+              FROM learning
+              where userID = ?
+            group by lectureID, courseID
+          ) AS list_progress
+          ON course.courseID = list_progress.courseID
+          where course.courseID = ?`
+        connection.query(query, [userID, courseID], (error, data) => {
+          connection.release()
+          if (error) {
+            return reject(error)
+          }
+          resolve(data[0].progress)
+        })
+      })
+    })
+  }
+
+  const getListLearning = async (courseID, userID) => {
+    // eslint-disable-next-line no-async-promise-executor
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          return reject(err)
+        }
+
+        const query =
+        ` SELECT lectureID, MAX(percent) AS progress FROM learning
+          where courseID = ? and userID = ?
+          group by lectureID `
+        connection.query(query, [courseID, userID], (error, learning) => {
+          connection.release()
+          if (error) {
+            return reject(error)
+          }
+          resolve(learning)
+        })
+      })
     })
   }
 
@@ -412,7 +464,7 @@ module.exports = (connMysql, connMongo) => {
 
   })
 
-  router.get('/loadDetailCourse', async (req, res) => {
+  router.get('/loadInforCourse', async (req, res) => {
     const { courseID } = req.query;
     connMysql.getConnection((err, connection) => {
       if (err) {
@@ -457,9 +509,9 @@ module.exports = (connMysql, connMongo) => {
         const review = await getReview(courseID)
 
         //Get duraion time of course
-        const videos = await getDurationTime(courseID)
+        const videos = await getTotalVideo(courseID)
 
-        //Merge data with Mysql + MongoDB + Reviewer
+        //Merge data with Mysql + MongoDB + Reviewer + Duration
         const mergeData = courseInfor.map(course => {
           return {
             ...course,
@@ -471,6 +523,71 @@ module.exports = (connMysql, connMongo) => {
             targets: mongoData[0].targets,
             requirements: mongoData[0].requirements,
             chapters: mongoData[0].chapters
+          }
+        })
+        res.send(mergeData)
+        // console.log(mergeData)
+      })
+    })
+  })
+
+  router.get('/loadDetailsCourse', async (req, res) => {
+    const { courseID } = req.query;
+    connMysql.getConnection((err, connection) => {
+      if (err) {
+        res.status(500).send(err)
+      }
+      //Get detail information of course
+      let query = 'SELECT c.courseID,\
+                    u.fullname AS instructor,\
+                    type_of_course,\
+                    title,\
+                    program,\
+                    category,\
+                    course_for,\
+                    num_lecture,\
+                    avg.star,\
+                    num.number_enrolled\
+                  FROM course AS c\
+                  LEFT JOIN user AS u ON c.userID = u.userID\
+                  LEFT JOIN avg_rating AS avg ON c.courseID = avg.courseID\
+                  LEFT JOIN (SELECT courseID, count(*) AS number_enrolled\
+                              FROM enroll\
+                              GROUP BY courseID) AS num\
+                              ON num.courseID = c.courseID\
+                  WHERE c.courseID = ?'
+      connection.query(query, [courseID], async (error, courseInfor) => {
+        connection.release() //Giải phóng connection khi truy vấn xong
+        if (error) {
+          res.status(500).send(error)
+        }
+
+        //Connect to MongoDB server
+        await connMongo
+        //Get mongoData. MongoData wil be return an array which 1 element so we will get data at index 0
+        const mongoData = await Course.find({ courseID: { $in: courseID } }).select('keywords chapters')
+
+        //Get review of this course
+        const review = await getReview(courseID)
+
+        //Get duraion time of course
+        const videos = await getTotalVideo(courseID)
+
+        //Get total_progress of user for this course
+        const progress = await getProgress(courseID, 'S000')
+
+        const list_learning = await getListLearning(courseID, 'S000')
+
+        //Merge data with Mysql + MongoDB + Reviewer + Duration + Progress + Learning
+        const mergeData = courseInfor.map(course => {
+          return {
+            ...course,
+            progress: progress ? progress : 0,
+            videos: videos,
+            review: review,
+            keywords: mongoData[0].keywords,
+            chapters: mongoData[0].chapters,
+            learning: list_learning
           }
         })
         res.send(mergeData)
