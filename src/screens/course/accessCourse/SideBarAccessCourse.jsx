@@ -20,7 +20,7 @@ function SideBarAccessCourse({ accessCourseData, setParams }) {
       [panel]: isExpanded
     }))
   }
-  console.log(accessCourseData.learning[2])
+
   return (
     <SideBarAccessCourseWrapper>
       <div className="course-content">

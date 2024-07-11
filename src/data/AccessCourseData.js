@@ -33,11 +33,11 @@ const AccessCourseData = {
                   responseID: 2,
                   response:
                     "A database can handle more complex queries and is more scalable.",
-                  date: "2024-06-01 11:00:00",
-                },
-              ],
-            },
-          ],
+                  date: "2024-06-01 11:00:00"
+                }
+              ]
+            }
+          ]
         },
         {
           id: 2,
@@ -46,7 +46,7 @@ const AccessCourseData = {
           type: "file",
           source:
             "https://storage.googleapis.com/e-learning-bucket/C000/CT01/01-intro.pdf",
-          QnA: [],
+          QnA: []
         },
         {
           id: 8,
@@ -62,9 +62,9 @@ const AccessCourseData = {
               answers: [
                 "A collection of data",
                 "A collection of tables",
-                "A collection of files",
+                "A collection of files"
               ],
-              key: 0,
+              key: 0
             },
             {
               questionID: 2,
@@ -72,9 +72,9 @@ const AccessCourseData = {
               answers: [
                 "Database Management System",
                 "Database Management Software",
-                "Database Management Server",
+                "Database Management Server"
               ],
-              key: 0,
+              key: 0
             },
             {
               questionID: 3,
@@ -82,9 +82,9 @@ const AccessCourseData = {
               answers: [
                 "To manage databases",
                 "To create databases",
-                "To delete databases",
+                "To delete databases"
               ],
-              key: 0,
+              key: 0
             },
             {
               questionID: 4,
@@ -93,14 +93,14 @@ const AccessCourseData = {
               answers: [
                 "A database can handle more complex queries and is more scalable.",
                 "A spreadsheet can handle more complex queries and is more scalable.",
-                "A database can handle more complex queries and is less scalable.",
+                "A database can handle more complex queries and is less scalable."
               ],
-              key: 0,
-            },
+              key: 0
+            }
           ],
-          QnA: [],
-        },
-      ],
+          QnA: []
+        }
+      ]
     },
     {
       chapter_name: "SQL",
@@ -112,7 +112,7 @@ const AccessCourseData = {
           type: "video",
           source:
             "https://storage.googleapis.com/e-learning-bucket/C000/CT02/video2.mp4",
-          QnA: [],
+          QnA: []
         },
         {
           id: 4,
@@ -121,9 +121,9 @@ const AccessCourseData = {
           type: "file",
           source:
             "https://storage.googleapis.com/e-learning-bucket/C000/CT02/02-database.pdf",
-          QnA: [],
-        },
-      ],
+          QnA: []
+        }
+      ]
     },
     {
       chapter_name: "Database Design",
@@ -135,7 +135,7 @@ const AccessCourseData = {
           type: "video",
           source:
             "https://storage.googleapis.com/e-learning-bucket/C000/CT03/video3.mp4",
-          QnA: [],
+          QnA: []
         },
         {
           id: 6,
@@ -144,7 +144,7 @@ const AccessCourseData = {
           type: "file",
           source:
             "https://storage.googleapis.com/e-learning-bucket/C000/CT03/03-dbms.pdf",
-          QnA: [],
+          QnA: []
         },
         {
           id: 7,
@@ -153,10 +153,10 @@ const AccessCourseData = {
           type: "assignment",
           source:
             "https://storage.googleapis.com/e-learning-bucket/C000/CT04/04-model.pdf",
-          QnA: [],
-        },
-      ],
-    },
+          QnA: []
+        }
+      ]
+    }
   ],
   learning:
   [
@@ -195,15 +195,15 @@ const AccessCourseData = {
       message:
         "Great course! The instructor explains concepts clearly and concisely.",
       star: 4.5,
-      date: "2024-06-01 12:00:00",
+      date: "2024-06-01 12:00:00"
     },
     {
       reviewerName: "Dang Quang Truong",
       message: "I learned a lot from this course.",
       star: 4.0,
-      date: "2024-06-07 13:00:00",
-    },
-  ],
+      date: "2024-06-07 13:00:00"
+    }
+  ]
 };
 
 export default AccessCourseData;
