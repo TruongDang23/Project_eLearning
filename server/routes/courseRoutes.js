@@ -261,7 +261,8 @@ module.exports = (connMysql, connMongo) => {
         const query =
         ` SELECT lectureID, MAX(percent) AS progress FROM learning
           where courseID = ? and userID = ?
-          group by lectureID `
+          group by lectureID 
+          order by lectureID asc;`
         connection.query(query, [courseID, userID], (error, learning) => {
           connection.release()
           if (error) {

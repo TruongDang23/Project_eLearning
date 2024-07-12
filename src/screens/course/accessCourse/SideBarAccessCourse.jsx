@@ -103,7 +103,31 @@ function SideBarAccessCourse({ accessCourseData, setParams }) {
                         </h4>
                       </div>
                       <div style={{ flex: 0.1 }}>
-                        {accessCourseData.learning[lecture.id]?.progress === 100 ? (
+                        {
+                          accessCourseData.learning.map((learn) => {
+                            if (lecture.id === learn.lectureID)
+                            {
+                              return (
+                                <>
+                                  {learn.progress === 100 ? (
+                                    <CheckCircleIcon
+                                      style={{ color: '#599cde', fontSize: '30px' }}
+                                    />
+                                  ) : (
+                                    <CircularProgressbar
+                                      value={learn.progress}
+                                      styles={{
+                                        root: { width: 25 },
+                                        backgroundColor: "#f9f9f9"
+                                      }}
+                                    />
+                                  )}
+                                </>
+                              )
+                            }
+                          })
+                        }
+                        {/* {lecture.id === 1 ? (
                           <CheckCircleIcon
                             style={{ color: '#599cde', fontSize: '30px' }}
                           />
@@ -115,7 +139,7 @@ function SideBarAccessCourse({ accessCourseData, setParams }) {
                               backgroundColor: "#f9f9f9"
                             }}
                           />
-                        )}
+                        )} */}
                       </div>
                     </div>
                     <div>
