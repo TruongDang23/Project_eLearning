@@ -1,5 +1,5 @@
 import ReactPlayer from "react-player";
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import screenfull from "screenfull";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
@@ -10,7 +10,7 @@ import SpeedIcon from "@mui/icons-material/Speed";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import styled from "styled-components";
 
-function VideoPlayer({ video }) {
+function VideoPlayer({ video, setProgress }) {
   const playerRef = useRef(null);
   const [playing, setPlaying] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
@@ -22,6 +22,7 @@ function VideoPlayer({ video }) {
   const [volumeMenuOpen, setVolumeMenuOpen] = useState(false);
   const [videoEnded, setVideoEnded] = useState(false);
   const [controlsVisible, setControlsVisible] = useState(false);
+  const [isPause, setPause] = useState(true)
 
   useEffect(() => {
     document.documentElement.style.setProperty("--value", `${played * 100}%`);
@@ -32,8 +33,15 @@ function VideoPlayer({ video }) {
       setVideoEnded(false); // Đặt lại trạng thái khi bắt đầu chơi lại video
     }
     setPlaying(!playing);
-    console.log(playerRef.current.getCurrentTime())
-  };
+    setPause(!isPause)
+    if (!isPause)
+    {
+      setProgress((prevProgress) => ({
+        ...prevProgress,
+        percent: (playerRef.current.getCurrentTime() * 100 / duration).toFixed(1)
+      }))
+    }
+  }
 
   const handleSpeedChange = (rate) => {
     setPlaybackRate(rate);
@@ -67,6 +75,7 @@ function VideoPlayer({ video }) {
 
   const handleEnded = () => {
     setVideoEnded(true);
+    handlePlayPause()
   };
 
   const formatTime = (seconds) => {

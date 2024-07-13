@@ -61,7 +61,6 @@ function AccordionCourse({ inforCourseData }) {
                         <>
                           <OndemandVideoIcon />
                           <a
-                            href={lecture.source}
                             target="_blank"
                             rel="noreferrer"
                           >
@@ -72,7 +71,6 @@ function AccordionCourse({ inforCourseData }) {
                         <>
                           <AttachFileIcon />
                           <a
-                            href={lecture.source}
                             target="_blank"
                             rel="noreferrer"
                           >
@@ -83,7 +81,6 @@ function AccordionCourse({ inforCourseData }) {
                         <>
                           <QuizIcon />
                           <a
-                            href={lecture.source}
                             target="_blank"
                             rel="noreferrer"
                           >

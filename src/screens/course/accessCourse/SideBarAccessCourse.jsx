@@ -11,9 +11,10 @@ import { CircularProgressbar } from "react-circular-progressbar"
 import "react-circular-progressbar/dist/styles.css"
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 
-function SideBarAccessCourse({ accessCourseData, setParams }) {
+function SideBarAccessCourse({ accessCourseData, setParams, progress, setProgress }) {
+  const userAuth = localStorage.getItem('userAuth')
+  const [expanded, setExpanded] = useState(false)
 
-  const [expanded, setExpanded] = useState(false);
   const handleExpansion = (panel) => (event, isExpanded) => {
     setExpanded((prevExpanded) => ({
       ...prevExpanded,
@@ -21,6 +22,7 @@ function SideBarAccessCourse({ accessCourseData, setParams }) {
     }))
   }
 
+  console.log(progress)
   return (
     <SideBarAccessCourseWrapper>
       <div className="course-content">
@@ -60,7 +62,15 @@ function SideBarAccessCourse({ accessCourseData, setParams }) {
             <AccordionDetails>
               <ul>
                 {chapter.lectures.map((lecture, index) => (
-                  <li key={index}>
+                  <li
+                    key={index}
+                    onClick={() => {
+                      setProgress((prevProgress) => ({
+                        ...prevProgress,
+                        lectureID: lecture.id
+                      }))
+                    }}
+                  >
                     <div>
                       <div style={{ flex: 0.9 }}>
                         <h4>
@@ -127,19 +137,6 @@ function SideBarAccessCourse({ accessCourseData, setParams }) {
                             }
                           })
                         }
-                        {/* {lecture.id === 1 ? (
-                          <CheckCircleIcon
-                            style={{ color: '#599cde', fontSize: '30px' }}
-                          />
-                        ) : (
-                          <CircularProgressbar
-                            value={accessCourseData.learning[lecture.id]?.progress || 0}
-                            styles={{
-                              root: { width: 25 },
-                              backgroundColor: "#f9f9f9"
-                            }}
-                          />
-                        )} */}
                       </div>
                     </div>
                     <div>

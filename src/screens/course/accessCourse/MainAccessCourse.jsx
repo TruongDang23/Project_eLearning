@@ -2,16 +2,25 @@ import styled from "styled-components"
 import MainContentAccessCourse from "./MainContentAccessCourse"
 import SideBarAccessCourse from "./SideBarAccessCourse"
 import { useSearchParams } from "react-router-dom"
+import { useState } from "react"
+
 function MainAccessCourse({ accessCourseData }) {
+  const userData = JSON.parse(localStorage.getItem('userAuth'))
   const [searchParams, setSearchParams] = useSearchParams({
     type: accessCourseData.chapters[0].lectures[0].type,
     source: accessCourseData.chapters[0].lectures[0].source
   })
 
+  const [progress, setProgress] = useState({
+    userID: userData.userID,
+    courseID: accessCourseData.courseID,
+    lectureID: '',
+    percent: 0
+  })
   return (
     <MainAccessCourseWrapper className="white-space-small">
-      <MainContentAccessCourse accessCourseData={accessCourseData} params={searchParams} />
-      <SideBarAccessCourse accessCourseData={accessCourseData} setParams={setSearchParams}/>
+      <MainContentAccessCourse accessCourseData={accessCourseData} params={searchParams} setProgress={setProgress}/>
+      <SideBarAccessCourse accessCourseData={accessCourseData} setParams={setSearchParams} progress={progress} setProgress={setProgress}/>
     </MainAccessCourseWrapper>
   );
 }

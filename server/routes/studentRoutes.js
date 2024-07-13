@@ -34,7 +34,7 @@ module.exports = (connMysql, connMongo) => {
         let query = 'SELECT c.courseID as route,title as course_name, fullname as instructor\
                     FROM course as c\
                     INNER JOIN published_course as pc ON c.courseID = pc.courseID\
-                    INNER JOIN user as u ON u.userID = pc.userID\
+                    INNER JOIN user as u ON u.userID = c.userID\
                     WHERE c.courseID IN (?)'
         connection.query(query, [courseID], (error, results) => {
           connection.release() //Giải phóng connection khi truy vấn xong
@@ -76,7 +76,6 @@ module.exports = (connMysql, connMongo) => {
         catch (error) {
           res.send(error)
         }
-
         //Merge data: Mysql + MongoDB + Course enrolled
         const mergeData = infor.map(inf => {
           return {
@@ -95,6 +94,7 @@ module.exports = (connMysql, connMongo) => {
           }
         })
         res.send(mergeData[0])
+        // console.log(mergeData[0])
       })
     })
   })
