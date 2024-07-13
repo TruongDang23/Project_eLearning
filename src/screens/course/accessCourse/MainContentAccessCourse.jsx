@@ -16,9 +16,9 @@ function MainContentAccessCourse({ accessCourseData, params, setProgress }) {
       {type === "video" ? (
         <VideoPlayer video={source} setProgress={setProgress}/>
       ) : type === "file" ? (
-        <PdfViewer pdfUrl={source} />
+        <PdfViewer pdfUrl={source} setProgress={setProgress}/>
       ) : type === "quizz" ? (
-        <Quizz quizzData={QuizzData} />
+        <Quizz quizzData={QuizzData} setProgress={setProgress}/>
       ) : (
         <p>Loading...</p>
       )}

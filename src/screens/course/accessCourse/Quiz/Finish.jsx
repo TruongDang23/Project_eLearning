@@ -10,8 +10,18 @@ function Finish({
   highscore,
   dispatch,
   timerRemind,
+  passPoint,
+  setProgress
 }) {
-  const percentage = Math.round((points / maxPossiblePoints) * 100, 2);
+  const percentage = Math.round((points / maxPossiblePoints) * 100, 2)
+  const handleSubmit = () => {
+    alert('You have submit this score')
+    setProgress((prevProgress) => ({
+      ...prevProgress,
+      percent: (points >= passPoint) ? 100 : 0
+    }))
+  }
+
   let image;
   let emoji;
   if (percentage === 100) {
@@ -43,12 +53,18 @@ function Finish({
 
       <button
         className="btn btn-ui"
+        onClick={handleSubmit}
+      >
+        Submit
+      </button>
+      <button
+        className="btn btn-ui"
         onClick={() =>
           dispatch({
             type: "restart",
             payload: {
-              during_time: timerRemind / 60,
-            },
+              during_time: timerRemind / 60
+            }
           })
         }
       >
@@ -98,6 +114,7 @@ const FinishWrapper = styled.div`
     cursor: pointer;
     border-radius: 100px;
     transition: all 0.3s ease-in-out;
+    margin-bottom: 10px;
     &:hover {
       background-color: #6c757d;
       border-color: #6c757d;

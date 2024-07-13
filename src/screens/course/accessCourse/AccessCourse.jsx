@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom"
 
 function AccessCourse() {
   const [isLoad, setIsLoad] = useState(true) //Data is loading
+  const [reload, setReload] = useState(false)
   const { courseID } = useParams();
   const [accessCourseData, setAccessCourseData] = useState()
   const token = localStorage.getItem('token')
@@ -42,7 +43,7 @@ function AccessCourse() {
         setIsLoad(false)
       })
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [courseID])
+  }, [reload])
 
   return (
     <>
@@ -55,7 +56,7 @@ function AccessCourse() {
             (
               <>
                 <CourseBanner accessCourseData={accessCourseData} />
-                <MainAccessCourse accessCourseData={accessCourseData} />
+                <MainAccessCourse accessCourseData={accessCourseData} setReload={setReload}/>
               </>
             )
         }

@@ -11,8 +11,7 @@ import { CircularProgressbar } from "react-circular-progressbar"
 import "react-circular-progressbar/dist/styles.css"
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 
-function SideBarAccessCourse({ accessCourseData, setParams, progress, setProgress }) {
-  const userAuth = localStorage.getItem('userAuth')
+function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
   const [expanded, setExpanded] = useState(false)
 
   const handleExpansion = (panel) => (event, isExpanded) => {
@@ -22,7 +21,6 @@ function SideBarAccessCourse({ accessCourseData, setParams, progress, setProgres
     }))
   }
 
-  console.log(progress)
   return (
     <SideBarAccessCourseWrapper>
       <div className="course-content">
@@ -67,7 +65,8 @@ function SideBarAccessCourse({ accessCourseData, setParams, progress, setProgres
                     onClick={() => {
                       setProgress((prevProgress) => ({
                         ...prevProgress,
-                        lectureID: lecture.id
+                        lectureID: lecture.id,
+                        percent: 0
                       }))
                     }}
                   >
@@ -81,7 +80,7 @@ function SideBarAccessCourse({ accessCourseData, setParams, progress, setProgres
                               <OndemandVideoIcon />
                               <a
                                 onClick={() => {
-                                  setParams({ 'type': lecture.type, 'source': lecture.source })
+                                  setParams({ 'id': lecture.id, 'type': lecture.type, 'source': lecture.source })
                                 }}
                               >
                                 {lecture.name}
@@ -92,7 +91,7 @@ function SideBarAccessCourse({ accessCourseData, setParams, progress, setProgres
                               <AttachFileIcon />
                               <a
                                 onClick={() => {
-                                  setParams({ 'type': lecture.type, 'source': lecture.source })
+                                  setParams({ 'id': lecture.id, 'type': lecture.type, 'source': lecture.source })
                                 }}
                               >
                                 {lecture.name}
@@ -103,7 +102,7 @@ function SideBarAccessCourse({ accessCourseData, setParams, progress, setProgres
                               <QuizIcon />
                               <a
                                 onClick={() => {
-                                  setParams({ 'type': lecture.type, 'source': lecture.source })
+                                  setParams({ 'id': lecture.id, 'type': lecture.type, 'source': lecture.source })
                                 }}
                               >
                                 {lecture.name}

@@ -82,7 +82,7 @@ function reducer(state, action) {
   }
 }
 
-function Quizz({ quizzData }) {
+function Quizz({ quizzData, setProgress }) {
   const [
     { questions, status, index, answer, points, highscore, secoundsRemaining },
     dispatch
@@ -151,6 +151,8 @@ function Quizz({ quizzData }) {
               highscore={highscore}
               dispatch={dispatch}
               timerRemind={timerRemind}
+              passPoint={quizzData.passpoint}
+              setProgress={setProgress}
             />
           )}
         </Main>

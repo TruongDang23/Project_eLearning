@@ -671,74 +671,23 @@ module.exports = (connMysql, connMongo) => {
   })
 
   router.post('/updateNewProgress', verifyToken, async (req, res) => {
-    const { courseID } = req.query
-    const userID = req.userID
-    const checkAuthor = await checkAcessCourse(courseID, userID)
-    // console.log(checkAuthor)
-    if (checkAuthor === false)
-    {
-      res.send('Not authorize')
-    }
-    else
-    {
+    const { userID, lectureID, courseID, percent } = req.body.progress
+
+    if (await isEnrolledCourse(courseID, userID) && percent > 0) {
+      const time = formatDateTime(new (Date))
       connMysql.getConnection((err, connection) => {
         if (err) {
           res.status(500).send(err)
         }
-        //Get detail information of course
-        let query = 'SELECT c.courseID,\
-                      u.fullname AS instructor,\
-                      type_of_course,\
-                      title,\
-                      program,\
-                      category,\
-                      course_for,\
-                      num_lecture,\
-                      avg.star,\
-                      num.number_enrolled\
-                    FROM course AS c\
-                    LEFT JOIN user AS u ON c.userID = u.userID\
-                    LEFT JOIN avg_rating AS avg ON c.courseID = avg.courseID\
-                    LEFT JOIN (SELECT courseID, count(*) AS number_enrolled\
-                                FROM enroll\
-                                GROUP BY courseID) AS num\
-                                ON num.courseID = c.courseID\
-                    WHERE c.courseID = ?'
-        connection.query(query, [courseID], async (error, courseInfor) => {
+        //Insert new data into table learning
+        let query = 'INSERT INTO learning (userID, lectureID, time, courseID, percent)\
+                     VALUES (?, ?, ?, ?, ?)'
+        connection.query(query, [userID, lectureID, time, courseID, percent], async (error) => {
           connection.release() //Giải phóng connection khi truy vấn xong
           if (error) {
             res.status(500).send(error)
           }
-
-          //Connect to MongoDB server
-          await connMongo
-          //Get mongoData. MongoData wil be return an array which 1 element so we will get data at index 0
-          const mongoData = await Course.find({ courseID: { $in: courseID } }).select('keywords chapters')
-
-          //Get review of this course
-          const review = await getReview(courseID)
-
-          //Get duraion time of course
-          const videos = await getTotalVideo(courseID)
-
-          //Get total_progress of user for this course
-          const progress = await getProgress(courseID, userID)
-
-          const list_learning = await getListLearning(courseID, userID)
-
-          //Merge data with Mysql + MongoDB + Reviewer + Duration + Progress + Learning
-          const mergeData = courseInfor.map(course => {
-            return {
-              ...course,
-              progress: progress ? progress : 0,
-              videos: videos,
-              review: review,
-              keywords: mongoData[0].keywords,
-              chapters: mongoData[0].chapters,
-              learning: list_learning
-            }
-          })
-          res.send(mergeData)
+          res.send('Ok')
         })
       })
     }
