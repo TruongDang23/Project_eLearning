@@ -161,15 +161,15 @@ const AccessCourseData = {
   learning:
   [
     {
-      lectureID: 1,
-      progress: 50.0
+      lectureID: 20,
+      progress: 75
     },
     {
-      lectureID: 2,
+      lectureID: 21,
       progress: 100.0
     },
     {
-      lectureID: 3,
+      lectureID: 23,
       progress: 0.0
     },
     {
