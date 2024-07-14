@@ -42,7 +42,6 @@ Medium: 11px
 
 /* google font */
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap");
-
 * {
   padding: 0;
   margin: 0;
@@ -153,8 +152,8 @@ body {
 }
 
 .white-space-small--top {
-    margin-top: 6.4rem;
-  }
+  margin-top: 6.4rem;
+}
 
 /* .heading-primary,
 .heading-secondary,

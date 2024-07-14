@@ -7,7 +7,7 @@ const connectMysql = mysql.createPool({
   host: 'localhost',
   port: '3306',
   user: 'root',
-  password: 'truong050123', //Truong 1: truong050123 //Truong 2: root //Vinh: 12345
+  password: '12345', //Truong 1: truong050123 //Truong 2: root //Vinh: 12345
   database: 'projectelearning',
   waitForConnections: true,
   connectionLimit: 10,
