@@ -1,4 +1,4 @@
-import { HeaderAfterLogin } from "~/components/general"
+import { GeneralHeader } from "~/components/general"
 import FooterNew from "~/components/general/Footer/FooterNew"
 import CourseBanner from "./CourseBanner"
 import MainAccessCourse from "./MainAccessCourse"
@@ -47,7 +47,7 @@ function AccessCourse() {
 
   return (
     <>
-      <HeaderAfterLogin />
+      <GeneralHeader />
       <main>
         {
           //Ràng điều kiện nếu dữ liệu đang load thì ko gọi thẻ UserProfile

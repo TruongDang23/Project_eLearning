@@ -1,5 +1,5 @@
 //This is information screen of admin
-import { GeneralFooter, HeaderAfterLogin } from '~/components/general'
+import { GeneralFooter, GeneralHeader } from '~/components/general'
 import styled from 'styled-components'
 import UserProfile from './UserProfile'
 import ExtraProfile from './ExtraProfile'
@@ -38,7 +38,7 @@ function Information() {
   return (
     <>
       <div>
-        <HeaderAfterLogin />
+        <GeneralHeader />
         <main>
           <Container>
             <LeftPane>

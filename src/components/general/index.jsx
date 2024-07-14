@@ -1,17 +1,10 @@
-import HeaderBe from './HeaderBeforeLogin/header'
-import HeaderAf from './HeaderAfterLogin/HeaderAfterLogin'
+import Header from './Header/header'
 import Footer from './Footer/FooterNew'
 import Notification from './notification/Notication'
 
-export function HeaderBeforeLogin() {
+export function GeneralHeader() {
   return (
-    <HeaderBe />
-  )
-}
-
-export function HeaderAfterLogin() {
-  return (
-    <HeaderAf />
+    <Header />
   )
 }
 

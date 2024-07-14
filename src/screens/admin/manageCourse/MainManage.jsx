@@ -1,5 +1,5 @@
 //This is information screen of admin
-import { GeneralFooter, HeaderAfterLogin } from '~/components/general'
+import { GeneralFooter, GeneralHeader } from '~/components/general'
 import PublishedCourse from './PublishedCourse'
 import MonitoringCourse from './Monitoring'
 import TerminatedCourse from './Terminated'
@@ -69,7 +69,7 @@ function ManageCourse() {
   return (
     <>
       <div>
-        <HeaderAfterLogin />
+        <GeneralHeader />
         <main>
           <Container>
             <div className="tabs">
