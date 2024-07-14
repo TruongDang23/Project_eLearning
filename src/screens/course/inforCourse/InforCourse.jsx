@@ -12,7 +12,7 @@ function InforCourse() {
   const [inforCourseData, setInforCourseData] = useState()
 
   useEffect(() => {
-    axios.get('http://localhost:3000/c/loadDetailCourse', {
+    axios.get('http://localhost:3000/c/loadInforCourse', {
       params: {
         courseID
       }

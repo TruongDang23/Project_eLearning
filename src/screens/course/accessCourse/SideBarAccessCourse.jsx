@@ -7,15 +7,20 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo"
 import AttachFileIcon from "@mui/icons-material/AttachFile"
 import QuizIcon from "@mui/icons-material/Quiz"
-function SideBarAccessCourse({ accessCourseData, setParams }) {
+import { CircularProgressbar } from "react-circular-progressbar"
+import "react-circular-progressbar/dist/styles.css"
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 
-  const [expanded, setExpanded] = useState(false);
+function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
+  const [expanded, setExpanded] = useState(false)
+
   const handleExpansion = (panel) => (event, isExpanded) => {
     setExpanded((prevExpanded) => ({
       ...prevExpanded,
       [panel]: isExpanded
     }))
   }
+
   return (
     <SideBarAccessCourseWrapper>
       <div className="course-content">
@@ -49,52 +54,89 @@ function SideBarAccessCourse({ accessCourseData, setParams }) {
               }}
             >
               <h3>
-                Chapter {index + 1}: {chapter.chapter_name}
+                Chapter {chapter.chapter_name}
               </h3>
             </AccordionSummary>
             <AccordionDetails>
               <ul>
                 {chapter.lectures.map((lecture, index) => (
-                  <li key={index}>
+                  <li
+                    key={index}
+                    onClick={() => {
+                      setProgress((prevProgress) => ({
+                        ...prevProgress,
+                        lectureID: lecture.id,
+                        percent: 0
+                      }))
+                    }}
+                  >
                     <div>
-                      <h4>
-                        {index + 1}
-                        {": "}
-                        {lecture.type === "video" ? (
-                          <>
-                            <OndemandVideoIcon />
-                            <a
-                              onClick={() => {
-                                setParams({ 'type': lecture.type, 'source': lecture.source })
-                              }}
-                            >
-                              {lecture.name}
-                            </a>
-                          </>
-                        ) : lecture.type === "file" ? (
-                          <>
-                            <AttachFileIcon />
-                            <a
-                              onClick={() => {
-                                setParams({ 'type': lecture.type, 'source': lecture.source })
-                              }}
-                            >
-                              {lecture.name}
-                            </a>
-                          </>
-                        ) : (
-                          <>
-                            <QuizIcon />
-                            <a
-                              onClick={() => {
-                                setParams({ 'type': lecture.type, 'source': lecture.source })
-                              }}
-                            >
-                              {lecture.name}
-                            </a>
-                          </>
-                        )}
-                      </h4>
+                      <div style={{ flex: 0.9 }}>
+                        <h4>
+                          {index + 1}
+                          {": "}
+                          {lecture.type === "video" ? (
+                            <>
+                              <OndemandVideoIcon />
+                              <a
+                                onClick={() => {
+                                  setParams({ 'id': lecture.id, 'type': lecture.type, 'source': lecture.source })
+                                }}
+                              >
+                                {lecture.name}
+                              </a>
+                            </>
+                          ) : lecture.type === "file" ? (
+                            <>
+                              <AttachFileIcon />
+                              <a
+                                onClick={() => {
+                                  setParams({ 'id': lecture.id, 'type': lecture.type, 'source': lecture.source })
+                                }}
+                              >
+                                {lecture.name}
+                              </a>
+                            </>
+                          ) : (
+                            <>
+                              <QuizIcon />
+                              <a
+                                onClick={() => {
+                                  setParams({ 'id': lecture.id, 'type': lecture.type, 'source': lecture.source })
+                                }}
+                              >
+                                {lecture.name}
+                              </a>
+                            </>
+                          )}
+                        </h4>
+                      </div>
+                      <div style={{ flex: 0.1 }}>
+                        {
+                          accessCourseData.learning.map((learn) => {
+                            if (lecture.id === learn.lectureID)
+                            {
+                              return (
+                                <>
+                                  {learn.progress === 100 ? (
+                                    <CheckCircleIcon
+                                      style={{ color: '#599cde', fontSize: '30px' }}
+                                    />
+                                  ) : (
+                                    <CircularProgressbar
+                                      value={learn.progress}
+                                      styles={{
+                                        root: { width: 25 },
+                                        backgroundColor: "#f9f9f9"
+                                      }}
+                                    />
+                                  )}
+                                </>
+                              )
+                            }
+                          })
+                        }
+                      </div>
                     </div>
                     <div>
                       <p>{lecture.description}</p>

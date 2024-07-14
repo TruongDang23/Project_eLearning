@@ -3,6 +3,7 @@ import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import QuizIcon from "@mui/icons-material/Quiz";
 import LocalAtmIcon from "@mui/icons-material/LocalAtm";
+import { Link } from 'react-router-dom'
 
 function SideBar({ inforCourseData }) {
   return (
@@ -41,7 +42,9 @@ function SideBar({ inforCourseData }) {
       </div>
       <div className="sidebar-buttons">
         <button className="sidebar-button button-buy">Buy now</button>
-        <button className="sidebar-button button-goto">Go to course</button>
+        <Link to={`/course/details/${inforCourseData.courseID}`}>
+          <button className="sidebar-button button-goto">Go to course</button>
+        </Link>
       </div>
     </SideBarWrapper>
   );
@@ -126,6 +129,7 @@ const SideBarWrapper = styled.aside`
 
     .button-goto {
       background-color: #e59819;
+      width: 100%;
       color: white;
       &:hover {
         background-color: #c87f0a;

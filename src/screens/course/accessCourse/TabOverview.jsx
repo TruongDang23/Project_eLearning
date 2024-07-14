@@ -19,8 +19,8 @@ function TabOverview({ accessCourseData }) {
             <p>Students</p>
           </div>
           <div className="stats-duration">
-            <span>{accessCourseData.duration}</span>
-            <p>Hours</p>
+            <span>{accessCourseData.videos}</span>
+            <p>Videos</p>
           </div>
         </div>
         <div className="overview-description">

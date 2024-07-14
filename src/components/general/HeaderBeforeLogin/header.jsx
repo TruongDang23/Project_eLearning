@@ -1,13 +1,11 @@
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import Logo from "../../../assets/Logo.png";
 function Header() {
   return (
     <Navbar>
       <a className="brand">
-        <img
-          src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
-          alt="Udemy Logo"
-        />
+        <img src={Logo} alt="Web Logo" />
       </a>
       <div className="navLinks">
         <a href="#" className="link">
@@ -30,16 +28,16 @@ function Header() {
         </a>
       </div>
       <div className="authButtons">
-        <Link to='/login'>
+        <Link to="/login">
           <button className="login">Log in</button>
         </Link>
 
-        <Link to='/signup'>
+        <Link to="/signup">
           <button className="signup">Sign up</button>
         </Link>
       </div>
     </Navbar>
-  )
+  );
 }
 
 const Navbar = styled.nav`
@@ -141,6 +139,6 @@ const Navbar = styled.nav`
       }
     }
   }
-`
+`;
 
-export default Header
+export default Header;
