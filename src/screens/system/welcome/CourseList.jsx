@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Course from './Course'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const CourseListWrapper = styled.section`
   .courses {
@@ -18,6 +19,7 @@ const CourseListWrapper = styled.section`
 `
 
 function CourseList() {
+  const navigate = useNavigate()
   const [courses, setCourse] = useState([])
   useEffect(() => {
     axios.get('http://localhost:3000/s/loadCourseWelcome')
@@ -25,8 +27,14 @@ function CourseList() {
         setCourse(response.data)
       })
       .catch(error => {
-        alert('Lỗi đọc dữ liệu: ' + error)
+        if (error.message === 'Network Error') {
+          alert('The server has been shut down. Please contact the admin for assistance')
+        }
+        if (error.response.status === 500) {
+          navigate('/500error')
+        }
       })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

@@ -125,24 +125,26 @@ module.exports = (connMysql, connMongo) => {
     connMysql.getConnection((err, connection) => {
       if (err) throw err
 
-      let query = 'SELECT userID from account WHERE username = ? AND password = ? AND LEFT(userID,1) = ? AND activity_status <> "locked"'
-      connection.query(query, [username, pass, roleOfUser], (error, results) => {
-        connection.release()
-        if (error) throw error
-        if (results.length > 0) {
-          //sign JWT token. Sign 2 value: userID & role. JWT using for authentication when user handle any function
-          const token = jwt.sign({ userID: results[0].userID, role: role }, KEY, { expiresIn: 86400 })
-          //Respond 3 value to the client: token, userID, role
-          //When user handle any function. We will decode JWT then compare with userID & role. If its equal --> process, if not --> cancel
-          res.json({
-            token: token,
-            userID: results[0].userID,
-            role: role
-          })
-        }
-        else
-          res.send('User are not existed')
-      })
+      else {
+        let query = 'SELECT userID from account WHERE username = ? AND password = ? AND LEFT(userID,1) = ? AND activity_status <> "locked"'
+        connection.query(query, [username, pass, roleOfUser], (error, results) => {
+          connection.release()
+          if (error) throw error
+          if (results.length > 0) {
+            //sign JWT token. Sign 2 value: userID & role. JWT using for authentication when user handle any function
+            const token = jwt.sign({ userID: results[0].userID, role: role }, KEY, { expiresIn: 86400 })
+            //Respond 3 value to the client: token, userID, role
+            //When user handle any function. We will decode JWT then compare with userID & role. If its equal --> process, if not --> cancel
+            res.json({
+              token: token,
+              userID: results[0].userID,
+              role: role
+            })
+          }
+          else
+            res.send('User are not existed')
+        })
+      }
     })
   })
 
@@ -203,36 +205,40 @@ module.exports = (connMysql, connMongo) => {
         res.status(500).send(err)
       }
 
-      let query = 'SELECT course.courseID, title, fullname, star, raters, price FROM avg_rating\
+      else {
+        let query = 'SELECT course.courseID, title, fullname, star, raters, price FROM avg_rating\
                 INNER JOIN published_course ON avg_rating.courseID = published_course.courseID\
                 INNER JOIN course ON avg_rating.courseID = course.courseID\
                 INNER JOIN user ON course.userID = user.userID\
                 LIMIT 9'
-      connection.query(query, async (error, courses) => {
-        connection.release() //Giải phóng connection khi truy vấn xong
-        if (error) {
-          res.status(500).send(error)
-        }
+        connection.query(query, async (error, courses) => {
+          connection.release() //Giải phóng connection khi truy vấn xong
+          if (error) {
+            res.status(500).send(error)
+          }
 
-        //List courseIDs which is results of previous query
-        const courseIDs = courses.map(course => course.courseID)
+          else {
+            //List courseIDs which is results of previous query
+            const courseIDs = courses.map(course => course.courseID)
 
-        //Connect to MongoDB server
-        await connMongo
-        //Get image_introduce of each courseID
-        const mongoData = await Course.find({ courseID: { $in: courseIDs } }).select('courseID image_introduce')
+            //Connect to MongoDB server
+            await connMongo
+            //Get image_introduce of each courseID
+            const mongoData = await Course.find({ courseID: { $in: courseIDs } }).select('courseID image_introduce')
 
-        //Merge data with Mysql and MongoDB
-        const mergeData = courses.map(course => {
-          const data = mongoData.find(mc => mc.courseID === course.courseID)
-          return {
-            ...course,
-            image_introduce: data ? data.image_introduce : null
+            //Merge data with Mysql and MongoDB
+            const mergeData = courses.map(course => {
+              const data = mongoData.find(mc => mc.courseID === course.courseID)
+              return {
+                ...course,
+                image_introduce: data ? data.image_introduce : null
+              }
+            })
+
+            res.send(mergeData)
           }
         })
-
-        res.send(mergeData)
-      })
+      }
     })
   })
 
