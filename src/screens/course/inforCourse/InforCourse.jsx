@@ -1,4 +1,4 @@
-import { HeaderAfterLogin } from "~/components/general";
+import { GeneralHeader } from "~/components/general";
 import FooterNew from "~/components/general/Footer/FooterNew";
 import IntroCourse from "./IntroCourse";
 import MainCourse from "./MainCourse";
@@ -29,7 +29,7 @@ function InforCourse() {
 
   return (
     <div>
-      <HeaderAfterLogin />
+      <GeneralHeader />
       <main>
         {
           //Ràng điều kiện nếu dữ liệu đang load thì ko gọi thẻ UserProfile

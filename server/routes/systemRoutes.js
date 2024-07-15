@@ -6,6 +6,9 @@ const cors = require('cors')
 const jwt = require('jsonwebtoken')
 const { KEY } = require('../authenticate')
 
+//import verifyToken fuction
+const { verifyToken } = require('../authenticate')
+
 //import library to get current time
 const { format } = require('date-fns')
 
@@ -94,6 +97,7 @@ module.exports = (connMysql, connMongo) => {
 
     // Insert data into mongoDB
     newUser.save()
+      // eslint-disable-next-line no-unused-vars
       .then(result => {
         callback(null, true)
         return
@@ -231,5 +235,24 @@ module.exports = (connMysql, connMongo) => {
       })
     })
   })
+
+  router.get('/loadAvatar', verifyToken, async (req, res) => {
+    const { userID } = req.query
+    connMysql.getConnection((err, connection) => {
+      if (err) {
+        res.status(500).send(err)
+      }
+      //Get detail information of course
+      let query = 'SELECT avatar FROM user where userID = ?'
+      connection.query(query, [userID], async (error, avatar) => {
+        connection.release() //Giải phóng connection khi truy vấn xong
+        if (error) {
+          res.status(500).send(error)
+        }
+        res.send(avatar[0].avatar)
+      })
+    })
+  })
+
   return router
 }

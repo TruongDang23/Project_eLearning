@@ -1,10 +1,10 @@
-import { GeneralFooter, HeaderAfterLogin } from '~/components/general'
+import { GeneralFooter, GeneralHeader } from '~/components/general'
 import ListNotifications from "./ListNotifications";
 
 function Notication() {
   return (
     <div>
-      <HeaderAfterLogin />
+      <GeneralHeader />
       <main>
         <ListNotifications />
       </main>
