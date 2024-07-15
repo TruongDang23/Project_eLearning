@@ -10,7 +10,7 @@ const UnauthorizedPage = () => {
 
   return (
     <Container maxWidth="sm" sx={{ textAlign: 'center', mt: 8, mb: 8 }}>
-      <Box sx={{ mb: 4, color: '#FF6F61', fontSize: '120px', fontWeight: 'bold' }}>
+      <Box sx={{ mb: 4, color: '#187bce', fontSize: '120px', fontWeight: 'bold' }}>
         401
       </Box>
       <Typography variant="h4" gutterBottom sx={{ color: '#333', mb: 2, fontSize: '4rem' }}>
@@ -25,9 +25,9 @@ const UnauthorizedPage = () => {
         onClick={handleRedirectToLogin}
         sx={{
           fontSize: '2rem',
-          backgroundColor: '#FF6F61',
+          backgroundColor: '#187bce',
           '&:hover': {
-            backgroundColor: '#FF3B30'
+            backgroundColor: '#155b96'
           }
         }}
       >

@@ -4,11 +4,13 @@ import SideBarAccessCourse from "./SideBarAccessCourse"
 import { useSearchParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 function MainAccessCourse({ accessCourseData, setReload }) {
   const token = localStorage.getItem('token')
   const userAuth = localStorage.getItem('userAuth')
   const userData = JSON.parse(localStorage.getItem('userAuth'))
+  const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams({
     id: accessCourseData.chapters[0].lectures[0].id,
     type: accessCourseData.chapters[0].lectures[0].type,
@@ -40,7 +42,18 @@ function MainAccessCourse({ accessCourseData, setReload }) {
         }))
       })
       .catch(error => {
-        alert('Lỗi đọc dữ liệu: ' + error)
+        //Server shut down
+        if (error.message === 'Network Error')
+          navigate('/server-shutdown')
+        //Connection error
+        if (error.response.status === 500)
+          navigate('/500error')
+        //Unauthorized. Need login
+        if (error.response.status === 401)
+          navigate('/401error')
+        //Forbidden. Token != userAuth
+        if (error.response.status === 403)
+          navigate('/403error')
       })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [progress.percent])
