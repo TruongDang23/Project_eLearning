@@ -169,7 +169,7 @@ module.exports = (connMysql, connMongo) => {
         const count = await countUserOfRole(roleOfUser)
         num = count
       } catch (error) {
-        res.send(error)
+        res.status(500).send(error)
       }
 
       //Xử lý userID
@@ -248,15 +248,17 @@ module.exports = (connMysql, connMongo) => {
       if (err) {
         res.status(500).send(err)
       }
-      //Get detail information of course
-      let query = 'SELECT avatar FROM user where userID = ?'
-      connection.query(query, [userID], async (error, avatar) => {
-        connection.release() //Giải phóng connection khi truy vấn xong
-        if (error) {
-          res.status(500).send(error)
-        }
-        res.send(avatar[0].avatar)
-      })
+      else {
+        //Get avatar in table user
+        let query = 'SELECT avatar FROM user where userID = ?'
+        connection.query(query, [userID], async (error, avatar) => {
+          connection.release() //Giải phóng connection khi truy vấn xong
+          if (error) {
+            res.status(500).send(error)
+          }
+          res.send(avatar[0].avatar)
+        })
+      }
     })
   })
 

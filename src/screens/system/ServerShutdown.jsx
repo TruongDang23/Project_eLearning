@@ -1,28 +1,28 @@
 import { useNavigate } from 'react-router-dom';
 import { Button, Typography, Container, Box } from '@mui/material';
 
-const ConnectError = () => {
+const ServerShutdownPage = () => {
   const navigate = useNavigate();
 
-  const handleRedirectToLogin = () => {
+  const handleRedirectToHome = () => {
     navigate('/');
   };
 
   return (
     <Container maxWidth="sm" sx={{ textAlign: 'center', mt: 8, mb: 8 }}>
       <Box sx={{ mb: 4, color: '#FF6F61', fontSize: '120px', fontWeight: 'bold' }}>
-        500
+        Server Down
       </Box>
       <Typography variant="h4" gutterBottom sx={{ color: '#333', mb: 2, fontSize: '4rem' }}>
-        The server is having a trouble
+        The server has been shut down.
       </Typography>
       <Typography variant="body1" paragraph sx={{ color: '#555', mb: 4, fontSize: '2rem' }}>
-        It seems we have encountered an error while connecting to the database. Please contact the admin for assistance.
+        We are experiencing technical difficulties. Please try again later or contact support.
       </Typography>
       <Button
         variant="contained"
         color="primary"
-        onClick={handleRedirectToLogin}
+        onClick={handleRedirectToHome}
         sx={{
           fontSize: '2rem',
           backgroundColor: '#FF6F61',
@@ -31,9 +31,10 @@ const ConnectError = () => {
           }
         }}
       >
-        Back to Homepage
+        Go to Homepage
       </Button>
     </Container>
   );
 };
-export default ConnectError;
+
+export default ServerShutdownPage;

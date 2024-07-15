@@ -28,32 +28,34 @@ module.exports = (connMysql, connMongo) => {
       if (err) {
         res.status(500).send(err)
       }
-      //Get information from mysql
-      let query = 'SELECT userID, avatar, fullname, date_of_birth, street, province, country, language\
+      else {
+        //Get information from mysql
+        let query = 'SELECT userID, avatar, fullname, date_of_birth, street, province, country, language\
                  from user where userID = ?'
-      connection.query(query, [req.userID], async (error, infor) => {
-        connection.release() //Giải phóng connection khi truy vấn xong
-        if (error) {
-          res.status(500).send(error)
-        }
-        await connMongo
-        const mongoData = await User.findOne({ userID: req.userID }).select()
-
-        const mergeData = infor.map(inf => {
-          return {
-            ...inf,
-            date_of_birth: formatDate(inf.date_of_birth), //format time
-
-            //Câu query không có lấy activity_status. Tuy nhiên login thành công <=> activity_status = active
-            activity_status: 'active',
-
-            //Vì chưa có data về activities Admin trên MongoDB nên phải tạo mô phỏng
-            social_network: mongoData.social_networks,
-            activities: []
+        connection.query(query, [req.userID], async (error, infor) => {
+          connection.release() //Giải phóng connection khi truy vấn xong
+          if (error) {
+            res.status(500).send(error)
           }
+          await connMongo
+          const mongoData = await User.findOne({ userID: req.userID }).select()
+
+          const mergeData = infor.map(inf => {
+            return {
+              ...inf,
+              date_of_birth: formatDate(inf.date_of_birth), //format time
+
+              //Câu query không có lấy activity_status. Tuy nhiên login thành công <=> activity_status = active
+              activity_status: 'active',
+
+              //Vì chưa có data về activities Admin trên MongoDB nên phải tạo mô phỏng
+              social_network: mongoData.social_networks,
+              activities: []
+            }
+          })
+          res.send(mergeData[0])
         })
-        res.send(mergeData[0])
-      })
+      }
     })
   })
 
