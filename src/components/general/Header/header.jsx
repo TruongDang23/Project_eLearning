@@ -6,11 +6,12 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Categories from "./categories";
 import AvatarAction from "./avatar";
+import { useState } from "react";
 
 function Header() {
   const token = localStorage.getItem('token')
-
-  // localStorage.clear()
+  // eslint-disable-next-line no-unused-vars
+  const [reload, setReload] = useState(false)
   {
     //Chưa login
     if (token == null)
@@ -69,7 +70,7 @@ function Header() {
                 />
               </a>
             </div>
-            <a href="#" className="link">
+            <a href="/" className="link">
               Teach on Udemy
             </a>
             <a href="#" className="link">
@@ -86,7 +87,7 @@ function Header() {
               </StyledBadge>
             </a>
             <a>
-              <AvatarAction />
+              <AvatarAction setReload={setReload}/>
             </a>
           </div>
         </Navbar>

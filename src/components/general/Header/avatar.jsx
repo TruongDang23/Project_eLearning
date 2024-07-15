@@ -10,11 +10,13 @@ import Tooltip from '@mui/material/Tooltip';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
+import SpaceDashboardOutlinedIcon from '@mui/icons-material/SpaceDashboardOutlined';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function AvatarAction() {
+export default function AvatarAction({ setReload }) {
   const token = localStorage.getItem('token')
   const userAuth = localStorage.getItem('userAuth')
   const userData = JSON.parse(localStorage.getItem('userAuth'))
@@ -51,9 +53,15 @@ export default function AvatarAction() {
 
   const handleLogout = () => {
     localStorage.clear()
+    setReload(true)
     navigate('/')
   }
 
+  const handleProfile = () => {
+    (userID[0] === 'A') ? navigate('/Admin/information') :
+      (userID[0] === 'S') ? navigate('/Student/information') :
+        navigate('/Instructor/information')
+  }
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -116,13 +124,23 @@ export default function AvatarAction() {
       >
         <MenuItem
           sx={{ fontSize: "16px", color: '#333' }}
-          onClick={handleClose}>
-          <Avatar /> Dashboard
+          onClick={() => {
+            handleClose
+          }}>
+          <ListItemIcon>
+            <SpaceDashboardOutlinedIcon fontSize="large" />
+          </ListItemIcon> Dashboard
         </MenuItem>
         <MenuItem
           sx={{ fontSize: "16px", color: '#333' }}
-          onClick={handleClose}>
-          <Avatar /> My Profile
+          onClick={() => {
+            handleProfile()
+            handleClose
+          }}>
+          <ListItemIcon>
+            <AccountBoxOutlinedIcon fontSize="large" />
+          </ListItemIcon>
+          My Profile
         </MenuItem>
         <Divider />
         <MenuItem

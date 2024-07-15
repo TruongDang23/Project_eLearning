@@ -9,6 +9,7 @@ import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom"
 
 function Categories() {
+  // eslint-disable-next-line no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams({
     search: '',
     content: ''
@@ -107,7 +108,7 @@ function Categories() {
 
                     <MenuItem
                       sx={{ fontSize: "16px", color: '#333' }}
-                      onClick={(e) => handleSearch(e)}>
+                      onClick={(e) => {handleSearch(e)}}>
                         Web development
                     </MenuItem>
                   </MenuList>
