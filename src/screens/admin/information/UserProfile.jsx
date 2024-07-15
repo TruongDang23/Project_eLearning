@@ -5,12 +5,13 @@ import 'react-calendar/dist/Calendar.css'
 import { useState } from 'react'
 import { languages } from '~/constants/listLanguage'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function UserProfile({ profile, setUserProfile }) {
   const [isReadOnly, setIsReadOnly] = useState(true)
   const token = localStorage.getItem('token')
   const userAuth = localStorage.getItem('userAuth')
-
+  const navigate = useNavigate()
   const formatDate = (date) => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero indexed
@@ -47,8 +48,18 @@ function UserProfile({ profile, setUserProfile }) {
         alert('Update Failed')
     }
     catch (error) {
-      alert('An error occurred while trying to update information.')
-      //console.error(error)
+      //Server shut down
+      if (error.message === 'Network Error')
+        navigate('/server-shutdown')
+      //Connection error
+      if (error.response.status === 500)
+        navigate('/500error')
+      //Unauthorized. Need login
+      if (error.response.status === 401)
+        navigate('/401error')
+      //Forbidden. Token != userAuth
+      if (error.response.status === 403)
+        navigate('/403error')
     }
   }
 

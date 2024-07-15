@@ -2,7 +2,10 @@ import { Route, Routes } from 'react-router-dom'
 import Signup from './signup/signup'
 import Login from './login/login'
 import Welcome from './welcome/welcome'
-
+import UnauthorizedPage from './401error'
+import ForbiddenPage from './403error'
+import ConnectError from './500error'
+import ServerShutdownPage from './ServerShutdown'
 /* index.jsx của các folder: system, admin, student, teacher có nhiệm vụ
   tạo route để hiển thị các màn hình tương ứng theo từng folder */
 
@@ -16,6 +19,10 @@ function System () {
         <Route path = '/login' element = {<Login/>} />
         <Route path = '/signup' element = {<Signup/>} />
         <Route path = '/' element = {<Welcome/>} />
+        <Route path = '/401error' element = {<UnauthorizedPage/>} />
+        <Route path = '/403error' element = {<ForbiddenPage/>} />
+        <Route path = '/500error' element = {<ConnectError/>} />
+        <Route path = '/server-shutdown' element = {<ServerShutdownPage/>} />
       </Routes>
     </>
   )

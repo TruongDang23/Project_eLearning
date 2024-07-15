@@ -27,19 +27,22 @@ function AccessCourse() {
       }
     })
       .then(response => {
-        if (response.data === 'Not authorize')
-        {
-          alert("User can't access this course.")
-          navigate(-1)
-        }
-        else
-        {
-          setAccessCourseData(response.data[0])
-          setIsLoad(false) //Data is loaded successfully
-        }
+        setAccessCourseData(response.data[0])
+        setIsLoad(false) //Data is loaded successfully
       })
       .catch(error => {
-        alert('Lỗi đọc dữ liệu: ' + error)
+        //Server shut down
+        if (error.message === 'Network Error')
+          navigate('/server-shutdown')
+        //Connection error
+        if (error.response.status === 500)
+          navigate('/500error')
+        //Unauthorized. Need login
+        if (error.response.status === 401)
+          navigate('/401error')
+        //Forbidden. Token != userAuth
+        if (error.response.status === 403)
+          navigate('/403error')
         setIsLoad(false)
       })
   // eslint-disable-next-line react-hooks/exhaustive-deps
