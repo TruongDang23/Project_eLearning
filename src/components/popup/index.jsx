@@ -31,26 +31,26 @@ export function AddWorking({ handleClose, handleSave }) {
   )
 }
 
-export function PublishCourse({ handleClose, course }) {
+export function PublishCourse({ handleClose, course, reload, setReload }) {
   return (
-    <PopupPub handleClose={handleClose} course={course}/>
+    <PopupPub handleClose={handleClose} course={course} reload={reload} setReload={setReload} />
   )
 }
 
-export function RejectCourse({ handleClose, course }) {
+export function RejectCourse({ handleClose, course, reload, setReload }) {
   return (
-    <PopupReject handleClose={handleClose} course={course}/>
+    <PopupReject handleClose={handleClose} course={course} reload={reload} setReload={setReload} />
   )
 }
 
-export function RePublishCourse({ handleClose, course }) {
+export function RePublishCourse({ handleClose, course, reload, setReload }) {
   return (
-    <PopupRePub handleClose={handleClose} course={course}/>
+    <PopupRePub handleClose={handleClose} course={course} reload={reload} setReload={setReload} />
   )
 }
 
-export function TerminateCourse({ handleClose, course }) {
+export function TerminateCourse({ handleClose, course, reload, setReload }) {
   return (
-    <PopupTerminate handleClose={handleClose} course={course}/>
+    <PopupTerminate handleClose={handleClose} course={course} reload={reload} setReload={setReload}/>
   )
 }

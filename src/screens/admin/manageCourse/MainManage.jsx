@@ -10,7 +10,7 @@ import axios from 'axios'
 function ManageCourse() {
   const token = localStorage.getItem('token')
   const userAuth = localStorage.getItem('userAuth')
-
+  const [reload, setReload] = useState(false)
   const [activeTab, setActiveTab] = useState('Tab1');
 
   const handleTabClick = (tab) => {
@@ -34,7 +34,8 @@ function ManageCourse() {
       .catch(error => {
         alert('Lỗi đọc dữ liệu: ' + error)
       })
-  }, [token, userAuth])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reload])
 
   useEffect(() => {
     axios.get('http://localhost:3000/c/getMonitorCourse', {
@@ -49,7 +50,8 @@ function ManageCourse() {
       .catch(error => {
         alert('Lỗi đọc dữ liệu: ' + error)
       })
-  }, [token, userAuth])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reload])
 
   useEffect(() => {
     axios.get('http://localhost:3000/c/getTerminateCourse', {
@@ -64,7 +66,8 @@ function ManageCourse() {
       .catch(error => {
         alert('Lỗi đọc dữ liệu: ' + error)
       })
-  }, [token, userAuth])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reload])
 
   return (
     <>
@@ -94,9 +97,9 @@ function ManageCourse() {
                 </button>
               </div>
               <div className="tab-content">
-                {activeTab === 'Tab1' && <PublishedCourse course={ pub } />}
-                {activeTab === 'Tab2' && <MonitoringCourse course={ monitor } />}
-                {activeTab === 'Tab3' && <TerminatedCourse course={ ter } />}
+                {activeTab === 'Tab1' && <PublishedCourse course={ pub } reload={reload} setReload={setReload}/>}
+                {activeTab === 'Tab2' && <MonitoringCourse course={ monitor } reload={reload} setReload={setReload}/>}
+                {activeTab === 'Tab3' && <TerminatedCourse course={ ter } reload={reload} setReload={setReload}/>}
               </div>
             </div>
           </Container>
@@ -118,7 +121,7 @@ const Container = styled.div`
 	border-radius: 8px;
 	overflow: hidden;
 	min-height: 349px;
-	max-height: 600px;
+	max-height: 800px;
 	overflow-y: auto;
 	}
 

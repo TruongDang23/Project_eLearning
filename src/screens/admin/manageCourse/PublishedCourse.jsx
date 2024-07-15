@@ -1,11 +1,11 @@
 // src/UserProfile.js
 import { Items } from './PublishedItem'
 
-function PublishedCourse({ course }) {
+function PublishedCourse({ course, reload, setReload }) {
   return (
     <>
       {course.map((courseItem) => (
-        <Items key={courseItem.courseID} courseItem={courseItem}/>
+        <Items key={courseItem.courseID} courseItem={courseItem} reload={reload} setReload={setReload}/>
       ))}
     </>
   )
