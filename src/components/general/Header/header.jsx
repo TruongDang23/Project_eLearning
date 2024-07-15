@@ -33,7 +33,7 @@ function Header() {
               </a>
             </div>
             <a href="/login" className="link">
-            Teach on EL-SPACE
+            Teach on EL-Space
             </a>
             <a href="/login" className="link">
             My Learning
@@ -71,7 +71,7 @@ function Header() {
               </a>
             </div>
             <a href="/" className="link">
-              Teach on Udemy
+              Teach on EL-Space
             </a>
             <a href="#" className="link">
               My learning
