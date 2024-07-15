@@ -1,25 +1,25 @@
-import { useState } from "react"
-import styled from "styled-components"
-import Accordion from "@mui/material/Accordion"
-import AccordionSummary from "@mui/material/AccordionSummary"
-import AccordionDetails from "@mui/material/AccordionDetails"
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
-import OndemandVideoIcon from "@mui/icons-material/OndemandVideo"
-import AttachFileIcon from "@mui/icons-material/AttachFile"
-import QuizIcon from "@mui/icons-material/Quiz"
-import { CircularProgressbar } from "react-circular-progressbar"
-import "react-circular-progressbar/dist/styles.css"
-import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import { useState } from "react";
+import styled from "styled-components";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
+import QuizIcon from "@mui/icons-material/Quiz";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
-  const [expanded, setExpanded] = useState(false)
+  const [expanded, setExpanded] = useState(false);
 
   const handleExpansion = (panel) => (event, isExpanded) => {
     setExpanded((prevExpanded) => ({
       ...prevExpanded,
-      [panel]: isExpanded
-    }))
-  }
+      [panel]: isExpanded,
+    }));
+  };
 
   return (
     <SideBarAccessCourseWrapper>
@@ -38,8 +38,8 @@ function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
               fontSize: "1rem !important",
               padding: "0px 20px",
               "&:before": {
-                display: "none"
-              }
+                display: "none",
+              },
             }}
           >
             <AccordionSummary
@@ -49,13 +49,11 @@ function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
               sx={{
                 padding: "10px 0",
                 "& .MuiAccordionSummary-content": {
-                  margin: 0
-                }
+                  margin: 0,
+                },
               }}
             >
-              <h3>
-                Chapter {chapter.chapter_name}
-              </h3>
+              <h3>Chapter {chapter.chapter_name}</h3>
             </AccordionSummary>
             <AccordionDetails>
               <ul>
@@ -66,8 +64,8 @@ function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
                       setProgress((prevProgress) => ({
                         ...prevProgress,
                         lectureID: lecture.id,
-                        percent: 0
-                      }))
+                        percent: 0,
+                      }));
                     }}
                   >
                     <div>
@@ -80,7 +78,11 @@ function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
                               <OndemandVideoIcon />
                               <a
                                 onClick={() => {
-                                  setParams({ 'id': lecture.id, 'type': lecture.type, 'source': lecture.source })
+                                  setParams({
+                                    id: lecture.id,
+                                    type: lecture.type,
+                                    source: lecture.source,
+                                  });
                                 }}
                               >
                                 {lecture.name}
@@ -91,7 +93,11 @@ function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
                               <AttachFileIcon />
                               <a
                                 onClick={() => {
-                                  setParams({ 'id': lecture.id, 'type': lecture.type, 'source': lecture.source })
+                                  setParams({
+                                    id: lecture.id,
+                                    type: lecture.type,
+                                    source: lecture.source,
+                                  });
                                 }}
                               >
                                 {lecture.name}
@@ -102,7 +108,11 @@ function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
                               <QuizIcon />
                               <a
                                 onClick={() => {
-                                  setParams({ 'id': lecture.id, 'type': lecture.type, 'source': lecture.source })
+                                  setParams({
+                                    id: lecture.id,
+                                    type: lecture.type,
+                                    source: lecture.source,
+                                  });
                                 }}
                               >
                                 {lecture.name}
@@ -112,30 +122,30 @@ function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
                         </h4>
                       </div>
                       <div style={{ flex: 0.1 }}>
-                        {
-                          accessCourseData.learning.map((learn) => {
-                            if (lecture.id === learn.lectureID)
-                            {
-                              return (
-                                <>
-                                  {learn.progress === 100 ? (
-                                    <CheckCircleIcon
-                                      style={{ color: '#599cde', fontSize: '30px' }}
-                                    />
-                                  ) : (
-                                    <CircularProgressbar
-                                      value={learn.progress}
-                                      styles={{
-                                        root: { width: 25 },
-                                        backgroundColor: "#f9f9f9"
-                                      }}
-                                    />
-                                  )}
-                                </>
-                              )
-                            }
-                          })
-                        }
+                        {accessCourseData.learning.map((learn) => {
+                          if (lecture.id === learn.lectureID) {
+                            return (
+                              <>
+                                {learn.progress === 100 ? (
+                                  <CheckCircleIcon
+                                    style={{
+                                      color: "#599cde",
+                                      fontSize: "30px",
+                                    }}
+                                  />
+                                ) : (
+                                  <CircularProgressbar
+                                    value={learn.progress}
+                                    styles={{
+                                      root: { width: 25 },
+                                      backgroundColor: "#f9f9f9",
+                                    }}
+                                  />
+                                )}
+                              </>
+                            );
+                          }
+                        })}
                       </div>
                     </div>
                     <div>
@@ -185,6 +195,7 @@ const SideBarAccessCourseWrapper = styled.section`
           h4 {
             margin: 0;
             font-size: 1.6rem !important;
+            line-height: 1.6;
             color: #333 !important;
           }
 
@@ -199,10 +210,11 @@ const SideBarAccessCourseWrapper = styled.section`
               color: #1971c2;
             }
           }
-          
-          p{
+
+          p {
             margin-left: 1.5rem;
             font-size: 1.5rem;
+            line-height: 1.6;
           }
         }
       }

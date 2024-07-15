@@ -50,7 +50,7 @@ function MainContentCourse({ inforCourseData }) {
               <h4>{review.reviewerName}</h4>
               <span>
                 {formatDistanceToNow(new Date(review.date), {
-                  addSuffix: true
+                  addSuffix: true,
                 })}
               </span>
             </div>
@@ -92,6 +92,7 @@ const MainContentCourseWrapper = styled.section`
         gap: 10px;
         margin-bottom: 10px;
         font-size: 1.8rem;
+        line-height: 1.6;
         svg {
           color: #1971c2;
           font-size: 2.4rem;
@@ -149,6 +150,7 @@ const MainContentCourseWrapper = styled.section`
         gap: 10px;
         margin-bottom: 10px;
         font-size: 1.8rem;
+        line-height: 1.6;
         svg {
           color: #007bff;
           font-size: 2.4rem;
@@ -272,6 +274,7 @@ const MainContentCourseWrapper = styled.section`
         }
         p {
           font-size: 1.6rem;
+          line-height: 1.6;
         }
       }
     }

@@ -116,6 +116,7 @@ const TabRatingWrapper = styled.div`
             }
             p {
               font-size: 1.6rem;
+              line-height: 1.6;
             }
           }
         }
@@ -145,6 +146,7 @@ const TabRatingWrapper = styled.div`
           height: 100px;
           padding: 10px;
           font-size: 1.6rem;
+          line-height: 1.6;
           border: 1px solid #e0e0e0;
           border-radius: 5px;
           resize: none;
