@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import dayjs from 'dayjs'
 import axios from 'axios'
 
-const PopupTerminate = ({ handleClose, course }) => {
+const PopupTerminate = ({ handleClose, course, reload, setReload }) => {
   const [dateRange, setDateRange] = useState(['', ''])
   const [showCalendar, setShowCalendar] = useState(false)
   const [currentInput, setCurrentInput] = useState(null)
@@ -56,7 +56,10 @@ const PopupTerminate = ({ handleClose, course }) => {
         }
       )
       if (res.data === true)
+      {
         alert('Action Successfully')
+        setTimeout(() => setReload(!reload), 100);
+      }
       else
         alert('Action Failed')
     }

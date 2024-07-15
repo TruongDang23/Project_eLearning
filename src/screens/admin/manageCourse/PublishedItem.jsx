@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { useState } from 'react'
 import { TerminateCourse } from '~/components/popup/index'
+import { Link } from "react-router-dom";
 
-export function Items({ courseItem }) {
+export function Items({ courseItem, reload, setReload }) {
   const [openTer, setopenTer] = useState(false)
 
   const toggleTer = () => { setopenTer(!openTer) }
@@ -27,13 +28,15 @@ export function Items({ courseItem }) {
             <h2>{courseItem.courseID}</h2>
             <p>Published</p>
             <div className="button">
-              <button>Go to course</button>
+              <Link to={`/course/infor/${courseItem.courseID}`}>
+                <button>Go to course</button>
+              </Link>
               <button onClick={toggleTer}>Terminate</button>
             </div>
           </div>
         </div>
       </Wrapper>
-      {openTer && <TerminateCourse handleClose={toggleTer} course={courseItem.courseID} />}
+      {openTer && <TerminateCourse handleClose={toggleTer} course={courseItem.courseID} reload={reload} setReload={setReload} />}
     </>
   )
 }
