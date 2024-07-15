@@ -5,11 +5,12 @@ import UserProfile from './UserProfile'
 import ExtraProfile from './ExtraProfile'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function Information() {
 
   const [userProfile, setUserProfile] = useState()
-
+  const navigate = useNavigate()
   const updateInformation = (newProfile) => {
     setUserProfile(newProfile)
   }
@@ -29,10 +30,22 @@ function Information() {
         setIsLoad(false) //Data is loaded successfully
       })
       .catch(error => {
-        alert('Lỗi đọc dữ liệu: ' + error)
+        //Server shut down
+        if (error.message === 'Network Error')
+          navigate('/server-shutdown')
+        //Connection error
+        if (error.response.status === 500)
+          navigate('/500error')
+        //Unauthorized. Need login
+        if (error.response.status === 401)
+          navigate('/401error')
+        //Forbidden. Token != userAuth
+        if (error.response.status === 403)
+          navigate('/403error')
         setIsLoad(false)
       })
-  }, [token, userAuth])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   //console.log(userProfile)
   return (
