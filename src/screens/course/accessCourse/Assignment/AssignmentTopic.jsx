@@ -4,21 +4,7 @@ function AssignmentTopic() {
   return (
     <AssignmentTopicWrapper>
       <h2>Assignment Topic</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec
-        condimentum odio. Phasellus sit amet volutpat urna. Sed nec condimentum
-        odio. Phasellus sit amet volutpat urna.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec
-        condimentum odio. Phasellus sit amet volutpat urna. Sed nec condimentum
-        odio. Phasellus sit amet volutpat urna.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec
-        condimentum odio. Phasellus sit amet volutpat urna. Sed nec condimentum
-        odio. Phasellus sit amet volutpat urna.
-      </p>
+      
     </AssignmentTopicWrapper>
   );
 }

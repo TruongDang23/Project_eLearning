@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 import { Box, Button, Menu, MenuItem, Typography } from "@mui/material";
-import { createTheme } from "@mui/material";
 import { LANGUAGE_VERSIONS } from "./Constants";
 
 const languages = Object.entries(LANGUAGE_VERSIONS);
@@ -83,6 +82,10 @@ const LanguageSelectorWrapper = styled.div`
   gap: 1rem;
   margin: 1rem 0;
 
+  h6 {
+    font-weight: bold;
+  }
+
   .MuiButton-root {
     display: flex !important;
     flex-direction: row !important;
@@ -90,6 +93,7 @@ const LanguageSelectorWrapper = styled.div`
 
   button {
     font-size: 1rem;
+    font-weight: bold;
     background-color: #1976d2; /* Màu nền của nút */
     color: white; /* Màu chữ của nút */
     &:hover {

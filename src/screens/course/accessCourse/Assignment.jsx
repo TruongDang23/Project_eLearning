@@ -2,7 +2,6 @@ import { HeaderAfterLogin } from "~/components/general";
 import FooterNew from "~/components/general/Footer/FooterNew";
 import AssignmentTopic from "./Assignment/AssignmentTopic";
 import CodeEditor from "./Assignment/CodeEditor";
-import Output from "./Assignment/Output";
 
 import styled from "styled-components";
 
@@ -13,7 +12,6 @@ function Assignment() {
       <AssignmentWrapper>
         <AssignmentTopic />
         <CodeEditor />
-        <Output />
       </AssignmentWrapper>
       <FooterNew />
     </>
