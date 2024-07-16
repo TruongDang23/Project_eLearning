@@ -4,7 +4,6 @@ function AssignmentTopic() {
   return (
     <AssignmentTopicWrapper>
       <h2>Assignment Topic</h2>
-      
     </AssignmentTopicWrapper>
   );
 }
