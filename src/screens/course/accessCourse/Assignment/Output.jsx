@@ -26,12 +26,7 @@ function Output() {
 const OutputWrapper = styled.section`
   grid-column: 2 / 3;
   width: 100%;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  display: grid;
-  gap: 20px;
+  padding: 1rem;
 `;
 
 export default Output;

@@ -26,12 +26,9 @@ function AssignmentTopic() {
 const AssignmentTopicWrapper = styled.aside`
   width: 100%;
   height: 70vh;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  display: grid;
-  gap: 20px;
+  padding: 1rem;
+  overflow-y: auto;
+  border-left: 1px solid #ccc;
 `;
 
 export default AssignmentTopic;

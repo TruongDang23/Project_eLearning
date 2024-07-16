@@ -23,6 +23,9 @@ function Assignment() {
 const AssignmentWrapper = styled.main`
   display: grid;
   grid-template-columns: 1fr 2fr;
+  margin-top: 1rem;
+  width: 100%;
+  gap: 1rem;
 `;
 
 export default Assignment;

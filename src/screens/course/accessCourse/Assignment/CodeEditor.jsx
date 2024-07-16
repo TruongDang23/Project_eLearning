@@ -25,7 +25,7 @@ function CodeEditor() {
         <LanguageSelector language={language} onSelect={onSelect} />
       </div>
       <Editor
-        height="70vh"
+        height="50rem"
         theme="vs-dark"
         defaultLanguage="javascript"
         defaultValue="// Write your code here"
@@ -41,11 +41,8 @@ const CodeEditorWrapper = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  gap: 20px;
+  padding: 1rem;
+
   .header-editor {
     display: flex;
     justify-content: space-between;
