@@ -48,7 +48,7 @@ function reducer(state, action) {
       ...state,
       answer: action.payload,
       points:
-          action.payload === question.key ? state.points + 1 : state.points
+          action.payload === question.key[0] ? state.points + 1 : state.points
     };
   }
   case "nextQuestion":
@@ -106,7 +106,7 @@ function Quizz({ quizzData, setProgress }) {
             <>
               <Header
                 title={quizzData.name}
-                description={quizzData.description}
+                description={quizzData.title}
               />
               <StartScreen
                 numberOfQuestions={numberOfQuestions}
