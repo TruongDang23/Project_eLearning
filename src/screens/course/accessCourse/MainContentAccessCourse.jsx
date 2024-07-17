@@ -5,12 +5,18 @@ import Quizz from "./Quizz";
 import TabviewAccessCourse from "./TabviewAccessCourse";
 import PdfViewer from "./PdfViewer";
 
-import QuizzData from "~/data/QuizzData";
-
 function MainContentAccessCourse({ accessCourseData, params, setProgress }) {
-  const type = params.get("type");
-  const source = params.get("source");
+  const type = params.get("type")
+  const source = params.get("source")
+  let quizz;
 
+  if (type === 'quizz') {
+    const id = params.get("id")
+    for (const chapter of accessCourseData.chapters) {
+      quizz = chapter.lectures.find(lecture => lecture.id == id);
+      if (quizz) break;
+    }
+  }
   return (
     <MainAccessCourseWrapper>
       {type === "video" ? (
@@ -18,7 +24,7 @@ function MainContentAccessCourse({ accessCourseData, params, setProgress }) {
       ) : type === "file" ? (
         <PdfViewer pdfUrl={source} setProgress={setProgress}/>
       ) : type === "quizz" ? (
-        <Quizz quizzData={QuizzData} setProgress={setProgress}/>
+        <Quizz quizzData={quizz} setProgress={setProgress}/>
       ) : (
         <p>Loading...</p>
       )}
