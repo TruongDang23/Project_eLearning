@@ -17,7 +17,7 @@ const AssignmentContentWrapper = styled.main`
   grid-template-columns: 1fr 2fr;
   margin-top: 1rem;
   width: 100%;
-  gap: 1rem;
+  gap: 2rem;
 `;
 
 export default AssignmentContent;
