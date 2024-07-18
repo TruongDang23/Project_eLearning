@@ -1,4 +1,5 @@
 const CourseData = {
+  //mysql
   courseID: 'C999', //Tự động sinh ID
   type_of_course: "Course", // Course | Quizz (Chưa phảt triển hình thức này)
   title: "Introduction to Database",
@@ -13,8 +14,10 @@ const CourseData = {
   num_lecture: 10, // num_lecture sẽ tự động tính toán khi gv tạo các lectures
   userID: 'I000', // ID của gv tạo khóa học này
 
-  image_introduce: imageIntro,
-  video_introduce: videoIntro,
+  //mongoDB
+  // Phải có: courseID: 'C999',
+  image_introduce: 'image link', // Khi người dùng upload file thì hệ thống tự động up lên ggcloud và lấy link về
+  video_introduce: 'video link', // Khi người dùng upload file thì hệ thống tự động up lên ggcloud và lấy link về
   keywords: ["Database", "SQL", "Beginner"],
   targets: [
     "Understand basic database concepts",
@@ -30,27 +33,12 @@ const CourseData = {
       chapter_name: "Introduction",
       lectures: [
         {
-          id: 1,
+          id: 1, //id tự động tăng dần từ 1 --> n xuyên suốt khóa học này
           name: "What is a Database?",
           description: "Overview of databases",
           type: "video",
-          source: "https://example.com/lecture1.mp4",
-          QnA: [
-            {
-              questionerID: 1,
-              question:
-                "What is the difference between a database and a spreadsheet?",
-              date: "2024-06-01 10:00:00",
-              responses: [
-                {
-                  responseID: 2,
-                  response:
-                    "A database can handle more complex queries and is more scalable.",
-                  date: "2024-06-01 11:00:00"
-                }
-              ]
-            }
-          ]
+          source: "https://example.com/lecture1.mp4", // Khi người dùng upload file thì hệ thống tự động up lên ggcloud và lấy link về
+          QnA: []
         },
         {
           id: 2,
@@ -112,20 +100,7 @@ const CourseData = {
         }
       ]
     }
-  ],
-  review: [ //rating.userID INNER JOIN user.userID => fullname AS reviewerName
-    {
-      reviewerName: "Le Thanh Vinh",
-      message:
-        "Great course! The instructor explains concepts clearly and concisely.",
-      star: 4.5,
-      date: "2024-06-01 12:00:00"
-    },
-    {
-      reviewerName: "Dang Quang Truong",
-      message: "I learned a lot from this course.",
-      star: 4.0,
-      date: "2024-06-07 13:00:00"
-    }
   ]
-};
+}
+
+export default CourseData
