@@ -17,6 +17,7 @@ const AssignmentTopicWrapper = styled.aside`
   overflow-y: auto;
   border: 1px solid #ccc;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+  
 `;
 
 export default AssignmentTopic;
