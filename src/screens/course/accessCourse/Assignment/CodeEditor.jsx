@@ -42,7 +42,6 @@ function CodeEditor() {
 const CodeEditorWrapper = styled.section`
   display: flex;
   flex-direction: column;
-  width: 100%;
   padding: 1rem;
   margin-bottom: 1rem;
   background-color: #333537;
@@ -54,7 +53,6 @@ const CodeEditorWrapper = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
   }
 `;
 

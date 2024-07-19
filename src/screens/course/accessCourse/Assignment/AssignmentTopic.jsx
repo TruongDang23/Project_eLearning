@@ -10,7 +10,7 @@ function AssignmentTopic() {
 
 const AssignmentTopicWrapper = styled.aside`
   width: 100%;
-  height: 70vh;
+  height: 40rem;
   color: #e3e3e3;
   background-color: #333537;
   margin-left: 1rem;
