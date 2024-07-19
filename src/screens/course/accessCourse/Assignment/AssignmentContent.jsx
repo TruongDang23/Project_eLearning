@@ -12,7 +12,7 @@ function AssignmentContent({ topics }) {
   );
 }
 
-const AssignmentContentWrapper = styled.main`
+const AssignmentContentWrapper = styled.section`
   display: grid;
   grid-template-columns: 1fr 2fr;
   margin-top: 1rem;

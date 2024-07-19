@@ -44,6 +44,11 @@ const CodeEditorWrapper = styled.section`
   flex-direction: column;
   width: 100%;
   padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #333537;
+  border-radius: 5px;
+  color: #e3e3e3;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
 
   .header-editor {
     display: flex;

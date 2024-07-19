@@ -48,11 +48,11 @@ function Output({ editorRef, language }) {
           sx={{
             height: "10rem",
             p: 2,
-            color: isError ? "error.main" : "text.primary",
-            border: "1px solid",
+            color: isError ? "error.main" : "#e3e3e3",
             borderRadius: 1,
             borderColor: isError ? "error.main" : "grey.500",
             overflow: "auto",
+            backgroundColor: isError ? "error.light" : "#1e1e1e",
           }}
         >
           {output
@@ -85,6 +85,7 @@ const OutputWrapper = styled.section`
   grid-column: 2 / 3;
   width: 100%;
   margin-top: 1rem;
+
 
   button {
     font-size: 1rem;

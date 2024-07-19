@@ -10,13 +10,17 @@ function Assignment({ assignmentData }) {
   return (
     <>
       <HeaderAfterLogin />
-      <TitleAssignment name={name} />
-      <AssignmentContent topics={topics} />
-      <FooterNew />
+      <AssignmentWrapper>
+        <TitleAssignment name={name} />
+        <AssignmentContent topics={topics} />
+      </AssignmentWrapper>
+      {/* <FooterNew /> */}
     </>
   );
 }
 
-const AssignmentWrapper = styled.main``;
+const AssignmentWrapper = styled.main`
+  background-color: black;
+`;
 
 export default Assignment;

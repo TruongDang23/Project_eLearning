@@ -16,7 +16,7 @@ function TitleAssignment({ name }) {
 const TitleAssignmentWrapper = styled.div`
   width: 100%;
   height: 4rem;
-  background-color: #1971c2;
+  background-color: #1e1e1e;
   padding: 0 2rem;
   display: flex;
   gap: 2rem;
