@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import AssignmentTopic from "./AssignmentTopic";
 import CodeEditor from "./CodeEditor";
-import { Pagination } from "@mui/material";
 
-function AssignmentContent({ topics }) {
+function AssignmentContent({ title, question, sample, testcases }) {
+  console.log("Title: " + title);
   return (
     <AssignmentContentWrapper>
-      <AssignmentTopic />
+      <AssignmentTopic title={title} question={question} sample={sample} />
       <CodeEditor />
     </AssignmentContentWrapper>
   );
