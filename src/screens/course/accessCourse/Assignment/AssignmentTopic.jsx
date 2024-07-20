@@ -9,8 +9,8 @@ function AssignmentTopic({ title, question, sample }) {
       <table>
         <thead>
           <tr>
-            <th>Case</th>
-            <th>Key</th>
+            <th>Input</th>
+            <th>Output</th>
           </tr>
         </thead>
         <tbody>
