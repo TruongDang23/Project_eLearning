@@ -63,6 +63,7 @@ const TabOverviewWrapper = styled.div`
     h2 {
       margin-bottom: 10px;
       font-size: 2.4rem;
+      line-height: 1.6;
     }
     .overview-stats {
       display: flex;

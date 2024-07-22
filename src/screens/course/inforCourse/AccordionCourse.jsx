@@ -13,7 +13,7 @@ function AccordionCourse({ inforCourseData }) {
   const handleExpansion = (panel) => (event, isExpanded) => {
     setExpanded((prevExpanded) => ({
       ...prevExpanded,
-      [panel]: isExpanded
+      [panel]: isExpanded,
     }));
   };
 
@@ -30,8 +30,8 @@ function AccordionCourse({ inforCourseData }) {
             fontSize: "1rem !important",
             padding: "0px 20px",
             "&:before": {
-              display: "none"
-            }
+              display: "none",
+            },
           }}
         >
           <AccordionSummary
@@ -41,13 +41,11 @@ function AccordionCourse({ inforCourseData }) {
             sx={{
               padding: "10px 0",
               "& .MuiAccordionSummary-content": {
-                margin: 0
-              }
+                margin: 0,
+              },
             }}
           >
-            <h3>
-              Chapter {chapter.chapter_name}
-            </h3>
+            <h3>Chapter {chapter.chapter_name}</h3>
           </AccordionSummary>
           <AccordionDetails>
             <ul>
@@ -60,30 +58,21 @@ function AccordionCourse({ inforCourseData }) {
                       {lecture.type === "video" ? (
                         <>
                           <OndemandVideoIcon />
-                          <a
-                            target="_blank"
-                            rel="noreferrer"
-                          >
+                          <a target="_blank" rel="noreferrer">
                             {lecture.name}
                           </a>
                         </>
                       ) : lecture.type === "file" ? (
                         <>
                           <AttachFileIcon />
-                          <a
-                            target="_blank"
-                            rel="noreferrer"
-                          >
+                          <a target="_blank" rel="noreferrer">
                             {lecture.name}
                           </a>
                         </>
                       ) : (
                         <>
                           <QuizIcon />
-                          <a
-                            target="_blank"
-                            rel="noreferrer"
-                          >
+                          <a target="_blank" rel="noreferrer">
                             {lecture.name}
                           </a>
                         </>
@@ -126,6 +115,7 @@ const AccordionCourseWrapper = styled.section`
         h4 {
           margin: 0;
           font-size: 1.6rem !important;
+          line-height: 1.6;
           color: #333 !important;
         }
 
@@ -140,9 +130,10 @@ const AccordionCourseWrapper = styled.section`
           }
         }
 
-        p{
+        p {
           margin-left: 1.5rem;
           font-size: 1.5rem;
+          line-height: 1.6;
         }
       }
     }
