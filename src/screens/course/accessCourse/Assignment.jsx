@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { HeaderAfterLogin } from "~/components/general";
-import FooterNew from "~/components/general/Footer/FooterNew";
+import { GeneralHeader } from "~/components/general";
 import TitleAssignment from "./Assignment/TitleAssignment";
 import styled from "styled-components";
 import AssignmentContent from "./Assignment/AssignmentContent";
@@ -17,7 +16,7 @@ function Assignment({ assignmentData }) {
 
   return (
     <>
-      <HeaderAfterLogin />
+      <GeneralHeader />
       <AssignmentWrapper>
         <TitleAssignment name={name} />
         <CustomPagination
