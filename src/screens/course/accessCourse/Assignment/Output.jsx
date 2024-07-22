@@ -1,31 +1,62 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Box,
   Button,
   Typography,
   CircularProgress,
   Alert,
-  Snackbar,
+  Snackbar
 } from "@mui/material";
 import { executeCode } from "./Api";
+import axios from "axios";
 
-function Output({ editorRef, language }) {
+function Output({ editorRef, language, testcases }) {
   const [output, setOutput] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const token = localStorage.getItem('token')
+  const userAuth = localStorage.getItem('userAuth')
 
   const runCode = async () => {
     const sourceCode = editorRef.current.getValue();
     if (!sourceCode) return;
-    try {
-      setIsLoading(true);
-      const { run: result } = await executeCode(language, sourceCode);
-      setOutput(result.output.split("\n"));
-      setIsError(!!result.stderr);
-    } catch (error) {
-      console.error(error);
+    // try {
+    //   setIsLoading(true);
+    //   const { run: result } = await executeCode(language, sourceCode);
+    //   setOutput(result.output.split("\n"));
+    //   setIsError(!!result.stderr);
+    // } catch (error) {
+    //   console.error(error);
+    //   setErrorMessage(error.message || "Unable to run code");
+    //   setIsError(true);
+    // } finally {
+    //   setIsLoading(false);
+    // }
+
+    try
+    {
+      setIsLoading(true)
+      const res = await axios.post('http://localhost:3000/c/acceptAssignment',
+        { language, sourceCode, testcases },
+        {
+          headers: {
+            'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
+            'user': userAuth
+          }
+        }
+      )
+      if (res.data === true)
+      {
+        alert('Action Successfully')
+      }
+      else
+        alert('Action Failed')
+      // setOutput(result.output.split("\n"));
+      // setIsError(!!result.stderr);
+    }
+    catch (error) {
       setErrorMessage(error.message || "Unable to run code");
       setIsError(true);
     } finally {
@@ -52,15 +83,15 @@ function Output({ editorRef, language }) {
             borderRadius: 1,
             borderColor: isError ? "error.main" : "grey.500",
             overflow: "auto",
-            backgroundColor: isError ? "error.light" : "#1e1e1e",
+            backgroundColor: "#1e1e1e"
           }}
         >
           {output
             ? output.map((line, i) => (
-                <Typography key={i} variant="subtitle1" component="p">
-                  {line}
-                </Typography>
-              ))
+              <Typography key={i} variant="subtitle1" component="p">
+                {line}
+              </Typography>
+            ))
             : 'Click "Run Code" to see the output here'}
         </Box>
         <Snackbar

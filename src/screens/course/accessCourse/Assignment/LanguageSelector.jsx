@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import React, { useState } from "react";
-import { Box, Button, Menu, MenuItem, Typography } from "@mui/material";
+import { useState } from "react";
+import { Button, Menu, MenuItem, Typography } from "@mui/material";
 import { LANGUAGE_VERSIONS } from "./Constants";
 
 const languages = Object.entries(LANGUAGE_VERSIONS);
@@ -38,11 +38,11 @@ function LanguageSelector({ language, onSelect }) {
         MenuListProps={{
           "aria-labelledby": "basic-button",
           style: { backgroundColor: "#fff" },
-          disableScrollLock: true,
+          disableScrollLock: true
         }}
         ModalProps={{
           keepMounted: true, // Giữ DOM gốc trong document để không thay đổi layout
-          disableScrollLock: true, // Ngăn không khóa cuộn body khi menu mở
+          disableScrollLock: true // Ngăn không khóa cuộn body khi menu mở
         }}
         disableScrollLock={true}
       >
@@ -59,8 +59,8 @@ function LanguageSelector({ language, onSelect }) {
               backgroundColor: lang === language ? "gray.900" : "transparent",
               "&:hover": {
                 color: ACTIVE_COLOR,
-                backgroundColor: "gray.900",
-              },
+                backgroundColor: "gray.900"
+              }
             }}
           >
             {lang}

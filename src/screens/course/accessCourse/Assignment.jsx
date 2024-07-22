@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GeneralHeader } from "~/components/general";
+import { GeneralHeader, GeneralFooter } from "~/components/general";
 import TitleAssignment from "./Assignment/TitleAssignment";
 import styled from "styled-components";
 import AssignmentContent from "./Assignment/AssignmentContent";
@@ -29,7 +29,7 @@ function Assignment({ assignmentData }) {
         />
         {topics.length > 0 && <AssignmentContent {...topics[page - 1]} />}
       </AssignmentWrapper>
-      {/* <FooterNew /> */}
+      <GeneralFooter />
     </>
   );
 }

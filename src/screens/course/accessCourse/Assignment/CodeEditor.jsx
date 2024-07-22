@@ -5,10 +5,10 @@ import { CODE_SNIPPETS } from "./Constants";
 import LanguageSelector from "./LanguageSelector";
 import Output from "./Output";
 
-function CodeEditor() {
+function CodeEditor({ testcases }) {
   const editorRef = useRef();
   const [value, setValue] = useState("");
-  const [language, setLanguage] = useState("javascript");
+  const [language, setLanguage] = useState("python");
 
   const onMount = (editor) => {
     editorRef.current = editor;
@@ -28,13 +28,13 @@ function CodeEditor() {
       <Editor
         height="50rem"
         theme="vs-dark"
-        defaultLanguage="javascript"
+        defaultLanguage={language}
         defaultValue="// Write your code here"
         onMount={onMount}
         value={value}
         onChange={(value) => setValue(value)}
       />
-      <Output editorRef={editorRef} language={language} />
+      <Output editorRef={editorRef} language={language} testcases={testcases} />
     </CodeEditorWrapper>
   );
 }
