@@ -2,7 +2,7 @@ import styled from "styled-components"
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import axios from "axios"
 
-const PopupRePub = ({ handleClose, course }) => {
+const PopupRePub = ({ handleClose, course, reload, setReload }) => {
   const token = localStorage.getItem('token')
   const userAuth = localStorage.getItem('userAuth')
 
@@ -19,7 +19,10 @@ const PopupRePub = ({ handleClose, course }) => {
         }
       )
       if (res.data === true)
+      {
         alert('Action Successfully')
+        setTimeout(() => setReload(!reload), 100);
+      }
       else
         alert('Action Failed')
     }

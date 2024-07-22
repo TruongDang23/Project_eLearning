@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { useState } from 'react'
 import { PublishCourse, RejectCourse } from '~/components/popup/index'
+import { Link } from "react-router-dom";
 
-export function Items({ courseItem }) {
+export function Items({ courseItem, reload, setReload }) {
   const [openPub, setopenPub] = useState(false)
   const [openReject, setopenReject] = useState(false)
 
@@ -28,15 +29,17 @@ export function Items({ courseItem }) {
             <h2>{courseItem.courseID}</h2>
             <p>Monitoring</p>
             <div className="button">
-              <button>Go to course</button>
+              <Link to={`/course/infor/${courseItem.courseID}`}>
+                <button>Go to course</button>
+              </Link>
               <button onClick={togglePub}>Accept</button>
               <button onClick={toggleReject}>Reject</button>
             </div>
           </div>
         </div>
       </Wrapper>
-      {openPub && <PublishCourse handleClose={togglePub} course={courseItem.courseID} />}
-      {openReject && <RejectCourse handleClose={toggleReject} course={courseItem.courseID} />}
+      {openPub && <PublishCourse handleClose={togglePub} course={courseItem.courseID} reload={reload} setReload={setReload} />}
+      {openReject && <RejectCourse handleClose={toggleReject} course={courseItem.courseID} reload={reload} setReload={setReload} />}
     </>
   )
 }

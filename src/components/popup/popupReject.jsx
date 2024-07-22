@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import CancelIcon from '@mui/icons-material/Cancel';
 
-const PopupReject = ({ handleClose, course }) => {
+const PopupReject = ({ handleClose, course, reload, setReload }) => {
   return (
     <WrapperPopup>
       <div className="popup-box">

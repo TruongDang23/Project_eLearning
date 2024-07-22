@@ -1,17 +1,19 @@
 //This is information screen of admin
-import { GeneralFooter, HeaderAfterLogin } from '~/components/general'
+import { GeneralFooter, GeneralHeader } from '~/components/general'
 import PublishedCourse from './PublishedCourse'
 import MonitoringCourse from './Monitoring'
 import TerminatedCourse from './Terminated'
 import styled from 'styled-components'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function ManageCourse() {
   const token = localStorage.getItem('token')
   const userAuth = localStorage.getItem('userAuth')
-
+  const [reload, setReload] = useState(false)
   const [activeTab, setActiveTab] = useState('Tab1');
+  const navigate = useNavigate()
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -32,9 +34,21 @@ function ManageCourse() {
         setPub(response.data)
       })
       .catch(error => {
-        alert('Lỗi đọc dữ liệu: ' + error)
+        //Server shut down
+        if (error.message === 'Network Error')
+          navigate('/server-shutdown')
+        //Connection error
+        if (error.response.status === 500)
+          navigate('/500error')
+        //Unauthorized. Need login
+        if (error.response.status === 401)
+          navigate('/401error')
+        //Forbidden. Token != userAuth
+        if (error.response.status === 403)
+          navigate('/403error')
       })
-  }, [token, userAuth])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reload])
 
   useEffect(() => {
     axios.get('http://localhost:3000/c/getMonitorCourse', {
@@ -47,9 +61,21 @@ function ManageCourse() {
         setMonitor(response.data)
       })
       .catch(error => {
-        alert('Lỗi đọc dữ liệu: ' + error)
+        //Server shut down
+        if (error.message === 'Network Error')
+          navigate('/server-shutdown')
+        //Connection error
+        if (error.response.status === 500)
+          navigate('/500error')
+        //Unauthorized. Need login
+        if (error.response.status === 401)
+          navigate('/401error')
+        //Forbidden. Token != userAuth
+        if (error.response.status === 403)
+          navigate('/403error')
       })
-  }, [token, userAuth])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reload])
 
   useEffect(() => {
     axios.get('http://localhost:3000/c/getTerminateCourse', {
@@ -62,14 +88,26 @@ function ManageCourse() {
         setTer(response.data)
       })
       .catch(error => {
-        alert('Lỗi đọc dữ liệu: ' + error)
+        //Server shut down
+        if (error.message === 'Network Error')
+          navigate('/server-shutdown')
+        //Connection error
+        if (error.response.status === 500)
+          navigate('/500error')
+        //Unauthorized. Need login
+        if (error.response.status === 401)
+          navigate('/401error')
+        //Forbidden. Token != userAuth
+        if (error.response.status === 403)
+          navigate('/403error')
       })
-  }, [token, userAuth])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reload])
 
   return (
     <>
       <div>
-        <HeaderAfterLogin />
+        <GeneralHeader />
         <main>
           <Container>
             <div className="tabs">
@@ -94,9 +132,9 @@ function ManageCourse() {
                 </button>
               </div>
               <div className="tab-content">
-                {activeTab === 'Tab1' && <PublishedCourse course={ pub } />}
-                {activeTab === 'Tab2' && <MonitoringCourse course={ monitor } />}
-                {activeTab === 'Tab3' && <TerminatedCourse course={ ter } />}
+                {activeTab === 'Tab1' && <PublishedCourse course={ pub } reload={reload} setReload={setReload}/>}
+                {activeTab === 'Tab2' && <MonitoringCourse course={ monitor } reload={reload} setReload={setReload}/>}
+                {activeTab === 'Tab3' && <TerminatedCourse course={ ter } reload={reload} setReload={setReload}/>}
               </div>
             </div>
           </Container>
@@ -118,7 +156,7 @@ const Container = styled.div`
 	border-radius: 8px;
 	overflow: hidden;
 	min-height: 349px;
-	max-height: 600px;
+	max-height: 800px;
 	overflow-y: auto;
 	}
 
