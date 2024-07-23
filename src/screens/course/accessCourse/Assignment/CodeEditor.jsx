@@ -4,11 +4,17 @@ import { Editor } from "@monaco-editor/react";
 import { CODE_SNIPPETS } from "./Constants";
 import LanguageSelector from "./LanguageSelector";
 import Output from "./Output";
+import { useSearchParams, useParams } from "react-router-dom";
 
 function CodeEditor({ testcases }) {
   const editorRef = useRef();
   const [value, setValue] = useState("");
   const [language, setLanguage] = useState("python");
+  const params = useParams()
+  const [searchParam] = useSearchParams()
+  const page = searchParam.get('page')
+  const title = params.courseID + params.id + page
+  const code = localStorage.getItem(title)
 
   const onMount = (editor) => {
     editorRef.current = editor;
@@ -31,7 +37,7 @@ function CodeEditor({ testcases }) {
         defaultLanguage={language}
         defaultValue="// Write your code here"
         onMount={onMount}
-        value={value}
+        value={(code === null) ? value : code}
         onChange={(value) => setValue(value)}
       />
       <Output editorRef={editorRef} language={language} testcases={testcases} />

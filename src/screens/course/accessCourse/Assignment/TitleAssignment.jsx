@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import ArrowBackSharpIcon from "@mui/icons-material/ArrowBackSharp";
 import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function TitleAssignment({ name }) {
   const navigate = useNavigate()
+  const params = useParams()
   return (
     <TitleAssignmentWrapper>
-      <Button onClick={() => {navigate(-1)}}>
+      <Button onClick={() => {
+        navigate(`/course/details/${params.courseID}`)
+      }}>
         <ArrowBackSharpIcon />
       </Button>
       <h1>{name}</h1>

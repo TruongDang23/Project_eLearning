@@ -10,12 +10,10 @@ function MainContentAccessCourse({ accessCourseData, params, setProgress }) {
   const source = params.get("source")
   const id = params.get("id")
   const navigate = useNavigate()
+
   let quizz;
-  let assignment;
-  let test = {
-    course: accessCourseData.courseID,
-    assign: ''
-  }
+  let assignment
+
   if (type === 'quizz') {
     for (const chapter of accessCourseData.chapters) {
       quizz = chapter.lectures.find(lecture => lecture.id == id);
@@ -27,8 +25,7 @@ function MainContentAccessCourse({ accessCourseData, params, setProgress }) {
     for (const chapter of accessCourseData.chapters) {
       assignment = chapter.lectures.find(lecture => lecture.id == id);
       if (assignment) {
-        test.assign = assignment
-        localStorage.setItem('assignment', JSON.stringify(test))
+        localStorage.setItem('assignment', JSON.stringify(assignment))
         break;
       }
     }

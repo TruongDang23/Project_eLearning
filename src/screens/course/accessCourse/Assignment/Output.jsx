@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import styled from "styled-components";
 import { useState } from "react";
 import {
@@ -8,6 +9,7 @@ import {
   Snackbar
 } from "@mui/material";
 import axios from "axios";
+import { useParams, useSearchParams } from "react-router-dom";
 
 function Output({ editorRef, language, testcases }) {
   const [output, setOutput] = useState(null);
@@ -16,10 +18,15 @@ function Output({ editorRef, language, testcases }) {
   const [errorMessage, setErrorMessage] = useState("");
   const token = localStorage.getItem('token')
   const userAuth = localStorage.getItem('userAuth')
+  const params = useParams()
+  const [searchParam] = useSearchParams()
+
+  const title = params.courseID + params.id + searchParam.get('page')
 
   const runCode = async () => {
     const sourceCode = editorRef.current.getValue();
     if (!sourceCode) return;
+    localStorage.setItem(title, sourceCode)
 
     try
     {
@@ -81,7 +88,11 @@ function Output({ editorRef, language, testcases }) {
         >
           {output
             ? output
-            : 'Click "Run Code" to see the output here'}
+            : (
+              <>
+                <p style={{ color:'#e3e3e3' }}>Click "Run Code" to see the output here</p>
+              </>
+            )}
         </Box>
         <Snackbar
           open={isError && !!errorMessage}

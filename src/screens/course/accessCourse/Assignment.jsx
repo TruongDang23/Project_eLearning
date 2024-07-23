@@ -4,15 +4,23 @@ import TitleAssignment from "./Assignment/TitleAssignment";
 import styled from "styled-components";
 import AssignmentContent from "./Assignment/AssignmentContent";
 import { Pagination } from "@mui/material";
+import { useSearchParams } from "react-router-dom";
 
-function Assignment({ assignmentData }) {
+function Assignment() {
+  const assignmentData = JSON.parse(localStorage.getItem('assignment'))
+
   const { name, topics } = assignmentData;
-  const test = JSON.parse(localStorage.getItem('assignment'))
-  console.log(test.assign)
+
   const [page, setPage] = useState(1);
+
+  // eslint-disable-next-line no-unused-vars
+  const [searchParams, setSearchParams] = useSearchParams({
+    page: ''
+  })
 
   const handleChange = (event, value) => {
     setPage(value);
+    setSearchParams({ page: value })
   };
 
   return (
