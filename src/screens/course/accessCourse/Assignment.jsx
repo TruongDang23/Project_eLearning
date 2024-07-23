@@ -7,7 +7,8 @@ import { Pagination } from "@mui/material";
 
 function Assignment({ assignmentData }) {
   const { name, topics } = assignmentData;
-
+  const test = JSON.parse(localStorage.getItem('assignment'))
+  console.log(test.assign)
   const [page, setPage] = useState(1);
 
   const handleChange = (event, value) => {

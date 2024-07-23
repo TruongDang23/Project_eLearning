@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import ArrowBackSharpIcon from "@mui/icons-material/ArrowBackSharp";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function TitleAssignment({ name }) {
+  const navigate = useNavigate()
   return (
     <TitleAssignmentWrapper>
-      <Button>
+      <Button onClick={() => {navigate(-1)}}>
         <ArrowBackSharpIcon />
       </Button>
       <h1>{name}</h1>
