@@ -352,7 +352,7 @@ module.exports = (connMysql, connMongo) => {
   const callAPICompile = async(language, sourceCode, testcase) => {
     try {
       const response = await axios.post('https://emkc.org/api/v2/piston/execute', {
-        language: 'c',
+        language,
         version: '*',
         files: [
           {
@@ -795,9 +795,9 @@ module.exports = (connMysql, connMongo) => {
   router.post('/acceptAssignment', async (req, res) => {
     const { language, sourceCode, testcases } = req.body
     let wrongAns = null
-
+    let lang = (language === 'cplus') ? 'c++' : language
     for (const test of testcases) {
-      const output = await callAPICompile(language, sourceCode, test.case)
+      const output = await callAPICompile(lang, sourceCode, test.case)
       const result = await compareResult(output, test.key)
       if (!result)
       {

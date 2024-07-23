@@ -3,12 +3,10 @@ import { useState } from "react";
 import {
   Box,
   Button,
-  Typography,
   CircularProgress,
   Alert,
   Snackbar
 } from "@mui/material";
-import { executeCode } from "./Api";
 import axios from "axios";
 
 function Output({ editorRef, language, testcases }) {
@@ -22,18 +20,6 @@ function Output({ editorRef, language, testcases }) {
   const runCode = async () => {
     const sourceCode = editorRef.current.getValue();
     if (!sourceCode) return;
-    // try {
-    //   setIsLoading(true);
-    //   const { run: result } = await executeCode(language, sourceCode);
-    //   setOutput(result.output.split("\n"));
-    //   setIsError(!!result.stderr);
-    // } catch (error) {
-    //   console.error(error);
-    //   setErrorMessage(error.message || "Unable to run code");
-    //   setIsError(true);
-    // } finally {
-    //   setIsLoading(false);
-    // }
 
     try
     {
@@ -67,7 +53,7 @@ function Output({ editorRef, language, testcases }) {
       setIsLoading(false);
     }
   };
-  console.log(output)
+
   return (
     <OutputWrapper>
       <Box sx={{ width: "100%" }}>
@@ -88,7 +74,9 @@ function Output({ editorRef, language, testcases }) {
             borderColor: isError ? "error.main" : "grey.500",
             overflow: "auto",
             backgroundColor: "#1e1e1e",
-            fontSize: "1.6rem"
+            fontSize: "1.6rem",
+            whiteSpace: "pre-wrap",
+            lineHeight: "2rem"
           }}
         >
           {output
