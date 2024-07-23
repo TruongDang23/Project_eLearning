@@ -12,7 +12,7 @@ export const executeCode = async (language, sourceCode) => {
   const response = await API.post("/execute", {
     // language: language,
     // version: LANGUAGE_VERSIONS[language],
-    language: 'c',
+    language: 'python',
     version: '*',
     files: [
       {

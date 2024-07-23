@@ -794,11 +794,25 @@ module.exports = (connMysql, connMongo) => {
   // router.post('/acceptAssignment', verifyToken, async (req, res) => {
   router.post('/acceptAssignment', async (req, res) => {
     const { language, sourceCode, testcases } = req.body
+    let wrongAns = null
+
     for (const test of testcases) {
       const output = await callAPICompile(language, sourceCode, test.case)
       const result = await compareResult(output, test.key)
-      console.log(result)
+      if (!result)
+      {
+        wrongAns = {
+          testcase: test.case,
+          expected: test.key,
+          found: output
+        }
+        break
+      }
     }
+    if (wrongAns == null)
+      res.send(true)
+    else
+      res.send(wrongAns)
   })
 
   return router

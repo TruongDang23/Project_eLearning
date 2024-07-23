@@ -49,12 +49,16 @@ function Output({ editorRef, language, testcases }) {
       )
       if (res.data === true)
       {
-        alert('Action Successfully')
+        setOutput('Accepted');
+        setIsError(false);
       }
       else
-        alert('Action Failed')
-      // setOutput(result.output.split("\n"));
-      // setIsError(!!result.stderr);
+      {
+        setOutput('Wrong answer at testcase: ' + res.data.testcase + '\n' +
+          'Expected: ' + res.data.expected + '\n' +
+          'Found: ' + res.data.found );
+        setIsError(true);
+      }
     }
     catch (error) {
       setErrorMessage(error.message || "Unable to run code");
@@ -63,7 +67,7 @@ function Output({ editorRef, language, testcases }) {
       setIsLoading(false);
     }
   };
-
+  console.log(output)
   return (
     <OutputWrapper>
       <Box sx={{ width: "100%" }}>
@@ -79,19 +83,16 @@ function Output({ editorRef, language, testcases }) {
           sx={{
             height: "10rem",
             p: 2,
-            color: isError ? "error.main" : "#e3e3e3",
+            color: isError ? "error.main" : "#4CAF50",
             borderRadius: 1,
             borderColor: isError ? "error.main" : "grey.500",
             overflow: "auto",
-            backgroundColor: "#1e1e1e"
+            backgroundColor: "#1e1e1e",
+            fontSize: "1.6rem"
           }}
         >
           {output
-            ? output.map((line, i) => (
-              <Typography key={i} variant="subtitle1" component="p">
-                {line}
-              </Typography>
-            ))
+            ? output
             : 'Click "Run Code" to see the output here'}
         </Box>
         <Snackbar
