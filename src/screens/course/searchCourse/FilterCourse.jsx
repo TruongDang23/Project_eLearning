@@ -9,8 +9,10 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import { Box, Button, Menu, MenuItem, Typography } from "@mui/material";
 
 import StarRating from "~/components/general/Other/StarRating";
+import { languages } from "~/constants/listLanguage";
 
 function FilterCourse(searchCourseData) {
   return (
@@ -107,8 +109,13 @@ function FilterCourse(searchCourseData) {
           <h3>Language</h3>
         </AccordionSummary>
         <AccordionDetails>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
+          <select id="language" className="language-select">
+            {languages.map((language, index) => (
+              <option key={index} value={language}>
+                {language}
+              </option>
+            ))}
+          </select>
         </AccordionDetails>
       </Accordion>
 
@@ -240,6 +247,23 @@ const FilterCourseWrapper = styled.aside`
     #number {
       margin-left: 20px;
       line-height: 1.6;
+    }
+  } 
+  .language-select {
+    width: 100%;
+    height: 4rem;
+    padding: 8px;
+    font-size: 1.6rem;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, border-width;
+    &:focus {
+      border-color: #187BCE;
+      border-width: 2px;
+      outline: none;
     }
   }
 `;
