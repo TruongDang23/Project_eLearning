@@ -8,13 +8,13 @@ import { useSearchParams, useParams } from "react-router-dom";
 
 function CodeEditor({ testcases }) {
   const editorRef = useRef();
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState("// Write your code here");
   const [language, setLanguage] = useState("python");
   const params = useParams()
   const [searchParam] = useSearchParams()
   const page = searchParam.get('page')
   const title = params.courseID + params.id + page
-  const code = localStorage.getItem(title)
+  const code = JSON.parse(localStorage.getItem(title))
 
   const onMount = (editor) => {
     editorRef.current = editor;
@@ -37,8 +37,8 @@ function CodeEditor({ testcases }) {
         defaultLanguage={language}
         defaultValue="// Write your code here"
         onMount={onMount}
-        value={(code === null) ? value : code}
-        onChange={(value) => setValue(value)}
+        value={(code === null) ? value : code.sourceCode}
+        // onChange={(value) => setValue(value)}
       />
       <Output editorRef={editorRef} language={language} testcases={testcases} />
     </CodeEditorWrapper>

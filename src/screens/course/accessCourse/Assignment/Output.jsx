@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -12,21 +12,33 @@ import axios from "axios";
 import { useParams, useSearchParams } from "react-router-dom";
 
 function Output({ editorRef, language, testcases }) {
-  const [output, setOutput] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [correct, setCorrect] = useState(0)
   const token = localStorage.getItem('token')
   const userAuth = localStorage.getItem('userAuth')
+  const num_topics = JSON.parse(localStorage.getItem('assignment')).topics.length
   const params = useParams()
   const [searchParam] = useSearchParams()
-
   const title = params.courseID + params.id + searchParam.get('page')
+  const [output, setOutput] = useState();
 
+  useEffect(() => {
+    const code = JSON.parse(localStorage.getItem(title))
+    const isNull = (code === null) ? null : code.result
+    if (isNull === 'Accepted') {
+      setIsError(false)
+    } else if (isNull !== null) {
+      setIsError(true)
+    }
+    setOutput(isNull)
+  }, [title])
+
+  console.log((correct*100/num_topics).toFixed(1))
   const runCode = async () => {
     const sourceCode = editorRef.current.getValue();
     if (!sourceCode) return;
-    localStorage.setItem(title, sourceCode)
 
     try
     {
@@ -42,14 +54,19 @@ function Output({ editorRef, language, testcases }) {
       )
       if (res.data === true)
       {
-        setOutput('Accepted');
+        let result = 'Accepted'
+        localStorage.setItem(title, JSON.stringify({ sourceCode, result }))
+        setOutput(result);
         setIsError(false);
+        setCorrect(correct+1)
       }
       else
       {
-        setOutput('Wrong answer at testcase: ' + res.data.testcase + '\n' +
-          'Expected: ' + res.data.expected + '\n' +
-          'Found: ' + res.data.found );
+        let result = 'Wrong answer at testcase: ' + res.data.testcase + '\n' +
+                      'Expected: ' + res.data.expected + '\n' +
+                      'Found: ' + res.data.found
+        localStorage.setItem(title, JSON.stringify({ sourceCode, result }))
+        setOutput(result);
         setIsError(true);
       }
     }

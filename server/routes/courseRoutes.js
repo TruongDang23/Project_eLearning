@@ -791,8 +791,7 @@ module.exports = (connMysql, connMongo) => {
     }
   })
 
-  // router.post('/acceptAssignment', verifyToken, async (req, res) => {
-  router.post('/acceptAssignment', async (req, res) => {
+  router.post('/acceptAssignment', verifyToken, async (req, res) => {
     const { language, sourceCode, testcases } = req.body
     let wrongAns = null
     let lang = (language === 'cplus') ? 'c++' : language

@@ -40,7 +40,7 @@ function MainContentAccessCourse({ accessCourseData, params, setProgress }) {
       ) : type === "quizz" ? (
         <Quizz quizzData={quizz} setProgress={setProgress}/>
       ) : (
-        navigate(`/course/${accessCourseData.courseID}/assignment/${id}`)
+        navigate(`/course/${accessCourseData.courseID}/assignment/${id}?page=1`)
       )}
       <TabviewAccessCourse accessCourseData={accessCourseData} />
     </MainAccessCourseWrapper>
