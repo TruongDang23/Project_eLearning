@@ -144,8 +144,20 @@ function FilterCourse(searchCourseData) {
           <h3>Method</h3>
         </AccordionSummary>
         <AccordionDetails>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
+          <FormControl>
+            <RadioGroup>
+              <FormControlLabel
+                value="Supervised with AI camera"
+                control={<Radio />}
+                label={<p>Supervised with AI camera</p>}
+              />
+              <FormControlLabel
+                value="Self-directed study"
+                control={<Radio />}
+                label={<p>Self-directed study</p>}
+              />
+            </RadioGroup>
+          </FormControl>
         </AccordionDetails>
       </Accordion>
       <Accordion
@@ -173,8 +185,20 @@ function FilterCourse(searchCourseData) {
           <h3>Price</h3>
         </AccordionSummary>
         <AccordionDetails>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
+          <FormControl>
+            <RadioGroup>
+              <FormControlLabel
+                value="Free"
+                control={<Radio />}
+                label={<p>Free</p>}
+              />
+              <FormControlLabel
+                value="Paid"
+                control={<Radio />}
+                label={<p>Paid</p>}
+              />
+            </RadioGroup>
+          </FormControl>
         </AccordionDetails>
       </Accordion>
       <Accordion
@@ -202,8 +226,25 @@ function FilterCourse(searchCourseData) {
           <h3>Program</h3>
         </AccordionSummary>
         <AccordionDetails>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
+          <FormControl>
+            <RadioGroup>
+              <FormControlLabel
+                value="Degree"
+                control={<Radio />}
+                label={<p>Degree</p>}
+              />
+              <FormControlLabel
+                value="Certificate"
+                control={<Radio />}
+                label={<p>Certificate</p>}
+              />
+              <FormControlLabel
+                value="Knowledge"
+                control={<Radio />}
+                label={<p>Knowledge</p>}
+              />
+            </RadioGroup>
+          </FormControl>
         </AccordionDetails>
       </Accordion>
     </FilterCourseWrapper>
@@ -229,6 +270,12 @@ const FilterCourseWrapper = styled.aside`
     margin: 0;
   }
 
+  p {
+    font-size: 1.6rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+
   h3 {
     font-size: 1.6rem;
     font-weight: 700;
@@ -248,7 +295,7 @@ const FilterCourseWrapper = styled.aside`
       margin-left: 20px;
       line-height: 1.6;
     }
-  } 
+  }
   .language-select {
     width: 100%;
     height: 4rem;
@@ -261,7 +308,7 @@ const FilterCourseWrapper = styled.aside`
     box-sizing: border-box;
     transition: border-color 0.3s, border-width;
     &:focus {
-      border-color: #187BCE;
+      border-color: #187bce;
       border-width: 2px;
       outline: none;
     }
