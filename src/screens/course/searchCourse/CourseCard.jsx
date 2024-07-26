@@ -1,4 +1,7 @@
+import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
+import Popover from "@mui/material/Popover";
+import DoneRoundedIcon from "@mui/icons-material/DoneRounded";
 import StarRating from "~/components/general/Other/StarRating";
 
 function CourseCard({ course }) {
@@ -15,11 +18,30 @@ function CourseCard({ course }) {
     num_reviews,
     num_lectures,
     course_for,
+    targets,
   } = course;
+
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handlePopoverOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handlePopoverClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
 
   return (
     <CourseCardWrapper>
-      <div className="course-card">
+      <div
+        className="course-card"
+        aria-owns={open ? "mouse-over-popover" : undefined}
+        aria-haspopup="true"
+        onMouseEnter={handlePopoverOpen}
+        onMouseLeave={handlePopoverClose}
+      >
         <div className="course-card__img">
           <img src={image_introduce} alt="course" />
         </div>
@@ -65,6 +87,38 @@ function CourseCard({ course }) {
           )}
         </div>
       </div>
+      <Popover
+        id="mouse-over-popover"
+        sx={{
+          pointerEvents: "none",
+        }}
+        open={open}
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        onClose={handlePopoverClose}
+        disableRestoreFocus
+        disableScrollLock={true}
+      >
+        <PopoverContent>
+          <h3>What you will learn:</h3>
+          <ul>
+            {targets.map((target, index) => (
+              <li key={index}>
+                <DoneRoundedIcon />
+                {target}
+              </li>
+            ))}
+          </ul>
+          <button>Buy now</button>
+        </PopoverContent>
+      </Popover>
     </CourseCardWrapper>
   );
 }
@@ -77,6 +131,54 @@ const fadeIn = keyframes`
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+`;
+
+const PopoverContent = styled.div`
+  padding: 1rem;
+  h3 {
+    color: #2d2f31;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-in-out;
+  }
+  ul {
+    list-style-type: none;
+    animation: fadeInUp 0.5s ease-in-out;
+    li {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      svg {
+        color: #1971c2;
+        font-size: 1.6rem;
+        transition: transform 0.3s ease;
+      }
+      &:hover {
+        svg {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    background-color: #1971c2;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+    &:hover {
+      background-color: #155b96;
+    }
   }
 `;
 
