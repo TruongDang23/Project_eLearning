@@ -769,8 +769,6 @@ module.exports = (connMysql, connMongo) => {
   router.post('/updateNewProgress', verifyToken, async (req, res) => {
     const { userID, lectureID, courseID, percent } = req.body.progress
 
-    console.log('userID: ', userID)
-    console.log('Data: ', lectureID, courseID, percent)
     if (await isEnrolledCourse(courseID, userID) && percent > 0) {
       const time = formatDateTime(new (Date))
       connMysql.getConnection((err, connection) => {
