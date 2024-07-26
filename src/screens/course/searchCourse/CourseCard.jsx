@@ -31,6 +31,10 @@ function CourseCard({ course }) {
     setAnchorEl(null);
   };
 
+  const handleOnCick = () => {
+    console.log("Clicked");
+  };
+
   const open = Boolean(anchorEl);
 
   return (
@@ -41,6 +45,7 @@ function CourseCard({ course }) {
         aria-haspopup="true"
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
+        onClick={handleOnCick}
       >
         <div className="course-card__img">
           <img src={image_introduce} alt="course" />
@@ -95,12 +100,12 @@ function CourseCard({ course }) {
         open={open}
         anchorEl={anchorEl}
         anchorOrigin={{
-          vertical: "top",
-          horizontal: "left",
+          vertical: "center",
+          horizontal: "center",
         }}
         transformOrigin={{
           vertical: "top",
-          horizontal: "right",
+          horizontal: "left",
         }}
         onClose={handlePopoverClose}
         disableRestoreFocus
