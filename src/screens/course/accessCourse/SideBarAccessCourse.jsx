@@ -6,7 +6,8 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
-import QuizIcon from "@mui/icons-material/Quiz";
+import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined';
+import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
@@ -17,7 +18,7 @@ function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
   const handleExpansion = (panel) => (event, isExpanded) => {
     setExpanded((prevExpanded) => ({
       ...prevExpanded,
-      [panel]: isExpanded,
+      [panel]: isExpanded
     }));
   };
 
@@ -38,8 +39,8 @@ function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
               fontSize: "1rem !important",
               padding: "0px 20px",
               "&:before": {
-                display: "none",
-              },
+                display: "none"
+              }
             }}
           >
             <AccordionSummary
@@ -49,8 +50,8 @@ function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
               sx={{
                 padding: "10px 0",
                 "& .MuiAccordionSummary-content": {
-                  margin: 0,
-                },
+                  margin: 0
+                }
               }}
             >
               <h3>Chapter {chapter.chapter_name}</h3>
@@ -64,7 +65,7 @@ function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
                       setProgress((prevProgress) => ({
                         ...prevProgress,
                         lectureID: lecture.id,
-                        percent: 0,
+                        percent: 0
                       }));
                     }}
                   >
@@ -81,7 +82,7 @@ function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
                                   setParams({
                                     id: lecture.id,
                                     type: lecture.type,
-                                    source: lecture.source,
+                                    source: lecture.source
                                   });
                                 }}
                               >
@@ -96,29 +97,44 @@ function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
                                   setParams({
                                     id: lecture.id,
                                     type: lecture.type,
-                                    source: lecture.source,
+                                    source: lecture.source
                                   });
                                 }}
                               >
                                 {lecture.name}
                               </a>
                             </>
-                          ) : (
+                          ) : lecture.type === 'quizz' ? (
                             <>
-                              <QuizIcon />
+                              <QuizOutlinedIcon sx={{ fontSize:'large' }} />
                               <a
                                 onClick={() => {
                                   setParams({
                                     id: lecture.id,
                                     type: lecture.type,
-                                    source: lecture.source,
+                                    source: lecture.source
                                   });
                                 }}
                               >
                                 {lecture.name}
                               </a>
                             </>
-                          )}
+                          ) : lecture.type === 'assignment' ? (
+                            <>
+                              <AssignmentOutlinedIcon sx={{ fontSize:'large' }}/>
+                              <a
+                                onClick={() => {
+                                  setParams({
+                                    id: lecture.id,
+                                    type: lecture.type,
+                                    source: lecture.source
+                                  });
+                                }}
+                              >
+                                {lecture.name}
+                              </a>
+                            </>
+                          ) : null}
                         </h4>
                       </div>
                       <div style={{ flex: 0.1 }}>
@@ -130,7 +146,7 @@ function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
                                   <CheckCircleIcon
                                     style={{
                                       color: "#599cde",
-                                      fontSize: "30px",
+                                      fontSize: "30px"
                                     }}
                                   />
                                 ) : (
@@ -138,7 +154,7 @@ function SideBarAccessCourse({ accessCourseData, setParams, setProgress }) {
                                     value={learn.progress}
                                     styles={{
                                       root: { width: 25 },
-                                      backgroundColor: "#f9f9f9",
+                                      backgroundColor: "#f9f9f9"
                                     }}
                                   />
                                 )}

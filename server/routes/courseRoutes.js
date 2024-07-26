@@ -3,6 +3,8 @@
 const express = require('express')
 const cors = require('cors')
 
+const axios = require('axios');
+
 //import verifyToken fuction
 const { verifyToken } = require('../authenticate')
 
@@ -345,6 +347,29 @@ module.exports = (connMysql, connMongo) => {
         resolve(false)
       }
     })
+  }
+
+  const callAPICompile = async(language, sourceCode, testcase) => {
+    try {
+      const response = await axios.post('https://emkc.org/api/v2/piston/execute', {
+        language,
+        version: '*',
+        files: [
+          {
+            content: sourceCode
+          }
+        ],
+        stdin: testcase
+      });
+      return response.data.run.output.trim();
+    }
+    catch (error) {
+      return 'error'
+    }
+  }
+
+  const compareResult = async(output, key) => {
+    return (output === key) ? true : false
   }
 
   // Define user-related routes
@@ -765,5 +790,29 @@ module.exports = (connMysql, connMongo) => {
       })
     }
   })
+
+  router.post('/acceptAssignment', verifyToken, async (req, res) => {
+    const { language, sourceCode, testcases } = req.body
+    let wrongAns = null
+    let lang = (language === 'cplus') ? 'c++' : language
+    for (const test of testcases) {
+      const output = await callAPICompile(lang, sourceCode, test.case)
+      const result = await compareResult(output, test.key)
+      if (!result)
+      {
+        wrongAns = {
+          testcase: test.case,
+          expected: test.key,
+          found: output
+        }
+        break
+      }
+    }
+    if (wrongAns == null)
+      res.send(true)
+    else
+      res.send(wrongAns)
+  })
+
   return router
 }
