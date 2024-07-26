@@ -9,7 +9,7 @@ import {
   Snackbar
 } from "@mui/material";
 import axios from "axios";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams, useNavigate } from "react-router-dom";
 
 function Output({ editorRef, language, testcases }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,11 +18,39 @@ function Output({ editorRef, language, testcases }) {
   const [correct, setCorrect] = useState(0)
   const token = localStorage.getItem('token')
   const userAuth = localStorage.getItem('userAuth')
+  const userData = JSON.parse(localStorage.getItem('userAuth'))
   const num_topics = JSON.parse(localStorage.getItem('assignment')).topics.length
   const params = useParams()
   const [searchParam] = useSearchParams()
   const title = params.courseID + params.id + searchParam.get('page')
   const [output, setOutput] = useState();
+  const navigate = useNavigate()
+
+  const [progress, setProgress] = useState({
+    userID: userData.userID,
+    courseID: params.courseID,
+    lectureID: params.id,
+    percent: 0
+  })
+
+  const handleProgress = () => {
+    const code = JSON.parse(localStorage.getItem(title))
+
+    if (code !== null && code.result === 'Accepted') {
+      setCorrect(correct)
+    }
+    else {
+      setCorrect(prevCorrect => prevCorrect + 1)
+    }
+  }
+
+  useEffect(() => {
+    console.log('correct value changed:', correct)
+    setProgress((prev) => ({
+      ...prev,
+      percent: (correct*100 / num_topics).toFixed(1)
+    }))
+  }, [correct]);
 
   useEffect(() => {
     const code = JSON.parse(localStorage.getItem(title))
@@ -35,7 +63,35 @@ function Output({ editorRef, language, testcases }) {
     setOutput(isNull)
   }, [title])
 
-  console.log((correct*100/num_topics).toFixed(1))
+  useEffect(() => {
+    axios.post('http://localhost:3000/c/updateNewProgress',
+      {
+        progress
+      },
+      {
+        headers: {
+          'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
+          'user': userAuth
+        }
+      })
+      .catch(error => {
+        //Server shut down
+        if (error.message === 'Network Error')
+          navigate('/server-shutdown')
+        //Connection error
+        if (error.response.status === 500)
+          navigate('/500error')
+        //Unauthorized. Need login
+        if (error.response.status === 401)
+          navigate('/401error')
+        //Forbidden. Token != userAuth
+        if (error.response.status === 403)
+          navigate('/403error')
+      })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [progress.percent])
+
+  console.log(progress)
   const runCode = async () => {
     const sourceCode = editorRef.current.getValue();
     if (!sourceCode) return;
@@ -54,11 +110,11 @@ function Output({ editorRef, language, testcases }) {
       )
       if (res.data === true)
       {
+        handleProgress()
         let result = 'Accepted'
         localStorage.setItem(title, JSON.stringify({ sourceCode, result }))
-        setOutput(result);
-        setIsError(false);
-        setCorrect(correct+1)
+        setOutput(result)
+        setIsError(false)
       }
       else
       {
