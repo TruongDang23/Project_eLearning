@@ -3,11 +3,11 @@ import AssignmentTopic from "./AssignmentTopic";
 import CodeEditor from "./CodeEditor";
 
 function AssignmentContent({ title, question, sample, testcases }) {
-  console.log("Title: " + title);
+
   return (
     <AssignmentContentWrapper>
       <AssignmentTopic title={title} question={question} sample={sample} />
-      <CodeEditor />
+      <CodeEditor testcases={testcases} />
     </AssignmentContentWrapper>
   );
 }

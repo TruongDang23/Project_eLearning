@@ -1,31 +1,94 @@
+/* eslint-disable react/no-unescaped-entities */
 import styled from "styled-components";
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Box,
   Button,
-  Typography,
   CircularProgress,
   Alert,
-  Snackbar,
+  Snackbar
 } from "@mui/material";
-import { executeCode } from "./Api";
+import axios from "axios";
+import { useParams, useSearchParams } from "react-router-dom";
 
-function Output({ editorRef, language }) {
-  const [output, setOutput] = useState(null);
+function Output({ editorRef, language, testcases, setProgress }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("")
+  const token = localStorage.getItem('token')
+  const userAuth = localStorage.getItem('userAuth')
+  const num_topics = JSON.parse(localStorage.getItem('assignment')).topics.length
+  const params = useParams()
+  const [searchParam] = useSearchParams()
+  const title = params.courseID + params.id + searchParam.get('page')
+  const [output, setOutput] = useState();
+
+
+  const handleProgress = () => {
+    let num_correct = 0
+    for (let i = 1; i <= num_topics; i++) {
+      let key = params.courseID + params.id + i
+      let value = JSON.parse(localStorage.getItem(key))
+
+      if (value !== null) {
+        if (value.result === 'Accepted') {
+          num_correct = num_correct + 1
+        }
+      }
+    }
+
+    setProgress((prev) => ({
+      ...prev,
+      percent: (num_correct*100 / num_topics).toFixed(1)
+    }))
+  }
+
+  useEffect(() => {
+    const code = JSON.parse(localStorage.getItem(title))
+    const isNull = (code === null) ? null : code.result
+    if (isNull === 'Accepted') {
+      setIsError(false)
+    } else if (isNull !== null) {
+      setIsError(true)
+    }
+    setOutput(isNull)
+  }, [title])
 
   const runCode = async () => {
     const sourceCode = editorRef.current.getValue();
     if (!sourceCode) return;
-    try {
-      setIsLoading(true);
-      const { run: result } = await executeCode(language, sourceCode);
-      setOutput(result.output.split("\n"));
-      setIsError(!!result.stderr);
-    } catch (error) {
-      console.error(error);
+
+    try
+    {
+      setIsLoading(true)
+      const res = await axios.post('http://localhost:3000/c/acceptAssignment',
+        { language, sourceCode, testcases },
+        {
+          headers: {
+            'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
+            'user': userAuth
+          }
+        }
+      )
+      if (res.data === true)
+      {
+        let result = 'Accepted'
+        localStorage.setItem(title, JSON.stringify({ sourceCode, result }))
+        handleProgress()
+        setOutput(result)
+        setIsError(false)
+      }
+      else
+      {
+        let result = 'Wrong answer at testcase: ' + res.data.testcase + '\n' +
+                      'Expected: ' + res.data.expected + '\n' +
+                      'Found: ' + res.data.found
+        localStorage.setItem(title, JSON.stringify({ sourceCode, result }))
+        setOutput(result);
+        setIsError(true);
+      }
+    }
+    catch (error) {
       setErrorMessage(error.message || "Unable to run code");
       setIsError(true);
     } finally {
@@ -48,20 +111,23 @@ function Output({ editorRef, language }) {
           sx={{
             height: "10rem",
             p: 2,
-            color: isError ? "error.main" : "#e3e3e3",
+            color: isError ? "error.main" : "#4CAF50",
             borderRadius: 1,
             borderColor: isError ? "error.main" : "grey.500",
             overflow: "auto",
-            backgroundColor: isError ? "error.light" : "#1e1e1e",
+            backgroundColor: "#1e1e1e",
+            fontSize: "1.6rem",
+            whiteSpace: "pre-wrap",
+            lineHeight: "2rem"
           }}
         >
           {output
-            ? output.map((line, i) => (
-                <Typography key={i} variant="subtitle1" component="p">
-                  {line}
-                </Typography>
-              ))
-            : 'Click "Run Code" to see the output here'}
+            ? output
+            : (
+              <>
+                <p style={{ color:'#e3e3e3' }}>Click "Run Code" to see the output here</p>
+              </>
+            )}
         </Box>
         <Snackbar
           open={isError && !!errorMessage}
