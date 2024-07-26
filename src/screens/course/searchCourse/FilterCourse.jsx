@@ -80,6 +80,17 @@ function FilterCourse(searchCourseData) {
                   </div>
                 }
               />
+
+              <FormControlLabel
+                value="1"
+                control={<Radio />}
+                label={
+                  <div className="star-value">
+                    <StarRating rating_star={1} />
+                    <span id="number">1 and up</span>
+                  </div>
+                }
+              />
             </RadioGroup>
           </FormControl>
         </AccordionDetails>
@@ -295,6 +306,35 @@ const FilterCourseWrapper = styled.aside`
       margin-left: 20px;
       line-height: 1.6;
     }
+
+    @media screen and (max-width: 1440px) {
+      span {
+        font-size: 1.4rem;
+      }
+      #number {
+        font-size: 1.4rem;
+      }
+    }
+
+    @media screen and (max-width: 978px) {
+      flex-direction: column;
+      align-items: flex-start;
+      span {
+        margin-top: 0;
+      }
+      #number {
+        margin-left: 0;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      span {
+        font-size: 1.4rem;
+      }
+      #number {
+        font-size: 1.4rem;
+      }
+    }
   }
   .language-select {
     width: 100%;
@@ -312,6 +352,14 @@ const FilterCourseWrapper = styled.aside`
       border-width: 2px;
       outline: none;
     }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 1rem;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 1rem;
   }
 `;
 
