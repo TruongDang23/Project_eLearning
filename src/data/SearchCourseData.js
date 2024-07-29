@@ -1,7 +1,7 @@
 const SearchCourseData = [
   {
     //mysql
-    courseID: "C999",
+    courseID: "C000",
     type_of_course: "Course",
     title: "Introduction to Database",
     method: "Self-directed study",
@@ -24,11 +24,11 @@ const SearchCourseData = [
       //Giống Udemy, khi hover vào item khóa học thì sẽ hiển thị kết quả đầu ra của của khóa học đó
       "Understand basic database concepts",
       "Write simple SQL queries",
-      "Design a simple database",
-    ],
+      "Design a simple database"
+    ]
   },
   {
-    courseID: "C1000",
+    courseID: "C003",
     type_of_course: "Course",
     title: "Advanced MongoDB",
     method: "Self-directed study",
@@ -48,11 +48,11 @@ const SearchCourseData = [
     targets: [
       "Master advanced MongoDB techniques",
       "Optimize database performance",
-      "Design complex data models",
-    ],
+      "Design complex data models"
+    ]
   },
   {
-    courseID: "C1001",
+    courseID: "C005",
     type_of_course: "Course",
     title: "Python for Data Science",
     method: "Self-directed study",
@@ -72,11 +72,11 @@ const SearchCourseData = [
     targets: [
       "Learn Python from scratch",
       "Analyze data using Python libraries",
-      "Build machine learning models",
-    ],
+      "Build machine learning models"
+    ]
   },
   {
-    courseID: "C1002",
+    courseID: "C039",
     type_of_course: "Course",
     title: "JavaScript Essentials",
     method: "Self-directed study",
@@ -96,9 +96,9 @@ const SearchCourseData = [
     targets: [
       "Understand JavaScript basics",
       "Write and debug JavaScript code",
-      "Create dynamic web pages",
-    ],
-  },
+      "Create dynamic web pages"
+    ]
+  }
 ];
 
 export default SearchCourseData;
