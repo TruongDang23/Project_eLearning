@@ -129,34 +129,6 @@ function CourseCard({ course }) {
     </CourseCardWrapper>
   );
 }
-// const Wrap =styled.div `
-//   .pagination {
-//   display: flex;
-//   list-style: none;
-//   padding: 0;
-// }
-
-// .pagination li {
-//   margin: 0 5px;
-// }
-
-// .pagination li a {
-//   padding: 8px 12px;
-//   border: 1px solid #ccc;
-//   cursor: pointer;
-// }
-
-// .pagination li.active a {
-//   background-color: #007bff;
-//   color: white;
-//   border-color: #007bff;
-// }
-
-// .pagination li.disabled a {
-//   color: #ccc;
-//   cursor: not-allowed;
-// }
-// `
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -240,6 +212,7 @@ const CourseCardWrapper = styled.div`
         height: 100%;
         object-fit: cover;
         display: block;
+        padding: 5px;
       }
 
       @media (max-width: 768px) {

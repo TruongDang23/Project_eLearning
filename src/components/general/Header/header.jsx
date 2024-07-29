@@ -7,9 +7,17 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Categories from "./categories";
 import AvatarAction from "./avatar";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 function Header() {
   const token = localStorage.getItem('token')
+  const [search, setSearch] = useSearchParams()
+  const [title, setTitle] = useState()
+
+  const handleSearch = (event) => {
+    if (event.key === 'Enter')
+      setSearch({ q: title })
+  }
   // eslint-disable-next-line no-unused-vars
   const [reload, setReload] = useState(false)
   {
@@ -24,7 +32,12 @@ function Header() {
           <div className="navLinks">
             <Categories/>
             <div className="searchBox">
-              <input type="text" placeholder="Search for anything" />
+              <input
+                type="text"
+                placeholder= 'Search for anything'
+                onChange={(e) => setTitle(e.target.value)}
+                onKeyDown={handleSearch}
+              />
               <a href="search">
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/54/54481.png"
@@ -62,7 +75,12 @@ function Header() {
           <div className="navLinks">
             <Categories/>
             <div className="searchBox">
-              <input type="text" placeholder="Search for anything" />
+              <input
+                type="text"
+                placeholder="Search for anything"
+                onChange={(e) => setTitle(e.target.value)}
+                onKeyDown={handleSearch}
+              />
               <a href="search">
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/54/54481.png"

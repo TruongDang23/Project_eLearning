@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Accordion from "@mui/material/Accordion";
-import AccordionActions from "@mui/material/AccordionActions";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -8,13 +7,35 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import { Box, Button, Menu, MenuItem, Typography } from "@mui/material";
-
 import StarRating from "~/components/general/Other/StarRating";
 import { languages } from "~/constants/listLanguage";
+import { useSearchParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-function FilterCourse(searchCourseData) {
+function FilterCourse() {
+  const [searchFilters, setSearchFilters] = useSearchParams();
+  const [title, setTitle] = useState(searchFilters.get('q') || '')
+  const [ratings, setRatings] = useState(searchFilters.get('ratings') || '');
+  const [language, setLanguage] = useState(searchFilters.get('language') || '');
+  const [method, setMethod] = useState(searchFilters.get('method') || '');
+  const [program, setProgram] = useState(searchFilters.get('program') || '');
+  const [price, setPrice] = useState(searchFilters.get('price') || '');
+
+  // console.log(title)
+  useEffect(() => {
+    const params = {};
+
+    if (title) params.title = title
+    if (ratings) params.ratings = ratings;
+    if (language) params.language = language;
+    if (method) params.method = method;
+    if (program) params.program = program;
+    if (price) params.price = price;
+
+    setSearchFilters(params);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [title, ratings, language, method, program, price])
+
   return (
     <FilterCourseWrapper>
       <Accordion
@@ -23,8 +44,8 @@ function FilterCourse(searchCourseData) {
           borderTop: "1px solid #e0e0e0",
           fontSize: "1rem !important",
           "&:before": {
-            display: "none",
-          },
+            display: "none"
+          }
         }}
         defaultExpanded
       >
@@ -35,8 +56,8 @@ function FilterCourse(searchCourseData) {
           sx={{
             padding: "0px 10px",
             "& .MuiAccordionSummary-content": {
-              margin: 0,
-            },
+              margin: 0
+            }
           }}
         >
           <h3>Rating</h3>
@@ -45,8 +66,9 @@ function FilterCourse(searchCourseData) {
           <FormControl>
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="star"
+              value={ratings}
               name="radio-buttons-group"
+              onChange={(event) => {setRatings(event.target.value)}}
             >
               <FormControlLabel
                 value="4"
@@ -101,8 +123,8 @@ function FilterCourse(searchCourseData) {
           borderTop: "1px solid #e0e0e0",
           fontSize: "1rem !important",
           "&:before": {
-            display: "none",
-          },
+            display: "none"
+          }
         }}
         defaultExpanded
       >
@@ -113,14 +135,19 @@ function FilterCourse(searchCourseData) {
           sx={{
             padding: "0px 10px",
             "& .MuiAccordionSummary-content": {
-              margin: 0,
-            },
+              margin: 0
+            }
           }}
         >
           <h3>Language</h3>
         </AccordionSummary>
         <AccordionDetails>
-          <select id="language" className="language-select">
+          <select
+            id="language"
+            className="language-select"
+            value={language}
+            onChange={(event) => {setLanguage(event.target.value)}}
+          >
             {languages.map((language, index) => (
               <option key={index} value={language}>
                 {language}
@@ -136,8 +163,8 @@ function FilterCourse(searchCourseData) {
           borderTop: "1px solid #e0e0e0",
           fontSize: "1rem !important",
           "&:before": {
-            display: "none",
-          },
+            display: "none"
+          }
         }}
         defaultExpanded
       >
@@ -148,15 +175,18 @@ function FilterCourse(searchCourseData) {
           sx={{
             padding: "0px 10px",
             "& .MuiAccordionSummary-content": {
-              margin: 0,
-            },
+              margin: 0
+            }
           }}
         >
           <h3>Method</h3>
         </AccordionSummary>
         <AccordionDetails>
           <FormControl>
-            <RadioGroup>
+            <RadioGroup
+              onChange={(event) => {setMethod(event.target.value)}}
+              value={method}
+            >
               <FormControlLabel
                 value="Supervised with AI camera"
                 control={<Radio />}
@@ -177,8 +207,8 @@ function FilterCourse(searchCourseData) {
           borderTop: "1px solid #e0e0e0",
           fontSize: "1rem !important",
           "&:before": {
-            display: "none",
-          },
+            display: "none"
+          }
         }}
         defaultExpanded
       >
@@ -189,15 +219,18 @@ function FilterCourse(searchCourseData) {
           sx={{
             padding: "0px 10px",
             "& .MuiAccordionSummary-content": {
-              margin: 0,
-            },
+              margin: 0
+            }
           }}
         >
           <h3>Price</h3>
         </AccordionSummary>
         <AccordionDetails>
           <FormControl>
-            <RadioGroup>
+            <RadioGroup
+              onChange={(event) => {setPrice(event.target.value)}}
+              value={price}
+            >
               <FormControlLabel
                 value="Free"
                 control={<Radio />}
@@ -218,8 +251,8 @@ function FilterCourse(searchCourseData) {
           borderTop: "1px solid #e0e0e0",
           fontSize: "1rem !important",
           "&:before": {
-            display: "none",
-          },
+            display: "none"
+          }
         }}
         defaultExpanded
       >
@@ -230,15 +263,18 @@ function FilterCourse(searchCourseData) {
           sx={{
             padding: "0px 10px",
             "& .MuiAccordionSummary-content": {
-              margin: 0,
-            },
+              margin: 0
+            }
           }}
         >
           <h3>Program</h3>
         </AccordionSummary>
         <AccordionDetails>
           <FormControl>
-            <RadioGroup>
+            <RadioGroup
+              onChange={(event) => {setProgram(event.target.value)}}
+              value={program}
+            >
               <FormControlLabel
                 value="Degree"
                 control={<Radio />}

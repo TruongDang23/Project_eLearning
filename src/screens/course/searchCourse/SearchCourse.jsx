@@ -3,8 +3,15 @@ import { GeneralHeader } from "~/components/general";
 import { GeneralFooter } from "~/components/general";
 import HeadingSearch from "./HeadingSearch";
 import MainSearch from "./MainSearch";
+import { useParams, useSearchParams } from "react-router-dom";
 
 function SearchCourse({ searchCourseData }) {
+  const { category } = useParams()
+  const [search, setSearch] = useSearchParams()
+  const title = search.get('q')
+  // console.log(title)
+  // console.log(category) //Find with category
+
   const resultNumber = searchCourseData.length;
   const resultText = resultNumber > 1 ? "results" : "result";
 

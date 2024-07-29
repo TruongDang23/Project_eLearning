@@ -15,6 +15,7 @@ export function Course () {
         <Route path='/course/details/:courseID' element={<AccessCourse />} />
         <Route path='/course/:courseID/assignment/:id' element={<Assignment />} />
         <Route path='/course/search' element={<SearchCourse searchCourseData={SearchCourseData} />} />
+        <Route path='/course/search/:category' element={<SearchCourse searchCourseData={SearchCourseData} />} />
       </Routes>
     </>
   )

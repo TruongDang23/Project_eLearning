@@ -6,15 +6,11 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import { useState, useEffect, useRef } from "react";
-import { useSearchParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 function Categories() {
-  // eslint-disable-next-line no-unused-vars
-  const [searchParams, setSearchParams] = useSearchParams({
-    search: '',
-    content: ''
-  })
 
+  const navigate = useNavigate()
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
 
@@ -30,7 +26,7 @@ function Categories() {
   };
 
   const handleSearch = (e) => {
-    setSearchParams({ 'search': 'categories', 'content': e.target.textContent })
+    navigate(`/course/search/${e.target.textContent}`)
     if (anchorRef.current && anchorRef.current.contains(e.target)) {
       return;
     }
