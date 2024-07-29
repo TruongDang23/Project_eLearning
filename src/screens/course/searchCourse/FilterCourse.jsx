@@ -12,20 +12,18 @@ import { languages } from "~/constants/listLanguage";
 import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-function FilterCourse() {
+function FilterCourse({ title }) {
   const [searchFilters, setSearchFilters] = useSearchParams();
-  const [title, setTitle] = useState(searchFilters.get('q') || '')
   const [ratings, setRatings] = useState(searchFilters.get('ratings') || '');
   const [language, setLanguage] = useState(searchFilters.get('language') || '');
   const [method, setMethod] = useState(searchFilters.get('method') || '');
   const [program, setProgram] = useState(searchFilters.get('program') || '');
   const [price, setPrice] = useState(searchFilters.get('price') || '');
 
-  // console.log(title)
   useEffect(() => {
     const params = {};
 
-    if (title) params.title = title
+    if (title) params.q = title
     if (ratings) params.ratings = ratings;
     if (language) params.language = language;
     if (method) params.method = method;

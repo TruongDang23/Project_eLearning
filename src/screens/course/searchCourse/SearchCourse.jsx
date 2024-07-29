@@ -1,16 +1,22 @@
-import styled from "styled-components";
-import { GeneralHeader } from "~/components/general";
-import { GeneralFooter } from "~/components/general";
-import HeadingSearch from "./HeadingSearch";
-import MainSearch from "./MainSearch";
-import { useParams, useSearchParams } from "react-router-dom";
+import styled from "styled-components"
+import { GeneralHeader } from "~/components/general"
+import { GeneralFooter } from "~/components/general"
+import HeadingSearch from "./HeadingSearch"
+import MainSearch from "./MainSearch"
+import { useParams, useSearchParams } from "react-router-dom"
+import { useEffect } from "react"
+import SearchCourseData from "~/data/SearchCourseData"
+import axios from "axios"
 
-function SearchCourse({ searchCourseData }) {
+function SearchCourse() {
   const { category } = useParams()
   const [search, setSearch] = useSearchParams()
   const title = search.get('q')
-  // console.log(title)
-  // console.log(category) //Find with category
+  const searchCourseData = SearchCourseData
+
+  useEffect(() => {
+    console.log('hello')
+  }, [search])
 
   const resultNumber = searchCourseData.length;
   const resultText = resultNumber > 1 ? "results" : "result";
@@ -20,7 +26,7 @@ function SearchCourse({ searchCourseData }) {
       <GeneralHeader />
       <SearchCourseWrapper>
         <HeadingSearch resultNumber={resultNumber} resultText={resultText} />
-        <MainSearch searchCourseData={searchCourseData} />
+        <MainSearch searchCourseData={searchCourseData} title={title} />
       </SearchCourseWrapper>
       <GeneralFooter />
     </>

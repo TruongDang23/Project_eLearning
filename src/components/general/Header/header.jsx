@@ -7,16 +7,21 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Categories from "./categories";
 import AvatarAction from "./avatar";
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 function Header() {
   const token = localStorage.getItem('token')
+  const navigate = useNavigate()
   const [search, setSearch] = useSearchParams()
-  const [title, setTitle] = useState()
+  const [title, setTitle] = useState(search.get('q') || '')
 
   const handleSearch = (event) => {
-    if (event.key === 'Enter')
-      setSearch({ q: title })
+    if (event.key === 'Enter') {
+      navigate({
+        pathname: '/course/search',
+        search: `?q=${title}`
+      })
+    }
   }
   // eslint-disable-next-line no-unused-vars
   const [reload, setReload] = useState(false)
@@ -35,10 +40,11 @@ function Header() {
               <input
                 type="text"
                 placeholder= 'Search for anything'
+                value = {title ? title : ''}
                 onChange={(e) => setTitle(e.target.value)}
                 onKeyDown={handleSearch}
               />
-              <a href="search">
+              <a href={`/course/search?q=${title}`}>
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/54/54481.png"
                   alt="Search Icon"
@@ -77,11 +83,12 @@ function Header() {
             <div className="searchBox">
               <input
                 type="text"
-                placeholder="Search for anything"
+                placeholder= 'Search for anything'
+                value = {title ? title : ''}
                 onChange={(e) => setTitle(e.target.value)}
                 onKeyDown={handleSearch}
               />
-              <a href="search">
+              <a href={`/course/search?q=${title}`}>
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/54/54481.png"
                   alt="Search Icon"
