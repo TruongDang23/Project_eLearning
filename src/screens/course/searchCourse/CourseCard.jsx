@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import Popover from "@mui/material/Popover";
 import DoneRoundedIcon from "@mui/icons-material/DoneRounded";
@@ -6,6 +6,7 @@ import StarRating from "~/components/general/Other/StarRating";
 
 function CourseCard({ course }) {
   const {
+    courseID,
     title,
     method,
     program,
@@ -18,7 +19,7 @@ function CourseCard({ course }) {
     num_reviews,
     num_lectures,
     course_for,
-    targets,
+    targets
   } = course;
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -32,7 +33,8 @@ function CourseCard({ course }) {
   };
 
   const handleOnCick = () => {
-    console.log("Clicked");
+    const url = `http://localhost:5173/course/infor/${courseID}`;
+    window.open(url, '_blank');
   };
 
   const open = Boolean(anchorEl);
@@ -95,17 +97,17 @@ function CourseCard({ course }) {
       <Popover
         id="mouse-over-popover"
         sx={{
-          pointerEvents: "none",
+          pointerEvents: "none"
         }}
         open={open}
         anchorEl={anchorEl}
         anchorOrigin={{
           vertical: "center",
-          horizontal: "center",
+          horizontal: "center"
         }}
         transformOrigin={{
           vertical: "top",
-          horizontal: "left",
+          horizontal: "left"
         }}
         onClose={handlePopoverClose}
         disableRestoreFocus
@@ -127,7 +129,6 @@ function CourseCard({ course }) {
     </CourseCardWrapper>
   );
 }
-
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -196,6 +197,10 @@ const CourseCardWrapper = styled.div`
     border-radius: 5px;
     overflow: hidden;
     animation: ${fadeIn} 0.6s ease-out;
+    transition: all 0.3s;
+    &:hover {
+      background-color: #e0e0e0;
+    }
 
     .course-card__img {
       width: 30%;
@@ -207,6 +212,7 @@ const CourseCardWrapper = styled.div`
         height: 100%;
         object-fit: cover;
         display: block;
+        padding: 5px;
       }
 
       @media (max-width: 768px) {
