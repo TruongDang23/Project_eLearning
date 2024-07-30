@@ -13,7 +13,6 @@ function SearchCourse() {
   const [search, setSearch] = useSearchParams()
   const title = search.get('q') || ''
   const [resultSearch, setResultSearch] = useState()
-  const [isLoad, setIsLoad] = useState(true) //Data is loading
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -40,9 +39,7 @@ function SearchCourse() {
       }
     })
       .then(response => {
-        console.log(response.data)
         setResultSearch(response.data)
-        setIsLoad(false) //Data is loaded successfully
       })
       .catch(error => {
       //Server shut down
@@ -68,14 +65,17 @@ function SearchCourse() {
     <>
       <GeneralHeader />
       <SearchCourseWrapper>
-        <HeadingSearch resultNumber={resultNumber} resultText={resultText} />
+
         {
           //Ràng điều kiện nếu dữ liệu đang load thì ko gọi thẻ UserProfile
           //Vì react chạy bất đồng bộ nên chưa có dữ liệu mà gọi thẻ là sẽ bị null
-          isLoad ? ( <p>Loading...</p> ) :
+          resultSearch ?
             (
-              <MainSearch searchCourseData={resultSearch} title={title} />
-            )
+              <>
+                <HeadingSearch resultNumber={resultNumber} resultText={resultText} />
+                <MainSearch searchCourseData={resultSearch} title={title} />
+              </>
+            ) : ( <p>Loading...</p> )
         }
       </SearchCourseWrapper>
       <GeneralFooter />

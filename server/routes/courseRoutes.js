@@ -824,9 +824,6 @@ module.exports = (connMysql, connMongo) => {
       program,
       price } = req.query
 
-    console.log('cate: ', category)
-    console.log('search: ', title)
-    console.log('rating: ', ratings, 'language: ', language, 'method: ', method, 'program: ', program, 'price: ', price)
     connMysql.getConnection((err, connection) => {
       if (err) {
         res.status(500).send(err)
@@ -881,7 +878,8 @@ module.exports = (connMysql, connMongo) => {
         price,
         `%${program}%`,
         `%${category}%`
-      ];
+      ]
+
       connection.query(query, queryParams, async (error, courseInfor) => {
         connection.release() //Giải phóng connection khi truy vấn xong
         if (error) {
@@ -894,7 +892,9 @@ module.exports = (connMysql, connMongo) => {
         //Connect to MongoDB server
         await connMongo
         //Get mongoData. MongoData wil be return an array which 1 element so we will get data at index 0
-        const mongoData = await Course.find({ courseID: { $in: courseIDs } }).select('courseID image_introduce keywords targets')
+        const mongoData = await Course.find({
+          courseID: { $in: courseIDs }
+        }).select('courseID image_introduce keywords targets')
 
         //Merge data with Mysql + MongoDB + Reviewer + Duration + Progress + Learning
         const mergeData = courseInfor.map(course => {
@@ -906,7 +906,6 @@ module.exports = (connMysql, connMongo) => {
             targets: data ? data.targets : null
           }
         })
-
         res.send(mergeData)
       })
     })

@@ -28,8 +28,7 @@ const PaginatedItems = ({ items, itemsPerPage }) => {
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(items.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(items.length / itemsPerPage));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [itemOffset, itemsPerPage]);
+  }, [items, itemOffset, itemsPerPage]);
 
   return (
     <>
