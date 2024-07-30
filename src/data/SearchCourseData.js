@@ -19,7 +19,7 @@ const SearchCourseData = [
     //mongoDB
     image_introduce:
       "https://png.pngtree.com/template/20220421/ourmid/pngtree-data-analysis-isometric-infographics-layout-with-microchip-wireless-modem-sync-of-image_1300762.jpg",
-    keywords: ["Database", "SQL", "Beginner"],
+    keywords: ["Database", "SQL", "Beginner"], //FIND
     targets: [
       //Giống Udemy, khi hover vào item khóa học thì sẽ hiển thị kết quả đầu ra của của khóa học đó
       "Understand basic database concepts",

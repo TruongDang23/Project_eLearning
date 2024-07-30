@@ -15,7 +15,7 @@ import { useState, useEffect } from "react";
 function FilterCourse({ title }) {
   const [searchFilters, setSearchFilters] = useSearchParams();
   const [ratings, setRatings] = useState(searchFilters.get('ratings') || '');
-  const [language, setLanguage] = useState(searchFilters.get('language') || '');
+  const [language, setLanguage] = useState(searchFilters.get('language') || 'English');
   const [method, setMethod] = useState(searchFilters.get('method') || '');
   const [program, setProgram] = useState(searchFilters.get('program') || '');
   const [price, setPrice] = useState(searchFilters.get('price') || '');

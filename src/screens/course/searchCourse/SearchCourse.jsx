@@ -3,22 +3,65 @@ import { GeneralHeader } from "~/components/general"
 import { GeneralFooter } from "~/components/general"
 import HeadingSearch from "./HeadingSearch"
 import MainSearch from "./MainSearch"
-import { useParams, useSearchParams } from "react-router-dom"
-import { useEffect } from "react"
-import SearchCourseData from "~/data/SearchCourseData"
+import { useParams, useSearchParams, useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
 import axios from "axios"
 
 function SearchCourse() {
-  const { category } = useParams()
+  let { category } = useParams()
+  // eslint-disable-next-line no-unused-vars
   const [search, setSearch] = useSearchParams()
-  const title = search.get('q')
-  const searchCourseData = SearchCourseData
+  const title = search.get('q') || ''
+  const [resultSearch, setResultSearch] = useState()
+  const [isLoad, setIsLoad] = useState(true) //Data is loading
+  const navigate = useNavigate()
 
   useEffect(() => {
-    console.log('hello')
-  }, [search])
+    let ratings = search.get('ratings')
+    let price = search.get('price') || ''
+    const language = search.get('language') || ''
+    const method = search.get('method') || ''
+    const program = search.get('program') || ''
 
-  const resultNumber = searchCourseData.length;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    category = (category ? category : '')
+    price = (price === 'Paid' ? 0.01 : 0.00)
+    ratings = (ratings ? ratings : 0)
+
+    axios.get('http://localhost:3000/c/findcourse', {
+      params: {
+        category,
+        title,
+        ratings,
+        language,
+        method,
+        program,
+        price
+      }
+    })
+      .then(response => {
+        console.log(response.data)
+        setResultSearch(response.data)
+        setIsLoad(false) //Data is loaded successfully
+      })
+      .catch(error => {
+      //Server shut down
+        if (error.message === 'Network Error')
+          navigate('/server-shutdown')
+        //Connection error
+        if (error.response.status === 500)
+          navigate('/500error')
+        //Unauthorized. Need login
+        if (error.response.status === 401)
+          navigate('/401error')
+        //Forbidden. Token != userAuth
+        if (error.response.status === 403)
+          navigate('/403error')
+      })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search, category, title])
+
+  const resultNumber = resultSearch ? resultSearch.length : 0;
   const resultText = resultNumber > 1 ? "results" : "result";
 
   return (
@@ -26,7 +69,14 @@ function SearchCourse() {
       <GeneralHeader />
       <SearchCourseWrapper>
         <HeadingSearch resultNumber={resultNumber} resultText={resultText} />
-        <MainSearch searchCourseData={searchCourseData} title={title} />
+        {
+          //Ràng điều kiện nếu dữ liệu đang load thì ko gọi thẻ UserProfile
+          //Vì react chạy bất đồng bộ nên chưa có dữ liệu mà gọi thẻ là sẽ bị null
+          isLoad ? ( <p>Loading...</p> ) :
+            (
+              <MainSearch searchCourseData={resultSearch} title={title} />
+            )
+        }
       </SearchCourseWrapper>
       <GeneralFooter />
     </>
