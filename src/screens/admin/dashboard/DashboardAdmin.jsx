@@ -19,6 +19,11 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
+import InboxPage from "./InboxPage";
+import StarredPage from "./StarredPage";
+import SendEmailPage from "./SendEmailPage";
+import DraftsPage from "./DraftsPage";
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -88,6 +93,7 @@ const Drawer = styled(MuiDrawer, {
 function DashboardAdmin() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [content, setContent] = React.useState("Inbox");
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -95,6 +101,10 @@ function DashboardAdmin() {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleContentChange = (newContent) => {
+    setContent(newContent);
   };
 
   return (
@@ -131,9 +141,15 @@ function DashboardAdmin() {
         </DrawerHeader>
         <Divider />
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
+          {[
+            { text: "Inbox", icon: <InboxIcon /> },
+            { text: "Starred", icon: <MailIcon /> },
+            { text: "Send email", icon: <InboxIcon /> },
+            { text: "Drafts", icon: <MailIcon /> },
+          ].map((item, index) => (
+            <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
               <ListItemButton
+                onClick={() => handleContentChange(item.text)}
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? "initial" : "center",
@@ -147,44 +163,24 @@ function DashboardAdmin() {
                     justifyContent: "center",
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {item.icon}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText
+                  primary={item.text}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
         <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <Typography paragraph>
-          Nội dung chính của admin dashboard sẽ được hiển thị ở đây.
-        </Typography>
+        {content === "Inbox" && <InboxPage />}
+        {content === "Starred" && <StarredPage />}
+        {content === "Send email" && <SendEmailPage />}
+        {content === "Drafts" && <DraftsPage />}
       </Box>
     </Box>
   );
