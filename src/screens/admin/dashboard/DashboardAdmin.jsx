@@ -16,13 +16,14 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 
-import InboxPage from "./InboxPage";
-import StarredPage from "./StarredPage";
-import SendEmailPage from "./SendEmailPage";
-import DraftsPage from "./DraftsPage";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
+
+import InforDashboard from "./InforDashboard";
+import AccountDashboard from "./AccountDashboard";
+import CourseDashboard from "./CourseDashboard";
 
 const drawerWidth = 240;
 
@@ -110,7 +111,11 @@ function DashboardAdmin() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar
+        position="fixed"
+        open={open}
+        sx={{ bgcolor: "#fff", color: "#333" }}
+      >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -122,30 +127,53 @@ function DashboardAdmin() {
               ...(open && { display: "none" }),
             }}
           >
-            <MenuIcon />
+            <MenuIcon sx={{ fontSize: 30, color: "#155b96" }} />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography
+            variant="h3"
+            noWrap
+            component="div"
+            sx={{ fontSize: "2rem", fontWeight: "700", color: "#002f6c" }}
+          >
             Admin Dashboard
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer
+        variant="permanent"
+        open={open}
+        PaperProps={{
+          sx: {
+            width: 100,
+            background: "linear-gradient(to right, #155b96, #002f6c)",
+            color: "#fff",
+          },
+        }}
+      >
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={handleDrawerClose} sx={{ fontSize: 40 }}>
             {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
+              <ChevronRightIcon sx={{ fontSize: 30, color: "#fff" }} />
             ) : (
-              <ChevronLeftIcon />
+              <ChevronLeftIcon sx={{ fontSize: 30, color: "#fff" }} />
             )}
           </IconButton>
         </DrawerHeader>
         <Divider />
         <List>
           {[
-            { text: "Inbox", icon: <InboxIcon /> },
-            { text: "Starred", icon: <MailIcon /> },
-            { text: "Send email", icon: <InboxIcon /> },
-            { text: "Drafts", icon: <MailIcon /> },
+            {
+              text: "Information",
+              icon: <ManageAccountsIcon sx={{ fontSize: 35 }} />,
+            },
+            {
+              text: "Account",
+              icon: <SupervisorAccountIcon sx={{ fontSize: 35 }} />,
+            },
+            {
+              text: "Courses",
+              icon: <OndemandVideoIcon sx={{ fontSize: 35 }} />,
+            },
           ].map((item, index) => (
             <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
               <ListItemButton
@@ -154,6 +182,10 @@ function DashboardAdmin() {
                   minHeight: 48,
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
+                  "&:hover": {
+                    backgroundColor: "#ffffff4d",
+                    borderLeft: "4px solid #fff",
+                  },
                 }}
               >
                 <ListItemIcon
@@ -161,6 +193,7 @@ function DashboardAdmin() {
                     minWidth: 0,
                     mr: open ? 3 : "auto",
                     justifyContent: "center",
+                    color: "#fff",
                   }}
                 >
                   {item.icon}
@@ -168,6 +201,10 @@ function DashboardAdmin() {
                 <ListItemText
                   primary={item.text}
                   sx={{ opacity: open ? 1 : 0 }}
+                  primaryTypographyProps={{
+                    fontSize: "1.6rem",
+                    fontWeight: "700",
+                  }}
                 />
               </ListItemButton>
             </ListItem>
@@ -177,10 +214,9 @@ function DashboardAdmin() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        {content === "Inbox" && <InboxPage />}
-        {content === "Starred" && <StarredPage />}
-        {content === "Send email" && <SendEmailPage />}
-        {content === "Drafts" && <DraftsPage />}
+        {content === "Information" && <InforDashboard />}
+        {content === "Account" && <AccountDashboard />}
+        {content === "Courses" && <CourseDashboard />}
       </Box>
     </Box>
   );
