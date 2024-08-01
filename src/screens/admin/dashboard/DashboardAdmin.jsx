@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -93,8 +94,8 @@ const Drawer = styled(MuiDrawer, {
 
 function DashboardAdmin() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  const [content, setContent] = React.useState("Inbox");
+  const [open, setOpen] = useState(true);
+  const [content, setContent] = useState("Inbox");
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -117,26 +118,28 @@ function DashboardAdmin() {
         sx={{ bgcolor: "#fff", color: "#333" }}
       >
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: "none" }),
-            }}
-          >
-            <MenuIcon sx={{ fontSize: 30, color: "#155b96" }} />
-          </IconButton>
-          <Typography
-            variant="h3"
-            noWrap
-            component="div"
-            sx={{ fontSize: "2rem", fontWeight: "700", color: "#002f6c" }}
-          >
-            Admin Dashboard
-          </Typography>
+          <>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={{
+                marginRight: 5,
+                ...(open && { display: "none" }),
+              }}
+            >
+              <MenuIcon sx={{ fontSize: 30, color: "#155b96" }} />
+            </IconButton>
+            <Typography
+              variant="h3"
+              noWrap
+              component="div"
+              sx={{ fontSize: "2rem", fontWeight: "700", color: "#002f6c" }}
+            >
+              Admin Dashboard
+            </Typography>
+          </>
         </Toolbar>
       </AppBar>
       <Drawer
