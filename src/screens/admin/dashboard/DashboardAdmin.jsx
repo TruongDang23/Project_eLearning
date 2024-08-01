@@ -17,14 +17,18 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import Link from "@mui/material/Link";
 
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
+import AutoAwesomeMosaicIcon from "@mui/icons-material/AutoAwesomeMosaic";
 
 import InforDashboard from "./InforDashboard";
 import AccountDashboard from "./AccountDashboard";
 import CourseDashboard from "./CourseDashboard";
+import LogoAdmin from "../../../assets/LogoAdmin.png";
+import GeneralDashboard from "./GeneralDashboard";
 
 const drawerWidth = 240;
 
@@ -95,7 +99,7 @@ const Drawer = styled(MuiDrawer, {
 function DashboardAdmin() {
   const theme = useTheme();
   const [open, setOpen] = useState(true);
-  const [content, setContent] = useState("Inbox");
+  const [content, setContent] = useState("General");
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -153,7 +157,18 @@ function DashboardAdmin() {
           },
         }}
       >
-        <DrawerHeader>
+        <DrawerHeader
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            padding: "10px 30px",
+          }}
+        >
+          <Link href="/" underline="none">
+            <Box display="flex" alignItems="center" sx={{ cursor: "pointer" }}>
+              <img src={LogoAdmin} alt="Web Logo" style={{ width: "150px" }} />
+            </Box>
+          </Link>
           <IconButton onClick={handleDrawerClose} sx={{ fontSize: 40 }}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon sx={{ fontSize: 30, color: "#fff" }} />
@@ -165,6 +180,10 @@ function DashboardAdmin() {
         <Divider />
         <List>
           {[
+            {
+              text: "General",
+              icon: <AutoAwesomeMosaicIcon sx={{ fontSize: 35 }} />,
+            },
             {
               text: "Information",
               icon: <ManageAccountsIcon sx={{ fontSize: 35 }} />,
@@ -186,6 +205,10 @@ function DashboardAdmin() {
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
                   "&:hover": {
+                    backgroundColor: "#ffffff4d",
+                    borderLeft: "4px solid #fff",
+                  },
+                  "&.Mui-selected": {
                     backgroundColor: "#ffffff4d",
                     borderLeft: "4px solid #fff",
                   },
@@ -217,6 +240,7 @@ function DashboardAdmin() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
+        {content === "General" && <GeneralDashboard />}
         {content === "Information" && <InforDashboard />}
         {content === "Account" && <AccountDashboard />}
         {content === "Courses" && <CourseDashboard />}
