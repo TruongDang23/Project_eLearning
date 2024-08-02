@@ -14,11 +14,10 @@ module.exports = (client) => {
   // Define user-related routes
   router.get('/chatAI', async (req, res) => {
     const { input } = req.query
-    console.log(input)
     const result = await client.chat.completions.create({
       messages: input,
       model: ""
-    });
+    })
 
     res.send(result.choices[0].message.content)
   })
