@@ -1,5 +1,14 @@
+import React from "react";
+import styled from "styled-components";
+
 function CourseDashboard() {
-  return <div>CourseDashboard</div>;
+  return (
+    <CourseDashboardWrapper>
+      <h3>Courses</h3>
+    </CourseDashboardWrapper>
+  );
 }
+
+const CourseDashboardWrapper = styled.section``;
 
 export default CourseDashboard;
