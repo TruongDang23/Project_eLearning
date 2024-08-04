@@ -238,7 +238,7 @@ function DashboardAdmin() {
         </List>
         <Divider />
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1}}>
         <DrawerHeader />
         {content === "General" && <GeneralDashboard />}
         {content === "Information" && <InforDashboard />}
