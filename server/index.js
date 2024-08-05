@@ -10,7 +10,7 @@ const connMysql = require('./connMySql')
 const mongo = require('./connMongo')
 const connMongo = mongo()
 
-const client = require('./openai')
+const client = require('./connAzureOpenAI')
 
 // Import routes
 const adminRoutes = require('./routes/adminRoutes')(connMysql, connMongo) //Truyền các connection cần thiết vào các Route

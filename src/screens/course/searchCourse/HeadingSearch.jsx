@@ -28,6 +28,7 @@ function HeadingSearch({ resultNumber, resultText }) {
 }
 
 const HeadingSearchWrapper = styled.section`
+  background-color: red;
   h1 {
     font-size: 2.6rem;
     font-weight: 700;
