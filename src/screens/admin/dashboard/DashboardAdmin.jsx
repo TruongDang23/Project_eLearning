@@ -23,12 +23,14 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import AutoAwesomeMosaicIcon from "@mui/icons-material/AutoAwesomeMosaic";
+import QueryStatsIcon from "@mui/icons-material/QueryStats";
 
 import InforDashboard from "./InforDashboard";
 import AccountDashboard from "./AccountDashboard";
 import CourseDashboard from "./CourseDashboard";
 import LogoAdmin from "../../../assets/LogoAdmin.png";
 import GeneralDashboard from "./GeneralDashboard";
+import StatisticsDashboard from "./StatisticsDashboard";
 
 const drawerWidth = 240;
 
@@ -196,6 +198,10 @@ function DashboardAdmin() {
               text: "Courses",
               icon: <OndemandVideoIcon sx={{ fontSize: 35 }} />,
             },
+            {
+              text: "Statistics",
+              icon: <QueryStatsIcon sx={{ fontSize: 35 }} />,
+            },
           ].map((item, index) => (
             <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
               <ListItemButton
@@ -238,12 +244,13 @@ function DashboardAdmin() {
         </List>
         <Divider />
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1}}>
+      <Box component="main" sx={{ flexGrow: 1 }}>
         <DrawerHeader />
         {content === "General" && <GeneralDashboard />}
         {content === "Information" && <InforDashboard />}
         {content === "Account" && <AccountDashboard />}
         {content === "Courses" && <CourseDashboard />}
+        {content === "Statistics" && <StatisticsDashboard />}
       </Box>
     </Box>
   );

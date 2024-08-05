@@ -58,13 +58,14 @@ const InforDashboardWrapper = styled.section`
     .infor-button {
       display: flex;
       width: 100%;
-      gap: 1rem;
+      gap: 3rem;
       justify-content: center;
 
       .btn-edit,
       .btn-view {
         padding: 0.5rem 1rem;
         font-size: 1.6rem;
+        font-weight: 600;
         border-radius: 0.5rem;
         cursor: pointer;
         transition: transform 0.2s ease;
@@ -96,6 +97,18 @@ const InforDashboardWrapper = styled.section`
           color: #fff;
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .infor-card {
+      width: 50%;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .infor-card {
+      width: 80%;
     }
   }
 `;
