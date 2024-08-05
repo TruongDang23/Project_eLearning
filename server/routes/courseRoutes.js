@@ -814,5 +814,102 @@ module.exports = (connMysql, connMongo) => {
       res.send(wrongAns)
   })
 
+  router.get('/findcourse', async (req, res) => {
+    const {
+      category,
+      title,
+      ratings,
+      language,
+      method,
+      program,
+      price } = req.query
+
+    connMysql.getConnection((err, connection) => {
+      if (err) {
+        res.status(500).send(err)
+      }
+      //Get detail information of course
+      let query = `SELECT c.courseID,
+                        u.fullname AS instructor,
+                        type_of_course,
+                        title,
+                        method,
+                        c.language,
+                        price,
+                        currency,
+                        program,
+                        category,
+                        course_for,
+                        status,
+                        num_lecture as num_lectures,
+                        avg.star,
+                        avg.raters as number_reviews
+                        FROM course AS c
+                        LEFT JOIN user AS u ON c.userID = u.userID
+                        LEFT JOIN avg_rating AS avg ON c.courseID = avg.courseID
+                        WHERE status = 'published'
+                                -- Find on search box  
+                                and (
+                                  u.fullname like ? or
+                                  title like ? or
+                                  course_for like ?
+                                )
+                                -- Find on filter
+                                and (
+                                    (avg.star >= ? or avg.star is null) and
+                                    c.language like ? and 
+                                    method like ? and 
+                                    price >= ? and 
+                                    program like ?
+                                )
+                                -- Find on category
+                                and (
+                                    category like ?
+                                )
+                        ORDER BY star DESC`
+
+      let queryParams = [
+        `%${title}%`,
+        `%${title}%`,
+        `%${title}%`,
+        ratings,
+        `%${language}%`,
+        `%${method}%`,
+        price,
+        `%${program}%`,
+        `%${category}%`
+      ]
+
+      connection.query(query, queryParams, async (error, courseInfor) => {
+        connection.release() //Giải phóng connection khi truy vấn xong
+        if (error) {
+          res.status(500).send(error)
+        }
+
+        //List courseIDs which is results of previous query
+        const courseIDs = courseInfor.map(course => course.courseID)
+
+        //Connect to MongoDB server
+        await connMongo
+        //Get mongoData. MongoData wil be return an array which 1 element so we will get data at index 0
+        const mongoData = await Course.find({
+          courseID: { $in: courseIDs }
+        }).select('courseID image_introduce keywords targets')
+
+        //Merge data with Mysql + MongoDB + Reviewer + Duration + Progress + Learning
+        const mergeData = courseInfor.map(course => {
+          const data = mongoData.find(mc => mc.courseID === course.courseID)
+          return {
+            ...course,
+            image_introduce: data ? data.image_introduce : null,
+            keywords: data ? data.keywords : null,
+            targets: data ? data.targets : null
+          }
+        })
+        res.send(mergeData)
+      })
+    })
+  })
+
   return router
 }

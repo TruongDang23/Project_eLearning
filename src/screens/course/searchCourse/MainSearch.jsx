@@ -2,10 +2,10 @@ import styled from "styled-components";
 import FilterCourse from "./FilterCourse";
 import ResultCourse from "./ResultCourse";
 
-function MainSearch({ searchCourseData }) {
+function MainSearch({ searchCourseData, title }) {
   return (
     <MainSearchWrapper>
-      <FilterCourse searchCourseData={searchCourseData} />
+      <FilterCourse title={title} />
       <ResultCourse searchCourseData={searchCourseData} />
     </MainSearchWrapper>
   );
