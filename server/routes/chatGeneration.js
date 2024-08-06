@@ -2,9 +2,6 @@
 const express = require('express')
 const cors = require('cors')
 
-//import verifyToken fuction
-const { verifyToken } = require('../authenticate')
-
 module.exports = (client) => {
   //Khởi tạo tham số router và cấp quyền CORS
   const router = express.Router()
