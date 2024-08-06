@@ -27,12 +27,12 @@ export default function AvatarAction({ setReload }) {
     axios
       .get("http://localhost:3000/s/loadAvatar", {
         params: {
-          userID,
+          userID
         },
         headers: {
           Token: token, // Thêm token và user vào header để đưa xuống Backend xác thực
-          User: userAuth,
-        },
+          User: userAuth
+        }
       })
       .then((response) => {
         setAvt(response.data);
@@ -69,9 +69,18 @@ export default function AvatarAction({ setReload }) {
     userID[0] === "A"
       ? navigate("/Admin/information")
       : userID[0] === "S"
-      ? navigate("/Student/information")
-      : navigate("/Instructor/information");
+        ? navigate("/Student/information")
+        : navigate("/Instructor/information");
   };
+
+  const handleDashboard = () => {
+    userID[0] === "A"
+      ? navigate("/Admin/dashboard")
+      : userID[0] === "S"
+        ? navigate("/Student/dashboard")
+        : navigate("/Instructor/dashboard");
+  }
+
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -90,7 +99,7 @@ export default function AvatarAction({ setReload }) {
                 height: 35,
                 cursor: "pointer",
                 border: "2px solid #1971c2",
-                marginLeft: "-20px",
+                marginLeft: "-20px"
               }}
               src={avt}
             />
@@ -113,7 +122,7 @@ export default function AvatarAction({ setReload }) {
               width: 32,
               height: 32,
               ml: -0.5,
-              mr: 1,
+              mr: 1
             },
             "&::before": {
               content: '""',
@@ -125,9 +134,9 @@ export default function AvatarAction({ setReload }) {
               height: 10,
               bgcolor: "background.paper",
               transform: "translateY(-50%) rotate(45deg)",
-              zIndex: 0,
-            },
-          },
+              zIndex: 0
+            }
+          }
         }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
@@ -136,7 +145,7 @@ export default function AvatarAction({ setReload }) {
         <MenuItem
           sx={{ fontSize: "16px", color: "#333" }}
           onClick={() => {
-            handleClose;
+            handleDashboard()
           }}
         >
           <ListItemIcon>

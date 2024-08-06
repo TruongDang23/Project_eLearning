@@ -6,6 +6,7 @@ import ExtraProfile from './ExtraProfile'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import Loading from "~/screens/system/Loading"
 
 function Information() {
 
@@ -49,34 +50,27 @@ function Information() {
 
   return (
     <>
-      <div>
-        <GeneralHeader />
-        <main>
-          <Container>
-            <LeftPane>
-              {
-                //Ràng điều kiện nếu dữ liệu đang load thì ko gọi thẻ UserProfile
-                //Vì react chạy bất đồng bộ nên chưa có dữ liệu mà gọi thẻ là sẽ bị null
-                isLoad ? ( <p>Loading...</p> ) :
-                  (
-                    <UserProfile profile={ userProfile } setProfile={updateInformation}/>
-                  )
-              }
-            </LeftPane>
-            <RightPane>
-              {
-                //Ràng điều kiện nếu dữ liệu đang load thì ko gọi thẻ UserProfile
-                //Vì react chạy bất đồng bộ nên chưa có dữ liệu mà gọi thẻ là sẽ bị null
-                isLoad ? ( <p>Loading...</p> ) :
-                  (
-                    <ExtraProfile profile={ userProfile } setProfile={updateInformation}/>
-                  )
-              }
-            </RightPane>
-          </Container>
-        </main>
-        <GeneralFooter />
-      </div>
+      {
+        isLoad ? (<Loading/>) :
+          (
+            <>
+              <div>
+                <GeneralHeader />
+                <main>
+                  <Container>
+                    <LeftPane>
+                      <UserProfile profile={ userProfile } setProfile={updateInformation}/>
+                    </LeftPane>
+                    <RightPane>
+                      <ExtraProfile profile={ userProfile } setProfile={updateInformation}/>
+                    </RightPane>
+                  </Container>
+                </main>
+                <GeneralFooter />
+              </div>
+            </>
+          )
+      }
     </>
   )
 }

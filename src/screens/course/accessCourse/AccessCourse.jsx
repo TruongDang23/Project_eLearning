@@ -21,12 +21,12 @@ function AccessCourse() {
     axios
       .get("http://localhost:3000/c/loadDetailsCourse", {
         params: {
-          courseID,
+          courseID
         },
         headers: {
           Token: token, // Thêm token và user vào header để đưa xuống Backend xác thực
-          User: userAuth,
-        },
+          User: userAuth
+        }
       })
       .then((response) => {
         setAccessCourseData(response.data[0]);
