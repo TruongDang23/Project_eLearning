@@ -12,6 +12,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 function Header() {
   const token = localStorage.getItem('token')
   const navigate = useNavigate()
+  // eslint-disable-next-line no-unused-vars
   const [search, setSearch] = useSearchParams()
   const [title, setTitle] = useState(search.get('q') || '')
 

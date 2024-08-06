@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
+import Loading from "~/screens/system/Loading"
 
 function InforCourse() {
   const [isLoad, setIsLoad] = useState(true) //Data is loading
@@ -41,24 +42,23 @@ function InforCourse() {
   }, [])
 
   return (
-    <div>
-      <GeneralHeader />
-      <main>
-        {
-          //Ràng điều kiện nếu dữ liệu đang load thì ko gọi thẻ UserProfile
-          //Vì react chạy bất đồng bộ nên chưa có dữ liệu mà gọi thẻ là sẽ bị null
-          isLoad ? ( <p>Loading...</p> ) :
-            (
-              <>
-                <IntroCourse inforCourseData={inforCourseData} />
-                <MainCourse inforCourseData={inforCourseData} />
-              </>
-            )
-        }
-
-      </main>
-      <FooterNew />
-    </div>
+    <>
+      {
+        isLoad ? (<Loading/>) :
+          (
+            <>
+              <div>
+                <GeneralHeader />
+                <main>
+                  <IntroCourse inforCourseData={inforCourseData} />
+                  <MainCourse inforCourseData={inforCourseData} />
+                </main>
+                <FooterNew />
+              </div>
+            </>
+          )
+      }
+    </>
   );
 }
 

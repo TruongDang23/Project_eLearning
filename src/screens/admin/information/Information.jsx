@@ -6,6 +6,7 @@ import UserActivity from './HistoryActivity'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import Loading from "~/screens/system/Loading";
 
 function Information() {
   const [userProfile, setUserProfile] = useState()
@@ -49,32 +50,27 @@ function Information() {
 
   return (
     <>
-      <div>
-        <GeneralHeader />
-        <main>
-          <Container>
-            <LeftPane>
-              {
-                //Ràng điều kiện nếu dữ liệu đang load thì ko gọi thẻ UserProfile
-                //Vì react chạy bất đồng bộ nên chưa có dữ liệu mà gọi thẻ là sẽ bị null
-                isLoad ? ( <p>Loading...</p> ) :
-                  (
-                    <UserProfile profile={userProfile} setUserProfile={updateInformation} />
-                  )
-              }
-            </LeftPane>
-            <RightPane>
-              {
-                isLoad ? ( <p>Loading...</p> ) :
-                  (
-                    <UserActivity profile={ userProfile } />
-                  )
-              }
-            </RightPane>
-          </Container>
-        </main>
-        <GeneralFooter />
-      </div>
+      {
+        isLoad ? (<Loading/>) :
+          (
+            <>
+              <div>
+                <GeneralHeader />
+                <main>
+                  <Container>
+                    <LeftPane>
+                      <UserProfile profile={userProfile} setUserProfile={updateInformation} />
+                    </LeftPane>
+                    <RightPane>
+                      <UserActivity profile={ userProfile } />
+                    </RightPane>
+                  </Container>
+                </main>
+                <GeneralFooter />
+              </div>
+            </>
+          )
+      }
     </>
   )
 }
