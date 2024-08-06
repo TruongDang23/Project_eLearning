@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import TabOverview from "./TabOverview";
 import TabReview from "./TabReview";
+import TabChatAI from "./TabChatAI";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,7 +63,7 @@ function TabviewAccessCourse({ accessCourseData }) {
           <TabOverview accessCourseData={accessCourseData} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          Đây là phần Chat AI
+          <TabChatAI />
         </TabPanel>
         <TabPanel value={value} index={2}>
           <TabReview accessCourseData={accessCourseData} />
