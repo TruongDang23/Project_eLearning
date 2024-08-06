@@ -63,7 +63,7 @@ function TabviewAccessCourse({ accessCourseData }) {
           <TabOverview accessCourseData={accessCourseData} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <TabChatAI accessCourseData={accessCourseData} />
+          <TabChatAI />
         </TabPanel>
         <TabPanel value={value} index={2}>
           <TabReview accessCourseData={accessCourseData} />

@@ -5,11 +5,12 @@ import { Box, TextField, Button, List, ListItem, Paper, Typography } from '@mui/
 import SendIcon from '@mui/icons-material/Send'
 import ReplayIcon from '@mui/icons-material/Replay'
 
-function TabChatAI({ accessCourseData }) {
+function TabChatAI() {
   const navigate = useNavigate()
   const [numberConver, setNumber] = useState(0)
   const listRef = useRef(null); // Reference to the message list
   const [text, setText] = useState('')
+  // eslint-disable-next-line no-unused-vars
   const [reload, setReload] = useState(true)
 
   const [input, setInput] = useState([
