@@ -12,7 +12,7 @@ module.exports = (client) => {
   router.use(express.json())
 
   // Define user-related routes
-  router.get('/chatAI', verifyToken, async (req, res) => {
+  router.get('/chatAI', async (req, res) => {
     const { input } = req.query
     const result = await client.chat.completions.create({
       messages: input,

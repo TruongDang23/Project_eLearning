@@ -3,12 +3,14 @@ import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Box, TextField, Button, List, ListItem, Paper, Typography } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send'
+import ReplayIcon from '@mui/icons-material/Replay'
 
 function TabChatAI({ accessCourseData }) {
   const navigate = useNavigate()
   const [numberConver, setNumber] = useState(0)
   const listRef = useRef(null); // Reference to the message list
   const [text, setText] = useState('')
+  const [reload, setReload] = useState(true)
 
   const [input, setInput] = useState([
     {
@@ -32,6 +34,17 @@ function TabChatAI({ accessCourseData }) {
     );
     setNumber(prevNum => prevNum + 1)
     setText('')
+  }
+
+  const handleReloadChat = () => {
+    setReload((prevData) => !prevData)
+    setNumber(0)
+    setInput([
+      {
+        role:  'user',
+        content: 'Hello Chat Assistant'
+      }
+    ])
   }
 
   useEffect(() => {
@@ -98,6 +111,14 @@ function TabChatAI({ accessCourseData }) {
         ))}
       </List>
       <Box display="flex">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleReloadChat}
+          sx={{ marginRight: 1 }}
+        >
+          <ReplayIcon sx={{ fontSize: 'large' }}/>
+        </Button>
         <TextField
           fullWidth
           variant="outlined"
@@ -115,7 +136,7 @@ function TabChatAI({ accessCourseData }) {
           onClick={handleClick}
           sx={{ marginLeft: 1 }}
         >
-          <SendIcon />
+          <SendIcon sx={{ fontSize: 'large' }}/>
         </Button>
       </Box>
     </Box>
