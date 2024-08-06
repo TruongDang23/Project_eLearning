@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: projectelearning
 -- ------------------------------------------------------
--- Server version	8.0.34
+-- Server version	8.4.0
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -188,7 +188,7 @@ CREATE TABLE `notify` (
   `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `message` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `routing` varchar(200) DEFAULT NULL,
-  `isRead` tinyint DEFAULT NULL,
+  `image_course` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`notifyID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -268,6 +268,7 @@ CREATE TABLE `receive_notify` (
   `notifyID` varchar(4) NOT NULL,
   `userID` varchar(4) NOT NULL,
   `time` datetime DEFAULT NULL,
+  `isRead` tinyint DEFAULT NULL,
   PRIMARY KEY (`notifyID`,`userID`),
   KEY `userID` (`userID`),
   CONSTRAINT `receive_notify_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
@@ -331,7 +332,7 @@ CREATE TABLE `terminated_course` (
 
 LOCK TABLES `terminated_course` WRITE;
 /*!40000 ALTER TABLE `terminated_course` DISABLE KEYS */;
-INSERT INTO `terminated_course` VALUES ('C035','2024-05-25 10:00:00','2024-06-01 10:00:00'),('C036','2024-05-25 11:00:00',NULL);
+INSERT INTO `terminated_course` VALUES ('C035','2024-07-15 12:00:00',NULL),('C036','2024-05-25 11:00:00',NULL);
 /*!40000 ALTER TABLE `terminated_course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -395,4 +396,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-14 10:24:30
+-- Dump completed on 2024-08-06 22:08:14
