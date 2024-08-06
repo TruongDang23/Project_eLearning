@@ -1,6 +1,4 @@
-import React from "react";
 import styled from "styled-components";
-import DoneRoundedIcon from "@mui/icons-material/DoneRounded";
 import StarRating from "~/components/general/Other/StarRating";
 import StarIcon from "@mui/icons-material/Star";
 import Avatar from "@mui/material/Avatar";
@@ -31,7 +29,7 @@ function TabReview({ accessCourseData }) {
                   <h4>{review.reviewerName}</h4>
                   <span>
                     {formatDistanceToNow(new Date(review.date), {
-                      addSuffix: true,
+                      addSuffix: true
                     })}
                   </span>
                 </div>
