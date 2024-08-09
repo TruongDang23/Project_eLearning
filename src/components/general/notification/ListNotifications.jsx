@@ -1,69 +1,18 @@
 import styled from "styled-components"
-import AvatarImg from "./a2.png"
 import NotifyPreview from "./NotifyPreview"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import Loading from "~/screens/system/Loading"
 
-const NotifyData = [
-  {
-    notifyID: 1,
-    title:
-      "New Course Added ew course on ReactJS has been addedew course on ReactJS has been added",
-    message: "New course on ReactJS has been added",
-    route: "/course/1",
-    isRead: false,
-    imgInstructor: AvatarImg,
-    dateTimeRecive: "2024-06-10T10:00:00"
-  },
-  {
-    notifyID: 2,
-    title: "You are enrolled in a new course",
-    message: "New course on Angular has been added",
-    route: "/course/2",
-    isRead: true,
-    imgInstructor: AvatarImg,
-    dateTimeRecive: "2024-06-14T10:00:00"
-  },
-  {
-    notifyID: 3,
-    title: "Yeah, I know that!",
-    message: "New course on VueJS has been added",
-    route: "/course/3",
-    isRead: false,
-    imgInstructor: AvatarImg,
-    dateTimeRecive: "2023-10-10T10:00:00"
-  },
-  {
-    notifyID: 4,
-    title: "Hello World!",
-    message: "New course on NodeJS has been added",
-    route: "/course/4",
-    isRead: true,
-    imgInstructor: AvatarImg,
-    dateTimeRecive: "2023-10-10T10:00:00"
-  },
-  {
-    notifyID: 5,
-    title: "New Course Added",
-    message:
-      "New course on MongoDB has been added. Một div kiểu grid 2 column. Một column về list các notify, một column về nội dung của từng column đó. Mỗi khi nhấn vào một item trong column bên này thì nội dung sẽ để qua bên column kia",
-    route: "/course/5",
-    isRead: false,
-    imgInstructor: AvatarImg,
-    dateTimeRecive: "2024-10-10T10:00:00"
-  }
-];
-
 function ListNotifications() {
   const [selectedNotify, setSelectedNotify] = useState(null);
   // dùng useState để thay đổi isRead khi click vào một notify
-  const [notifyData, setNotifyData] = useState(NotifyData);
-  const token = localStorage.getItem("token");
-  const userAuth = localStorage.getItem("userAuth");
-  const userData = JSON.parse(localStorage.getItem("userAuth"));
-  const userID = userData ? userData.userID : "";
+  const [notifyData, setNotifyData] = useState()
+  const token = localStorage.getItem("token")
+  const userAuth = localStorage.getItem("userAuth")
+  const userData = JSON.parse(localStorage.getItem("userAuth"))
+  const userID = userData ? userData.userID : ""
   const navigate = useNavigate()
   const [isLoad, setIsLoad] = useState(true)
 
