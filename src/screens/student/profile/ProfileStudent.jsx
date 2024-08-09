@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 import { GeneralHeader } from "~/components/general";
 import { GeneralFooter } from "~/components/general";
@@ -10,6 +10,7 @@ function ProfileStudent({ userProfile }) {
   const { fullname } = userProfile;
   return (
     <>
+      <GlobalStyle />
       <GeneralHeader />
       <ProfileStudentWrapper className="container">
         <ContactInfo userProfile={userProfile} />
@@ -19,6 +20,14 @@ function ProfileStudent({ userProfile }) {
   );
 }
 
-const ProfileStudentWrapper = styled.main``;
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: #F1F3F5 !important;
+  }
+`;
+
+const ProfileStudentWrapper = styled.main`
+  padding: 40px 20px;
+`;
 
 export default ProfileStudent;

@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+import Link from "@mui/material/Link";
+
 function ContactInfo({ userProfile }) {
   const {
     avatar,
@@ -18,7 +21,20 @@ function ContactInfo({ userProfile }) {
           <img src={avatar} alt="avatar" />
         </div>
         <div className="contact-info__content">
-          <h2>{fullname}</h2>
+          <div className="contact-info__name">
+            <h2>
+              {fullname}
+              <span>
+                <Link
+                  href="/student/information"
+                  underline="none"
+                  target="_blank"
+                >
+                  <BorderColorIcon style={{ fontSize: 25 }} />
+                </Link>
+              </span>
+            </h2>
+          </div>
 
           <div className="contact-info__content-detail">
             <div className="contact-info__content-addition">
@@ -30,11 +46,23 @@ function ContactInfo({ userProfile }) {
               </p>
             </div>
             <div className="contact-info__content-social">
-              <h3>Social networks</h3>
+              <h3>Social networks:</h3>
               <ul>
-                {social_networks.map((social_network, index) => (
-                  <li key={index}>{social_network}</li>
-                ))}
+                {social_networks.map((social_network, index) => {
+                  // Kiểm tra và thêm giao thức nếu cần
+                  const url =
+                    social_network.startsWith("http://") ||
+                    social_network.startsWith("https://")
+                      ? social_network
+                      : `http://${social_network}`;
+                  return (
+                    <li key={index}>
+                      <a href={url} target="__blank">
+                        {social_network}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>
@@ -45,37 +73,67 @@ function ContactInfo({ userProfile }) {
 }
 
 const ContactInfoWrapper = styled.section`
+  display: flex;
+  margin: 0 auto;
+  width: 70%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: #0000000f 0px 4px 20px 0px;
   .contact-info {
     display: flex;
     align-items: center;
-    padding: 20px;
-    ${'' /* border: 1px solid #e0e0e0;
-    border-radius: 5px; */}
+    padding: 0px 20px;
+    gap: 10px;
 
     .contact-info__avatar {
+      
       img {
-        width: 150px;
-        height: 150px;
+        width: 180px;
+        height: 180px;
         border-radius: 50%;
+        object-fit: cover;
+        ${"" /* tạo phần viền trắng cho img */}
+        border: 3px solid #1971c2;
       }
     }
 
     .contact-info__content {
-      margin-left: 20px;
-
-      h2 {
-        font-size: 24px;
-        margin-bottom: 20px;
+      flex-grow: 1;
+      margin-top: 20px;
+      padding: 20px;
+      .contact-info__name {
+        h2 {
+          font-size: 2.4rem;
+          font-weight: 700;
+          color: #1971c2;
+          margin-bottom: 20px;
+        }
+        span {
+          margin-left: 15px;
+          cursor: pointer;
+          svg {
+            color: #1971c2;
+            transition: all 0.3s;
+            &:hover {
+              box-shadow: 0 0 10px 0 #1971c2;
+            }
+            &:active {
+              transform: scale(1.1);
+            }
+          }
+        }
       }
 
       .contact-info__content-detail {
         display: flex;
-        justify-content: space-between;
         margin-bottom: 20px;
+        gap: 50px;
 
         .contact-info__content-addition {
           p {
+            font-size: 1.6rem;
             margin-bottom: 10px;
+            line-height: 1.6;
 
             span {
               font-weight: 700;
@@ -85,8 +143,8 @@ const ContactInfoWrapper = styled.section`
 
         .contact-info__content-social {
           h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
+            font-size: 1.6rem;
+            font-weight: 700;
           }
 
           ul {
@@ -95,6 +153,14 @@ const ContactInfoWrapper = styled.section`
 
             li {
               margin-bottom: 5px;
+              font-size: 1.6rem;
+              a {
+                color: #1971c2;
+                text-decoration: none;
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
             }
           }
         }
