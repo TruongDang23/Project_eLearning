@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import styled from "styled-components";
 import Avatar from "@mui/material/Avatar";
 import { formatDistanceToNow } from "date-fns";
@@ -7,13 +8,13 @@ function NotifyPreview({ notify, onClick }) {
     notifyID,
     title,
     message,
-    route,
+    routing,
     isRead,
-    imgInstructor,
-    dateTimeRecive
+    image_course,
+    time
   } = notify;
 
-  const timeAgo = formatDistanceToNow(new Date(dateTimeRecive), {
+  const timeAgo = formatDistanceToNow(new Date(time), {
     addSuffix: true
   });
 
@@ -21,7 +22,7 @@ function NotifyPreview({ notify, onClick }) {
     <NotifyPreviewWrapper onClick={onClick}>
       <div className={`notification-item ${!isRead ? "not-read" : ""}`}>
         <div className="notification-item__avatar">
-          <Avatar src={imgInstructor} />
+          <Avatar src={image_course} />
         </div>
         <div className="notification-item__content">
           <h3 className="notification-item__title">{title}</h3>

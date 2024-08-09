@@ -262,5 +262,35 @@ module.exports = (connMysql, connMongo) => {
     })
   })
 
+  router.get('/loadNotification', verifyToken, async (req, res) => {
+    const { userID } = req.query
+    connMysql.getConnection((err, connection) => {
+      if (err) {
+        res.status(500).send(err)
+      }
+      else {
+        //Get avatar in table user
+        let query = `
+        select noti.notifyID,
+               title,
+               message,
+               routing,
+               isRead,
+               image_course,
+               time 
+          from receive_notify as rece
+          inner join notify as noti on noti.notifyID = rece.notifyID
+          where userID = ?`
+        connection.query(query, [userID], async (error, notification) => {
+          connection.release() //Giải phóng connection khi truy vấn xong
+          if (error) {
+            res.status(500).send(error)
+          }
+          res.send(notification)
+        })
+      }
+    })
+  })
+
   return router
 }
