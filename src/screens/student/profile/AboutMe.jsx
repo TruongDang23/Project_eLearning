@@ -42,6 +42,33 @@ const AboutMeWrapper = styled.section`
       line-height: 1.6;
     }
   }
+
+  @media (max-width: 768px) {
+    .about-me {
+      p {
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .about-me {
+      h2 {
+        font-size: 1.6rem;
+      }
+      p {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  @media (max-width: 420px) {
+    .about-me {
+      p {
+        font-size: 1.2rem;
+      }
+    }
+  }
 `;
 
 export default AboutMe;

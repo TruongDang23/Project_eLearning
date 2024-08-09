@@ -64,6 +64,39 @@ const WorkExperienceWrapper = styled.section`
       }
     }
   }
+
+  @media (max-width: 768px) {
+    .work-experience {
+      .work-experience__content {
+        .work-experience__content-item {
+          h3 {
+            font-size: 1.6rem;
+          }
+          p {
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .work-experience {
+      h2 {
+        font-size: 1.6rem;
+      }
+      .work-experience__content {
+        .work-experience__content-item {
+          h3 {
+            font-size: 1.4rem;
+          }
+          p {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
 `;
 
 export default WorkExperience;

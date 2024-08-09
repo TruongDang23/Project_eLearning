@@ -102,6 +102,69 @@ const PersonalProjectWrapper = styled.section`
       }
     }
   }
+
+  @media (max-width: 768px) {
+    .personal-project {
+      .personal-project__content {
+        .personal-project__content-item {
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          .personal-project__content-view {
+            margin-left: 0;
+            margin-top: 0px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .personal-project {
+      h2 {
+        font-size: 1.6rem;
+      }
+      .personal-project__content {
+        .personal-project__content-item {
+          .personal-project__content-detail {
+            h3 {
+              font-size: 1.4rem;
+            }
+            p {
+              font-size: 1.2rem;
+            }
+          }
+          .personal-project__content-view {
+            a {
+              font-size: 1.4rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 320px) {
+    .personal-project {
+      .personal-project__content {
+        .personal-project__content-item {
+          .personal-project__content-detail {
+            h3 {
+              font-size: 1.2rem;
+            }
+            p {
+              font-size: 1rem;
+            }
+          }
+          .personal-project__content-view {
+            a {
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+  }
 `;
 
 export default PersonalProject;

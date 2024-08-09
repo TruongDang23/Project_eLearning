@@ -69,6 +69,50 @@ const EducationWrapper = styled.section`
       }
     }
   }
+
+  @media (max-width: 768px) {
+    .education {
+      .education__content {
+        .education__content-item {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .education {
+      .education__content {
+        .education__content-item {
+          .education__content-item__title {
+            h3 {
+              font-size: 1.4rem;
+            }
+            p {
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .education {
+      h2 {
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  @media (max-width: 320px) {
+    .education {
+      h2 {
+        font-size: 1.4rem;
+      }
+    }
+  }
 `;
 
 export default Education;
