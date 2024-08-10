@@ -76,6 +76,26 @@ const UserInformation = {
       raters: 25,
       price: 25,
       currency: 'VND'
+    },
+    {
+      courseID: "C002",
+      image_introduce: "https://th.bing.com/th/id/R.e4764a69fbcdad81466dc87e56828111?rik=ssloj%2fcULHvTtA&pid=ImgRaw&r=0",
+      title: "Database basic",
+      instructor: "Nguyễn Văn A",
+      star: 4,
+      raters: 25,
+      price: 25,
+      currency: 'VND'
+    },
+    {
+      courseID: "C003",
+      image_introduce: "https://th.bing.com/th/id/R.e4764a69fbcdad81466dc87e56828111?rik=ssloj%2fcULHvTtA&pid=ImgRaw&r=0",
+      title: "Database basic",
+      instructor: "Nguyễn Văn A",
+      star: 4,
+      raters: 25,
+      price: 25,
+      currency: 'VND'
     }
   ]
 }

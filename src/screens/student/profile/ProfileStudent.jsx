@@ -9,9 +9,16 @@ import AboutMe from "./AboutMe";
 import Education from "./Education";
 import WorkExperience from "./WorkExperience";
 import PersonalProject from "./PersonalProject";
+import CourseEnrolled from "./CourseEnrolled";
 
 function ProfileStudent({ userProfile }) {
-  const { self_introduce, degrees, working_history, projects } = userProfile;
+  const {
+    self_introduce,
+    degrees,
+    working_history,
+    projects,
+    course_enrolled,
+  } = userProfile;
   return (
     <>
       <GlobalStyle />
@@ -22,6 +29,7 @@ function ProfileStudent({ userProfile }) {
         <Education degrees={degrees} />
         <WorkExperience working_history={working_history} />
         <PersonalProject projects={projects} />
+        <CourseEnrolled course_enrolled={course_enrolled} />
       </ProfileStudentWrapper>
       <GeneralFooter />
     </>
