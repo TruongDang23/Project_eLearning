@@ -19,7 +19,7 @@ function CourseCard({ course }) {
     num_reviews,
     num_lectures,
     course_for,
-    targets
+    targets,
   } = course;
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -34,7 +34,7 @@ function CourseCard({ course }) {
 
   const handleOnCick = () => {
     const url = `http://localhost:5173/course/infor/${courseID}`;
-    window.open(url, '_blank');
+    window.open(url, "_blank");
   };
 
   const open = Boolean(anchorEl);
@@ -85,7 +85,7 @@ function CourseCard({ course }) {
           </div>
         </div>
         <div className="course-card__price">
-          {price === 0 ? (
+          {price == 0 ? (
             <p>Free</p>
           ) : (
             <p>
@@ -97,18 +97,31 @@ function CourseCard({ course }) {
       <Popover
         id="mouse-over-popover"
         sx={{
-          pointerEvents: "none"
+          pointerEvents: "none",
+          "& .MuiPaper-root": {
+            // Default width for large screens
+            width: "30%",
+            // Media query for medium screens
+            "@media (max-width: 960px)": {
+              width: "50%",
+            },
+            // Media query for small screens
+            "@media (max-width: 600px)": {
+              width: "80%",
+            },
+          },
         }}
         open={open}
         anchorEl={anchorEl}
         anchorOrigin={{
           vertical: "center",
-          horizontal: "center"
+          horizontal: "center",
         }}
         transformOrigin={{
           vertical: "top",
-          horizontal: "left"
+          horizontal: "left",
         }}
+        className="responsive-popover"
         onClose={handlePopoverClose}
         disableRestoreFocus
         disableScrollLock={true}
