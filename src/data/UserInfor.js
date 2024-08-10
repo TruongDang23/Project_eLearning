@@ -1,7 +1,6 @@
 const UserInformation = {
   //mysql
   userID: "U000",
-  // avatar: "https://randomuser.me/api/portraits/men/3.jpg",
   avatar: "https://gcs.tripi.vn/public-tripi/tripi-feed/img/476438XkB/anh-mo-ta.png",
   fullname: "Đặng Quang Trường",
   date_of_birth: "05-01-2003", //dd-mm-yyyy

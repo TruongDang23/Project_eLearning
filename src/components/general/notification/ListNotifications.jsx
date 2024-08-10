@@ -1,61 +1,49 @@
-import styled from "styled-components";
-import AvatarImg from "./a2.png";
-import NotifyPreview from "./NotifyPreview";
-import { useState } from "react";
-const NotifyData = [
-  {
-    notifyID: 1,
-    title:
-      "New Course Added ew course on ReactJS has been addedew course on ReactJS has been added",
-    message: "New course on ReactJS has been added",
-    route: "/course/1",
-    isRead: false,
-    imgInstructor: AvatarImg,
-    dateTimeRecive: "2024-06-10T10:00:00"
-  },
-  {
-    notifyID: 2,
-    title: "You are enrolled in a new course",
-    message: "New course on Angular has been added",
-    route: "/course/2",
-    isRead: true,
-    imgInstructor: AvatarImg,
-    dateTimeRecive: "2024-06-14T10:00:00"
-  },
-  {
-    notifyID: 3,
-    title: "Yeah, I know that!",
-    message: "New course on VueJS has been added",
-    route: "/course/3",
-    isRead: false,
-    imgInstructor: AvatarImg,
-    dateTimeRecive: "2023-10-10T10:00:00"
-  },
-  {
-    notifyID: 4,
-    title: "Hello World!",
-    message: "New course on NodeJS has been added",
-    route: "/course/4",
-    isRead: true,
-    imgInstructor: AvatarImg,
-    dateTimeRecive: "2023-10-10T10:00:00"
-  },
-  {
-    notifyID: 5,
-    title: "New Course Added",
-    message:
-      "New course on MongoDB has been added. Một div kiểu grid 2 column. Một column về list các notify, một column về nội dung của từng column đó. Mỗi khi nhấn vào một item trong column bên này thì nội dung sẽ để qua bên column kia",
-    route: "/course/5",
-    isRead: false,
-    imgInstructor: AvatarImg,
-    dateTimeRecive: "2024-10-10T10:00:00"
-  }
-];
+import styled from "styled-components"
+import NotifyPreview from "./NotifyPreview"
+import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import axios from "axios"
+import Loading from "~/screens/system/Loading"
 
 function ListNotifications() {
   const [selectedNotify, setSelectedNotify] = useState(null);
   // dùng useState để thay đổi isRead khi click vào một notify
-  const [notifyData, setNotifyData] = useState(NotifyData);
+  const [notifyData, setNotifyData] = useState()
+  const token = localStorage.getItem("token")
+  const userAuth = localStorage.getItem("userAuth")
+  const userData = JSON.parse(localStorage.getItem("userAuth"))
+  const userID = userData ? userData.userID : ""
+  const navigate = useNavigate()
+  const [isLoad, setIsLoad] = useState(true)
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/s/loadNotification", {
+        params: {
+          userID
+        },
+        headers: {
+          Token: token, // Thêm token và user vào header để đưa xuống Backend xác thực
+          User: userAuth
+        }
+      })
+      .then((response) => {
+        setNotifyData(response.data)
+        setIsLoad(false)
+      })
+      .catch((error) => {
+        //Server shut down
+        if (error.message === "Network Error") navigate("/server-shutdown");
+        //Connection error
+        if (error.response.status === 500) navigate("/500error");
+        //Unauthorized. Need login
+        if (error.response.status === 401) navigate("/401error");
+        //Forbidden. Token != userAuth
+        if (error.response.status === 403) navigate("/403error");
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 
   const handleSelectNotify = (notify) => {
     setSelectedNotify(notify);
@@ -69,42 +57,51 @@ function ListNotifications() {
   };
 
   return (
-    <NotificationWrapper className="container white-space-small--top white-space-small">
-      <h2 className="heading-tertiary">Notifications</h2>
-      <div className="notifications">
-        <div className="notification-list">
-          {notifyData.map((notify) => (
-            <NotifyPreview
-              key={notify.notifyID}
-              notify={notify}
-              className="notification-item"
-              onClick={() => handleSelectNotify(notify)}
-            />
-          ))}
-        </div>
-        <div className="notification-content">
-          {selectedNotify ? (
+    <>
+      {
+        isLoad ? (<Loading/>) :
+          (
             <>
-              <h3>{selectedNotify.title}</h3>
-              <p>{selectedNotify.message}</p>
-              <p>{new Date(selectedNotify.dateTimeRecive).toLocaleString()}</p>
-              <a
-                href={selectedNotify.route}
-                target="_blank"
-                rel="noreferrer"
-                color="inherit"
-              >
+              <NotificationWrapper className="container white-space-small--top white-space-small">
+                <h2 className="heading-tertiary">Notifications</h2>
+                <div className="notifications">
+                  <div className="notification-list">
+                    {notifyData.map((notify) => (
+                      <NotifyPreview
+                        key={notify.notifyID}
+                        notify={notify}
+                        className="notification-item"
+                        onClick={() => handleSelectNotify(notify)}
+                      />
+                    ))}
+                  </div>
+                  <div className="notification-content">
+                    {selectedNotify ? (
+                      <>
+                        <h3>{selectedNotify.title}</h3>
+                        <p>{selectedNotify.message}</p>
+                        <p>{new Date(selectedNotify.time).toLocaleString()}</p>
+                        <a
+                          href={selectedNotify.routing}
+                          target="_blank"
+                          rel="noreferrer"
+                          color="inherit"
+                        >
                 Go to Q&A
-              </a>
-            </>
-          ) : (
-            <p className="no-select">
+                        </a>
+                      </>
+                    ) : (
+                      <p className="no-select">
               Select a notification to see the details
-            </p>
-          )}
-        </div>
-      </div>
-    </NotificationWrapper>
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </NotificationWrapper>
+            </>
+          )
+      }
+    </>
   );
 }
 

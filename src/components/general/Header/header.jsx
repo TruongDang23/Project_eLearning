@@ -12,9 +12,10 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 function Header() {
   const token = localStorage.getItem('token')
   const navigate = useNavigate()
+  // eslint-disable-next-line no-unused-vars
   const [search, setSearch] = useSearchParams()
   const [title, setTitle] = useState(search.get('q') || '')
-
+  const number = 2
   const handleSearch = (event) => {
     if (event.key === 'Enter') {
       navigate({
@@ -106,8 +107,8 @@ function Header() {
                 <ShoppingCartOutlinedIcon />
               </StyledBadge>
             </a>
-            <a>
-              <StyledBadge badgeContent={17} color="error">
+            <a href="/notification">
+              <StyledBadge badgeContent={number} color="error">
                 <NotificationsOutlinedIcon />
               </StyledBadge>
             </a>
