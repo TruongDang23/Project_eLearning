@@ -1,7 +1,7 @@
 const UserInformation = {
   //mysql
   userID: "U000",
-  avatar: "https://randomuser.me/api/portraits/men/3.jpg",
+  avatar: "https://gcs.tripi.vn/public-tripi/tripi-feed/img/476438XkB/anh-mo-ta.png",
   fullname: "Đặng Quang Trường",
   date_of_birth: "05-01-2003", //dd-mm-yyyy
   street: "Huỳnh Văn Lũy",
@@ -68,6 +68,26 @@ const UserInformation = {
     },
     {
       courseID: "C001",
+      image_introduce: "https://th.bing.com/th/id/R.e4764a69fbcdad81466dc87e56828111?rik=ssloj%2fcULHvTtA&pid=ImgRaw&r=0",
+      title: "Database basic",
+      instructor: "Nguyễn Văn A",
+      star: 4,
+      raters: 25,
+      price: 25,
+      currency: 'VND'
+    },
+    {
+      courseID: "C002",
+      image_introduce: "https://th.bing.com/th/id/R.e4764a69fbcdad81466dc87e56828111?rik=ssloj%2fcULHvTtA&pid=ImgRaw&r=0",
+      title: "Database basic",
+      instructor: "Nguyễn Văn A",
+      star: 4,
+      raters: 25,
+      price: 25,
+      currency: 'VND'
+    },
+    {
+      courseID: "C003",
       image_introduce: "https://th.bing.com/th/id/R.e4764a69fbcdad81466dc87e56828111?rik=ssloj%2fcULHvTtA&pid=ImgRaw&r=0",
       title: "Database basic",
       instructor: "Nguyễn Văn A",
