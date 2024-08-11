@@ -51,7 +51,7 @@ function Login() {
         alert('Login successfully')
         localStorage.setItem('token', token)
         localStorage.setItem('userAuth', userData)
-        navigate(`/${role}/information`)
+        navigate(`/`)
       }
 
     } catch (error) {
