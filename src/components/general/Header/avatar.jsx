@@ -12,7 +12,7 @@ import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
 import SpaceDashboardOutlinedIcon from "@mui/icons-material/SpaceDashboardOutlined";
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
+import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined'
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -163,7 +163,7 @@ export default function AvatarAction({ setReload }) {
         <MenuItem
           sx={{ fontSize: "16px", color: "#333" }}
           onClick={() => {
-            handleInformation();
+            handleProfile();
             handleClose;
           }}
         >
@@ -175,14 +175,14 @@ export default function AvatarAction({ setReload }) {
         <MenuItem
           sx={{ fontSize: "16px", color: "#333" }}
           onClick={() => {
-            handleProfile();
+            handleInformation();
             handleClose;
           }}
         >
           <ListItemIcon>
-            <InfoOutlinedIcon fontSize="large" />
+            <BorderColorOutlinedIcon fontSize="large" />
           </ListItemIcon>
-          About Me
+          Edit Profile
         </MenuItem>
         <Divider />
         <MenuItem
