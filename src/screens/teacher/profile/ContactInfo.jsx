@@ -1,8 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import styled from "styled-components"
 
-import BorderColorIcon from "@mui/icons-material/BorderColor";
-import Link from "@mui/material/Link";
+import BorderColorIcon from "@mui/icons-material/BorderColor"
+import Link from "@mui/material/Link"
 
 function ContactInfo({ userProfile }) {
   const {
@@ -12,8 +11,9 @@ function ContactInfo({ userProfile }) {
     street,
     province,
     country,
-    social_networks,
-  } = userProfile;
+    social_network
+  } = userProfile
+
   return (
     <ContactInfoWrapper>
       <div className="contact-info">
@@ -48,7 +48,7 @@ function ContactInfo({ userProfile }) {
             <div className="contact-info__content-social">
               <h3>Social networks:</h3>
               <ul>
-                {social_networks.map((social_network, index) => {
+                {social_network.map((social_network, index) => {
                   // Kiểm tra và thêm giao thức nếu cần
                   const url =
                     social_network.startsWith("http://") ||

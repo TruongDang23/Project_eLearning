@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 import BorderColorIcon from "@mui/icons-material/BorderColor";
@@ -12,7 +11,7 @@ function ContactInfo({ userProfile }) {
     street,
     province,
     country,
-    social_networks,
+    social_network
   } = userProfile;
   return (
     <ContactInfoWrapper>
@@ -48,7 +47,7 @@ function ContactInfo({ userProfile }) {
             <div className="contact-info__content-social">
               <h3>Social networks:</h3>
               <ul>
-                {social_networks.map((social_network, index) => {
+                {social_network.map((social_network, index) => {
                   // Kiểm tra và thêm giao thức nếu cần
                   const url =
                     social_network.startsWith("http://") ||

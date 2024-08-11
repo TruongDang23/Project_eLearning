@@ -12,6 +12,7 @@ import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
 import SpaceDashboardOutlinedIcon from "@mui/icons-material/SpaceDashboardOutlined";
+import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined'
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -65,12 +66,12 @@ export default function AvatarAction({ setReload }) {
     navigate("/");
   };
 
-  const handleProfile = () => {
+  const handleInformation = () => {
     userID[0] === "A"
       ? navigate("/Admin/information")
       : userID[0] === "S"
         ? navigate("/Student/information")
-        : navigate("/Instructor/information");
+        : navigate("/Instructor/information")
   };
 
   const handleDashboard = () => {
@@ -78,7 +79,13 @@ export default function AvatarAction({ setReload }) {
       ? navigate("/Admin/dashboard")
       : userID[0] === "S"
         ? navigate("/Student/dashboard")
-        : navigate("/Instructor/dashboard");
+        : navigate("/Instructor/dashboard")
+  }
+
+  const handleProfile = () => {
+    userID[0] === "S"
+      ? navigate("/Student/profile")
+      : navigate("/Instructor/profile")
   }
 
   return (
@@ -164,6 +171,18 @@ export default function AvatarAction({ setReload }) {
             <AccountBoxOutlinedIcon fontSize="large" />
           </ListItemIcon>
           My Profile
+        </MenuItem>
+        <MenuItem
+          sx={{ fontSize: "16px", color: "#333" }}
+          onClick={() => {
+            handleInformation();
+            handleClose;
+          }}
+        >
+          <ListItemIcon>
+            <BorderColorOutlinedIcon fontSize="large" />
+          </ListItemIcon>
+          Edit Profile
         </MenuItem>
         <Divider />
         <MenuItem
