@@ -55,7 +55,7 @@ const courseQA = [
         author: "Instructor",
         date: "2024-08-21",
         avatar:
-          "https://i.pinimg.com/474x/60/a6/6d/60a66dd9cbce9629b40941f5d0c5cdd6.jpg",
+          "https://images-na.ssl-images-amazon.com/images/I/61JGEsK4g7L.jpg",
         replies: [
           {
             id: 7,

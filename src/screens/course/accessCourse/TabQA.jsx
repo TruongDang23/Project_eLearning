@@ -91,37 +91,101 @@ const initialQA = [
   },
 ];
 
-function TabQA() {
-  const [courseQA, setCourseQA] = useState(initialQA);
+function ReplyItem({ reply, onReply }) {
   const [newReply, setNewReply] = useState("");
-  const [selectedQuestionId, setSelectedQuestionId] = useState(null);
+  const [isReplying, setIsReplying] = useState(false);
 
   const handleReplyChange = (e) => setNewReply(e.target.value);
 
-  const handleReplySubmit = (questionId) => {
+  const handleReplySubmit = () => {
+    onReply(reply.id, newReply);
+    setNewReply("");
+    setIsReplying(false);
+  };
+
+  return (
+    <div className="QA-question-item-reply-item">
+      <div className="QA-question-item-reply-item-header">
+        <div className="QA-question-item-reply-item-header__avatar">
+          <img src={reply.avatar} alt="avatar" />
+        </div>
+        <div className="QA-question-item-reply-item-header__info">
+          <h4>{reply.author}</h4>
+          <span>{reply.date}</span>
+        </div>
+      </div>
+      <div className="QA-question-item-reply-item-content">
+        <p>{reply.content}</p>
+      </div>
+      <div className="QA-question-item-reply-button">
+        <button onClick={() => setIsReplying(!isReplying)}>Reply</button>
+      </div>
+      {isReplying && (
+        <div className="QA-question-item-reply-input">
+          <textarea
+            value={newReply}
+            onChange={handleReplyChange}
+            placeholder="Write your reply here..."
+          />
+          <button onClick={handleReplySubmit}>Submit Reply</button>
+        </div>
+      )}
+      <div className="QA-question-item-reply-content">
+        {reply.replies.map((nestedReply) => (
+          <ReplyItem
+            key={nestedReply.id}
+            reply={nestedReply}
+            onReply={onReply}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function TabQA() {
+  const [courseQA, setCourseQA] = useState(initialQA);
+
+  const handleReplySubmit = (replyId, newReplyContent) => {
+    const addReply = (replies) => {
+      return replies.map((reply) => {
+        if (reply.id === replyId) {
+          return {
+            ...reply,
+            replies: [
+              ...reply.replies,
+              {
+                id: reply.replies.length + 1 + Math.random(), // Unique ID
+                content: newReplyContent,
+                author: "Vinh", // Replace with user's name
+                date: new Date().toISOString().split("T")[0], // Current date
+                avatar:
+                  "https://cdn.myanimelist.net/images/characters/6/139487.jpg", // Placeholder avatar
+                replies: [],
+              },
+            ],
+          };
+        } else if (reply.replies.length) {
+          return {
+            ...reply,
+            replies: addReply(reply.replies),
+          };
+        }
+        return reply;
+      });
+    };
+
     const updatedQA = courseQA.map((QA) => {
-      if (QA.id === questionId) {
+      if (QA.replies.length) {
         return {
           ...QA,
-          replies: [
-            ...QA.replies,
-            {
-              id: QA.replies.length + 1,
-              content: newReply,
-              author: "Your Name", // Thay thế bằng tên người dùng
-              date: new Date().toISOString().split("T")[0], // Ngày hiện tại
-              avatar:
-                "https://i.pinimg.com/474x/60/a6/6d/60a66dd9cbce9629b40941f5d0c5cdd6.jpg", // Avatar placeholder
-              replies: [],
-            },
-          ],
+          replies: addReply(QA.replies),
         };
       }
       return QA;
     });
+
     setCourseQA(updatedQA);
-    setNewReply("");
-    setSelectedQuestionId(null);
   };
 
   return (
@@ -171,42 +235,16 @@ function TabQA() {
                 <p>{QA.content}</p>
               </div>
               <div className="QA-question-item-reply">
+                <h4>Replies:</h4>
                 <div className="QA-question-item-reply-content">
                   {QA.replies.map((reply) => (
-                    <div key={reply.id} className="QA-question-item-reply-item">
-                      <div className="QA-question-item-reply-item-header">
-                        <div className="QA-question-item-reply-item-header__avatar">
-                          <img src={reply.avatar} alt="avatar" />
-                        </div>
-                        <div className="QA-question-item-reply-item-header__info">
-                          <h4>{reply.author}</h4>
-                          <span>{reply.date}</span>
-                        </div>
-                      </div>
-                      <div className="QA-question-item-reply-item-content">
-                        <p>{reply.content}</p>
-                      </div>
-                    </div>
+                    <ReplyItem
+                      key={reply.id}
+                      reply={reply}
+                      onReply={handleReplySubmit}
+                    />
                   ))}
                 </div>
-                {selectedQuestionId === QA.id ? (
-                  <div className="QA-question-item-reply-input">
-                    <textarea
-                      value={newReply}
-                      onChange={handleReplyChange}
-                      placeholder="Write your reply here..."
-                    />
-                    <button onClick={() => handleReplySubmit(QA.id)}>
-                      Submit Reply
-                    </button>
-                  </div>
-                ) : (
-                  <div className="QA-question-item-reply-button">
-                    <button onClick={() => setSelectedQuestionId(QA.id)}>
-                      Reply
-                    </button>
-                  </div>
-                )}
               </div>
             </div>
           ))}
@@ -326,6 +364,7 @@ const TabQAWrapper = styled.div`
             .QA-question-item-reply-item {
               margin-top: 10px;
               padding: 10px;
+              margin-left: 10px;
               ${"" /* border: 1px solid #ccc; */}
               border-radius: 5px;
               .QA-question-item-reply-item-header {
