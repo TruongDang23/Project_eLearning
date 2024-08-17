@@ -1,83 +1,67 @@
 const courseQA = [
   {
     id: 1,
-    content: "What are the prerequisites for this course?",
-    author: "John Doe",
-    date: "2024-08-16",
+    question: "What are the prerequisites for this course?",
+    name: "John Doe",
+    date: "2024-08-16 14:05:32",
     avatar: "https://i.scdn.co/image/ab67616100005174ba025c8f62612b2ca6bfa375",
-    replies: [
+    responses: [
       {
-        id: 2,
-        content:
+        response:
           "You should have a basic understanding of HTML, CSS, and JavaScript before taking this course.",
-        author: "Instructor",
-        date: "2024-08-17",
+        name: "Instructor",
+        date: "2024-08-17 09:12:45",
         avatar:
           "https://images-na.ssl-images-amazon.com/images/I/61JGEsK4g7L.jpg",
-        replies: [
-          {
-            id: 3,
-            content:
-              "Where can I learn the basics of HTML, CSS, and JavaScript?",
-            author: "Jane Smith",
-            date: "2024-08-18",
-            avatar:
-              "https://images-na.ssl-images-amazon.com/images/I/61JGEsK4g7L.jpg",
-            replies: [
-              {
-                id: 4,
-                content:
-                  "You can find beginner tutorials on platforms like freeCodeCamp, Codecademy, or W3Schools.",
-                author: "Instructor",
-                date: "2024-08-19",
-                avatar:
-                  "https://i.pinimg.com/474x/60/a6/6d/60a66dd9cbce9629b40941f5d0c5cdd6.jpg",
-                replies: [],
-              },
-            ],
-          },
-        ],
+      },
+      {
+        response: "What if I don't know JavaScript?",
+        name: "Sarah Lee",
+        date: "2024-08-17 11:30:20",
+        avatar:
+          "https://i.scdn.co/image/ab67616100005174ba025c8f62612b2ca6bfa375",
+      },
+      {
+        response:
+          "You may still be able to follow along with the course, but having a basic understanding of JavaScript will be beneficial.",
+        name: "Instructor",
+        date: "2024-08-17 15:40:10",
+        avatar:
+          "https://images-na.ssl-images-amazon.com/images/I/61JGEsK4g7L.jpg",
       },
     ],
   },
   {
-    id: 5,
-    content: "How long is the course?",
-    author: "Mike Brown",
-    date: "2024-08-20",
-    avatar:
-      "https://i.pinimg.com/474x/60/a6/6d/60a66dd9cbce9629b40941f5d0c5cdd6.jpg",
-    replies: [
+    id: 2,
+    question: "How long does it take to complete this course?",
+    name: "Jane Smith",
+    date: "2024-08-10 18:25:15",
+    avatar: "https://images-na.ssl-images-amazon.com/images/I/61JGEsK4g7L.jpg",
+    responses: [
       {
-        id: 6,
-        content:
-          "The course is designed to be completed in 6 weeks with an estimated study time of 3-4 hours per week.",
-        author: "Instructor",
-        date: "2024-08-21",
+        response:
+          "The course is self-paced, so the time it takes to complete will vary depending on the individual. On average, students complete the course in about 6-8 weeks.",
+        name: "Instructor",
+        date: "2024-08-11 10:35:30",
         avatar:
           "https://images-na.ssl-images-amazon.com/images/I/61JGEsK4g7L.jpg",
-        replies: [
-          {
-            id: 7,
-            content: "Can I complete the course faster?",
-            author: "Sarah Lee",
-            date: "2024-08-22",
-            avatar:
-              "https://i.pinimg.com/474x/60/a6/6d/60a66dd9cbce9629b40941f5d0c5cdd6.jpg",
-            replies: [
-              {
-                id: 8,
-                content:
-                  "Yes, you can go at your own pace and complete the course faster if you wish.",
-                author: "Instructor",
-                date: "2024-08-23",
-                avatar:
-                  "https://i.pinimg.com/474x/60/a6/6d/60a66dd9cbce9629b40941f5d0c5cdd6.jpg",
-                replies: [],
-              },
-            ],
-          },
-        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    question: "Is there a certificate of completion for this course?",
+    name: "Alex Johnson",
+    date: "2024-08-18 12:45:40",
+    avatar: "https://i.scdn.co/image/ab67616100005174ba025c8f62612b2ca6bfa375",
+    responses: [
+      {
+        response:
+          "Yes, students who successfully complete the course will receive a certificate of completion.",
+        name: "Instructor",
+        date: "2024-08-10 14:50:55",
+        avatar:
+          "https://images-na.ssl-images-amazon.com/images/I/61JGEsK4g7L.jpg",
       },
     ],
   },
