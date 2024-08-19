@@ -11,7 +11,8 @@ function CourseEnrolled({ course_enrolled }) {
         <hr />
         <div className="course-enrolled__content">
           {course_enrolled.map((course, index) => {
-            const price = course.price === 0 ? "Free" : course.price;
+            const price =
+              course.price == 0 ? "Free" : course.price + " " + course.currency;
             return (
               <div key={index} className="course-enrolled__content-item">
                 <div className="item-img">
@@ -26,7 +27,7 @@ function CourseEnrolled({ course_enrolled }) {
                     <span className="rating-count">({course.raters})</span>
                   </div>
                   <div className="item-price">
-                    <span className="item-price-new">${price}</span>
+                    <span className="item-price-new">{price}</span>
                   </div>
                 </div>
               </div>
