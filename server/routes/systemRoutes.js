@@ -44,6 +44,54 @@ module.exports = (connMysql, connMongo) => {
     })
   }
 
+  const getUserIDBasedEmail = (mail) => {
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          reject(err)
+          return
+        }
+
+        let query = 'SELECT userID FROM user WHERE mail = ?'
+        connection.query(query, [mail], (error, results) => {
+          connection.release() //Giải phóng connection khi truy vấn xong
+          if (error) {
+            reject(error)
+            return
+          }
+          if (results.length == 0)
+            resolve('null')
+          else
+            resolve(results[0].userID)
+        })
+      })
+    })
+  }
+
+  const getAccountBasedUserID = (mail) => {
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          reject(err)
+          return
+        }
+
+        let query = 'SELECT userID, role FROM user WHERE mail = ?'
+        connection.query(query, [mail], (error, results) => {
+          connection.release() //Giải phóng connection khi truy vấn xong
+          if (error) {
+            reject(error)
+            return
+          }
+          if (results.length == 0)
+            resolve('null')
+          else
+            resolve(results[0])
+        })
+      })
+    })
+  }
+
   const getCurrentDateTime = () => {
     return format(new Date(), 'yyyy-MM-dd HH:mm:ss')
   }
@@ -63,9 +111,9 @@ module.exports = (connMysql, connMongo) => {
         }
         if (results.affectedRows > 0) //Nếu như insert into account xong
         {
-          let userQuery = 'INSERT INTO user (userID, avatar, fullname, date_of_birth, created_time,\
-                        street, province, country, language, role) VALUES (?, ?, ?, ? ,? ,? ,? ,? ,? ,?)'
-          connection.query(userQuery, [user.userID, null, null, null, getCurrentDateTime(), null, null, null, null, user.role], (userError, userResults) => {
+          let userQuery = 'INSERT INTO user (userID, avatar, fullname, date_of_birth, mail, created_time,\
+                        street, province, country, language, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+          connection.query(userQuery, [user.userID, user.avatar, user.name, null, user.mail, getCurrentDateTime(), null, null, null, null, user.role], (userError, userResults) => {
             connection.release()
             if (userError) {
               callback(userError, null)
@@ -179,7 +227,10 @@ module.exports = (connMysql, connMongo) => {
         userID: userID,
         username: username,
         password: pass,
-        role: role
+        role: role,
+        avatar: '',
+        mail: '',
+        name: ''
       }
 
       insertUserIntoMysql(user, (error, result) => {
@@ -198,6 +249,87 @@ module.exports = (connMysql, connMongo) => {
     insertUser()
   })
 
+  // Define user-related routes (that is API)
+  router.post('/loginWithGoogle', async(req, res) => {
+    const { loginCredential } = req.body
+    const dataDecode = jwt.decode(loginCredential)
+
+    const userID = await getUserIDBasedEmail(dataDecode.email)
+
+    if (userID === 'null')
+    {
+      //SIGN UP
+      let userID = ''
+      let num
+      let betweenCharacter
+      let roleOfUser = 'S'
+      //Đếm số lượng user để tạo userID tương ứng
+      try {
+        const count = await countUserOfRole(roleOfUser)
+        num = count
+      } catch (error) {
+        res.status(500).send(error)
+      }
+
+      //Xử lý userID
+      betweenCharacter = (num < 10) ? '00' : (num < 100) ? '0' : ''
+      userID = roleOfUser + betweenCharacter + num
+      let user = {
+        userID: userID,
+        username: dataDecode.email,
+        password: dataDecode.sub,
+        role: 'Student',
+        avatar: dataDecode.picture,
+        mail: dataDecode.email,
+        name: dataDecode.name
+      }
+
+      insertUserIntoMysql(user, (error, result) => {
+        if (error || result === false) {
+          console.log('error mysql: ', error)
+          res.send(error)
+        }
+        else {
+          insertUserIntoMongo(user, (error, result) => {
+            if (error || result === false) {
+              console.log('error mongo: ', error)
+              res.send(error)
+            }
+            else
+            {
+              //LOGIN
+
+              //sign JWT token. Sign 2 value: userID & role. JWT using for authentication when user handle any function
+              const token = jwt.sign({ userID: user.userID, role: user.role }, KEY, { expiresIn: 86400 })
+              //Respond 3 value to the client: token, userID, role
+              //When user handle any function. We will decode JWT then compare with userID & role. If its equal --> process, if not --> cancel
+              res.json({
+                token: token,
+                userID: user.userID,
+                role: user.role
+              })
+            }
+          })
+        }
+      })
+    }
+    else
+    {
+      // Get Account Based UserID
+      const account = await getAccountBasedUserID(dataDecode.email)
+      //LOGIN
+
+      //sign JWT token. Sign 2 value: userID & role. JWT using for authentication when user handle any function
+      const token = jwt.sign({ userID: account.userID, role: account.role }, KEY, { expiresIn: 86400 })
+      //Respond 3 value to the client: token, userID, role
+      //When user handle any function. We will decode JWT then compare with userID & role. If its equal --> process, if not --> cancel
+      res.json({
+        token: token,
+        userID: account.userID,
+        role: account.role
+      })
+    }
+  })
 
   router.get('/loadCourseWelcome', (req, res) => {
     connMysql.getConnection((err, connection) => {
