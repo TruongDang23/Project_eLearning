@@ -6,6 +6,7 @@ import UnauthorizedPage from './401error'
 import ForbiddenPage from './403error'
 import ConnectError from './500error'
 import ServerShutdownPage from './ServerShutdown'
+import ErrorGetData from './ErrorGetData'
 import Notication from '~/components/general/notification/Notication'
 /* index.jsx của các folder: system, admin, student, teacher có nhiệm vụ
   tạo route để hiển thị các màn hình tương ứng theo từng folder */
@@ -23,6 +24,7 @@ function System () {
         <Route path = '/401error' element = {<UnauthorizedPage/>} />
         <Route path = '/403error' element = {<ForbiddenPage/>} />
         <Route path = '/500error' element = {<ConnectError/>} />
+        <Route path = '/error-get-data' element = {<ErrorGetData/>} />
         <Route path = '/server-shutdown' element = {<ServerShutdownPage/>} />
         <Route path = '/notification' element = {<Notication/>} />
       </Routes>
