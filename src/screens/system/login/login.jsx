@@ -1,5 +1,6 @@
 //This is login screen
 import imgLogin from '../assets/image_login.jpg'
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline'
 import LockIcon from '@mui/icons-material/Lock'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'
@@ -37,6 +38,29 @@ function Login() {
 
   const hashPassword = (password) => {
     return CryptoJS.SHA512(password).toString(CryptoJS.enc.Hex)
+  }
+
+  const handleSuccess = async (response) => {
+    try {
+      const res = await axios.post('http://localhost:3000/s/loginWithGoogle', { loginCredential: response.credential })
+      if (res.data === 'error')
+        setMessage("An error occurred when logging in with Google!")
+      else {
+        const { token, userID, role } = res.data
+        const userData = JSON.stringify({ userID, role })
+        alert('Login successfully')
+        localStorage.setItem('token', token)
+        localStorage.setItem('userAuth', userData)
+        navigate(`/`)
+      }
+    } catch (error) {
+      alert('An error occurred while trying to log in.')
+      //console.error(error)
+    }
+  }
+
+  const handleFailure = () => {
+    setMessage("An error occurred when logging in with Google!")
   }
 
   const checkLogin = async () => {
@@ -100,7 +124,14 @@ function Login() {
               <div className="forgot">
                 <a href="#">Forgot Password</a>
               </div>
-
+              <GoogleOAuthProvider clientId="801061480969-6i55dvk4l281orpnv8l4tde3t8d4jrn4.apps.googleusercontent.com">
+                <div className="loginGoogle">
+                  <GoogleLogin
+                    onSuccess={handleSuccess}
+                    onError={handleFailure}
+                  />
+                </div>
+              </GoogleOAuthProvider>
             </div>
           </div>
         </div>
@@ -256,6 +287,12 @@ const LoginWrapper = styled.section`
       font-weight: 500;
       line-height: normal;
       text-align: end;
+    }
+
+    .loginGoogle {
+      width: 200px;
+      height: 50px;
+      margin: 20px auto;
     }
   }
 }

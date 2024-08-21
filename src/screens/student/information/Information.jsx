@@ -35,14 +35,16 @@ function Information() {
         if (error.message === 'Network Error')
           navigate('/server-shutdown')
         //Connection error
-        if (error.response.status === 500)
+        else if (error.response.status === 500)
           navigate('/500error')
         //Unauthorized. Need login
-        if (error.response.status === 401)
+        else if (error.response.status === 401)
           navigate('/401error')
         //Forbidden. Token != userAuth
-        if (error.response.status === 403)
+        else if (error.response.status === 403)
           navigate('/403error')
+        else
+          navigate('/error-get-data')
         setIsLoad(false)
       })
   // eslint-disable-next-line react-hooks/exhaustive-deps
