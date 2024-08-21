@@ -33,7 +33,8 @@ function Information() {
       .catch(error => {
         //Server shut down
         if (error.message === 'Network Error')
-          navigate('/server-shutdown')
+          console.log(error.message)
+          // navigate('/server-shutdown')
         //Connection error
         if (error.response.status === 500)
           navigate('/500error')

@@ -124,7 +124,7 @@ module.exports = (connMysql, connMongo) => {
             const mergeData = infor.map(inf => {
               return {
                 ...inf,
-                date_of_birth: formatDate(inf.date_of_birth),
+                date_of_birth: (inf.date_of_birth == null) ? '2000-01-01' : formatDate(inf.date_of_birth),
                 //Câu query không có lấy activity_status. Tuy nhiên login thành công <=> activity_status = active
                 activity_status: 'active',
 
@@ -137,8 +137,8 @@ module.exports = (connMysql, connMongo) => {
                 course_enrolled: enrolled
               }
             })
+            console.log(mergeData[0])
             res.send(mergeData[0])
-            // console.log(mergeData[0])
           })
         }
       })

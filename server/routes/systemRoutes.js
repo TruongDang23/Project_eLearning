@@ -286,14 +286,12 @@ module.exports = (connMysql, connMongo) => {
 
       insertUserIntoMysql(user, (error, result) => {
         if (error || result === false) {
-          console.log('error mysql: ', error)
-          res.send(error)
+          res.send('error')
         }
         else {
           insertUserIntoMongo(user, (error, result) => {
             if (error || result === false) {
-              console.log('error mongo: ', error)
-              res.send(error)
+              res.send('error')
             }
             else
             {

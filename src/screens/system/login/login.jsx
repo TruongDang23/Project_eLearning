@@ -43,12 +43,16 @@ function Login() {
   const handleSuccess = async (response) => {
     try {
       const res = await axios.post('http://localhost:3000/s/loginWithGoogle', { loginCredential: response.credential })
-      const { token, userID, role } = res.data
-      const userData = JSON.stringify({ userID, role })
-      alert('Login successfully')
-      localStorage.setItem('token', token)
-      localStorage.setItem('userAuth', userData)
-      navigate(`/`)
+      if (res.data === 'error')
+        setMessage("An error occurred when logging in with Google!")
+      else {
+        const { token, userID, role } = res.data
+        const userData = JSON.stringify({ userID, role })
+        alert('Login successfully')
+        localStorage.setItem('token', token)
+        localStorage.setItem('userAuth', userData)
+        navigate(`/`)
+      }
     } catch (error) {
       alert('An error occurred while trying to log in.')
       //console.error(error)
