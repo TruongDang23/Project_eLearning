@@ -912,7 +912,7 @@ module.exports = (connMysql, connMongo) => {
     });
   });
 
-  router.post("/addReview", async (req, res) => {
+  router.post("/addReview", verifyToken, async (req, res) => {
     const { courseID, userID, message, star, time } = req.body;
 
     if (!courseID || !userID || !message || !star || !time) {
@@ -923,7 +923,7 @@ module.exports = (connMysql, connMongo) => {
 
     connMysql.getConnection((err, connection) => {
       if (err) {
-        return res.status(500).send({ message: "Internal server error" });
+        return res.status(500).send({ message: "Database failed to connect" });
       }
 
       // First, check if a review with the same courseID and userID already exists
