@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import TeacherList from './Teacher'
+import ActiveList from './ActiveList'
+import LockedList from './LockedList'
 
 function ManageAccount() {
   const token = localStorage.getItem('token')
@@ -17,87 +18,63 @@ function ManageAccount() {
     setActiveTab(tab);
   };
 
-  const [pub, setPub] = useState([])
-  const [monitor, setMonitor] = useState([])
-  const [ter, setTer] = useState([])
+  const [active, setActive] = useState([])
+  const [locked, setLocked] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:3000/c/getPublishCourse', {
+    axios.get('http://localhost:3000/ad/getActiveAccounts', {
       headers: {
         'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
         'User': userAuth
       }
     })
       .then(response => {
-        setPub(response.data)
+        setActive(response.data)
       })
       .catch(error => {
         //Server shut down
         if (error.message === 'Network Error')
           navigate('/server-shutdown')
         //Connection error
-        if (error.response.status === 500)
+        else if (error.response.status === 500)
           navigate('/500error')
         //Unauthorized. Need login
-        if (error.response.status === 401)
+        else if (error.response.status === 401)
           navigate('/401error')
         //Forbidden. Token != userAuth
-        if (error.response.status === 403)
+        else if (error.response.status === 403)
           navigate('/403error')
+        else
+          navigate('/error-get-data')
       })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reload])
 
   useEffect(() => {
-    axios.get('http://localhost:3000/c/getMonitorCourse', {
+    axios.get('http://localhost:3000/ad/getLockedAccounts', {
       headers: {
         'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
         'User': userAuth
       }
     })
       .then(response => {
-        setMonitor(response.data)
+        setLocked(response.data)
       })
       .catch(error => {
         //Server shut down
         if (error.message === 'Network Error')
           navigate('/server-shutdown')
         //Connection error
-        if (error.response.status === 500)
+        else if (error.response.status === 500)
           navigate('/500error')
         //Unauthorized. Need login
-        if (error.response.status === 401)
+        else if (error.response.status === 401)
           navigate('/401error')
         //Forbidden. Token != userAuth
-        if (error.response.status === 403)
+        else if (error.response.status === 403)
           navigate('/403error')
-      })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [reload])
-
-  useEffect(() => {
-    axios.get('http://localhost:3000/c/getTerminateCourse', {
-      headers: {
-        'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
-        'User': userAuth
-      }
-    })
-      .then(response => {
-        setTer(response.data)
-      })
-      .catch(error => {
-        //Server shut down
-        if (error.message === 'Network Error')
-          navigate('/server-shutdown')
-        //Connection error
-        if (error.response.status === 500)
-          navigate('/500error')
-        //Unauthorized. Need login
-        if (error.response.status === 401)
-          navigate('/401error')
-        //Forbidden. Token != userAuth
-        if (error.response.status === 403)
-          navigate('/403error')
+        else
+          navigate('/error-get-data')
       })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reload])
@@ -114,19 +91,18 @@ function ManageAccount() {
                   className={activeTab === 'Tab1' ? 'active' : ''}
                   onClick={() => handleTabClick('Tab1')}
                 >
-                                  Teacher
+                                  Active
                 </button>
                 <button
                   className={activeTab === 'Tab2' ? 'active' : ''}
                   onClick={() => handleTabClick('Tab2')}
                 >
-                                  Student
+                                  Locked
                 </button>
               </div>
               <div className="tab-content">
-                {activeTab === 'Tab1' && <TeacherList course={ pub } reload={reload} setReload={setReload}/>}
-                {/* {activeTab === 'Tab2' && <MonitoringCourse course={ monitor } reload={reload} setReload={setReload}/>}
-                {activeTab === 'Tab3' && <TerminatedCourse course={ ter } reload={reload} setReload={setReload}/>} */}
+                {activeTab === 'Tab1' && <ActiveList account={ active } reload={reload} setReload={setReload}/>}
+                {activeTab === 'Tab2' && <LockedList account={ locked } reload={reload} setReload={setReload}/>}
               </div>
             </div>
           </Container>

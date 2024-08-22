@@ -22,6 +22,17 @@ module.exports = (connMysql, connMongo) => {
     return `${year}-${month}-${day}`
   }
 
+  //Function format 1981-05-11T17:00:00.000Z to 1981-05-12 12:00:00
+  const formatDateTime = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero indexed
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  }
+
   const isAuthorization = async(userID) => {
     return new Promise((resolve) => {
       if (userID[0] !== 'A')
@@ -35,9 +46,12 @@ module.exports = (connMysql, connMongo) => {
     connMysql.getConnection(async (err, connection) => {
       if (err) {
         res.status(500).send(err)
+        return
       }
-      if (await isAuthorization(req.userID) == false)
+      if (await isAuthorization(req.userID) == false) {
         res.status(401).send('error')
+        return
+      }
       else {
         //Get information from mysql
         let query = 'SELECT userID, avatar, fullname, date_of_birth, street, province, country, language\
@@ -46,6 +60,7 @@ module.exports = (connMysql, connMongo) => {
           connection.release() //Giải phóng connection khi truy vấn xong
           if (error) {
             res.status(500).send(error)
+            return
           }
           await connMongo
           const mongoData = await User.findOne({ userID: req.userID }).select()
@@ -70,8 +85,10 @@ module.exports = (connMysql, connMongo) => {
   })
 
   router.post('/updateInformation', verifyToken, async (req, res) => {
-    if (await isAuthorization(req.userID) == false)
+    if (await isAuthorization(req.userID) == false) {
       res.status(401).send('error')
+      return
+    }
     else {
       const inf = req.body.profile
 
@@ -86,11 +103,13 @@ module.exports = (connMysql, connMongo) => {
       }
       catch (error) {
         res.send(false)
+        return
       }
 
       connMysql.getConnection((err, connection) => {
         if (err) {
           res.status(500).send(err)
+          return
         }
         else {
           //Get information from mysql
@@ -101,6 +120,7 @@ module.exports = (connMysql, connMongo) => {
             connection.release() //Giải phóng connection khi truy vấn xong
             if (error) {
               res.send(false)
+              return
             }
             //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
             if (results.affectedRows > 0)
@@ -110,5 +130,102 @@ module.exports = (connMysql, connMongo) => {
       })
     }
   })
+
+  router.get('/getActiveAccounts', verifyToken, async (req, res) => {
+    if (await isAuthorization(req.userID) === false) {
+      res.status(401).send('error')
+      return
+    }
+    else {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          res.status(500).send(err)
+          return
+        }
+        else {
+          //Get information from mysql
+          let query = `SELECT 
+                        u.userID,
+                        avatar,
+                        fullname,
+                        date_of_birth,
+                        created_time,
+                        street,
+                        province,
+                        country,
+                        role,
+                        activity_status
+                      FROM user AS u
+                      INNER JOIN account AS a ON u.userID = a.userID
+                      WHERE a.activity_status = 'active'`
+          connection.query(query, async (error, accounts) => {
+            connection.release() //Giải phóng connection khi truy vấn xong
+            if (error) {
+              res.status(500).send(error)
+              return
+            }
+            const mergeData = accounts.map(acc => {
+              return {
+                ...acc,
+                date_of_birth: (acc.date_of_birth == null) ? '2000-01-01' : formatDate(acc.date_of_birth),
+                created_time: formatDateTime(acc.created_time)
+              }
+            })
+            res.send(mergeData)
+          })
+        }
+
+      })
+    }
+  })
+
+  router.get('/getLockedAccounts', verifyToken, async (req, res) => {
+    if (await isAuthorization(req.userID) === false) {
+      res.status(401).send('error')
+      return
+    }
+    else {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          res.status(500).send(err)
+          return
+        }
+        else {
+          //Get information from mysql
+          let query = `SELECT 
+                        u.userID,
+                        avatar,
+                        fullname,
+                        date_of_birth,
+                        created_time,
+                        street,
+                        province,
+                        country,
+                        role,
+                        activity_status
+                      FROM user AS u
+                      INNER JOIN account AS a ON u.userID = a.userID
+                      WHERE a.activity_status = 'locked'`
+          connection.query(query, async (error, accounts) => {
+            connection.release() //Giải phóng connection khi truy vấn xong
+            if (error) {
+              res.status(500).send(error)
+              return
+            }
+            const mergeData = accounts.map(acc => {
+              return {
+                ...acc,
+                date_of_birth: (acc.date_of_birth == null) ? '2000-01-01' : formatDate(acc.date_of_birth),
+                created_time: formatDateTime(acc.created_time)
+              }
+            })
+            res.send(mergeData)
+          })
+        }
+
+      })
+    }
+  })
+
   return router
 }

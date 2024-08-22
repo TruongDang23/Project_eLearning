@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { PublishCourse, RejectCourse } from '~/components/popup/index'
 import { Link } from "react-router-dom";
 
-export function Items({ courseItem, reload, setReload }) {
+export function Items({ accountItem, reload, setReload }) {
   const [openPub, setopenPub] = useState(false)
   const [openReject, setopenReject] = useState(false)
 
@@ -12,34 +12,33 @@ export function Items({ courseItem, reload, setReload }) {
   return (
     <>
       <Wrapper>
-        <div key={courseItem.courseID} className="course-item">
+        <div key={accountItem.userID} className="course-item">
           <div className="image">
-            <img src={courseItem.image_introduce} alt='image' />
+            <img src={accountItem.avatar} alt='image' />
           </div>
 
           <div className="center_infor">
-            <h2>{courseItem.title}</h2>
-            <p><strong>Teacher:</strong> {courseItem.teacher}</p>
-            <p><strong>Method:</strong> {courseItem.method}</p>
-            <p><strong>Sending Date:</strong> {courseItem.time}</p>
-            <p><strong>Program:</strong> {courseItem.program}</p>
+            <h2>Name: {accountItem.fullname}</h2>
+
+            <p><strong>Date of birth:</strong> {accountItem.date_of_birth}</p>
+            <p><strong>Location:</strong> {accountItem.street}, {accountItem.province}, {accountItem.country}</p>
+            <p><strong>Created Time:</strong> {accountItem.created_time}</p>
           </div>
 
           <div className="right_infor">
-            <h2>{courseItem.courseID}</h2>
-            <p>Monitoring</p>
+            <h2>UserID: {accountItem.userID}</h2>
+            <p>{accountItem.role}</p>
             <div className="button">
-              <Link to={`/course/infor/${courseItem.courseID}`}>
-                <button>Go to course</button>
+              <Link to={`Student/profile`}>
+                <button>Show Information</button>
               </Link>
-              <button onClick={togglePub}>Accept</button>
-              <button onClick={toggleReject}>Reject</button>
+              <button onClick={togglePub}>Lock Account</button>
             </div>
           </div>
         </div>
       </Wrapper>
-      {openPub && <PublishCourse handleClose={togglePub} course={courseItem.courseID} reload={reload} setReload={setReload} />}
-      {openReject && <RejectCourse handleClose={toggleReject} course={courseItem.courseID} reload={reload} setReload={setReload} />}
+      {openPub && <PublishCourse handleClose={togglePub} course={accountItem.courseID} reload={reload} setReload={setReload} />}
+      {openReject && <RejectCourse handleClose={toggleReject} course={accountItem.courseID} reload={reload} setReload={setReload} />}
     </>
   )
 }
