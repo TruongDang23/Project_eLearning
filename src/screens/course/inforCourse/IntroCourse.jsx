@@ -119,9 +119,11 @@ const IntroCourseWrapper = styled.section`
     .intro-course-img {
       padding: 20px;
       text-align: center;
+      
       img {
         width: 100%;
         height: 100%;
+        border-radius: 8px;
         object-fit: cover;
         animation: fadeIn 1s ease-in-out;
       }

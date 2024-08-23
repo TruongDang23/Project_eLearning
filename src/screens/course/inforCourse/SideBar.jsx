@@ -3,7 +3,7 @@ import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import QuizIcon from "@mui/icons-material/Quiz";
 import LocalAtmIcon from "@mui/icons-material/LocalAtm";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 function SideBar({ inforCourseData }) {
   return (
@@ -16,7 +16,6 @@ function SideBar({ inforCourseData }) {
         ></iframe>
       </div>
       <div className="sidebar-detail">
-
         <ul>
           <li>
             <VideoLibraryIcon />
@@ -55,6 +54,8 @@ const SideBarWrapper = styled.aside`
   height: auto-fit;
   color: #fff;
   background-color: #2d2f31;
+  border-radius: 8px;
+  box-shadow: #0000000f 0px 4px 20px 0px;
 
   .sidebar-video {
     iframe {
