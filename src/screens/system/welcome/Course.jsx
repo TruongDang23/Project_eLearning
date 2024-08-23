@@ -1,17 +1,10 @@
 import styled from "styled-components";
 import StarRating from "./StarRating";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 function Course({ course }) {
-  const {
-    courseID,
-    title,
-    price,
-    star,
-    raters,
-    image_introduce,
-    fullname
-  } = course
+  const { courseID, title, price, star, raters, image_introduce, fullname } =
+    course;
   return (
     <CourseWrapper>
       <div className="item-img">
@@ -42,11 +35,13 @@ function Course({ course }) {
 
 const CourseWrapper = styled.div`
   margin-bottom: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: #0000000f 0px 4px 20px 0px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  transition: all 0.3s;
   .item-img {
     img {
       width: 100%;
@@ -143,6 +138,11 @@ const CourseWrapper = styled.div`
         }
       }
     }
+  }
+
+  &:hover {
+    box-shadow: #0003 0px 8px 12px 0px;
+    transition: all ease 0.3s;
   }
 `;
 

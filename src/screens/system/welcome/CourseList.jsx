@@ -12,6 +12,7 @@ const CourseListWrapper = styled.section`
   }
   h2 {
     font-size: 3.6rem;
+    font-weight: 700;
     text-align: center;
     margin-bottom: 4rem;
     color: #1971c2;
