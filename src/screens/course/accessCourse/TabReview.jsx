@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import StarRating from "~/components/general/Other/StarRating";
 import StarIcon from "@mui/icons-material/Star";
@@ -5,7 +6,54 @@ import Avatar from "@mui/material/Avatar";
 import StarDynamic from "~/components/general/Other/StarDynamic";
 import { formatDistanceToNow } from "date-fns";
 
+import axios from "axios";
+import { useParams } from "react-router-dom";
+
 function TabReview({ accessCourseData }) {
+  const [reviews, setReviews] = useState([]);
+  const [newReview, setNewReview] = useState({ star: 0, message: "" });
+
+  const token = localStorage.getItem('token')
+  const courseId = useParams().courseID;
+  const userAuth = localStorage.getItem('userAuth')
+  const userData = JSON.parse(localStorage.getItem("userAuth"));
+
+  const handleReviewChange = (e) => {
+    setNewReview({ ...newReview, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmitReview = async () => {
+    try {
+      const response = await axios.post("http://localhost:3000/c/addReview", {
+        courseID:  courseId,
+        userID: userData.userID,
+        message: newReview.message,
+        star: newReview.star,
+        time: new Date().toISOString()
+      },
+      {
+        headers: {
+          'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
+          'user': userAuth
+        }
+      });
+
+      if (response.data.success) {
+        alert("Review submitted successfully");
+        setReviews([...reviews, { ...newReview, time: new Date() }]);
+        setNewReview({ star: 0, message: "" });
+      }
+    } catch (error) {
+      console.error("Failed to submit review", error);
+      alert("Failed to submit review");
+    }
+    // const res = await axios.post('http://localhost:3000/c/addReviewtest', {  })
+
+    // } catch (error) {
+    //   console.error("Failed to submit review", error);
+    //   alert("Failed to submit review");
+    // }
+  };
   return (
     <TabRatingWrapper>
       <div className="review">
@@ -48,11 +96,21 @@ function TabReview({ accessCourseData }) {
         <div className="review-yours">
           <h2>Your Review</h2>
           <div className="review-yours-star">
-            <StarDynamic size="18" />
+            <StarDynamic
+              size="18"
+              onSetRating={(rating) =>
+                setNewReview({ ...newReview, star: rating })
+              }
+            />
           </div>
           <div className="review-yours-content">
-            <textarea placeholder="Write your review here..." />
-            <button>Submit</button>
+            <textarea
+              name="message"
+              placeholder="Write your review here..."
+              value={newReview.message}
+              onChange={handleReviewChange}
+            />
+            <button onClick={handleSubmitReview}>Submit</button>
           </div>
         </div>
       </div>
