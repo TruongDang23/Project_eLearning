@@ -82,12 +82,15 @@ module.exports = (connMysql, connMongo) => {
 
   // Define user-related routes
   router.get('/loadInformation', verifyToken, async(req, res) => {
-    if (await isAuthorization(req.userID) === false)
+    if (await isAuthorization(req.userID) === false) {
       res.status(401).send('error')
+      return
+    }
     else {
       connMysql.getConnection((err, connection) => {
         if (err) {
           res.status(500).send(err)
+          return
         }
         else {
           //Get information from mysql
@@ -105,6 +108,7 @@ module.exports = (connMysql, connMongo) => {
             connection.release() //Giải phóng connection khi truy vấn xong
             if (error) {
               res.status(500).send(error)
+              return
             }
 
             //Get data of user from mongoDB
@@ -114,31 +118,37 @@ module.exports = (connMysql, connMongo) => {
             //Get information of course user enrolled
             let enrolled
             try {
-              const courseInfo = await getCourseEnroll(mongoData.course_enrolled)
-              enrolled = courseInfo
+              if (mongoData.course_enrolled.length != 0)
+              {
+                const courseInfo = await getCourseEnroll(mongoData.course_enrolled)
+                enrolled = courseInfo
+              }
+              else
+                enrolled = []
             }
             catch (error) {
-              res.send(error)
+              res.status(404).send(error)
+              return
             }
             //Merge data: Mysql + MongoDB + Course enrolled
             const mergeData = infor.map(inf => {
               return {
                 ...inf,
-                date_of_birth: formatDate(inf.date_of_birth),
+                date_of_birth: (inf.date_of_birth == null) ? '2000-01-01' : formatDate(inf.date_of_birth),
                 //Câu query không có lấy activity_status. Tuy nhiên login thành công <=> activity_status = active
                 activity_status: 'active',
 
-                social_network: mongoData.social_networks,
-                self_introduce: mongoData.self_introduce,
-                expertise: mongoData.expertise,
-                degrees: mongoData.degrees,
-                projects: mongoData.projects,
-                working_history: mongoData.working_history,
+                social_network: (mongoData.social_networks != null) ? mongoData.social_networks : [],
+                self_introduce: (mongoData.self_introduce != null) ? mongoData.self_introduce : [],
+                expertise: (mongoData.expertise != null) ? mongoData.expertise : [],
+                degrees: (mongoData.degrees != null) ? mongoData.degrees : [],
+                projects: (mongoData.projects != null) ? mongoData.projects : [],
+                working_history: (mongoData.working_history != null) ? mongoData.working_history : [],
                 course_enrolled: enrolled
               }
             })
+            //console.log(mergeData[0])
             res.send(mergeData[0])
-            // console.log(mergeData[0])
           })
         }
       })
@@ -146,8 +156,10 @@ module.exports = (connMysql, connMongo) => {
   })
 
   router.post('/updateInformation', verifyToken, async (req, res) => {
-    if (await isAuthorization(req.userID) === false)
+    if (await isAuthorization(req.userID) === false) {
       res.status(401).send('error')
+      return
+    }
     else {
       const inf = req.body.profile
       //Theo tính toán: các lệnh xử lý trong mongoDB luôn nhanh hơn Mysql
@@ -170,12 +182,14 @@ module.exports = (connMysql, connMongo) => {
         );
       }
       catch (error) {
-        res.send(false)
+        res.status(404).send(false)
+        return
       }
 
       connMysql.getConnection((err, connection) => {
         if (err) {
           res.status(500).send(err)
+          return
         }
         else {
           //Get information from mysql
@@ -193,6 +207,7 @@ module.exports = (connMysql, connMongo) => {
             connection.release() //Giải phóng connection khi truy vấn xong
             if (error) {
               res.send(false)
+              return
             }
             //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
             if (results.affectedRows > 0)
@@ -204,12 +219,15 @@ module.exports = (connMysql, connMongo) => {
   })
 
   router.get('/loadProfile', verifyToken, async(req, res) => {
-    if (await isAuthorization(req.userID) === false)
+    if (await isAuthorization(req.userID) === false) {
       res.status(401).send('error')
+      return
+    }
     else {
       connMysql.getConnection((err, connection) => {
         if (err) {
           res.status(500).send(err)
+          return
         }
         else {
           //Get information from mysql
@@ -226,6 +244,7 @@ module.exports = (connMysql, connMongo) => {
             connection.release() //Giải phóng connection khi truy vấn xong
             if (error) {
               res.status(500).send(error)
+              return
             }
 
             //Get data of user from mongoDB
@@ -235,24 +254,32 @@ module.exports = (connMysql, connMongo) => {
             //Get information of course user enrolled
             let enrolled
             try {
-              const courseInfo = await getCourseEnroll(mongoData.course_enrolled)
-              enrolled = courseInfo
+              if (mongoData.course_enrolled.length != 0)
+              {
+                const courseInfo = await getCourseEnroll(mongoData.course_enrolled)
+                enrolled = courseInfo
+              }
+              else
+                enrolled = []
             }
             catch (error) {
-              res.send(error)
+              res.status(404).send(error)
+              return
             }
             //Merge data: Mysql + MongoDB + Course enrolled
             const mergeData = infor.map(inf => {
               return {
                 ...inf,
-                date_of_birth: formatDate(inf.date_of_birth),
+                date_of_birth: (inf.date_of_birth == null) ? '2000-01-01' : formatDate(inf.date_of_birth),
+                //Câu query không có lấy activity_status. Tuy nhiên login thành công <=> activity_status = active
+                activity_status: 'active',
 
-                social_network: mongoData.social_networks,
-                self_introduce: mongoData.self_introduce,
-                expertise: mongoData.expertise,
-                degrees: mongoData.degrees,
-                projects: mongoData.projects,
-                working_history: mongoData.working_history,
+                social_network: (mongoData.social_networks != null) ? mongoData.social_networks : [],
+                self_introduce: (mongoData.self_introduce != null) ? mongoData.self_introduce : [],
+                expertise: (mongoData.expertise != null) ? mongoData.expertise : [],
+                degrees: (mongoData.degrees != null) ? mongoData.degrees : [],
+                projects: (mongoData.projects != null) ? mongoData.projects : [],
+                working_history: (mongoData.working_history != null) ? mongoData.working_history : [],
                 course_enrolled: enrolled
               }
             })
