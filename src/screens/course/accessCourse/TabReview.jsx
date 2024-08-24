@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import StarRating from "~/components/general/Other/StarRating";
 import StarIcon from "@mui/icons-material/Star";
@@ -13,25 +13,31 @@ function TabReview({ accessCourseData }) {
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState({ star: 0, message: "" });
 
+  const token = localStorage.getItem('token')
   const courseId = useParams().courseID;
-  const userAuth = JSON.parse(localStorage.getItem("userAuth"));
+  const userAuth = localStorage.getItem('userAuth')
+  const userData = JSON.parse(localStorage.getItem("userAuth"));
 
   const handleReviewChange = (e) => {
     setNewReview({ ...newReview, [e.target.name]: e.target.value });
   };
 
   const handleSubmitReview = async () => {
-    console.log(newReview);
-    console.log(courseId);
-    console.log(userAuth.userID);
     try {
       const response = await axios.post("http://localhost:3000/c/addReview", {
         courseID:  courseId,
-        userID: userAuth.userID,
+        userID: userData.userID,
         message: newReview.message,
         star: newReview.star,
-        time: new Date().toISOString(),
+        time: new Date().toISOString()
+      },
+      {
+        headers: {
+          'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
+          'user': userAuth
+        }
       });
+
       if (response.data.success) {
         alert("Review submitted successfully");
         setReviews([...reviews, { ...newReview, time: new Date() }]);
@@ -41,6 +47,12 @@ function TabReview({ accessCourseData }) {
       console.error("Failed to submit review", error);
       alert("Failed to submit review");
     }
+    // const res = await axios.post('http://localhost:3000/c/addReviewtest', {  })
+
+    // } catch (error) {
+    //   console.error("Failed to submit review", error);
+    //   alert("Failed to submit review");
+    // }
   };
   return (
     <TabRatingWrapper>
@@ -65,7 +77,7 @@ function TabReview({ accessCourseData }) {
                   <h4>{review.reviewerName}</h4>
                   <span>
                     {formatDistanceToNow(new Date(review.date), {
-                      addSuffix: true,
+                      addSuffix: true
                     })}
                   </span>
                 </div>
