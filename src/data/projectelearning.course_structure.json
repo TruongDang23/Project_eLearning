@@ -8759,7 +8759,24 @@
                 {
                   "responseID": "I001",
                   "response": "Chào bạn, để tối ưu hóa câu hỏi khi sử dụng ChatGPT, bạn nên đặt câu hỏi rõ ràng và cụ thể. Tránh đặt câu hỏi mơ hồ hoặc quá chung chung, và cung cấp đầy đủ ngữ cảnh nếu cần.",
-                  "date": "2023-07-21 05:00:32"
+                  "date": "2023-07-21 05:00:32",
+                  "responses": [
+                    {
+                      "responseID": "I001",
+                      "response": "Chào bạn, để tối ưu hóa câu hỏi khi sử dụng ChatGPT, bạn nên đặt câu hỏi rõ ràng và cụ thể. Tránh đặt câu hỏi mơ hồ hoặc quá chung chung, và cung cấp đầy đủ ngữ cảnh nếu cần.",
+                      "date": "2023-07-21 05:00:32"
+                    },
+                    {
+                      "responseID": "I002",
+                      "response": "Bạn cũng có thể chia nhỏ câu hỏi phức tạp thành nhiều câu hỏi đơn giản hơn để ChatGPT có thể trả lời chi tiết và chính xác hơn.",
+                      "date": "2023-07-21 06:15:47"
+                    },
+                    {
+                      "responseID": "I003",
+                      "response": "Nếu bạn không nhận được câu trả lời như mong muốn, hãy thử diễn đạt lại câu hỏi theo cách khác hoặc cung cấp thêm thông tin để ChatGPT hiểu rõ hơn về yêu cầu của bạn.",
+                      "date": "2023-07-21 08:30:12"
+                    }
+                  ]
                 },
                 {
                   "responseID": "I002",

@@ -5,6 +5,9 @@ import styled from "styled-components";
 import TabOverview from "./TabOverview";
 import TabReview from "./TabReview";
 import TabChatAI from "./TabChatAI";
+import TabQA from "./TabQA";
+
+import courseQA from "~/data/QAdata";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -28,13 +31,13 @@ function TabPanel(props) {
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired
+  value: PropTypes.any.isRequired,
 };
 
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
@@ -69,7 +72,7 @@ function TabviewAccessCourse({ accessCourseData }) {
           <TabReview accessCourseData={accessCourseData} />
         </TabPanel>
         <TabPanel value={value} index={3}>
-          Đây là phần Q&A
+          <TabQA initialQA={courseQA} />
         </TabPanel>
       </div>
     </TabviewAccessCourseWrapper>
