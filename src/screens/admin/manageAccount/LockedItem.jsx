@@ -1,14 +1,12 @@
 import styled from "styled-components";
 import { useState } from 'react'
-import { PublishCourse, RejectCourse } from '~/components/popup/index'
+import { UnLockAccount } from '~/components/popup/index'
 import { Link } from "react-router-dom";
 
 export function Items({ accountItem, reload, setReload }) {
-  const [openPub, setopenPub] = useState(false)
-  const [openReject, setopenReject] = useState(false)
+  const [openPopup, setopenPopup] = useState(false)
 
-  const togglePub = () => { setopenPub(!openPub) }
-  const toggleReject = () => { setopenReject(!openReject) }
+  const togglePub = () => { setopenPopup(!openPopup) }
   return (
     <>
       <Wrapper>
@@ -32,13 +30,12 @@ export function Items({ accountItem, reload, setReload }) {
               <Link to={`Student/profile`}>
                 <button>Show Information</button>
               </Link>
-              <button onClick={togglePub}>Lock Account</button>
+              <button onClick={togglePub}>UnLock Account</button>
             </div>
           </div>
         </div>
       </Wrapper>
-      {openPub && <PublishCourse handleClose={togglePub} course={accountItem.courseID} reload={reload} setReload={setReload} />}
-      {openReject && <RejectCourse handleClose={toggleReject} course={accountItem.courseID} reload={reload} setReload={setReload} />}
+      {openPopup && <UnLockAccount handleClose={togglePub} account={accountItem.userID} reload={reload} setReload={setReload} />}
     </>
   )
 }

@@ -227,5 +227,61 @@ module.exports = (connMysql, connMongo) => {
     }
   })
 
+  router.post('/lockacc', verifyToken, async (req, res) => {
+    if (await isAuthorization(req.userID) === false) {
+      res.status(401).send('error')
+    }
+    else {
+      const userID = req.body.account
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          res.status(500).send(err)
+          return
+        }
+        else {
+          //Get information from mysql
+          let query = `UPDATE account SET activity_status = 'locked' WHERE userID = ?`
+          connection.query(query, [userID], async (error) => {
+            connection.release() //Giải phóng connection khi truy vấn xong
+            if (error) {
+              res.status(500).send(error)
+              return
+            }
+            res.send(true)
+          })
+        }
+
+      })
+    }
+  })
+
+  router.post('/unlockacc', verifyToken, async (req, res) => {
+    if (await isAuthorization(req.userID) === false) {
+      res.status(401).send('error')
+    }
+    else {
+      const userID = req.body.account
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          res.status(500).send(err)
+          return
+        }
+        else {
+          //Get information from mysql
+          let query = `UPDATE account SET activity_status = 'active' WHERE userID = ?`
+          connection.query(query, [userID], async (error) => {
+            connection.release() //Giải phóng connection khi truy vấn xong
+            if (error) {
+              res.status(500).send(error)
+              return
+            }
+            res.send(true)
+          })
+        }
+
+      })
+    }
+  })
+
   return router
 }

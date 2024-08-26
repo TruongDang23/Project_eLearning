@@ -1,14 +1,12 @@
 import styled from "styled-components";
 import { useState } from 'react'
-import { PublishCourse, RejectCourse } from '~/components/popup/index'
+import { LockAccount } from '~/components/popup/index'
 import { Link } from "react-router-dom";
 
 export function Items({ accountItem, reload, setReload }) {
-  const [openPub, setopenPub] = useState(false)
-  const [openReject, setopenReject] = useState(false)
+  const [openPopup, setopenPopup] = useState(false)
 
-  const togglePub = () => { setopenPub(!openPub) }
-  const toggleReject = () => { setopenReject(!openReject) }
+  const togglePub = () => { setopenPopup(!openPopup) }
   return (
     <>
       <Wrapper>
@@ -37,8 +35,7 @@ export function Items({ accountItem, reload, setReload }) {
           </div>
         </div>
       </Wrapper>
-      {openPub && <PublishCourse handleClose={togglePub} course={accountItem.courseID} reload={reload} setReload={setReload} />}
-      {openReject && <RejectCourse handleClose={toggleReject} course={accountItem.courseID} reload={reload} setReload={setReload} />}
+      {openPopup && <LockAccount handleClose={togglePub} account={accountItem.userID} reload={reload} setReload={setReload} />}
     </>
   )
 }
