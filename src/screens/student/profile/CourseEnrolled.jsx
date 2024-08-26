@@ -47,6 +47,12 @@ const CourseEnrolledWrapper = styled.section`
   background-color: #fff;
   border-radius: 8px;
   box-shadow: #0000000f 0px 4px 20px 0px;
+  transition: all 0.3s;
+  
+  &:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: all ease 0.3s;
+  }
 
   .course-enrolled {
     width: 100%;
