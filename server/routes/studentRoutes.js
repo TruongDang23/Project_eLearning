@@ -5,6 +5,9 @@ const cors = require('cors')
 //import verifyToken fuction
 const { verifyToken } = require('../authenticate')
 
+const mongo = require('mongoose')
+const mongoSession = mongo.startSession()
+
 module.exports = (connMysql, connMongo) => {
   //Khởi tạo tham số router và cấp quyền CORS
   const router = express.Router()
@@ -166,6 +169,8 @@ module.exports = (connMysql, connMongo) => {
       //Vì vậy trong sự kiện bất đồng bộ thì mysql sẽ thực hiện xong cuối cùng
       await connMongo
       try {
+        (await mongoSession).startTransaction
+
         await User.updateOne(
           { userID: inf.userID },
           {
@@ -180,41 +185,75 @@ module.exports = (connMysql, connMongo) => {
             }
           }
         );
+
+        connMysql.getConnection(async (err, connection) => {
+          if (err) {
+            res.status(500).send(err)
+            return
+          }
+          else {
+            await connection.query("START TRANSACTION")
+            //Get information from mysql
+            let query = `UPDATE user SET 
+                            avatar = ?,
+                            fullname = ?,
+                            date_of_birth = ?,
+                            street = ?,
+                            province = ?,
+                            country = ?,
+                            language = ?
+                          WHERE userID = ?`
+            connection.query(query, [inf.avatar, inf.fullname, inf.date_of_birth, inf.street,
+              inf.province, inf.country, inf.language, inf.userID], async (error, results) => {
+              connection.release() //Giải phóng connection khi truy vấn xong
+              if (error) {
+                await connection.query("ROLLBACK")
+                res.send(false)
+                return
+              }
+
+              await connection.query("COMMIT")
+              //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
+              if (results.affectedRows > 0)
+                res.send(true)
+            })
+          }
+        })
       }
       catch (error) {
         res.status(404).send(false)
         return
       }
 
-      connMysql.getConnection((err, connection) => {
-        if (err) {
-          res.status(500).send(err)
-          return
-        }
-        else {
-          //Get information from mysql
-          let query = `UPDATE user SET 
-                          avatar = ?,
-                          fullname = ?,
-                          date_of_birth = ?,
-                          street = ?,
-                          province = ?,
-                          country = ?,
-                          language = ?
-                        WHERE userID = ?`
-          connection.query(query, [inf.avatar, inf.fullname, inf.date_of_birth, inf.street,
-            inf.province, inf.country, inf.language, inf.userID], async (error, results) => {
-            connection.release() //Giải phóng connection khi truy vấn xong
-            if (error) {
-              res.send(false)
-              return
-            }
-            //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-            if (results.affectedRows > 0)
-              res.send(true)
-          })
-        }
-      })
+      // connMysql.getConnection((err, connection) => {
+      //   if (err) {
+      //     res.status(500).send(err)
+      //     return
+      //   }
+      //   else {
+      //     //Get information from mysql
+      //     let query = `UPDATE user SET 
+      //                     avatar = ?,
+      //                     fullname = ?,
+      //                     date_of_birth = ?,
+      //                     street = ?,
+      //                     province = ?,
+      //                     country = ?,
+      //                     language = ?
+      //                   WHERE userID = ?`
+      //     connection.query(query, [inf.avatar, inf.fullname, inf.date_of_birth, inf.street,
+      //       inf.province, inf.country, inf.language, inf.userID], async (error, results) => {
+      //       connection.release() //Giải phóng connection khi truy vấn xong
+      //       if (error) {
+      //         res.send(false)
+      //         return
+      //       }
+      //       //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
+      //       if (results.affectedRows > 0)
+      //         res.send(true)
+      //     })
+      //   }
+      // })
     }
   })
 

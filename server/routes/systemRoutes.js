@@ -15,6 +15,8 @@ const { format } = require('date-fns')
 //import model user for inserting into mongoDB
 const User = require('../models/user')
 const Course = require('../models/courseInfor')
+const mongo = require('mongoose')
+const mongoSession = mongo.startSession()
 
 module.exports = (connMysql, connMongo) => {
   //Khởi tạo tham số router và cấp quyền CORS
@@ -223,6 +225,7 @@ module.exports = (connMysql, connMongo) => {
       //Xử lý userID
       betweenCharacter = (num < 10) ? '00' : (num < 100) ? '0' : ''
       userID = roleOfUser + betweenCharacter + num
+
       let user = {
         userID: userID,
         username: username,
@@ -233,18 +236,30 @@ module.exports = (connMysql, connMongo) => {
         name: ''
       }
 
-      insertUserIntoMysql(user, (error, result) => {
-        if (error || result === false)
-          res.send(false)
-        else {
-          insertUserIntoMongo(user, (error, result) => {
-            if (error || result === false)
-              res.send(false)
-            else
-              res.send(true)
-          })
-        }
-      })
+      try {
+        (await mongoSession).startTransaction()
+
+        insertUserIntoMysql(user, (error, result) => {
+          if (error || result === false)
+            res.send(false)
+          else {
+            insertUserIntoMongo(user, (error, result) => {
+              if (error || result === false)
+                res.send(false)
+              else
+                res.send(true)
+            })
+          }
+        })
+        ;(await mongoSession).commitTransaction
+      }
+      catch {
+        (await mongoSession).abortTransaction
+        res.send(false)
+      }
+      finally {
+        (await mongoSession).endSession
+      }
     }
     insertUser()
   })
