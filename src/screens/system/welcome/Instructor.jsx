@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import featureInstructor from '../assets/Instructor.png'
+import styled from "styled-components";
+import featureInstructor from "../assets/Instructor.png";
 
 function Instructor() {
   return (
@@ -19,12 +19,13 @@ function Instructor() {
         </div>
       </div>
     </InstructorWrapper>
-  )
+  );
 }
 
 const InstructorWrapper = styled.section`
   h2 {
     font-size: 3.6rem;
+    font-weight: 700;
     text-align: center;
     margin-bottom: 4rem;
     color: #1971c2;
@@ -36,6 +37,7 @@ const InstructorWrapper = styled.section`
     align-items: center;
     justify-content: center;
     text-align: center;
+    
     .instructor-img {
       padding-left: 20rem;
       img {
@@ -47,6 +49,7 @@ const InstructorWrapper = styled.section`
     }
     .instructor-info {
       padding-right: 10rem;
+      
       p {
         font-size: 2rem;
         line-height: 1.6;
@@ -104,6 +107,6 @@ const InstructorWrapper = styled.section`
       }
     }
   }
-`
+`;
 
-export default Instructor
+export default Instructor;

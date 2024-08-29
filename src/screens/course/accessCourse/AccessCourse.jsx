@@ -8,6 +8,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Loading from "~/screens/system/Loading";
 
+import styled, { createGlobalStyle } from "styled-components";
+
 function AccessCourse() {
   const [isLoad, setIsLoad] = useState(true); //Data is loading
   const [reload, setReload] = useState(false);
@@ -21,12 +23,12 @@ function AccessCourse() {
     axios
       .get("http://localhost:3000/c/loadDetailsCourse", {
         params: {
-          courseID
+          courseID,
         },
         headers: {
           Token: token, // Thêm token và user vào header để đưa xuống Backend xác thực
-          User: userAuth
-        }
+          User: userAuth,
+        },
       })
       .then((response) => {
         setAccessCourseData(response.data[0]);
@@ -55,6 +57,7 @@ function AccessCourse() {
           <Loading />
         ) : (
           <>
+            <GlobalStyle />
             <GeneralHeader />
             <main>
               <CourseBanner accessCourseData={accessCourseData} />
@@ -70,5 +73,11 @@ function AccessCourse() {
     </>
   );
 }
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: #f9f9f9 !important;
+  }
+`;
 
 export default AccessCourse;

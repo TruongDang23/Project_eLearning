@@ -27,11 +27,12 @@ function AssignmentTopic({ title, question, sample }) {
 }
 
 const AssignmentTopicWrapper = styled.aside`
-  width: 100%;
+  ${'' /* width: 100%; */}
   height: auto; /* Đảm bảo chiều cao tự động điều chỉnh */
   color: #e3e3e3;
   background-color: #333537;
   margin-left: 1rem;
+  margin-right: 1rem;
   margin-bottom: 25rem;
   padding: 1rem;
   border-radius: 5px;

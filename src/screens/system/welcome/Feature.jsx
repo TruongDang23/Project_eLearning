@@ -1,45 +1,45 @@
-import styled from 'styled-components'
-import featureCer from '../assets/Certifications.png'
-import featureFlex from '../assets/Flexible.png'
-import featureCourse from '../assets/Courses.png'
-import featureInstructor from '../assets/Instructors.png'
-import featurePrice from '../assets/Prices.png'
-import featureSupport from '../assets/Support.png'
+import styled from "styled-components";
+import featureCer from "../assets/Certifications.png";
+import featureFlex from "../assets/Flexible.png";
+import featureCourse from "../assets/Courses.png";
+import featureInstructor from "../assets/Instructors.png";
+import featurePrice from "../assets/Prices.png";
+import featureSupport from "../assets/Support.png";
 
 function Feature() {
   const features = [
     {
       imgSrc: featureCourse,
-      title: 'High Quality Courses',
-      description: 'Learn from industry experts with high-quality courses.'
+      title: "High Quality Courses",
+      description: "Learn from industry experts with high-quality courses.",
     },
     {
       imgSrc: featureFlex,
-      title: 'Flexible Learning',
-      description: 'Learn at your own pace, anytime and anywhere.'
+      title: "Flexible Learning",
+      description: "Learn at your own pace, anytime and anywhere.",
     },
     {
       imgSrc: featureCer,
-      title: 'Certifications',
+      title: "Certifications",
       description:
-        'Earn certificates to showcase your skills and achievements.'
+        "Earn certificates to showcase your skills and achievements.",
     },
     {
       imgSrc: featureInstructor,
-      title: 'Expert Instructors',
-      description: 'Get taught by the best instructors in the industry.'
+      title: "Expert Instructors",
+      description: "Get taught by the best instructors in the industry.",
     },
     {
       imgSrc: featurePrice,
-      title: 'Affordable Prices',
-      description: 'Access courses at prices that fit your budget.'
+      title: "Affordable Prices",
+      description: "Access courses at prices that fit your budget.",
     },
     {
       imgSrc: featureSupport,
-      title: 'Community Support',
-      description: 'Join a community of learners and get support.'
-    }
-  ]
+      title: "Community Support",
+      description: "Join a community of learners and get support.",
+    },
+  ];
 
   return (
     <FeatureSection className="container white-space-medium">
@@ -54,16 +54,17 @@ function Feature() {
         ))}
       </div>
     </FeatureSection>
-  )
+  );
 }
 
 const FeatureSection = styled.section`
   padding: 40px 20px;
-  background-color: #f9f9f9;
+  background-color: #f1f3f5;
   align-items: center;
 
   h2 {
     font-size: 3.6rem;
+    font-weight: 700;
     text-align: center;
     margin-bottom: 4rem;
     color: #1971c2;
@@ -79,15 +80,16 @@ const FeatureSection = styled.section`
   }
 
   .feature {
-    background-color: #fff;
     padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: #0000000f 0px 4px 20px 0px;
     flex: 1 1 calc(33.333% - 20px);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    transition: all 0.3s;
 
     img {
       width: 80px;
@@ -106,6 +108,11 @@ const FeatureSection = styled.section`
       color: #555;
       line-height: 1.6;
     }
+
+    &:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s;
+    }
   }
 
   @media (max-width: 768px) {
@@ -118,6 +125,6 @@ const FeatureSection = styled.section`
       flex: 1 1 100%;
     }
   }
-`
+`;
 
-export default Feature
+export default Feature;

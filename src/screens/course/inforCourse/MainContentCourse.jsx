@@ -69,13 +69,16 @@ function MainContentCourse({ inforCourseData }) {
 }
 
 const MainContentCourseWrapper = styled.section`
-  padding: 20px;
+  padding-right: 20px;
   .what-will-you-learn {
     border: 1px solid #ccc;
     padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: #0000000f 0px 4px 20px 0px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     &:hover {
-      transform: translateY(-10px);
+      ${"" /* transform: translateY(-10px); */}
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
     h3 {
@@ -131,9 +134,12 @@ const MainContentCourseWrapper = styled.section`
     border: 1px solid #ccc;
     padding: 20px;
     margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: #0000000f 0px 4px 20px 0px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     &:hover {
-      transform: translateY(-10px);
+      ${"" /* transform: translateY(-10px); */}
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
     h3 {
@@ -189,9 +195,12 @@ const MainContentCourseWrapper = styled.section`
     padding: 20px;
     margin-top: 20px;
     border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: #0000000f 0px 4px 20px 0px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     &:hover {
-      transform: translateY(-10px);
+      ${"" /* transform: translateY(-10px); */}
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
     .course-content-h3 {
@@ -205,9 +214,13 @@ const MainContentCourseWrapper = styled.section`
     border: 1px solid #ccc;
     padding: 20px;
     margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: #0000000f 0px 4px 20px 0px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     &:hover {
-      transform: translateY(-10px);
+      ${"" /* transform: translateY(-10px); */}
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 
