@@ -1,4 +1,3 @@
-//This is login screen
 import imgLogin from "../assets/image_loginNew.png";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
@@ -228,26 +227,39 @@ function Login() {
 
 const LoginWrapper = styled.section`
   .wrapper {
-    position: relative; /* Required for positioning the pseudo-element */
+    position: relative;
     width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+
+    /* Background animation */
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        45deg,
+        rgba(24, 123, 206, 0.5),
+        rgba(243, 243, 250, 0.5)
+      );
+      animation: gradientShift 7s infinite alternate;
+      z-index: 1;
+    }
   }
 
-  .wrapper::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(${brg});
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: blur(2px); /* Apply the blur effect */
-    z-index: -1; /* Position the pseudo-element behind the content */
+  @keyframes gradientShift {
+    0% {
+      transform: translateY(-20%);
+    }
+    100% {
+      transform: translateY(20%);
+    }
   }
 
   .container {
@@ -262,6 +274,9 @@ const LoginWrapper = styled.section`
     background-color: #fff;
     border-radius: 8px;
     box-shadow: #0000000f 0px 4px 20px 0px;
+    z-index: 2;
+    position: relative;
+    overflow: hidden;
 
     .image {
       width: 50%;
@@ -282,7 +297,7 @@ const LoginWrapper = styled.section`
         font-size: 32px;
         font-style: normal;
         font-weight: 700;
-        line-height: 69px;
+        line-height: 1.6;
       }
 
       .input-username {
@@ -305,6 +320,7 @@ const LoginWrapper = styled.section`
             height: 40px;
             border-radius: 5px;
             border: none;
+            color: #187bce;
             font-size: 1.6rem;
             font-style: normal;
             line-height: normal;
@@ -314,7 +330,13 @@ const LoginWrapper = styled.section`
 
             &:hover {
               transition: 0.3s all ease;
-              border: 2px solid #187bce;
+              box-shadow: 0 0 0 2px #187bce;
+            }
+
+            &:focus,
+            &:active {
+              outline: none;
+              box-shadow: 0 0 0 2px #187bce;
             }
           }
         }
@@ -351,7 +373,13 @@ const LoginWrapper = styled.section`
 
             &:hover {
               transition: 0.3s all ease;
-              border: 2px solid #187bce;
+              box-shadow: 0 0 0 2px #187bce;
+            }
+
+            &:focus,
+            &:active {
+              outline: none;
+              box-shadow: 0 0 0 2px #187bce;
             }
           }
         }
@@ -454,7 +482,7 @@ const LoginWrapper = styled.section`
         @media (max-width: 1185px) {
           flex-direction: column;
           width: 100%;
-          gap:0px;
+          gap: 0px;
 
           .button-login,
           .button-cancel {
@@ -551,7 +579,7 @@ const LoginWrapper = styled.section`
       display: none;
     }
     .container {
-      padding: 10px;     
+      padding: 10px;
 
       .content .input-username label,
       .content .input-pass label {
