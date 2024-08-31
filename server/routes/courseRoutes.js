@@ -39,8 +39,8 @@ const storage = new Storage({
     auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
     client_x509_cert_url:
       "https://www.googleapis.com/robot/v1/metadata/x509/nodejs-goocloudstorage%40project-elearning-424401.iam.gserviceaccount.com",
-    universe_domain: "googleapis.com"
-  }
+    universe_domain: "googleapis.com",
+  },
 });
 
 module.exports = (connMysql, connMongo) => {
@@ -205,7 +205,7 @@ module.exports = (connMysql, connMongo) => {
           const finalData = reviews.map((rv) => {
             return {
               ...rv,
-              date: formatDateTime(rv.date)
+              date: formatDateTime(rv.date),
             };
           });
 
@@ -231,6 +231,40 @@ module.exports = (connMysql, connMongo) => {
       }
       resolve(totalVideo);
     });
+  };
+
+  // Put file PDf to google cloud Storage
+  const putFileToStorage = async (courseID, file) => {
+    console.log("putFileToStorage");
+    const bucketName = "e-learning-bucket";
+
+    // The path to your file to upload
+    const filePath = "./testApi.pdf"; // Assuming `file` has a `path` property
+
+    // The new ID for your GCS file
+    const destFileName = `${courseID}/${file.originalname}`; // Assuming `file` has an `originalname` property
+    console.log("11");
+    console.log("filePath", filePath);
+
+    try {
+      const options = {
+        destination: destFileName,
+        // Optional:
+        // Set a generation-match precondition to avoid potential race conditions
+        // and data corruptions. The request to upload is aborted if the object's
+        // generation number does not match your precondition. For a destination
+        // object that does not yet exist, set the ifGenerationMatch precondition to 0
+        // If the destination object already exists in your bucket, set instead a
+        // generation-match precondition using its generation number.
+        preconditionOpts: { ifGenerationMatch: 0 },
+      };
+
+      await storage.bucket(bucketName).upload(filePath, options);
+      console.log(`${filePath} uploaded to ${bucketName}`);
+    } catch (error) {
+      console.error("Error uploading file to Google Cloud Storage:", error);
+      throw error;
+    }
   };
 
   const getProgress = async (courseID, userID) => {
@@ -358,10 +392,10 @@ module.exports = (connMysql, connMongo) => {
           version: "*",
           files: [
             {
-              content: sourceCode
-            }
+              content: sourceCode,
+            },
           ],
-          stdin: testcase
+          stdin: testcase,
         }
       );
       return response.data.run.output.trim();
@@ -410,7 +444,7 @@ module.exports = (connMysql, connMongo) => {
             await connMongo;
             //Get image_introduce of each courseID
             const mongoData = await Course.find({
-              courseID: { $in: courseIDs }
+              courseID: { $in: courseIDs },
             }).select("courseID image_introduce");
 
             //Merge data with Mysql and MongoDB
@@ -421,7 +455,7 @@ module.exports = (connMysql, connMongo) => {
               return {
                 ...course,
                 time: formatDate(course.time),
-                image_introduce: data ? data.image_introduce : null
+                image_introduce: data ? data.image_introduce : null,
               };
             });
             res.send(mergeData);
@@ -466,7 +500,7 @@ module.exports = (connMysql, connMongo) => {
             await connMongo;
             //Get image_introduce of each courseID
             const mongoData = await Course.find({
-              courseID: { $in: courseIDs }
+              courseID: { $in: courseIDs },
             }).select("courseID image_introduce");
 
             //Merge data with Mysql and MongoDB
@@ -477,7 +511,7 @@ module.exports = (connMysql, connMongo) => {
               return {
                 ...course,
                 time: formatDate(course.time),
-                image_introduce: data ? data.image_introduce : null
+                image_introduce: data ? data.image_introduce : null,
               };
             });
             res.send(mergeData);
@@ -523,7 +557,7 @@ module.exports = (connMysql, connMongo) => {
             await connMongo;
             //Get image_introduce of each courseID
             const mongoData = await Course.find({
-              courseID: { $in: courseIDs }
+              courseID: { $in: courseIDs },
             }).select("courseID image_introduce");
 
             //Merge data with Mysql and MongoDB
@@ -537,7 +571,7 @@ module.exports = (connMysql, connMongo) => {
                 end_time: course.end_time
                   ? formatDate(course.end_time)
                   : "permanently",
-                image_introduce: data ? data.image_introduce : null
+                image_introduce: data ? data.image_introduce : null,
               };
             });
             res.send(mergeData);
@@ -558,7 +592,7 @@ module.exports = (connMysql, connMongo) => {
         await Promise.all([
           updateStatusOfCourse(courseID, "terminated"),
           deleteCourse("published_course", courseID),
-          addTerminateCourse(courseID, dateRange)
+          addTerminateCourse(courseID, dateRange),
         ]);
         // Proceed to the next step here
         res.send(true);
@@ -576,7 +610,7 @@ module.exports = (connMysql, connMongo) => {
       await Promise.all([
         updateStatusOfCourse(courseID, "published"),
         deleteCourse("terminated_course", courseID),
-        addPublishCourse(courseID, time)
+        addPublishCourse(courseID, time),
       ]);
       // Proceed to the next step here
       res.send(true);
@@ -596,7 +630,7 @@ module.exports = (connMysql, connMongo) => {
         await Promise.all([
           updateStatusOfCourse(courseID, "published"),
           deleteCourse("send_mornitor", courseID),
-          addPublishCourse(courseID, time)
+          addPublishCourse(courseID, time),
         ]);
         // Proceed to the next step here
         res.send(true);
@@ -617,7 +651,7 @@ module.exports = (connMysql, connMongo) => {
         await Promise.all([
           updateStatusOfCourse(courseID, "created"),
           deleteCourse("send_mornitor", courseID),
-          addCreateCourse(courseID, time)
+          addCreateCourse(courseID, time),
         ]);
         // Proceed to the next step here
         res.send(true);
@@ -667,7 +701,7 @@ module.exports = (connMysql, connMongo) => {
             await connMongo;
             //Get mongoData. MongoData wil be return an array which 1 element so we will get data at index 0
             const mongoData = await Course.find({
-              courseID: { $in: courseID }
+              courseID: { $in: courseID },
             }).select();
 
             //Get review of this course
@@ -687,7 +721,7 @@ module.exports = (connMysql, connMongo) => {
                 keywords: mongoData[0].keywords,
                 targets: mongoData[0].targets,
                 requirements: mongoData[0].requirements,
-                chapters: mongoData[0].chapters
+                chapters: mongoData[0].chapters,
               };
             });
             res.send(mergeData);
@@ -740,7 +774,7 @@ module.exports = (connMysql, connMongo) => {
           await connMongo;
           //Get mongoData. MongoData wil be return an array which 1 element so we will get data at index 0
           const mongoData = await Course.find({
-            courseID: { $in: courseID }
+            courseID: { $in: courseID },
           }).select("keywords chapters");
 
           //Get review of this course
@@ -763,7 +797,7 @@ module.exports = (connMysql, connMongo) => {
               review: review,
               keywords: mongoData[0].keywords,
               chapters: mongoData[0].chapters,
-              learning: list_learning
+              learning: list_learning,
             };
           });
           res.send(mergeData);
@@ -812,7 +846,7 @@ module.exports = (connMysql, connMongo) => {
         wrongAns = {
           testcase: test.case,
           expected: test.key,
-          found: output
+          found: output,
         };
         break;
       }
@@ -878,7 +912,7 @@ module.exports = (connMysql, connMongo) => {
         `%${method}%`,
         price,
         `%${program}%`,
-        `%${category}%`
+        `%${category}%`,
       ];
 
       connection.query(query, queryParams, async (error, courseInfor) => {
@@ -894,7 +928,7 @@ module.exports = (connMysql, connMongo) => {
         await connMongo;
         //Get mongoData. MongoData wil be return an array which 1 element so we will get data at index 0
         const mongoData = await Course.find({
-          courseID: { $in: courseIDs }
+          courseID: { $in: courseIDs },
         }).select("courseID image_introduce keywords targets");
 
         //Merge data with Mysql + MongoDB + Reviewer + Duration + Progress + Learning
@@ -904,7 +938,7 @@ module.exports = (connMysql, connMongo) => {
             ...course,
             image_introduce: data ? data.image_introduce : null,
             keywords: data ? data.keywords : null,
-            targets: data ? data.targets : null
+            targets: data ? data.targets : null,
           };
         });
         res.send(mergeData);
@@ -951,7 +985,7 @@ module.exports = (connMysql, connMongo) => {
 
               res.send({
                 success: true,
-                message: "Review updated successfully"
+                message: "Review updated successfully",
               });
             }
           );
@@ -976,6 +1010,18 @@ module.exports = (connMysql, connMongo) => {
         }
       });
     });
+  });
+
+  // test put file PDF to google cloud storage
+  router.post("/uploadpdf", verifyToken, async (req, res) => {
+    const { courseID } = req.body;
+    const file = req.file;
+    try {
+      await putFileToStorage(courseID, file);
+      res.send(true);
+    } catch (error) {
+      res.send(false);
+    }
   });
 
   return router;

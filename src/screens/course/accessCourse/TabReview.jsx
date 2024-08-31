@@ -5,6 +5,7 @@ import StarIcon from "@mui/icons-material/Star";
 import Avatar from "@mui/material/Avatar";
 import StarDynamic from "~/components/general/Other/StarDynamic";
 import { formatDistanceToNow } from "date-fns";
+import PDFTest from "./testApi.pdf";
 
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -13,30 +14,57 @@ function TabReview({ accessCourseData }) {
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState({ star: 0, message: "" });
 
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem("token");
   const courseId = useParams().courseID;
-  const userAuth = localStorage.getItem('userAuth')
+  const userAuth = localStorage.getItem("userAuth");
   const userData = JSON.parse(localStorage.getItem("userAuth"));
 
   const handleReviewChange = (e) => {
     setNewReview({ ...newReview, [e.target.name]: e.target.value });
   };
 
+  const handleTestAPI = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/c/uploadpdf",
+        {
+          courseID: courseId,
+          file : PDFTest
+        },
+        {
+          headers: {
+            Token: token, // Thêm token và user vào header để đưa xuống Backend xác thực
+            user: userAuth,
+          },
+        }
+      );
+
+      if (response.data.success) {
+        alert("Test API successfully");
+      }
+    } catch (error) {
+      alert("Failed to test API");
+    }
+  };
+
   const handleSubmitReview = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/c/addReview", {
-        courseID:  courseId,
-        userID: userData.userID,
-        message: newReview.message,
-        star: newReview.star,
-        time: new Date().toISOString()
-      },
-      {
-        headers: {
-          'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
-          'user': userAuth
+      const response = await axios.post(
+        "http://localhost:3000/c/addReview",
+        {
+          courseID: courseId,
+          userID: userData.userID,
+          message: newReview.message,
+          star: newReview.star,
+          time: new Date().toISOString(),
+        },
+        {
+          headers: {
+            Token: token, // Thêm token và user vào header để đưa xuống Backend xác thực
+            user: userAuth,
+          },
         }
-      });
+      );
 
       if (response.data.success) {
         alert("Review submitted successfully");
@@ -54,6 +82,7 @@ function TabReview({ accessCourseData }) {
     //   alert("Failed to submit review");
     // }
   };
+
   return (
     <TabRatingWrapper>
       <div className="review">
@@ -77,7 +106,7 @@ function TabReview({ accessCourseData }) {
                   <h4>{review.reviewerName}</h4>
                   <span>
                     {formatDistanceToNow(new Date(review.date), {
-                      addSuffix: true
+                      addSuffix: true,
                     })}
                   </span>
                 </div>
@@ -112,6 +141,12 @@ function TabReview({ accessCourseData }) {
             />
             <button onClick={handleSubmitReview}>Submit</button>
           </div>
+        </div>
+
+        <div className="test-api">
+          <button className="button-api" onClick={handleTestAPI}>
+            Test API
+          </button>
         </div>
       </div>
     </TabRatingWrapper>
@@ -226,6 +261,27 @@ const TabRatingWrapper = styled.div`
             transition: all 0.3s;
             transform: scale(1.05);
           }
+        }
+      }
+    }
+
+    .test-api {
+      .button-api {
+        padding: 10px 20px;
+        font-size: 1.6rem;
+        background-color: #1971c2;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+          background-color: #fff;
+          color: #1971c2;
+          outline: none;
+          box-shadow: inset 0 0 0 2px #1971c2;
+          transition: all 0.3s;
+          transform: scale(1.05);
         }
       }
     }
