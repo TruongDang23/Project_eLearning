@@ -6,7 +6,6 @@ const cors = require('cors')
 const { verifyToken } = require('../authenticate')
 
 const mongo = require('mongoose')
-const mongoSession = mongo.startSession()
 
 module.exports = (connMysql, connMongo) => {
   //Khởi tạo tham số router và cấp quyền CORS
@@ -165,37 +164,57 @@ module.exports = (connMysql, connMongo) => {
     }
     else {
       const inf = req.body.profile
+      const mongoSession = await mongo.startSession()
       //Theo tính toán: các lệnh xử lý trong mongoDB luôn nhanh hơn Mysql
       //Vì vậy trong sự kiện bất đồng bộ thì mysql sẽ thực hiện xong cuối cùng
-      await connMongo
-      try {
-        (await mongoSession).startTransaction
+      // await connMongo
 
-        await User.updateOne(
-          { userID: inf.userID },
-          {
-            $set:
+      // (await mongoSession).startTransaction
+
+      // await User.updateOne(
+      //   { userID: inf.userID },
+      //   {
+      //     $set:
+      //     {
+      //       social_networks: inf.social_network,
+      //       self_introduce: inf.self_introduce,
+      //       expertise: inf.expertise,
+      //       degrees: inf.degrees,
+      //       projects: inf.projects,
+      //       working_history: inf.working_history
+      //     }
+      //   }
+      // );
+      const promisePool = connMysql.promise();
+
+      connMysql.getConnection(async (err, connection) => {
+        if (err) {
+          res.status(500).send(err)
+          return
+        }
+        else {
+          mongoSession.startTransaction()
+          await promisePool.query("START TRANSACTION")
+
+          await User.updateOne(
+            { userID: inf.userID },
             {
-              social_networks: inf.social_network,
-              self_introduce: inf.self_introduce,
-              expertise: inf.expertise,
-              degrees: inf.degrees,
-              projects: inf.projects,
-              working_history: inf.working_history
+              $set:
+              {
+                social_networks: inf.social_network,
+                self_introduce: inf.self_introduce,
+                expertise: inf.expertise,
+                degrees: inf.degrees,
+                projects: inf.projects,
+                working_history: inf.working_history
+              }
+            },
+            {
+              session: mongoSession
             }
-          }
-        );
-
-        connMysql.getConnection(async (err, connection) => {
-          if (err) {
-            res.status(500).send(err)
-            return
-          }
-          else {
-            await connection.query("START TRANSACTION")
-            //Get information from mysql
-            let query = `UPDATE user SET 
-                            avatar = ?,
+          );
+          //Get information from mysql
+          let query = `UPDATE user SET avatar = ?,
                             fullname = ?,
                             date_of_birth = ?,
                             street = ?,
@@ -203,27 +222,28 @@ module.exports = (connMysql, connMongo) => {
                             country = ?,
                             language = ?
                           WHERE userID = ?`
-            connection.query(query, [inf.avatar, inf.fullname, inf.date_of_birth, inf.street,
-              inf.province, inf.country, inf.language, inf.userID], async (error, results) => {
-              connection.release() //Giải phóng connection khi truy vấn xong
-              if (error) {
-                await connection.query("ROLLBACK")
-                res.send(false)
-                return
-              }
 
-              await connection.query("COMMIT")
-              //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-              if (results.affectedRows > 0)
-                res.send(true)
-            })
+          const [rows] = await promisePool.query(query, [inf.avatar, inf.fullname, inf.date_of_birth, inf.street,
+            inf.province, inf.country, inf.language, inf.userID]);
+
+          if (rows.affectedRows == 0)
+          {
+            await promisePool.query("ROLLBACK")
+            await mongoSession.abortTransaction()
+            mongoSession.endSession()
+            res.send(false)
+            return
           }
-        })
-      }
-      catch (error) {
-        res.status(404).send(false)
-        return
-      }
+          else
+          {
+            await promisePool.query("COMMIT")
+            await mongoSession.commitTransaction()
+            mongoSession.endSession()
+            res.send(true)
+            res.end()
+          }
+        }
+      })
 
       // connMysql.getConnection((err, connection) => {
       //   if (err) {
@@ -232,7 +252,7 @@ module.exports = (connMysql, connMongo) => {
       //   }
       //   else {
       //     //Get information from mysql
-      //     let query = `UPDATE user SET 
+      //     let query = `UPDATE user SET
       //                     avatar = ?,
       //                     fullname = ?,
       //                     date_of_birth = ?,
