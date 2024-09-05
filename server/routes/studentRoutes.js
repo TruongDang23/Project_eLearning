@@ -13,6 +13,8 @@ module.exports = (connMysql, connMongo) => {
   router.use(cors())
   router.use(express.json())
 
+  const mysqlTransaction = connMysql.promise();
+
   //Function format 1981-05-11T17:00:00.000Z to 1981-05-12
   const formatDate = (date) => {
     const year = date.getFullYear();
@@ -164,116 +166,74 @@ module.exports = (connMysql, connMongo) => {
     }
     else {
       const inf = req.body.profile
-      const mongoSession = await mongo.startSession()
-      //Theo tính toán: các lệnh xử lý trong mongoDB luôn nhanh hơn Mysql
-      //Vì vậy trong sự kiện bất đồng bộ thì mysql sẽ thực hiện xong cuối cùng
-      // await connMongo
 
-      // (await mongoSession).startTransaction
-
-      // await User.updateOne(
-      //   { userID: inf.userID },
-      //   {
-      //     $set:
-      //     {
-      //       social_networks: inf.social_network,
-      //       self_introduce: inf.self_introduce,
-      //       expertise: inf.expertise,
-      //       degrees: inf.degrees,
-      //       projects: inf.projects,
-      //       working_history: inf.working_history
-      //     }
-      //   }
-      // );
-      const promisePool = connMysql.promise();
-
-      connMysql.getConnection(async (err, connection) => {
+      connMysql.getConnection(async (err) => {
         if (err) {
           res.status(500).send(err)
           return
         }
         else {
-          mongoSession.startTransaction()
-          await promisePool.query("START TRANSACTION")
+          const mongoSession = await mongo.startSession()
+          try {
+            mongoSession.startTransaction()
+            await mysqlTransaction.query("START TRANSACTION")
 
-          await User.updateOne(
-            { userID: inf.userID },
-            {
-              $set:
+            await User.updateOne(
+              { userID: inf.userID },
               {
-                social_networks: inf.social_network,
-                self_introduce: inf.self_introduce,
-                expertise: inf.expertise,
-                degrees: inf.degrees,
-                projects: inf.projects,
-                working_history: inf.working_history
+                $set:
+                {
+                  social_networks: inf.social_network,
+                  self_introduce: inf.self_introduce,
+                  expertise: inf.expertise,
+                  degrees: inf.degrees,
+                  projects: inf.projects,
+                  working_history: inf.working_history
+                }
+              },
+              {
+                session: mongoSession
               }
-            },
+            )
+            //Get information from mysql
+            let query = `UPDATE user SET avatar = ?,
+                              fullname = ?,
+                              date_of_birth = ?,
+                              street = ?,
+                              province = ?,
+                              country = ?,
+                              language = ?
+                            WHERE userID = ?`
+
+            const [rows] = await mysqlTransaction.query(query, [inf.avatar, inf.fullname, inf.date_of_birth, inf.street,
+              inf.province, inf.country, inf.language, inf.userID]);
+
+            if (rows.affectedRows == 0)
             {
-              session: mongoSession
+              await mysqlTransaction.query("ROLLBACK")
+              await mongoSession.abortTransaction()
+              res.send(false)
+              return
             }
-          );
-          //Get information from mysql
-          let query = `UPDATE user SET avatar = ?,
-                            fullname = ?,
-                            date_of_birth = ?,
-                            street = ?,
-                            province = ?,
-                            country = ?,
-                            language = ?
-                          WHERE userID = ?`
-
-          const [rows] = await promisePool.query(query, [inf.avatar, inf.fullname, inf.date_of_birth, inf.street,
-            inf.province, inf.country, inf.language, inf.userID]);
-
-          if (rows.affectedRows == 0)
-          {
-            await promisePool.query("ROLLBACK")
+            else
+            {
+              await mysqlTransaction.query("COMMIT")
+              await mongoSession.commitTransaction()
+              res.send(true)
+              res.end()
+            }
+          }
+          catch {
+            await mysqlTransaction.query("ROLLBACK")
             await mongoSession.abortTransaction()
-            mongoSession.endSession()
             res.send(false)
             return
           }
-          else
-          {
-            await promisePool.query("COMMIT")
-            await mongoSession.commitTransaction()
+          finally {
             mongoSession.endSession()
-            res.send(true)
-            res.end()
           }
         }
       })
-
-      // connMysql.getConnection((err, connection) => {
-      //   if (err) {
-      //     res.status(500).send(err)
-      //     return
-      //   }
-      //   else {
-      //     //Get information from mysql
-      //     let query = `UPDATE user SET
-      //                     avatar = ?,
-      //                     fullname = ?,
-      //                     date_of_birth = ?,
-      //                     street = ?,
-      //                     province = ?,
-      //                     country = ?,
-      //                     language = ?
-      //                   WHERE userID = ?`
-      //     connection.query(query, [inf.avatar, inf.fullname, inf.date_of_birth, inf.street,
-      //       inf.province, inf.country, inf.language, inf.userID], async (error, results) => {
-      //       connection.release() //Giải phóng connection khi truy vấn xong
-      //       if (error) {
-      //         res.send(false)
-      //         return
-      //       }
-      //       //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-      //       if (results.affectedRows > 0)
-      //         res.send(true)
-      //     })
-      //   }
-      // })
     }
   })
 

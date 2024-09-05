@@ -34,8 +34,8 @@ function TabReview({ accessCourseData }) {
         {
           headers: {
             Token: token, // Thêm token và user vào header để đưa xuống Backend xác thực
-            user: userAuth,
-          },
+            user: userAuth
+          }
         }
       );
 
@@ -56,13 +56,13 @@ function TabReview({ accessCourseData }) {
           userID: userData.userID,
           message: newReview.message,
           star: newReview.star,
-          time: new Date().toISOString(),
+          time: new Date().toISOString()
         },
         {
           headers: {
             Token: token, // Thêm token và user vào header để đưa xuống Backend xác thực
-            user: userAuth,
-          },
+            user: userAuth
+          }
         }
       );
 
@@ -106,7 +106,7 @@ function TabReview({ accessCourseData }) {
                   <h4>{review.reviewerName}</h4>
                   <span>
                     {formatDistanceToNow(new Date(review.date), {
-                      addSuffix: true,
+                      addSuffix: true
                     })}
                   </span>
                 </div>
@@ -147,6 +147,7 @@ function TabReview({ accessCourseData }) {
           <button className="button-api" onClick={handleTestAPI}>
             Test API
           </button>
+          <input type='file'/>
         </div>
       </div>
     </TabRatingWrapper>

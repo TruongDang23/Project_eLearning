@@ -238,7 +238,7 @@ module.exports = (connMysql, connMongo) => {
     const bucketName = "e-learning-bucket"
 
     // The path to your file to upload
-    const filePath = 'D:\\Daihoc\\Nam4\\Khóa Luận Tốt Nghiệp\\Project\\Project_eLearning\\server\\routes\\testApi.pdf'; // Assuming `file` has a `path` property
+    const filePath = 'D:\\Nam4\\KLTN\\project_website_eLearning\\server\\routes\\testApi.pdf'; // Assuming `file` has a `path` property
 
     // The new ID for your GCS file
     const destFileName = 'C045/Testuploadfile.pdf' // Assuming `file` has an `originalname` property
@@ -257,7 +257,7 @@ module.exports = (connMysql, connMongo) => {
       };
 
       await storage.bucket(bucketName).upload(filePath, options);
-      console.log(`${filePath} uploaded to ${bucketName}`);
+      console.log(`https://storage.googleapis.com/${bucketName}/${destFileName}`);
     } catch (error) {
       console.error("Error uploading file to Google Cloud Storage:", error);
       throw error;
