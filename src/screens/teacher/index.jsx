@@ -1,6 +1,7 @@
 import Information from './information/Information'
 import ProfileInstructor from './profile/ProfileInstructor'
 import DashboardInstructor from './dashboard/Dashboard'
+import ManageCourse from './manageCourse/MainManage'
 import { Route, Routes } from 'react-router-dom'
 
 export function Instructor() {
@@ -12,6 +13,7 @@ export function Instructor() {
         <Route path='/instructor/information' element={<Information />} />
         <Route path='/instructor/dashboard' element={<DashboardInstructor />} />
         <Route path='/instructor/profile' element={<ProfileInstructor />} />
+        <Route path="/instructor/manageCourse" element={<ManageCourse/>} />
       </Routes>
     </>
   )
