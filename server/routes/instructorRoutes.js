@@ -175,6 +175,29 @@ module.exports = (connMysql, connMongo) => {
     })
   }
 
+  const addMornitorCourse = async (transaction, courseID, time) => {
+    // eslint-disable-next-line no-async-promise-executor
+    return new Promise(async(resolve, reject) => {
+      let query =
+          "INSERT INTO send_mornitor (courseID, time) VALUES (?, ?)"
+      // const [rows] = await transaction.query(query, [courseID, time])
+      // if (rows.affectedRows > 0)
+      //   resolve(true)
+      // else
+      //   reject(false)
+
+
+      transaction.query(query, [courseID, time], async (error, results) => {
+        //transaction.release(); //Giải phóng connection khi truy vấn xong
+        if (error) {
+          reject(error);
+        }
+        //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
+        if (results.affectedRows > 0) resolve(true);
+      })
+    })
+  }
+
   // Define user-related routes
   router.get('/loadInformation', verifyToken, async (req, res) => {
     if (await isAuthorization(req.userID) === false)
@@ -600,9 +623,9 @@ module.exports = (connMysql, connMongo) => {
       const courseID = req.body.course;
       const time = formatDateTime(new Date());
       connMysql.getConnection(async(err, connection) => {
-        const transaction = connMysql.promise()
+        //const transaction = connMysql.promise()
 
-        await transaction.query("START TRANSACTION")
+        //await transaction.query("START TRANSACTION")
         try {
           await Promise.all([
             updateStatusOfCourse(connection, courseID, "created"),
@@ -610,13 +633,45 @@ module.exports = (connMysql, connMongo) => {
             addCreateCourse(connection, courseID, time)
           ]);
           // Proceed to the next step here
-          await transaction.query("COMMIT")
+          //await transaction.query("COMMIT")
           connection.release()
           res.send(true)
           res.end()
         } catch (error) {
           console.log(error)
-          await transaction.query("ROLLBACK")
+          //await transaction.query("ROLLBACK")
+          connection.release()
+          res.send(false)
+          res.end()
+        }
+      })
+    }
+  })
+
+  router.post("/sendapprove", verifyToken, async (req, res) => {
+    if ((await isAuthorization(req.userID)) === false) {
+      res.status(401).send("error");
+    } else {
+      const courseID = req.body.course;
+      const time = formatDateTime(new Date());
+      connMysql.getConnection(async(err, connection) => {
+        //const transaction = connMysql.promise()
+
+        //await transaction.query("START TRANSACTION")
+        try {
+          await Promise.all([
+            updateStatusOfCourse(connection, courseID, "mornitor"),
+            deleteCourse(connection, "created_course", courseID),
+            addMornitorCourse(connection, courseID, time)
+          ]);
+          // Proceed to the next step here
+          //await transaction.query("COMMIT")
+          connection.release()
+          res.send(true)
+          res.end()
+        } catch (error) {
+          console.log(error)
+          //await transaction.query("ROLLBACK")
           connection.release()
           res.send(false)
           res.end()

@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined'
+import CancelIcon from '@mui/icons-material/Cancel'
 import axios from "axios"
 
-const PopupAdjustCourse = ({ handleClose, course, reload, setReload }) => {
+const PopupCancelMornitor = ({ handleClose, course, reload, setReload }) => {
   const token = localStorage.getItem('token')
   const userAuth = localStorage.getItem('userAuth')
 
@@ -27,7 +27,7 @@ const PopupAdjustCourse = ({ handleClose, course, reload, setReload }) => {
         alert('Action Failed')
     }
     catch (error) {
-      alert('An error occurred while trying to adjust content course.')
+      alert('An error occurred while trying to cancel for approval.')
       //console.error(error)
     }
   }
@@ -38,8 +38,8 @@ const PopupAdjustCourse = ({ handleClose, course, reload, setReload }) => {
         <div className="box">
           <span className="close-icon" onClick={handleClose}>x</span>
           <label>
-            <ChangeCircleOutlinedIcon sx={{ color: '#008105', fontSize: '3.0rem', margin: 'auto' }}/>
-            <h1>The course <strong>{course}</strong> will be adjust content</h1>
+            <CancelIcon sx={{ color: '#E20000', fontSize: '3.0rem', margin: 'auto' }}/>
+            <h1>Cancel the course <strong>{course}</strong> from waiting for approval</h1>
           </label>
           <div className="item-btns">
             <button className="item-btn" onClick={() => {
@@ -109,7 +109,7 @@ label{
   display: flex;
   justify-content: center;
   h1{
-    color: #008105;
+    color: #E20000;
     text-align: center;
     strong{
       font-weight: bold;
@@ -117,4 +117,4 @@ label{
   }
 }
 `
-export default PopupAdjustCourse;
+export default PopupCancelMornitor;

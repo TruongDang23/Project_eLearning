@@ -1,15 +1,15 @@
 import styled from "styled-components"
-import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined'
+import SendOutlinedIcon from '@mui/icons-material/SendOutlined'
 import axios from "axios"
 
-const PopupAdjustCourse = ({ handleClose, course, reload, setReload }) => {
+const PopupApproveCourse = ({ handleClose, course, reload, setReload }) => {
   const token = localStorage.getItem('token')
   const userAuth = localStorage.getItem('userAuth')
 
   const handleSave = async() => {
     try
     {
-      const res = await axios.post('http://localhost:3000/in/recreated',
+      const res = await axios.post('http://localhost:3000/in/sendapprove',
         { course },
         {
           headers: {
@@ -27,7 +27,7 @@ const PopupAdjustCourse = ({ handleClose, course, reload, setReload }) => {
         alert('Action Failed')
     }
     catch (error) {
-      alert('An error occurred while trying to adjust content course.')
+      alert('An error occurred while trying to send for approval.')
       //console.error(error)
     }
   }
@@ -38,8 +38,8 @@ const PopupAdjustCourse = ({ handleClose, course, reload, setReload }) => {
         <div className="box">
           <span className="close-icon" onClick={handleClose}>x</span>
           <label>
-            <ChangeCircleOutlinedIcon sx={{ color: '#008105', fontSize: '3.0rem', margin: 'auto' }}/>
-            <h1>The course <strong>{course}</strong> will be adjust content</h1>
+            <SendOutlinedIcon sx={{ color: '#008105', fontSize: '3.0rem', margin: 'auto' }}/>
+            <h1>The course <strong>{course}</strong> will be send to approval</h1>
           </label>
           <div className="item-btns">
             <button className="item-btn" onClick={() => {
@@ -117,4 +117,4 @@ label{
   }
 }
 `
-export default PopupAdjustCourse;
+export default PopupApproveCourse;

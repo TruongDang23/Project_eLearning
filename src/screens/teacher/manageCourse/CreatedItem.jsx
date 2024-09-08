@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { useState } from 'react'
-import { RePublishCourse } from '~/components/popup'
+import { ApproveCourse } from '~/components/popup'
 import { Link } from "react-router-dom";
 
 export function Items({ courseItem, reload, setReload }) {
-  const [openRePub, setopenRePub] = useState(false)
+  const [openAppr, setApprove] = useState(false)
 
-  const toggleRePub = () => { setopenRePub(!openRePub) }
+  const toggleApprove = () => { setApprove(!openAppr) }
 
   return (
     <>
@@ -35,12 +35,12 @@ export function Items({ courseItem, reload, setReload }) {
                 <button>Go to course</button>
               </Link>
               <button>Edit course</button>
-              <button onClick={toggleRePub}>Submit for approval</button>
+              <button onClick={toggleApprove}>Submit for approval</button>
             </div>
           </div>
         </div>
       </Wrapper>
-      {openRePub && <RePublishCourse handleClose={toggleRePub} course={courseItem.courseID} reload={reload} setReload={setReload} />}
+      {openAppr && <ApproveCourse handleClose={toggleApprove} course={courseItem.courseID} reload={reload} setReload={setReload} />}
     </>
   )
 }

@@ -1,14 +1,12 @@
 import styled from "styled-components";
 import { useState } from 'react'
-import { PublishCourse, RejectCourse } from '~/components/popup/index'
+import { CancelApprove } from '~/components/popup/index'
 import { Link } from "react-router-dom";
 
 export function Items({ courseItem, reload, setReload }) {
-  const [openPub, setopenPub] = useState(false)
-  const [openReject, setopenReject] = useState(false)
+  const [openCancel, setopenCancel] = useState(false)
 
-  const togglePub = () => { setopenPub(!openPub) }
-  const toggleReject = () => { setopenReject(!openReject) }
+  const toggleCancel = () => { setopenCancel(!openCancel) }
   return (
     <>
       <Wrapper>
@@ -33,13 +31,12 @@ export function Items({ courseItem, reload, setReload }) {
             <p>{courseItem.price} {courseItem.currency}</p>
             <div className="button">
               <button>Edit course</button>
-              <button>Cancel</button>
+              <button onClick={toggleCancel}>Cancel</button>
             </div>
           </div>
         </div>
       </Wrapper>
-      {/* {openPub && <PublishCourse handleClose={togglePub} course={courseItem.courseID} reload={reload} setReload={setReload} />}
-      {openReject && <RejectCourse handleClose={toggleReject} course={courseItem.courseID} reload={reload} setReload={setReload} />} */}
+      {openCancel && <CancelApprove handleClose={toggleCancel} course={courseItem.courseID} reload={reload} setReload={setReload} />}
     </>
   )
 }
