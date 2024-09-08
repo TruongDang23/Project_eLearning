@@ -9,7 +9,7 @@ const PopupCancelMornitor = ({ handleClose, course, reload, setReload }) => {
   const handleSave = async() => {
     try
     {
-      const res = await axios.post('http://localhost:3000/in/recreated',
+      const res = await axios.post('http://localhost:3000/in/cancelapprove',
         { course },
         {
           headers: {
@@ -27,7 +27,7 @@ const PopupCancelMornitor = ({ handleClose, course, reload, setReload }) => {
         alert('Action Failed')
     }
     catch (error) {
-      alert('An error occurred while trying to cancel for approval.')
+      alert('An error occurred while trying to cancel approval.')
       //console.error(error)
     }
   }

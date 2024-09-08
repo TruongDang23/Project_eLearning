@@ -125,7 +125,8 @@ module.exports = (connMysql, connMongo) => {
           reject(error);
         }
         //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-        if (results.affectedRows > 0) resolve(true);
+        if (results.affectedRows > 0) resolve(true)
+        else reject(false)
       })
     })
   }
@@ -147,7 +148,8 @@ module.exports = (connMysql, connMongo) => {
           reject(error);
         }
         //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-        if (results.affectedRows > 0) resolve(true);
+        if (results.affectedRows > 0) resolve(true)
+        else reject(false)
       })
     })
   }
@@ -170,7 +172,8 @@ module.exports = (connMysql, connMongo) => {
           reject(error);
         }
         //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-        if (results.affectedRows > 0) resolve(true);
+        if (results.affectedRows > 0) resolve(true)
+        else reject(false)
       })
     })
   }
@@ -193,7 +196,8 @@ module.exports = (connMysql, connMongo) => {
           reject(error);
         }
         //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-        if (results.affectedRows > 0) resolve(true);
+        if (results.affectedRows > 0) resolve(true)
+        else reject(false)
       })
     })
   }
@@ -630,6 +634,7 @@ module.exports = (connMysql, connMongo) => {
           await Promise.all([
             updateStatusOfCourse(connection, courseID, "created"),
             deleteCourse(connection, "terminated_course", courseID),
+            //deleteCourse(connection, "send_mornitor", courseID), //Dùng cho trường hợp Cancel approval. Vì đang dùng chung request
             addCreateCourse(connection, courseID, time)
           ]);
           // Proceed to the next step here
@@ -663,6 +668,38 @@ module.exports = (connMysql, connMongo) => {
             updateStatusOfCourse(connection, courseID, "mornitor"),
             deleteCourse(connection, "created_course", courseID),
             addMornitorCourse(connection, courseID, time)
+          ]);
+          // Proceed to the next step here
+          //await transaction.query("COMMIT")
+          connection.release()
+          res.send(true)
+          res.end()
+        } catch (error) {
+          console.log(error)
+          //await transaction.query("ROLLBACK")
+          connection.release()
+          res.send(false)
+          res.end()
+        }
+      })
+    }
+  })
+
+  router.post("/cancelapprove", verifyToken, async (req, res) => {
+    if ((await isAuthorization(req.userID)) === false) {
+      res.status(401).send("error");
+    } else {
+      const courseID = req.body.course;
+      const time = formatDateTime(new Date());
+      connMysql.getConnection(async(err, connection) => {
+        //const transaction = connMysql.promise()
+
+        //await transaction.query("START TRANSACTION")
+        try {
+          await Promise.all([
+            updateStatusOfCourse(connection, courseID, "created"),
+            deleteCourse(connection, "send_mornitor", courseID),
+            addCreateCourse(connection, courseID, time)
           ]);
           // Proceed to the next step here
           //await transaction.query("COMMIT")
