@@ -8,6 +8,7 @@ import PopupRePub from './popupRePublish'
 import PopupTerminate from './popupTerminate'
 import PopupLockAcc from './popupLockAcc'
 import PopupUnLockAcc from './popupUnlockAcc'
+import PopupAdjustCourse from './popupAdjustCourse'
 
 export function AddExpertise({ handleClose, handleSave }) {
   return (
@@ -66,5 +67,11 @@ export function LockAccount({ handleClose, account, reload, setReload }) {
 export function UnLockAccount({ handleClose, account, reload, setReload }) {
   return (
     <PopupUnLockAcc handleClose={handleClose} account={account} reload={reload} setReload={setReload} />
+  )
+}
+
+export function AdjustContent({ handleClose, course, reload, setReload }) {
+  return (
+    <PopupAdjustCourse handleClose={handleClose} course={course} reload={reload} setReload={setReload} />
   )
 }

@@ -2,7 +2,8 @@
 import { GeneralFooter, GeneralHeader } from '~/components/general'
 import PublishedCourse from './PublishedCourse'
 import PendingCourse from './Pending'
-import TerminatedCourse from './Created'
+import CreatedCourse from './Created'
+import TerminatedCourse from './Terminated'
 import styled from 'styled-components'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -22,6 +23,7 @@ function ManageCourse() {
   const [pub, setPub] = useState([])
   const [pend, setPend] = useState([])
   const [cre, setCre] = useState([])
+  const [ter, setTer] = useState([])
 
   useEffect(() => {
     axios.get('http://localhost:3000/in/getPublishCourse', {
@@ -104,6 +106,33 @@ function ManageCourse() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reload])
 
+  useEffect(() => {
+    axios.get('http://localhost:3000/in/getTerminateCourse', {
+      headers: {
+        'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
+        'User': userAuth
+      }
+    })
+      .then(response => {
+        setTer(response.data)
+      })
+      .catch(error => {
+        //Server shut down
+        if (error.message === 'Network Error')
+          navigate('/server-shutdown')
+        //Connection error
+        if (error.response.status === 500)
+          navigate('/500error')
+        //Unauthorized. Need login
+        if (error.response.status === 401)
+          navigate('/401error')
+        //Forbidden. Token != userAuth
+        if (error.response.status === 403)
+          navigate('/403error')
+      })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reload])
+
   return (
     <>
       <div>
@@ -130,11 +159,18 @@ function ManageCourse() {
                 >
                                   Created
                 </button>
+                <button
+                  className={activeTab === 'Tab4' ? 'active' : ''}
+                  onClick={() => handleTabClick('Tab4')}
+                >
+                                  Terminated
+                </button>
               </div>
               <div className="tab-content">
                 {activeTab === 'Tab1' && <PublishedCourse course={ pub } />}
                 {activeTab === 'Tab2' && <PendingCourse course={ pend } reload={reload} setReload={setReload}/>}
-                {activeTab === 'Tab3' && <TerminatedCourse course={ cre } reload={reload} setReload={setReload}/>}
+                {activeTab === 'Tab3' && <CreatedCourse course={ cre } reload={reload} setReload={setReload}/>}
+                {activeTab === 'Tab4' && <TerminatedCourse course={ ter } reload={reload} setReload={setReload}/>}
               </div>
             </div>
           </Container>

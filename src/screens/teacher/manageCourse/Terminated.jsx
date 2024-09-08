@@ -1,7 +1,7 @@
 // src/UserProfile.js
-import { Items } from './CreatedItem'
+import { Items } from './TerminateItem'
 
-function CreatedCourse({ course, reload, setReload }) {
+function TerminatedCourse({ course, reload, setReload }) {
   return (
     <>
       {course.map((courseItem) => (
@@ -11,4 +11,4 @@ function CreatedCourse({ course, reload, setReload }) {
   )
 }
 
-export default CreatedCourse;
+export default TerminatedCourse;

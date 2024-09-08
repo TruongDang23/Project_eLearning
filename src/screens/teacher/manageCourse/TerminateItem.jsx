@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { useState } from 'react'
-import { RePublishCourse } from '~/components/popup'
+import { AdjustContent } from '~/components/popup'
 import { Link } from "react-router-dom";
 
 export function Items({ courseItem, reload, setReload }) {
-  const [openRePub, setopenRePub] = useState(false)
+  const [openAdjContent, setAdjContent] = useState(false)
 
-  const toggleRePub = () => { setopenRePub(!openRePub) }
+  const toggleAdjContent = () => { setAdjContent(!openAdjContent) }
 
   return (
     <>
@@ -24,7 +24,12 @@ export function Items({ courseItem, reload, setReload }) {
             <p><strong>Method:</strong> {courseItem.method}</p>
             <p><strong>Category:</strong> {courseItem.category}</p>
             <p><strong>Program:</strong> {courseItem.program}</p>
-            <p><strong>Created time:</strong> {courseItem.time}</p>
+            <p><strong>Terminated Date: </strong>
+              <strong style={{ color: 'red', fontWeight: 'bold' }}>{courseItem.to_time} </strong>
+							to
+              <strong style={{ color: 'red', fontWeight: 'bold' }}> {courseItem.end_time}</strong>
+            </p>
+            <p>Reason: {courseItem.reason}</p>
           </div>
 
           <div className="right_infor">
@@ -34,13 +39,12 @@ export function Items({ courseItem, reload, setReload }) {
               <Link to={`/course/infor/${courseItem.courseID}`}>
                 <button>Go to course</button>
               </Link>
-              <button>Edit course</button>
-              <button onClick={toggleRePub}>Submit for approval</button>
+              <button onClick={toggleAdjContent}>Adjust Content</button>
             </div>
           </div>
         </div>
       </Wrapper>
-      {openRePub && <RePublishCourse handleClose={toggleRePub} course={courseItem.courseID} reload={reload} setReload={setReload} />}
+      {openAdjContent && <AdjustContent handleClose={toggleAdjContent} course={courseItem.courseID} reload={reload} setReload={setReload} />}
     </>
   )
 }

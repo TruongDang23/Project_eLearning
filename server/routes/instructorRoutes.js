@@ -10,7 +10,6 @@ module.exports = (connMysql, connMongo) => {
   const router = express.Router()
   router.use(cors())
   router.use(express.json())
-
   //import model user for query in mongoDB
   const User = require('../models/user')
   const Course = require('../models/courseInfor')
@@ -111,6 +110,67 @@ module.exports = (connMysql, connMongo) => {
             }
           })
         }
+      })
+    })
+  }
+
+  // Define your asynchronous functions
+  const updateStatusOfCourse = async (transaction, courseID, status) => {
+    // eslint-disable-next-line no-async-promise-executor
+    return new Promise(async (resolve, reject) => {
+      let query = "UPDATE course SET status = ? WHERE courseID = ?";
+      transaction.query(query, [status, courseID], async (error, results) => {
+        //transaction.release(); //Giải phóng connection khi truy vấn xong
+        if (error) {
+          reject(error);
+        }
+        //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
+        if (results.affectedRows > 0) resolve(true);
+      })
+    })
+  }
+
+  const deleteCourse = async (transaction, database_table, courseID) => {
+    // eslint-disable-next-line no-async-promise-executor
+    return new Promise(async(resolve, reject) => {
+      //Get information from mysql
+      let query = "DELETE FROM ?? WHERE courseID = ?"
+      // const [rows] = await transaction.query(query, [database_table, courseID])
+      // if (rows.affectedRows > 0)
+      //   resolve(true)
+      // else
+      //   reject(false)
+
+      transaction.query(query, [database_table, courseID], async (error, results) => {
+        //transaction.release(); //Giải phóng connection khi truy vấn xong
+        if (error) {
+          reject(error);
+        }
+        //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
+        if (results.affectedRows > 0) resolve(true);
+      })
+    })
+  }
+
+  const addCreateCourse = async (transaction, courseID, time) => {
+    // eslint-disable-next-line no-async-promise-executor
+    return new Promise(async(resolve, reject) => {
+      let query =
+          "INSERT INTO created_course (courseID, time) VALUES (?, ?)"
+      // const [rows] = await transaction.query(query, [courseID, time])
+      // if (rows.affectedRows > 0)
+      //   resolve(true)
+      // else
+      //   reject(false)
+
+
+      transaction.query(query, [courseID, time], async (error, results) => {
+        //transaction.release(); //Giải phóng connection khi truy vấn xong
+        if (error) {
+          reject(error);
+        }
+        //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
+        if (results.affectedRows > 0) resolve(true);
       })
     })
   }
@@ -469,6 +529,97 @@ module.exports = (connMysql, connMongo) => {
             res.send(mergeData)
             res.end()
           })
+        }
+      })
+    }
+  })
+
+  router.get("/getTerminateCourse", verifyToken, async (req, res) => {
+    if ((await isAuthorization(req.userID)) === false) {
+      res.status(401).send("error")
+    } else {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          res.status(500).send(err)
+        } else {
+          //Get information from mysql
+          let query = `SELECT course.courseID, 
+                            title, 
+                            method, 
+                            program, 
+                            category, 
+                            to_time,
+                            end_time,
+                            price,
+                            currency,
+                            userID
+                            FROM course 
+                            INNER JOIN terminated_course AS c ON course.courseID = c.courseID
+                            WHERE userID = ?`
+          connection.query(query, [req.userID], async (error, courses) => {
+            connection.release(); //Giải phóng connection khi truy vấn xong
+            if (error) {
+              res.status(500).send(error)
+            }
+
+            //List courseIDs which is results of previous query
+            const courseIDs = courses.map((course) => course.courseID)
+
+            //Connect to MongoDB server
+            await connMongo
+            //Get image_introduce of each courseID
+            const mongoData = await Course.find({
+              courseID: { $in: courseIDs }
+            }).select("courseID image_introduce keywords")
+
+            //Merge data with Mysql and MongoDB
+            const mergeData = courses.map((course) => {
+              const data = mongoData.find(
+                (mc) => mc.courseID === course.courseID
+              )
+              return {
+                ...course,
+                to_time: course.to_time ? formatDateTime(course.to_time) : 'permanently',
+                end_time: course.end_time ? formatDateTime(course.end_time) : 'permanently',
+                image_introduce: data ? data.image_introduce : null,
+                keywords: data.keywords
+              }
+            })
+            res.send(mergeData)
+            res.end()
+          })
+        }
+      })
+    }
+  })
+
+  router.post("/recreated", verifyToken, async (req, res) => {
+    if ((await isAuthorization(req.userID)) === false) {
+      res.status(401).send("error");
+    } else {
+      const courseID = req.body.course;
+      const time = formatDateTime(new Date());
+      connMysql.getConnection(async(err, connection) => {
+        const transaction = connMysql.promise()
+
+        await transaction.query("START TRANSACTION")
+        try {
+          await Promise.all([
+            updateStatusOfCourse(connection, courseID, "created"),
+            deleteCourse(connection, "terminated_course", courseID),
+            addCreateCourse(connection, courseID, time)
+          ]);
+          // Proceed to the next step here
+          await transaction.query("COMMIT")
+          connection.release()
+          res.send(true)
+          res.end()
+        } catch (error) {
+          console.log(error)
+          await transaction.query("ROLLBACK")
+          connection.release()
+          res.send(false)
+          res.end()
         }
       })
     }

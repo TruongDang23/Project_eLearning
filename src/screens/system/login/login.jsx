@@ -10,7 +10,6 @@ import styled from "styled-components";
 import { useState } from "react";
 import axios from "axios";
 import CryptoJS from "crypto-js";
-import brg from "../assets/backgroundnew.png";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -41,7 +40,7 @@ function Login() {
   const handleSuccess = async (response) => {
     try {
       const res = await axios.post("http://localhost:3000/s/loginWithGoogle", {
-        loginCredential: response.credential,
+        loginCredential: response.credential
       });
       if (res.data === "error")
         setMessage("An error occurred when logging in with Google!");
@@ -69,7 +68,7 @@ function Login() {
       const res = await axios.post("http://localhost:3000/s/login", {
         username,
         pass: hassed,
-        role,
+        role
       });
       if (res.data === "User are not existed")
         setMessage("Username or Password is incorrect");
@@ -109,7 +108,7 @@ function Login() {
                       fontSize: 40,
                       color: "#187BCE",
                       padddingLeft: "10px",
-                      marginRight: "10px",
+                      marginRight: "10px"
                     }}
                     className="icon"
                   />
@@ -134,7 +133,7 @@ function Login() {
                       fontSize: 40,
                       color: "#187BCE",
                       paddingBottom: "2px",
-                      marginRight: "10px",
+                      marginRight: "10px"
                     }}
                     className="icon"
                   />
@@ -186,7 +185,7 @@ function Login() {
                     color: "red",
                     textAlign: "center",
                     marginTop: "20px",
-                    fontSize: "1.6rem",
+                    fontSize: "1.6rem"
                   }}
                 >
                   {message}
