@@ -1,6 +1,5 @@
 import { GeneralHeader } from '~/components/general'
 import FooterNew from '~/components/general/Footer/FooterNew'
-import Loading from '~/screens/system/Loading'
 import styled, { createGlobalStyle } from 'styled-components'
 import Sticky from 'react-sticky-el'
 
