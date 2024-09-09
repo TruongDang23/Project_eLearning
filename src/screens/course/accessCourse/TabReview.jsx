@@ -22,7 +22,31 @@ function TabReview({ accessCourseData }) {
   const handleReviewChange = (e) => {
     setNewReview({ ...newReview, [e.target.name]: e.target.value });
   };
+  const [file, setFile] = useState();
+  const [description, setDescription] = useState("");
 
+  const submit = async (e, file, description) => {
+    console.log('helo')
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("image", file);
+    formData.append("description", description);
+
+    const result = await axios.post(
+      "http://localhost:3000/c/uploadpdf",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Token: token,
+          user: userAuth
+        }
+      }
+    );
+    console.log(result.data)
+  }
+  console.log(file)
   const handleTestAPI = async () => {
     try {
       const response = await axios.post(
@@ -144,10 +168,18 @@ function TabReview({ accessCourseData }) {
         </div>
 
         <div className="test-api">
-          <button className="button-api" onClick={handleTestAPI}>
-            Test API
-          </button>
-          <input type='file'/>
+          <form onSubmit={e => submit(e, file, description)}>
+            <input
+              onChange={e => setFile(e.target.files[0])}
+              type="file"
+              accept="image/*,application/pdf,video/mp4"
+            ></input>
+            <input
+              onChange={e => setDescription(e.target.value)}
+              type="text"
+            ></input>
+            <button type="submit">Submit</button>
+          </form>
         </div>
       </div>
     </TabRatingWrapper>

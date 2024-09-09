@@ -5,6 +5,10 @@ const cors = require("cors");
 
 const axios = require("axios");
 
+//test
+const { upload } = require('../multer')
+//end test
+
 //import verifyToken fuction
 const { verifyToken } = require("../authenticate");
 
@@ -234,14 +238,14 @@ module.exports = (connMysql, connMongo) => {
   };
 
   // Put file PDf to google cloud Storage
-  const putFileToStorage = async (courseID, file) => {
+  const putFileToStorage = async (courseID, file, destName) => {
     const bucketName = "e-learning-bucket"
 
     // The path to your file to upload
-    const filePath = 'D:\\Nam4\\KLTN\\project_website_eLearning\\server\\routes\\testApi.pdf'; // Assuming `file` has a `path` property
-
+    const filePath = file
+    console.log(filePath)
     // The new ID for your GCS file
-    const destFileName = 'C045/Testuploadfile.pdf' // Assuming `file` has an `originalname` property
+    const destFileName = `${courseID}/${destName}` // Assuming `file` has an `originalname` property
 
     try {
       const options = {
@@ -1010,15 +1014,30 @@ module.exports = (connMysql, connMongo) => {
   });
 
   // test put file PDF to google cloud storage
-  router.post("/uploadpdf", verifyToken, async (req, res) => {
-    const { courseID, file } = req.body;
+  // router.post("/uploadpdf", verifyToken, async (req, res) => {
+  //   const { courseID, file } = req.body;
+  //   try {
+  //     await putFileToStorage(courseID, file);
+  //     res.send(true);
+  //   } catch (error) {
+  //     res.send(false);
+  //   }
+  // });
+
+  router.post("/uploadpdf", verifyToken, upload.single("image"), async(req, res) => {
+    const imageName = req.file.filename;
+    const description = req.body.description;
+
+    console.log(imageName)
+    // Save this data to a database probably
     try {
-      await putFileToStorage(courseID, file);
+      await putFileToStorage('C045', `../server/uploads/${imageName}`, 'Test.mp4');
       res.send(true);
     } catch (error) {
+      console.log(error)
       res.send(false);
     }
-  });
+  })
 
-  return router;
-};
+  return router
+}
