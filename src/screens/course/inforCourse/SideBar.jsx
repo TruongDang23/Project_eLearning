@@ -32,7 +32,7 @@ function SideBar({ inforCourseData }) {
           <li>
             <LocalAtmIcon />
             <span>
-              {inforCourseData.price === 0
+              {inforCourseData.price == 0
                 ? "Free"
                 : `$${inforCourseData.price}`}
             </span>
