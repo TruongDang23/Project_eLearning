@@ -73,8 +73,10 @@ const SideBarWrapper = styled.aside`
 
   .sidebar-detail {
     margin-top: 20px;
-    padding: 10px 20px;
+    padding: 0px 20px;
     ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       list-style: none;
       padding: 0;
       li {
