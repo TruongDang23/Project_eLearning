@@ -29,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const DesignCourseWrapper = styled.main`
+  margin: 20px;
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;

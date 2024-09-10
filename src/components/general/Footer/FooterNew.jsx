@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 function FooterNew() {
   return (
@@ -72,7 +72,7 @@ function FooterNew() {
         </div>
       </div>
     </FooterWrapper>
-  );
+  )
 }
 
 const FooterWrapper = styled.footer`
@@ -81,7 +81,8 @@ const FooterWrapper = styled.footer`
   gap: 2rem;
   padding: 3rem;
   justify-content: center;
-  background-color: #d0ebff;
+  background-color: #353e4e;
+  color: rgba(255, 255, 255, 0.7);
   .footer-infor {
     h3 {
       font-size: 1.8rem;
@@ -106,7 +107,7 @@ const FooterWrapper = styled.footer`
       }
       a {
         font-size: 1.6rem;
-        color: #333;
+        color: rgba(255, 255, 255, 0.7);
         text-decoration: none;
         &:hover {
           color: #1971c2;
@@ -142,6 +143,6 @@ const FooterWrapper = styled.footer`
       }
     }
   }
-`;
+`
 
-export default FooterNew;
+export default FooterNew
