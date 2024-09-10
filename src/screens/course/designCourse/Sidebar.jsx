@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-scroll'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 
 function Sidebar() {
@@ -7,47 +8,51 @@ function Sidebar() {
       <div className="sidebar-container">
         <h3>Publish Your Course</h3>
         <div className="sidebar-content">
-          <button>
-            Type of Course
-            <span>
-              <CheckCircleOutlineIcon />
-            </span>
-          </button>
-          <button>
-            General
-            <span>
-              <CheckCircleOutlineIcon />
-            </span>
-          </button>
-          <button>
-            Course Content
-            <span>
-              <CheckCircleOutlineIcon />
-            </span>
-          </button>
+          <Link to="general" duration={500} offset={-10}>
+            <button>
+              General
+              <span>
+                <CheckCircleOutlineIcon />
+              </span>
+            </button>
+          </Link>
+          <Link to="categories" duration={500} offset={-10}>
+            <button>
+              Categories
+              <span>
+                <CheckCircleOutlineIcon />
+              </span>
+            </button>
+          </Link>
         </div>
       </div>
       <div className="sidebar-container">
         <h3>Plan Your Course</h3>
         <div className="sidebar-content">
-          <button>
-            Intended learners
-            <span>
-              <CheckCircleOutlineIcon />
-            </span>
-          </button>
-          <button>
-            Course Structure
-            <span>
-              <CheckCircleOutlineIcon />
-            </span>
-          </button>
-          <button>
-            Introduce Course
-            <span>
-              <CheckCircleOutlineIcon />
-            </span>
-          </button>
+          <Link to="intended-learners" duration={500} offset={-10}>
+            <button>
+              Intended learners
+              <span>
+                <CheckCircleOutlineIcon />
+              </span>
+            </button>
+          </Link>
+          <Link to="course-structure" duration={500} offset={-10}>
+            <button>
+              Course Structure
+              <span>
+                <CheckCircleOutlineIcon />
+              </span>
+            </button>
+          </Link>
+          <Link to="introduce-course" duration={500} offset={-10}>
+            <button>
+              Introduce Course
+              <span>
+                <CheckCircleOutlineIcon />
+              </span>
+            </button>
+          </Link>
         </div>
       </div>
     </SidebarWrapper>
@@ -74,7 +79,7 @@ const SidebarWrapper = styled.section`
     display: flex;
     flex-direction: column;
     h3 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 700;
       color: #1971c2;
       margin-bottom: 10px;
@@ -86,7 +91,7 @@ const SidebarWrapper = styled.section`
         background-color: #fff;
         ${'' /* background-color: #f5f5f5; */}
         display: flex;
-        justify-content: space-between;
+        gap: 10px;
         align-items: center;
         padding: 10px;
         border: none;

@@ -1,49 +1,51 @@
-import styled from "styled-components";
-import featureCer from "../assets/Certifications.png";
-import featureFlex from "../assets/Flexible.png";
-import featureCourse from "../assets/Courses.png";
-import featureInstructor from "../assets/Instructors.png";
-import featurePrice from "../assets/Prices.png";
-import featureSupport from "../assets/Support.png";
+import styled from 'styled-components'
+import { Element } from 'react-scroll'
+import featureCer from '../assets/Certifications.png'
+import featureFlex from '../assets/Flexible.png'
+import featureCourse from '../assets/Courses.png'
+import featureInstructor from '../assets/Instructors.png'
+import featurePrice from '../assets/Prices.png'
+import featureSupport from '../assets/Support.png'
 
 function Feature() {
   const features = [
     {
       imgSrc: featureCourse,
-      title: "High Quality Courses",
-      description: "Learn from industry experts with high-quality courses.",
+      title: 'High Quality Courses',
+      description: 'Learn from industry experts with high-quality courses.'
     },
     {
       imgSrc: featureFlex,
-      title: "Flexible Learning",
-      description: "Learn at your own pace, anytime and anywhere.",
+      title: 'Flexible Learning',
+      description: 'Learn at your own pace, anytime and anywhere.'
     },
     {
       imgSrc: featureCer,
-      title: "Certifications",
-      description:
-        "Earn certificates to showcase your skills and achievements.",
+      title: 'Certifications',
+      description: 'Earn certificates to showcase your skills and achievements.'
     },
     {
       imgSrc: featureInstructor,
-      title: "Expert Instructors",
-      description: "Get taught by the best instructors in the industry.",
+      title: 'Expert Instructors',
+      description: 'Get taught by the best instructors in the industry.'
     },
     {
       imgSrc: featurePrice,
-      title: "Affordable Prices",
-      description: "Access courses at prices that fit your budget.",
+      title: 'Affordable Prices',
+      description: 'Access courses at prices that fit your budget.'
     },
     {
       imgSrc: featureSupport,
-      title: "Community Support",
-      description: "Join a community of learners and get support.",
-    },
-  ];
+      title: 'Community Support',
+      description: 'Join a community of learners and get support.'
+    }
+  ]
 
   return (
     <FeatureSection className="container white-space-medium">
-      <h2 className="heading-tertiary">Why Choose Us?</h2>
+      <Element name="learmore">
+        <h2 className="heading-tertiary">Why Choose Us?</h2>
+      </Element>
       <div className="features">
         {features.map((feature, index) => (
           <div className="feature" key={index}>
@@ -54,7 +56,7 @@ function Feature() {
         ))}
       </div>
     </FeatureSection>
-  );
+  )
 }
 
 const FeatureSection = styled.section`
@@ -125,6 +127,6 @@ const FeatureSection = styled.section`
       flex: 1 1 100%;
     }
   }
-`;
+`
 
-export default Feature;
+export default Feature

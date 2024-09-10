@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { Link } from 'react-scroll'
+
 import heroImgPng from '../assets/hero.png'
 
 function HeroSection() {
@@ -18,9 +20,9 @@ function HeroSection() {
             <a href="#Learning" className="heroBtnPrimary">
               Start learning &rarr;
             </a>
-            <a href="#learnmore" className="heroBtnOutline">
-              Learn more &darr;
-            </a>
+            <Link to="learmore" duration={500} offset={-10}>
+              <a className="heroBtnOutline">Learn more &darr;</a>
+            </Link>
           </div>
         </div>
         <div className="hero-img-box">
@@ -73,7 +75,6 @@ const SectionHero = styled.section`
         flex-direction: row;
         flex-wrap: wrap;
         gap: 1.6rem;
-        
 
         @media (max-width: 768px) {
           flex-direction: column;
