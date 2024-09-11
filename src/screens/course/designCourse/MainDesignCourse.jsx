@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 import { Element } from 'react-scroll'
-import { TextField } from '@mui/material'
+import { TextField, MenuItem } from '@mui/material'
 import { useState, useContext } from 'react'
 
 import { DesignCourseContext } from './DesignCourseContext'
+import { categories } from '~/constants/listCategories'
 
 import AddCircleIcon from '@mui/icons-material/AddCircle'
 import CancelIcon from '@mui/icons-material/Cancel'
@@ -11,7 +12,17 @@ import CancelIcon from '@mui/icons-material/Cancel'
 function MainDesignCourse() {
   //* Context API from DesignCourseContext
   const { markSectionAsCompleted } = useContext(DesignCourseContext)
+  //* General section
+  const [generalTitle, setGeneralTitle] = useState('')
+  const maxGeneralTitleLength = 80
+  const handleGeneralTitleChange = (e) => {
+    const inputValue = event.target.value
+    if (inputValue.length <= maxGeneralTitleLength) {
+      setGeneralTitle(inputValue)
+    }
+  }
   //* Intended learners section
+  // About intendedInputs
   const [intendedInputs, setInputs] = useState([
     { value: '' },
     { value: '' },
@@ -29,6 +40,25 @@ function MainDesignCourse() {
     const newInputs = intendedInputs.filter((_, i) => i !== index)
     setInputs(newInputs)
   }
+  // About requirement inputs
+  const [requirementInputs, setRequirementInputs] = useState([
+    { value: '' },
+    { value: '' },
+    { value: '' }
+  ])
+  const handleRequirementInputChange = (index, event) => {
+    const newRequirementInputs = [...requirementInputs]
+    newRequirementInputs[index].value = event.target.value
+    setRequirementInputs(newRequirementInputs)
+  }
+  const handleRequirementAddMore = () => {
+    setRequirementInputs([...requirementInputs, { value: '' }])
+  }
+  const handleRequirementRemoveInput = (index) => {
+    const newInputs = requirementInputs.filter((_, i) => i !== index)
+    setRequirementInputs(newInputs)
+  }
+  // 
   return (
     <MainDesignCourseWrapper>
       <h1>Design Your Course</h1>
@@ -37,8 +67,50 @@ function MainDesignCourse() {
         <div className="design-general">
           <h2>General</h2>
           <hr />
+          <div className="design-general-title">
+            <h3>Title of Course</h3>
+            <TextField
+              placeholder="e.g. Java Programming for Beginners"
+              helperText={`${generalTitle.length}/${maxGeneralTitleLength}`}
+              variant="outlined"
+              fullWidth
+              value={generalTitle}
+              onChange={handleGeneralTitleChange}
+              InputProps={{
+                endAdornment: (
+                  <span>{maxGeneralTitleLength - generalTitle.length}</span>
+                ),
+                style: { fontSize: '1.6rem', color: '#555' },
+                sx: {
+                  height: '40px',
+                  borderRadius: '5px',
+                  backgroundColor: 'rgba(243, 243, 250, 0.8)',
+                  color: '#187bce',
+                  fontSize: '1.6rem',
+                  outline: 'none',
+                  transition: '0.3s all ease',
+                  '&:hover .MuiOutlinedInput-notchedOutline': {
+                    transition: '0.3s all ease',
+                    border: 'none', // Loại bỏ border khi hover
+                    boxShadow: '0 0 0 2px #187bce'
+                  },
+                  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                    transition: '0.3s all',
+                    border: 'none', // Loại bỏ border khi focus
+                    boxShadow: '0 0 0 2px #187bce'
+                  }
+                },
+                notchedOutline: {
+                  border: 'none' // Loại bỏ border mặc định
+                }
+              }}
+            />
+          </div>
           <div className="design-genral-button">
-            <button onClick={() => markSectionAsCompleted('general')}>
+            <button
+              id="btn-primary"
+              onClick={() => markSectionAsCompleted('general')}
+            >
               Save General
             </button>
           </div>
@@ -49,8 +121,24 @@ function MainDesignCourse() {
         <div className="design-categories">
           <h2>Categories</h2>
           <hr />
+          <h3>What categories best fits the knowledge you will share ?</h3>
+          <div className="design-categories-selects">
+            <select defaultValue="" required>
+              <option value="" disabled hidden>
+                Select a category
+              </option>
+              {categories.map((category, index) => (
+                <option key={index} value={category.label}>
+                  {category.label}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="design-categories-button">
-            <button onClick={() => markSectionAsCompleted('categories')}>
+            <button
+              id="btn-primary"
+              onClick={() => markSectionAsCompleted('categories')}
+            >
               Save Categories
             </button>
           </div>
@@ -80,7 +168,6 @@ function MainDesignCourse() {
                       backgroundColor: 'rgba(243, 243, 250, 0.8)',
                       color: '#187bce',
                       fontSize: '1.6rem',
-                      paddingLeft: '10px',
                       outline: 'none',
                       transition: '0.3s all ease',
                       '&:hover .MuiOutlinedInput-notchedOutline': {
@@ -100,22 +187,87 @@ function MainDesignCourse() {
                   }}
                   fullWidth
                 />
-                <button onClick={() => handleIntendedRemoveInput(index)}>
+                <a id="cancel" onClick={() => handleIntendedRemoveInput(index)}>
                   <span>
                     <CancelIcon />
                   </span>
-                </button>
+                </a>
               </div>
             ))}
+            <div className="design-intended-input-addmore">
+              <button id="btn-secoundary" onClick={handleIntendedAddMore}>
+                Add More{' '}
+                <span>
+                  <AddCircleIcon />
+                </span>
+              </button>
+            </div>
           </div>
+          <h3>
+            What are the requirements of prerequisites for taking your course?
+          </h3>
+          <div className="design-intended-inputs">
+            {requirementInputs.map((input, index) => (
+              <div key={index} className="design-intended-input">
+                <TextField
+                  key={index}
+                  placeholder={`e.g. Basic Java`}
+                  value={input.value}
+                  variant="outlined"
+                  onChange={(e) => handleRequirementInputChange(index, e)}
+                  InputProps={{
+                    endAdornment: <span>200</span>,
+                    style: { fontSize: '1.6rem', color: '#555' },
+                    sx: {
+                      height: '40px',
+                      borderRadius: '5px',
+                      backgroundColor: 'rgba(243, 243, 250, 0.8)',
+                      color: '#187bce',
+                      fontSize: '1.6rem',
+                      outline: 'none',
+                      transition: '0.3s all',
+                      '&:hover .MuiOutlinedInput-notchedOutline': {
+                        transition: '0.3s all',
+                        border: 'none', // Loại bỏ border khi hover
+                        boxShadow: '0 0 0 2px #187bce'
+                      },
+                      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                        transition: '0.3s all',
+                        border: 'none', // Loại bỏ border khi focus
+                        boxShadow: '0 0 0 2px #187bce'
+                      }
+                    },
+                    notchedOutline: {
+                      border: 'none' // Lo
+                    }
+                  }}
+                  fullWidth
+                />
+                <a
+                  id="cancel"
+                  onClick={() => handleRequirementRemoveInput(index)}
+                >
+                  <span>
+                    <CancelIcon />
+                  </span>
+                </a>
+              </div>
+            ))}
+            <div className="design-intended-input-addmore">
+              <button id="btn-secoundary" onClick={handleRequirementAddMore}>
+                Add More{' '}
+                <span>
+                  <AddCircleIcon />
+                </span>
+              </button>
+            </div>
+          </div>
+
           <div className="design-intended-button">
-            <button onClick={handleIntendedAddMore}>
-              Add More{' '}
-              <span>
-                <AddCircleIcon />
-              </span>
-            </button>
-            <button onClick={() => markSectionAsCompleted('intendedLearners')}>
+            <button
+              id="btn-primary"
+              onClick={() => markSectionAsCompleted('intendedLearners')}
+            >
               Save Intended Learners
             </button>
           </div>
@@ -127,7 +279,10 @@ function MainDesignCourse() {
           <h2>Course Structure</h2>
           <hr />
           <div className="design-structure-button">
-            <button onClick={() => markSectionAsCompleted('courseStructure')}>
+            <button
+              id="btn-primary"
+              onClick={() => markSectionAsCompleted('courseStructure')}
+            >
               Save Course Structure
             </button>
           </div>
@@ -139,7 +294,10 @@ function MainDesignCourse() {
           <h2>Introduce Course</h2>
           <hr />
           <div className="design-introduce-button">
-            <button onClick={() => markSectionAsCompleted('introduceCourse')}>
+            <button
+              id="btn-primary"
+              onClick={() => markSectionAsCompleted('introduceCourse')}
+            >
               Save Introduce Course
             </button>
           </div>
@@ -167,139 +325,141 @@ const MainDesignCourseWrapper = styled.section`
     text-align: center;
   }
 
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1971c2;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+
+  hr {
+    margin-bottom: 10px;
+    border: none;
+    height: 2px;
+    background-color: #1971c2;
+  }
+
+  #btn-primary {
+    background-color: #1971c2;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    transition: 0.3s all ease;
+    #btn-main span {
+      svg {
+        font-size: 2rem;
+      }
+    }
+
+    &:hover {
+      background-color: #fff;
+      color: #187bce;
+      box-shadow: 0 0 0 2px #1971c2;
+    }
+  }
+
+  #btn-secoundary {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s all ease;
+
+    span svg {
+      font-size: 1.6rem;
+    }
+
+    &:hover {
+      background-color: #fff;
+      color: #6c757d;
+      box-shadow: 0 0 0 2px #6c757d;
+    }
+  }
+
   .design-general {
     margin-bottom: 20px;
     height: 400px;
-    h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1971c2;
-      margin-bottom: 10px;
-    }
-    hr {
-      margin-bottom: 10px;
-      border: none;
-      height: 2px;
-      background-color: #1971c2;
+
+    .design-general-title {
     }
     .design-genral-button {
       margin-top: 20px;
       display: flex;
       gap: 10px;
       justify-content: flex-end;
-      button {
-        background-color: #1971c2;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-size: 1.6rem;
-        font-weight: 700;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        border: none;
-        transition: 0.3s all ease;
-        span {
-          svg {
-            font-size: 2rem;
-          }
-        }
-
-        &:hover {
-          background-color: #fff;
-          color: #187bce;
-          box-shadow: 0 0 0 2px #1971c2;
-        }
-      }
     }
   }
 
   .design-categories {
     margin-bottom: 20px;
-    height: 400px;
-    h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1971c2;
-      margin-bottom: 10px;
-    }
-    hr {
-      margin-bottom: 10px;
-      border: none;
-      height: 2px;
-      background-color: #1971c2;
+    .design-categories-selects {
+      select {
+        width: 100%;
+        height: 4rem;
+        padding: 8px;
+        margin: 0 auto;
+        font-size: 1.6rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+        transition: border-color 0.3s, border-width;
+        &:focus {
+          border-color: #187bce;
+          border-width: 2px;
+          outline: none;
+        }
+      }
     }
     .design-categories-button {
       margin-top: 20px;
       display: flex;
       gap: 10px;
       justify-content: flex-end;
-      button {
-        background-color: #1971c2;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-size: 1.6rem;
-        font-weight: 700;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        border: none;
-        transition: 0.3s all ease;
-        span {
-          svg {
-            font-size: 2rem;
-          }
-        }
-
-        &:hover {
-          background-color: #fff;
-          color: #187bce;
-          box-shadow: 0 0 0 2px #1971c2;
-        }
-      }
     }
   }
 
   .design-intended {
     margin-bottom: 20px;
-    h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1971c2;
-      margin-bottom: 10px;
-    }
-    hr {
-      margin-bottom: 10px;
-      border: none;
-      height: 2px;
-      background-color: #1971c2;
-    }
-    h3 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #333;
-      margin-bottom: 10px;
-    }
     .design-intended-inputs {
       margin: 0 auto;
       width: 90%;
       display: flex;
       flex-direction: column;
       gap: 10px;
-
       .design-intended-input {
         display: flex;
         gap: 20px;
         align-items: center;
         justify-content: space-between;
-        button {
+        a {
           background-color: #fff;
           border: none;
+          &:hover {
+            border: none !important;
+          }
           svg {
             font-size: 3rem;
             color: #868e96;
@@ -312,136 +472,40 @@ const MainDesignCourseWrapper = styled.section`
           }
         }
       }
+      .design-intended-input-addmore {
+        display: flex;
+        justify-content: center;
+      }
     }
     .design-intended-button {
       margin-top: 20px;
       display: flex;
       gap: 10px;
       justify-content: flex-end;
-      button {
-        background-color: #1971c2;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-size: 1.6rem;
-        font-weight: 700;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        border: none;
-        transition: 0.3s all ease;
-        span {
-          svg {
-            font-size: 2rem;
-          }
-        }
-
-        &:hover {
-          background-color: #fff;
-          color: #187bce;
-          box-shadow: 0 0 0 2px #1971c2;
-        }
-      }
     }
   }
 
   .design-structure {
     margin-bottom: 20px;
     height: 400px;
-    h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1971c2;
-      margin-bottom: 10px;
-    }
-    hr {
-      margin-bottom: 10px;
-      border: none;
-      height: 2px;
-      background-color: #1971c2;
-    }
+
     .design-structure-button {
       margin-top: 20px;
       display: flex;
       gap: 10px;
       justify-content: flex-end;
-      button {
-        background-color: #1971c2;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-size: 1.6rem;
-        font-weight: 700;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        border: none;
-        transition: 0.3s all ease;
-        span {
-          svg {
-            font-size: 2rem;
-          }
-        }
-
-        &:hover {
-          background-color: #fff;
-          color: #187bce;
-          box-shadow: 0 0 0 2px #1971c2;
-        }
-      }
     }
   }
 
   .design-introduce {
     margin-bottom: 20px;
     height: 400px;
-    h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1971c2;
-      margin-bottom: 10px;
-    }
-    hr {
-      margin-bottom: 10px;
-      border: none;
-      height: 2px;
-      background-color: #1971c2;
-    }
+
     .design-introduce-button {
       margin-top: 20px;
       display: flex;
       gap: 10px;
       justify-content: flex-end;
-      button {
-        background-color: #1971c2;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-size: 1.6rem;
-        font-weight: 700;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        border: none;
-        transition: 0.3s all ease;
-        span {
-          svg {
-            font-size: 2rem;
-          }
-        }
-
-        &:hover {
-          background-color: #fff;
-          color: #187bce;
-          box-shadow: 0 0 0 2px #1971c2;
-        }
-      }
     }
   }
 `

@@ -378,7 +378,7 @@ const FilterCourseWrapper = styled.aside`
     margin: 0 auto;
     margin-bottom: 20px;
     border: 1px solid #ccc;
-    border-radius: 15px;
+    border-radius: 8px;
     box-sizing: border-box;
     transition: border-color 0.3s, border-width;
     &:focus {
