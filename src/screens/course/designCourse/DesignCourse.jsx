@@ -5,10 +5,11 @@ import Sticky from 'react-sticky-el'
 
 import MainDesignCourse from './MainDesignCourse'
 import Sidebar from './Sidebar'
+import { DesignCourseProvider } from './DesignCourseContext'
 
 function DesignCourse() {
   return (
-    <>
+    <DesignCourseProvider>
       <GlobalStyle />
       <GeneralHeader />
       <DesignCourseWrapper>
@@ -18,7 +19,7 @@ function DesignCourse() {
         <MainDesignCourse />
       </DesignCourseWrapper>
       <FooterNew />
-    </>
+    </DesignCourseProvider>
   )
 }
 

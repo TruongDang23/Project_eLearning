@@ -1,28 +1,32 @@
 import styled from 'styled-components'
 import { Element } from 'react-scroll'
 import { TextField } from '@mui/material'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+
+import { DesignCourseContext } from './DesignCourseContext'
 
 import AddCircleIcon from '@mui/icons-material/AddCircle'
 import CancelIcon from '@mui/icons-material/Cancel'
 
 function MainDesignCourse() {
-  // Intended learners
-  const [inputs, setInputs] = useState([
+  //* Context API from DesignCourseContext
+  const { markSectionAsCompleted } = useContext(DesignCourseContext)
+  //* Intended learners section
+  const [intendedInputs, setInputs] = useState([
     { value: '' },
     { value: '' },
     { value: '' }
   ])
-  const handleInputChange = (index, event) => {
-    const newInputs = [...inputs]
-    newInputs[index].value = event.target.value
-    setInputs(newInputs)
+  const handleIntendedInputChange = (index, event) => {
+    const newIntendedInputs = [...intendedInputs]
+    newIntendedInputs[index].value = event.target.value
+    setInputs(newIntendedInputs)
   }
-  const handleAddMore = () => {
-    setInputs([...inputs, { value: '' }])
+  const handleIntendedAddMore = () => {
+    setInputs([...intendedInputs, { value: '' }])
   }
-  const handleRemoveInput = (index) => {
-    const newInputs = inputs.filter((_, i) => i !== index)
+  const handleIntendedRemoveInput = (index) => {
+    const newInputs = intendedInputs.filter((_, i) => i !== index)
     setInputs(newInputs)
   }
   return (
@@ -33,6 +37,11 @@ function MainDesignCourse() {
         <div className="design-general">
           <h2>General</h2>
           <hr />
+          <div className="design-genral-button">
+            <button onClick={() => markSectionAsCompleted('general')}>
+              Save General
+            </button>
+          </div>
         </div>
       </Element>
 
@@ -40,6 +49,11 @@ function MainDesignCourse() {
         <div className="design-categories">
           <h2>Categories</h2>
           <hr />
+          <div className="design-categories-button">
+            <button onClick={() => markSectionAsCompleted('categories')}>
+              Save Categories
+            </button>
+          </div>
         </div>
       </Element>
 
@@ -49,14 +63,14 @@ function MainDesignCourse() {
           <hr />
           <h3>What will students learn in your course?</h3>
           <div className="design-intended-inputs">
-            {inputs.map((input, index) => (
+            {intendedInputs.map((input, index) => (
               <div key={index} className="design-intended-input">
                 <TextField
                   key={index}
                   placeholder={`e.g. Learning Java`}
                   value={input.value}
                   variant="outlined"
-                  onChange={(e) => handleInputChange(index, e)}
+                  onChange={(e) => handleIntendedInputChange(index, e)}
                   InputProps={{
                     endAdornment: <span>200</span>,
                     style: { fontSize: '1.6rem', color: '#555' },
@@ -86,7 +100,7 @@ function MainDesignCourse() {
                   }}
                   fullWidth
                 />
-                <button onClick={() => handleRemoveInput(index)}>
+                <button onClick={() => handleIntendedRemoveInput(index)}>
                   <span>
                     <CancelIcon />
                   </span>
@@ -95,13 +109,15 @@ function MainDesignCourse() {
             ))}
           </div>
           <div className="design-intended-button">
-            <button onClick={handleAddMore}>
+            <button onClick={handleIntendedAddMore}>
               Add More{' '}
               <span>
                 <AddCircleIcon />
               </span>
             </button>
-            <button>Save</button>
+            <button onClick={() => markSectionAsCompleted('intendedLearners')}>
+              Save Intended Learners
+            </button>
           </div>
         </div>
       </Element>
@@ -110,6 +126,11 @@ function MainDesignCourse() {
         <div className="design-structure">
           <h2>Course Structure</h2>
           <hr />
+          <div className="design-structure-button">
+            <button onClick={() => markSectionAsCompleted('courseStructure')}>
+              Save Course Structure
+            </button>
+          </div>
         </div>
       </Element>
 
@@ -117,6 +138,11 @@ function MainDesignCourse() {
         <div className="design-introduce">
           <h2>Introduce Course</h2>
           <hr />
+          <div className="design-introduce-button">
+            <button onClick={() => markSectionAsCompleted('introduceCourse')}>
+              Save Introduce Course
+            </button>
+          </div>
         </div>
       </Element>
     </MainDesignCourseWrapper>
@@ -156,6 +182,38 @@ const MainDesignCourseWrapper = styled.section`
       height: 2px;
       background-color: #1971c2;
     }
+    .design-genral-button {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      button {
+        background-color: #1971c2;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1.6rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        transition: 0.3s all ease;
+        span {
+          svg {
+            font-size: 2rem;
+          }
+        }
+
+        &:hover {
+          background-color: #fff;
+          color: #187bce;
+          box-shadow: 0 0 0 2px #1971c2;
+        }
+      }
+    }
   }
 
   .design-categories {
@@ -172,6 +230,38 @@ const MainDesignCourseWrapper = styled.section`
       border: none;
       height: 2px;
       background-color: #1971c2;
+    }
+    .design-categories-button {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      button {
+        background-color: #1971c2;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1.6rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        transition: 0.3s all ease;
+        span {
+          svg {
+            font-size: 2rem;
+          }
+        }
+
+        &:hover {
+          background-color: #fff;
+          color: #187bce;
+          box-shadow: 0 0 0 2px #1971c2;
+        }
+      }
     }
   }
 
@@ -272,6 +362,38 @@ const MainDesignCourseWrapper = styled.section`
       height: 2px;
       background-color: #1971c2;
     }
+    .design-structure-button {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      button {
+        background-color: #1971c2;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1.6rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        transition: 0.3s all ease;
+        span {
+          svg {
+            font-size: 2rem;
+          }
+        }
+
+        &:hover {
+          background-color: #fff;
+          color: #187bce;
+          box-shadow: 0 0 0 2px #1971c2;
+        }
+      }
+    }
   }
 
   .design-introduce {
@@ -288,6 +410,38 @@ const MainDesignCourseWrapper = styled.section`
       border: none;
       height: 2px;
       background-color: #1971c2;
+    }
+    .design-introduce-button {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      button {
+        background-color: #1971c2;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1.6rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        transition: 0.3s all ease;
+        span {
+          svg {
+            font-size: 2rem;
+          }
+        }
+
+        &:hover {
+          background-color: #fff;
+          color: #187bce;
+          box-shadow: 0 0 0 2px #1971c2;
+        }
+      }
     }
   }
 `

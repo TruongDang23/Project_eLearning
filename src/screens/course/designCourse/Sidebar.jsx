@@ -1,8 +1,12 @@
 import styled from 'styled-components'
 import { Link } from 'react-scroll'
+import { useContext } from 'react'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 
+import { DesignCourseContext } from './DesignCourseContext'
+
 function Sidebar() {
+  const { completedSections } = useContext(DesignCourseContext)
   return (
     <SidebarWrapper>
       <div className="sidebar-container">
@@ -11,17 +15,21 @@ function Sidebar() {
           <Link to="general" duration={500} offset={-10}>
             <button>
               General
-              <span>
-                <CheckCircleOutlineIcon />
-              </span>
+              {completedSections.general && (
+                <span>
+                  <CheckCircleOutlineIcon />
+                </span>
+              )}
             </button>
           </Link>
           <Link to="categories" duration={500} offset={-10}>
             <button>
               Categories
-              <span>
-                <CheckCircleOutlineIcon />
-              </span>
+              {completedSections.categories && (
+                <span>
+                  <CheckCircleOutlineIcon />
+                </span>
+              )}
             </button>
           </Link>
         </div>
@@ -32,25 +40,31 @@ function Sidebar() {
           <Link to="intended-learners" duration={500} offset={-10}>
             <button>
               Intended learners
-              <span>
-                <CheckCircleOutlineIcon />
-              </span>
+              {completedSections.intendedLearners && (
+                <span>
+                  <CheckCircleOutlineIcon />
+                </span>
+              )}
             </button>
           </Link>
           <Link to="course-structure" duration={500} offset={-10}>
             <button>
               Course Structure
-              <span>
-                <CheckCircleOutlineIcon />
-              </span>
+              {completedSections.courseStructure && (
+                <span>
+                  <CheckCircleOutlineIcon />
+                </span>
+              )}
             </button>
           </Link>
           <Link to="introduce-course" duration={500} offset={-10}>
             <button>
               Introduce Course
-              <span>
-                <CheckCircleOutlineIcon />
-              </span>
+              {completedSections.introduceCourse && (
+                <span>
+                  <CheckCircleOutlineIcon />
+                </span>
+              )}
             </button>
           </Link>
         </div>
