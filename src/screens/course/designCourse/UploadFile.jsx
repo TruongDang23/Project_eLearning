@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 import styled from 'styled-components'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 
-function UploadFile({ uniqueId }) {
+function UploadFile({ uniqueId, type }) {
   const [selectedFile, setSelectedFile] = useState(null)
   const [previewUrl, setPreviewUrl] = useState(null)
   const [thumbnail, setThumbnail] = useState(null)
@@ -12,17 +12,23 @@ function UploadFile({ uniqueId }) {
     const file = event.target.files[0]
 
     if (file) {
-      setSelectedFile(file)
+      const fileType = file.type.split('/')[0] // Lấy loại tệp (image hoặc video)
 
-      if (file.type.startsWith('image')) {
-        const fileUrl = URL.createObjectURL(file)
-        setPreviewUrl(fileUrl)
-        setThumbnail(null) // Xóa thumbnail nếu có
-      } else if (file.type.startsWith('video')) {
-        const fileUrl = URL.createObjectURL(file)
-        setPreviewUrl(fileUrl)
-        generateThumbnail(fileUrl)
+      if (fileType === type) {
+        setSelectedFile(file)
+
+        if (fileType === 'image') {
+          const fileUrl = URL.createObjectURL(file)
+          setPreviewUrl(fileUrl)
+          setThumbnail(null) // Xóa thumbnail nếu có
+        } else if (fileType === 'video') {
+          const fileUrl = URL.createObjectURL(file)
+          setPreviewUrl(fileUrl)
+          generateThumbnail(fileUrl)
+        }
       } else {
+        alert(`Please upload a ${type} file.`)
+        setSelectedFile(null)
         setPreviewUrl(null)
         setThumbnail(null)
       }
@@ -114,13 +120,13 @@ function UploadFile({ uniqueId }) {
         {previewUrl && (
           <div className="upload-preview">
             <h4>Preview:</h4>
-            {selectedFile.type.startsWith('image') ? (
+            {type === 'image' ? (
               <img
                 src={previewUrl}
                 alt="Preview"
                 style={{ width: '200px', height: 'auto' }}
               />
-            ) : selectedFile.type.startsWith('video') ? (
+            ) : type === 'video' ? (
               <>
                 <video
                   ref={videoRef}
@@ -146,7 +152,6 @@ function UploadFile({ uniqueId }) {
     </UploadFileWrapper>
   )
 }
-
 const InputWrapper = styled.div`
   margin-left: 20px;
   position: relative;

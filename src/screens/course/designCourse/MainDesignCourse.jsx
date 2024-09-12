@@ -296,11 +296,11 @@ function MainDesignCourse() {
           <hr />
           <div className="design-introduce-image">
             <h3>Course Image</h3>
-            <UploadFile uniqueId="introduceImage" />
+            <UploadFile uniqueId="introduceImage" type="image" />
           </div>
           <div className="design-introduce-video">
             <h3>Promotional Video</h3>
-            <UploadFile uniqueId="introduce-video" />
+            <UploadFile uniqueId="introduce-video" type="video" />
           </div>
           <div className="design-introduce-button">
             <button
