@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import styled from 'styled-components'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 
-function UploadFile() {
+function UploadFile({ uniqueId }) {
   const [selectedFile, setSelectedFile] = useState(null)
   const [previewUrl, setPreviewUrl] = useState(null)
+  const [thumbnail, setThumbnail] = useState(null)
+  const videoRef = useRef(null)
 
   const handleFileChange = (event) => {
     const file = event.target.files[0]
@@ -12,17 +14,40 @@ function UploadFile() {
     if (file) {
       setSelectedFile(file)
 
-      // Chỉ tạo URL preview nếu file là hình ảnh
       if (file.type.startsWith('image')) {
         const fileUrl = URL.createObjectURL(file)
         setPreviewUrl(fileUrl)
+        setThumbnail(null) // Xóa thumbnail nếu có
+      } else if (file.type.startsWith('video')) {
+        const fileUrl = URL.createObjectURL(file)
+        setPreviewUrl(fileUrl)
+        generateThumbnail(fileUrl)
       } else {
         setPreviewUrl(null)
+        setThumbnail(null)
       }
     }
 
-    // Đặt lại giá trị của input để cho phép chọn lại cùng một file
     event.target.value = null
+  }
+
+  const generateThumbnail = (videoUrl) => {
+    const video = document.createElement('video')
+    video.src = videoUrl
+    video.load()
+
+    video.onloadeddata = () => {
+      video.currentTime = 1
+    }
+
+    video.onseeked = () => {
+      const canvas = document.createElement('canvas')
+      canvas.width = video.videoWidth
+      canvas.height = video.videoHeight
+      const context = canvas.getContext('2d')
+      context.drawImage(video, 0, 0, canvas.width, canvas.height)
+      setThumbnail(canvas.toDataURL('image/png'))
+    }
   }
 
   const handleSubmit = (event) => {
@@ -38,9 +63,9 @@ function UploadFile() {
   const handleRemoveFile = () => {
     setSelectedFile(null)
     setPreviewUrl(null)
+    setThumbnail(null)
   }
 
-  // Hàm để cắt ngắn tên file và thêm dấu ba chấm nếu dài hơn 20 ký tự
   const truncateFileName = (name, length) => {
     if (name.length > length) {
       return name.substring(0, length) + '...'
@@ -52,8 +77,12 @@ function UploadFile() {
     <UploadFileWrapper>
       <form onSubmit={handleSubmit} className="upload-form">
         <InputWrapper>
-          <input type="file" id="file-upload" onChange={handleFileChange} />
-          <label htmlFor="file-upload">
+          <input
+            type="file"
+            id={`file-upload-${uniqueId}`}
+            onChange={handleFileChange}
+          />
+          <label htmlFor={`file-upload-${uniqueId}`}>
             {selectedFile ? (
               truncateFileName(selectedFile.name, 20) // Giới hạn 20 ký tự
             ) : (
@@ -84,12 +113,33 @@ function UploadFile() {
 
         {previewUrl && (
           <div className="upload-preview">
-            <h4>Image Preview:</h4>
-            <img
-              src={previewUrl}
-              alt="Preview"
-              style={{ width: '200px', height: 'auto' }}
-            />
+            <h4>Preview:</h4>
+            {selectedFile.type.startsWith('image') ? (
+              <img
+                src={previewUrl}
+                alt="Preview"
+                style={{ width: '200px', height: 'auto' }}
+              />
+            ) : selectedFile.type.startsWith('video') ? (
+              <>
+                <video
+                  ref={videoRef}
+                  src={previewUrl}
+                  controls
+                  style={{ width: '200px', height: 'auto' }}
+                />
+                {thumbnail && (
+                  <div className="video-thumbnail">
+                    <h4>Thumbnail:</h4>
+                    <img
+                      src={thumbnail}
+                      alt="Thumbnail"
+                      style={{ width: '200px', height: 'auto' }}
+                    />
+                  </div>
+                )}
+              </>
+            ) : null}
           </div>
         )}
       </div>
