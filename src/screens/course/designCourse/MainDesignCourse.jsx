@@ -5,10 +5,15 @@ import { useState, useContext } from 'react'
 
 import { DesignCourseContext } from './DesignCourseContext'
 import { categories } from '~/constants/listCategories'
+import { languages } from '~/constants/listLanguage'
+import UploadFile from './UploadFile'
 
 import AddCircleIcon from '@mui/icons-material/AddCircle'
 import CancelIcon from '@mui/icons-material/Cancel'
-import UploadFile from './UploadFile'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormControl from '@mui/material/FormControl'
 
 function MainDesignCourse() {
   //* Context API from DesignCourseContext
@@ -183,6 +188,77 @@ function MainDesignCourse() {
               </div>
             </div>
           </div>
+          <div className="design-genral-method">
+            <h3>Method</h3>
+            <div className="design-genral-method-radio">
+              <FormControl component="fieldset">
+                <RadioGroup
+                  row
+                  aria-label="method"
+                  name="method"
+                  defaultValue="online"
+                >
+                  <FormControlLabel
+                    value="Self-directed study"
+                    control={<Radio />}
+                    label={<p>Self-directed study</p>}
+                  />
+                  <FormControlLabel
+                    value="Supervised with AI camera"
+                    control={<Radio />}
+                    label={<p>Supervised with AI camera</p>}
+                  />
+                </RadioGroup>
+              </FormControl>
+            </div>
+          </div>
+
+          <div className="design-genral-language">
+            <h3>Language</h3>
+            <div className="design-genral-language-select">
+              <select defaultValue="" required>
+                <option value="" disabled hidden>
+                  Select a language
+                </option>
+                {languages.map((language, index) => (
+                  <option key={index} value={language}>
+                    {language}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="design-genral-program">
+            <h3>Program</h3>
+            <div className="design-genral-program-radio">
+              <FormControl component="fieldset">
+                <RadioGroup
+                  row
+                  aria-label="method"
+                  name="method"
+                  defaultValue="online"
+                >
+                  <FormControlLabel
+                    value="Degree"
+                    control={<Radio />}
+                    label={<p>Degree</p>}
+                  />
+                  <FormControlLabel
+                    value="Certificate"
+                    control={<Radio />}
+                    label={<p>Certificate</p>}
+                  />
+                  <FormControlLabel
+                    value="Knowledge"
+                    control={<Radio />}
+                    label={<p>Knowledge</p>}
+                  />
+                </RadioGroup>
+              </FormControl>
+            </div>
+          </div>
+
           <div className="design-genral-button">
             <button
               id="btn-primary"
@@ -524,6 +600,74 @@ const MainDesignCourseWrapper = styled.section`
           display: flex;
           justify-content: center;
         }
+      }
+    }
+
+    .design-genral-method {
+      margin-top: 20px;
+      .design-genral-method-radio {
+        margin-left: 20px;
+        .MuiAccordion-root {
+          margin: 0;
+        }
+
+        .MuiAccordionSummary-root {
+          margin: 0;
+        }
+
+        .css-1i7u1af-MuiPaper-root-MuiAccordion-root.Mui-expanded {
+          margin: 0;
+        }
+      }
+      p {
+        font-size: 1.6rem;
+        margin: 0;
+        line-height: 1.6;
+      }
+    }
+
+    .design-genral-language {
+      margin-top: 20px;
+      .design-genral-language-select {
+        select {
+          width: 100%;
+          height: 4rem;
+          padding: 8px;
+          margin: 0 auto;
+          font-size: 1.6rem;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          box-sizing: border-box;
+          transition: border-color 0.3s, border-width;
+          &:focus {
+            border-color: #187bce;
+            border-width: 2px;
+            outline: none;
+          }
+        }
+      }
+    }
+
+    .design-genral-program {
+      margin-top: 20px;
+      .design-genral-program-radio {
+        margin-left: 20px;
+        .MuiAccordion-root {
+          margin: 0;
+        }
+
+        .MuiAccordionSummary-root {
+          margin: 0;
+        }
+
+        .css-1i7u1af-MuiPaper-root-MuiAccordion-root.Mui-expanded {
+          margin: 0;
+        }
+      }
+      p {
+        font-size: 1.6rem;
+        margin: 0;
+        line-height: 1.6;
       }
     }
 
