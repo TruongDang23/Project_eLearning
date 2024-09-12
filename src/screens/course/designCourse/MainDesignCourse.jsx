@@ -14,6 +14,7 @@ function MainDesignCourse() {
   //* Context API from DesignCourseContext
   const { markSectionAsCompleted } = useContext(DesignCourseContext)
   //* General section
+  // About generalTitle
   const [generalTitle, setGeneralTitle] = useState('')
   const maxGeneralTitleLength = 80
   const handleGeneralTitleChange = (event) => {
@@ -21,6 +22,23 @@ function MainDesignCourse() {
     if (inputValue.length <= maxGeneralTitleLength) {
       setGeneralTitle(inputValue)
     }
+  }
+  // About generalKeywords
+  const [generalKeywords, setGeneralKeywords] = useState([
+    { value: '' },
+    { value: '' }
+  ])
+  const handleGeneralKeywordsChange = (index, event) => {
+    const newKeywords = [...generalKeywords]
+    newKeywords[index].value = event.target.value
+    setGeneralKeywords(newKeywords)
+  }
+  const handleGeneralAddMore = () => {
+    setGeneralKeywords([...generalKeywords, { value: '' }])
+  }
+  const handleGeneralRemoveKeyword = (index) => {
+    const newKeywords = generalKeywords.filter((_, i) => i !== index)
+    setGeneralKeywords(newKeywords)
   }
   //* Intended learners section
   // About intendedInputs
@@ -106,6 +124,64 @@ function MainDesignCourse() {
                 }
               }}
             />
+          </div>
+          <div className="design-general-keyword">
+            <h3>Keywords</h3>
+            <div className="design-general-keyword-inputs">
+              {generalKeywords.map((keyword, index) => (
+                <div key={index} className="design-general-keyword-input">
+                  <TextField
+                    key={index}
+                    placeholder={`e.g. Java`}
+                    value={keyword.value}
+                    variant="outlined"
+                    onChange={(e) => handleGeneralKeywordsChange(index, e)}
+                    InputProps={{
+                      style: { fontSize: '1.6rem', color: '#555' },
+                      sx: {
+                        height: '40px',
+                        borderRadius: '5px',
+                        backgroundColor: 'rgba(243, 243, 250, 0.8)',
+                        color: '#187bce',
+                        fontSize: '1.6rem',
+                        outline: 'none',
+                        transition: '0.3s all ease',
+                        '&:hover .MuiOutlinedInput-notchedOutline': {
+                          transition: '0.3s all ease',
+                          border: 'none', // Loại bỏ border khi hover
+                          boxShadow: '0 0 0 2px #187bce'
+                        },
+                        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                          transition: '0.3s all',
+                          border: 'none', // Loại bỏ border khi focus
+                          boxShadow: '0 0 0 2px #187bce'
+                        }
+                      },
+                      notchedOutline: {
+                        border: 'none' // Loại bỏ border mặc định
+                      }
+                    }}
+                    fullWidth
+                  />
+                  <a
+                    id="cancel"
+                    onClick={() => handleGeneralRemoveKeyword(index)}
+                  >
+                    <span>
+                      <CancelIcon />
+                    </span>
+                  </a>
+                </div>
+              ))}
+              <div className="design-general-keyword-addmore">
+                <button id="btn-secoundary" onClick={handleGeneralAddMore}>
+                  Add More{' '}
+                  <span>
+                    <AddCircleIcon />
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
           <div className="design-genral-button">
             <button
@@ -410,10 +486,47 @@ const MainDesignCourseWrapper = styled.section`
 
   .design-general {
     margin-bottom: 20px;
-    height: 400px;
 
     .design-general-title {
     }
+    .design-general-keyword {
+      margin-top: 20px;
+      .design-general-keyword-inputs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        .design-general-keyword-input {
+          flex: 1 1 calc(33.333% - 20px); /* 3 items per row, accounting for the gap */
+          box-sizing: border-box;
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          justify-content: space-between;
+          a {
+            background-color: #fff;
+            border: none;
+            &:hover {
+              border: none !important;
+            }
+            svg {
+              font-size: 3rem;
+              color: #868e96;
+              transition: 0.3s all ease;
+
+              &:hover {
+                color: #e03131;
+                scale: 1.1;
+              }
+            }
+          }
+        }
+        .design-general-keyword-addmore {
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+
     .design-genral-button {
       margin-top: 20px;
       display: flex;
