@@ -294,8 +294,12 @@ function MainDesignCourse() {
         <div className="design-introduce">
           <h2>Introduce Course</h2>
           <hr />
-          <h3>Course Image</h3>
           <div className="design-introduce-image">
+            <h3>Course Image</h3>
+            <UploadFile />
+          </div>
+          <div className="design-introduce-video">
+            <h3>Promotional Video</h3>
             <UploadFile />
           </div>
           <div className="design-introduce-button">

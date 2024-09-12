@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
+import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 
 function UploadFile() {
   const [selectedFile, setSelectedFile] = useState(null)
@@ -39,14 +40,32 @@ function UploadFile() {
     setPreviewUrl(null)
   }
 
+  // Hàm để cắt ngắn tên file và thêm dấu ba chấm nếu dài hơn 20 ký tự
+  const truncateFileName = (name, length) => {
+    if (name.length > length) {
+      return name.substring(0, length) + '...'
+    }
+    return name
+  }
+
   return (
     <UploadFileWrapper>
       <form onSubmit={handleSubmit} className="upload-form">
-        <input
-          type="file"
-          onChange={handleFileChange}
-          accept="image/*,application/pdf,.xlsx,video/*"
-        />
+        <InputWrapper>
+          <input type="file" id="file-upload" onChange={handleFileChange} />
+          <label htmlFor="file-upload">
+            {selectedFile ? (
+              truncateFileName(selectedFile.name, 20) // Giới hạn 20 ký tự
+            ) : (
+              <>
+                {'Choose File'}
+                <span>
+                  <CloudUploadIcon />
+                </span>
+              </>
+            )}
+          </label>
+        </InputWrapper>
         <button id="btn-secondary" type="submit">
           Upload
         </button>
@@ -78,11 +97,56 @@ function UploadFile() {
   )
 }
 
+const InputWrapper = styled.div`
+  margin-left: 20px;
+  position: relative;
+  display: inline-block;
+
+  input[type='file'] {
+    display: none; /* Ẩn input mặc định */
+  }
+
+  label {
+    padding: 10px 20px;
+    color: #187bce;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.6rem;
+    font-weight: 700;
+    white-space: nowrap; /* Không cho phép xuống dòng */
+    overflow: hidden; /* Giới hạn phần tử trong vùng chứa */
+    text-overflow: ellipsis; /* Hiển thị dấu ba chấm nếu text bị cắt */
+    transition: all 0.3s ease;
+    svg {
+      font-size: 2rem;
+      margin-left: 10px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border: 2px dashed #1971c2;
+      border-radius: 5px;
+      pointer-events: none; /* Đảm bảo không ảnh hưởng tới các sự kiện chuột */
+    }
+
+    &:hover {
+      scale: 1.05;
+      box-shadow: 0 0 0 2px #1971c2;
+    }
+  }
+`
+
 const UploadFileWrapper = styled.div`
   .upload-form {
     display: flex;
-    gap: 10px;
+    gap: 30px;
     margin-bottom: 20px;
+    margin-top: 20px;
 
     input {
       font-size: 1.6rem;
