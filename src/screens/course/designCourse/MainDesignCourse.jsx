@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Element } from 'react-scroll'
-import { TextField, MenuItem } from '@mui/material'
+import { TextField } from '@mui/material'
 import { useState, useContext } from 'react'
 
 import { DesignCourseContext } from './DesignCourseContext'
@@ -8,6 +8,7 @@ import { categories } from '~/constants/listCategories'
 
 import AddCircleIcon from '@mui/icons-material/AddCircle'
 import CancelIcon from '@mui/icons-material/Cancel'
+import UploadFile from './UploadFile'
 
 function MainDesignCourse() {
   //* Context API from DesignCourseContext
@@ -15,7 +16,7 @@ function MainDesignCourse() {
   //* General section
   const [generalTitle, setGeneralTitle] = useState('')
   const maxGeneralTitleLength = 80
-  const handleGeneralTitleChange = (e) => {
+  const handleGeneralTitleChange = (event) => {
     const inputValue = event.target.value
     if (inputValue.length <= maxGeneralTitleLength) {
       setGeneralTitle(inputValue)
@@ -58,7 +59,7 @@ function MainDesignCourse() {
     const newInputs = requirementInputs.filter((_, i) => i !== index)
     setRequirementInputs(newInputs)
   }
-  // 
+
   return (
     <MainDesignCourseWrapper>
       <h1>Design Your Course</h1>
@@ -293,6 +294,10 @@ function MainDesignCourse() {
         <div className="design-introduce">
           <h2>Introduce Course</h2>
           <hr />
+          <h3>Course Image</h3>
+          <div className="design-introduce-image">
+            <UploadFile />
+          </div>
           <div className="design-introduce-button">
             <button
               id="btn-primary"
@@ -499,7 +504,6 @@ const MainDesignCourseWrapper = styled.section`
 
   .design-introduce {
     margin-bottom: 20px;
-    height: 400px;
 
     .design-introduce-button {
       margin-top: 20px;
