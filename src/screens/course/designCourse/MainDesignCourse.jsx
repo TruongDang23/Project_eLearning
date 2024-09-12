@@ -52,7 +52,49 @@ function MainDesignCourse() {
   const [price, setPrice] = useState({ value: '', unit: '' })
   // About Program
   const [program, setProgram] = useState('')
-  // Validate the form whenever any relevant input changes
+
+  const handleGeneralSave = () => {
+    const hasEmptyKeyword = generalKeywords.some(
+      (keyword) => keyword.value === ''
+    )
+    if (
+      !generalTitle ||
+      hasEmptyKeyword ||
+      !method ||
+      !languageChoose ||
+      !program
+    ) {
+      alert('Please fill all the inputs before saving.')
+      return
+    } else if (price.value && !price.unit) {
+      alert('Please select a currency before saving.')
+      return
+    } else if (!price.value || !price.unit) {
+      alert('Your course will be free')
+      markSectionAsCompleted('general')
+      return
+    } else {
+      alert('General section saved')
+      markSectionAsCompleted('general')
+    }
+  }
+
+  //* Categories section
+  const [selectedCategory, setSelectedCategory] = useState('')
+
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value)
+  }
+
+  const handleSaveCategoriesClick = () => {
+    if (!selectedCategory) {
+      alert('Please select a category before saving.')
+      return
+    } else {
+      alert('Categories section saved')
+      markSectionAsCompleted('categories')
+    }
+  }
 
   //* Intended learners section
   // About intendedInputs
@@ -90,6 +132,45 @@ function MainDesignCourse() {
   const handleRequirementRemoveInput = (index) => {
     const newInputs = requirementInputs.filter((_, i) => i !== index)
     setRequirementInputs(newInputs)
+  }
+
+  const handleSaveIntendedLearnersClick = () => {
+    // Kiểm tra có input nào có giá trị là rỗng không
+    const hasEmptyIntendedInput = intendedInputs.some(
+      (input) => input.value === ''
+    )
+    const hasEmptyRequirementInput = requirementInputs.some(
+      (input) => input.value === ''
+    )
+    if (hasEmptyIntendedInput || hasEmptyRequirementInput) {
+      alert('Please fill all the inputs before saving.')
+      return
+    } else {
+      alert('Intended learners section saved')
+      markSectionAsCompleted('intendedLearners')
+    }
+  }
+
+  //* Introduce course section
+  const [courseImage, setCourseImage] = useState(null)
+  const [promotionalVideo, setPromotionalVideo] = useState(null)
+
+  const handleImageChange = (file) => {
+    setCourseImage(file)
+  }
+
+  const handleVideoChange = (file) => {
+    setPromotionalVideo(file)
+  }
+
+  const handleSave = () => {
+    if (!courseImage || !promotionalVideo) {
+      alert('Please upload both course image and promotional video.')
+      return
+    } else {
+      alert('Introduce course section saved')
+      markSectionAsCompleted('introduceCourse')
+    }
   }
 
   return (
@@ -269,7 +350,7 @@ function MainDesignCourse() {
                 required
               >
                 <option value="" disabled hidden>
-                  Select a price
+                  Select a currency
                 </option>
                 {currencies.map((currency, index) => (
                   <option key={index} value={currency.label}>
@@ -316,10 +397,7 @@ function MainDesignCourse() {
           </div>
 
           <div className="design-genral-button">
-            <button
-              id="btn-primary"
-              onClick={() => markSectionAsCompleted('general')}
-            >
+            <button id="btn-primary" onClick={handleGeneralSave}>
               Save General
             </button>
           </div>
@@ -330,9 +408,14 @@ function MainDesignCourse() {
         <div className="design-categories">
           <h2>Categories</h2>
           <hr />
-          <h3>What categories best fits the knowledge you will share ?</h3>
+          <h3>What categories best fit the knowledge you will share?</h3>
           <div className="design-categories-selects">
-            <select defaultValue="" required>
+            <select
+              defaultValue=""
+              value={selectedCategory}
+              onChange={handleCategoryChange}
+              required
+            >
               <option value="" disabled hidden>
                 Select a category
               </option>
@@ -344,10 +427,7 @@ function MainDesignCourse() {
             </select>
           </div>
           <div className="design-categories-button">
-            <button
-              id="btn-primary"
-              onClick={() => markSectionAsCompleted('categories')}
-            >
+            <button id="btn-primary" onClick={handleSaveCategoriesClick}>
               Save Categories
             </button>
           </div>
@@ -473,10 +553,7 @@ function MainDesignCourse() {
           </div>
 
           <div className="design-intended-button">
-            <button
-              id="btn-primary"
-              onClick={() => markSectionAsCompleted('intendedLearners')}
-            >
+            <button id="btn-primary" onClick={handleSaveIntendedLearnersClick}>
               Save Intended Learners
             </button>
           </div>
@@ -504,17 +581,22 @@ function MainDesignCourse() {
           <hr />
           <div className="design-introduce-image">
             <h3>Course Image</h3>
-            <UploadFile uniqueId="introduceImage" type="image" />
+            <UploadFile
+              uniqueId="introduceImage"
+              type="image"
+              onFileChange={handleImageChange}
+            />
           </div>
           <div className="design-introduce-video">
             <h3>Promotional Video</h3>
-            <UploadFile uniqueId="introduce-video" type="video" />
+            <UploadFile
+              uniqueId="introduce-video"
+              type="video"
+              onFileChange={handleVideoChange}
+            />
           </div>
           <div className="design-introduce-button">
-            <button
-              id="btn-primary"
-              onClick={() => markSectionAsCompleted('introduceCourse')}
-            >
+            <button id="btn-primary" onClick={handleSave}>
               Save Introduce Course
             </button>
           </div>

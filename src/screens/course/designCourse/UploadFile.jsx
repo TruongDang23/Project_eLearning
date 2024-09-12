@@ -1,12 +1,18 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 
-function UploadFile({ uniqueId, type }) {
+function UploadFile({ uniqueId, type, onFileChange }) {
   const [selectedFile, setSelectedFile] = useState(null)
   const [previewUrl, setPreviewUrl] = useState(null)
   const [thumbnail, setThumbnail] = useState(null)
   const videoRef = useRef(null)
+
+  useEffect(() => {
+    if (onFileChange) {
+      onFileChange(selectedFile)
+    }
+  }, [selectedFile, onFileChange])
 
   const handleFileChange = (event) => {
     const file = event.target.files[0]
