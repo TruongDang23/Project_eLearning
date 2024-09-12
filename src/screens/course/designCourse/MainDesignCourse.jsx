@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 import { Element } from 'react-scroll'
 import { TextField } from '@mui/material'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 
 import { DesignCourseContext } from './DesignCourseContext'
 import { categories } from '~/constants/listCategories'
 import { languages } from '~/constants/listLanguage'
+import { currencies } from '~/constants/listCurrency'
 import UploadFile from './UploadFile'
 
 import AddCircleIcon from '@mui/icons-material/AddCircle'
@@ -29,14 +30,12 @@ function MainDesignCourse() {
     }
   }
   // About generalKeywords
-  const [generalKeywords, setGeneralKeywords] = useState([
-    { value: '' },
-    { value: '' }
-  ])
+  const [generalKeywords, setGeneralKeywords] = useState([{ value: '' }])
   const handleGeneralKeywordsChange = (index, event) => {
     const newKeywords = [...generalKeywords]
     newKeywords[index].value = event.target.value
     setGeneralKeywords(newKeywords)
+    console.log(generalKeywords)
   }
   const handleGeneralAddMore = () => {
     setGeneralKeywords([...generalKeywords, { value: '' }])
@@ -45,6 +44,16 @@ function MainDesignCourse() {
     const newKeywords = generalKeywords.filter((_, i) => i !== index)
     setGeneralKeywords(newKeywords)
   }
+  // About method
+  const [method, setMethod] = useState('')
+  // About Language
+  const [languageChoose, setLanguage] = useState('')
+  // About Price
+  const [price, setPrice] = useState({ value: '', unit: '' })
+  // About Program
+  const [program, setProgram] = useState('')
+  // Validate the form whenever any relevant input changes
+
   //* Intended learners section
   // About intendedInputs
   const [intendedInputs, setInputs] = useState([
@@ -173,7 +182,7 @@ function MainDesignCourse() {
                     onClick={() => handleGeneralRemoveKeyword(index)}
                   >
                     <span>
-                      <CancelIcon />
+                      <CancelIcon style={{ viewBox: '0 0 24 24' }} />
                     </span>
                   </a>
                 </div>
@@ -182,7 +191,7 @@ function MainDesignCourse() {
                 <button id="btn-secoundary" onClick={handleGeneralAddMore}>
                   Add More{' '}
                   <span>
-                    <AddCircleIcon />
+                    <AddCircleIcon style={{ viewBox: '0 0 24 24' }} />
                   </span>
                 </button>
               </div>
@@ -197,6 +206,8 @@ function MainDesignCourse() {
                   aria-label="method"
                   name="method"
                   defaultValue="online"
+                  value={method}
+                  onChange={(e) => setMethod(e.target.value)}
                 >
                   <FormControlLabel
                     value="Self-directed study"
@@ -216,7 +227,14 @@ function MainDesignCourse() {
           <div className="design-genral-language">
             <h3>Language</h3>
             <div className="design-genral-language-select">
-              <select defaultValue="" required>
+              <select
+                defaultValue=""
+                value={languageChoose}
+                onChange={(event) => {
+                  setLanguage(event.target.value)
+                }}
+                required
+              >
                 <option value="" disabled hidden>
                   Select a language
                 </option>
@@ -229,6 +247,42 @@ function MainDesignCourse() {
             </div>
           </div>
 
+          <div className="design-genral-price">
+            <h3>Price</h3>
+            <div className="design-genral-price-input">
+              <input
+                type="number"
+                placeholder="e.g. 100"
+                min="0"
+                max="10000"
+                value={price.value}
+                onChange={(event) =>
+                  setPrice({ ...price, value: event.target.value })
+                }
+              />
+              <select
+                defaultValue=""
+                value={price.unit}
+                onChange={(event) => {
+                  setPrice({ value: price.value, unit: event.target.value })
+                }}
+                required
+              >
+                <option value="" disabled hidden>
+                  Select a price
+                </option>
+                {currencies.map((currency, index) => (
+                  <option key={index} value={currency.label}>
+                    {currency.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <p>
+              <span>*</span>If you want your course free, leave blank
+            </p>
+          </div>
+
           <div className="design-genral-program">
             <h3>Program</h3>
             <div className="design-genral-program-radio">
@@ -238,6 +292,8 @@ function MainDesignCourse() {
                   aria-label="method"
                   name="method"
                   defaultValue="online"
+                  value={program}
+                  onChange={(e) => setProgram(e.target.value)}
                 >
                   <FormControlLabel
                     value="Degree"
@@ -645,6 +701,47 @@ const MainDesignCourseWrapper = styled.section`
             outline: none;
           }
         }
+      }
+    }
+
+    .design-genral-price {
+      margin-top: 20px;
+      .design-genral-price-input {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 20px;
+        input {
+          width: 50%;
+          font-size: 1.6rem;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          outline: none;
+        }
+        select {
+          width: 30%;
+          height: 4rem;
+          padding: 8px;
+          font-size: 1.6rem;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          box-sizing: border-box;
+          transition: border-color 0.3s, border-width;
+          &:focus {
+            border-color: #187bce;
+            border-width: 2px;
+            outline: none;
+          }
+        }
+      }
+      p {
+        span {
+          color: red;
+        }
+        font-size: 1.6rem;
+        margin: 0;
+        line-height: 1.6;
       }
     }
 
