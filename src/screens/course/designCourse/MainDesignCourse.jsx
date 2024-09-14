@@ -15,6 +15,16 @@ import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
+import EditIcon from '@mui/icons-material/Edit'
+import DeleteIcon from '@mui/icons-material/Delete'
+import {
+  Button,
+  IconButton,
+  Select,
+  MenuItem,
+  Card,
+  CardContent
+} from '@mui/material'
 
 function MainDesignCourse() {
   //* Context API from DesignCourseContext
@@ -149,6 +159,51 @@ function MainDesignCourse() {
       alert('Intended learners section saved')
       markSectionAsCompleted('intendedLearners')
     }
+  }
+
+  //* Course structure section
+  const [chapters, setChapters] = useState([
+    {
+      title: 'Chapter 1',
+      lectures: [
+        {
+          title: 'Lecture 1: Introduction',
+          type: 'File',
+          description: '',
+          resource: ''
+        },
+        {
+          title: 'Lecture 2: First Test',
+          type: 'Quiz',
+          description: '',
+          resource: ''
+        }
+      ]
+    }
+  ])
+  const handleAddLecture = (chapterIndex) => {
+    const updatedChapters = [...chapters]
+    updatedChapters[chapterIndex].lectures.push({
+      title: `Lecture ${updatedChapters[chapterIndex].lectures.length + 1}`,
+      type: 'File',
+      description: '',
+      resource: ''
+    })
+    setChapters(updatedChapters)
+  }
+  const handleAddChapter = () => {
+    setChapters([
+      ...chapters,
+      {
+        title: `Chapter ${chapters.length + 1}`,
+        lectures: []
+      }
+    ])
+  }
+  const handleInputChange = (chapterIndex, lectureIndex, field, value) => {
+    const updatedChapters = [...chapters]
+    updatedChapters[chapterIndex].lectures[lectureIndex][field] = value
+    setChapters(updatedChapters)
   }
 
   //* Introduce course section
@@ -564,6 +619,130 @@ function MainDesignCourse() {
         <div className="design-structure">
           <h2>Course Structure</h2>
           <hr />
+          {chapters.map((chapter, chapterIndex) => (
+            <Card key={chapterIndex} style={{ marginBottom: 20 }}>
+              <CardContent>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between'
+                  }}
+                >
+                  <TextField
+                    value={chapter.title}
+                    variant="outlined"
+                    size="small"
+                  />
+                  <div>
+                    <IconButton>
+                      <EditIcon />
+                    </IconButton>
+                    <IconButton>
+                      <DeleteIcon />
+                    </IconButton>
+                  </div>
+                </div>
+                {chapter.lectures.map((lecture, lectureIndex) => (
+                  <div
+                    key={lectureIndex}
+                    style={{ marginTop: 20, paddingLeft: 20 }}
+                  >
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between'
+                      }}
+                    >
+                      <TextField
+                        value={lecture.title}
+                        variant="outlined"
+                        size="small"
+                        onChange={(e) =>
+                          handleInputChange(
+                            chapterIndex,
+                            lectureIndex,
+                            'title',
+                            e.target.value
+                          )
+                        }
+                      />
+                      <Select
+                        value={lecture.type}
+                        size="small"
+                        onChange={(e) =>
+                          handleInputChange(
+                            chapterIndex,
+                            lectureIndex,
+                            'type',
+                            e.target.value
+                          )
+                        }
+                      >
+                        <MenuItem value="File">File</MenuItem>
+                        <MenuItem value="Quiz">Quiz</MenuItem>
+                      </Select>
+                      <div>
+                        <IconButton>
+                          <EditIcon />
+                        </IconButton>
+                        <IconButton>
+                          <DeleteIcon />
+                        </IconButton>
+                      </div>
+                    </div>
+                    {/* Description input */}
+                    <div style={{ marginTop: 10, paddingLeft: 20 }}>
+                      <TextField
+                        label="Description"
+                        variant="outlined"
+                        size="small"
+                        value={lecture.description}
+                        fullWidth
+                        onChange={(e) =>
+                          handleInputChange(
+                            chapterIndex,
+                            lectureIndex,
+                            'description',
+                            e.target.value
+                          )
+                        }
+                      />
+                    </div>
+                    {/* Resource input */}
+                    <div style={{ marginTop: 10, paddingLeft: 20 }}>
+                      <TextField
+                        label="Resource"
+                        variant="outlined"
+                        size="small"
+                        value={lecture.resource}
+                        fullWidth
+                        onChange={(e) =>
+                          handleInputChange(
+                            chapterIndex,
+                            lectureIndex,
+                            'resource',
+                            e.target.value
+                          )
+                        }
+                      />
+                    </div>
+                  </div>
+                ))}
+                <Button
+                  style={{ marginTop: 20 }}
+                  variant="outlined"
+                  onClick={() => handleAddLecture(chapterIndex)}
+                >
+                  + Add Lecture
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+          <Button variant="outlined" onClick={handleAddChapter}>
+            + Add Chapter
+          </Button>
           <div className="design-structure-button">
             <button
               id="btn-primary"
@@ -932,7 +1111,6 @@ const MainDesignCourseWrapper = styled.section`
 
   .design-structure {
     margin-bottom: 20px;
-    height: 400px;
 
     .design-structure-button {
       margin-top: 20px;
