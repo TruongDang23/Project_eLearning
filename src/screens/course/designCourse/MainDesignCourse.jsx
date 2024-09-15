@@ -172,16 +172,27 @@ function MainDesignCourse() {
           type: 'File',
           description: '',
           resource: ''
-        },
+        }
+      ]
+    },
+    {
+      title: 'Chapter 2',
+      lectures: [
         {
-          title: 'Lecture 2: First Test',
-          type: 'Quiz',
+          title: 'Lecture 1: Introduction',
+          type: 'File',
           description: '',
           resource: ''
         }
       ]
     }
   ])
+  const handleChapterTitleChange = (index, newTitle) => {
+    const updatedChapters = [...chapters];
+    updatedChapters[index].title = newTitle;
+    setChapters(updatedChapters);
+  };
+
   const handleAddLecture = (chapterIndex) => {
     const updatedChapters = [...chapters]
     updatedChapters[chapterIndex].lectures.push({
@@ -223,6 +234,34 @@ function MainDesignCourse() {
     const file = event.target.files[0]
     if (file) {
       handleInputChange(chapterIndex, lectureIndex, 'resource', file.name) // Cập nhật tên file
+    }
+  }
+
+  const getFileAccept = (lectureType) => {
+    switch (lectureType) {
+      case 'File':
+        return '.pdf'
+      case 'Video':
+        return '.mp4,.wmv'
+      case 'Quiz':
+        return '.xlsx'
+      case 'Assignment':
+        return '.xlsx'
+      default:
+        return '' // Cho phép tất cả các loại file nếu không ràng buộc
+    }
+  }
+
+  const handleSaveCourseStructureClick = () => {
+    const hasEmptyLecture = chapters.some((chapter) =>
+      chapter.lectures.some((lecture) => lecture.title === '')
+    )
+    if (hasEmptyLecture) {
+      alert('Please fill all the inputs before saving.')
+      return
+    } else {
+      alert('Course structure section saved')
+      markSectionAsCompleted('courseStructure')
     }
   }
 
@@ -656,6 +695,17 @@ function MainDesignCourse() {
                     value={chapter.title}
                     variant="outlined"
                     size="small"
+                    InputProps={{
+                      style: { fontSize: '1.3rem', color: '#555' },
+                      sx: {
+                        height: '40px',
+                        borderRadius: '5px',
+                        backgroundColor: 'rgba(243, 243, 250, 0.8)',
+                        fontSize: '1.6rem',
+                        outline: 'none'
+                      }
+                    }}
+                    onChange={(e) => handleChapterTitleChange(chapterIndex, e.target.value)}
                     disabled={!isEditing} // Chỉ chỉnh sửa khi ở chế độ edit
                   />
                   {isEditing && (
@@ -675,13 +725,13 @@ function MainDesignCourse() {
                       style={{
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'space-between'
+                        justifyContent: 'space-between',
+                        gap: 40
                       }}
                     >
                       <TextField
                         value={lecture.title}
                         variant="outlined"
-                        size="small"
                         onChange={(e) =>
                           handleInputChange(
                             chapterIndex,
@@ -690,6 +740,17 @@ function MainDesignCourse() {
                             e.target.value
                           )
                         }
+                        style={{ flex: 1 }}
+                        InputProps={{
+                          style: { fontSize: '1.3rem', color: '#555' },
+                          sx: {
+                            height: '40px',
+                            borderRadius: '5px',
+                            backgroundColor: 'rgba(243, 243, 250, 0.8)',
+                            fontSize: '1.6rem',
+                            outline: 'none'
+                          }
+                        }}
                         disabled={!isEditing} // Chỉ chỉnh sửa khi ở chế độ edit
                       />
                       <Select
@@ -749,6 +810,7 @@ function MainDesignCourse() {
                       <label style={{ marginRight: 10 }}>Resource:</label>
                       <input
                         type="file"
+                        accept={getFileAccept(lecture.type)} // Ràng buộc định dạng file dựa trên type
                         onChange={(e) =>
                           handleFileChange(chapterIndex, lectureIndex, e)
                         }
@@ -788,11 +850,11 @@ function MainDesignCourse() {
             </Button>
           )}
           <div className="design-structure-button">
-            <button
-              id="btn-primary"
-              onClick={() => markSectionAsCompleted('courseStructure')}
-            >
+            <button id="btn-primary" onClick={handleSaveCourseStructureClick}>
               Save Course Structure
+            </button>
+            <button id="btn-primary" onClick={() => console.log(chapters)}>
+              Course Structure
             </button>
           </div>
         </div>
