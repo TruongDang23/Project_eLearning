@@ -1,14 +1,17 @@
-import styled from "styled-components";
-import MainContentCourse from "./MainContentCourse";
-import SideBar from "./SideBar";
+import styled from 'styled-components'
+import MainContentCourse from './MainContentCourse'
+import SideBar from './SideBar'
+import Sticky from 'react-sticky-el'
 
 function MainCourse({ inforCourseData }) {
   return (
     <MainCourseWrapper className="container white-space-small">
       <MainContentCourse inforCourseData={inforCourseData} />
-      <SideBar inforCourseData={inforCourseData} />
+      <Sticky>
+        <SideBar inforCourseData={inforCourseData} />
+      </Sticky>
     </MainCourseWrapper>
-  );
+  )
 }
 
 const MainCourseWrapper = styled.section`
@@ -28,6 +31,6 @@ const MainCourseWrapper = styled.section`
   @media (max-width: 480px) {
     margin-top: 10px;
   }
-`;
+`
 
-export default MainCourse;
+export default MainCourse

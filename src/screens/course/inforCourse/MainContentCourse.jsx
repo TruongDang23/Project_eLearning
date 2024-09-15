@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import DoneRoundedIcon from "@mui/icons-material/DoneRounded";
-import StarRating from "~/components/general/Other/StarRating";
-import Avatar from "@mui/material/Avatar";
-import { formatDistanceToNow } from "date-fns";
-import AccordionCourse from "./AccordionCourse";
+import styled from 'styled-components'
+import DoneRoundedIcon from '@mui/icons-material/DoneRounded'
+import StarRating from '~/components/general/Other/StarRating'
+import Avatar from '@mui/material/Avatar'
+import { formatDistanceToNow } from 'date-fns'
+import AccordionCourse from './AccordionCourse'
 
 function MainContentCourse({ inforCourseData }) {
   return (
@@ -50,13 +50,13 @@ function MainContentCourse({ inforCourseData }) {
               <h4>{review.reviewerName}</h4>
               <span>
                 {formatDistanceToNow(new Date(review.date), {
-                  addSuffix: true,
+                  addSuffix: true
                 })}
               </span>
             </div>
             <div className="course-personal-review-content">
               <div className="course-personal-review-content-star">
-                <StarRating rating_star={review.star} />{" "}
+                <StarRating rating_star={review.star} />{' '}
                 <span>{review.star}</span>
               </div>
               <p>{review.message}</p>
@@ -65,7 +65,7 @@ function MainContentCourse({ inforCourseData }) {
         ))}
       </div>
     </MainContentCourseWrapper>
-  );
+  )
 }
 
 const MainContentCourseWrapper = styled.section`
@@ -78,7 +78,7 @@ const MainContentCourseWrapper = styled.section`
     box-shadow: #0000000f 0px 4px 20px 0px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     &:hover {
-      ${"" /* transform: translateY(-10px); */}
+      ${'' /* transform: translateY(-10px); */}
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
     h3 {
@@ -139,7 +139,7 @@ const MainContentCourseWrapper = styled.section`
     box-shadow: #0000000f 0px 4px 20px 0px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     &:hover {
-      ${"" /* transform: translateY(-10px); */}
+      ${'' /* transform: translateY(-10px); */}
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
     h3 {
@@ -200,7 +200,7 @@ const MainContentCourseWrapper = styled.section`
     box-shadow: #0000000f 0px 4px 20px 0px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     &:hover {
-      ${"" /* transform: translateY(-10px); */}
+      ${'' /* transform: translateY(-10px); */}
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
     .course-content-h3 {
@@ -220,7 +220,7 @@ const MainContentCourseWrapper = styled.section`
     box-shadow: #0000000f 0px 4px 20px 0px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     &:hover {
-      ${"" /* transform: translateY(-10px); */}
+      ${'' /* transform: translateY(-10px); */}
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 
@@ -321,6 +321,6 @@ const MainContentCourseWrapper = styled.section`
       transform: translateY(0);
     }
   }
-`;
+`
 
-export default MainContentCourse;
+export default MainContentCourse
