@@ -13,7 +13,7 @@ function DesignCourse() {
       <GlobalStyle />
       <GeneralHeader />
       <DesignCourseWrapper>
-        <Sticky>
+        <Sticky disabled={window.innerWidth <= 768}>
           <Sidebar />
         </Sticky>
         <MainDesignCourse />
@@ -34,6 +34,25 @@ const DesignCourseWrapper = styled.main`
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    .sticky{
+      display: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin: 10px;
+  }
+
+  @media (max-width: 768px) {
+    margin: 5px;
+  }
+
+  @media (max-width: 480px) {
+    margin: 0;
+  }
 `
 
 export default DesignCourse
