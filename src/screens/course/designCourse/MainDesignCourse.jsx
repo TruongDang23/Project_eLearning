@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Element } from 'react-scroll'
-import { TextField } from '@mui/material'
+import { Menu, TextField } from '@mui/material'
 import { useState, useContext, useEffect } from 'react'
 
 import { DesignCourseContext } from './DesignCourseContext'
@@ -162,6 +162,7 @@ function MainDesignCourse() {
   }
 
   //* Course structure section
+  const [isEditing, setIsEditing] = useState(false)
   const [chapters, setChapters] = useState([
     {
       title: 'Chapter 1',
@@ -203,6 +204,18 @@ function MainDesignCourse() {
   const handleInputChange = (chapterIndex, lectureIndex, field, value) => {
     const updatedChapters = [...chapters]
     updatedChapters[chapterIndex].lectures[lectureIndex][field] = value
+    setChapters(updatedChapters)
+  }
+
+  const handleDeleteLecture = (chapterIndex, lectureIndex) => {
+    const updatedChapters = [...chapters]
+    updatedChapters[chapterIndex].lectures.splice(lectureIndex, 1) // Xóa lecture theo index
+    setChapters(updatedChapters)
+  }
+
+  const handleDeleteChapter = (chapterIndex) => {
+    const updatedChapters = [...chapters]
+    updatedChapters.splice(chapterIndex, 1) // Xóa chapter theo index
     setChapters(updatedChapters)
   }
 
@@ -619,6 +632,9 @@ function MainDesignCourse() {
         <div className="design-structure">
           <h2>Course Structure</h2>
           <hr />
+          <Button variant="outlined" onClick={() => setIsEditing(!isEditing)}>
+            {isEditing ? 'Save' : 'Edit'}
+          </Button>
           {chapters.map((chapter, chapterIndex) => (
             <Card key={chapterIndex} style={{ marginBottom: 20 }}>
               <CardContent>
@@ -633,15 +649,15 @@ function MainDesignCourse() {
                     value={chapter.title}
                     variant="outlined"
                     size="small"
+                    disabled={!isEditing} // Chỉ chỉnh sửa khi ở chế độ edit
                   />
-                  <div>
-                    <IconButton>
-                      <EditIcon />
-                    </IconButton>
-                    <IconButton>
+                  {isEditing && (
+                    <IconButton
+                      onClick={() => handleDeleteChapter(chapterIndex)}
+                    >
                       <DeleteIcon />
                     </IconButton>
-                  </div>
+                  )}
                 </div>
                 {chapter.lectures.map((lecture, lectureIndex) => (
                   <div
@@ -667,6 +683,7 @@ function MainDesignCourse() {
                             e.target.value
                           )
                         }
+                        disabled={!isEditing} // Chỉ chỉnh sửa khi ở chế độ edit
                       />
                       <Select
                         value={lecture.type}
@@ -679,20 +696,23 @@ function MainDesignCourse() {
                             e.target.value
                           )
                         }
+                        disabled={!isEditing} // Chỉ chỉnh sửa khi ở chế độ edit
                       >
                         <MenuItem value="File">File</MenuItem>
+                        <MenuItem value="Video">Video</MenuItem>
+                        <MenuItem value="Quizz">Quizz</MenuItem>
                         <MenuItem value="Quiz">Quiz</MenuItem>
                       </Select>
-                      <div>
-                        <IconButton>
-                          <EditIcon />
-                        </IconButton>
-                        <IconButton>
+                      {isEditing && (
+                        <IconButton
+                          onClick={() =>
+                            handleDeleteLecture(chapterIndex, lectureIndex)
+                          }
+                        >
                           <DeleteIcon />
                         </IconButton>
-                      </div>
+                      )}
                     </div>
-                    {/* Description input */}
                     <div style={{ marginTop: 10, paddingLeft: 20 }}>
                       <TextField
                         label="Description"
@@ -708,9 +728,9 @@ function MainDesignCourse() {
                             e.target.value
                           )
                         }
+                        disabled={!isEditing} // Chỉ chỉnh sửa khi ở chế độ edit
                       />
                     </div>
-                    {/* Resource input */}
                     <div style={{ marginTop: 10, paddingLeft: 20 }}>
                       <TextField
                         label="Resource"
@@ -726,23 +746,28 @@ function MainDesignCourse() {
                             e.target.value
                           )
                         }
+                        disabled={!isEditing} // Chỉ chỉnh sửa khi ở chế độ edit
                       />
                     </div>
                   </div>
                 ))}
-                <Button
-                  style={{ marginTop: 20 }}
-                  variant="outlined"
-                  onClick={() => handleAddLecture(chapterIndex)}
-                >
-                  + Add Lecture
-                </Button>
+                {isEditing && (
+                  <Button
+                    style={{ marginTop: 20 }}
+                    variant="outlined"
+                    onClick={() => handleAddLecture(chapterIndex)}
+                  >
+                    + Add Lecture
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}
-          <Button variant="outlined" onClick={handleAddChapter}>
-            + Add Chapter
-          </Button>
+          {isEditing && (
+            <Button variant="outlined" onClick={handleAddChapter}>
+              + Add Chapter
+            </Button>
+          )}
           <div className="design-structure-button">
             <button
               id="btn-primary"
