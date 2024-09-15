@@ -188,10 +188,10 @@ function MainDesignCourse() {
     }
   ])
   const handleChapterTitleChange = (index, newTitle) => {
-    const updatedChapters = [...chapters];
-    updatedChapters[index].title = newTitle;
-    setChapters(updatedChapters);
-  };
+    const updatedChapters = [...chapters]
+    updatedChapters[index].title = newTitle
+    setChapters(updatedChapters)
+  }
 
   const handleAddLecture = (chapterIndex) => {
     const updatedChapters = [...chapters]
@@ -702,10 +702,30 @@ function MainDesignCourse() {
                         borderRadius: '5px',
                         backgroundColor: 'rgba(243, 243, 250, 0.8)',
                         fontSize: '1.6rem',
-                        outline: 'none'
+                        color: '#187bce',
+                        outline: 'none',
+                        transition: '0.3s all ease',
+                        '&:hover .MuiOutlinedInput-notchedOutline': {
+                          transition: '0.3s all ease',
+                          border: 'none', // Loại bỏ border khi hover
+                          boxShadow: '0 0 0 2px #187bce'
+                        },
+                        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                          transition: '0.3s all',
+                          border: 'none', // Loại bỏ border khi focus
+                          boxShadow: '0 0 0 2px #187bce'
+                        }
+                      },
+                      notchedOutline: {
+                        border: 'none' // Loại bỏ border mặc định
                       }
                     }}
-                    onChange={(e) => handleChapterTitleChange(chapterIndex, e.target.value)}
+                    sx={{
+                      width: '100%'
+                    }}
+                    onChange={(e) =>
+                      handleChapterTitleChange(chapterIndex, e.target.value)
+                    }
                     disabled={!isEditing} // Chỉ chỉnh sửa khi ở chế độ edit
                   />
                   {isEditing && (
@@ -748,7 +768,22 @@ function MainDesignCourse() {
                             borderRadius: '5px',
                             backgroundColor: 'rgba(243, 243, 250, 0.8)',
                             fontSize: '1.6rem',
-                            outline: 'none'
+                            color: '#187bce',
+                            outline: 'none',
+                            transition: '0.3s all ease',
+                            '&:hover .MuiOutlinedInput-notchedOutline': {
+                              transition: '0.3s all ease',
+                              border: 'none', // Loại bỏ border khi hover
+                              boxShadow: '0 0 0 2px #187bce'
+                            },
+                            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                              transition: '0.3s all',
+                              border: 'none', // Loại bỏ border khi focus
+                              boxShadow: '0 0 0 2px #187bce'
+                            }
+                          },
+                          notchedOutline: {
+                            border: 'none' // Loại bỏ border mặc định
                           }
                         }}
                         disabled={!isEditing} // Chỉ chỉnh sửa khi ở chế độ edit
@@ -764,6 +799,23 @@ function MainDesignCourse() {
                             e.target.value
                           )
                         }
+                        sx={{
+                          height: '40px',
+                          borderRadius: '5px',
+                          backgroundColor: 'rgba(243, 243, 250, 0.8)',
+                          fontSize: '1.3rem',
+                          outline: 'none',
+                          color: '#555',
+                          '.MuiSelect-icon': {
+                            color: '#555'
+                          },
+                          '& .MuiSelect-select': {
+                            fontSize: '1.3rem'
+                          }
+                        }}
+                        MenuProps={{
+                          disableScrollLock: true
+                        }}
                         disabled={!isEditing} // Chỉ chỉnh sửa khi ở chế độ edit
                       >
                         <MenuItem value="File">File</MenuItem>
@@ -788,6 +840,31 @@ function MainDesignCourse() {
                         size="small"
                         value={lecture.description}
                         fullWidth
+                        InputProps={{
+                          style: { fontSize: '1.3rem', color: '#555' },
+                          sx: {
+                            height: '40px',
+                            borderRadius: '5px',
+                            backgroundColor: 'rgba(243, 243, 250, 0.8)',
+                            fontSize: '1.6rem',
+                            color: '#187bce',
+                            outline: 'none',
+                            transition: '0.3s all ease',
+                            '&:hover .MuiOutlinedInput-notchedOutline': {
+                              transition: '0.3s all ease',
+                              border: 'none', // Loại bỏ border khi hover
+                              boxShadow: '0 0 0 2px #187bce'
+                            },
+                            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                              transition: '0.3s all',
+                              border: 'none', // Loại bỏ border khi focus
+                              boxShadow: '0 0 0 2px #187bce'
+                            }
+                          },
+                          notchedOutline: {
+                            border: 'none' // Loại bỏ border mặc định
+                          }
+                        }}
                         onChange={(e) =>
                           handleInputChange(
                             chapterIndex,
@@ -807,7 +884,9 @@ function MainDesignCourse() {
                         alignItems: 'center'
                       }}
                     >
-                      <label style={{ marginRight: 10 }}>Resource:</label>
+                      <label style={{ marginRight: 10, fontSize: '1.3rem' }}>
+                        Resource:
+                      </label>
                       <input
                         type="file"
                         accept={getFileAccept(lecture.type)} // Ràng buộc định dạng file dựa trên type
@@ -821,33 +900,37 @@ function MainDesignCourse() {
                       <label
                         htmlFor={`resource-input-${chapterIndex}-${lectureIndex}`}
                       >
-                        <Button
-                          variant="outlined"
-                          component="span"
+                        <button
+                          id="btn-secoundary"
                           disabled={!isEditing}
+                          style={{ fontSize: '1.3rem' }}
                         >
                           {lecture.resource ? lecture.resource : 'Choose File'}
-                        </Button>
+                        </button>
                       </label>
                     </div>
                   </div>
                 ))}
                 {isEditing && (
-                  <Button
-                    style={{ marginTop: 20 }}
-                    variant="outlined"
+                  <button
+                    id="btn-secoundary"
+                    style={{ marginTop: 20, fontSize: '1.3rem' }}
                     onClick={() => handleAddLecture(chapterIndex)}
                   >
                     + Add Lecture
-                  </Button>
+                  </button>
                 )}
               </CardContent>
             </Card>
           ))}
           {isEditing && (
-            <Button variant="outlined" onClick={handleAddChapter}>
+            <button
+              id="btn-secoundary"
+              style={{ marginTop: 20, fontSize: '1.3rem' }}
+              onClick={handleAddChapter}
+            >
               + Add Chapter
-            </Button>
+            </button>
           )}
           <div className="design-structure-button">
             <button id="btn-primary" onClick={handleSaveCourseStructureClick}>
