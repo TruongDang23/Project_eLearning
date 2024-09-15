@@ -219,6 +219,13 @@ function MainDesignCourse() {
     setChapters(updatedChapters)
   }
 
+  const handleFileChange = (chapterIndex, lectureIndex, event) => {
+    const file = event.target.files[0]
+    if (file) {
+      handleInputChange(chapterIndex, lectureIndex, 'resource', file.name) // Cập nhật tên file
+    }
+  }
+
   //* Introduce course section
   const [courseImage, setCourseImage] = useState(null)
   const [promotionalVideo, setPromotionalVideo] = useState(null)
@@ -700,8 +707,8 @@ function MainDesignCourse() {
                       >
                         <MenuItem value="File">File</MenuItem>
                         <MenuItem value="Video">Video</MenuItem>
-                        <MenuItem value="Quizz">Quizz</MenuItem>
                         <MenuItem value="Quiz">Quiz</MenuItem>
+                        <MenuItem value="Assignment">Assignment</MenuItem>
                       </Select>
                       {isEditing && (
                         <IconButton
@@ -731,23 +738,35 @@ function MainDesignCourse() {
                         disabled={!isEditing} // Chỉ chỉnh sửa khi ở chế độ edit
                       />
                     </div>
-                    <div style={{ marginTop: 10, paddingLeft: 20 }}>
-                      <TextField
-                        label="Resource"
-                        variant="outlined"
-                        size="small"
-                        value={lecture.resource}
-                        fullWidth
+                    <div
+                      style={{
+                        marginTop: 10,
+                        paddingLeft: 20,
+                        display: 'flex',
+                        alignItems: 'center'
+                      }}
+                    >
+                      <label style={{ marginRight: 10 }}>Resource:</label>
+                      <input
+                        type="file"
                         onChange={(e) =>
-                          handleInputChange(
-                            chapterIndex,
-                            lectureIndex,
-                            'resource',
-                            e.target.value
-                          )
+                          handleFileChange(chapterIndex, lectureIndex, e)
                         }
-                        disabled={!isEditing} // Chỉ chỉnh sửa khi ở chế độ edit
+                        disabled={!isEditing}
+                        style={{ display: 'none' }}
+                        id={`resource-input-${chapterIndex}-${lectureIndex}`}
                       />
+                      <label
+                        htmlFor={`resource-input-${chapterIndex}-${lectureIndex}`}
+                      >
+                        <Button
+                          variant="outlined"
+                          component="span"
+                          disabled={!isEditing}
+                        >
+                          {lecture.resource ? lecture.resource : 'Choose File'}
+                        </Button>
+                      </label>
                     </div>
                   </div>
                 ))}
