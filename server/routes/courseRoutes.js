@@ -5,6 +5,10 @@ const cors = require("cors");
 
 const axios = require("axios");
 
+//test
+const { upload } = require('../multer')
+//end test
+
 //import verifyToken fuction
 const { verifyToken } = require("../authenticate");
 
@@ -231,6 +235,37 @@ module.exports = (connMysql, connMongo) => {
       }
       resolve(totalVideo);
     });
+  };
+
+  // Put file PDf to google cloud Storage
+  const putFileToStorage = async (courseID, file, destName) => {
+    const bucketName = "e-learning-bucket"
+
+    // The path to your file to upload
+    const filePath = file
+    //console.log(filePath)
+    // The new ID for your GCS file
+    const destFileName = `${courseID}/${destName}` // Assuming `file` has an `originalname` property
+
+    try {
+      const options = {
+        destination: destFileName,
+        // Optional:
+        // Set a generation-match precondition to avoid potential race conditions
+        // and data corruptions. The request to upload is aborted if the object's
+        // generation number does not match your precondition. For a destination
+        // object that does not yet exist, set the ifGenerationMatch precondition to 0
+        // If the destination object already exists in your bucket, set instead a
+        // generation-match precondition using its generation number.
+        preconditionOpts: { ifGenerationMatch: 0 }
+      };
+
+      await storage.bucket(bucketName).upload(filePath, options);
+      //console.log(`https://storage.googleapis.com/${bucketName}/${destFileName}`);
+    } catch (error) {
+      console.error("Error uploading file to Google Cloud Storage:", error);
+      throw error;
+    }
   };
 
   const getProgress = async (courseID, userID) => {
@@ -978,5 +1013,20 @@ module.exports = (connMysql, connMongo) => {
     });
   });
 
-  return router;
-};
+  router.post("/uploadpdf", verifyToken, upload.single("image"), async(req, res) => {
+    const imageName = req.file.filename;
+    //const description = req.body.description;
+
+    //console.log(imageName)
+    // Save this data to a database probably
+    try {
+      await putFileToStorage('C045', `../server/uploads/${imageName}`, 'Test.mp4');
+      res.send(true);
+    } catch (error) {
+      //console.log(error)
+      res.send(false);
+    }
+  })
+
+  return router
+}

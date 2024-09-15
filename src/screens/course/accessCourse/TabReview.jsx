@@ -13,9 +13,9 @@ function TabReview({ accessCourseData }) {
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState({ star: 0, message: "" });
 
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem("token");
   const courseId = useParams().courseID;
-  const userAuth = localStorage.getItem('userAuth')
+  const userAuth = localStorage.getItem("userAuth");
   const userData = JSON.parse(localStorage.getItem("userAuth"));
 
   const handleReviewChange = (e) => {
@@ -24,19 +24,22 @@ function TabReview({ accessCourseData }) {
 
   const handleSubmitReview = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/c/addReview", {
-        courseID:  courseId,
-        userID: userData.userID,
-        message: newReview.message,
-        star: newReview.star,
-        time: new Date().toISOString()
-      },
-      {
-        headers: {
-          'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
-          'user': userAuth
+      const response = await axios.post(
+        "http://localhost:3000/c/addReview",
+        {
+          courseID: courseId,
+          userID: userData.userID,
+          message: newReview.message,
+          star: newReview.star,
+          time: new Date().toISOString()
+        },
+        {
+          headers: {
+            Token: token, // Thêm token và user vào header để đưa xuống Backend xác thực
+            user: userAuth
+          }
         }
-      });
+      );
 
       if (response.data.success) {
         alert("Review submitted successfully");
@@ -44,16 +47,11 @@ function TabReview({ accessCourseData }) {
         setNewReview({ star: 0, message: "" });
       }
     } catch (error) {
-      console.error("Failed to submit review", error);
+      //console.error("Failed to submit review", error);
       alert("Failed to submit review");
     }
-    // const res = await axios.post('http://localhost:3000/c/addReviewtest', {  })
-
-    // } catch (error) {
-    //   console.error("Failed to submit review", error);
-    //   alert("Failed to submit review");
-    // }
   };
+
   return (
     <TabRatingWrapper>
       <div className="review">
@@ -226,6 +224,27 @@ const TabRatingWrapper = styled.div`
             transition: all 0.3s;
             transform: scale(1.05);
           }
+        }
+      }
+    }
+
+    .test-api {
+      .button-api {
+        padding: 10px 20px;
+        font-size: 1.6rem;
+        background-color: #1971c2;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+          background-color: #fff;
+          color: #1971c2;
+          outline: none;
+          box-shadow: inset 0 0 0 2px #1971c2;
+          transition: all 0.3s;
+          transform: scale(1.05);
         }
       }
     }

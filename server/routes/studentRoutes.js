@@ -5,11 +5,15 @@ const cors = require('cors')
 //import verifyToken fuction
 const { verifyToken } = require('../authenticate')
 
+const mongo = require('mongoose')
+
 module.exports = (connMysql, connMongo) => {
   //Khởi tạo tham số router và cấp quyền CORS
   const router = express.Router()
   router.use(cors())
   router.use(express.json())
+
+  const mysqlTransaction = connMysql.promise();
 
   //Function format 1981-05-11T17:00:00.000Z to 1981-05-12
   const formatDate = (date) => {
@@ -162,57 +166,72 @@ module.exports = (connMysql, connMongo) => {
     }
     else {
       const inf = req.body.profile
-      //Theo tính toán: các lệnh xử lý trong mongoDB luôn nhanh hơn Mysql
-      //Vì vậy trong sự kiện bất đồng bộ thì mysql sẽ thực hiện xong cuối cùng
-      await connMongo
-      try {
-        await User.updateOne(
-          { userID: inf.userID },
-          {
-            $set:
-            {
-              social_networks: inf.social_network,
-              self_introduce: inf.self_introduce,
-              expertise: inf.expertise,
-              degrees: inf.degrees,
-              projects: inf.projects,
-              working_history: inf.working_history
-            }
-          }
-        );
-      }
-      catch (error) {
-        res.status(404).send(false)
-        return
-      }
 
-      connMysql.getConnection((err, connection) => {
+      connMysql.getConnection(async (err) => {
         if (err) {
           res.status(500).send(err)
           return
         }
         else {
-          //Get information from mysql
-          let query = `UPDATE user SET 
-                          avatar = ?,
-                          fullname = ?,
-                          date_of_birth = ?,
-                          street = ?,
-                          province = ?,
-                          country = ?,
-                          language = ?
-                        WHERE userID = ?`
-          connection.query(query, [inf.avatar, inf.fullname, inf.date_of_birth, inf.street,
-            inf.province, inf.country, inf.language, inf.userID], async (error, results) => {
-            connection.release() //Giải phóng connection khi truy vấn xong
-            if (error) {
+          const mongoSession = await mongo.startSession()
+          try {
+            mongoSession.startTransaction()
+            await mysqlTransaction.query("START TRANSACTION")
+
+            await User.updateOne(
+              { userID: inf.userID },
+              {
+                $set:
+                {
+                  social_networks: inf.social_network,
+                  self_introduce: inf.self_introduce,
+                  expertise: inf.expertise,
+                  degrees: inf.degrees,
+                  projects: inf.projects,
+                  working_history: inf.working_history
+                }
+              },
+              {
+                session: mongoSession
+              }
+            )
+            //Get information from mysql
+            let query = `UPDATE user SET avatar = ?,
+                              fullname = ?,
+                              date_of_birth = ?,
+                              street = ?,
+                              province = ?,
+                              country = ?,
+                              language = ?
+                            WHERE userID = ?`
+
+            const [rows] = await mysqlTransaction.query(query, [inf.avatar, inf.fullname, inf.date_of_birth, inf.street,
+              inf.province, inf.country, inf.language, inf.userID]);
+
+            if (rows.affectedRows == 0)
+            {
+              await mysqlTransaction.query("ROLLBACK")
+              await mongoSession.abortTransaction()
               res.send(false)
               return
             }
-            //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-            if (results.affectedRows > 0)
+            else
+            {
+              await mysqlTransaction.query("COMMIT")
+              await mongoSession.commitTransaction()
               res.send(true)
-          })
+              res.end()
+            }
+          }
+          catch {
+            await mysqlTransaction.query("ROLLBACK")
+            await mongoSession.abortTransaction()
+            res.send(false)
+            return
+          }
+          finally {
+            mongoSession.endSession()
+          }
         }
       })
     }
