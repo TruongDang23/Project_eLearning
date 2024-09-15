@@ -253,11 +253,42 @@ function MainDesignCourse() {
   }
 
   const handleSaveCourseStructureClick = () => {
-    const hasEmptyLecture = chapters.some((chapter) =>
-      chapter.lectures.some((lecture) => lecture.title === '')
-    )
-    if (hasEmptyLecture) {
-      alert('Please fill all the inputs before saving.')
+    let errorMessages = []
+
+    chapters.forEach((chapter, chapterIndex) => {
+      if (chapter.title === '') {
+        errorMessages.push(`Chapter ${chapterIndex + 1} title is empty.`)
+      }
+
+      chapter.lectures.forEach((lecture, lectureIndex) => {
+        if (lecture.title === '') {
+          errorMessages.push(
+            `Lecture ${lectureIndex + 1} in Chapter ${
+              chapterIndex + 1
+            } title is empty.`
+          )
+        }
+        if (lecture.resource === '') {
+          errorMessages.push(
+            `Lecture ${lectureIndex + 1} in Chapter ${
+              chapterIndex + 1
+            } resource is empty.`
+          )
+        }
+        if (lecture.type === '') {
+          errorMessages.push(
+            `Lecture ${lectureIndex + 1} in Chapter ${
+              chapterIndex + 1
+            } type is empty.`
+          )
+        }
+      })
+    })
+
+    if (errorMessages.length > 0) {
+      alert(
+        `Please fill all the inputs before saving:\n${errorMessages.join('\n')}`
+      )
       return
     } else {
       alert('Course structure section saved')
@@ -678,11 +709,12 @@ function MainDesignCourse() {
         <div className="design-structure">
           <h2>Course Structure</h2>
           <hr />
-          <Button variant="outlined" onClick={() => setIsEditing(!isEditing)}>
-            {isEditing ? 'Save' : 'Edit'}
-          </Button>
           {chapters.map((chapter, chapterIndex) => (
-            <Card key={chapterIndex} style={{ marginBottom: 20 }}>
+            <Card
+              variant="outlined"
+              key={chapterIndex}
+              style={{ marginBottom: 20 }}
+            >
               <CardContent>
                 <div
                   style={{
@@ -833,7 +865,7 @@ function MainDesignCourse() {
                         </IconButton>
                       )}
                     </div>
-                    <div style={{ marginTop: 10, paddingLeft: 20 }}>
+                    <div style={{ marginTop: 20, paddingLeft: 20 }}>
                       <TextField
                         label="Description"
                         variant="outlined"
@@ -900,13 +932,25 @@ function MainDesignCourse() {
                       <label
                         htmlFor={`resource-input-${chapterIndex}-${lectureIndex}`}
                       >
-                        <button
-                          id="btn-secoundary"
+                        <Button
+                          variant="outlined"
+                          component="span"
                           disabled={!isEditing}
-                          style={{ fontSize: '1.3rem' }}
+                          sx={{
+                            fontSize: '1.3rem',
+                            textTransform: 'none',
+                            fontWeight: 700,
+                            fontFamily: 'inter',
+                            backgroundColor: 'rgba(243, 243, 250, 0.8)',
+                            borderRadius: '5px',
+                            '&:hover': {
+                              backgroundColor: 'rgba(243, 243, 250, 0.8)',
+                              boxShadow: '0 0 0 1px #187bce'
+                            }
+                          }}
                         >
                           {lecture.resource ? lecture.resource : 'Choose File'}
-                        </button>
+                        </Button>
                       </label>
                     </div>
                   </div>
@@ -933,6 +977,9 @@ function MainDesignCourse() {
             </button>
           )}
           <div className="design-structure-button">
+            <button id="btn-third" onClick={() => setIsEditing(!isEditing)}>
+              {isEditing ? 'View' : 'Edit'}
+            </button>
             <button id="btn-primary" onClick={handleSaveCourseStructureClick}>
               Save Course Structure
             </button>
@@ -1063,6 +1110,31 @@ const MainDesignCourseWrapper = styled.section`
       background-color: #fff;
       color: #6c757d;
       box-shadow: 0 0 0 2px #6c757d;
+    }
+  }
+
+  #btn-third {
+    background-color: #fff;
+    color: #187bce;
+    box-shadow: 0 0 0 2px #187bce;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s all ease;
+
+    span svg {
+      font-size: 1.6rem;
+    }
+
+    &:hover {
+      background-color: #187bce;
+      color: #fff;
     }
   }
 
