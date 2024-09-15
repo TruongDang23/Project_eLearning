@@ -5,7 +5,6 @@ import StarIcon from "@mui/icons-material/Star";
 import Avatar from "@mui/material/Avatar";
 import StarDynamic from "~/components/general/Other/StarDynamic";
 import { formatDistanceToNow } from "date-fns";
-import PDFTest from "./testApi.pdf";
 
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -21,54 +20,6 @@ function TabReview({ accessCourseData }) {
 
   const handleReviewChange = (e) => {
     setNewReview({ ...newReview, [e.target.name]: e.target.value });
-  };
-  const [file, setFile] = useState();
-  const [description, setDescription] = useState("");
-
-  const submit = async (e, file, description) => {
-    console.log('helo')
-    e.preventDefault();
-
-    const formData = new FormData();
-    formData.append("image", file);
-    formData.append("description", description);
-
-    const result = await axios.post(
-      "http://localhost:3000/c/uploadpdf",
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Token: token,
-          user: userAuth
-        }
-      }
-    );
-    console.log(result.data)
-  }
-  console.log(file)
-  const handleTestAPI = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/c/uploadpdf",
-        {
-          courseID: courseId,
-          file : PDFTest
-        },
-        {
-          headers: {
-            Token: token, // Thêm token và user vào header để đưa xuống Backend xác thực
-            user: userAuth
-          }
-        }
-      );
-
-      if (response.data.success) {
-        alert("Test API successfully");
-      }
-    } catch (error) {
-      alert("Failed to test API");
-    }
   };
 
   const handleSubmitReview = async () => {
@@ -96,15 +47,9 @@ function TabReview({ accessCourseData }) {
         setNewReview({ star: 0, message: "" });
       }
     } catch (error) {
-      console.error("Failed to submit review", error);
+      //console.error("Failed to submit review", error);
       alert("Failed to submit review");
     }
-    // const res = await axios.post('http://localhost:3000/c/addReviewtest', {  })
-
-    // } catch (error) {
-    //   console.error("Failed to submit review", error);
-    //   alert("Failed to submit review");
-    // }
   };
 
   return (
@@ -165,21 +110,6 @@ function TabReview({ accessCourseData }) {
             />
             <button onClick={handleSubmitReview}>Submit</button>
           </div>
-        </div>
-
-        <div className="test-api">
-          <form onSubmit={e => submit(e, file, description)}>
-            <input
-              onChange={e => setFile(e.target.files[0])}
-              type="file"
-              accept="image/*,application/pdf,video/mp4"
-            ></input>
-            <input
-              onChange={e => setDescription(e.target.value)}
-              type="text"
-            ></input>
-            <button type="submit">Submit</button>
-          </form>
         </div>
       </div>
     </TabRatingWrapper>

@@ -243,7 +243,7 @@ module.exports = (connMysql, connMongo) => {
 
     // The path to your file to upload
     const filePath = file
-    console.log(filePath)
+    //console.log(filePath)
     // The new ID for your GCS file
     const destFileName = `${courseID}/${destName}` // Assuming `file` has an `originalname` property
 
@@ -261,7 +261,7 @@ module.exports = (connMysql, connMongo) => {
       };
 
       await storage.bucket(bucketName).upload(filePath, options);
-      console.log(`https://storage.googleapis.com/${bucketName}/${destFileName}`);
+      //console.log(`https://storage.googleapis.com/${bucketName}/${destFileName}`);
     } catch (error) {
       console.error("Error uploading file to Google Cloud Storage:", error);
       throw error;
@@ -1013,28 +1013,17 @@ module.exports = (connMysql, connMongo) => {
     });
   });
 
-  // test put file PDF to google cloud storage
-  // router.post("/uploadpdf", verifyToken, async (req, res) => {
-  //   const { courseID, file } = req.body;
-  //   try {
-  //     await putFileToStorage(courseID, file);
-  //     res.send(true);
-  //   } catch (error) {
-  //     res.send(false);
-  //   }
-  // });
-
   router.post("/uploadpdf", verifyToken, upload.single("image"), async(req, res) => {
     const imageName = req.file.filename;
-    const description = req.body.description;
+    //const description = req.body.description;
 
-    console.log(imageName)
+    //console.log(imageName)
     // Save this data to a database probably
     try {
       await putFileToStorage('C045', `../server/uploads/${imageName}`, 'Test.mp4');
       res.send(true);
     } catch (error) {
-      console.log(error)
+      //console.log(error)
       res.send(false);
     }
   })
