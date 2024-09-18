@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Element } from 'react-scroll'
-import { Menu, TextField } from '@mui/material'
-import { useState, useContext, useEffect } from 'react'
+import { TextField } from '@mui/material'
+import { useState, useContext } from 'react'
 
 import { DesignCourseContext } from './DesignCourseContext'
 import { categories } from '~/constants/listCategories'
@@ -15,7 +15,6 @@ import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
-import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
 import {
   Button,
