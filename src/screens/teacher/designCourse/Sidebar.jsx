@@ -69,6 +69,14 @@ function Sidebar() {
           </Link>
         </div>
       </div>
+      <div className='buttons'>
+        <button id="btn-save">
+                Save Design
+        </button>
+        <button id="btn-cancel">
+                Cancel Design
+        </button>
+      </div>
     </SidebarWrapper>
   )
 }
@@ -115,6 +123,71 @@ const SidebarWrapper = styled.section`
           color: #37b24d;
         }
       }
+    }
+  }
+
+  .buttons {
+    margin: 0 auto;
+  }
+
+  #btn-save {
+    background-color: #1971c2;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    min-width: 160px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 13px;
+    gap: 10px;
+    border: none;
+    transition: 0.3s all ease;
+    box-shadow: 0 0 0 2px #1971c2;
+    #btn-main span {
+      svg {
+        font-size: 2rem;
+      }
+    }
+
+    &:hover {
+      background-color: #fff;
+      color: #187bce;
+      box-shadow: 0 0 0 2px #1971c2;
+    }
+  }
+
+  #btn-cancel {
+    background-color: #fff;
+    color: #ff3e3e;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    min-width: 160px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+    border: none;
+    transition: 0.3s all ease;
+    box-shadow: 0 0 0 2px #ff3e3e;
+    #btn-main span {
+      svg {
+        font-size: 2rem;
+      }
+    }
+
+    &:hover {
+      background-color: #ff3e3e;
+      color: #fff;
     }
   }
 `

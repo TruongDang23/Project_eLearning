@@ -7,7 +7,18 @@ import MainDesignCourse from './MainDesignCourse'
 import Sidebar from './Sidebar'
 import { DesignCourseProvider } from './DesignCourseContext'
 
+import { useState } from 'react'
+
 function DesignCourse() {
+  const [structure, setStructure] = useState({
+    image_introduce: '',
+    video_introduce: '',
+    keywords: [],
+    targets: [],
+    requirements: [],
+    chapters: []
+  })
+  console.log('structure: ', structure)
   return (
     <DesignCourseProvider>
       <GlobalStyle />
@@ -16,7 +27,7 @@ function DesignCourse() {
         <Sticky disabled={window.innerWidth <= 768}>
           <Sidebar />
         </Sticky>
-        <MainDesignCourse />
+        <MainDesignCourse setStructure={setStructure}/>
       </DesignCourseWrapper>
       <FooterNew />
     </DesignCourseProvider>

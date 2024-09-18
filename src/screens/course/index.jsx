@@ -3,7 +3,6 @@ import InforCourse from "./inforCourse/InforCourse"
 import AccessCourse from './accessCourse/AccessCourse'
 import Assignment from './accessCourse/Assignment'
 import SearchCourse from './searchCourse/SearchCourse'
-import DesignCourse from './designCourse/DesignCourse'
 
 export function Course () {
   return (
@@ -16,7 +15,6 @@ export function Course () {
         <Route path='/course/:courseID/assignment/:id' element={<Assignment />} />
         <Route path='/course/search' element={<SearchCourse />} />
         <Route path='/course/search/:category' element={<SearchCourse />} />
-        <Route path='/course/design' element={<DesignCourse />} />
       </Routes>
     </>
   )

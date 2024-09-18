@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Element } from 'react-scroll'
-import { Menu, TextField } from '@mui/material'
-import { useState, useContext, useEffect } from 'react'
+import { TextField } from '@mui/material'
+import { useState, useContext } from 'react'
 
 import { DesignCourseContext } from './DesignCourseContext'
 import { categories } from '~/constants/listCategories'
@@ -15,7 +15,6 @@ import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
-import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
 import {
   Button,
@@ -26,7 +25,7 @@ import {
   CardContent
 } from '@mui/material'
 
-function MainDesignCourse() {
+function MainDesignCourse({ setStructure }) {
   //* Context API from DesignCourseContext
   const { markSectionAsCompleted } = useContext(DesignCourseContext)
   //* General section
@@ -85,6 +84,12 @@ function MainDesignCourse() {
       return
     } else {
       alert('General section saved')
+      setStructure((prev) => {
+        return {
+          ...prev,
+          title: generalTitle
+        }
+      })
       markSectionAsCompleted('general')
     }
   }
@@ -165,41 +170,41 @@ function MainDesignCourse() {
   const [isEditing, setIsEditing] = useState(false)
   const [chapters, setChapters] = useState([
     {
-      title: 'Chapter 1',
+      chapter_name: 'Chapter 1',
       lectures: [
         {
-          title: 'Lecture 1: Introduction',
-          type: 'File',
+          name: 'Lecture 1: Introduction',
+          type: 'file',
           description: '',
-          resource: ''
+          source: ''
         }
       ]
     },
     {
-      title: 'Chapter 2',
+      chapter_name: 'Chapter 2',
       lectures: [
         {
-          title: 'Lecture 1: Introduction',
+          name: 'Lecture 1: Introduction',
           type: 'File',
           description: '',
-          resource: ''
+          source: ''
         }
       ]
     }
   ])
   const handleChapterTitleChange = (index, newTitle) => {
     const updatedChapters = [...chapters]
-    updatedChapters[index].title = newTitle
+    updatedChapters[index].chapter_name = newTitle
     setChapters(updatedChapters)
   }
 
   const handleAddLecture = (chapterIndex) => {
     const updatedChapters = [...chapters]
     updatedChapters[chapterIndex].lectures.push({
-      title: `Lecture ${updatedChapters[chapterIndex].lectures.length + 1}`,
+      name: `Lecture ${updatedChapters[chapterIndex].lectures.length + 1}`,
       type: 'File',
       description: '',
-      resource: ''
+      source: ''
     })
     setChapters(updatedChapters)
   }
@@ -207,7 +212,7 @@ function MainDesignCourse() {
     setChapters([
       ...chapters,
       {
-        title: `Chapter ${chapters.length + 1}`,
+        chapter_name: `Chapter ${chapters.length + 1}`,
         lectures: []
       }
     ])
@@ -233,22 +238,22 @@ function MainDesignCourse() {
   const handleFileChange = (chapterIndex, lectureIndex, event) => {
     const file = event.target.files[0]
     if (file) {
-      handleInputChange(chapterIndex, lectureIndex, 'resource', file.name) // Cập nhật tên file
+      handleInputChange(chapterIndex, lectureIndex, 'source', file.name) // Cập nhật tên file
     }
   }
 
   const getFileAccept = (lectureType) => {
     switch (lectureType) {
-      case 'File':
-        return '.pdf'
-      case 'Video':
-        return '.mp4,.wmv'
-      case 'Quiz':
-        return '.xlsx'
-      case 'Assignment':
-        return '.xlsx'
-      default:
-        return '' // Cho phép tất cả các loại file nếu không ràng buộc
+    case 'File':
+      return '.pdf'
+    case 'Video':
+      return '.mp4,.wmv'
+    case 'Quiz':
+      return '.xlsx'
+    case 'Assignment':
+      return '.xlsx'
+    default:
+      return '' // Cho phép tất cả các loại file nếu không ràng buộc
     }
   }
 
@@ -256,19 +261,19 @@ function MainDesignCourse() {
     let errorMessages = []
 
     chapters.forEach((chapter, chapterIndex) => {
-      if (chapter.title === '') {
+      if (chapter.chapter_name === '') {
         errorMessages.push(`Chapter ${chapterIndex + 1} title is empty.`)
       }
 
       chapter.lectures.forEach((lecture, lectureIndex) => {
-        if (lecture.title === '') {
+        if (lecture.name === '') {
           errorMessages.push(
             `Lecture ${lectureIndex + 1} in Chapter ${
               chapterIndex + 1
             } title is empty.`
           )
         }
-        if (lecture.resource === '') {
+        if (lecture.source === '') {
           errorMessages.push(
             `Lecture ${lectureIndex + 1} in Chapter ${
               chapterIndex + 1
@@ -292,6 +297,12 @@ function MainDesignCourse() {
       return
     } else {
       alert('Course structure section saved')
+      setStructure((prev) => {
+        return {
+          ...prev,
+          chapters: chapters
+        }
+      })
       markSectionAsCompleted('courseStructure')
     }
   }
@@ -724,7 +735,7 @@ function MainDesignCourse() {
                   }}
                 >
                   <TextField
-                    value={chapter.title}
+                    value={chapter.chapter_name}
                     variant="outlined"
                     size="small"
                     InputProps={{
@@ -782,7 +793,7 @@ function MainDesignCourse() {
                       }}
                     >
                       <TextField
-                        value={lecture.title}
+                        value={lecture.name}
                         variant="outlined"
                         onChange={(e) =>
                           handleInputChange(
@@ -949,7 +960,7 @@ function MainDesignCourse() {
                             }
                           }}
                         >
-                          {lecture.resource ? lecture.resource : 'Choose File'}
+                          {lecture.source ? lecture.source : 'Choose File'}
                         </Button>
                       </label>
                     </div>
