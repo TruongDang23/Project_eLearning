@@ -99,7 +99,7 @@ function Header() {
             <a href="/" className="link">
               Teach on EL-Space
             </a>
-            <a href="/" className="link">
+            <a href="/student/my-learning" className="link">
               My learning
             </a>
             <a>

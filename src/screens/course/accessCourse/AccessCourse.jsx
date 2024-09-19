@@ -11,7 +11,6 @@ import Loading from '~/screens/system/Loading'
 import { createGlobalStyle } from 'styled-components'
 import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
 
-
 function AccessCourse() {
   const [isLoad, setIsLoad] = useState(true) //Data is loading
   const [reload, setReload] = useState(false)
@@ -49,6 +48,8 @@ function AccessCourse() {
       })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reload])
+
+  console.log(accessCourseData)
 
   return (
     <>
