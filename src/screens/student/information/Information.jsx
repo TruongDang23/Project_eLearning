@@ -6,10 +6,11 @@ import ExtraProfile from './ExtraProfile'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import Loading from "~/screens/system/Loading"
+import Loading from '~/screens/system/Loading'
+
+import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
 
 function Information() {
-
   const [userProfile, setUserProfile] = useState()
   const navigate = useNavigate()
   const updateInformation = (newProfile) => {
@@ -20,60 +21,64 @@ function Information() {
   const userAuth = localStorage.getItem('userAuth')
 
   useEffect(() => {
-    axios.get('http://localhost:3000/st/loadInformation', {
-      headers: {
-        'Token': token, // Thêm token và user vào header để đưa xuống Backend xác thực
-        'User': userAuth
-      }
-    })
-      .then(response => {
+    axios
+      .get('http://localhost:3000/st/loadInformation', {
+        headers: {
+          Token: token, // Thêm token và user vào header để đưa xuống Backend xác thực
+          User: userAuth
+        }
+      })
+      .then((response) => {
         setUserProfile(response.data)
         setIsLoad(false) //Data is loaded successfully
       })
-      .catch(error => {
+      .catch((error) => {
         //Server shut down
-        if (error.message === 'Network Error')
-          navigate('/server-shutdown')
+        if (error.message === 'Network Error') navigate('/server-shutdown')
         //Connection error
-        else if (error.response.status === 500)
-          navigate('/500error')
+        else if (error.response.status === 500) navigate('/500error')
         //Unauthorized. Need login
-        else if (error.response.status === 401)
-          navigate('/401error')
+        else if (error.response.status === 401) navigate('/401error')
         //Forbidden. Token != userAuth
-        else if (error.response.status === 403)
-          navigate('/403error')
-        else
-          navigate('/error-get-data')
+        else if (error.response.status === 403) navigate('/403error')
+        else navigate('/error-get-data')
         setIsLoad(false)
       })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   //console.log(userProfile)
   return (
     <>
-      {
-        isLoad ? (<Loading/>) :
-          (
-            <>
-              <div>
-                <GeneralHeader />
-                <main>
-                  <Container>
-                    <LeftPane>
-                      <UserProfile profile={ userProfile } setProfile={updateInformation}/>
-                    </LeftPane>
-                    <RightPane>
-                      <ExtraProfile profile={ userProfile } setProfile={updateInformation}/>
-                    </RightPane>
-                  </Container>
-                </main>
-                <GeneralFooter />
-              </div>
-            </>
-          )
-      }
+      {isLoad ? (
+        <Loading />
+      ) : (
+        <>
+          <div>
+            <Helmet>
+              <title>Information | El-Space</title>
+            </Helmet>
+            <GeneralHeader />
+            <main>
+              <Container>
+                <LeftPane>
+                  <UserProfile
+                    profile={userProfile}
+                    setProfile={updateInformation}
+                  />
+                </LeftPane>
+                <RightPane>
+                  <ExtraProfile
+                    profile={userProfile}
+                    setProfile={updateInformation}
+                  />
+                </RightPane>
+              </Container>
+            </main>
+            <GeneralFooter />
+          </div>
+        </>
+      )}
     </>
   )
 }
@@ -104,18 +109,18 @@ const Container = styled.div`
     width: 100%;
     padding: 0 10px;
   }
-`;
+`
 
 const RightPane = styled.div`
   flex: 2;
   padding: 20px;
   border-right: 1px solid #ddd;
-  
+
   @media (max-width: 768px) {
     border-right: none;
     border-bottom: 1px solid #ddd;
   }
-`;
+`
 
 const LeftPane = styled.div`
   flex: 1;
@@ -123,4 +128,4 @@ const LeftPane = styled.div`
   border-right: 1px solid #ddd;
   border-left: 1px solid #ddd;
   overflow-y: auto;
-`;
+`
