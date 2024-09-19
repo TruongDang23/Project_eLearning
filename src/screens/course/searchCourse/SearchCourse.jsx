@@ -7,6 +7,8 @@ import { useParams, useSearchParams, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from "axios"
 
+import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
+
 function SearchCourse() {
   let { category } = useParams()
   // eslint-disable-next-line no-unused-vars
@@ -63,6 +65,11 @@ function SearchCourse() {
 
   return (
     <>
+      <Helmet>
+        <title>
+          {title ? `Search: ${title} | EL-Space` : 'Search Course'}
+        </title>
+      </Helmet>
       <GeneralHeader />
       <SearchCourseWrapper>
 
