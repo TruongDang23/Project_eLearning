@@ -7,7 +7,7 @@ function CourseMyLearning({ course }) {
   const { instructor, title, progress, image_introduce, courseId } = course
 
   // Giới hạn số ký tự của title, nếu title dài quá thì cắt bớt và thêm dấu "..."
-  const titleLimit = title.length > 20 ? title.slice(0, 20) + '...' : title
+  const titleLimit = title.length > 25 ? title.slice(0, 25) + '...' : title
 
   // Thay đổi URL khi nhấn vào khóa học
   const handleClick = () => {
