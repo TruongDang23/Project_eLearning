@@ -7,6 +7,8 @@ import { DesignCourseContext } from './DesignCourseContext'
 import { categories } from '~/constants/listCategories'
 import { languages } from '~/constants/listLanguage'
 import { currencies } from '~/constants/listCurrency'
+import { levels } from '~/constants/listLevels'
+
 import UploadFile from './UploadFile'
 
 import AddCircleIcon from '@mui/icons-material/AddCircle'
@@ -80,18 +82,26 @@ function MainDesignCourse({ setStructure }) {
       return
     } else if (!price.value || !price.unit) {
       alert('Your course will be free')
-      markSectionAsCompleted('general')
-      return
     } else {
       alert('General section saved')
-      setStructure((prev) => {
-        return {
-          ...prev,
-          title: generalTitle
-        }
-      })
-      markSectionAsCompleted('general')
     }
+    setStructure((prev) => {
+      return {
+        ...prev,
+        //mongoDB
+        keywords: generalKeywords.map(obj => obj.value),
+
+        //mysql
+        title: generalTitle,
+        method: method,
+        language: languageChoose,
+        price: (price.value) ? (price.value) : '0.0',
+        currency: (price.unit) ? (price.unit) : 'VND',
+        program: program
+      }
+    })
+    markSectionAsCompleted('general')
+    return
   }
 
   //* Categories section
@@ -101,6 +111,12 @@ function MainDesignCourse({ setStructure }) {
     setSelectedCategory(event.target.value)
   }
 
+  const [selectedLevel, setSelectedLevel] = useState('')
+
+  const handleLevelChange = (event) => {
+    setSelectedLevel(event.target.value)
+  }
+
   const handleSaveCategoriesClick = () => {
     if (!selectedCategory) {
       alert('Please select a category before saving.')
@@ -108,6 +124,12 @@ function MainDesignCourse({ setStructure }) {
     } else {
       alert('Categories section saved')
       markSectionAsCompleted('categories')
+      setStructure((prev) => {
+        return {
+          ...prev,
+          category: selectedCategory
+        }
+      })
     }
   }
 
@@ -160,9 +182,22 @@ function MainDesignCourse({ setStructure }) {
     if (hasEmptyIntendedInput || hasEmptyRequirementInput) {
       alert('Please fill all the inputs before saving.')
       return
-    } else {
+    }
+    else if (!selectedLevel) {
+      alert('Please select a category before saving.')
+      return
+    }
+    else {
       alert('Intended learners section saved')
       markSectionAsCompleted('intendedLearners')
+      setStructure((prev) => {
+        return {
+          ...prev,
+          targets: intendedInputs.map(obj => obj.value),
+          requirements: requirementInputs.map(obj => obj.value),
+          course_for: selectedLevel
+        }
+      })
     }
   }
 
@@ -300,7 +335,8 @@ function MainDesignCourse({ setStructure }) {
       setStructure((prev) => {
         return {
           ...prev,
-          chapters: chapters
+          chapters: chapters,
+          num_lecture: chapters.length
         }
       })
       markSectionAsCompleted('courseStructure')
@@ -326,6 +362,13 @@ function MainDesignCourse({ setStructure }) {
     } else {
       alert('Introduce course section saved')
       markSectionAsCompleted('introduceCourse')
+      setStructure((prev) => {
+        return {
+          ...prev,
+          image_introduce: courseImage,
+          video_introduce: promotionalVideo
+        }
+      })
     }
   }
 
@@ -582,6 +625,7 @@ function MainDesignCourse({ setStructure }) {
               ))}
             </select>
           </div>
+
           <div className="design-categories-button">
             <button id="btn-primary" onClick={handleSaveCategoriesClick}>
               Save Categories
@@ -706,6 +750,26 @@ function MainDesignCourse({ setStructure }) {
                 </span>
               </button>
             </div>
+          </div>
+
+
+          <h3>Who is this course for?</h3>
+          <div className="design-intended-selects">
+            <select
+              defaultValue=""
+              value={selectedLevel}
+              onChange={handleLevelChange}
+              required
+            >
+              <option value="" disabled hidden>
+                Select a levels
+              </option>
+              {levels.map((level, index) => (
+                <option key={index} value={level.label}>
+                  {level.label}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="design-intended-button">
@@ -994,9 +1058,9 @@ function MainDesignCourse({ setStructure }) {
             <button id="btn-primary" onClick={handleSaveCourseStructureClick}>
               Save Course Structure
             </button>
-            <button id="btn-primary" onClick={() => console.log(chapters)}>
+            {/* <button id="btn-primary" onClick={() => console.log(chapters)}>
               Course Structure
-            </button>
+            </button> */}
           </div>
         </div>
       </Element>
@@ -1378,6 +1442,26 @@ const MainDesignCourseWrapper = styled.section`
       display: flex;
       gap: 10px;
       justify-content: flex-end;
+    }
+    .design-intended-selects {
+      select {
+        width: 90%;
+        height: 4rem;
+        padding: 8px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        font-size: 1.6rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+        transition: border-color 0.3s, border-width;
+        &:focus {
+          border-color: #187bce;
+          border-width: 2px;
+          outline: none;
+        }
+      }
     }
   }
 

@@ -5,8 +5,14 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 
 import { DesignCourseContext } from './DesignCourseContext'
 
-function Sidebar() {
+function Sidebar({ setFlag }) {
   const { completedSections } = useContext(DesignCourseContext)
+  const handleSave = () => {
+    setFlag(flag => !flag)
+  }
+  const handleCancel = () => {
+    setFlag(flag => flag)
+  }
   return (
     <SidebarWrapper>
       <div className="sidebar-container">
@@ -70,10 +76,10 @@ function Sidebar() {
         </div>
       </div>
       <div className='buttons'>
-        <button id="btn-save">
+        <button id="btn-save" onClick={handleSave}>
                 Save Design
         </button>
-        <button id="btn-cancel">
+        <button id="btn-cancel" onClick={handleCancel}>
                 Cancel Design
         </button>
       </div>

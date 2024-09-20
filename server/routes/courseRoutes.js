@@ -1013,19 +1013,24 @@ module.exports = (connMysql, connMongo) => {
     });
   });
 
-  router.post("/uploadpdf", verifyToken, upload.single("image"), async(req, res) => {
-    const imageName = req.file.filename;
+  router.post("/uploadpdf", verifyToken, upload.array("image"), async(req, res) => {
+    //const imageName = req.file.filename;
     //const description = req.body.description;
 
+    console.log('heloo')
+    res.end('ok')
     //console.log(imageName)
     // Save this data to a database probably
-    try {
-      await putFileToStorage('C045', `../server/uploads/${imageName}`, 'Test.mp4');
-      res.send(true);
-    } catch (error) {
-      //console.log(error)
-      res.send(false);
-    }
+
+
+
+    // try {
+    //   await putFileToStorage('C045', `../server/uploads/${imageName}`, 'Test.mp4');
+    //   res.send(true);
+    // } catch (error) {
+    //   //console.log(error)
+    //   res.send(false);
+    // }
   })
 
   return router
