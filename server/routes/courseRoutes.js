@@ -7,7 +7,6 @@ const axios = require("axios");
 
 //middleware upload file from local disk -> server NodeJS
 const { upload } = require('../multer')
-const multer = require('multer')
 //end
 
 //import verifyToken fuction
@@ -1014,16 +1013,7 @@ module.exports = (connMysql, connMongo) => {
     });
   });
 
-  router.post("/uploadpdf", verifyToken, async(req, res) => {
-    // upload.single("image")
-    //const imageName = (req.file.filename) ? req.file.filename : 'none';
-    //const description = req.body.description;
-
-    console.log('heloo')
-    //console.log(imageName)
-    // Save this data to a database probably
-
-
+  router.post("/uploadfile", verifyToken, upload.any(), async(req, res) => {
 
     // try {
     //   await putFileToStorage('C045', `../server/uploads/${imageName}`, 'Test.mp4');
@@ -1032,26 +1022,20 @@ module.exports = (connMysql, connMongo) => {
     //   //console.log(error)
     //   res.send(false);
     // }
+    const files = req.files || [];
+    const filenames = files.map(file => file.filename); // Lấy tên file
 
+    // Kiểm tra dữ liệu trong body
+    //const structureData = req.body.Structure ? JSON.parse(req.body.Structure) : {};
 
-      // Call the Multer method here
-  upload.single('image')(req, res, function (err) {
-    if (err instanceof multer.MulterError) {
-      // A Multer error occurred when uploading
-      return res.status(500).json({ message: 'Multer error occurred', error: err });
-    } else if (err) {
-      // An unknown error occurred when uploading
-      return res.status(500).json({ message: 'Unknown error occurred', error: err });
-    }
+    //console.log('struc', structureData)
+    res.send(filenames)
+  })
 
-    // Everything went fine, file is stored in req.file
-    if (!req.file) {
-      return res.status(400).json({ message: 'No file uploaded' });
-    }
-
-    // Respond with the file information or do further processing
-    res.status(200).json({ message: 'File uploaded successfully', file: req.file });
-  });
+  router.post("/createcourse", verifyToken, async(req, res) => {
+    const { structure, files } = req.body
+    console.log(files)
+    res.send('ok')
 
 
   })

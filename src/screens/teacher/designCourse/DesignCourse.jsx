@@ -15,8 +15,10 @@ import { useNavigate } from 'react-router-dom'
 function DesignCourse() {
   const formData = new FormData()
 
+  const [files, setFile] = useState([])
   const token = localStorage.getItem('token')
   const userAuth = localStorage.getItem('userAuth')
+  const userData = JSON.parse(localStorage.getItem('userAuth'))
   const navigate = useNavigate()
 
   const [save, setSave] = useState(true) //flag variable. Its will be change whenever user click Save in order to create course
@@ -44,15 +46,21 @@ function DesignCourse() {
     //status: '', status sẽ được xử lý dưới backend
     num_lecture: 0 //num_lecture sẽ phụ thuộc vào độ dài của chapters
   })
-  console.log('structure: ', structure)
 
   useEffect(() => {
-    formData.append("image", structure.image_introduce)
-    //formData.append("image", structure.video_introduce)
-    console.log(structure.image_introduce)
-    
+    formData.append("Structure", JSON.stringify(structure))
+    formData.append(`image_introduce-${userData.userID}`, structure.image_introduce)
+    formData.append(`video_introduce-${userData.userID}`, structure.video_introduce)
+
+    structure.chapters.map(chapter => {
+      chapter.lectures.map(lecture => {
+        formData.append(`${lecture.source.name}-${userData.userID}`, lecture.source)
+      })
+    })
+
+    //API upload file into GCS
     axios.post(
-      "http://localhost:3000/c/uploadpdf",
+      "http://localhost:3000/c/uploadfile",
       formData,
       {
         headers: {
@@ -63,7 +71,8 @@ function DesignCourse() {
       }
     )
       .then(response => {
-        console.log(response)
+        console.log(response.data)
+        setFile(response.data)
       // setUserProfile(response.data)
       // setIsLoad(false) //Data is loaded successfully
       })
@@ -78,6 +87,40 @@ function DesignCourse() {
         if (error.response.status === 401)
           navigate('/401error')
         //Forbidden. Token != userAuth
+        if (error.response.status === 403)
+          navigate('/403error')
+      })
+
+    //API insert data into mysql & mongoDB
+    axios.post(
+      "http://localhost:3000/c/createcourse",
+      {
+        structure,
+        files
+      },
+      {
+        headers: {
+          Token: token,
+          user: userAuth
+        }
+      }
+    )
+      .then(response => {
+        console.log(response)
+        // setUserProfile(response.data)
+        // setIsLoad(false) //Data is loaded successfully
+      })
+      .catch(error => {
+        //Server shut down
+        if (error.message === 'Network Error')
+          navigate('/server-shutdown')
+          //Connection error
+        if (error.response.status === 500)
+          navigate('/500error')
+          //Unauthorized. Need login
+        if (error.response.status === 401)
+          navigate('/401error')
+          //Forbidden. Token != userAuth
         if (error.response.status === 403)
           navigate('/403error')
       });
