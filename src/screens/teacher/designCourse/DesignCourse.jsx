@@ -48,7 +48,7 @@ function DesignCourse() {
 
   useEffect(() => {
     formData.append("image", structure.image_introduce)
-    formData.append("image", structure.video_introduce)
+    //formData.append("image", structure.video_introduce)
     console.log(structure.image_introduce)
     
     axios.post(

@@ -273,7 +273,7 @@ function MainDesignCourse({ setStructure }) {
   const handleFileChange = (chapterIndex, lectureIndex, event) => {
     const file = event.target.files[0]
     if (file) {
-      handleInputChange(chapterIndex, lectureIndex, 'source', file.name) // Cập nhật tên file
+      handleInputChange(chapterIndex, lectureIndex, 'source', file) // Cập nhật tên file
     }
   }
 
@@ -1024,7 +1024,7 @@ function MainDesignCourse({ setStructure }) {
                             }
                           }}
                         >
-                          {lecture.source ? lecture.source : 'Choose File'}
+                          {lecture.source.name ? lecture.source.name : 'Choose File'}
                         </Button>
                       </label>
                     </div>
@@ -1058,9 +1058,9 @@ function MainDesignCourse({ setStructure }) {
             <button id="btn-primary" onClick={handleSaveCourseStructureClick}>
               Save Course Structure
             </button>
-            {/* <button id="btn-primary" onClick={() => console.log(chapters)}>
+            <button id="btn-primary" onClick={() => console.log(chapters)}>
               Course Structure
-            </button> */}
+            </button>
           </div>
         </div>
       </Element>

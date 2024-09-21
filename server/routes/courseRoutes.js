@@ -5,9 +5,10 @@ const cors = require("cors");
 
 const axios = require("axios");
 
-//test
+//middleware upload file from local disk -> server NodeJS
 const { upload } = require('../multer')
-//end test
+const multer = require('multer')
+//end
 
 //import verifyToken fuction
 const { verifyToken } = require("../authenticate");
@@ -1013,12 +1014,12 @@ module.exports = (connMysql, connMongo) => {
     });
   });
 
-  router.post("/uploadpdf", verifyToken, upload.array("image"), async(req, res) => {
-    //const imageName = req.file.filename;
+  router.post("/uploadpdf", verifyToken, async(req, res) => {
+    // upload.single("image")
+    //const imageName = (req.file.filename) ? req.file.filename : 'none';
     //const description = req.body.description;
 
     console.log('heloo')
-    res.end('ok')
     //console.log(imageName)
     // Save this data to a database probably
 
@@ -1031,6 +1032,28 @@ module.exports = (connMysql, connMongo) => {
     //   //console.log(error)
     //   res.send(false);
     // }
+
+
+      // Call the Multer method here
+  upload.single('image')(req, res, function (err) {
+    if (err instanceof multer.MulterError) {
+      // A Multer error occurred when uploading
+      return res.status(500).json({ message: 'Multer error occurred', error: err });
+    } else if (err) {
+      // An unknown error occurred when uploading
+      return res.status(500).json({ message: 'Unknown error occurred', error: err });
+    }
+
+    // Everything went fine, file is stored in req.file
+    if (!req.file) {
+      return res.status(400).json({ message: 'No file uploaded' });
+    }
+
+    // Respond with the file information or do further processing
+    res.status(200).json({ message: 'File uploaded successfully', file: req.file });
+  });
+
+
   })
 
   return router
