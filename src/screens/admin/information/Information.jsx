@@ -7,6 +7,8 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Loading from "~/screens/system/Loading";
+import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
+
 
 function Information() {
   const [userProfile, setUserProfile] = useState()
@@ -55,6 +57,9 @@ function Information() {
           (
             <>
               <div>
+                <Helmet>
+                  <title> Information | EL-Space</title>
+                </Helmet>
                 <GeneralHeader />
                 <main>
                   <Container>

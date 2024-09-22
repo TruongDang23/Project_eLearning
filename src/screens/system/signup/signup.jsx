@@ -9,6 +9,8 @@ import { useState } from "react";
 import axios from "axios";
 import CryptoJS from "crypto-js";
 import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
+
 
 function Signup() {
   const [username, setUsername] = useState("");
@@ -48,6 +50,9 @@ function Signup() {
 
   return (
     <>
+      <Helmet>
+        <title>Sign Up | EL-Space</title>
+      </Helmet>
       <SignupWrapper>
         <div className="wrapper">
           <div className="container">
