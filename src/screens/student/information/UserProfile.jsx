@@ -382,6 +382,18 @@ const ProfileContainer = styled.div`
       }
     }
   }
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 320px) {
+    width: 100%;
+  }
 `
 
 export default UserProfile

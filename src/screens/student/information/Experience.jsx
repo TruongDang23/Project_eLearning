@@ -64,7 +64,9 @@ function Experience({ profile, setProfile }) {
               </>
             ))}
           </div>
-          <button onClick={togglePro}>Add new</button>
+          <div className="content-experience-btn">
+            <button onClick={togglePro}>Add new</button>
+          </div>
         </div>
 
         <div className="experience">
@@ -96,7 +98,9 @@ function Experience({ profile, setProfile }) {
               </>
             ))}
           </div>
-          <button onClick={toggleWork}>Add new</button>
+          <div className="content-experience-btn">
+            <button onClick={toggleWork}>Add new</button>
+          </div>
         </div>
       </Wrapper>
       {openPro && (
@@ -158,16 +162,29 @@ const Wrapper = styled.section`
       }
     }
 
-    button {
-      margin-top: 10px;
-      font-size: 1.6rem;
-      border-radius: 5px;
-      margin-left: 80%;
-      transition: transform 0.3s;
-      border: none;
-      &:hover {
-        font-weight: bold;
-        transform: scale(1.05);
+    .content-experience-btn {
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+        background-color: #6c757d;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1.6rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: 0.3s all ease;
+
+        &:hover {
+          background-color: #fff;
+          color: #6c757d;
+          box-shadow: 0 0 0 2px #6c757d;
+        }
       }
     }
 
@@ -186,7 +203,8 @@ const Wrapper = styled.section`
     }
 
     .experience-item strong {
-      color: #333;
+      color: #555;
+      font-weight: 700;
     }
   }
 `

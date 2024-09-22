@@ -47,7 +47,6 @@ function Information() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  //console.log(userProfile)
   return (
     <>
       {isLoad ? (
@@ -58,9 +57,8 @@ function Information() {
             <title>Information | El-Space</title>
           </Helmet>
           <GeneralHeader />
-          <main>
-            
-            <Container className="container">
+          <InformationWrapper className="container">
+            <Container>
               <LeftPane>
                 <UserProfile
                   profile={userProfile}
@@ -74,7 +72,8 @@ function Information() {
                 />
               </RightPane>
             </Container>
-          </main>
+          </InformationWrapper>
+
           <GeneralFooter />
         </>
       )}
@@ -82,34 +81,44 @@ function Information() {
   )
 }
 
-const Container = styled.div`
+const InformationWrapper = styled.main`
+  padding: 40px 20px;
+`
+
+const Container = styled.section`
   margin: 0 auto;
+  border-radius: 8px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  background-color: #fff;
+  box-shadow: #0000000f 0px 4px 20px 0px;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: all ease 0.3s;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (max-width: 480px) {
+    margin: 0;
+  }
+
+  @media (max-width: 320px) {
+    padding: 20px;
+  }
 `
 
 const RightPane = styled.div`
   padding: 24px;
-  background-color: #fff;
-  box-shadow: #0000000f 0px 4px 20px 0px;
-  transition: all 0.3s;
-
-  &:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    transition: all ease 0.3s;
-  }
 `
 
 const LeftPane = styled.div`
   padding: 24px;
-  background-color: #fff;
-  box-shadow: #0000000f 0px 4px 20px 0px;
-  transition: all 0.3s;
-
-  &:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    transition: all ease 0.3s;
-  }
 `
 
 export default Information
