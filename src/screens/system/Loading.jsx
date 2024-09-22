@@ -1,9 +1,14 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
+import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
+
 
 function Loading() {
   return (
     <>
+      <Helmet>
+        <title>Loading | EL-Space</title>
+      </Helmet>
       <GlobalStyle />
       <LoadingWrapper>
         <div className="loader">Loading...</div>

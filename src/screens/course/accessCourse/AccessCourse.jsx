@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import Loading from '~/screens/system/Loading'
 
 import { createGlobalStyle } from 'styled-components'
+import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
 
 function AccessCourse() {
   const [isLoad, setIsLoad] = useState(true) //Data is loading
@@ -48,6 +49,8 @@ function AccessCourse() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reload])
 
+  console.log(accessCourseData)
+
   return (
     <>
       {
@@ -57,6 +60,13 @@ function AccessCourse() {
           <Loading />
         ) : (
           <>
+            <Helmet>
+              <title>
+                {accessCourseData
+                  ? `Course: ${accessCourseData.title} | EL-Space`
+                  : 'Course Details'}
+              </title>
+            </Helmet>
             <GlobalStyle />
             <GeneralHeader />
             <main>

@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-import BorderColorIcon from "@mui/icons-material/BorderColor";
-import Link from "@mui/material/Link";
+import BorderColorIcon from '@mui/icons-material/BorderColor'
+import Link from '@mui/material/Link'
 
 function ContactInfo({ userProfile }) {
   const {
@@ -11,8 +11,8 @@ function ContactInfo({ userProfile }) {
     street,
     province,
     country,
-    social_network,
-  } = userProfile;
+    social_network
+  } = userProfile
   return (
     <ContactInfoWrapper>
       <div className="contact-info">
@@ -50,17 +50,17 @@ function ContactInfo({ userProfile }) {
                 {social_network.map((social_network, index) => {
                   // Kiểm tra và thêm giao thức nếu cần
                   const url =
-                    social_network.startsWith("http://") ||
-                    social_network.startsWith("https://")
+                    social_network.startsWith('http://') ||
+                    social_network.startsWith('https://')
                       ? social_network
-                      : `http://${social_network}`;
+                      : `http://${social_network}`
                   return (
                     <li key={index}>
                       <a href={url} target="__blank">
                         {social_network}
                       </a>
                     </li>
-                  );
+                  )
                 })}
               </ul>
             </div>
@@ -68,7 +68,7 @@ function ContactInfo({ userProfile }) {
         </div>
       </div>
     </ContactInfoWrapper>
-  );
+  )
 }
 
 const ContactInfoWrapper = styled.section`
@@ -91,7 +91,7 @@ const ContactInfoWrapper = styled.section`
         height: 180px;
         border-radius: 50%;
         object-fit: cover;
-        ${"" /* tạo phần viền trắng cho img */}
+        ${'' /* tạo phần viền trắng cho img */}
         border: 3px solid #1971c2;
       }
     }
@@ -246,6 +246,6 @@ const ContactInfoWrapper = styled.section`
       }
     }
   }
-`;
+`
 
-export default ContactInfo;
+export default ContactInfo

@@ -8,6 +8,9 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
+import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
+
+
 function ManageCourse() {
   const token = localStorage.getItem('token')
   const userAuth = localStorage.getItem('userAuth')
@@ -107,6 +110,9 @@ function ManageCourse() {
   return (
     <>
       <div>
+        <Helmet>
+          <title>Manage Course | EL-Space</title>
+        </Helmet>
         <GeneralHeader />
         <main>
           <Container>

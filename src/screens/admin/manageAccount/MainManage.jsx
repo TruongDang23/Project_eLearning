@@ -7,6 +7,9 @@ import { useNavigate } from 'react-router-dom'
 import ActiveList from './ActiveList'
 import LockedList from './LockedList'
 
+import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
+
+
 function ManageAccount() {
   const token = localStorage.getItem('token')
   const userAuth = localStorage.getItem('userAuth')
@@ -82,6 +85,9 @@ function ManageAccount() {
   return (
     <>
       <div>
+        <Helmet>
+          <title> Manage Account | EL-Space </title>
+        </Helmet>
         <GeneralHeader />
         <main>
           <Container>

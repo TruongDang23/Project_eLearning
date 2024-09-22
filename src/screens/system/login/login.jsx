@@ -10,6 +10,8 @@ import styled from "styled-components";
 import { useState } from "react";
 import axios from "axios";
 import CryptoJS from "crypto-js";
+import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
+
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -87,6 +89,9 @@ function Login() {
   };
   return (
     <>
+      <Helmet>
+        <title>Login | EL-Space</title>
+      </Helmet>
       <LoginWrapper>
         <div className="wrapper">
           <div className="container">

@@ -84,7 +84,7 @@ const CourseWrapper = styled.div`
         font-size: 1.6rem;
         margin-left: 3px;
         font-weight: 500;
-        opacity: 0.8;
+        ${'' /* opacity: 0.8; */}
       }
     }
     .item-price-new {
@@ -92,7 +92,7 @@ const CourseWrapper = styled.div`
       font-size: 1.6rem;
     }
     .item-price-old {
-      opacity: 0.8;
+      ${'' /* opacity: 0.8; */}
       font-weight: 500;
       text-decoration: line-through;
       font-size: 1.6rem;
