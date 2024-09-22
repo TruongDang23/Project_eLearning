@@ -8,6 +8,10 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Loading from '~/screens/system/Loading'
 
+import Sticky from 'react-sticky-el'
+
+import Logo from '../../../assets/hdh.png'
+
 import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
 
 function Information() {
@@ -56,7 +60,9 @@ function Information() {
           <Helmet>
             <title>Information | El-Space</title>
           </Helmet>
-          <GeneralHeader />
+          <Sticky disabled={window.innerWidth <= 768}>
+            <GeneralHeader />
+          </Sticky>
           <InformationWrapper>
             <Container className="container">
               <LeftPane>
@@ -83,7 +89,8 @@ function Information() {
 
 const InformationWrapper = styled.main`
   padding: 40px 20px;
-  background: radial-gradient(
+  ${
+    '' /* background: radial-gradient(
     circle,
     rgba(255, 255, 255, 1),
     rgba(8, 144, 234, 0.8)
@@ -101,15 +108,14 @@ const InformationWrapper = styled.main`
     100% {
       background-position: 0% 0%;
     }
+  } */
   }
-
-  ${
-    '' /* background-image: url(${Logo});
+  background-image: url(${Logo});
   background-repeat: repeat;
   background-size: auto;
   background-attachment: fixed;
-  min-height: 100vh; */
-  }
+  min-height: 100vh;
+  
 `
 
 const Container = styled.section`
@@ -118,14 +124,10 @@ const Container = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
 
-  background-color: #fff;
-  box-shadow: #0000000f 0px 4px 20px 0px;
-  transition: all 0.3s;
+  border: 1px solid #ccc;
 
-  &:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    transition: all ease 0.3s;
-  }
+  background-color: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
