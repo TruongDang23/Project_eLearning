@@ -1,30 +1,33 @@
 /* eslint-disable no-async-promise-executor */
 //import express framework (bắt buộc)
-const express = require("express");
-const cors = require("cors");
+const express = require("express")
+const cors = require("cors")
 
-const axios = require("axios");
+const axios = require("axios")
 
-//test
+const mongo = require('mongoose')
+
+//middleware upload file from local disk -> server NodeJS
 const { upload } = require('../multer')
-//end test
+const fs = require('fs')
+//end
 
 //import verifyToken fuction
-const { verifyToken } = require("../authenticate");
+const { verifyToken } = require("../authenticate")
 
 //import model Course
-const Course = require("../models/courseInfor");
+const Course = require("../models/courseInfor")
 
 //import library to connect ggcloud storage
-const { Storage } = require("@google-cloud/storage");
+const { Storage } = require("@google-cloud/storage")
 
 //import library to read stream file in ggcloud storage
-const ffmpeg = require("fluent-ffmpeg");
-const ffmpegPath = require("@ffmpeg-installer/ffmpeg").path;
+const ffmpeg = require("fluent-ffmpeg")
+const ffmpegPath = require("@ffmpeg-installer/ffmpeg").path
 // Set the path for ffprobe explicitly
-const ffprobePath = require("@ffprobe-installer/ffprobe").path;
-ffmpeg.setFfmpegPath(ffmpegPath);
-ffmpeg.setFfprobePath(ffprobePath);
+const ffprobePath = require("@ffprobe-installer/ffprobe").path
+ffmpeg.setFfmpegPath(ffmpegPath)
+ffmpeg.setFfprobePath(ffprobePath)
 
 //authenticate ggcloud storage
 const storage = new Storage({
@@ -45,235 +48,270 @@ const storage = new Storage({
       "https://www.googleapis.com/robot/v1/metadata/x509/nodejs-goocloudstorage%40project-elearning-424401.iam.gserviceaccount.com",
     universe_domain: "googleapis.com"
   }
-});
+})
 
 module.exports = (connMysql, connMongo) => {
   //Khởi tạo tham số router và cấp quyền CORS
-  const router = express.Router();
-  router.use(cors());
-  router.use(express.json());
+  const router = express.Router()
+  const mysqlTransaction = connMysql.promise();
+  router.use(cors())
+  router.use(express.json())
 
   //Function format 1981-05-11T17:00:00.000Z to 1981-05-12
   const formatDate = (date) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero indexed
-    const day = String(date.getDate()).padStart(2, "0");
-    return `${day}-${month}-${year}`;
-  };
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, "0") // Months are zero indexed
+    const day = String(date.getDate()).padStart(2, "0")
+    return `${day}-${month}-${year}`
+  }
 
   //Function format 1981-05-11T17:00:00.000Z to 1981-05-12 12:00:00
   const formatDateTime = (date) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero indexed
-    const day = String(date.getDate()).padStart(2, "0");
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-    const seconds = String(date.getSeconds()).padStart(2, "0");
-    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-  };
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, "0") // Months are zero indexed
+    const day = String(date.getDate()).padStart(2, "0")
+    const hours = String(date.getHours()).padStart(2, "0")
+    const minutes = String(date.getMinutes()).padStart(2, "0")
+    const seconds = String(date.getSeconds()).padStart(2, "0")
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
+  }
+
+
+  const isInstructor = async(userID) => {
+    return new Promise((resolve) => {
+      if (userID[0] !== 'I')
+        resolve(false)
+      else
+        resolve(true)
+    })
+  }
+
   // Define your asynchronous functions
   const updateStatusOfCourse = async (courseID, status) => {
     return new Promise((resolve, reject) => {
       connMysql.getConnection((err, connection) => {
         if (err) {
-          reject(err);
+          reject(err)
         }
         //Get information from mysql
-        let query = "UPDATE course SET status = ? WHERE courseID = ?";
+        let query = "UPDATE course SET status = ? WHERE courseID = ?"
         connection.query(query, [status, courseID], async (error, results) => {
-          connection.release(); //Giải phóng connection khi truy vấn xong
+          connection.release() //Giải phóng connection khi truy vấn xong
           if (error) {
-            reject(err);
+            reject(err)
           }
           //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-          if (results.affectedRows > 0) resolve(true);
-        });
-      });
-    });
-  };
+          if (results.affectedRows > 0) resolve(true)
+        })
+      })
+    })
+  }
 
   const deleteCourse = async (database_table, courseID) => {
     return new Promise((resolve, reject) => {
       connMysql.getConnection((err, connection) => {
         if (err) {
-          reject(err);
+          reject(err)
         }
         //Get information from mysql
-        let query = "DELETE FROM ?? WHERE courseID = ?";
+        let query = "DELETE FROM ?? WHERE courseID = ?"
         connection.query(
           query,
           [database_table, courseID],
           async (error, results) => {
-            connection.release(); //Giải phóng connection khi truy vấn xong
+            connection.release() //Giải phóng connection khi truy vấn xong
             if (error) {
-              reject(err);
+              reject(err)
             }
             //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-            if (results.affectedRows > 0) resolve(true);
+            if (results.affectedRows > 0) resolve(true)
           }
-        );
-      });
-    });
-  };
+        )
+      })
+    })
+  }
 
   const addTerminateCourse = async (courseID, dateRange) => {
-    const to_time = dateRange[0];
-    const end_time = dateRange[1] == "" ? null : dateRange[1];
+    const to_time = dateRange[0]
+    const end_time = dateRange[1] == "" ? null : dateRange[1]
 
     return new Promise((resolve, reject) => {
       connMysql.getConnection((err, connection) => {
         if (err) {
-          reject(err);
+          reject(err)
         }
         //Get information from mysql
         let query =
           "INSERT INTO terminated_course (courseID, to_time, end_time)\
-                     VALUES (?, ?, ?)";
+                     VALUES (?, ?, ?)"
         connection.query(
           query,
           [courseID, to_time, end_time],
           async (error, results) => {
-            connection.release(); //Giải phóng connection khi truy vấn xong
+            connection.release() //Giải phóng connection khi truy vấn xong
             if (error) {
-              reject(err);
+              reject(err)
             }
             //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-            if (results.affectedRows > 0) resolve(true);
+            if (results.affectedRows > 0) resolve(true)
           }
-        );
-      });
-    });
-  };
+        )
+      })
+    })
+  }
 
   const addPublishCourse = async (courseID, time) => {
     return new Promise((resolve, reject) => {
       connMysql.getConnection((err, connection) => {
         if (err) {
-          reject(err);
+          reject(err)
         }
         //Get information from mysql
         let query =
           "INSERT INTO published_course (courseID, time)\
-                     VALUES (?, ?)";
+                     VALUES (?, ?)"
         connection.query(query, [courseID, time], async (error, results) => {
-          connection.release(); //Giải phóng connection khi truy vấn xong
+          connection.release() //Giải phóng connection khi truy vấn xong
           if (error) {
-            reject(err);
+            reject(err)
           }
           //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-          if (results.affectedRows > 0) resolve(true);
-        });
-      });
-    });
-  };
+          if (results.affectedRows > 0) resolve(true)
+        })
+      })
+    })
+  }
 
   const addCreateCourse = async (courseID, time) => {
     return new Promise((resolve, reject) => {
       connMysql.getConnection((err, connection) => {
         if (err) {
-          reject(err);
+          reject(err)
         }
         //Get information from mysql
         let query =
           "INSERT INTO created_course (courseID, time)\
-                     VALUES (?, ?)";
+                     VALUES (?, ?)"
         connection.query(query, [courseID, time], async (error, results) => {
-          connection.release(); //Giải phóng connection khi truy vấn xong
+          connection.release() //Giải phóng connection khi truy vấn xong
           if (error) {
-            reject(err);
+            reject(err)
           }
           //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-          if (results.affectedRows > 0) resolve(true);
-        });
-      });
-    });
-  };
+          if (results.affectedRows > 0) resolve(true)
+        })
+      })
+    })
+  }
 
   const getReview = async (courseID) => {
     return new Promise((resolve, reject) => {
       connMysql.getConnection((err, connection) => {
         if (err) {
-          return reject(err);
+          return reject(err)
         }
 
         const query = ` SELECT u.fullname AS reviewerName, message, star, time AS date
           FROM rating AS r
           LEFT JOIN user AS u ON r.userID = u.userID
-          WHERE courseID = ?`;
+          WHERE courseID = ?`
         connection.query(query, [courseID], (error, reviews) => {
-          connection.release();
+          connection.release()
           if (error) {
-            return reject(error);
+            return reject(error)
           }
 
           const finalData = reviews.map((rv) => {
             return {
               ...rv,
               date: formatDateTime(rv.date)
-            };
-          });
+            }
+          })
 
-          resolve(finalData);
-        });
-      });
-    });
-  };
+          resolve(finalData)
+        })
+      })
+    })
+  }
 
   const getTotalVideo = async (courseID) => {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve) => {
       const [files] = await storage
         .bucket("e-learning-bucket")
-        .getFiles({ prefix: courseID });
+        .getFiles({ prefix: courseID })
 
-      let totalVideo = 0;
+      let totalVideo = 0
 
       for (const file of files) {
         if (file.name.endsWith(".mp4")) {
-          totalVideo += 1;
+          totalVideo += 1
         }
       }
-      resolve(totalVideo);
-    });
-  };
+      resolve(totalVideo)
+    })
+  }
 
   // Put file PDf to google cloud Storage
   const putFileToStorage = async (courseID, file, destName) => {
-    const bucketName = "e-learning-bucket"
+    return new Promise(async (resolve, reject) => {
+      const bucketName = "e-learning-bucket"
 
-    // The path to your file to upload
-    const filePath = file
-    //console.log(filePath)
-    // The new ID for your GCS file
-    const destFileName = `${courseID}/${destName}` // Assuming `file` has an `originalname` property
+      // The path to your file to upload
+      const filePath = file
 
-    try {
-      const options = {
-        destination: destFileName,
-        // Optional:
-        // Set a generation-match precondition to avoid potential race conditions
-        // and data corruptions. The request to upload is aborted if the object's
-        // generation number does not match your precondition. For a destination
-        // object that does not yet exist, set the ifGenerationMatch precondition to 0
-        // If the destination object already exists in your bucket, set instead a
-        // generation-match precondition using its generation number.
-        preconditionOpts: { ifGenerationMatch: 0 }
-      };
+      // The new ID for your GCS file
+      const destFileName = `${courseID}/${destName}` // Assuming `file` has an `originalname` property
 
-      await storage.bucket(bucketName).upload(filePath, options);
-      //console.log(`https://storage.googleapis.com/${bucketName}/${destFileName}`);
-    } catch (error) {
-      console.error("Error uploading file to Google Cloud Storage:", error);
-      throw error;
-    }
-  };
+      try {
+        const options = {
+          destination: destFileName,
+          preconditionOpts: { ifGenerationMatch: 0 }
+        }
+
+        await storage.bucket(bucketName).upload(filePath, options)
+        const url = `https://storage.googleapis.com/${bucketName}/${destFileName}`
+
+        // Delete the file using fs.unlink()
+        try {
+          fs.unlinkSync(filePath);
+        } catch (err) {
+          reject(err)
+        }
+
+        resolve(url)
+      } catch (error) {
+        reject(error)
+      }
+    })
+  }
+
+  const getCourseID = async() => {
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          return reject(err)
+        }
+
+        const query = `SELECT CONCAT('C', LPAD(SUBSTRING(MAX(courseID), 2) + 1, 3, '0')) AS newCourseID
+                        FROM course`
+        connection.query(query, (error, data) => {
+          connection.release()
+          if (error) {
+            return reject(error)
+          }
+          resolve(data[0].newCourseID)
+        })
+      })
+    })
+  }
 
   const getProgress = async (courseID, userID) => {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise((resolve, reject) => {
       connMysql.getConnection((err, connection) => {
         if (err) {
-          return reject(err);
+          return reject(err)
         }
 
         const query = ` SELECT FORMAT(SUM(percent)/num_lecture,1) AS progress
@@ -284,105 +322,105 @@ module.exports = (connMysql, connMongo) => {
             group by lectureID, courseID
           ) AS list_progress
           ON course.courseID = list_progress.courseID
-          where course.courseID = ?`;
+          where course.courseID = ?`
         connection.query(query, [userID, courseID], (error, data) => {
-          connection.release();
+          connection.release()
           if (error) {
-            return reject(error);
+            return reject(error)
           }
-          resolve(data[0].progress);
-        });
-      });
-    });
-  };
+          resolve(data[0].progress)
+        })
+      })
+    })
+  }
 
   const getListLearning = async (courseID, userID) => {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise((resolve, reject) => {
       connMysql.getConnection((err, connection) => {
         if (err) {
-          return reject(err);
+          return reject(err)
         }
 
         const query = ` SELECT lectureID, MAX(percent) AS progress FROM learning
           where courseID = ? and userID = ?
           group by lectureID 
-          order by lectureID asc;`;
+          order by lectureID asc`
         connection.query(query, [courseID, userID], (error, learning) => {
-          connection.release();
+          connection.release()
           if (error) {
-            return reject(error);
+            return reject(error)
           }
-          resolve(learning);
-        });
-      });
-    });
-  };
+          resolve(learning)
+        })
+      })
+    })
+  }
 
   const isInstructorOfCourse = async (courseID, userID) => {
     return new Promise((resolve) => {
       connMysql.getConnection((err, connection) => {
         if (err) {
-          resolve(false);
+          resolve(false)
         }
 
-        const query = `SELECT count(*) AS count FROM course where userID = ? and courseID = ?`;
+        const query = `SELECT count(*) AS count FROM course where userID = ? and courseID = ?`
         connection.query(query, [userID, courseID], (error, data) => {
-          connection.release();
+          connection.release()
           if (error) {
-            resolve(false);
+            resolve(false)
           }
           if (data[0].count > 0) {
-            resolve(true);
+            resolve(true)
           }
-          resolve(false);
-        });
-      });
-    });
-  };
+          resolve(false)
+        })
+      })
+    })
+  }
 
   const isEnrolledCourse = async (courseID, userID) => {
     return new Promise((resolve) => {
       connMysql.getConnection((err, connection) => {
         if (err) {
-          resolve(false);
+          resolve(false)
         }
 
-        const query = `SELECT count(*) AS count FROM enroll where userID = ? and courseID = ?`;
+        const query = `SELECT count(*) AS count FROM enroll where userID = ? and courseID = ?`
         connection.query(query, [userID, courseID], (error, data) => {
-          connection.release();
+          connection.release()
           if (error) {
-            resolve(false);
+            resolve(false)
           }
           if (data[0].count > 0) {
-            resolve(true);
+            resolve(true)
           }
-          resolve(false);
-        });
-      });
-    });
-  };
+          resolve(false)
+        })
+      })
+    })
+  }
 
   const isAdmin = async (userID) => {
     return new Promise((resolve) => {
-      if (userID[0] === "A") resolve(true);
-      else resolve(false);
-    });
-  };
+      if (userID[0] === "A") resolve(true)
+      else resolve(false)
+    })
+  }
 
   const checkAcessCourse = async (courseID, userID) => {
     return new Promise(async (resolve) => {
       if ((await isAdmin(userID)) == true) {
-        resolve(true);
+        resolve(true)
       } else if ((await isInstructorOfCourse(courseID, userID)) == true) {
-        resolve(true);
+        resolve(true)
       } else if ((await isEnrolledCourse(courseID, userID)) == true) {
-        resolve(true);
+        resolve(true)
       } else {
-        resolve(false);
+        resolve(false)
       }
-    });
-  };
+    })
+  }
 
   const callAPICompile = async (language, sourceCode, testcase) => {
     try {
@@ -398,25 +436,25 @@ module.exports = (connMysql, connMongo) => {
           ],
           stdin: testcase
         }
-      );
-      return response.data.run.output.trim();
+      )
+      return response.data.run.output.trim()
     } catch (error) {
-      return "error";
+      return "error"
     }
-  };
+  }
 
   const compareResult = async (output, key) => {
-    return output === key ? true : false;
-  };
+    return output === key ? true : false
+  }
 
   // Define user-related routes
   router.get("/getPublishCourse", verifyToken, async (req, res) => {
     if ((await isAdmin(req.userID)) === false) {
-      res.status(401).send("error");
+      res.status(401).send("error")
     } else {
       connMysql.getConnection((err, connection) => {
         if (err) {
-          res.status(500).send(err);
+          res.status(500).send(err)
         } else {
           //Get information from mysql
           let query = `SELECT 
@@ -431,48 +469,48 @@ module.exports = (connMysql, connMongo) => {
                         ON s.courseID = c.courseID
                       LEFT JOIN user AS u 
                         ON c.userID = u.userID
-                      ORDER BY s.time DESC`;
+                      ORDER BY s.time DESC`
           connection.query(query, async (error, courses) => {
-            connection.release(); //Giải phóng connection khi truy vấn xong
+            connection.release() //Giải phóng connection khi truy vấn xong
             if (error) {
-              res.status(500).send(error);
+              res.status(500).send(error)
             }
 
             //List courseIDs which is results of previous query
-            const courseIDs = courses.map((course) => course.courseID);
+            const courseIDs = courses.map((course) => course.courseID)
 
             //Connect to MongoDB server
-            await connMongo;
+            await connMongo
             //Get image_introduce of each courseID
             const mongoData = await Course.find({
               courseID: { $in: courseIDs }
-            }).select("courseID image_introduce");
+            }).select("courseID image_introduce")
 
             //Merge data with Mysql and MongoDB
             const mergeData = courses.map((course) => {
               const data = mongoData.find(
                 (mc) => mc.courseID === course.courseID
-              );
+              )
               return {
                 ...course,
                 time: formatDate(course.time),
                 image_introduce: data ? data.image_introduce : null
-              };
-            });
-            res.send(mergeData);
-          });
+              }
+            })
+            res.send(mergeData)
+          })
         }
-      });
+      })
     }
-  });
+  })
 
   router.get("/getMonitorCourse", verifyToken, async (req, res) => {
     if ((await isAdmin(req.userID)) === false) {
-      res.status(401).send("error");
+      res.status(401).send("error")
     } else {
       connMysql.getConnection((err, connection) => {
         if (err) {
-          res.status(500).send(err);
+          res.status(500).send(err)
         } else {
           //Get information from mysql
           let query = `SELECT 
@@ -487,48 +525,48 @@ module.exports = (connMysql, connMongo) => {
                         ON s.courseID = c.courseID
                       LEFT JOIN user AS u 
                         ON c.userID = u.userID
-                      ORDER BY s.time DESC`;
+                      ORDER BY s.time DESC`
           connection.query(query, async (error, courses) => {
-            connection.release(); //Giải phóng connection khi truy vấn xong
+            connection.release() //Giải phóng connection khi truy vấn xong
             if (error) {
-              res.status(500).send(error);
+              res.status(500).send(error)
             }
 
             //List courseIDs which is results of previous query
-            const courseIDs = courses.map((course) => course.courseID);
+            const courseIDs = courses.map((course) => course.courseID)
 
             //Connect to MongoDB server
-            await connMongo;
+            await connMongo
             //Get image_introduce of each courseID
             const mongoData = await Course.find({
               courseID: { $in: courseIDs }
-            }).select("courseID image_introduce");
+            }).select("courseID image_introduce")
 
             //Merge data with Mysql and MongoDB
             const mergeData = courses.map((course) => {
               const data = mongoData.find(
                 (mc) => mc.courseID === course.courseID
-              );
+              )
               return {
                 ...course,
                 time: formatDate(course.time),
                 image_introduce: data ? data.image_introduce : null
-              };
-            });
-            res.send(mergeData);
-          });
+              }
+            })
+            res.send(mergeData)
+          })
         }
-      });
+      })
     }
-  });
+  })
 
   router.get("/getTerminateCourse", verifyToken, async (req, res) => {
     if ((await isAdmin(req.userID)) === false) {
-      res.status(401).send("error");
+      res.status(401).send("error")
     } else {
       connMysql.getConnection((err, connection) => {
         if (err) {
-          res.status(500).send(err);
+          res.status(500).send(err)
         } else {
           //Get information from mysql
           let query = `SELECT 
@@ -544,28 +582,28 @@ module.exports = (connMysql, connMongo) => {
                         ON s.courseID = c.courseID
                       LEFT JOIN user AS u 
                         ON c.userID = u.userID
-                      ORDER BY s.to_time DESC, s.end_time ASC`;
+                      ORDER BY s.to_time DESC, s.end_time ASC`
           connection.query(query, async (error, courses) => {
-            connection.release(); //Giải phóng connection khi truy vấn xong
+            connection.release() //Giải phóng connection khi truy vấn xong
             if (error) {
-              res.status(500).send(error);
+              res.status(500).send(error)
             }
 
             //List courseIDs which is results of previous query
-            const courseIDs = courses.map((course) => course.courseID);
+            const courseIDs = courses.map((course) => course.courseID)
 
             //Connect to MongoDB server
-            await connMongo;
+            await connMongo
             //Get image_introduce of each courseID
             const mongoData = await Course.find({
               courseID: { $in: courseIDs }
-            }).select("courseID image_introduce");
+            }).select("courseID image_introduce")
 
             //Merge data with Mysql and MongoDB
             const mergeData = courses.map((course) => {
               const data = mongoData.find(
                 (mc) => mc.courseID === course.courseID
-              );
+              )
               return {
                 ...course,
                 to_time: formatDate(course.to_time),
@@ -573,100 +611,100 @@ module.exports = (connMysql, connMongo) => {
                   ? formatDate(course.end_time)
                   : "permanently",
                 image_introduce: data ? data.image_introduce : null
-              };
-            });
-            res.send(mergeData);
-          });
+              }
+            })
+            res.send(mergeData)
+          })
         }
-      });
+      })
     }
-  });
+  })
 
   router.post("/terminated", verifyToken, async (req, res) => {
     if ((await isAdmin(req.userID)) === false) {
-      res.status(401).send("error");
+      res.status(401).send("error")
     } else {
-      const courseID = req.body.course;
-      const dateRange = req.body.dateRange;
+      const courseID = req.body.course
+      const dateRange = req.body.dateRange
 
       try {
         await Promise.all([
           updateStatusOfCourse(courseID, "terminated"),
           deleteCourse("published_course", courseID),
           addTerminateCourse(courseID, dateRange)
-        ]);
+        ])
         // Proceed to the next step here
-        res.send(true);
+        res.send(true)
       } catch (error) {
-        res.send(false);
+        res.send(false)
       }
     }
-  });
+  })
 
   router.post("/republish", verifyToken, async (req, res) => {
-    const courseID = req.body.course;
-    const time = formatDateTime(new Date());
+    const courseID = req.body.course
+    const time = formatDateTime(new Date())
 
     try {
       await Promise.all([
         updateStatusOfCourse(courseID, "published"),
         deleteCourse("terminated_course", courseID),
         addPublishCourse(courseID, time)
-      ]);
+      ])
       // Proceed to the next step here
-      res.send(true);
+      res.send(true)
     } catch (error) {
-      res.send(false);
+      res.send(false)
     }
-  });
+  })
 
   router.post("/publish", verifyToken, async (req, res) => {
     if ((await isAdmin(req.userID)) === false) {
-      res.status(401).send("error");
+      res.status(401).send("error")
     } else {
-      const courseID = req.body.course;
-      const time = formatDateTime(new Date());
+      const courseID = req.body.course
+      const time = formatDateTime(new Date())
 
       try {
         await Promise.all([
           updateStatusOfCourse(courseID, "published"),
           deleteCourse("send_mornitor", courseID),
           addPublishCourse(courseID, time)
-        ]);
+        ])
         // Proceed to the next step here
-        res.send(true);
+        res.send(true)
       } catch (error) {
-        res.send(false);
+        res.send(false)
       }
     }
-  });
+  })
 
   router.post("/reject", verifyToken, async (req, res) => {
     if ((await isAdmin(req.userID)) === false) {
-      res.status(401).send("error");
+      res.status(401).send("error")
     } else {
-      const courseID = req.body.course;
-      const time = formatDateTime(new Date());
+      const courseID = req.body.course
+      const time = formatDateTime(new Date())
 
       try {
         await Promise.all([
           updateStatusOfCourse(courseID, "created"),
           deleteCourse("send_mornitor", courseID),
           addCreateCourse(courseID, time)
-        ]);
+        ])
         // Proceed to the next step here
-        res.send(true);
+        res.send(true)
       } catch (error) {
-        res.send(false);
+        res.send(false)
       }
     }
-  });
+  })
 
   router.get("/loadInforCourse", async (req, res) => {
-    const { courseID } = req.query;
+    const { courseID } = req.query
     connMysql.getConnection((err, connection) => {
       if (err) {
-        res.status(500).send(err);
+        res.status(500).send(err)
       } else {
         //Get detail information of course
         let query =
@@ -692,24 +730,24 @@ module.exports = (connMysql, connMongo) => {
                                 FROM enroll\
                                 GROUP BY courseID) AS num\
                                 ON num.courseID = c.courseID\
-                      WHERE c.courseID = ?";
+                      WHERE c.courseID = ?"
         connection.query(query, [courseID], async (error, courseInfor) => {
-          connection.release(); //Giải phóng connection khi truy vấn xong
+          connection.release() //Giải phóng connection khi truy vấn xong
           if (error) {
-            res.status(500).send(error);
+            res.status(500).send(error)
           } else {
             //Connect to MongoDB server
-            await connMongo;
+            await connMongo
             //Get mongoData. MongoData wil be return an array which 1 element so we will get data at index 0
             const mongoData = await Course.find({
               courseID: { $in: courseID }
-            }).select();
+            }).select()
 
             //Get review of this course
-            const review = await getReview(courseID);
+            const review = await getReview(courseID)
 
             //Get duraion time of course
-            const videos = await getTotalVideo(courseID);
+            const videos = await getTotalVideo(courseID)
 
             //Merge data with Mysql + MongoDB + Reviewer + Duration
             const mergeData = courseInfor.map((course) => {
@@ -723,27 +761,27 @@ module.exports = (connMysql, connMongo) => {
                 targets: mongoData[0].targets,
                 requirements: mongoData[0].requirements,
                 chapters: mongoData[0].chapters
-              };
-            });
-            res.send(mergeData);
+              }
+            })
+            res.send(mergeData)
             // console.log(mergeData)
           }
-        });
+        })
       }
-    });
-  });
+    })
+  })
 
   router.get("/loadDetailsCourse", verifyToken, async (req, res) => {
-    const { courseID } = req.query;
-    const userID = req.userID;
-    const checkAuthor = await checkAcessCourse(courseID, userID);
+    const { courseID } = req.query
+    const userID = req.userID
+    const checkAuthor = await checkAcessCourse(courseID, userID)
     // console.log(checkAuthor)
     if (checkAuthor === false) {
-      res.status(401).send("Not authorize");
+      res.status(401).send("Not authorize")
     } else {
       connMysql.getConnection((err, connection) => {
         if (err) {
-          res.status(500).send(err);
+          res.status(500).send(err)
         }
         //Get detail information of course
         let query =
@@ -764,30 +802,30 @@ module.exports = (connMysql, connMongo) => {
                                 FROM enroll\
                                 GROUP BY courseID) AS num\
                                 ON num.courseID = c.courseID\
-                    WHERE c.courseID = ?";
+                    WHERE c.courseID = ?"
         connection.query(query, [courseID], async (error, courseInfor) => {
-          connection.release(); //Giải phóng connection khi truy vấn xong
+          connection.release() //Giải phóng connection khi truy vấn xong
           if (error) {
-            res.status(500).send(error);
+            res.status(500).send(error)
           }
 
           //Connect to MongoDB server
-          await connMongo;
+          await connMongo
           //Get mongoData. MongoData wil be return an array which 1 element so we will get data at index 0
           const mongoData = await Course.find({
             courseID: { $in: courseID }
-          }).select("keywords chapters");
+          }).select("keywords chapters")
 
           //Get review of this course
-          const review = await getReview(courseID);
+          const review = await getReview(courseID)
 
           //Get duraion time of course
-          const videos = await getTotalVideo(courseID);
+          const videos = await getTotalVideo(courseID)
 
           //Get total_progress of user for this course
-          const progress = await getProgress(courseID, userID);
+          const progress = await getProgress(courseID, userID)
 
-          const list_learning = await getListLearning(courseID, userID);
+          const list_learning = await getListLearning(courseID, userID)
 
           //Merge data with Mysql + MongoDB + Reviewer + Duration + Progress + Learning
           const mergeData = courseInfor.map((course) => {
@@ -799,70 +837,70 @@ module.exports = (connMysql, connMongo) => {
               keywords: mongoData[0].keywords,
               chapters: mongoData[0].chapters,
               learning: list_learning
-            };
-          });
-          res.send(mergeData);
-        });
-      });
+            }
+          })
+          res.send(mergeData)
+        })
+      })
     }
-  });
+  })
 
   router.post("/updateNewProgress", verifyToken, async (req, res) => {
-    const { userID, lectureID, courseID, percent } = req.body.progress;
+    const { userID, lectureID, courseID, percent } = req.body.progress
 
     if ((await isEnrolledCourse(courseID, userID)) && percent > 0) {
-      const time = formatDateTime(new Date());
+      const time = formatDateTime(new Date())
       connMysql.getConnection((err, connection) => {
         if (err) {
-          res.status(500).send(err);
+          res.status(500).send(err)
         } else {
           //Insert new data into table learning
           let query =
             "INSERT INTO learning (userID, lectureID, time, courseID, percent)\
-                      VALUES (?, ?, ?, ?, ?)";
+                      VALUES (?, ?, ?, ?, ?)"
           connection.query(
             query,
             [userID, lectureID, time, courseID, percent],
             async (error) => {
-              connection.release(); //Giải phóng connection khi truy vấn xong
+              connection.release() //Giải phóng connection khi truy vấn xong
               if (error) {
-                res.status(500).send(error);
+                res.status(500).send(error)
               }
-              res.send("Ok");
+              res.send("Ok")
             }
-          );
+          )
         }
-      });
+      })
     }
-  });
+  })
 
   router.post("/acceptAssignment", verifyToken, async (req, res) => {
-    const { language, sourceCode, testcases } = req.body;
-    let wrongAns = null;
-    let lang = language === "cplus" ? "c++" : language;
+    const { language, sourceCode, testcases } = req.body
+    let wrongAns = null
+    let lang = language === "cplus" ? "c++" : language
     for (const test of testcases) {
-      const output = await callAPICompile(lang, sourceCode, test.case);
-      const result = await compareResult(output, test.key);
+      const output = await callAPICompile(lang, sourceCode, test.case)
+      const result = await compareResult(output, test.key)
       if (!result) {
         wrongAns = {
           testcase: test.case,
           expected: test.key,
           found: output
-        };
-        break;
+        }
+        break
       }
     }
-    if (wrongAns == null) res.send(true);
-    else res.send(wrongAns);
-  });
+    if (wrongAns == null) res.send(true)
+    else res.send(wrongAns)
+  })
 
   router.get("/findcourse", async (req, res) => {
     const { category, title, ratings, language, method, program, price } =
-      req.query;
+      req.query
 
     connMysql.getConnection((err, connection) => {
       if (err) {
-        res.status(500).send(err);
+        res.status(500).send(err)
       }
       //Get detail information of course
       let query = `SELECT c.courseID,
@@ -902,7 +940,7 @@ module.exports = (connMysql, connMongo) => {
                                 and (
                                     category like ?
                                 )
-                        ORDER BY star DESC`;
+                        ORDER BY star DESC`
 
       let queryParams = [
         `%${title}%`,
@@ -914,117 +952,275 @@ module.exports = (connMysql, connMongo) => {
         price,
         `%${program}%`,
         `%${category}%`
-      ];
+      ]
 
       connection.query(query, queryParams, async (error, courseInfor) => {
-        connection.release(); //Giải phóng connection khi truy vấn xong
+        connection.release() //Giải phóng connection khi truy vấn xong
         if (error) {
-          res.status(500).send(error);
+          res.status(500).send(error)
         }
 
         //List courseIDs which is results of previous query
-        const courseIDs = courseInfor.map((course) => course.courseID);
+        const courseIDs = courseInfor.map((course) => course.courseID)
 
         //Connect to MongoDB server
-        await connMongo;
+        await connMongo
         //Get mongoData. MongoData wil be return an array which 1 element so we will get data at index 0
         const mongoData = await Course.find({
           courseID: { $in: courseIDs }
-        }).select("courseID image_introduce keywords targets");
+        }).select("courseID image_introduce keywords targets")
 
         //Merge data with Mysql + MongoDB + Reviewer + Duration + Progress + Learning
         const mergeData = courseInfor.map((course) => {
-          const data = mongoData.find((mc) => mc.courseID === course.courseID);
+          const data = mongoData.find((mc) => mc.courseID === course.courseID)
           return {
             ...course,
             image_introduce: data ? data.image_introduce : null,
             keywords: data ? data.keywords : null,
             targets: data ? data.targets : null
-          };
-        });
-        res.send(mergeData);
-      });
-    });
-  });
+          }
+        })
+        res.send(mergeData)
+      })
+    })
+  })
 
   router.post("/addReview", verifyToken, async (req, res) => {
-    const { courseID, userID, message, star, time } = req.body;
+    const { courseID, userID, message, star, time } = req.body
     if (!courseID || !userID || !message || !star || !time) {
-      return res.status(400).send({ message: "Missing required fields" });
+      return res.status(400).send({ message: "Missing required fields" })
     }
 
-    const formattedTime = formatDateTime(new Date(time));
+    const formattedTime = formatDateTime(new Date(time))
 
     connMysql.getConnection((err, connection) => {
       if (err) {
-        return res.status(500).send({ message: "Database failed to connect" });
+        return res.status(500).send({ message: "Database failed to connect" })
       }
 
       // First, check if a review with the same courseID and userID already exists
       const checkQuery =
-        "SELECT * FROM rating WHERE courseID = ? AND userID = ?";
+        "SELECT * FROM rating WHERE courseID = ? AND userID = ?"
       connection.query(checkQuery, [courseID, userID], (error, results) => {
         if (error) {
-          connection.release();
-          return res.status(500).send({ message: "Failed to check review" });
+          connection.release()
+          return res.status(500).send({ message: "Failed to check review" })
         }
 
         if (results.length > 0) {
           // If a review exists, update it
           const updateQuery =
-            "UPDATE rating SET message = ?, star = ?, time = ? WHERE courseID = ? AND userID = ?";
+            "UPDATE rating SET message = ?, star = ?, time = ? WHERE courseID = ? AND userID = ?"
           connection.query(
             updateQuery,
             [message, star, formattedTime, courseID, userID],
             (updateError) => {
-              connection.release();
+              connection.release()
               if (updateError) {
                 return res
                   .status(500)
-                  .send({ message: "Failed to update review" });
+                  .send({ message: "Failed to update review" })
               }
 
               res.send({
                 success: true,
                 message: "Review updated successfully"
-              });
+              })
             }
-          );
+          )
         } else {
           // If no review exists, insert a new one
           const insertQuery =
-            "INSERT INTO rating (courseID, userID, message, star, time) VALUES (?, ?, ?, ?, ?)";
+            "INSERT INTO rating (courseID, userID, message, star, time) VALUES (?, ?, ?, ?, ?)"
           connection.query(
             insertQuery,
             [courseID, userID, message, star, formattedTime],
             (insertError) => {
-              connection.release();
+              connection.release()
               if (insertError) {
                 return res
                   .status(500)
-                  .send({ message: "Failed to add review" });
+                  .send({ message: "Failed to add review" })
               }
 
-              res.send({ success: true, message: "Review added successfully" });
+              res.send({ success: true, message: "Review added successfully" })
             }
-          );
+          )
         }
-      });
-    });
-  });
+      })
+    })
+  })
 
-  router.post("/uploadpdf", verifyToken, upload.single("image"), async(req, res) => {
-    const imageName = req.file.filename;
-    //const description = req.body.description;
+  router.post("/uploadfile", verifyToken, upload.any(), async(req, res) => {
+    const files = req.files || []
+    const filenames = files.map(file => file.filename) // Lấy tên file
 
-    //console.log(imageName)
-    // Save this data to a database probably
-    try {
-      await putFileToStorage('C045', `../server/uploads/${imageName}`, 'Test.mp4');
-      res.send(true);
-    } catch (error) {
-      //console.log(error)
-      res.send(false);
+    res.status(200).send(filenames)
+  })
+
+  router.post("/createcourse", verifyToken, async(req, res) => {
+    if (await isInstructor(req.userID) === false) {
+      res.status(401).send('error')
+      return
+    }
+    else {
+      const { structure } = req.body
+      const courseID = await getCourseID()
+      const userID = req.userID
+
+      //Upload file video_introduce & image_introduce
+      try {
+        const extendVideo = structure.video_file.slice(-3)
+        const extendImage = structure.image_file.slice(-3)
+
+        const urlVideo = await putFileToStorage(
+          `${courseID}`, // C045
+          `../server/uploads/video_introduce-${userID}.${extendVideo}`, // server/uploads/introduce-I000.jpg
+          `video_introduce.${extendVideo}` // introduce.jpg
+        )
+        const urlImage = await putFileToStorage(
+          `${courseID}`, // C045
+          `../server/uploads/image_introduce-${userID}.${extendImage}`, // server/uploads/introduce-I000.jpg
+          `image_introduce.${extendImage}` // introduce.jpg
+        )
+
+        structure.video_introduce = urlVideo // Update source = url to GCS (used in mongoDB)
+        structure.image_introduce = urlImage
+      } catch (error) {
+        res.send(false)
+        res.end()
+      }
+
+      await Promise.all(
+        // Upload all media files of course content
+        structure.chapters.map(async (obj, chapterIndex) => {
+          await Promise.all(
+            obj.lectures.map(async (lecture) => {
+              const index = (chapterIndex + 1).toString().padStart(2, '0');
+              const extendFile = lecture.filename.slice(-3);
+
+              try {
+                const url = await putFileToStorage(
+                  `${courseID}/CT${index}`, // C045/CT01
+                  `../server/uploads/${lecture.filename}-${userID}.${extendFile}`, // server/uploads/introduce-I000.jpg
+                  `${lecture.name}.${extendFile}` // introduce.jpg
+                );
+                lecture.source = url // Update source = url to GCS (used in mongoDB)
+              } catch (error) {
+                res.send(false)
+                res.end()
+              }
+            })
+          )
+        })
+      )
+
+      // Insert into Mysql & MongoDB (using transaction)
+      connMysql.getConnection(async (err) => {
+        if (err) {
+          res.status(500).send(err)
+          return
+        }
+        else {
+          const mongoSession = await mongo.startSession()
+          const time = formatDateTime(new Date())
+          try {
+            mongoSession.startTransaction()
+            await mysqlTransaction.query("START TRANSACTION")
+
+            //Insert course structure into mongoDB
+            await Course.collection.insertOne(
+              {
+                courseID: courseID,
+                image_introduce: structure.image_introduce,
+                video_introduce: structure.video_introduce,
+                keywords: structure.keywords,
+                targets: structure.targets,
+                requirements: structure.requirements,
+                chapters: structure.chapters
+              },
+              {
+                session: mongoSession
+              }
+            )
+
+            //Insert course information into table course
+            let queryInsertNewCourse = `INSERT INTO course (
+                          courseID,
+                          type_of_course,
+                          title,
+                          method,
+                          language,
+                          price,
+                          currency,
+                          program,
+                          category,
+                          course_for,
+                          status,
+                          num_lecture,
+                          userID)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                            `
+
+            //Insert course information into table created_course
+            let queryInsertCreateCourse = `INSERT INTO created_course (
+                          courseID,
+                          time)
+                        VALUES (?, ?)`
+
+            const [rowscourse] = await mysqlTransaction.query(queryInsertNewCourse,
+              [
+                courseID,
+                structure.type_of_course,
+                structure.title,
+                structure.method,
+                structure.language,
+                structure.price,
+                structure.currency,
+                structure.program,
+                structure.category,
+                structure.course_for,
+                'created',
+                structure.num_lecture,
+                userID
+              ])
+
+            const [rowscreated_course] = await mysqlTransaction.query(queryInsertCreateCourse,
+              [
+                courseID,
+                time
+              ])
+
+            if (rowscourse.affectedRows == 0 || rowscreated_course.affectedRows == 0 )
+            {
+              await mysqlTransaction.query("ROLLBACK")
+              await mongoSession.abortTransaction()
+              res.send(false)
+              return
+            }
+            else
+            {
+              await mysqlTransaction.query("COMMIT")
+              await mongoSession.commitTransaction()
+              // res.send(true)
+              // res.end()
+            }
+          }
+          catch {
+            await mysqlTransaction.query("ROLLBACK")
+            await mongoSession.abortTransaction()
+            res.send(false)
+            return
+          }
+          finally {
+            mongoSession.endSession()
+          }
+        }
+      })
+
+      setTimeout(() => {
+        res.send(true);
+      }, 2000);
     }
   })
 
