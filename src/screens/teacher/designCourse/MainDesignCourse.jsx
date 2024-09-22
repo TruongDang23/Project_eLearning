@@ -367,7 +367,9 @@ function MainDesignCourse({ setStructure }) {
         return {
           ...prev,
           image_introduce: courseImage,
-          video_introduce: promotionalVideo
+          video_introduce: promotionalVideo,
+          image_file: courseImage.name,
+          video_file: promotionalVideo.name
         }
       })
     }

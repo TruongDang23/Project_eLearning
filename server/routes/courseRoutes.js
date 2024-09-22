@@ -7,6 +7,7 @@ const axios = require("axios")
 
 //middleware upload file from local disk -> server NodeJS
 const { upload } = require('../multer')
+const fs = require('fs')
 //end
 
 //import verifyToken fuction
@@ -239,33 +240,36 @@ module.exports = (connMysql, connMongo) => {
 
   // Put file PDf to google cloud Storage
   const putFileToStorage = async (courseID, file, destName) => {
-    const bucketName = "e-learning-bucket"
+    return new Promise(async (resolve, reject) => {
+      const bucketName = "e-learning-bucket"
 
-    // The path to your file to upload
-    const filePath = file
-    //console.log(filePath)
-    // The new ID for your GCS file
-    const destFileName = `${courseID}/${destName}` // Assuming `file` has an `originalname` property
+      // The path to your file to upload
+      const filePath = file
 
-    try {
-      const options = {
-        destination: destFileName,
-        // Optional:
-        // Set a generation-match precondition to avoid potential race conditions
-        // and data corruptions. The request to upload is aborted if the object's
-        // generation number does not match your precondition. For a destination
-        // object that does not yet exist, set the ifGenerationMatch precondition to 0
-        // If the destination object already exists in your bucket, set instead a
-        // generation-match precondition using its generation number.
-        preconditionOpts: { ifGenerationMatch: 0 }
+      // The new ID for your GCS file
+      const destFileName = `${courseID}/${destName}` // Assuming `file` has an `originalname` property
+
+      try {
+        const options = {
+          destination: destFileName,
+          preconditionOpts: { ifGenerationMatch: 0 }
+        }
+
+        await storage.bucket(bucketName).upload(filePath, options)
+        const url = `https://storage.googleapis.com/${bucketName}/${destFileName}`
+
+        // Delete the file using fs.unlink()
+        try {
+          fs.unlinkSync(filePath);
+        } catch (err) {
+          reject(err)
+        }
+
+        resolve(url)
+      } catch (error) {
+        reject(error)
       }
-
-      await storage.bucket(bucketName).upload(filePath, options)
-      //console.log(`https://storage.googleapis.com/${bucketName}/${destFileName}`)
-    } catch (error) {
-      console.error("Error uploading file to Google Cloud Storage:", error)
-      throw error
-    }
+    })
   }
 
   const getCourseID = async() => {
@@ -1045,24 +1049,56 @@ module.exports = (connMysql, connMongo) => {
     const courseID = await getCourseID()
     const userID = req.userID
 
-    await structure.chapters.map((obj, chapterIndex) => {
-      obj.lectures.map(async lecture => {
-        const index = (chapterIndex + 1).toString().padStart(2, '0')
-        const extendFile = lecture.filename.slice(-3)
+    //Upload file video_introduce & image_introduce
+    try {
+      const extendVideo = structure.video_file.slice(-3)
+      const extendImage = structure.image_file.slice(-3)
 
-        try {
-          await putFileToStorage(`${courseID}/CT${index}`, `../server/uploads/${lecture.filename}-${userID}.${extendFile}`, `${lecture.name}.${extendFile}`)
-        } catch (error) {
-          // console.log(error)
-          res.send(false)
-          // res.end()
-        }
+      const urlVideo = await putFileToStorage(
+        `${courseID}`, // C045
+        `../server/uploads/video_introduce-${userID}.${extendVideo}`, // server/uploads/introduce-I000.jpg
+        `video_introduce.${extendVideo}` // introduce.jpg
+      )
+      const urlImage = await putFileToStorage(
+        `${courseID}`, // C045
+        `../server/uploads/image_introduce-${userID}.${extendImage}`, // server/uploads/introduce-I000.jpg
+        `image_introduce.${extendImage}` // introduce.jpg
+      )
+
+      structure.video_introduce = urlVideo // Update source = url to GCS (used in mongoDB)
+      structure.image_introduce = urlImage
+    } catch (error) {
+      res.send(false)
+      res.end()
+    }
+
+    await Promise.all(
+      // Upload all media files of course content
+      structure.chapters.map(async (obj, chapterIndex) => {
+        await Promise.all(
+          obj.lectures.map(async (lecture) => {
+            const index = (chapterIndex + 1).toString().padStart(2, '0');
+            const extendFile = lecture.filename.slice(-3);
+
+            try {
+              const url = await putFileToStorage(
+                `${courseID}/CT${index}`, // C045/CT01
+                `../server/uploads/${lecture.filename}-${userID}.${extendFile}`, // server/uploads/introduce-I000.jpg
+                `${lecture.name}.${extendFile}` // introduce.jpg
+              );
+              lecture.source = url // Update source = url to GCS (used in mongoDB)
+            } catch (error) {
+              res.send(false)
+              res.end()
+            }
+          })
+        )
       })
-    })
+    )
 
-    console.log('gcs success')
+    // Insert into Mysql & MongoDB (using transaction)
+    
     res.send(true)
-    //insert into database
   })
 
   return router

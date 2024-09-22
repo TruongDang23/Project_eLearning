@@ -26,6 +26,8 @@ function DesignCourse() {
     //Data in mongoDB
     image_introduce: '',
     video_introduce: '',
+    image_file: '',
+    video_file: '',
     keywords: [],
     targets: [],
     requirements: [],
