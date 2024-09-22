@@ -1,17 +1,21 @@
 import styled from 'styled-components'
-import { useState } from 'react';
+import { useState } from 'react'
 import { AddExpertise, AddCredential } from '~/components/popup/index'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 
-function Education ({ profile, setProfile }) {
+function Education({ profile, setProfile }) {
   const [openExp, setopenExp] = useState(false)
   const [openCre, setopenCre] = useState(false)
 
-  const toggleExp = () => { setopenExp(!openExp) }
-  const toggleCre = () => { setopenCre(!openCre) }
+  const toggleExp = () => {
+    setopenExp(!openExp)
+  }
+  const toggleCre = () => {
+    setopenCre(!openCre)
+  }
 
   const deleteDegree = (index) => {
-    const newDegrees = profile.degrees.filter((_, i) => i !== index);
+    const newDegrees = profile.degrees.filter((_, i) => i !== index)
     setProfile((prev) => ({
       ...prev,
       degrees: newDegrees
@@ -28,7 +32,9 @@ function Education ({ profile, setProfile }) {
               <label key={index}>{exp}</label>
             ))}
           </div>
-          <button onClick={toggleExp}>Add Expertise</button>
+          <div className="content-expertise-btn">
+            <button onClick={toggleExp}>Add Expertise</button>
+          </div>
         </div>
 
         <div className="degree">
@@ -38,22 +44,39 @@ function Education ({ profile, setProfile }) {
               <>
                 <div className="contain">
                   <div key={index} className="degree-item">
-                    <p><strong>School:</strong> {degree.school}</p>
-                    <p><strong>Faculty:</strong> {degree.falcuty}</p>
-                    <p><strong>Period:</strong> {degree.begin_time} - {degree.end_time}</p>
+                    <p>
+                      <strong>School:</strong> {degree.school}
+                    </p>
+                    <p>
+                      <strong>Faculty:</strong> {degree.falcuty}
+                    </p>
+                    <p>
+                      <strong>Period:</strong> {degree.begin_time} -{' '}
+                      {degree.end_time}
+                    </p>
                   </div>
                   <div className="recycle">
-                    <DeleteForeverIcon className='recycle-bin' sx={{ fontSize: '40px' }} onClick={() => deleteDegree(index)} />
+                    <DeleteForeverIcon
+                      className="recycle-bin"
+                      sx={{ fontSize: '40px' }}
+                      onClick={() => deleteDegree(index)}
+                    />
                   </div>
                 </div>
               </>
             ))}
           </div>
-          <button onClick={toggleCre}>Add Credential</button>
+          <div className="content-degree-btn">
+            <button onClick={toggleCre}>Add Credential</button>
+          </div>
         </div>
       </Wrapper>
-      {openExp && <AddExpertise handleClose={toggleExp} handleSave={setProfile} />}
-      {openCre && <AddCredential handleClose={toggleCre} handleSave={setProfile} />}
+      {openExp && (
+        <AddExpertise handleClose={toggleExp} handleSave={setProfile} />
+      )}
+      {openCre && (
+        <AddCredential handleClose={toggleCre} handleSave={setProfile} />
+      )}
     </>
   )
 }
@@ -62,21 +85,24 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
 
-  h4{
-      font-size: 2.2rem;
+  h4 {
+    font-size: 1.6rem;
+    line-height: 1.4;
+    font-weight: 700;
+    color: #333;
   }
 
-  .expertise{
+  .expertise {
     height: auto;
-    max-height:200px;
+    max-height: 200px;
     width: 100%;
     max-width: 600px;
     border-radius: 5px;
     padding: 10px;
-    font-size: 2rem;
+    font-size: 1.6rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    .content-expertise{
+    .content-expertise {
       max-height: 100px;
       width: 100%;
       max-width: 600px;
@@ -86,45 +112,57 @@ const Wrapper = styled.section`
       margin-top: 10px;
       margin-bottom: 10px;
     }
-    button{
-      margin-top:10px;
-      font-size: 2rem;
-      border-radius: 5px;
-      margin-left: 70%;
-      transition: transform 0.3s;
-      border:none;
-      &:hover {
-        font-weight: bold;
-        transform: scale(1.05);
+    .content-expertise-btn {
+      display: flex;
+      justify-content: flex-end;
+      button {
+        background-color: #6c757d;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1.6rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: 0.3s all ease;
+
+        &:hover {
+          background-color: #fff;
+          color: #6c757d;
+          box-shadow: 0 0 0 2px #6c757d;
+        }
       }
     }
-    label{
+    label {
       margin-right: 10px;
       height: 50px;
       padding-left: 10px;
       padding-right: 10px;
       border: 1px solid #ccc;
-      border-radius: 20px;
-      display:flex;
+      border-radius: 5px;
+      display: flex;
       align-items: center;
       color: white;
       background-color: #187bce;
     }
   }
 
-  .degree{
-    height:auto;
+  .degree {
+    height: auto;
     max-height: 250px;
     width: 100%;
     max-width: 600px;
     border-radius: 5px;
     padding: 10px;
     margin-top: 20px;
-    font-size: 2rem;
+    font-size: 1.6rem;
     border: 1px solid #ccc;
     border-radius: 5px;
 
-    .content-degree{
+    .content-degree {
       max-height: 140px;
       width: 100%;
       max-width: 600px;
@@ -157,7 +195,8 @@ const Wrapper = styled.section`
           }
 
           strong {
-            color: #333;
+            color: #555;
+            font-weight: 700;
           }
         }
 
@@ -169,33 +208,44 @@ const Wrapper = styled.section`
       }
     }
 
-    button{
-      margin-top:10px;
-      font-size: 2rem;
-      border-radius: 5px;
-      margin-left: 70%;
-      transition: transform 0.3s;
-      border:none;
-      &:hover {
-        font-weight: bold;
-        transform: scale(1.05);
+    .content-degree-btn {
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+        background-color: #6c757d;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1.6rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: 0.3s all ease;
+
+        &:hover {
+          background-color: #fff;
+          color: #6c757d;
+          box-shadow: 0 0 0 2px #6c757d;
+        }
       }
     }
-
-    label{
+    label {
       margin-right: 10px;
       height: 50px;
       padding-left: 10px;
       padding-right: 10px;
       border: 1px solid #ccc;
       border-radius: 20px;
-      display:flex;
+      display: flex;
       align-items: center;
       color: white;
       background-color: #187bce;
     }
-
   }
-`;
+`
 
-export default Education;
+export default Education

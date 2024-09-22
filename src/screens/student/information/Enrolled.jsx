@@ -1,16 +1,25 @@
 import styled from 'styled-components'
 
-function Enrolled ({ profile }) {
-
+function Enrolled({ profile }) {
   return (
     <Wrapper>
       <div className="course">
         <div className="content-course">
           {profile.course_enrolled.map((course, index) => (
             <div key={index} className="course-item">
-              <p><strong>Course name:</strong> {course.title}</p>
-              <p><strong>Instructor:</strong> {course.instructor}</p>
-              <a href={`/course/details/${course.courseID}`} target="_blank" rel="noreferrer">Go to course</a>
+              <p>
+                <strong>Course name:</strong> {course.title}
+              </p>
+              <p>
+                <strong>Instructor:</strong> {course.instructor}
+              </p>
+              <a
+                href={`/course/details/${course.courseID}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Go to course
+              </a>
             </div>
           ))}
         </div>
@@ -22,17 +31,17 @@ function Enrolled ({ profile }) {
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
-  .course{
-    height:auto;
+  .course {
+    height: auto;
     max-height: 250px;
     width: 100%;
     max-width: 600px;
     border-radius: 5px;
     padding: 10px;
-    font-size: 2rem;
+    font-size: 1.6rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    .content-course{
+    .content-course {
       max-height: 200px;
       width: 100%;
       max-width: 600px;
@@ -56,6 +65,6 @@ const Wrapper = styled.section`
       color: #333;
     }
   }
-`;
+`
 
-export default Enrolled;
+export default Enrolled
