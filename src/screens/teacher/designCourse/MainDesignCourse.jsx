@@ -46,7 +46,6 @@ function MainDesignCourse({ setStructure }) {
     const newKeywords = [...generalKeywords]
     newKeywords[index].value = event.target.value
     setGeneralKeywords(newKeywords)
-    console.log(generalKeywords)
   }
   const handleGeneralAddMore = () => {
     setGeneralKeywords([...generalKeywords, { value: '' }])
@@ -280,13 +279,13 @@ function MainDesignCourse({ setStructure }) {
 
   const getFileAccept = (lectureType) => {
     switch (lectureType) {
-    case 'File':
+    case 'file':
       return '.pdf'
-    case 'Video':
+    case 'video':
       return '.mp4,.wmv'
-    case 'Quiz':
+    case 'quiz':
       return '.xlsx'
-    case 'Assignment':
+    case 'assignment':
       return '.xlsx'
     default:
       return '' // Cho phép tất cả các loại file nếu không ràng buộc
@@ -866,7 +865,7 @@ function MainDesignCourse({ setStructure }) {
                           handleInputChange(
                             chapterIndex,
                             lectureIndex,
-                            'title',
+                            'name',
                             e.target.value
                           )
                         }
@@ -928,10 +927,10 @@ function MainDesignCourse({ setStructure }) {
                         }}
                         disabled={!isEditing} // Chỉ chỉnh sửa khi ở chế độ edit
                       >
-                        <MenuItem value="File">File</MenuItem>
-                        <MenuItem value="Video">Video</MenuItem>
-                        <MenuItem value="Quiz">Quiz</MenuItem>
-                        <MenuItem value="Assignment">Assignment</MenuItem>
+                        <MenuItem value="file">File</MenuItem>
+                        <MenuItem value="video">Video</MenuItem>
+                        <MenuItem value="quiz">Quiz</MenuItem>
+                        <MenuItem value="assignment">Assignment</MenuItem>
                       </Select>
                       {isEditing && (
                         <IconButton
@@ -1061,9 +1060,9 @@ function MainDesignCourse({ setStructure }) {
             <button id="btn-primary" onClick={handleSaveCourseStructureClick}>
               Save Course Structure
             </button>
-            <button id="btn-primary" onClick={() => console.log(chapters)}>
+            {/* <button id="btn-primary" onClick={() => console.log(chapters)}>
               Course Structure
-            </button>
+            </button> */}
           </div>
         </div>
       </Element>

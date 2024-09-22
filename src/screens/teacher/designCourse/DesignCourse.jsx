@@ -57,7 +57,7 @@ function DesignCourse() {
       })
     })
 
-    //API upload file into GCS
+    //API upload file into folder uploads
     await axios.post(
       "http://localhost:3000/c/uploadfile",
       formData,
@@ -88,7 +88,7 @@ function DesignCourse() {
           navigate('/403error')
       })
 
-    //API insert data into mysql & mongoDB
+    //API insert data into mysql & mongoDB & GCS
     await axios.post(
       "http://localhost:3000/c/createcourse",
       {
