@@ -5,6 +5,8 @@ const cors = require("cors")
 
 const axios = require("axios")
 
+const mongo = require('mongoose')
+
 //middleware upload file from local disk -> server NodeJS
 const { upload } = require('../multer')
 const fs = require('fs')
@@ -51,6 +53,7 @@ const storage = new Storage({
 module.exports = (connMysql, connMongo) => {
   //Khởi tạo tham số router và cấp quyền CORS
   const router = express.Router()
+  const mysqlTransaction = connMysql.promise();
   router.use(cors())
   router.use(express.json())
 
@@ -72,6 +75,17 @@ module.exports = (connMysql, connMongo) => {
     const seconds = String(date.getSeconds()).padStart(2, "0")
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
   }
+
+
+  const isInstructor = async(userID) => {
+    return new Promise((resolve) => {
+      if (userID[0] !== 'I')
+        resolve(false)
+      else
+        resolve(true)
+    })
+  }
+
   // Define your asynchronous functions
   const updateStatusOfCourse = async (courseID, status) => {
     return new Promise((resolve, reject) => {
@@ -1045,60 +1059,169 @@ module.exports = (connMysql, connMongo) => {
   })
 
   router.post("/createcourse", verifyToken, async(req, res) => {
-    const { structure } = req.body
-    const courseID = await getCourseID()
-    const userID = req.userID
-
-    //Upload file video_introduce & image_introduce
-    try {
-      const extendVideo = structure.video_file.slice(-3)
-      const extendImage = structure.image_file.slice(-3)
-
-      const urlVideo = await putFileToStorage(
-        `${courseID}`, // C045
-        `../server/uploads/video_introduce-${userID}.${extendVideo}`, // server/uploads/introduce-I000.jpg
-        `video_introduce.${extendVideo}` // introduce.jpg
-      )
-      const urlImage = await putFileToStorage(
-        `${courseID}`, // C045
-        `../server/uploads/image_introduce-${userID}.${extendImage}`, // server/uploads/introduce-I000.jpg
-        `image_introduce.${extendImage}` // introduce.jpg
-      )
-
-      structure.video_introduce = urlVideo // Update source = url to GCS (used in mongoDB)
-      structure.image_introduce = urlImage
-    } catch (error) {
-      res.send(false)
-      res.end()
+    if (await isInstructor(req.userID) === false) {
+      res.status(401).send('error')
+      return
     }
+    else {
+      const { structure } = req.body
+      const courseID = await getCourseID()
+      const userID = req.userID
 
-    await Promise.all(
-      // Upload all media files of course content
-      structure.chapters.map(async (obj, chapterIndex) => {
-        await Promise.all(
-          obj.lectures.map(async (lecture) => {
-            const index = (chapterIndex + 1).toString().padStart(2, '0');
-            const extendFile = lecture.filename.slice(-3);
+      //Upload file video_introduce & image_introduce
+      try {
+        const extendVideo = structure.video_file.slice(-3)
+        const extendImage = structure.image_file.slice(-3)
 
-            try {
-              const url = await putFileToStorage(
-                `${courseID}/CT${index}`, // C045/CT01
-                `../server/uploads/${lecture.filename}-${userID}.${extendFile}`, // server/uploads/introduce-I000.jpg
-                `${lecture.name}.${extendFile}` // introduce.jpg
-              );
-              lecture.source = url // Update source = url to GCS (used in mongoDB)
-            } catch (error) {
-              res.send(false)
-              res.end()
-            }
-          })
+        const urlVideo = await putFileToStorage(
+          `${courseID}`, // C045
+          `../server/uploads/video_introduce-${userID}.${extendVideo}`, // server/uploads/introduce-I000.jpg
+          `video_introduce.${extendVideo}` // introduce.jpg
         )
-      })
-    )
+        const urlImage = await putFileToStorage(
+          `${courseID}`, // C045
+          `../server/uploads/image_introduce-${userID}.${extendImage}`, // server/uploads/introduce-I000.jpg
+          `image_introduce.${extendImage}` // introduce.jpg
+        )
 
-    // Insert into Mysql & MongoDB (using transaction)
-    
-    res.send(true)
+        structure.video_introduce = urlVideo // Update source = url to GCS (used in mongoDB)
+        structure.image_introduce = urlImage
+      } catch (error) {
+        res.send(false)
+        res.end()
+      }
+
+      await Promise.all(
+        // Upload all media files of course content
+        structure.chapters.map(async (obj, chapterIndex) => {
+          await Promise.all(
+            obj.lectures.map(async (lecture) => {
+              const index = (chapterIndex + 1).toString().padStart(2, '0');
+              const extendFile = lecture.filename.slice(-3);
+
+              try {
+                const url = await putFileToStorage(
+                  `${courseID}/CT${index}`, // C045/CT01
+                  `../server/uploads/${lecture.filename}-${userID}.${extendFile}`, // server/uploads/introduce-I000.jpg
+                  `${lecture.name}.${extendFile}` // introduce.jpg
+                );
+                lecture.source = url // Update source = url to GCS (used in mongoDB)
+              } catch (error) {
+                res.send(false)
+                res.end()
+              }
+            })
+          )
+        })
+      )
+
+      // Insert into Mysql & MongoDB (using transaction)
+      connMysql.getConnection(async (err) => {
+        if (err) {
+          res.status(500).send(err)
+          return
+        }
+        else {
+          const mongoSession = await mongo.startSession()
+          const time = formatDateTime(new Date())
+          try {
+            mongoSession.startTransaction()
+            await mysqlTransaction.query("START TRANSACTION")
+
+            //Insert course structure into mongoDB
+            await Course.collection.insertOne(
+              {
+                courseID: courseID,
+                image_introduce: structure.image_introduce,
+                video_introduce: structure.video_introduce,
+                keywords: structure.keywords,
+                targets: structure.targets,
+                requirements: structure.requirements,
+                chapters: structure.chapters
+              },
+              {
+                session: mongoSession
+              }
+            )
+
+            //Insert course information into table course
+            let queryInsertNewCourse = `INSERT INTO course (
+                          courseID,
+                          type_of_course,
+                          title,
+                          method,
+                          language,
+                          price,
+                          currency,
+                          program,
+                          category,
+                          course_for,
+                          status,
+                          num_lecture,
+                          userID)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                            `
+
+            //Insert course information into table created_course
+            let queryInsertCreateCourse = `INSERT INTO created_course (
+                          courseID,
+                          time)
+                        VALUES (?, ?)`
+
+            const [rowscourse] = await mysqlTransaction.query(queryInsertNewCourse,
+              [
+                courseID,
+                structure.type_of_course,
+                structure.title,
+                structure.method,
+                structure.language,
+                structure.price,
+                structure.currency,
+                structure.program,
+                structure.category,
+                structure.course_for,
+                'created',
+                structure.num_lecture,
+                userID
+              ])
+
+            const [rowscreated_course] = await mysqlTransaction.query(queryInsertCreateCourse,
+              [
+                courseID,
+                time
+              ])
+
+            if (rowscourse.affectedRows == 0 || rowscreated_course.affectedRows == 0 )
+            {
+              await mysqlTransaction.query("ROLLBACK")
+              await mongoSession.abortTransaction()
+              res.send(false)
+              return
+            }
+            else
+            {
+              await mysqlTransaction.query("COMMIT")
+              await mongoSession.commitTransaction()
+              // res.send(true)
+              // res.end()
+            }
+          }
+          catch {
+            await mysqlTransaction.query("ROLLBACK")
+            await mongoSession.abortTransaction()
+            res.send(false)
+            return
+          }
+          finally {
+            mongoSession.endSession()
+          }
+        }
+      })
+
+      setTimeout(() => {
+        res.send(true);
+      }, 2000);
+    }
   })
 
   return router

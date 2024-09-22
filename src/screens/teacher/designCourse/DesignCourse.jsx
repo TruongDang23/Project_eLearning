@@ -56,7 +56,7 @@ function DesignCourse() {
         formData.append(`${lecture.source.name}-${userData.userID}`, lecture.source)
       })
     })
-    console.log(structure)
+
     //API upload file into GCS
     await axios.post(
       "http://localhost:3000/c/uploadfile",
@@ -70,7 +70,7 @@ function DesignCourse() {
       }
     )
       .then(response => {
-        if (response.data == true)
+        if (response.status === 200)
           setIsLoad(true) //Start loading page
       })
       .catch(error => {
@@ -101,10 +101,11 @@ function DesignCourse() {
         }
       }
     )
+      // eslint-disable-next-line no-unused-vars
       .then(response => {
-        console.log(response)
-        // setUserProfile(response.data)
         setIsLoad(false) //Data is loaded successfully
+        navigate('/instructor/manageCourse')
+        alert('Upload Course Successfully')
       })
       .catch(error => {
         //Server shut down
