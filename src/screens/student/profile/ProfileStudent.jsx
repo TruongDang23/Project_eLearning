@@ -14,6 +14,8 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
+import Logo from '../../../assets/hdh.png'
+
 import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
 
 function ProfileStudent() {
@@ -87,6 +89,11 @@ const ProfileStudentWrapper = styled.main`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  ${'' /* background-image: url(${Logo});
+  background-repeat: repeat;
+  background-size: auto;
+  background-attachment: fixed;
+  min-height: 100vh; */}
 `
 
 export default ProfileStudent
