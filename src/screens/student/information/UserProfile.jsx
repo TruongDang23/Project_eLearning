@@ -64,10 +64,15 @@ function UserProfile({ profile, setProfile }) {
       </div>
       <div className="content">
         <h3>UserID: </h3>
-        <input type="text" value={profile.userID} readOnly={true} />
+        <Input
+          type="text"
+          value={profile.userID}
+          isReadOnly={true}
+          readOnly={true}
+        />
 
         <h3>Full name:</h3>
-        <input
+        <Input
           type="text"
           value={profile.fullname}
           onChange={(e) => {
@@ -76,6 +81,7 @@ function UserProfile({ profile, setProfile }) {
               fullname: e.target.value
             }))
           }}
+          isReadOnly={isReadOnly}
           readOnly={isReadOnly}
         />
 
@@ -90,42 +96,46 @@ function UserProfile({ profile, setProfile }) {
               date_of_birth: formatDate(date)
             }))
           }}
+          disabled={isReadOnly}
         />
 
         <h3>Location:</h3>
         <div className="location">
-          <input
+          <Input
             type="text"
             value={profile.street}
-            readOnly={isReadOnly}
             onChange={(e) => {
               setProfile((prevProfile) => ({
                 ...prevProfile,
                 street: e.target.value
               }))
             }}
+            isReadOnly={isReadOnly}
+            readOnly={isReadOnly}
           />
-          <input
+          <Input
             type="text"
             value={profile.province}
-            readOnly={isReadOnly}
             onChange={(e) => {
               setProfile((prevProfile) => ({
                 ...prevProfile,
                 province: e.target.value
               }))
             }}
+            isReadOnly={isReadOnly}
+            readOnly={isReadOnly}
           />
-          <input
+          <Input
             type="text"
             value={profile.country}
-            readOnly={isReadOnly}
             onChange={(e) => {
               setProfile((prevProfile) => ({
                 ...prevProfile,
                 country: e.target.value
               }))
             }}
+            isReadOnly={isReadOnly}
+            readOnly={isReadOnly}
           />
         </div>
 
@@ -151,37 +161,46 @@ function UserProfile({ profile, setProfile }) {
         </div>
 
         <h3>Social networks:</h3>
-        <input
+        <Input
           type="text"
           placeholder="Link to social profile"
           value={profile.social_network[0]}
-          readOnly={isReadOnly}
           onChange={(e) => handleSocialNetworkChange(0, e.target.value)}
+          isReadOnly={isReadOnly}
+          readOnly={isReadOnly}
         />
-        <input
+        <Input
           type="text"
           placeholder="Link to social profile"
           value={profile.social_network[1]}
-          readOnly={isReadOnly}
           onChange={(e) => handleSocialNetworkChange(1, e.target.value)}
+          isReadOnly={isReadOnly}
+          readOnly={isReadOnly}
         />
-        <input
+        <Input
           type="text"
           placeholder="Link to social profile"
           value={profile.social_network[2]}
-          readOnly={isReadOnly}
           onChange={(e) => handleSocialNetworkChange(2, e.target.value)}
+          isReadOnly={isReadOnly}
+          readOnly={isReadOnly}
         />
-        <input
+        <Input
           type="text"
           placeholder="Link to social profile"
           value={profile.social_network[3]}
-          readOnly={isReadOnly}
           onChange={(e) => handleSocialNetworkChange(3, e.target.value)}
+          isReadOnly={isReadOnly}
+          readOnly={isReadOnly}
         />
 
         <h3>Activity status:</h3>
-        <input type="text" value={profile.activity_status} readOnly={true} />
+        <Input
+          type="text"
+          value={profile.activity_status}
+          readOnly={true}
+          isReadOnly={true}
+        />
 
         <div className="item-btns">
           <button
@@ -204,6 +223,31 @@ function UserProfile({ profile, setProfile }) {
     </ProfileContainer>
   )
 }
+
+const Input = styled.input`
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  color: #333;
+  font-size: 1.6rem;
+  padding-left: 10px;
+  background: ${(props) =>
+    props.isReadOnly ? 'rgba(243, 243, 250, 0.8)' : '#f5f5f5'};
+  transition: 0.3s all ease;
+  cursor: ${(props) => (props.isReadOnly ? 'not-allowed' : 'text')};
+
+  &:hover {
+    box-shadow: ${(props) => (props.isReadOnly ? 'none' : '0 0 0 2px #187bce')};
+  }
+
+  &:focus,
+  &:active {
+    outline: none;
+    box-shadow: ${(props) => (props.isReadOnly ? 'none' : '0 0 0 2px #187bce')};
+  }
+`
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -230,31 +274,6 @@ const ProfileContainer = styled.div`
       font-size: 1.6rem;
       font-weight: 700;
       color: #333;
-    }
-    input {
-      width: 100%;
-      height: 40px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      border: none;
-      color: #333;
-      font-size: 1.6rem;
-      font-style: normal;
-      line-height: normal;
-      padding-left: 10px;
-      background: rgba(243, 243, 250, 0.8);
-      transition: 0.3s all ease;
-
-      &:hover {
-        transition: 0.3s all ease;
-        box-shadow: 0 0 0 2px #187bce;
-      }
-
-      &:focus,
-      &:active {
-        outline: none;
-        box-shadow: 0 0 0 2px #187bce;
-      }
     }
   }
   .react-calendar {
@@ -316,31 +335,6 @@ const ProfileContainer = styled.div`
     justify-items: center;
     align-items: center;
     margin: 0 auto;
-    input {
-      width: 100%;
-      height: 40px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      border: none;
-      color: #333;
-      font-size: 1.6rem;
-      font-style: normal;
-      line-height: normal;
-      padding-left: 10px;
-      background: rgba(243, 243, 250, 0.8);
-      transition: 0.3s all ease;
-
-      &:hover {
-        transition: 0.3s all ease;
-        box-shadow: 0 0 0 2px #187bce;
-      }
-
-      &:focus,
-      &:active {
-        outline: none;
-        box-shadow: 0 0 0 2px #187bce;
-      }
-    }
   }
   .item-btns {
     display: flex;
