@@ -7,21 +7,20 @@ import MainDesignCourse from './MainDesignCourse'
 import Sidebar from './Sidebar'
 import { DesignCourseProvider } from './DesignCourseContext'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import Loading from "~/screens/system/Loading"
 
 function DesignCourse() {
   const formData = new FormData()
 
-  const [files, setFile] = useState([])
   const token = localStorage.getItem('token')
   const userAuth = localStorage.getItem('userAuth')
   const userData = JSON.parse(localStorage.getItem('userAuth'))
   const navigate = useNavigate()
-
-  const [save, setSave] = useState(true) //flag variable. Its will be change whenever user click Save in order to create course
+  const [isLoad, setIsLoad] = useState(false)
 
   const [structure, setStructure] = useState({
     //Data in mongoDB
@@ -43,12 +42,10 @@ function DesignCourse() {
     category: '',
     course_for: '',
     userID: '',
-    //status: '', status sẽ được xử lý dưới backend
     num_lecture: 0 //num_lecture sẽ phụ thuộc vào độ dài của chapters
   })
 
-  useEffect(() => {
-    formData.append("Structure", JSON.stringify(structure))
+  const handleSave = async() => {
     formData.append(`image_introduce-${userData.userID}`, structure.image_introduce)
     formData.append(`video_introduce-${userData.userID}`, structure.video_introduce)
 
@@ -57,9 +54,9 @@ function DesignCourse() {
         formData.append(`${lecture.source.name}-${userData.userID}`, lecture.source)
       })
     })
-
+    console.log(structure)
     //API upload file into GCS
-    axios.post(
+    await axios.post(
       "http://localhost:3000/c/uploadfile",
       formData,
       {
@@ -71,10 +68,8 @@ function DesignCourse() {
       }
     )
       .then(response => {
-        console.log(response.data)
-        setFile(response.data)
-      // setUserProfile(response.data)
-      // setIsLoad(false) //Data is loaded successfully
+        if (response.data == true)
+          setIsLoad(true) //Start loading page
       })
       .catch(error => {
       //Server shut down
@@ -92,11 +87,10 @@ function DesignCourse() {
       })
 
     //API insert data into mysql & mongoDB
-    axios.post(
+    await axios.post(
       "http://localhost:3000/c/createcourse",
       {
-        structure,
-        files
+        structure
       },
       {
         headers: {
@@ -108,7 +102,7 @@ function DesignCourse() {
       .then(response => {
         console.log(response)
         // setUserProfile(response.data)
-        // setIsLoad(false) //Data is loaded successfully
+        setIsLoad(false) //Data is loaded successfully
       })
       .catch(error => {
         //Server shut down
@@ -124,21 +118,29 @@ function DesignCourse() {
         if (error.response.status === 403)
           navigate('/403error')
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [save])
+  }
 
   return (
-    <DesignCourseProvider>
-      <GlobalStyle />
-      <GeneralHeader />
-      <DesignCourseWrapper>
-        <Sticky disabled={window.innerWidth <= 768}>
-          <Sidebar setFlag={setSave}/>
-        </Sticky>
-        <MainDesignCourse setStructure={setStructure}/>
-      </DesignCourseWrapper>
-      <FooterNew />
-    </DesignCourseProvider>
+    <>
+      {
+        isLoad ? (<Loading/>) :
+          (
+            <>
+              <DesignCourseProvider>
+                <GlobalStyle />
+                <GeneralHeader />
+                <DesignCourseWrapper>
+                  <Sticky disabled={window.innerWidth <= 768}>
+                    <Sidebar handleSave={handleSave}/>
+                  </Sticky>
+                  <MainDesignCourse setStructure={setStructure}/>
+                </DesignCourseWrapper>
+                <FooterNew />
+              </DesignCourseProvider>
+            </>
+          )
+      }
+    </>
   )
 }
 

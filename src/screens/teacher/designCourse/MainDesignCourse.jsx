@@ -273,7 +273,8 @@ function MainDesignCourse({ setStructure }) {
   const handleFileChange = (chapterIndex, lectureIndex, event) => {
     const file = event.target.files[0]
     if (file) {
-      handleInputChange(chapterIndex, lectureIndex, 'source', file) // Cập nhật tên file
+      handleInputChange(chapterIndex, lectureIndex, 'filename', file.name) // Cập nhật tên file
+      handleInputChange(chapterIndex, lectureIndex, 'source', file)
     }
   }
 
