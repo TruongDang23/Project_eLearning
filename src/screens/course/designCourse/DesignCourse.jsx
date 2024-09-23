@@ -5,6 +5,7 @@ import Sticky from 'react-sticky-el'
 import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
 
 import MainDesignCourse from './MainDesignCourse'
+
 import Sidebar from './Sidebar'
 import { DesignCourseProvider } from './DesignCourseContext'
 
