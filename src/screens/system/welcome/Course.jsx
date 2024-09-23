@@ -49,8 +49,8 @@ const CourseWrapper = styled.div`
       height: 200px;
       object-fit: cover;
       ${'' /* bo hai góc trên của ảnh */}
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
+      ${'' /* border-top-left-radius: 10px;
+      border-top-right-radius: 10px; */}
     }
   }
   .item-body {
