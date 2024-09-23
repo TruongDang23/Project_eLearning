@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import StarRating from "./StarRating";
-import { Link } from "react-router-dom";
+import styled from 'styled-components'
+import StarRating from './StarRating'
+import { Link } from 'react-router-dom'
 
 function Course({ course }) {
   const { courseID, title, price, star, raters, image_introduce, fullname } =
-    course;
+    course
   return (
     <CourseWrapper>
       <div className="item-img">
@@ -30,14 +30,15 @@ function Course({ course }) {
         <button className="item-btn add-to-cart-btn">Add to Cart</button>
       </div>
     </CourseWrapper>
-  );
+  )
 }
 
 const CourseWrapper = styled.div`
   margin-bottom: 20px;
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: #0000000f 0px 4px 20px 0px;
+  border: 2px solid #74c0fc;
+  box-shadow: 0 10px 20px rgba(44, 130, 201, 0.2);
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -47,7 +48,7 @@ const CourseWrapper = styled.div`
       width: 100%;
       height: 200px;
       object-fit: cover;
-      ${"" /* bo hai góc trên của ảnh */}
+      ${'' /* bo hai góc trên của ảnh */}
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
     }
@@ -129,7 +130,7 @@ const CourseWrapper = styled.div`
       &.add-to-cart-btn {
         background-color: #fff;
         color: #1971c2;
-        border: 1px solid #1971c2;
+        border: 2px solid #1971c2;
         margin-left: 10px;
         &:hover {
           background-color: #1971c2;
@@ -141,9 +142,9 @@ const CourseWrapper = styled.div`
   }
 
   &:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
     transition: all ease 0.3s;
   }
-`;
+`
 
-export default Course;
+export default Course

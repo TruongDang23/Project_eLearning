@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import { Link } from 'react-scroll'
+import { Slide } from 'react-slideshow-image'
+import 'react-slideshow-image/dist/styles.css'
 
 import heroImgPng from '../assets/hero.png'
 
@@ -26,15 +28,7 @@ function HeroSection() {
           </div>
         </div>
         <div className="hero-img-box">
-          <picture>
-            {/* <source srcSet={heroImgWebp} type="image/webp" /> */}
-            <source srcSet={heroImgPng} type="image/png" />
-            <img
-              src={heroImgPng}
-              className="heroImg"
-              alt="Hero Section Image"
-            />
-          </picture>
+          <img src={heroImgPng} className="heroImg" alt="Hero Section Image" />
         </div>
       </div>
     </SectionHero>
@@ -42,8 +36,28 @@ function HeroSection() {
 }
 
 const SectionHero = styled.section`
-  background-color: #d0ebff;
-  padding: 4.8rem 0 9.6rem 0;
+  height: 90vh;
+  ${'' /* background-color: #d0ebff; */}
+  background: radial-gradient(
+    circle,
+    rgba(30, 81, 123, 1),
+    rgba(8, 144, 234, 0.8)
+  );
+  background-size: 200% 200%;
+  animation: gradientMovement 10s ease infinite;
+
+  @keyframes gradientMovement {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+  ${'' /* padding: 4.8rem 0 9.6rem 0; */}
 
   .hero {
     max-width: 120rem;
@@ -55,16 +69,22 @@ const SectionHero = styled.section`
     align-items: center;
 
     .hero-text-box {
+      margin-top: 1rem;
       .headingPrimary {
-        font-size: 5.2rem;
-        line-height: 1.05;
+        font-size: 4rem;
+        line-height: 1.2;
         margin-bottom: 3.2rem;
+        text-transform: uppercase;
         font-weight: 700;
-        color: #333;
+        color: #fff;
+        ${'' /* color: #1864ab; */}
         letter-spacing: -0.5px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
       }
 
       .heroDescription {
+        color: #f0f0f0;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
         font-size: 2rem;
         line-height: 1.6;
         margin-bottom: 4.8rem;
@@ -75,6 +95,7 @@ const SectionHero = styled.section`
         flex-direction: row;
         flex-wrap: wrap;
         gap: 1.6rem;
+        margin-bottom: 4.8rem;
 
         @media (max-width: 768px) {
           flex-direction: column;
@@ -85,7 +106,7 @@ const SectionHero = styled.section`
           display: inline-block;
           padding: 1.6rem 4.8rem;
           font-size: 1.6rem;
-          font-weight: 500;
+          font-weight: 700;
           color: #fff;
           background-color: #1971c2;
           border: none;
@@ -105,7 +126,7 @@ const SectionHero = styled.section`
           display: inline-block;
           padding: 1.6rem 4.8rem;
           font-size: 1.6rem;
-          font-weight: 500;
+          font-weight: 700;
           color: #1971c2;
           background-color: #fff;
           border: 2px solid #1971c2;
@@ -126,6 +147,7 @@ const SectionHero = styled.section`
     .hero-img-box {
       .heroImg {
         width: 100%;
+        object-fit: cover;
       }
     }
   }
