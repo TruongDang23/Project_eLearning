@@ -45,7 +45,9 @@ function Login() {
         loginCredential: response.credential
       });
       if (res.data === "error")
-        setMessage("An error occurred when logging in with Google!");
+        setMessage("An error occurred when logging in with Google!")
+      else if (res.data === "locked")
+        setMessage("Your account is locked. Please choose another one")
       else {
         const { token, userID, role } = res.data;
         const userData = JSON.stringify({ userID, role });
