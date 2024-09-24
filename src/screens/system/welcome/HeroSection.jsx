@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { Link } from 'react-scroll'
-import { Slide } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
 
 import heroImgPng from '../assets/hero.png'
