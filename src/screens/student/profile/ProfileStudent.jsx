@@ -13,6 +13,7 @@ import Loading from '~/screens/system/Loading'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import Sticky from 'react-sticky-el'
 
 import Logo from '../../../assets/hdh.png'
 
@@ -62,15 +63,19 @@ function ProfileStudent() {
             <title>Profile | EL-Space</title>
           </Helmet>
           <GlobalStyle />
-          <GeneralHeader />
-          <ProfileStudentWrapper className="container">
-            <ContactInfo userProfile={userProfiles} />
-            <AboutMe self_introduce={userProfiles.self_introduce} />
-            <Education degrees={userProfiles.degrees} />
-            <WorkExperience working_history={userProfiles.working_history} />
-            <PersonalProject projects={userProfiles.projects} />
-            <CourseEnrolled course_enrolled={userProfiles.course_enrolled} />
-          </ProfileStudentWrapper>
+          <Sticky disabled={window.innerWidth <= 768}>
+            <GeneralHeader />
+          </Sticky>
+          <ProfileMainWrapper>
+            <ProfileStudentWrapper className="container">
+              <ContactInfo userProfile={userProfiles} />
+              <AboutMe self_introduce={userProfiles.self_introduce} />
+              <Education degrees={userProfiles.degrees} />
+              <WorkExperience working_history={userProfiles.working_history} />
+              <PersonalProject projects={userProfiles.projects} />
+              <CourseEnrolled course_enrolled={userProfiles.course_enrolled} />
+            </ProfileStudentWrapper>
+          </ProfileMainWrapper>
           <GeneralFooter />
         </>
       )}
@@ -84,16 +89,19 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
+const ProfileMainWrapper = styled.main`
+  background-image: url(${Logo});
+  background-repeat: repeat;
+  background-size: auto;
+  background-attachment: fixed;
+  min-height: 100vh;
+`
+
 const ProfileStudentWrapper = styled.main`
   padding: 40px 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  ${'' /* background-image: url(${Logo});
-  background-repeat: repeat;
-  background-size: auto;
-  background-attachment: fixed;
-  min-height: 100vh; */}
 `
 
 export default ProfileStudent

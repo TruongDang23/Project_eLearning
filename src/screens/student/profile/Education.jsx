@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 function Education({ degrees }) {
   return (
@@ -21,7 +21,7 @@ function Education({ degrees }) {
         </div>
       </div>
     </EducationWrapper>
-  );
+  )
 }
 
 const EducationWrapper = styled.section`
@@ -31,11 +31,12 @@ const EducationWrapper = styled.section`
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: #0000000f 0px 4px 20px 0px;
+  border: 2px solid #74c0fc;
+  box-shadow: 0 10px 20px rgba(44, 130, 201, 0.2);
   transition: all 0.3s;
-  
+
   &:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
     transition: all ease 0.3s;
   }
 
@@ -118,6 +119,6 @@ const EducationWrapper = styled.section`
       }
     }
   }
-`;
+`
 
-export default Education;
+export default Education

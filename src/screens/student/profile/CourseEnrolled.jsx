@@ -1,7 +1,6 @@
-import React from "react";
-import styled from "styled-components";
+import styled from 'styled-components'
 
-import StarRating from "~/components/general/Other/StarRating";
+import StarRating from '~/components/general/Other/StarRating'
 
 function CourseEnrolled({ course_enrolled }) {
   return (
@@ -12,7 +11,7 @@ function CourseEnrolled({ course_enrolled }) {
         <div className="course-enrolled__content">
           {course_enrolled.map((course, index) => {
             const price =
-              course.price == 0 ? "Free" : course.price + " " + course.currency;
+              course.price == 0 ? 'Free' : course.price + ' ' + course.currency
             return (
               <div key={index} className="course-enrolled__content-item">
                 <div className="item-img">
@@ -31,12 +30,12 @@ function CourseEnrolled({ course_enrolled }) {
                   </div>
                 </div>
               </div>
-            );
+            )
           })}
         </div>
       </div>
     </CourseEnrolledWrapper>
-  );
+  )
 }
 
 const CourseEnrolledWrapper = styled.section`
@@ -46,11 +45,12 @@ const CourseEnrolledWrapper = styled.section`
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: #0000000f 0px 4px 20px 0px;
+  border: 2px solid #74c0fc;
+  box-shadow: 0 10px 20px rgba(44, 130, 201, 0.2);
   transition: all 0.3s;
-  
+
   &:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
     transition: all ease 0.3s;
   }
 
@@ -86,7 +86,7 @@ const CourseEnrolledWrapper = styled.section`
             width: 100%;
             height: 200px;
             object-fit: cover;
-            ${"" /* bo hai góc trên của ảnh */}
+            ${'' /* bo hai góc trên của ảnh */}
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
           }
@@ -232,6 +232,6 @@ const CourseEnrolledWrapper = styled.section`
       }
     }
   }
-`;
+`
 
-export default CourseEnrolled;
+export default CourseEnrolled
