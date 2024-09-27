@@ -1,9 +1,12 @@
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-scroll'
 
-import heroImgPng from '../assets/hero.png'
+import heroNew from '../assets/heroNew.png'
+import heroNewTwo from '../assets/heroNew-two.png'
 
 function HeroSection() {
+  const [hovered, setHovered] = useState(false)
   return (
     <SectionHero>
       <div className="hero">
@@ -25,8 +28,16 @@ function HeroSection() {
             </Link>
           </div>
         </div>
-        <div className="hero-img-box">
-          <img src={heroImgPng} className="heroImg" alt="Hero Section Image" />
+        <div
+          className="hero-img-box"
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+        >
+          <img
+            src={hovered ? heroNewTwo : heroNew}
+            className="heroImg"
+            alt="Hero Section Image"
+          />
         </div>
       </div>
     </SectionHero>
@@ -35,11 +46,11 @@ function HeroSection() {
 
 const SectionHero = styled.section`
   height: 90vh;
-  ${'' /* background-color: #d0ebff; */}
+  ${'' /* background-color: #0b3052; */}
   background: radial-gradient(
     circle,
     rgba(30, 81, 123, 1),
-    rgba(8, 144, 234, 0.8)
+    #0b3052
   );
   background-size: 200% 200%;
   animation: gradientMovement 10s ease infinite;
@@ -56,6 +67,9 @@ const SectionHero = styled.section`
     }
   }
   ${'' /* padding: 4.8rem 0 9.6rem 0; */}
+
+  ${'' /* add image background */}
+
 
   .hero {
     max-width: 120rem;
@@ -143,9 +157,15 @@ const SectionHero = styled.section`
     }
 
     .hero-img-box {
+      padding: 3.2rem;
+      transition: transform 0.3s ease-in-out;
       .heroImg {
         width: 100%;
         object-fit: cover;
+        transition: all 0.5s;
+      }
+      &:hover .heroImg {
+        transform: scale(1.02); /* Scale image on hover */
       }
     }
   }
