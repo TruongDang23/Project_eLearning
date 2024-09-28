@@ -128,8 +128,8 @@ const Navbar = styled.nav`
   align-items: center;
   padding: 10px 20px;
   background-color: #fff;
-  border-bottom: 1px solid #e0e0e0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #74c0fc;
+  box-shadow: 0 2px 4px rgba(44, 130, 201, 0.2);
 
   .brand {
     display: flex;

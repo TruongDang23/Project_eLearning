@@ -1,48 +1,48 @@
-import styled from "styled-components";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import StarRating from "~/components/general/Other/StarRating";
-import { languages } from "~/constants/listLanguage";
-import { useSearchParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import styled from 'styled-components'
+import Accordion from '@mui/material/Accordion'
+import AccordionSummary from '@mui/material/AccordionSummary'
+import AccordionDetails from '@mui/material/AccordionDetails'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormControl from '@mui/material/FormControl'
+import StarRating from '~/components/general/Other/StarRating'
+import { languages } from '~/constants/listLanguage'
+import { useSearchParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 function FilterCourse({ title }) {
-  const [searchFilters, setSearchFilters] = useSearchParams();
-  const [ratings, setRatings] = useState(searchFilters.get('ratings') || '');
-  const [language, setLanguage] = useState(searchFilters.get('language') || '');
-  const [method, setMethod] = useState(searchFilters.get('method') || '');
-  const [program, setProgram] = useState(searchFilters.get('program') || '');
-  const [price, setPrice] = useState(searchFilters.get('price') || '');
+  const [searchFilters, setSearchFilters] = useSearchParams()
+  const [ratings, setRatings] = useState(searchFilters.get('ratings') || '')
+  const [language, setLanguage] = useState(searchFilters.get('language') || '')
+  const [method, setMethod] = useState(searchFilters.get('method') || '')
+  const [program, setProgram] = useState(searchFilters.get('program') || '')
+  const [price, setPrice] = useState(searchFilters.get('price') || '')
 
   useEffect(() => {
-    const params = {};
+    const params = {}
 
     if (title) params.q = title
-    if (ratings) params.ratings = ratings;
-    if (language) params.language = language;
-    if (method) params.method = method;
-    if (program) params.program = program;
-    if (price) params.price = price;
+    if (ratings) params.ratings = ratings
+    if (language) params.language = language
+    if (method) params.method = method
+    if (program) params.program = program
+    if (price) params.price = price
 
-    setSearchFilters(params);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    setSearchFilters(params)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [title, ratings, language, method, program, price])
 
   return (
     <FilterCourseWrapper>
       <Accordion
         sx={{
-          boxShadow: "none",
-          borderTop: "1px solid #e0e0e0",
-          fontSize: "1rem !important",
-          "&:before": {
-            display: "none"
+          boxShadow: 'none',
+          borderTop: '1px solid #e0e0e0',
+          fontSize: '1rem !important',
+          '&:before': {
+            display: 'none'
           }
         }}
         defaultExpanded
@@ -52,8 +52,8 @@ function FilterCourse({ title }) {
           aria-controls="rating-content"
           id="rating-header"
           sx={{
-            padding: "0px 10px",
-            "& .MuiAccordionSummary-content": {
+            padding: '0px 10px',
+            '& .MuiAccordionSummary-content': {
               margin: 0
             }
           }}
@@ -66,7 +66,9 @@ function FilterCourse({ title }) {
               aria-labelledby="demo-radio-buttons-group-label"
               value={ratings}
               name="radio-buttons-group"
-              onChange={(event) => {setRatings(event.target.value)}}
+              onChange={(event) => {
+                setRatings(event.target.value)
+              }}
             >
               <FormControlLabel
                 value="4"
@@ -117,11 +119,11 @@ function FilterCourse({ title }) {
       </Accordion>
       <Accordion
         sx={{
-          boxShadow: "none",
-          borderTop: "1px solid #e0e0e0",
-          fontSize: "1rem !important",
-          "&:before": {
-            display: "none"
+          boxShadow: 'none',
+          borderTop: '1px solid #e0e0e0',
+          fontSize: '1rem !important',
+          '&:before': {
+            display: 'none'
           }
         }}
         defaultExpanded
@@ -131,8 +133,8 @@ function FilterCourse({ title }) {
           aria-controls="language-content"
           id="language-header"
           sx={{
-            padding: "0px 10px",
-            "& .MuiAccordionSummary-content": {
+            padding: '0px 10px',
+            '& .MuiAccordionSummary-content': {
               margin: 0
             }
           }}
@@ -144,7 +146,9 @@ function FilterCourse({ title }) {
             id="language"
             className="language-select"
             value={language}
-            onChange={(event) => {setLanguage(event.target.value)}}
+            onChange={(event) => {
+              setLanguage(event.target.value)
+            }}
           >
             {languages.map((language, index) => (
               <option key={index} value={language}>
@@ -157,11 +161,11 @@ function FilterCourse({ title }) {
 
       <Accordion
         sx={{
-          boxShadow: "none",
-          borderTop: "1px solid #e0e0e0",
-          fontSize: "1rem !important",
-          "&:before": {
-            display: "none"
+          boxShadow: 'none',
+          borderTop: '1px solid #e0e0e0',
+          fontSize: '1rem !important',
+          '&:before': {
+            display: 'none'
           }
         }}
         defaultExpanded
@@ -171,8 +175,8 @@ function FilterCourse({ title }) {
           aria-controls="method-content"
           id="method-header"
           sx={{
-            padding: "0px 10px",
-            "& .MuiAccordionSummary-content": {
+            padding: '0px 10px',
+            '& .MuiAccordionSummary-content': {
               margin: 0
             }
           }}
@@ -182,7 +186,9 @@ function FilterCourse({ title }) {
         <AccordionDetails>
           <FormControl>
             <RadioGroup
-              onChange={(event) => {setMethod(event.target.value)}}
+              onChange={(event) => {
+                setMethod(event.target.value)
+              }}
               value={method}
             >
               <FormControlLabel
@@ -201,11 +207,11 @@ function FilterCourse({ title }) {
       </Accordion>
       <Accordion
         sx={{
-          boxShadow: "none",
-          borderTop: "1px solid #e0e0e0",
-          fontSize: "1rem !important",
-          "&:before": {
-            display: "none"
+          boxShadow: 'none',
+          borderTop: '1px solid #e0e0e0',
+          fontSize: '1rem !important',
+          '&:before': {
+            display: 'none'
           }
         }}
         defaultExpanded
@@ -215,8 +221,8 @@ function FilterCourse({ title }) {
           aria-controls="price-content"
           id="price-header"
           sx={{
-            padding: "0px 10px",
-            "& .MuiAccordionSummary-content": {
+            padding: '0px 10px',
+            '& .MuiAccordionSummary-content': {
               margin: 0
             }
           }}
@@ -226,7 +232,9 @@ function FilterCourse({ title }) {
         <AccordionDetails>
           <FormControl>
             <RadioGroup
-              onChange={(event) => {setPrice(event.target.value)}}
+              onChange={(event) => {
+                setPrice(event.target.value)
+              }}
               value={price}
             >
               <FormControlLabel
@@ -245,11 +253,11 @@ function FilterCourse({ title }) {
       </Accordion>
       <Accordion
         sx={{
-          boxShadow: "none",
-          borderTop: "1px solid #e0e0e0",
-          fontSize: "1rem !important",
-          "&:before": {
-            display: "none"
+          boxShadow: 'none',
+          borderTop: '1px solid #e0e0e0',
+          fontSize: '1rem !important',
+          '&:before': {
+            display: 'none'
           }
         }}
         defaultExpanded
@@ -259,8 +267,8 @@ function FilterCourse({ title }) {
           aria-controls="program-content"
           id="program-header"
           sx={{
-            padding: "0px 10px",
-            "& .MuiAccordionSummary-content": {
+            padding: '0px 10px',
+            '& .MuiAccordionSummary-content': {
               margin: 0
             }
           }}
@@ -270,7 +278,9 @@ function FilterCourse({ title }) {
         <AccordionDetails>
           <FormControl>
             <RadioGroup
-              onChange={(event) => {setProgram(event.target.value)}}
+              onChange={(event) => {
+                setProgram(event.target.value)
+              }}
               value={program}
             >
               <FormControlLabel
@@ -293,15 +303,25 @@ function FilterCourse({ title }) {
         </AccordionDetails>
       </Accordion>
     </FilterCourseWrapper>
-  );
+  )
 }
 
 const FilterCourseWrapper = styled.aside`
+  align-self: start;
+  height: auto-fit;
   display: flex;
   flex-direction: column;
   padding: 2rem;
   background-color: #fff;
-  border-radius: 0.8rem;
+  border-radius: 8px;
+  border: 2px solid #74c0fc;
+  box-shadow: 0 10px 20px rgba(44, 130, 201, 0.2);
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
+    transition: all ease 0.3s;
+  }
 
   .MuiAccordion-root {
     margin: 0;
@@ -395,6 +415,6 @@ const FilterCourseWrapper = styled.aside`
   @media screen and (max-width: 480px) {
     padding: 1rem;
   }
-`;
+`
 
-export default FilterCourse;
+export default FilterCourse
