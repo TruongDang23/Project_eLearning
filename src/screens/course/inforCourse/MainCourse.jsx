@@ -5,7 +5,7 @@ import Sticky from 'react-sticky-el'
 
 function MainCourse({ inforCourseData }) {
   return (
-    <MainCourseWrapper className="container white-space-small">
+    <MainCourseWrapper className="container">
       <MainContentCourse inforCourseData={inforCourseData} />
       <Sticky>
         <SideBar inforCourseData={inforCourseData} />
@@ -18,6 +18,7 @@ const MainCourseWrapper = styled.section`
   display: grid;
   grid-template-columns: 2fr 1fr;
   margin-top: 50px;
+  padding-bottom: 50px;
 
   @media (max-width: 1440px) {
     grid-template-columns: 2fr 1fr;
