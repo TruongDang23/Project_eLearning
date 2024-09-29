@@ -1,126 +1,206 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 import { useState } from 'react'
 import { ApproveCourse } from '~/components/popup'
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 export function Items({ courseItem, reload, setReload }) {
   const [openAppr, setApprove] = useState(false)
 
-  const toggleApprove = () => { setApprove(!openAppr) }
+  const toggleApprove = () => {
+    setApprove(!openAppr)
+  }
 
   return (
     <>
       <Wrapper>
         <div key={courseItem.courseID} className="course-item">
           <div className="image">
-            <img src={courseItem.image_introduce} alt='image' />
+            <img src={courseItem.image_introduce} alt="image" />
           </div>
 
           <div className="center_infor">
             <h2>{courseItem.title}</h2>
-            <p><strong>Keywords:</strong> {courseItem.keywords.map((keyword, index) => (
-              <span key={index}>{keyword}{index !== courseItem.keywords.length - 1 && ', '}</span>
-            ))}</p>
-            <p><strong>Method:</strong> {courseItem.method}</p>
-            <p><strong>Category:</strong> {courseItem.category}</p>
-            <p><strong>Program:</strong> {courseItem.program}</p>
-            <p><strong>Created time:</strong> {courseItem.time}</p>
+            <p>
+              <strong>Keywords:</strong>{' '}
+              {courseItem.keywords.map((keyword, index) => (
+                <span key={index}>
+                  {keyword}
+                  {index !== courseItem.keywords.length - 1 && ', '}
+                </span>
+              ))}
+            </p>
+            <p>
+              <strong>Method:</strong> {courseItem.method}
+            </p>
+            <p>
+              <strong>Category:</strong> {courseItem.category}
+            </p>
+            <p>
+              <strong>Program:</strong> {courseItem.program}
+            </p>
+            <p>
+              <strong>Created time:</strong> {courseItem.time}
+            </p>
           </div>
 
           <div className="right_infor">
             <h2>{courseItem.courseID}</h2>
-            <p>{courseItem.price} {courseItem.currency}</p>
+            <p>
+              {courseItem.price} {courseItem.currency}
+            </p>
             <div className="button">
-              <Link to={`/course/infor/${courseItem.courseID}`}>
-                <button>Go to course</button>
-              </Link>
-              <button>Edit course</button>
-              <button onClick={toggleApprove}>Submit for approval</button>
+              <a
+                href={`/course/infor/${courseItem.courseID}`}
+                className="btn-view"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Go to course
+              </a>
+              <a
+                href="https://www.youtube.com/watch?v=9O1Hs1Yrg1w"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-edit"
+              >
+                Edit course
+              </a>
+              <a href="#" onClick={toggleApprove} className="btn-approval">
+                {/* <button onClick={toggleApprove}>Submit for approval</button> */}
+                Submit for approval
+              </a>
             </div>
           </div>
         </div>
       </Wrapper>
-      {openAppr && <ApproveCourse handleClose={toggleApprove} course={courseItem.courseID} reload={reload} setReload={setReload} />}
+      {openAppr && (
+        <ApproveCourse
+          handleClose={toggleApprove}
+          course={courseItem.courseID}
+          reload={reload}
+          setReload={setReload}
+        />
+      )}
     </>
   )
 }
 
 const Wrapper = styled.div`
-	.course-item {
-		border: 1px solid #ccc;
-		border-radius: 8px;
-		padding: 15px;
-		margin-bottom: 15px;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
+  background-color: #fff;
+  .course-item {
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
 
-		.image{
-    align-self: center;
-			img{
-				width: 170px;
-				height: 170px;
-				object-fit: contain;
-				border: 1px solid #ccc;
-				${"" /* bo hai góc trên của ảnh */}
-				border-top-left-radius: 20%;
-				border-top-right-radius: 20%;
-				border-bottom-left-radius: 20%;
-				border-bottom-right-radius: 20%;
-			}
-  	}
+    border-radius: 8px;
+    border: 2px solid #74c0fc;
+    box-shadow: 0 10px 20px rgba(44, 130, 201, 0.2);
+    transition: all 0.3s;
 
-		.center_infor{
-			flex: 0.5;
+    &:hover {
+      box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
+      transition: all ease 0.3s;
+    }
+    .image {
+      align-self: center;
+      width: 30%;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
 
-			h2{
-				color: #187bce;
-				font-weight: bold;
-				font-size: 2.4rem;
-				padding-bottom: 5px;
-				margin-left: -30px;
-			}
-			p{
-				font-size: 1.8rem;
-			}
-		}
+    .center_infor {
+      width: 50%;
 
-		.right_infor{
-			flex: 0.3;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-evenly;
+      h2 {
+        color: #187bce;
+        font-weight: bold;
+        font-size: 2.4rem;
+        padding-bottom: 5px;
+      }
+      p {
+        font-size: 1.6rem;
+        line-height: 1.2;
+        strong {
+          font-weight: 700;
+        }
+      }
+    }
 
-			h2{
-				color: #187bce;
-				font-weight: bold;
-				font-size: 2.4rem;
-				padding-bottom: 5px;
-				text-align: center;
-			}
+    .right_infor {
+      width: 20%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
 
-			p{
-				font-size: 2.0rem;
-				text-align: center;
-			}
+      h2 {
+        color: #187bce;
+        font-weight: bold;
+        font-size: 2.4rem;
+        padding-bottom: 5px;
+        text-align: center;
+      }
 
-			.button{
-				display: flex;
-				justify-content: space-around;
+      p {
+        font-size: 2rem;
+        text-align: center;
+      }
 
-				button{
-					font-size: 1.8rem;
-					border-radius: 15px;
-					padding: 10px;
-					border: 1px solid #ccc;
-					background-color: #f1f1f1;
-					transition: background-color 0.3s, color 0.3s;
-					&:hover {
-						background-color: #e0e0e0;
-					}
-				}
-			}
-		}
-	}
+      .button {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        a {
+          text-align: center;
+          text-decoration: none;
+          align-self: center;
+          width: 80%;
+          padding: 10px;
+          font-size: 1.6rem;
+          font-weight: 700;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-view {
+          background-color: #187bce;
+          color: #fff;
+        }
+
+        .btn-view:hover {
+          background-color: #155b96;
+        }
+
+        .btn-edit {
+          background-color: #fff;
+          color: #187bce;
+          box-shadow: 0 0 0 2px #187bce;
+        }
+
+        .btn-edit:hover {
+          color: #fff;
+          background-color: #187bce;
+        }
+
+        .btn-approval {
+          background-color: #fff;
+          color: #37b24d;
+          box-shadow: 0 0 0 2px #37b24d;
+        }
+
+        .btn-approval:hover {
+          color: #fff;
+          background-color: #37b24d;
+        }
+      }
+    }
+  }
 `
