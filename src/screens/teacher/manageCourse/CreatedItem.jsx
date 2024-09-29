@@ -65,10 +65,10 @@ export function Items({ courseItem, reload, setReload }) {
               >
                 Edit course
               </a>
-              <a href="#" onClick={toggleApprove} className="btn-approval">
+              <button onClick={toggleApprove} className="btn-approval">
                 {/* <button onClick={toggleApprove}>Submit for approval</button> */}
                 Submit for approval
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -156,6 +156,7 @@ const Wrapper = styled.div`
         flex-direction: column;
         gap: 10px;
 
+        button,
         a {
           text-align: center;
           text-decoration: none;

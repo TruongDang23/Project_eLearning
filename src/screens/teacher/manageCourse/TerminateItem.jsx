@@ -66,9 +66,9 @@ export function Items({ courseItem, reload, setReload }) {
               >
                 <button>Go to course</button>
               </a>
-              <a href="#" onClick={toggleAdjContent} className="btn-adjust">
+              <button onClick={toggleAdjContent} className="btn-adjust">
                 Adjust Content
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -156,6 +156,7 @@ const Wrapper = styled.div`
         flex-direction: column;
         gap: 10px;
 
+        button,
         a {
           text-align: center;
           text-decoration: none;

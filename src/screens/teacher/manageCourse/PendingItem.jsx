@@ -56,9 +56,9 @@ export function Items({ courseItem, reload, setReload }) {
               >
                 Edit course
               </a>
-              <a href="#" onClick={toggleCancel} className="btn-cancel">
+              <button onClick={toggleCancel} className="btn-cancel">
                 Cancel
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -146,6 +146,7 @@ const Wrapper = styled.div`
         flex-direction: column;
         gap: 10px;
 
+        button,
         a {
           text-align: center;
           text-decoration: none;
