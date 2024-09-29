@@ -14,6 +14,8 @@ module.exports = (connMysql, connMongo) => {
   const User = require('../models/user')
   const Course = require('../models/courseInfor')
 
+  const mysqlTransaction = connMysql.promise();
+
   //Function format 1981-05-11T17:00:00.000Z to 1981-05-12
   const formatDate = (date) => {
     const year = date.getFullYear();
@@ -38,6 +40,52 @@ module.exports = (connMysql, connMongo) => {
         resolve(false)
       else
         resolve(true)
+    })
+  }
+
+  const switchCourse = async (courseID, to_status, delete_db, insert_db, time) => {
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection(async (err) => {
+        if (err) {
+          reject(err)
+        }
+        await mysqlTransaction.query("START TRANSACTION")
+
+        //Update Status of course
+        let updStatus = "UPDATE course SET status = ? WHERE courseID = ?"
+        let deleteCourse = "DELETE FROM ?? WHERE courseID = ?"
+        let insertCourse = ""
+        let rows_ins = 0
+
+        if (insert_db === 'terminated_course') {
+          const to_time = time[0]
+          const end_time = time[1] == "" ? null : time[1]
+
+          insertCourse = "INSERT INTO ?? (courseID, to_time, end_time)\
+          VALUES (?, ?, ?)"
+          rows_ins = await mysqlTransaction.query(insertCourse, [insert_db, courseID, to_time, end_time])
+        }
+        else {
+          insertCourse = "INSERT INTO ?? (courseID, time)\
+          VALUES (?, ?)"
+          rows_ins = await mysqlTransaction.query(insertCourse, [insert_db, courseID, time])
+        }
+
+        const [rows_upd] = await mysqlTransaction.query(updStatus, [to_status, courseID])
+        const [rows_del] = await mysqlTransaction.query(deleteCourse, [delete_db, courseID])
+        //const [rows_ins] = await mysqlTransaction.query(insertCourse, [insert_db, courseID, time])
+
+        if (rows_upd.affectedRows == 0 || rows_del.affectedRows == 0 || rows_ins.affectedRows == 0)
+        {
+          await mysqlTransaction.query("ROLLBACK")
+          reject(false)
+        }
+        else
+        {
+          await mysqlTransaction.query("COMMIT")
+          resolve(true)
+        }
+      })
     })
   }
 
@@ -115,92 +163,92 @@ module.exports = (connMysql, connMongo) => {
   }
 
   // Define your asynchronous functions
-  const updateStatusOfCourse = async (transaction, courseID, status) => {
-    // eslint-disable-next-line no-async-promise-executor
-    return new Promise(async (resolve, reject) => {
-      let query = "UPDATE course SET status = ? WHERE courseID = ?";
-      transaction.query(query, [status, courseID], async (error, results) => {
-        //transaction.release(); //Giải phóng connection khi truy vấn xong
-        if (error) {
-          reject(error);
-        }
-        //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-        if (results.affectedRows > 0) resolve(true)
-        else reject(false)
-      })
-    })
-  }
+  // const updateStatusOfCourse = async (transaction, courseID, status) => {
+  //   // eslint-disable-next-line no-async-promise-executor
+  //   return new Promise(async (resolve, reject) => {
+  //     let query = "UPDATE course SET status = ? WHERE courseID = ?";
+  //     transaction.query(query, [status, courseID], async (error, results) => {
+  //       //transaction.release(); //Giải phóng connection khi truy vấn xong
+  //       if (error) {
+  //         reject(error);
+  //       }
+  //       //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
+  //       if (results.affectedRows > 0) resolve(true)
+  //       else reject(false)
+  //     })
+  //   })
+  // }
 
-  const deleteCourse = async (transaction, database_table, courseID) => {
-    // eslint-disable-next-line no-async-promise-executor
-    return new Promise(async(resolve, reject) => {
-      //Get information from mysql
-      let query = "DELETE FROM ?? WHERE courseID = ?"
-      // const [rows] = await transaction.query(query, [database_table, courseID])
-      // if (rows.affectedRows > 0)
-      //   resolve(true)
-      // else
-      //   reject(false)
+  // const deleteCourse = async (transaction, database_table, courseID) => {
+  //   // eslint-disable-next-line no-async-promise-executor
+  //   return new Promise(async(resolve, reject) => {
+  //     //Get information from mysql
+  //     let query = "DELETE FROM ?? WHERE courseID = ?"
+  //     // const [rows] = await transaction.query(query, [database_table, courseID])
+  //     // if (rows.affectedRows > 0)
+  //     //   resolve(true)
+  //     // else
+  //     //   reject(false)
 
-      transaction.query(query, [database_table, courseID], async (error, results) => {
-        //transaction.release(); //Giải phóng connection khi truy vấn xong
-        if (error) {
-          reject(error);
-        }
-        //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-        if (results.affectedRows > 0) resolve(true)
-        else reject(false)
-      })
-    })
-  }
+  //     transaction.query(query, [database_table, courseID], async (error, results) => {
+  //       //transaction.release(); //Giải phóng connection khi truy vấn xong
+  //       if (error) {
+  //         reject(error);
+  //       }
+  //       //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
+  //       if (results.affectedRows > 0) resolve(true)
+  //       else reject(false)
+  //     })
+  //   })
+  // }
 
-  const addCreateCourse = async (transaction, courseID, time) => {
-    // eslint-disable-next-line no-async-promise-executor
-    return new Promise(async(resolve, reject) => {
-      let query =
-          "INSERT INTO created_course (courseID, time) VALUES (?, ?)"
-      // const [rows] = await transaction.query(query, [courseID, time])
-      // if (rows.affectedRows > 0)
-      //   resolve(true)
-      // else
-      //   reject(false)
-
-
-      transaction.query(query, [courseID, time], async (error, results) => {
-        //transaction.release(); //Giải phóng connection khi truy vấn xong
-        if (error) {
-          reject(error);
-        }
-        //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-        if (results.affectedRows > 0) resolve(true)
-        else reject(false)
-      })
-    })
-  }
-
-  const addMornitorCourse = async (transaction, courseID, time) => {
-    // eslint-disable-next-line no-async-promise-executor
-    return new Promise(async(resolve, reject) => {
-      let query =
-          "INSERT INTO send_mornitor (courseID, time) VALUES (?, ?)"
-      // const [rows] = await transaction.query(query, [courseID, time])
-      // if (rows.affectedRows > 0)
-      //   resolve(true)
-      // else
-      //   reject(false)
+  // const addCreateCourse = async (transaction, courseID, time) => {
+  //   // eslint-disable-next-line no-async-promise-executor
+  //   return new Promise(async(resolve, reject) => {
+  //     let query =
+  //         "INSERT INTO created_course (courseID, time) VALUES (?, ?)"
+  //     // const [rows] = await transaction.query(query, [courseID, time])
+  //     // if (rows.affectedRows > 0)
+  //     //   resolve(true)
+  //     // else
+  //     //   reject(false)
 
 
-      transaction.query(query, [courseID, time], async (error, results) => {
-        //transaction.release(); //Giải phóng connection khi truy vấn xong
-        if (error) {
-          reject(error);
-        }
-        //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-        if (results.affectedRows > 0) resolve(true)
-        else reject(false)
-      })
-    })
-  }
+  //     transaction.query(query, [courseID, time], async (error, results) => {
+  //       //transaction.release(); //Giải phóng connection khi truy vấn xong
+  //       if (error) {
+  //         reject(error);
+  //       }
+  //       //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
+  //       if (results.affectedRows > 0) resolve(true)
+  //       else reject(false)
+  //     })
+  //   })
+  // }
+
+  // const addMornitorCourse = async (transaction, courseID, time) => {
+  //   // eslint-disable-next-line no-async-promise-executor
+  //   return new Promise(async(resolve, reject) => {
+  //     let query =
+  //         "INSERT INTO send_mornitor (courseID, time) VALUES (?, ?)"
+  //     // const [rows] = await transaction.query(query, [courseID, time])
+  //     // if (rows.affectedRows > 0)
+  //     //   resolve(true)
+  //     // else
+  //     //   reject(false)
+
+
+  //     transaction.query(query, [courseID, time], async (error, results) => {
+  //       //transaction.release(); //Giải phóng connection khi truy vấn xong
+  //       if (error) {
+  //         reject(error);
+  //       }
+  //       //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
+  //       if (results.affectedRows > 0) resolve(true)
+  //       else reject(false)
+  //     })
+  //   })
+  // }
 
   // Define user-related routes
   router.get('/loadInformation', verifyToken, async (req, res) => {
@@ -627,24 +675,18 @@ module.exports = (connMysql, connMongo) => {
       const courseID = req.body.course;
       const time = formatDateTime(new Date());
       connMysql.getConnection(async(err, connection) => {
-        //const transaction = connMysql.promise()
-
-        //await transaction.query("START TRANSACTION")
         try {
           await Promise.all([
-            updateStatusOfCourse(connection, courseID, "created"),
-            deleteCourse(connection, "terminated_course", courseID),
-            //deleteCourse(connection, "send_mornitor", courseID), //Dùng cho trường hợp Cancel approval. Vì đang dùng chung request
-            addCreateCourse(connection, courseID, time)
-          ]);
-          // Proceed to the next step here
-          //await transaction.query("COMMIT")
+            // updateStatusOfCourse(connection, courseID, "created"),
+            // deleteCourse(connection, "terminated_course", courseID),
+            //     //deleteCourse(connection, "send_mornitor", courseID), //Dùng cho trường hợp Cancel approval. Vì đang dùng chung request
+            // addCreateCourse(connection, courseID, time),
+            switchCourse(courseID, "created", "terminated_course", "created_course", time)
+          ])
           connection.release()
           res.send(true)
           res.end()
         } catch (error) {
-          console.log(error)
-          //await transaction.query("ROLLBACK")
           connection.release()
           res.send(false)
           res.end()
@@ -660,23 +702,17 @@ module.exports = (connMysql, connMongo) => {
       const courseID = req.body.course;
       const time = formatDateTime(new Date());
       connMysql.getConnection(async(err, connection) => {
-        //const transaction = connMysql.promise()
-
-        //await transaction.query("START TRANSACTION")
         try {
           await Promise.all([
-            updateStatusOfCourse(connection, courseID, "mornitor"),
-            deleteCourse(connection, "created_course", courseID),
-            addMornitorCourse(connection, courseID, time)
-          ]);
-          // Proceed to the next step here
-          //await transaction.query("COMMIT")
+            // updateStatusOfCourse(connection, courseID, "mornitor"),
+            // deleteCourse(connection, "created_course", courseID),
+            // addMornitorCourse(connection, courseID, time)
+            switchCourse(courseID, "mornitor", "created_course", "send_mornitor", time)
+          ])
           connection.release()
           res.send(true)
           res.end()
         } catch (error) {
-          console.log(error)
-          //await transaction.query("ROLLBACK")
           connection.release()
           res.send(false)
           res.end()
@@ -692,23 +728,17 @@ module.exports = (connMysql, connMongo) => {
       const courseID = req.body.course;
       const time = formatDateTime(new Date());
       connMysql.getConnection(async(err, connection) => {
-        //const transaction = connMysql.promise()
-
-        //await transaction.query("START TRANSACTION")
         try {
           await Promise.all([
-            updateStatusOfCourse(connection, courseID, "created"),
-            deleteCourse(connection, "send_mornitor", courseID),
-            addCreateCourse(connection, courseID, time)
-          ]);
-          // Proceed to the next step here
-          //await transaction.query("COMMIT")
+            // updateStatusOfCourse(connection, courseID, "created"),
+            // deleteCourse(connection, "send_mornitor", courseID),
+            // addCreateCourse(connection, courseID, time)
+            switchCourse(courseID, "created", "send_mornitor", "created_course", time)
+          ])
           connection.release()
           res.send(true)
           res.end()
         } catch (error) {
-          console.log(error)
-          //await transaction.query("ROLLBACK")
           connection.release()
           res.send(false)
           res.end()
