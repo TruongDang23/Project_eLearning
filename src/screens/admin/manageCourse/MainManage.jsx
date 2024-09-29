@@ -100,62 +100,60 @@ function ManageCourse() {
 
   return (
     <>
-      <div>
-        <Helmet>
-          <title>Manage Course | EL-Space</title>
-        </Helmet>
-        <GeneralHeader />
-        <MainManageWrapper>
-          <Container className="container">
-            <div className="tabs">
-              <div className="tab-buttons">
-                <button
-                  className={activeTab === 'Tab1' ? 'active' : ''}
-                  onClick={() => handleTabClick('Tab1')}
-                >
-                  Published
-                </button>
-                <button
-                  className={activeTab === 'Tab2' ? 'active' : ''}
-                  onClick={() => handleTabClick('Tab2')}
-                >
-                  Monitoring
-                </button>
-                <button
-                  className={activeTab === 'Tab3' ? 'active' : ''}
-                  onClick={() => handleTabClick('Tab3')}
-                >
-                  Terminated
-                </button>
-              </div>
-              <div className="tab-content">
-                {activeTab === 'Tab1' && (
-                  <PublishedCourse
-                    course={pub}
-                    reload={reload}
-                    setReload={setReload}
-                  />
-                )}
-                {activeTab === 'Tab2' && (
-                  <MonitoringCourse
-                    course={monitor}
-                    reload={reload}
-                    setReload={setReload}
-                  />
-                )}
-                {activeTab === 'Tab3' && (
-                  <TerminatedCourse
-                    course={ter}
-                    reload={reload}
-                    setReload={setReload}
-                  />
-                )}
-              </div>
+      <Helmet>
+        <title>Manage Course | EL-Space</title>
+      </Helmet>
+      <GeneralHeader />
+      <MainManageWrapper>
+        <Container className="container">
+          <div className="tabs">
+            <div className="tab-buttons">
+              <button
+                className={activeTab === 'Tab1' ? 'active' : ''}
+                onClick={() => handleTabClick('Tab1')}
+              >
+                Published
+              </button>
+              <button
+                className={activeTab === 'Tab2' ? 'active' : ''}
+                onClick={() => handleTabClick('Tab2')}
+              >
+                Monitoring
+              </button>
+              <button
+                className={activeTab === 'Tab3' ? 'active' : ''}
+                onClick={() => handleTabClick('Tab3')}
+              >
+                Terminated
+              </button>
             </div>
-          </Container>
-        </MainManageWrapper>
-        <GeneralFooter />
-      </div>
+            <div className="tab-content">
+              {activeTab === 'Tab1' && (
+                <PublishedCourse
+                  course={pub}
+                  reload={reload}
+                  setReload={setReload}
+                />
+              )}
+              {activeTab === 'Tab2' && (
+                <MonitoringCourse
+                  course={monitor}
+                  reload={reload}
+                  setReload={setReload}
+                />
+              )}
+              {activeTab === 'Tab3' && (
+                <TerminatedCourse
+                  course={ter}
+                  reload={reload}
+                  setReload={setReload}
+                />
+              )}
+            </div>
+          </div>
+        </Container>
+      </MainManageWrapper>
+      <GeneralFooter />
     </>
   )
 }
