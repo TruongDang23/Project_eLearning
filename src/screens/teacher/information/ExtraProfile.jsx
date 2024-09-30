@@ -7,27 +7,28 @@ import Published from './Published'
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  h3{
-    font-size: 2.2rem;
+  h3 {
+    font-size: 2rem;
+    font-weight: 700;
     color: #187bce;
     margin-bottom: 20px;
-    margin-top:20px;  
+    margin-top: 20px;
   }
-`;
+`
 
-function ExtraProfile ({ profile, setProfile }) {
+function ExtraProfile({ profile, setProfile }) {
   return (
     <Wrapper>
       <h3>Self - Introduce</h3>
-      <SelfIntroduce profile={ profile } setProfile={setProfile}/>
+      <SelfIntroduce profile={profile} setProfile={setProfile} />
       <h3>Education</h3>
-      <Education profile={ profile } setProfile={setProfile}/>
+      <Education profile={profile} setProfile={setProfile} />
       <h3>Experience</h3>
-      <Experience profile={ profile } setProfile={setProfile}/>
+      <Experience profile={profile} setProfile={setProfile} />
       <h3>Courses Published</h3>
-      <Published profile={ profile }/>
+      <Published profile={profile} />
     </Wrapper>
   )
 }
 
-export default ExtraProfile;
+export default ExtraProfile

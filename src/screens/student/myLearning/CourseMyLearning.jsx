@@ -4,14 +4,14 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle'
 
 function CourseMyLearning({ course }) {
   const [isCourseHovered, setIsCourseHovered] = useState(false)
-  const { instructor, title, progress, image_introduce, courseId } = course
+  const { instructor, title, progress, image_introduce, courseID } = course
 
   // Giới hạn số ký tự của title, nếu title dài quá thì cắt bớt và thêm dấu "..."
   const titleLimit = title.length > 25 ? title.slice(0, 25) + '...' : title
 
   // Thay đổi URL khi nhấn vào khóa học
   const handleClick = () => {
-    window.open(`/course/details/${courseId}`, '_blank')
+    window.open(`/course/details/${courseID}`, '_blank')
   }
 
   return (
@@ -65,13 +65,20 @@ const IframeOverlay = styled.div`
 
 const CourseMyLearningWrapper = styled.div`
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: #0000000f 0px 4px 20px 0px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   position: relative;
 
+  border-radius: 8px;
+  border: 2px solid #74c0fc;
+  box-shadow: 0 10px 20px rgba(44, 130, 201, 0.2);
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
+    transition: all ease 0.3s;
+  }
   .course-img {
     position: relative;
     img {

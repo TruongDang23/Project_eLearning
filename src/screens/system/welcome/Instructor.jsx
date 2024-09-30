@@ -3,7 +3,7 @@ import featureInstructor from "../assets/Instructor.png";
 
 function Instructor() {
   return (
-    <InstructorWrapper className="container white-space-medium">
+    <InstructorWrapper className="container">
       {/* Become a instructor */}
       <h2>Become an Instructor</h2>
       <div className="instructor-content">
@@ -23,6 +23,7 @@ function Instructor() {
 }
 
 const InstructorWrapper = styled.section`
+  padding-bottom: 10rem;
   h2 {
     font-size: 3.6rem;
     font-weight: 700;

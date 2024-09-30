@@ -1,8 +1,9 @@
-import { useState } from "react";
-import styled, { keyframes } from "styled-components";
-import Popover from "@mui/material/Popover";
-import DoneRoundedIcon from "@mui/icons-material/DoneRounded";
-import StarRating from "~/components/general/Other/StarRating";
+import { useState } from 'react'
+import styled, { keyframes } from 'styled-components'
+import Popover from '@mui/material/Popover'
+import DoneRoundedIcon from '@mui/icons-material/DoneRounded'
+import StarRating from '~/components/general/Other/StarRating'
+import { Link } from 'react-router-dom'
 
 function CourseCard({ course }) {
   const {
@@ -19,31 +20,31 @@ function CourseCard({ course }) {
     num_reviews,
     num_lectures,
     course_for,
-    targets,
-  } = course;
+    targets
+  } = course
 
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null)
 
   const handlePopoverOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handlePopoverClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
   const handleOnCick = () => {
-    const url = `http://localhost:5173/course/infor/${courseID}`;
-    window.open(url, "_blank");
-  };
+    const url = `http://localhost:5173/course/infor/${courseID}`
+    window.open(url, '_blank')
+  }
 
-  const open = Boolean(anchorEl);
+  const open = Boolean(anchorEl)
 
   return (
     <CourseCardWrapper>
       <div
         className="course-card"
-        aria-owns={open ? "mouse-over-popover" : undefined}
+        aria-owns={open ? 'mouse-over-popover' : undefined}
         aria-haspopup="true"
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
@@ -53,7 +54,13 @@ function CourseCard({ course }) {
           <img src={image_introduce} alt="course" />
         </div>
         <div className="course-card__content">
-          <h3>{title}</h3>
+          <a
+            href={`/course/infor/${courseID}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h3>{title}</h3>
+          </a>
           <div className="course-card__content-keyword">
             {keywords.map((keyword, index) => (
               <span key={index}>{keyword}</span>
@@ -97,29 +104,29 @@ function CourseCard({ course }) {
       <Popover
         id="mouse-over-popover"
         sx={{
-          pointerEvents: "none",
-          "& .MuiPaper-root": {
+          pointerEvents: 'none',
+          '& .MuiPaper-root': {
             // Default width for large screens
-            width: "30%",
+            width: '30%',
             // Media query for medium screens
-            "@media (max-width: 960px)": {
-              width: "50%",
+            '@media (max-width: 960px)': {
+              width: '50%'
             },
             // Media query for small screens
-            "@media (max-width: 600px)": {
-              width: "80%",
-            },
-          },
+            '@media (max-width: 600px)': {
+              width: '80%'
+            }
+          }
         }}
         open={open}
         anchorEl={anchorEl}
         anchorOrigin={{
-          vertical: "center",
-          horizontal: "center",
+          vertical: 'center',
+          horizontal: 'center'
         }}
         transformOrigin={{
-          vertical: "top",
-          horizontal: "left",
+          vertical: 'top',
+          horizontal: 'left'
         }}
         className="responsive-popover"
         onClose={handlePopoverClose}
@@ -136,11 +143,10 @@ function CourseCard({ course }) {
               </li>
             ))}
           </ul>
-          <button>Buy now</button>
         </PopoverContent>
       </Popover>
     </CourseCardWrapper>
-  );
+  )
 }
 const fadeIn = keyframes`
   from {
@@ -151,7 +157,7 @@ const fadeIn = keyframes`
     opacity: 1;
     transform: translateY(0);
   }
-`;
+`
 
 const PopoverContent = styled.div`
   padding: 1rem;
@@ -199,20 +205,24 @@ const PopoverContent = styled.div`
       background-color: #155b96;
     }
   }
-`;
+`
 
 const CourseCardWrapper = styled.div`
   .course-card {
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    overflow: hidden;
+    ${'' /* border-top: 1px solid #ccc; */}
     animation: ${fadeIn} 0.6s ease-out;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 2px solid #74c0fc;
+    box-shadow: 0 10px 20px rgba(44, 130, 201, 0.2);
     transition: all 0.3s;
+
     &:hover {
-      background-color: #e0e0e0;
+      box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
+      transition: all ease 0.3s;
     }
 
     .course-card__img {
@@ -240,6 +250,11 @@ const CourseCardWrapper = styled.div`
     .course-card__content {
       flex-grow: 1;
       padding: 1rem 2rem;
+
+      ${'' /* Bỏ dấu gạch dưới của Link */}
+      a {
+        text-decoration: none;
+      }
 
       h3 {
         color: #333;
@@ -361,6 +376,6 @@ const CourseCardWrapper = styled.div`
       }
     }
   }
-`;
+`
 
-export default CourseCard;
+export default CourseCard

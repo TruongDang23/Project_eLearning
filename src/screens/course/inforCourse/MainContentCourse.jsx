@@ -71,15 +71,16 @@ function MainContentCourse({ inforCourseData }) {
 const MainContentCourseWrapper = styled.section`
   padding-right: 20px;
   .what-will-you-learn {
-    border: 1px solid #ccc;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: #0000000f 0px 4px 20px 0px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #74c0fc;
+    box-shadow: 0 10px 20px rgba(44, 130, 201, 0.2);
+    transition: all 0.3s;
+
     &:hover {
-      ${'' /* transform: translateY(-10px); */}
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
+      transition: all ease 0.3s;
     }
     h3 {
       color: #2d2f31;
@@ -131,16 +132,17 @@ const MainContentCourseWrapper = styled.section`
   }
 
   .course-requirment {
-    border: 1px solid #ccc;
     padding: 20px;
     margin-top: 20px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: #0000000f 0px 4px 20px 0px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #74c0fc;
+    box-shadow: 0 10px 20px rgba(44, 130, 201, 0.2);
+    transition: all 0.3s;
+
     &:hover {
-      ${'' /* transform: translateY(-10px); */}
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
+      transition: all ease 0.3s;
     }
     h3 {
       color: #2d2f31;
@@ -194,14 +196,15 @@ const MainContentCourseWrapper = styled.section`
   .course-content {
     padding: 20px;
     margin-top: 20px;
-    border: 1px solid #ccc;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: #0000000f 0px 4px 20px 0px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #74c0fc;
+    box-shadow: 0 10px 20px rgba(44, 130, 201, 0.2);
+    transition: all 0.3s;
+
     &:hover {
-      ${'' /* transform: translateY(-10px); */}
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
+      transition: all ease 0.3s;
     }
     .course-content-h3 {
       color: #2d2f31;
@@ -211,17 +214,18 @@ const MainContentCourseWrapper = styled.section`
     }
   }
   .course-review {
-    border: 1px solid #ccc;
     padding: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: #0000000f 0px 4px 20px 0px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #74c0fc;
+    box-shadow: 0 10px 20px rgba(44, 130, 201, 0.2);
+    transition: all 0.3s;
+
     &:hover {
-      ${'' /* transform: translateY(-10px); */}
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
+      transition: all ease 0.3s;
     }
 
     h4 {
