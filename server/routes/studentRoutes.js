@@ -389,7 +389,6 @@ module.exports = (connMysql, connMongo) => {
         res.status(404).send(error)
         return
       }
-      console.log(enrolled)
       res.send(enrolled)
     }
   })
