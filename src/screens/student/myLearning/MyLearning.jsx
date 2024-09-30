@@ -11,7 +11,6 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-import DataCourseMyLearning from '~/data/DataCourseMyLearning'
 import Loading from '~/screens/system/Loading'
 
 function MyLearning() {

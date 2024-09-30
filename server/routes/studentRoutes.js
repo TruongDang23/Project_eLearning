@@ -331,6 +331,34 @@ module.exports = (connMysql, connMongo) => {
     }
   })
 
+  const getProgress = async (courseID, userID) => {
+    // eslint-disable-next-line no-async-promise-executor
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          return reject(err)
+        }
+
+        const query = ` SELECT FORMAT(SUM(percent)/num_lecture,1) AS progress
+          from course inner join (
+            SELECT lectureID, courseID, MAX(percent) AS percent 
+              FROM learning
+              where userID = ?
+            group by lectureID, courseID
+          ) AS list_progress
+          ON course.courseID = list_progress.courseID
+          where course.courseID = ?`
+        connection.query(query, [userID, courseID], (error, data) => {
+          connection.release()
+          if (error) {
+            return reject(error)
+          }
+          resolve(data[0].progress)
+        })
+      })
+    })
+  }
+
   router.get('/loadMyLearning', verifyToken, async (req, res) => {
     if ((await isAuthorization(req.userID)) === false) {
       res.status(401).send('error')
@@ -341,10 +369,21 @@ module.exports = (connMysql, connMongo) => {
       const mongoData = await User.findOne({ userID: req.userID }).select()
       //Get information of course user enrolled
       let enrolled
+
       try {
         if (mongoData.course_enrolled.length != 0) {
           const courseInfo = await getCourseEnroll(mongoData.course_enrolled)
-          enrolled = courseInfo
+          // Lấy progress cho từng khóa học
+          const enrolledWithProgress = await Promise.all(
+            courseInfo.map(async (course) => {
+              const progress = await getProgress(course.courseID, req.userID)
+              return {
+                ...course,
+                progress: progress || '0.0' // Gán giá trị mặc định là 0.0 nếu không có progress
+              }
+            })
+          )
+          enrolled = enrolledWithProgress
         } else enrolled = []
       } catch (error) {
         res.status(404).send(error)
