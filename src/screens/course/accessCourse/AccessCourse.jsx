@@ -49,7 +49,7 @@ function AccessCourse() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reload])
 
-  console.log(accessCourseData)
+  // console.log(accessCourseData)
 
   return (
     <>
