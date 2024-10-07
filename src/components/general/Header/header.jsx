@@ -9,18 +9,20 @@ import AvatarAction from './avatar'
 import { useState, useContext } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 
-import { NotificationContext } from '../../../context/NotificationContext'
+import io from 'socket.io-client'
+import { NotificationContext } from '~/context/NotificationContext'
 
 function Header() {
   const token = localStorage.getItem('token')
   const navigate = useNavigate()
   // eslint-disable-next-line no-unused-vars
   const [search, setSearch] = useSearchParams()
+
   const [title, setTitle] = useState(search.get('q') || '')
   const number = 2
   // Notification
-  const { readCount } = useContext(NotificationContext)
-  console.log(readCount)
+  const { unreadCount } = useContext(NotificationContext)
+
   const handleSearch = (event) => {
     if (event.key === 'Enter') {
       navigate({
@@ -112,7 +114,7 @@ function Header() {
               </StyledBadge>
             </a>
             <a href="/notification">
-              <StyledBadge badgeContent={3} color="error">
+              <StyledBadge badgeContent={unreadCount} color="error">
                 <NotificationsOutlinedIcon />
               </StyledBadge>
             </a>

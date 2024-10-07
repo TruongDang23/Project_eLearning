@@ -17,20 +17,25 @@ const client = require('./connAzureOpenAI')
 // Import routes
 const adminRoutes = require('./routes/adminRoutes')(connMysql, connMongo) //Truyền các connection cần thiết vào các Route
 const studentRoutes = require('./routes/studentRoutes')(connMysql, connMongo)
-const instructorRoutes = require('./routes/instructorRoutes')(connMysql, connMongo)
+const instructorRoutes = require('./routes/instructorRoutes')(
+  connMysql,
+  connMongo
+)
 const systemRoutes = require('./routes/systemRoutes')(connMysql, connMongo)
 const courseRoutes = require('./routes/courseRoutes')(connMysql, connMongo)
 const chatGeneration = require('./routes/chatGeneration')(client)
 
 const app = express()
 const port = 3000
+const portSocket = 3001
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 //Setup session
 var sessionMiddleware = session({
-  secret: 'd6cb109246bc06e7b4e88fc0579fa6f5eaf770a93e42e33934419bed7b3a944e629e5f28a6ef0678ccdd5c63ab106838b34fda2ea21a1250fe5c2d1c7f70ceb0',
+  secret:
+    'd6cb109246bc06e7b4e88fc0579fa6f5eaf770a93e42e33934419bed7b3a944e629e5f28a6ef0678ccdd5c63ab106838b34fda2ea21a1250fe5c2d1c7f70ceb0',
   resave: true,
   saveUninitialized: true
 })
@@ -48,10 +53,9 @@ app.use('/chat', sessionMiddleware, chatGeneration)
 // Cấu hình CORS
 app.use(cors())
 
-// app.listen(port, () => {
-//   console.log(`Server running at http://localhost:${port}/`)
-// })
-
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}/`)
+})
 
 // Tạo HTTP server
 const server = http.createServer(app)
@@ -59,8 +63,8 @@ const server = http.createServer(app)
 // Cấu hình socket.io
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173", // Thay đổi theo port của React app
-    methods: ["GET", "POST"],
+    origin: 'http://localhost:5173', // Thay đổi theo port của React app
+    methods: ['GET', 'POST'],
     credentials: true
   }
 })
@@ -85,10 +89,21 @@ io.on('connection', (socket) => {
     socket.emit('message', `Server nhận được: ${data}`)
   })
 
+  socket.on('notification', (data) => {
+    console.log('Notification received:', data)
+    // Gửi thông báo đến tất cả client
+    io.emit('notification', data)
+  })
+
   socket.on('notificationSelected', (data) => {
-    console.log('Notification selected:', data.notifyID);
+    console.log('Notification selected:', data)
     // Xử lý sự kiện (ví dụ: đánh dấu là đã đọc, ghi log, v.v.)
-  });
+  })
+
+  socket.on('unreadCount', (count) => {
+    console.log('Unread count:', count)
+    // Xử lý sự kiện (ví dụ: cập nhật trạng thái chưa đọc, ghi log, v.v.)
+  })
 
   // Xử lý ngắt kết nối
   socket.on('disconnect', () => {
@@ -97,6 +112,8 @@ io.on('connection', (socket) => {
 })
 
 // Bắt đầu server
-server.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}/`)
+server.listen(portSocket, () => {
+  console.log(`Socket running at http://localhost:${portSocket}/`)
 })
+
+//export app
