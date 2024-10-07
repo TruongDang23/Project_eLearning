@@ -87,12 +87,14 @@ io.on('connection', (socket) => {
     console.log('Message received:', data)
     // Phản hồi lại client
     socket.emit('message', `Server nhận được: ${data}`)
+
+
   })
 
   socket.on('notification', (data) => {
     console.log('Notification received:', data)
     // Gửi thông báo đến tất cả client
-    io.emit('notification', data)
+    // io.emit('notification', data)
   })
 
   socket.on('notificationSelected', (data) => {
@@ -103,6 +105,7 @@ io.on('connection', (socket) => {
   socket.on('unreadCount', (count) => {
     console.log('Unread count:', count)
     // Xử lý sự kiện (ví dụ: cập nhật trạng thái chưa đọc, ghi log, v.v.)
+    
   })
 
   // Xử lý ngắt kết nối

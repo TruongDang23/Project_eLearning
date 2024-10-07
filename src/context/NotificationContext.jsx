@@ -48,7 +48,7 @@ export const NotificationProvider = ({ children }) => {
     }
 
     fetchNotifications()
-  }, [userID, token, userAuth, navigate])
+  }, [])
 
   useEffect(() => {
     // Kết nối socket.io chỉ khi đã có userID
@@ -63,6 +63,7 @@ export const NotificationProvider = ({ children }) => {
     socket.on('notification', (data) => {
       setNotifications((prevNotifications) => [data, ...prevNotifications])
     })
+    socket.emit('notification', notifications)
 
     // Cleanup khi component unmount
     return () => {
