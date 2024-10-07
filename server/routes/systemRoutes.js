@@ -94,6 +94,30 @@ module.exports = (connMysql, connMongo) => {
     })
   }
 
+  const isLocked = (userID) => {
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          reject(err)
+          return
+        }
+
+        let query = 'SELECT activity_status FROM account WHERE userID = ?'
+        connection.query(query, [userID], (error, results) => {
+          connection.release() //Giải phóng connection khi truy vấn xong
+          if (error) {
+            reject(error)
+            return
+          }
+          if (results[0].activity_status == 'locked')
+            resolve(true)
+          else
+            resolve(false)
+        })
+      })
+    })
+  }
+
   const getCurrentDateTime = () => {
     return format(new Date(), 'yyyy-MM-dd HH:mm:ss')
   }
@@ -328,10 +352,15 @@ module.exports = (connMysql, connMongo) => {
     }
     else
     {
+      // Check Account is locked
+      if (isLocked(userID) === true) {
+        res.send('locked')
+        res.end()
+      }
+
       // Get Account Based UserID
       const account = await getAccountBasedUserID(dataDecode.email)
       //LOGIN
-
       //sign JWT token. Sign 2 value: userID & role. JWT using for authentication when user handle any function
       const token = jwt.sign({ userID: account.userID, role: account.role }, KEY, { expiresIn: 86400 })
       //Respond 3 value to the client: token, userID, role
@@ -342,6 +371,7 @@ module.exports = (connMysql, connMongo) => {
         role: account.role
       })
     }
+
   })
 
   router.get('/loadCourseWelcome', (req, res) => {
@@ -407,7 +437,7 @@ module.exports = (connMysql, connMongo) => {
     })
   })
 
-  router.get('/loadNotification', verifyToken, async (req, res) => {
+  router.get('/loadNotification',  async (req, res) => {
     const { userID } = req.query
     connMysql.getConnection((err, connection) => {
       if (err) {

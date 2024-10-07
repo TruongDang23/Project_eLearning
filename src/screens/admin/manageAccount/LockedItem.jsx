@@ -1,121 +1,177 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 import { useState } from 'react'
 import { UnLockAccount } from '~/components/popup/index'
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 export function Items({ accountItem, reload, setReload }) {
   const [openPopup, setopenPopup] = useState(false)
 
-  const togglePub = () => { setopenPopup(!openPopup) }
+  const togglePub = () => {
+    setopenPopup(!openPopup)
+  }
   return (
     <>
       <Wrapper>
         <div key={accountItem.userID} className="course-item">
           <div className="image">
-            <img src={accountItem.avatar} alt='image' />
+            <img src={accountItem.avatar} alt="image" />
           </div>
 
           <div className="center_infor">
             <h2>Name: {accountItem.fullname}</h2>
 
-            <p><strong>Date of birth:</strong> {accountItem.date_of_birth}</p>
-            <p><strong>Location:</strong> {accountItem.street}, {accountItem.province}, {accountItem.country}</p>
-            <p><strong>Created Time:</strong> {accountItem.created_time}</p>
+            <p>
+              <strong>Date of birth:</strong> {accountItem.date_of_birth}
+            </p>
+            <p>
+              <strong>Location:</strong> {accountItem.street},{' '}
+              {accountItem.province}, {accountItem.country}
+            </p>
+            <p>
+              <strong>Created Time:</strong> {accountItem.created_time}
+            </p>
           </div>
 
           <div className="right_infor">
             <h2>UserID: {accountItem.userID}</h2>
             <p>{accountItem.role}</p>
             <div className="button">
-              <Link to={`Student/profile`}>
-                <button>Show Information</button>
-              </Link>
-              <button onClick={togglePub}>UnLock Account</button>
+              <a
+                href={`/course/infor/${accountItem.userID}`}
+                className="btn-view"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Show Information
+              </a>
+              <button onClick={togglePub} className="btn-unlock">
+                UnLock Account
+              </button>
             </div>
           </div>
         </div>
       </Wrapper>
-      {openPopup && <UnLockAccount handleClose={togglePub} account={accountItem.userID} reload={reload} setReload={setReload} />}
+      {openPopup && (
+        <UnLockAccount
+          handleClose={togglePub}
+          account={accountItem.userID}
+          reload={reload}
+          setReload={setReload}
+        />
+      )}
     </>
   )
 }
 
 const Wrapper = styled.div`
-	.course-item {
-		border: 1px solid #ccc;
-		border-radius: 8px;
-		padding: 15px;
-		margin-bottom: 15px;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
+  background-color: #fff;
+  .course-item {
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
 
-		.image{
-    align-self: center;
-			img{
-				width: 170px;
-				height: 170px;
-				object-fit: contain;
-				border: 1px solid #ccc;
-				${"" /* bo hai góc trên của ảnh */}
-				border-top-left-radius: 20%;
-				border-top-right-radius: 20%;
-				border-bottom-left-radius: 20%;
-				border-bottom-right-radius: 20%;
-			}
-  	}
+    border-radius: 8px;
+    border: 2px solid #74c0fc;
+    box-shadow: 0 10px 20px rgba(44, 130, 201, 0.2);
+    transition: all 0.3s;
 
-		.center_infor{
-			flex: 0.4;
+    &:hover {
+      box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
+      transition: all ease 0.3s;
+    }
 
-			h2{
-				color: #187bce;
-				font-weight: bold;
-				font-size: 2.4rem;
-				padding-bottom: 5px;
-				margin-left: -30px;
-			}
-			p{
-				font-size: 1.8rem;
-			}
-		}
+    .image {
+      align-self: center;
+      width: 10%;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
 
-		.right_infor{
-			flex: 0.4;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-evenly;
+    .center_infor {
+      width: 50%;
 
-			h2{
-				color: #187bce;
-				font-weight: bold;
-				font-size: 2.4rem;
-				padding-bottom: 5px;
-				text-align: center;
-			}
+      h2 {
+        color: #187bce;
+        font-weight: bold;
+        font-size: 2.4rem;
+        padding-bottom: 5px;
+      }
+      p {
+        font-size: 1.6rem;
+        line-height: 1.2;
+        strong {
+          font-weight: 700;
+        }
+      }
+    }
 
-			p{
-				font-size: 2.0rem;
-				text-align: center;
-			}
+    .right_infor {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
 
-			.button{
-				display: flex;
-				justify-content: space-around;
+      h2 {
+        color: #187bce;
+        font-weight: bold;
+        font-size: 2.4rem;
+        padding-bottom: 5px;
+        text-align: center;
+      }
 
-				button{
-					font-size: 1.8rem;
-					border-radius: 15px;
-					padding: 10px;
-					border: 1px solid #ccc;
-					background-color: #f1f1f1;
-					transition: background-color 0.3s, color 0.3s;
-					&:hover {
-						background-color: #e0e0e0;
-					}
-				}
-			}
-		}
-	}
+      p {
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      .button {
+        width: 50%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        button,
+        a {
+          text-align: center;
+          text-decoration: none;
+          align-self: center;
+          width: 80%;
+          padding: 10px;
+          font-size: 1.6rem;
+          font-weight: 700;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-view {
+          background-color: #187bce;
+          color: #fff;
+        }
+
+        .btn-view:hover {
+          background-color: #155b96;
+        }
+
+        .btn-unlock {
+          background-color: #fff;
+          color: #37b24d;
+          box-shadow: 0 0 0 2px #37b24d;
+        }
+
+        .btn-unlock:hover {
+          color: #fff;
+          background-color: #37b24d;
+        }
+      }
+    }
+  }
 `

@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
+import Logo from '../../../assets/hdh.png'
 
 function ManageCourse() {
   const token = localStorage.getItem('token')
@@ -128,8 +129,8 @@ function ManageCourse() {
         <title>Manage Course | EL-Space</title>
       </Helmet>
       <GeneralHeader />
-      <main>
-        <Container>
+      <MainManageWrapper>
+        <Container className="container">
           <div className="tabs">
             <div className="tab-buttons">
               <button
@@ -183,31 +184,32 @@ function ManageCourse() {
             </div>
           </div>
         </Container>
-      </main>
+      </MainManageWrapper>
       <GeneralFooter />
     </>
   )
 }
 
-export default ManageCourse
-const Container = styled.div`
+const MainManageWrapper = styled.main`
+  background-image: url(${Logo});
+  background-repeat: repeat;
+  background-size: auto;
+  background-attachment: fixed;
+  min-height: 100vh;
+`
+
+const Container = styled.section`
   .tabs {
-    font-family: 'Arial', sans-serif;
-    max-width: 70%;
     min-width: 800px;
-    margin: 50px auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 50px 0px;
     border-radius: 8px;
-    overflow: hidden;
-    min-height: 349px;
-    max-height: 800px;
-    overflow-y: auto;
   }
 
   .tab-buttons {
     display: flex;
     width: 50px;
     background-color: #f1f1f1;
+    margin-bottom: 20px;
   }
 
   .tab-buttons button {
@@ -216,14 +218,18 @@ const Container = styled.div`
     margin: 0px 5px;
     cursor: pointer;
     border: none;
-    border-radius: 15px;
-    background-color: #f1f1f1;
-    font-size: 1.8rem;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #187bce;
+    box-shadow: 0 0 0 2px #187bce;
+    font-weight: 700;
+    font-size: 1.6rem;
     transition: background-color 0.3s, color 0.3s;
   }
 
   .tab-buttons button:hover {
-    background-color: #e0e0e0;
+    background-color: #fff;
+    color: #187bce;
   }
 
   .tab-buttons button.active {
@@ -232,8 +238,10 @@ const Container = styled.div`
   }
 
   .tab-content {
+    max-height: 800px;
+    overflow: hidden;
+    overflow-y: auto;
     padding: 20px;
-    background-color: white;
   }
 
   .tab-content div {
@@ -251,3 +259,5 @@ const Container = styled.div`
     }
   }
 `
+
+export default ManageCourse

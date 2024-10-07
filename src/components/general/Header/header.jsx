@@ -1,21 +1,28 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import Logo from "../../../assets/Logo.png"
-import Badge from "@mui/material/Badge";
-import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined"; // import AccountCircle from "@mui/icons-material/AccountCircle";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import Categories from "./categories";
-import AvatarAction from "./avatar";
-import { useState } from "react";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import Logo from '../../../assets/Logo.png'
+import Badge from '@mui/material/Badge'
+import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined' // import AccountCircle from "@mui/icons-material/AccountCircle";
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
+import Categories from './categories'
+import AvatarAction from './avatar'
+import { useState, useContext } from 'react'
+import { useSearchParams, useNavigate } from 'react-router-dom'
+
+import io from 'socket.io-client'
+import { NotificationContext } from '~/context/NotificationContext'
 
 function Header() {
   const token = localStorage.getItem('token')
   const navigate = useNavigate()
   // eslint-disable-next-line no-unused-vars
   const [search, setSearch] = useSearchParams()
+
   const [title, setTitle] = useState(search.get('q') || '')
   const number = 2
+  // Notification
+  const { unreadCount } = useContext(NotificationContext)
+
   const handleSearch = (event) => {
     if (event.key === 'Enter') {
       navigate({
@@ -28,20 +35,19 @@ function Header() {
   const [reload, setReload] = useState(false)
   {
     //Chưa login
-    if (token == null)
-    {
+    if (token == null) {
       return (
         <Navbar>
-          <a className="brand" href='/'>
+          <a className="brand" href="/">
             <img src={Logo} alt="Web Logo" />
           </a>
           <div className="navLinks">
-            <Categories/>
+            <Categories />
             <div className="searchBox">
               <input
                 type="text"
-                placeholder= 'Search for anything'
-                value = {title ? title : ''}
+                placeholder="Search for anything"
+                value={title ? title : ''}
                 onChange={(e) => setTitle(e.target.value)}
                 onKeyDown={handleSearch}
               />
@@ -53,10 +59,10 @@ function Header() {
               </a>
             </div>
             <a href="/login" className="link">
-            Teach on EL-Space
+              Teach on EL-Space
             </a>
             <a href="/login" className="link">
-            My Learning
+              My Learning
             </a>
           </div>
           <div className="authButtons">
@@ -76,16 +82,16 @@ function Header() {
     else {
       return (
         <Navbar>
-          <a className="brand" href='/'>
+          <a className="brand" href="/">
             <img src={Logo} alt="Udemy Logo" />
           </a>
           <div className="navLinks">
-            <Categories/>
+            <Categories />
             <div className="searchBox">
               <input
                 type="text"
-                placeholder= 'Search for anything'
-                value = {title ? title : ''}
+                placeholder="Search for anything"
+                value={title ? title : ''}
                 onChange={(e) => setTitle(e.target.value)}
                 onKeyDown={handleSearch}
               />
@@ -108,12 +114,12 @@ function Header() {
               </StyledBadge>
             </a>
             <a href="/notification">
-              <StyledBadge badgeContent={number} color="error">
+              <StyledBadge badgeContent={unreadCount} color="error">
                 <NotificationsOutlinedIcon />
               </StyledBadge>
             </a>
             <a>
-              <AvatarAction setReload={setReload}/>
+              <AvatarAction setReload={setReload} />
             </a>
           </div>
         </Navbar>
@@ -128,8 +134,8 @@ const Navbar = styled.nav`
   align-items: center;
   padding: 10px 20px;
   background-color: #fff;
-  border-bottom: 1px solid #e0e0e0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #74c0fc;
+  box-shadow: 0 2px 4px rgba(44, 130, 201, 0.2);
 
   .brand {
     display: flex;
@@ -221,12 +227,12 @@ const Navbar = styled.nav`
       }
     }
   }
-`;
+`
 const StyledBadge = styled(Badge)`
   cursor: pointer;
   color: #555;
   transition: all 0.3s;
-  ${"" /* giảm kích thước của badge */}
+  ${'' /* giảm kích thước của badge */}
   .MuiBadge-badge {
     font-size: 0.8rem;
     font-weight: 600;
@@ -238,11 +244,11 @@ const StyledBadge = styled(Badge)`
     &:hover,
     &:focus {
       color: #1971c2;
-      ${"" /* Phóng to một chút */}
+      ${'' /* Phóng to một chút */}
       transform: scale(1.1);
       transition: all 0.3s;
     }
   }
-`;
+`
 
-export default Header;
+export default Header

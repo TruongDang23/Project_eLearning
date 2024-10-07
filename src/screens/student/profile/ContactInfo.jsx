@@ -77,8 +77,15 @@ const ContactInfoWrapper = styled.section`
   width: 70%;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: #0000000f 0px 4px 20px 0px;
+  border: 2px solid #74c0fc;
+  box-shadow: 0 10px 20px rgba(44, 130, 201, 0.2);
   transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
+    transition: all ease 0.3s;
+  }
+  
   .contact-info {
     display: flex;
     align-items: center;
@@ -165,11 +172,6 @@ const ContactInfoWrapper = styled.section`
         }
       }
     }
-  }
-
-  &:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    transition: all ease 0.3s;
   }
 
   @media screen and (max-width: 768px) {

@@ -13,23 +13,21 @@ module.exports = (connMysql, connMongo) => {
   router.use(cors())
   router.use(express.json())
 
-  const mysqlTransaction = connMysql.promise();
+  const mysqlTransaction = connMysql.promise()
 
   //Function format 1981-05-11T17:00:00.000Z to 1981-05-12
   const formatDate = (date) => {
-    const year = date.getFullYear();
+    const year = date.getFullYear()
     const month = String(date.getMonth() + 1).padStart(2, '0') // Months are zero indexed
     const day = String(date.getDate()).padStart(2, '0')
     return `${year}-${month}-${day}`
     // return `${day}-${month}-${year}`
   }
 
-  const isAuthorization = async(userID) => {
+  const isAuthorization = async (userID) => {
     return new Promise((resolve) => {
-      if (userID[0] !== 'S')
-        resolve(false)
-      else
-        resolve(true)
+      if (userID[0] !== 'S') resolve(false)
+      else resolve(true)
     })
   }
 
@@ -43,10 +41,9 @@ module.exports = (connMysql, connMongo) => {
         if (err) {
           reject(err)
           return
-        }
-
-        else {
-          let query = 'SELECT c.courseID, title, fullname as instructor, star, raters, price, currency\
+        } else {
+          let query =
+            'SELECT c.courseID, title, fullname as instructor, star, raters, price, currency\
                     FROM course as c\
                     INNER JOIN published_course as pc ON c.courseID = pc.courseID\
                     INNER JOIN user as u ON u.userID = c.userID\
@@ -57,20 +54,22 @@ module.exports = (connMysql, connMongo) => {
             if (error) {
               reject(error)
               return
-            }
-
-            else {
+            } else {
               //List courseIDs which is results of previous query
-              const courseIDs = courses.map(course => course.courseID)
+              const courseIDs = courses.map((course) => course.courseID)
 
               //Connect to MongoDB server
               await connMongo
               //Get image_introduce of each courseID
-              const mongoData = await Course.find({ courseID: { $in: courseIDs } }).select('courseID image_introduce')
+              const mongoData = await Course.find({
+                courseID: { $in: courseIDs }
+              }).select('courseID image_introduce')
 
               //Merge data with Mysql and MongoDB
-              const mergeData = courses.map(course => {
-                const data = mongoData.find(mc => mc.courseID === course.courseID)
+              const mergeData = courses.map((course) => {
+                const data = mongoData.find(
+                  (mc) => mc.courseID === course.courseID
+                )
                 return {
                   ...course,
                   image_introduce: data ? data.image_introduce : null
@@ -85,18 +84,16 @@ module.exports = (connMysql, connMongo) => {
   }
 
   // Define user-related routes
-  router.get('/loadInformation', verifyToken, async(req, res) => {
-    if (await isAuthorization(req.userID) === false) {
+  router.get('/loadInformation', verifyToken, async (req, res) => {
+    if ((await isAuthorization(req.userID)) === false) {
       res.status(401).send('error')
       return
-    }
-    else {
+    } else {
       connMysql.getConnection((err, connection) => {
         if (err) {
           res.status(500).send(err)
           return
-        }
-        else {
+        } else {
           //Get information from mysql
           let query = `SELECT 
                           userID,
@@ -117,37 +114,50 @@ module.exports = (connMysql, connMongo) => {
 
             //Get data of user from mongoDB
             await connMongo
-            const mongoData = await User.findOne({ userID: req.userID }).select()
+            const mongoData = await User.findOne({
+              userID: req.userID
+            }).select()
 
             //Get information of course user enrolled
             let enrolled
             try {
-              if (mongoData.course_enrolled.length != 0)
-              {
-                const courseInfo = await getCourseEnroll(mongoData.course_enrolled)
+              if (mongoData.course_enrolled.length != 0) {
+                const courseInfo = await getCourseEnroll(
+                  mongoData.course_enrolled
+                )
                 enrolled = courseInfo
-              }
-              else
-                enrolled = []
-            }
-            catch (error) {
+              } else enrolled = []
+            } catch (error) {
               res.status(404).send(error)
               return
             }
             //Merge data: Mysql + MongoDB + Course enrolled
-            const mergeData = infor.map(inf => {
+            const mergeData = infor.map((inf) => {
               return {
                 ...inf,
-                date_of_birth: (inf.date_of_birth == null) ? '2000-01-01' : formatDate(inf.date_of_birth),
+                date_of_birth:
+                  inf.date_of_birth == null
+                    ? '2000-01-01'
+                    : formatDate(inf.date_of_birth),
                 //Câu query không có lấy activity_status. Tuy nhiên login thành công <=> activity_status = active
                 activity_status: 'active',
 
-                social_network: (mongoData.social_networks != null) ? mongoData.social_networks : [],
-                self_introduce: (mongoData.self_introduce != null) ? mongoData.self_introduce : [],
-                expertise: (mongoData.expertise != null) ? mongoData.expertise : [],
-                degrees: (mongoData.degrees != null) ? mongoData.degrees : [],
-                projects: (mongoData.projects != null) ? mongoData.projects : [],
-                working_history: (mongoData.working_history != null) ? mongoData.working_history : [],
+                social_network:
+                  mongoData.social_networks != null
+                    ? mongoData.social_networks
+                    : [],
+                self_introduce:
+                  mongoData.self_introduce != null
+                    ? mongoData.self_introduce
+                    : [],
+                expertise:
+                  mongoData.expertise != null ? mongoData.expertise : [],
+                degrees: mongoData.degrees != null ? mongoData.degrees : [],
+                projects: mongoData.projects != null ? mongoData.projects : [],
+                working_history:
+                  mongoData.working_history != null
+                    ? mongoData.working_history
+                    : [],
                 course_enrolled: enrolled
               }
             })
@@ -160,29 +170,26 @@ module.exports = (connMysql, connMongo) => {
   })
 
   router.post('/updateInformation', verifyToken, async (req, res) => {
-    if (await isAuthorization(req.userID) === false) {
+    if ((await isAuthorization(req.userID)) === false) {
       res.status(401).send('error')
       return
-    }
-    else {
+    } else {
       const inf = req.body.profile
 
       connMysql.getConnection(async (err) => {
         if (err) {
           res.status(500).send(err)
           return
-        }
-        else {
+        } else {
           const mongoSession = await mongo.startSession()
           try {
             mongoSession.startTransaction()
-            await mysqlTransaction.query("START TRANSACTION")
+            await mysqlTransaction.query('START TRANSACTION')
 
             await User.updateOne(
               { userID: inf.userID },
               {
-                $set:
-                {
+                $set: {
                   social_networks: inf.social_network,
                   self_introduce: inf.self_introduce,
                   expertise: inf.expertise,
@@ -205,31 +212,34 @@ module.exports = (connMysql, connMongo) => {
                               language = ?
                             WHERE userID = ?`
 
-            const [rows] = await mysqlTransaction.query(query, [inf.avatar, inf.fullname, inf.date_of_birth, inf.street,
-              inf.province, inf.country, inf.language, inf.userID]);
+            const [rows] = await mysqlTransaction.query(query, [
+              inf.avatar,
+              inf.fullname,
+              inf.date_of_birth,
+              inf.street,
+              inf.province,
+              inf.country,
+              inf.language,
+              inf.userID
+            ])
 
-            if (rows.affectedRows == 0)
-            {
-              await mysqlTransaction.query("ROLLBACK")
+            if (rows.affectedRows == 0) {
+              await mysqlTransaction.query('ROLLBACK')
               await mongoSession.abortTransaction()
               res.send(false)
               return
-            }
-            else
-            {
-              await mysqlTransaction.query("COMMIT")
+            } else {
+              await mysqlTransaction.query('COMMIT')
               await mongoSession.commitTransaction()
               res.send(true)
               res.end()
             }
-          }
-          catch {
-            await mysqlTransaction.query("ROLLBACK")
+          } catch {
+            await mysqlTransaction.query('ROLLBACK')
             await mongoSession.abortTransaction()
             res.send(false)
             return
-          }
-          finally {
+          } finally {
             mongoSession.endSession()
           }
         }
@@ -237,18 +247,16 @@ module.exports = (connMysql, connMongo) => {
     }
   })
 
-  router.get('/loadProfile', verifyToken, async(req, res) => {
-    if (await isAuthorization(req.userID) === false) {
+  router.get('/loadProfile', verifyToken, async (req, res) => {
+    if ((await isAuthorization(req.userID)) === false) {
       res.status(401).send('error')
       return
-    }
-    else {
+    } else {
       connMysql.getConnection((err, connection) => {
         if (err) {
           res.status(500).send(err)
           return
-        }
-        else {
+        } else {
           //Get information from mysql
           let query = `SELECT 
                           userID,
@@ -268,37 +276,50 @@ module.exports = (connMysql, connMongo) => {
 
             //Get data of user from mongoDB
             await connMongo
-            const mongoData = await User.findOne({ userID: req.userID }).select()
+            const mongoData = await User.findOne({
+              userID: req.userID
+            }).select()
 
             //Get information of course user enrolled
             let enrolled
             try {
-              if (mongoData.course_enrolled.length != 0)
-              {
-                const courseInfo = await getCourseEnroll(mongoData.course_enrolled)
+              if (mongoData.course_enrolled.length != 0) {
+                const courseInfo = await getCourseEnroll(
+                  mongoData.course_enrolled
+                )
                 enrolled = courseInfo
-              }
-              else
-                enrolled = []
-            }
-            catch (error) {
+              } else enrolled = []
+            } catch (error) {
               res.status(404).send(error)
               return
             }
             //Merge data: Mysql + MongoDB + Course enrolled
-            const mergeData = infor.map(inf => {
+            const mergeData = infor.map((inf) => {
               return {
                 ...inf,
-                date_of_birth: (inf.date_of_birth == null) ? '2000-01-01' : formatDate(inf.date_of_birth),
+                date_of_birth:
+                  inf.date_of_birth == null
+                    ? '2000-01-01'
+                    : formatDate(inf.date_of_birth),
                 //Câu query không có lấy activity_status. Tuy nhiên login thành công <=> activity_status = active
                 activity_status: 'active',
 
-                social_network: (mongoData.social_networks != null) ? mongoData.social_networks : [],
-                self_introduce: (mongoData.self_introduce != null) ? mongoData.self_introduce : [],
-                expertise: (mongoData.expertise != null) ? mongoData.expertise : [],
-                degrees: (mongoData.degrees != null) ? mongoData.degrees : [],
-                projects: (mongoData.projects != null) ? mongoData.projects : [],
-                working_history: (mongoData.working_history != null) ? mongoData.working_history : [],
+                social_network:
+                  mongoData.social_networks != null
+                    ? mongoData.social_networks
+                    : [],
+                self_introduce:
+                  mongoData.self_introduce != null
+                    ? mongoData.self_introduce
+                    : [],
+                expertise:
+                  mongoData.expertise != null ? mongoData.expertise : [],
+                degrees: mongoData.degrees != null ? mongoData.degrees : [],
+                projects: mongoData.projects != null ? mongoData.projects : [],
+                working_history:
+                  mongoData.working_history != null
+                    ? mongoData.working_history
+                    : [],
                 course_enrolled: enrolled
               }
             })
@@ -307,6 +328,68 @@ module.exports = (connMysql, connMongo) => {
           })
         }
       })
+    }
+  })
+
+  const getProgress = async (courseID, userID) => {
+    // eslint-disable-next-line no-async-promise-executor
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          return reject(err)
+        }
+
+        const query = ` SELECT FORMAT(SUM(percent)/num_lecture,1) AS progress
+          from course inner join (
+            SELECT lectureID, courseID, MAX(percent) AS percent 
+              FROM learning
+              where userID = ?
+            group by lectureID, courseID
+          ) AS list_progress
+          ON course.courseID = list_progress.courseID
+          where course.courseID = ?`
+        connection.query(query, [userID, courseID], (error, data) => {
+          connection.release()
+          if (error) {
+            return reject(error)
+          }
+          resolve(data[0].progress)
+        })
+      })
+    })
+  }
+
+  router.get('/loadMyLearning', verifyToken, async (req, res) => {
+    if ((await isAuthorization(req.userID)) === false) {
+      res.status(401).send('error')
+      return
+    } else {
+      // Lấy dữ liệu người dùng từ MongoDB
+      connMongo
+      const mongoData = await User.findOne({ userID: req.userID }).select()
+      //Get information of course user enrolled
+      let enrolled
+
+      try {
+        if (mongoData.course_enrolled.length != 0) {
+          const courseInfo = await getCourseEnroll(mongoData.course_enrolled)
+          // Lấy progress cho từng khóa học
+          const enrolledWithProgress = await Promise.all(
+            courseInfo.map(async (course) => {
+              const progress = await getProgress(course.courseID, req.userID)
+              return {
+                ...course,
+                progress: progress || '0.0' // Gán giá trị mặc định là 0.0 nếu không có progress
+              }
+            })
+          )
+          enrolled = enrolledWithProgress
+        } else enrolled = []
+      } catch (error) {
+        res.status(404).send(error)
+        return
+      }
+      res.send(enrolled)
     }
   })
 

@@ -8,6 +8,10 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Loading from '~/screens/system/Loading'
 
+import Sticky from 'react-sticky-el'
+
+import Logo from '../../../assets/hdh.png'
+
 import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
 
 function Information() {
@@ -55,9 +59,11 @@ function Information() {
           <Helmet>
             <title>Information | EL-Space</title>
           </Helmet>
-          <GeneralHeader />
-          <main>
-            <Container>
+          <Sticky disabled={window.innerWidth <= 768}>
+            <GeneralHeader />
+          </Sticky>
+          <InformationWrapper>
+            <Container className="container">
               <LeftPane>
                 <UserProfile
                   profile={userProfile}
@@ -71,7 +77,7 @@ function Information() {
                 />
               </RightPane>
             </Container>
-          </main>
+          </InformationWrapper>
           <GeneralFooter />
         </>
       )}
@@ -79,49 +85,45 @@ function Information() {
   )
 }
 
-export default Information
+const InformationWrapper = styled.main`
+  padding: 40px 20px;
+  background-image: url(${Logo});
+  background-repeat: repeat;
+  background-size: auto;
+  background-attachment: fixed;
+  min-height: 100vh;
+`
+
 const Container = styled.div`
-  width: 1450px;
   margin: 0 auto;
+  border-radius: 8px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 4.8rem;
+  grid-template-columns: 1fr 1fr;
 
-  @media (max-width: 1200px) {
-    width: 80%;
-  }
+  border: 1px solid #ccc;
 
-  @media (max-width: 992px) {
-    width: 90%;
-  }
+  background-color: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
-    width: 95%;
-    flex-direction: column;
-    height: auto;
+    grid-template-columns: 1fr;
   }
 
-  @media (max-width: 576px) {
-    width: 100%;
-    padding: 0 10px;
+  @media (max-width: 480px) {
+    margin: 0;
+  }
+
+  @media (max-width: 320px) {
+    padding: 20px;
   }
 `
 
 const RightPane = styled.div`
-  flex: 2;
-  padding: 20px;
-  border-right: 1px solid #ddd;
-
-  @media (max-width: 768px) {
-    border-right: none;
-    border-bottom: 1px solid #ddd;
-  }
+  padding: 24px;
 `
 
 const LeftPane = styled.div`
-  flex: 1;
-  padding: 20px;
-  border-right: 1px solid #ddd;
-  border-left: 1px solid #ddd;
-  overflow-y: auto;
+  padding: 24px;
 `
+
+export default Information

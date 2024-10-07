@@ -89,27 +89,6 @@ function Information() {
 
 const InformationWrapper = styled.main`
   padding: 40px 20px;
-  ${
-    '' /* background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 1),
-    rgba(8, 144, 234, 0.8)
-  );
-  background-size: 200% 200%;
-  animation: gradientMovement 10s ease infinite;
-
-  @keyframes gradientMovement {
-    0% {
-      background-position: 0% 0%;
-    }
-    50% {
-      background-position: 100% 100%;
-    }
-    100% {
-      background-position: 0% 0%;
-    }
-  } */
-  }
   background-image: url(${Logo});
   background-repeat: repeat;
   background-size: auto;

@@ -7,6 +7,9 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Loading from '~/screens/system/Loading'
+import Logo from '../../../assets/hdh.png'
+
+import styled from 'styled-components'
 
 import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
 
@@ -53,18 +56,24 @@ function InforCourse() {
                 : 'Course Details'}
             </title>
           </Helmet>
-          <div>
-            <GeneralHeader />
-            <main>
-              <IntroCourse inforCourseData={inforCourseData} />
-              <MainCourse inforCourseData={inforCourseData} />
-            </main>
-            <FooterNew />
-          </div>
+          <GeneralHeader />
+          <InforCourseWrapper>
+            <IntroCourse inforCourseData={inforCourseData} />
+            <MainCourse inforCourseData={inforCourseData} />
+          </InforCourseWrapper>
+          <FooterNew />
         </>
       )}
     </>
   )
 }
+
+const InforCourseWrapper = styled.main`
+  background-image: url(${Logo});
+  background-repeat: repeat;
+  background-size: auto;
+  background-attachment: fixed;
+  min-height: 100vh;
+`
 
 export default InforCourse

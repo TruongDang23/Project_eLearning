@@ -6,6 +6,9 @@ import Instructor from './Instructor'
 import FooterNew from '~/components/general/Footer/FooterNew'
 import Sticky from 'react-sticky-el'
 import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
+import Logo from '../../../assets/hdh.png'
+
+import styled from 'styled-components'
 
 function Welcome() {
   return (
@@ -16,15 +19,23 @@ function Welcome() {
       <Sticky disabled={window.innerWidth <= 768}>
         <GeneralHeader />
       </Sticky>
-      <main>
+      <WelcomeWrapper>
         <HeroSection />
         <Feature />
         <CourseList />
         <Instructor />
-      </main>
+      </WelcomeWrapper>
       <FooterNew />
     </>
   )
 }
+
+const WelcomeWrapper = styled.main`
+  background-image: url(${Logo});
+  background-repeat: repeat;
+  background-size: auto;
+  background-attachment: fixed;
+  min-height: 100vh;
+`
 
 export default Welcome

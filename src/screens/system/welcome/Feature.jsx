@@ -61,7 +61,6 @@ function Feature() {
 
 const FeatureSection = styled.section`
   padding: 40px 20px;
-  background-color: #f1f3f5;
   align-items: center;
 
   h2 {
@@ -85,7 +84,8 @@ const FeatureSection = styled.section`
     padding: 40px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: #0000000f 0px 4px 20px 0px;
+    border: 2px solid #74c0fc;
+    box-shadow: 0 10px 20px rgba(44, 130, 201, 0.2);
     flex: 1 1 calc(33.333% - 20px);
     display: flex;
     flex-direction: column;
@@ -112,7 +112,7 @@ const FeatureSection = styled.section`
     }
 
     &:hover {
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
       transition: all 0.3s;
     }
   }
