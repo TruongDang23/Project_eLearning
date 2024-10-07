@@ -7779,7 +7779,7 @@
           "id": 11,
           "name": "Semi quizz",
           "type": "quizz",
-          "passpoint": 5,
+          "passpoint": 2,
           "during_time": 30,
           "title": "Semi quizz để ôn tập kiến thức",
           "questions": [
@@ -8759,24 +8759,7 @@
                 {
                   "responseID": "I001",
                   "response": "Chào bạn, để tối ưu hóa câu hỏi khi sử dụng ChatGPT, bạn nên đặt câu hỏi rõ ràng và cụ thể. Tránh đặt câu hỏi mơ hồ hoặc quá chung chung, và cung cấp đầy đủ ngữ cảnh nếu cần.",
-                  "date": "2023-07-21 05:00:32",
-                  "responses": [
-                    {
-                      "responseID": "I001",
-                      "response": "Chào bạn, để tối ưu hóa câu hỏi khi sử dụng ChatGPT, bạn nên đặt câu hỏi rõ ràng và cụ thể. Tránh đặt câu hỏi mơ hồ hoặc quá chung chung, và cung cấp đầy đủ ngữ cảnh nếu cần.",
-                      "date": "2023-07-21 05:00:32"
-                    },
-                    {
-                      "responseID": "I002",
-                      "response": "Bạn cũng có thể chia nhỏ câu hỏi phức tạp thành nhiều câu hỏi đơn giản hơn để ChatGPT có thể trả lời chi tiết và chính xác hơn.",
-                      "date": "2023-07-21 06:15:47"
-                    },
-                    {
-                      "responseID": "I003",
-                      "response": "Nếu bạn không nhận được câu trả lời như mong muốn, hãy thử diễn đạt lại câu hỏi theo cách khác hoặc cung cấp thêm thông tin để ChatGPT hiểu rõ hơn về yêu cầu của bạn.",
-                      "date": "2023-07-21 08:30:12"
-                    }
-                  ]
+                  "date": "2023-07-21 05:00:32"
                 },
                 {
                   "responseID": "I002",
@@ -26218,6 +26201,96 @@
               ]
             }
           ]
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66f022eb053bae3824e20e8a"
+  },
+  "courseID": "C045",
+  "image_introduce": "https://storage.googleapis.com/e-learning-bucket/C045/image_introduce.jpg",
+  "video_introduce": "https://storage.googleapis.com/e-learning-bucket/C045/video_introduce.mp4",
+  "keywords": [
+    "d"
+  ],
+  "targets": [
+    "d",
+    "d",
+    "f"
+  ],
+  "requirements": [
+    "f"
+  ],
+  "chapters": [
+    {
+      "chapter_name": "1. Test",
+      "lectures": [
+        {
+          "name": "Lecture 1: Introductiondddd",
+          "type": "file",
+          "description": "desc1",
+          "source": "https://storage.googleapis.com/e-learning-bucket/C045/CT01/Lecture 1: Introductiondddd.pdf",
+          "filename": "Getting_Started_with_Enterprise_grade_AI_Badge20220424-46-1h5suws.pdf"
+        }
+      ]
+    },
+    {
+      "chapter_name": "2. Học làm quen",
+      "lectures": [
+        {
+          "name": "Lecture 1: Introduction",
+          "type": "video",
+          "description": "fff",
+          "source": "https://storage.googleapis.com/e-learning-bucket/C045/CT02/Lecture 1: Introduction.mp4",
+          "filename": "inforCourseIntro.mp4"
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66f0276a3731ea6aef15900e"
+  },
+  "courseID": "C046",
+  "image_introduce": "https://storage.googleapis.com/e-learning-bucket/C046/image_introduce.jpg",
+  "video_introduce": "https://storage.googleapis.com/e-learning-bucket/C046/video_introduce.mp4",
+  "keywords": [
+    "d"
+  ],
+  "targets": [
+    "ddd"
+  ],
+  "requirements": [
+    "f",
+    "d",
+    "e"
+  ],
+  "chapters": [
+    {
+      "chapter_name": "1. Tìm hiểu công cụ",
+      "lectures": [
+        {
+          "name": "Lecture 1: Introductionff",
+          "type": "video",
+          "description": "desc1",
+          "source": "https://storage.googleapis.com/e-learning-bucket/C046/CT01/Lecture 1: Introductionff.mp4",
+          "filename": "inforCourseIntro.mp4"
+        }
+      ]
+    },
+    {
+      "chapter_name": "2. Học làm quen",
+      "lectures": [
+        {
+          "name": "Lecture 1: Introduction",
+          "type": "file",
+          "description": "desc2",
+          "source": "https://storage.googleapis.com/e-learning-bucket/C046/CT02/Lecture 1: Introduction.pdf",
+          "filename": "Getting_Started_with_Enterprise_grade_AI_Badge20220424-46-1h5suws.pdf"
         }
       ]
     }
