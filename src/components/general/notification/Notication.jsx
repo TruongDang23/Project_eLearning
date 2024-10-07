@@ -1,16 +1,21 @@
 import { GeneralFooter, GeneralHeader } from '~/components/general'
-import ListNotifications from "./ListNotifications";
+import ListNotifications from './ListNotifications'
+import { NotificationProvider } from '../../../context/NotificationContext'
+import Header from '../Header/header'
 
 function Notication() {
   return (
-    <div>
+    <>
       <GeneralHeader />
+      {/* <Header /> */}
       <main>
-        <ListNotifications />
+        <NotificationProvider>
+          <ListNotifications />
+        </NotificationProvider>
       </main>
       <GeneralFooter />
-    </div>
-  );
+    </>
+  )
 }
 
-export default Notication;
+export default Notication
