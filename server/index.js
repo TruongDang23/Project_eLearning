@@ -3,6 +3,8 @@ const cors = require('cors')
 const session = require('express-session')
 const express = require('express')
 const bodyParser = require('body-parser')
+const http = require('http') // Thêm thư viện http
+const { Server } = require('socket.io') // Import Server từ socket.io
 
 //import database (khi nào cần connect database nào thì gọi cái phù hợp)
 const connMysql = require('./connMySql')
@@ -46,6 +48,55 @@ app.use('/chat', sessionMiddleware, chatGeneration)
 // Cấu hình CORS
 app.use(cors())
 
-app.listen(port, () => {
+// app.listen(port, () => {
+//   console.log(`Server running at http://localhost:${port}/`)
+// })
+
+
+// Tạo HTTP server
+const server = http.createServer(app)
+
+// Cấu hình socket.io
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:5173", // Thay đổi theo port của React app
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+})
+
+// Chia sẻ session với socket.io
+io.use((socket, next) => {
+  sessionMiddleware(socket.request, socket.request.res || {}, next)
+})
+
+// Định nghĩa các sự kiện socket.io
+io.on('connection', (socket) => {
+  console.log('A user connected')
+
+  // Truy cập session nếu cần
+  // const session = socket.request.session
+  // console.log('Session ID:', session.id)
+
+  // Xử lý các sự kiện từ client
+  socket.on('message', (data) => {
+    console.log('Message received:', data)
+    // Phản hồi lại client
+    socket.emit('message', `Server nhận được: ${data}`)
+  })
+
+  socket.on('notificationSelected', (data) => {
+    console.log('Notification selected:', data.notifyID);
+    // Xử lý sự kiện (ví dụ: đánh dấu là đã đọc, ghi log, v.v.)
+  });
+
+  // Xử lý ngắt kết nối
+  socket.on('disconnect', () => {
+    console.log('A user disconnected')
+  })
+})
+
+// Bắt đầu server
+server.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`)
 })
