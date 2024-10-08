@@ -9,7 +9,6 @@ import AvatarAction from './avatar'
 import { useState, useContext } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 
-import io from 'socket.io-client'
 import { NotificationContext } from '~/context/NotificationContext'
 
 function Header() {
