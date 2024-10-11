@@ -13,11 +13,10 @@ import io from 'socket.io-client'
 import { NotificationContext } from '~/context/NotificationContext'
 
 function Header() {
-  const token = localStorage.getItem('token')
   const navigate = useNavigate()
   // eslint-disable-next-line no-unused-vars
   const [search, setSearch] = useSearchParams()
-
+  const token = sessionStorage.getItem("token")
   const [title, setTitle] = useState(search.get('q') || '')
   const number = 2
   // Notification

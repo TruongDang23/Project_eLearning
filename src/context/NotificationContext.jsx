@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // src/context/NotificationContext.js
-import React, { createContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import io from 'socket.io-client'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -12,10 +13,10 @@ export const NotificationProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
 
-  // Lấy thông tin người dùng từ localStorage
-  const token = localStorage.getItem('token')
-  const userAuth = localStorage.getItem('userAuth')
-  const userData = JSON.parse(localStorage.getItem('userAuth'))
+  // Lấy thông tin người dùng từ sessionStorage
+  const token = sessionStorage.getItem('token')
+  const userAuth = sessionStorage.getItem('userAuth')
+  const userData = JSON.parse(sessionStorage.getItem('userAuth'))
   const userID = userData ? userData.userID : ''
 
   useEffect(() => {
@@ -48,6 +49,7 @@ export const NotificationProvider = ({ children }) => {
     }
 
     fetchNotifications()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {

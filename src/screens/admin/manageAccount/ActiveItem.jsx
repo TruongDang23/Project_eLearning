@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 import { LockAccount } from '~/components/popup/index'
-import { Link } from 'react-router-dom'
 
 export function Items({ accountItem, reload, setReload }) {
   const [openPopup, setopenPopup] = useState(false)

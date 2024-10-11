@@ -1,4 +1,3 @@
-import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
 

@@ -15,15 +15,16 @@ import SpaceDashboardOutlinedIcon from "@mui/icons-material/SpaceDashboardOutlin
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined'
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "axios"
 
 export default function AvatarAction({ setReload }) {
-  const token = localStorage.getItem("token");
-  const userAuth = localStorage.getItem("userAuth");
-  const userData = JSON.parse(localStorage.getItem("userAuth"));
-  const userID = userData ? userData.userID : "";
+  const token = sessionStorage.getItem("token")
+  const userAuth = sessionStorage.getItem("userAuth")
+  const userData = JSON.parse(sessionStorage.getItem("userAuth"))
+
+  const userID = userData ? userData.userID : ""
   const [avt, setAvt] = useState();
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   useEffect(() => {
     axios
       .get("http://localhost:3000/s/loadAvatar", {
@@ -61,7 +62,7 @@ export default function AvatarAction({ setReload }) {
   };
 
   const handleLogout = () => {
-    localStorage.clear();
+    sessionStorage.clear();
     setReload(true);
     navigate("/");
   };

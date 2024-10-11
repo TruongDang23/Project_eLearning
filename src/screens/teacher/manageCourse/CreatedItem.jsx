@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 import { ApproveCourse } from '~/components/popup'
-import { Link } from 'react-router-dom'
 
 export function Items({ courseItem, reload, setReload }) {
   const [openAppr, setApprove] = useState(false)

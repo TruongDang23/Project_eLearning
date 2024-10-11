@@ -3,8 +3,8 @@ import CancelIcon from '@mui/icons-material/Cancel'
 import axios from "axios"
 
 const PopupCancelMornitor = ({ handleClose, course, reload, setReload }) => {
-  const token = localStorage.getItem('token')
-  const userAuth = localStorage.getItem('userAuth')
+  const token = sessionStorage.getItem('token')
+  const userAuth = sessionStorage.getItem('userAuth')
 
   const handleSave = async() => {
     try

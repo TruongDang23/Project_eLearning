@@ -14,11 +14,11 @@ import { Helmet } from 'react-helmet' // dùng để thay đổi title của tra
 
 
 function Login() {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("")
   const [pass, setPass] = useState("");
   const [role, setRole] = useState("");
-  const [message, setMessage] = useState("");
-  const navigate = useNavigate();
+  const [message, setMessage] = useState("")
+  const navigate = useNavigate()
 
   const typeUsername = (e) => {
     setUsername(e.target.value);
@@ -51,9 +51,9 @@ function Login() {
       else {
         const { token, userID, role } = res.data;
         const userData = JSON.stringify({ userID, role });
-        alert("Login successfully");
-        localStorage.setItem("token", token);
-        localStorage.setItem("userAuth", userData);
+        alert("Login successfully")
+        sessionStorage.setItem(`token`, token)
+        sessionStorage.setItem(`userAuth`, userData)
         navigate(`/`);
       }
     } catch (error) {
@@ -79,9 +79,9 @@ function Login() {
       else {
         const { token, userID, role } = res.data;
         const userData = JSON.stringify({ userID, role });
-        alert("Login successfully");
-        localStorage.setItem("token", token);
-        localStorage.setItem("userAuth", userData);
+        alert("Login successfully")
+        sessionStorage.setItem(`token`, token)
+        sessionStorage.setItem(`userAuth`, userData)
         navigate(`/`)
       }
     } catch (error) {

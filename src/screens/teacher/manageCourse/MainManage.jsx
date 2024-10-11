@@ -12,8 +12,8 @@ import { Helmet } from 'react-helmet' // dùng để thay đổi title của tra
 import Logo from '../../../assets/hdh.png'
 
 function ManageCourse() {
-  const token = localStorage.getItem('token')
-  const userAuth = localStorage.getItem('userAuth')
+  const token = sessionStorage.getItem('token')
+  const userAuth = sessionStorage.getItem('userAuth')
   const [reload, setReload] = useState(false)
   const [activeTab, setActiveTab] = useState('Tab1')
   const navigate = useNavigate()

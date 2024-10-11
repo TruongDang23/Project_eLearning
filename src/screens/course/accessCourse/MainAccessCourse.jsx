@@ -7,9 +7,9 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
 function MainAccessCourse({ accessCourseData, setReload }) {
-  const token = localStorage.getItem('token')
-  const userAuth = localStorage.getItem('userAuth')
-  const userData = JSON.parse(localStorage.getItem('userAuth'))
+  const token = sessionStorage.getItem('token')
+  const userAuth = sessionStorage.getItem('userAuth')
+  const userData = JSON.parse(sessionStorage.getItem('userAuth'))
   const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams({
     id: accessCourseData.chapters[0].lectures[0].id,

@@ -9,8 +9,8 @@ import { useNavigate } from 'react-router-dom'
 
 function UserProfile({ profile, setUserProfile }) {
   const [isReadOnly, setIsReadOnly] = useState(true)
-  const token = localStorage.getItem('token')
-  const userAuth = localStorage.getItem('userAuth')
+  const token = sessionStorage.getItem('token')
+  const userAuth = sessionStorage.getItem('userAuth')
   const navigate = useNavigate()
   const formatDate = (date) => {
     const year = date.getFullYear();

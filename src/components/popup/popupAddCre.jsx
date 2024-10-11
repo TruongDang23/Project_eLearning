@@ -81,7 +81,7 @@ const PopupCre = ({ handleClose, handleSave }) => {
                   ...prev,
                   degrees: [...prev.degrees, degree]
                 })),
-                  handleClose()
+                handleClose()
               }}
             >
               Save
