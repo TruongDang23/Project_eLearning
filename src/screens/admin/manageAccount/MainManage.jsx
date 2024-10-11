@@ -11,8 +11,8 @@ import Logo from '../../../assets/hdh.png'
 import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
 
 function ManageAccount() {
-  const token = localStorage.getItem('token')
-  const userAuth = localStorage.getItem('userAuth')
+  const token = sessionStorage.getItem('token')
+  const userAuth = sessionStorage.getItem('userAuth')
   const [reload, setReload] = useState(false)
   const [activeTab, setActiveTab] = useState('Tab1')
   const navigate = useNavigate()

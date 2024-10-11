@@ -21,8 +21,8 @@ function Information() {
     setUserProfile(newProfile)
   }
   const [isLoad, setIsLoad] = useState(true) //Data is loading
-  const token = localStorage.getItem('token')
-  const userAuth = localStorage.getItem('userAuth')
+  const token = sessionStorage.getItem('token')
+  const userAuth = sessionStorage.getItem('userAuth')
 
   useEffect(() => {
     axios

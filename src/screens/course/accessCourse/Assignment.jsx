@@ -7,7 +7,7 @@ import { Pagination } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
 
 function Assignment() {
-  const assignmentData = JSON.parse(localStorage.getItem('assignment'))
+  const assignmentData = JSON.parse(sessionStorage.getItem('assignment'))
 
   const { name, topics } = assignmentData;
 

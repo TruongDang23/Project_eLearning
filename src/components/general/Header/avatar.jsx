@@ -18,9 +18,9 @@ import { useEffect, useState } from "react";
 import axios from "axios"
 
 export default function AvatarAction({ setReload }) {
-  const token = sessionStorage.getItem("token");
-  const userAuth = sessionStorage.getItem("userAuth");
-  const userData = JSON.parse(sessionStorage.getItem("userAuth"));
+  const token = sessionStorage.getItem("token")
+  const userAuth = sessionStorage.getItem("userAuth")
+  const userData = JSON.parse(sessionStorage.getItem("userAuth"))
 
   const userID = userData ? userData.userID : ""
   const [avt, setAvt] = useState();
@@ -62,7 +62,7 @@ export default function AvatarAction({ setReload }) {
   };
 
   const handleLogout = () => {
-    localStorage.clear();
+    sessionStorage.clear();
     setReload(true);
     navigate("/");
   };

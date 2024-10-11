@@ -10,8 +10,8 @@ const PopupTerminate = ({ handleClose, course, reload, setReload }) => {
   const [showCalendar, setShowCalendar] = useState(false)
   const [currentInput, setCurrentInput] = useState(null)
   const calendarRef = useRef()
-  const token = localStorage.getItem('token')
-  const userAuth = localStorage.getItem('userAuth')
+  const token = sessionStorage.getItem('token')
+  const userAuth = sessionStorage.getItem('userAuth')
 
   const handleDateChange = (date) => {
     if (currentInput === 'from') {

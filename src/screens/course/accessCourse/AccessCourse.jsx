@@ -16,8 +16,8 @@ function AccessCourse() {
   const [reload, setReload] = useState(false)
   const { courseID } = useParams()
   const [accessCourseData, setAccessCourseData] = useState()
-  const token = localStorage.getItem('token')
-  const userAuth = localStorage.getItem('userAuth')
+  const token = sessionStorage.getItem('token')
+  const userAuth = sessionStorage.getItem('userAuth')
   const navigate = useNavigate()
 
   useEffect(() => {

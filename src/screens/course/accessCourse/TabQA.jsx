@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { formatDistanceToNow } from "date-fns";
@@ -25,7 +24,7 @@ function TabQA({ initialQA }) {
               day: "2-digit",
               hour: "2-digit",
               minute: "2-digit",
-              second: "2-digit",
+              second: "2-digit"
             })
             .replace(" ", " ");
 
@@ -37,10 +36,10 @@ function TabQA({ initialQA }) {
                 name: "Vinh", // thay đổi bằng tên người dùng ở đây
                 date: formattedDate,
                 avatar:
-                  "https://i.pinimg.com/564x/b3/ce/f7/b3cef71bf4f2247ec504f19885dd15e8.jpg",
+                  "https://i.pinimg.com/564x/b3/ce/f7/b3cef71bf4f2247ec504f19885dd15e8.jpg"
               },
-              ...QA.responses,
-            ],
+              ...QA.responses
+            ]
           };
         }
         return QA;
@@ -104,7 +103,7 @@ function TabQA({ initialQA }) {
                     <h4>{QA.name}</h4>
                     <span>
                       {formatDistanceToNow(new Date(QA.date), {
-                        addSuffix: true,
+                        addSuffix: true
                       })}
                     </span>
                   </div>
@@ -130,7 +129,7 @@ function TabQA({ initialQA }) {
                               <h4>{response.name}</h4>
                               <span>
                                 {formatDistanceToNow(new Date(response.date), {
-                                  addSuffix: true,
+                                  addSuffix: true
                                 })}
                               </span>
                             </div>

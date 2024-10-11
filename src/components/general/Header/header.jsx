@@ -11,15 +11,12 @@ import { useSearchParams, useNavigate } from 'react-router-dom'
 
 import io from 'socket.io-client'
 import { NotificationContext } from '~/context/NotificationContext'
-import { SessionContext } from '~/context/SessionContext'
 
 function Header() {
-  const { localData } = useContext(SessionContext)
-  const token = localData.token
   const navigate = useNavigate()
   // eslint-disable-next-line no-unused-vars
   const [search, setSearch] = useSearchParams()
-
+  const token = sessionStorage.getItem("token")
   const [title, setTitle] = useState(search.get('q') || '')
   const number = 2
   // Notification

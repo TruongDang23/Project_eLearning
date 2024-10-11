@@ -3,8 +3,8 @@ import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined'
 import axios from "axios"
 
 const PopupAdjustCourse = ({ handleClose, course, reload, setReload }) => {
-  const token = localStorage.getItem('token')
-  const userAuth = localStorage.getItem('userAuth')
+  const token = sessionStorage.getItem('token')
+  const userAuth = sessionStorage.getItem('userAuth')
 
   const handleSave = async() => {
     try

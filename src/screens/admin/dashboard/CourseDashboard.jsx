@@ -1,9 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import styled from "styled-components"
 
-import PublishIcon from "@mui/icons-material/Publish";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import CancelIcon from "@mui/icons-material/Cancel";
+import PublishIcon from "@mui/icons-material/Publish"
+import DraftsIcon from "@mui/icons-material/Drafts"
+import CancelIcon from "@mui/icons-material/Cancel"
 
 function CourseDashboard() {
   return (

@@ -7,20 +7,18 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import styled from "styled-components";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import CryptoJS from "crypto-js";
 import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
-import { SessionContext } from "~/context/SessionContext";
 
 
 function Login() {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("")
   const [pass, setPass] = useState("");
   const [role, setRole] = useState("");
-  const [message, setMessage] = useState("");
-  const navigate = useNavigate();
-  const { setLocalData } = useContext(SessionContext)
+  const [message, setMessage] = useState("")
+  const navigate = useNavigate()
 
   const typeUsername = (e) => {
     setUsername(e.target.value);

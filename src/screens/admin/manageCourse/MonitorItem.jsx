@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 import { PublishCourse, RejectCourse } from '~/components/popup/index'
-import { Link } from 'react-router-dom'
 
 export function Items({ courseItem, reload, setReload }) {
   const [openPub, setopenPub] = useState(false)

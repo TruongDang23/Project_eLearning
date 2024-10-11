@@ -3,8 +3,8 @@ import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined'
 import axios from "axios"
 
 const PopupUnLockAcc = ({ handleClose, account, reload, setReload }) => {
-  const token = localStorage.getItem('token')
-  const userAuth = localStorage.getItem('userAuth')
+  const token = sessionStorage.getItem('token')
+  const userAuth = sessionStorage.getItem('userAuth')
 
   const handleSave = async() => {
     try

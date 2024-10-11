@@ -3,7 +3,6 @@ import styled, { keyframes } from 'styled-components'
 import Popover from '@mui/material/Popover'
 import DoneRoundedIcon from '@mui/icons-material/DoneRounded'
 import StarRating from '~/components/general/Other/StarRating'
-import { Link } from 'react-router-dom'
 
 function CourseCard({ course }) {
   const {
