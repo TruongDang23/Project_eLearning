@@ -14,8 +14,8 @@ import { NotificationContext } from '~/context/NotificationContext'
 import { SessionContext } from '~/context/SessionContext'
 
 function Header() {
-  const { localStorages } = useContext(SessionContext)
-  const token = localStorages.token
+  const { localData } = useContext(SessionContext)
+  const token = localData.token
   const navigate = useNavigate()
   // eslint-disable-next-line no-unused-vars
   const [search, setSearch] = useSearchParams()

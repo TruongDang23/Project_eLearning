@@ -4,21 +4,21 @@ import { createContext, useState } from 'react'
 export const SessionContext = createContext()
 
 export const SessionProvider = ({ children }) => {
-  const [localStorages, setLocalStorage] = useState({
+  const [localData, setLocalData] = useState({
     token: '',
     userAuth: ''
   })
 
-  const updateStorage = (data) => {
-    setLocalStorage({
-      token: data.token,
-      userAuth: data.userAuth
-    })
-  }
+  // const updateStorage = (data) => {
+  //   setLocalStorage({
+  //     token: data.token,
+  //     userAuth: data.userAuth
+  //   })
+  // }
 
   return (
     <SessionContext.Provider
-      value={{ localStorages, updateStorage }}
+      value={{ localData, setLocalData }}
     >
       {children}
     </SessionContext.Provider>

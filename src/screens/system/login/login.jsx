@@ -20,7 +20,8 @@ function Login() {
   const [role, setRole] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  const { localStorages, updateStorage } = useContext(SessionContext)
+  const { setLocalData } = useContext(SessionContext)
+
   const typeUsername = (e) => {
     setUsername(e.target.value);
     setMessage("");
@@ -52,14 +53,9 @@ function Login() {
       else {
         const { token, userID, role } = res.data;
         const userData = JSON.stringify({ userID, role });
-        alert("Login successfully");
-        const time = Date.now()
-        updateStorage({
-          token: `token_${time}`,
-          userAuth: `userAuth_${time}`
-        })
-        localStorage.setItem(`token_${time}`, token);
-        localStorage.setItem(`userAuth_${time}`, userData);
+        alert("Login successfully")
+        sessionStorage.setItem(`token`, token)
+        sessionStorage.setItem(`userAuth`, userData)
         navigate(`/`);
       }
     } catch (error) {
@@ -85,14 +81,9 @@ function Login() {
       else {
         const { token, userID, role } = res.data;
         const userData = JSON.stringify({ userID, role });
-        alert("Login successfully");
-        const time = Date.now()
-        updateStorage({
-          token: `token_${time}`,
-          userAuth: `userAuth_${time}`
-        })
-        localStorage.setItem(`token_${time}`, token);
-        localStorage.setItem(`userAuth_${time}`, userData);
+        alert("Login successfully")
+        sessionStorage.setItem(`token`, token)
+        sessionStorage.setItem(`userAuth`, userData)
         navigate(`/`);
       }
     } catch (error) {

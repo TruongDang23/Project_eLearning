@@ -86,7 +86,7 @@ io.on('connection', (socket) => {
   socket.on('message', (data) => {
     // console.log('Message received:', data)
     // Phản hồi lại client
-    socket.emit('message', `Server nhận được: ${data}`)
+    // socket.emit('message', `Server nhận được: ${data}`)
 
 
   })
