@@ -82,7 +82,7 @@ function Login() {
         alert("Login successfully");
         localStorage.setItem("token", token);
         localStorage.setItem("userAuth", userData);
-        navigate(`/`);
+        navigate(`/`)
       }
     } catch (error) {
       alert("An error occurred while trying to log in.");
