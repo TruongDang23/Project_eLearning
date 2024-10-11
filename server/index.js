@@ -37,9 +37,9 @@ var sessionMiddleware = session({
   secret:
     'd6cb109246bc06e7b4e88fc0579fa6f5eaf770a93e42e33934419bed7b3a944e629e5f28a6ef0678ccdd5c63ab106838b34fda2ea21a1250fe5c2d1c7f70ceb0',
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: { secure: false }
 })
-
 app.use(sessionMiddleware)
 
 // Use routes
@@ -76,7 +76,7 @@ io.use((socket, next) => {
 
 // Định nghĩa các sự kiện socket.io
 io.on('connection', (socket) => {
-  console.log('A user connected')
+  // console.log('A user connected')
 
   // Truy cập session nếu cần
   // const session = socket.request.session
@@ -84,7 +84,7 @@ io.on('connection', (socket) => {
 
   // Xử lý các sự kiện từ client
   socket.on('message', (data) => {
-    console.log('Message received:', data)
+    // console.log('Message received:', data)
     // Phản hồi lại client
     socket.emit('message', `Server nhận được: ${data}`)
 
@@ -92,25 +92,25 @@ io.on('connection', (socket) => {
   })
 
   socket.on('notification', (data) => {
-    console.log('Notification received:', data)
+    // console.log('Notification received:', data)
     // Gửi thông báo đến tất cả client
     // io.emit('notification', data)
   })
 
   socket.on('notificationSelected', (data) => {
-    console.log('Notification selected:', data)
+    // console.log('Notification selected:', data)
     // Xử lý sự kiện (ví dụ: đánh dấu là đã đọc, ghi log, v.v.)
   })
 
   socket.on('unreadCount', (count) => {
-    console.log('Unread count:', count)
+    // console.log('Unread count:', count)
     // Xử lý sự kiện (ví dụ: cập nhật trạng thái chưa đọc, ghi log, v.v.)
     
   })
 
   // Xử lý ngắt kết nối
   socket.on('disconnect', () => {
-    console.log('A user disconnected')
+    // console.log('A user disconnected')
   })
 })
 

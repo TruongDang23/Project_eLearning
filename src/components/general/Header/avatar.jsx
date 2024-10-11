@@ -14,16 +14,24 @@ import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
 import SpaceDashboardOutlinedIcon from "@mui/icons-material/SpaceDashboardOutlined";
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined'
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import { SessionContext } from '~/context/SessionContext'
 
 export default function AvatarAction({ setReload }) {
-  const token = localStorage.getItem("token");
-  const userAuth = localStorage.getItem("userAuth");
-  const userData = JSON.parse(localStorage.getItem("userAuth"));
-  const userID = userData ? userData.userID : "";
+  //const token = localStorage.getItem("token");
+  //const userAuth = localStorage.getItem("userAuth");
+  //const userData = JSON.parse(localStorage.getItem("userAuth"));
+  const { localStorages } = useContext(SessionContext)
+  const token = localStorage.getItem(localStorages.token)
+  const userAuth = localStorage.getItem(localStorages.userAuth)
+  const userData = JSON.parse(localStorage.getItem(localStorages.userAuth))
+
+  const userID = userData ? userData.userID : "A000"
   const [avt, setAvt] = useState();
   const navigate = useNavigate();
+  console.log(token)
+  console.log(userAuth)
   useEffect(() => {
     axios
       .get("http://localhost:3000/s/loadAvatar", {

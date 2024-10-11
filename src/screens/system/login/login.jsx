@@ -7,10 +7,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import styled from "styled-components";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import CryptoJS from "crypto-js";
 import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
+import { SessionContext } from "~/context/SessionContext";
 
 
 function Login() {
@@ -19,7 +20,7 @@ function Login() {
   const [role, setRole] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-
+  const { localStorages, updateStorage } = useContext(SessionContext)
   const typeUsername = (e) => {
     setUsername(e.target.value);
     setMessage("");
@@ -52,8 +53,13 @@ function Login() {
         const { token, userID, role } = res.data;
         const userData = JSON.stringify({ userID, role });
         alert("Login successfully");
-        localStorage.setItem("token", token);
-        localStorage.setItem("userAuth", userData);
+        const time = Date.now()
+        updateStorage({
+          token: `token_${time}`,
+          userAuth: `userAuth_${time}`
+        })
+        localStorage.setItem(`token_${time}`, token);
+        localStorage.setItem(`userAuth_${time}`, userData);
         navigate(`/`);
       }
     } catch (error) {
@@ -80,8 +86,13 @@ function Login() {
         const { token, userID, role } = res.data;
         const userData = JSON.stringify({ userID, role });
         alert("Login successfully");
-        localStorage.setItem("token", token);
-        localStorage.setItem("userAuth", userData);
+        const time = Date.now()
+        updateStorage({
+          token: `token_${time}`,
+          userAuth: `userAuth_${time}`
+        })
+        localStorage.setItem(`token_${time}`, token);
+        localStorage.setItem(`userAuth_${time}`, userData);
         navigate(`/`);
       }
     } catch (error) {

@@ -437,7 +437,7 @@ module.exports = (connMysql, connMongo) => {
     })
   })
 
-  router.get('/loadNotification',  async (req, res) => {
+  router.get('/loadNotification', async (req, res) => {
     const { userID } = req.query
     connMysql.getConnection((err, connection) => {
       if (err) {
