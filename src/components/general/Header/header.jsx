@@ -11,9 +11,11 @@ import { useSearchParams, useNavigate } from 'react-router-dom'
 
 import io from 'socket.io-client'
 import { NotificationContext } from '~/context/NotificationContext'
+import { SessionContext } from '~/context/SessionContext'
 
 function Header() {
-  const token = localStorage.getItem('token')
+  const { localStorages } = useContext(SessionContext)
+  const token = localStorages.token
   const navigate = useNavigate()
   // eslint-disable-next-line no-unused-vars
   const [search, setSearch] = useSearchParams()

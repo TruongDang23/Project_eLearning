@@ -948,7 +948,6 @@ module.exports = (connMysql, connMongo) => {
   router.get("/findcourse", async (req, res) => {
     const { category, title, ratings, language, method, program, price } =
       req.query
-
     connMysql.getConnection((err, connection) => {
       if (err) {
         res.status(500).send(err)
