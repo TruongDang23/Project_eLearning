@@ -82,7 +82,7 @@ function Login() {
         alert("Login successfully")
         sessionStorage.setItem(`token`, token)
         sessionStorage.setItem(`userAuth`, userData)
-        navigate(`/`);
+        navigate(`/`)
       }
     } catch (error) {
       alert("An error occurred while trying to log in.");
