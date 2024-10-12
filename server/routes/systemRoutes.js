@@ -467,5 +467,26 @@ module.exports = (connMysql, connMongo) => {
     })
   })
 
+  router.post('/readNotify', async (req, res) => {
+    const { userID, notifyID } = req.body
+    connMysql.getConnection((err, connection) => {
+      if (err) {
+        res.status(500).send(err)
+      }
+      else {
+        //Change status of notify is read
+        let query = `update receive_notify set isRead = true where userID = ? and notifyID = ?`
+        connection.query(query, [userID, notifyID], async (error) => {
+          connection.release() //Giải phóng connection khi truy vấn xong
+          if (error) {
+            res.status(500).send(error)
+          }
+          res.status(200)
+          res.end()
+        })
+      }
+    })
+  })
+
   return router
 }
