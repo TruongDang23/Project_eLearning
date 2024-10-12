@@ -1,9 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-// src/context/NotificationContext.js
 import { createContext, useState, useEffect } from 'react'
-import io from 'socket.io-client'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import io from 'socket.io-client'
 
 export const NotificationContext = createContext()
 
@@ -13,11 +11,23 @@ export const NotificationProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
 
+  const socket = io('http://localhost:3001')
   // Lấy thông tin người dùng từ sessionStorage
   const token = sessionStorage.getItem('token')
   const userAuth = sessionStorage.getItem('userAuth')
   const userData = JSON.parse(sessionStorage.getItem('userAuth'))
   const userID = userData ? userData.userID : ''
+
+  useEffect(() => {
+    let count = 0
+    notifications.map((notify) => {
+      if (notify.isRead === 0)
+        count = count + 1
+    })
+    socket.emit('updateUnreadCount', count, token)
+    setUnreadCount(count)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [notifications])
 
   useEffect(() => {
     // Hàm lấy dữ liệu thông báo ban đầu từ API
@@ -52,59 +62,36 @@ export const NotificationProvider = ({ children }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  useEffect(() => {
-    // Kết nối socket.io chỉ khi đã có userID
-    if (!userID) return
-
-    const socket = io('http://localhost:3001', {
-      query: { userID }, // Gửi userID trong query nếu cần
-      withCredentials: true
-    })
-
-    // Nghe sự kiện 'notification' từ server
-    socket.on('notification', (data) => {
-      setNotifications((prevNotifications) => [data, ...prevNotifications])
-    })
-    socket.emit('notification', notifications)
-
-    // Cleanup khi component unmount
-    return () => {
-      socket.disconnect()
-    }
-  }, [userID])
-
-  useEffect(() => {
-    const socket = io('http://localhost:3001', {
-      query: { userID }, // Gửi userID trong query nếu cần
-      withCredentials: true
-    })
-    // Cập nhật số lượng thông báo chưa đọc
-    const count = notifications.filter((notify) => !notify.isRead).length
-    setUnreadCount(count)
-
-    // Bạn có thể gửi yêu cầu lên server để cập nhật số lượng thông báo chưa đọc nếu cần
-    socket.emit('unreadCount', count)
-  }, [notifications])
-
-  const markAsRead = (notifyID) => {
-    const socket = io('http://localhost:3001', {
-      query: { userID }, // Gửi userID trong query nếu cần
-      withCredentials: true
-    })
-    setNotifications((prevNotifications) =>
-      prevNotifications.map((notify) =>
-        notify.notifyID === notifyID ? { ...notify, isRead: true } : notify
+  const markAsRead = async (notifyID, userID) => {
+    try
+    {
+      const res = await axios.post('http://localhost:3000/s/readNotify',
+        {
+          userID: userID,
+          notifyID: notifyID
+        }
       )
-    )
-    // Bạn có thể gửi yêu cầu lên server để cập nhật trạng thái đã đọc nếu cần
-    // Emit the updated unread count to the server
-    const unreadCount = notifications.filter((notify) => !notify.isRead).length
-    socket.emit('unreadCount', unreadCount)
+      if (res.status === 200)
+      {
+        //update tooltips notification
+        setNotifications((prevNotifications) =>
+          prevNotifications.map((notify) =>
+            notify.notifyID === notifyID ? { ...notify, isRead: true } : notify
+          )
+        )
+      }
+      else
+        alert('Read notify failed')
+    }
+    catch (error) {
+      alert('An error occurred while trying to adjust content course.')
+    //console.error(error)
+    }
   }
 
   return (
     <NotificationContext.Provider
-      value={{ notifications, unreadCount, markAsRead, isLoading }}
+      value={{ notifications, unreadCount, markAsRead, isLoading, setUnreadCount }}
     >
       {children}
     </NotificationContext.Provider>

@@ -15,43 +15,18 @@ const io = new Server(server, {
 })
 // Định nghĩa các sự kiện socket.io
 io.on('connection', (socket) => {
-  console.log('A user connected')
-
-  // Truy cập session nếu cần
-  // const session = socket.request.session
-  // console.log('Session ID:', session.id)
-
-  // Xử lý các sự kiện từ client
-  socket.on('message', (data) => {
-    // console.log('Message received:', data)
-    // Phản hồi lại client
-    // socket.emit('message', `Server nhận được: ${data}`)
-
-
+  socket.on('joinGroupIndividual', (groupID) => {
+    //This group to getting data for idividual user
+    socket.join(groupID)
   })
 
-  socket.on('notification', (data) => {
-    // console.log('Notification received:', data)
-    // Gửi thông báo đến tất cả client
-    // io.emit('notification', data)
+  // Listen for 'updateUnreadCount' from a client or system
+  socket.on('updateUnreadCount', (newUnreadCount, token) => {
+    const groupID = token
+    io.to(groupID).emit('unreadCountUpdated', newUnreadCount);
   })
 
-  socket.on('notificationSelected', (data) => {
-    console.log('Notification selected:', data)
-    // Xử lý sự kiện (ví dụ: đánh dấu là đã đọc, ghi log, v.v.)
-  })
-
-  socket.on('unreadCount', (count) => {
-    // console.log('Unread count:', count)
-    // Xử lý sự kiện (ví dụ: cập nhật trạng thái chưa đọc, ghi log, v.v.)
-
-  })
-
-  // Xử lý ngắt kết nối
-  socket.on('disconnect', () => {
-    // console.log('A user disconnected')
-  })
 })
 server.listen(port, () => {
-  console.log(`SOCKET running at http://localhost:${port}/`);
+  console.log(`SOCKET running at http://localhost:${port}/`)
 });

@@ -1,11 +1,8 @@
 import styled from 'styled-components'
 import NotifyPreview from './NotifyPreview'
-import { useState, useEffect, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import { useState, useContext } from 'react'
 import Loading from '~/screens/system/Loading'
 
-import io from 'socket.io-client'
 
 import { NotificationContext } from '~/context/NotificationContext'
 
@@ -14,38 +11,14 @@ function ListNotifications() {
 
   const userID = userData ? userData.userID : ""
 
-  const socket = io('http://localhost:3001')
   const { notifications, isLoading, markAsRead, unreadCount } =
     useContext(NotificationContext)
   const [selectedNotify, setSelectedNotify] = useState(null)
-  const navigate = useNavigate()
 
   const handleSelectNotify = async (notify) => {
     setSelectedNotify(notify)
     if (!notify.isRead) {
-      markAsRead(notify.notifyID)
-      // Bạn có thể gửi yêu cầu lên server để cập nhật trạng thái đã đọc tại đây nếu cần
-      // socket.emit('notificationSelected', { notifyID: notify.notifyID })
-      // console.log(unreadCount)
-      try
-      {
-        const res = await axios.post('http://localhost:3000/s/readNotify',
-          {
-            userID: userID,
-            notifyID: notify.notifyID
-          }
-        )
-        if (res.status === 200)
-        {
-          //call socket to update number in tooltips
-        }
-        else
-          alert('Read notify failed')
-      }
-      catch (error) {
-        alert('An error occurred while trying to adjust content course.')
-      //console.error(error)
-      }
+      markAsRead(notify.notifyID, userID)
     }
   }
 
