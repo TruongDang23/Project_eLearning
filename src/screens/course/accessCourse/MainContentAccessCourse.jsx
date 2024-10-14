@@ -42,7 +42,7 @@ function MainContentAccessCourse({ accessCourseData, params, setProgress }) {
       ) : (
         navigate(`/course/${accessCourseData.courseID}/assignment/${id}?page=1`)
       )}
-      <TabviewAccessCourse accessCourseData={accessCourseData} />
+      <TabviewAccessCourse accessCourseData={accessCourseData} lectureId={id} />
     </MainAccessCourseWrapper>
   );
 }

@@ -1,8 +1,9 @@
-import styled from "styled-components";
-import { CircularProgressbar } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
+import styled from 'styled-components'
+import { CircularProgressbar } from 'react-circular-progressbar'
+import 'react-circular-progressbar/dist/styles.css'
 
 function CourseBanner({ accessCourseData }) {
+  console.log(accessCourseData)
   return (
     <CourseBannerWrapper>
       <div className="course-banner">
@@ -16,13 +17,13 @@ function CourseBanner({ accessCourseData }) {
             text={`${accessCourseData.progress}%`}
             styles={{
               root: { width: 50 },
-              backgroundColor: "#f9f9f9"
+              backgroundColor: '#f9f9f9'
             }}
           />
         </div>
       </div>
     </CourseBannerWrapper>
-  );
+  )
 }
 const CourseBannerWrapper = styled.section`
   background-color: #2d2f31;
@@ -49,5 +50,5 @@ const CourseBannerWrapper = styled.section`
       }
     }
   }
-`;
-export default CourseBanner;
+`
+export default CourseBanner
