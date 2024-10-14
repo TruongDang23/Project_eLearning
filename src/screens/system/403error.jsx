@@ -6,7 +6,7 @@ const ForbiddenPage = () => {
   const navigate = useNavigate()
 
   const handleRedirectToHome = () => {
-    localStorage.clear()
+    sessionStorage.clear()
     navigate('/')
   }
 

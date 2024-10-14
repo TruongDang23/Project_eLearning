@@ -25,7 +25,7 @@ function MainContentAccessCourse({ accessCourseData, params, setProgress }) {
     for (const chapter of accessCourseData.chapters) {
       assignment = chapter.lectures.find(lecture => lecture.id == id);
       if (assignment) {
-        localStorage.setItem('assignment', JSON.stringify(assignment))
+        sessionStorage.setItem('assignment', JSON.stringify(assignment))
         break;
       }
     }
@@ -42,7 +42,7 @@ function MainContentAccessCourse({ accessCourseData, params, setProgress }) {
       ) : (
         navigate(`/course/${accessCourseData.courseID}/assignment/${id}?page=1`)
       )}
-      <TabviewAccessCourse accessCourseData={accessCourseData} />
+      <TabviewAccessCourse accessCourseData={accessCourseData} lectureId={id} />
     </MainAccessCourseWrapper>
   );
 }

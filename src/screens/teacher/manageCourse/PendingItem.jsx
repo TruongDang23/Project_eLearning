@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 import { CancelApprove } from '~/components/popup/index'
-import { Link } from 'react-router-dom'
 
 export function Items({ courseItem, reload, setReload }) {
   const [openCancel, setopenCancel] = useState(false)

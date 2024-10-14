@@ -8,7 +8,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import axios from "axios";
 import CryptoJS from "crypto-js";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
 
 
@@ -38,7 +38,7 @@ function Signup() {
       const res = await axios.post("http://localhost:3000/s/signup", {
         username,
         pass: hassed,
-        role,
+        role
       });
       if (res.data === true) alert("Signup Successfully");
       else alert("Signup Failed");
@@ -73,7 +73,7 @@ function Signup() {
                       fontSize: 40,
                       color: "#187BCE",
                       paddingLeft: "10px",
-                      paddingRight: "10px",
+                      paddingRight: "10px"
                     }}
                     className="icon"
                   />
@@ -98,7 +98,7 @@ function Signup() {
                       fontSize: 40,
                       color: "#187BCE",
                       paddingLeft: "10px",
-                      paddingRight: "10px",
+                      paddingRight: "10px"
                     }}
                     className="icon"
                   />
@@ -123,7 +123,7 @@ function Signup() {
                       fontSize: 40,
                       color: "#187BCE",
                       paddingLeft: "10px",
-                      paddingRight: "10px",
+                      paddingRight: "10px"
                     }}
                     className="icon"
                   />
@@ -175,7 +175,7 @@ function Signup() {
                     color: "red",
                     textAlign: "center",
                     marginTop: "20px",
-                    fontSize: "1.6rem",
+                    fontSize: "1.6rem"
                   }}
                 >
                   {message}

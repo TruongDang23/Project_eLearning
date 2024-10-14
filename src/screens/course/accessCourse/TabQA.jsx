@@ -1,64 +1,69 @@
-import React from "react";
-import { useState } from "react";
-import styled from "styled-components";
-import { formatDistanceToNow } from "date-fns";
+import { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { formatDistanceToNow } from 'date-fns'
 
-import SearchIcon from "@mui/icons-material/Search";
+import SearchIcon from '@mui/icons-material/Search'
 
-function TabQA({ initialQA }) {
-  const [courseQA, setCourseQA] = useState(initialQA);
-  const [newResponse, setNewResponse] = useState("");
-  const [replyingTo, setReplyingTo] = useState(null);
+function TabQA({ lectureQA }) {
+  // console.log(lectureQA)
+  const [courseQA, setCourseQA] = useState([])
+  const [newResponse, setNewResponse] = useState('')
+  const [replyingTo, setReplyingTo] = useState(null)
 
-  const handleResponseChange = (e) => setNewResponse(e.target.value);
+  useEffect(() => {
+    setCourseQA(lectureQA)
+  }, [lectureQA])
+
+
+  const handleResponseChange = (e) => setNewResponse(e.target.value)
 
   const handleResponseSubmit = () => {
     if (newResponse.trim() && replyingTo !== null) {
       const updatedQA = courseQA.map((QA, index) => {
         if (index === replyingTo) {
-          const currentDate = new Date();
+          const currentDate = new Date()
           // lấy ngày giờ hiện tại và format theo định dạng "yyyy-MM-dd HH:mm:ss"
           const formattedDate = currentDate
-            .toLocaleString("sv-SE", {
-              year: "numeric",
-              month: "2-digit",
-              day: "2-digit",
-              hour: "2-digit",
-              minute: "2-digit",
-              second: "2-digit",
+            .toLocaleString('sv-SE', {
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
+              hour: '2-digit',
+              minute: '2-digit',
+              second: '2-digit'
             })
-            .replace(" ", " ");
+            .replace(' ', ' ')
 
           return {
             ...QA,
             responses: [
               {
                 response: newResponse,
-                name: "Vinh", // thay đổi bằng tên người dùng ở đây
+                name: 'Vinh', // thay đổi bằng tên người dùng ở đây
                 date: formattedDate,
                 avatar:
-                  "https://i.pinimg.com/564x/b3/ce/f7/b3cef71bf4f2247ec504f19885dd15e8.jpg",
+                  'https://i.pinimg.com/564x/b3/ce/f7/b3cef71bf4f2247ec504f19885dd15e8.jpg'
               },
-              ...QA.responses,
-            ],
-          };
+              ...QA.responses
+            ]
+          }
         }
-        return QA;
-      });
+        return QA
+      })
 
-      setCourseQA(updatedQA);
-      setNewResponse("");
-      setReplyingTo(null);
+      setCourseQA(updatedQA)
+      setNewResponse('')
+      setReplyingTo(null)
     }
-  };
+  }
 
   const handleReplyClick = (index) => {
     if (replyingTo === index) {
-      setReplyingTo(null);
+      setReplyingTo(null)
     } else {
-      setReplyingTo(index);
+      setReplyingTo(index)
     }
-  };
+  }
 
   return (
     <TabQAWrapper>
@@ -104,7 +109,7 @@ function TabQA({ initialQA }) {
                     <h4>{QA.name}</h4>
                     <span>
                       {formatDistanceToNow(new Date(QA.date), {
-                        addSuffix: true,
+                        addSuffix: true
                       })}
                     </span>
                   </div>
@@ -130,7 +135,7 @@ function TabQA({ initialQA }) {
                               <h4>{response.name}</h4>
                               <span>
                                 {formatDistanceToNow(new Date(response.date), {
-                                  addSuffix: true,
+                                  addSuffix: true
                                 })}
                               </span>
                             </div>
@@ -144,7 +149,7 @@ function TabQA({ initialQA }) {
                 </div>
                 <div className="QA-question-item-reply-button">
                   <button onClick={() => handleReplyClick(index)}>
-                    {replyingTo === index ? "Cancel" : "Reply"}
+                    {replyingTo === index ? 'Cancel' : 'Reply'}
                   </button>
                 </div>
                 {replyingTo === index && (
@@ -169,15 +174,15 @@ function TabQA({ initialQA }) {
         <button>Submit</button>
       </div>
     </TabQAWrapper>
-  );
+  )
 }
 const TabQAWrapper = styled.div`
   .QA-filter {
     display: flex;
     gap: 20px;
     animation: fadeIn 0.5s ease-in-out;
-    ${"" /* padding: 20px; */}
-    ${"" /* background-color: red; */}
+    ${'' /* padding: 20px; */}
+    ${'' /* background-color: red; */}
     margin-bottom: 20px;
     .QA-filter-sortby,
     .QA-filter-question,
@@ -219,7 +224,7 @@ const TabQAWrapper = styled.div`
         display: flex;
       }
     }
-    ${"" /* QA-filter-search nằm về phía cuối của QA-filter */}
+    ${'' /* QA-filter-search nằm về phía cuối của QA-filter */}
     .QA-filter-search {
       margin-left: auto;
     }
@@ -280,7 +285,7 @@ const TabQAWrapper = styled.div`
               margin-top: 10px;
               padding: 10px;
               margin-left: 10px;
-              ${"" /* border: 1px solid #ccc; */}
+              ${'' /* border: 1px solid #ccc; */}
               border-radius: 5px;
               .QA-question-item-reply-item-header {
                 display: flex;
@@ -397,11 +402,11 @@ const TabQAWrapper = styled.div`
   @keyframes fadeIn {
     from {
       opacity: 0;
-      ${"" /* transform: translateY(10px); */}
+      ${'' /* transform: translateY(10px); */}
     }
     to {
       opacity: 1;
-      ${"" /* transform: translateY(0); */}
+      ${'' /* transform: translateY(0); */}
     }
   }
 
@@ -448,6 +453,6 @@ const TabQAWrapper = styled.div`
       }
     }
   }
-`;
+`
 
-export default TabQA;
+export default TabQA

@@ -6,22 +6,35 @@ import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import Categories from './categories'
 import AvatarAction from './avatar'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
-
 import io from 'socket.io-client'
 import { NotificationContext } from '~/context/NotificationContext'
 
 function Header() {
-  const token = localStorage.getItem('token')
   const navigate = useNavigate()
   // eslint-disable-next-line no-unused-vars
   const [search, setSearch] = useSearchParams()
-
+  const token = sessionStorage.getItem("token")
   const [title, setTitle] = useState(search.get('q') || '')
-  const number = 2
+
+  const socket = io('http://localhost:3001')
+
   // Notification
-  const { unreadCount } = useContext(NotificationContext)
+  const { unreadCount, setUnreadCount } = useContext(NotificationContext)
+
+  useEffect(() => {
+    const groupID = token
+    socket.emit('joinGroupIndividual', groupID)
+    socket.on('unreadCountUpdated', (newUnreadCount) => {
+      setUnreadCount(newUnreadCount)
+    })
+
+    return () => {
+      socket.off('unreadCountUpdated'); // Clean up when component unmounts
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setUnreadCount])
 
   const handleSearch = (event) => {
     if (event.key === 'Enter') {

@@ -7,6 +7,7 @@ const connectMongo = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })
+    // eslint-disable-next-line no-console
     console.log('Connected to MongoDB')
   } catch (err) {
     //console.error('Error connecting to MongoDB', err)

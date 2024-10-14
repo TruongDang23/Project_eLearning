@@ -13,7 +13,7 @@ function AccordionCourse({ inforCourseData }) {
   const handleExpansion = (panel) => (event, isExpanded) => {
     setExpanded((prevExpanded) => ({
       ...prevExpanded,
-      [panel]: isExpanded,
+      [panel]: isExpanded
     }));
   };
 
@@ -30,8 +30,8 @@ function AccordionCourse({ inforCourseData }) {
             fontSize: "1rem !important",
             padding: "0px 20px",
             "&:before": {
-              display: "none",
-            },
+              display: "none"
+            }
           }}
         >
           <AccordionSummary
@@ -41,8 +41,8 @@ function AccordionCourse({ inforCourseData }) {
             sx={{
               padding: "10px 0",
               "& .MuiAccordionSummary-content": {
-                margin: 0,
-              },
+                margin: 0
+              }
             }}
           >
             <h3>Chapter {chapter.chapter_name}</h3>

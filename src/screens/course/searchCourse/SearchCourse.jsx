@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import styled from 'styled-components'
 import { GeneralHeader } from '~/components/general'
 import { GeneralFooter } from '~/components/general'
 import HeadingSearch from './HeadingSearch'
@@ -8,8 +8,6 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Logo from '../../../assets/hdh.png'
 import Loading from '~/screens/system/Loading'
-
-import Sticky from 'react-sticky-el'
 
 import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
 

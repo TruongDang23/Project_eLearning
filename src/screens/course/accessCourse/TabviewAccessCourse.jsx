@@ -1,16 +1,17 @@
-import { useState } from "react";
-import { AppBar, Tabs, Tab, Box } from "@mui/material";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import TabOverview from "./TabOverview";
-import TabReview from "./TabReview";
-import TabChatAI from "./TabChatAI";
-import TabQA from "./TabQA";
+import React, { useState, useEffect } from 'react'
+// import { useParams, useLocation } from 'react-router-dom'
+import { AppBar, Tabs, Tab, Box } from '@mui/material'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import TabOverview from './TabOverview'
+import TabReview from './TabReview'
+import TabChatAI from './TabChatAI'
+import TabQA from './TabQA'
 
-import courseQA from "~/data/QAdata";
+// import courseQA from '~/data/QAdata'
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props
 
   return (
     <div
@@ -26,27 +27,48 @@ function TabPanel(props) {
         </Box>
       )}
     </div>
-  );
+  )
 }
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
+  value: PropTypes.any.isRequired
+}
 
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
+    'aria-controls': `simple-tabpanel-${index}`
+  }
 }
 
-function TabviewAccessCourse({ accessCourseData }) {
-  const [value, setValue] = useState(0);
+function TabviewAccessCourse({ accessCourseData, lectureId }) {
+  const [value, setValue] = useState(0)
+
+  // const location = useLocation()
+  const [lectureQA, setLectureQA] = useState([])
+
+  // Lấy lectureId từ query parameters
+  // const searchParams = new URLSearchParams(location.search)
+  // const lectureId = searchParams.get('id')
+
+  useEffect(() => {
+
+    // Lọc dữ liệu QnA dựa trên lectureId từ accessCourseData
+    const filteredQA = []
+    accessCourseData.chapters.forEach((chapter) => {
+      chapter.lectures.forEach((lecture) => {
+        if (lecture.id.toString() === lectureId) {
+          filteredQA.push(...lecture.QnA)
+        }
+      })
+    })
+    setLectureQA(filteredQA)
+  }, [lectureId, accessCourseData])
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
   return (
     <TabviewAccessCourseWrapper>
       <div>
@@ -72,16 +94,16 @@ function TabviewAccessCourse({ accessCourseData }) {
           <TabReview accessCourseData={accessCourseData} />
         </TabPanel>
         <TabPanel value={value} index={3}>
-          <TabQA initialQA={courseQA} />
+          <TabQA lectureQA={lectureQA} />
         </TabPanel>
       </div>
     </TabviewAccessCourseWrapper>
-  );
+  )
 }
 
 const PStyle = styled.p`
   font-size: 1.6rem;
-`;
+`
 
 const TabStyled = styled(Tab)`
   color: #f9f9f9 !important;
@@ -92,7 +114,7 @@ const TabStyled = styled(Tab)`
     font-weight: bold;
     font-size: 1.6rem !important; /* Kích thước chữ khi tab được chọn */
   }
-`;
+`
 
 const TabviewAccessCourseWrapper = styled.section`
   .MuiAppBar-colorPrimary {
@@ -110,6 +132,6 @@ const TabviewAccessCourseWrapper = styled.section`
   .MuiTab-root {
     text-transform: none;
   }
-`;
+`
 
-export default TabviewAccessCourse;
+export default TabviewAccessCourse

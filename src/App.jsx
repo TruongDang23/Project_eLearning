@@ -1,8 +1,8 @@
-import System from "./screens/system";
-import { Admin } from "./screens/admin";
-import { Instructor } from "./screens/teacher";
-import { Student } from "./screens/student";
-import { Course } from "./screens/course";
+import System from "./screens/system"
+import { Admin } from "./screens/admin"
+import { Instructor } from "./screens/teacher"
+import { Student } from "./screens/student"
+import { Course } from "./screens/course"
 
 function App() {
   return (
@@ -17,3 +17,4 @@ function App() {
 }
 
 export default App;
+

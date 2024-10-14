@@ -13,10 +13,10 @@ function TabReview({ accessCourseData }) {
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState({ star: 0, message: "" });
 
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   const courseId = useParams().courseID;
-  const userAuth = localStorage.getItem("userAuth");
-  const userData = JSON.parse(localStorage.getItem("userAuth"));
+  const userAuth = sessionStorage.getItem("userAuth");
+  const userData = JSON.parse(sessionStorage.getItem("userAuth"));
 
   const handleReviewChange = (e) => {
     setNewReview({ ...newReview, [e.target.name]: e.target.value });

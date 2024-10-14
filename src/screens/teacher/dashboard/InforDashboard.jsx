@@ -1,4 +1,3 @@
-import React from "react";
 import InforIMG from "../../../assets/dash1.png";
 import styled from "styled-components";
 
