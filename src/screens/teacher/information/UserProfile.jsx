@@ -7,8 +7,8 @@ import { languages } from '~/constants/listLanguage'
 import axios from 'axios'
 
 function UserProfile({ profile, setProfile }) {
-  const token = localStorage.getItem('token')
-  const userAuth = localStorage.getItem('userAuth')
+  const token = sessionStorage.getItem('token')
+  const userAuth = sessionStorage.getItem('userAuth')
 
   const [isReadOnly, setIsReadOnly] = useState(true)
 

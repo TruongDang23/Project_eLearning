@@ -12,14 +12,14 @@ const courseQA = [
         name: "Instructor",
         date: "2024-08-17 09:12:45",
         avatar:
-          "https://images-na.ssl-images-amazon.com/images/I/61JGEsK4g7L.jpg",
+          "https://images-na.ssl-images-amazon.com/images/I/61JGEsK4g7L.jpg"
       },
       {
         response: "What if I don't know JavaScript?",
         name: "Sarah Lee",
         date: "2024-08-17 11:30:20",
         avatar:
-          "https://i.scdn.co/image/ab67616100005174ba025c8f62612b2ca6bfa375",
+          "https://i.scdn.co/image/ab67616100005174ba025c8f62612b2ca6bfa375"
       },
       {
         response:
@@ -27,9 +27,9 @@ const courseQA = [
         name: "Instructor",
         date: "2024-08-17 15:40:10",
         avatar:
-          "https://images-na.ssl-images-amazon.com/images/I/61JGEsK4g7L.jpg",
-      },
-    ],
+          "https://images-na.ssl-images-amazon.com/images/I/61JGEsK4g7L.jpg"
+      }
+    ]
   },
   {
     id: 2,
@@ -44,9 +44,9 @@ const courseQA = [
         name: "Instructor",
         date: "2024-08-11 10:35:30",
         avatar:
-          "https://images-na.ssl-images-amazon.com/images/I/61JGEsK4g7L.jpg",
-      },
-    ],
+          "https://images-na.ssl-images-amazon.com/images/I/61JGEsK4g7L.jpg"
+      }
+    ]
   },
   {
     id: 3,
@@ -61,10 +61,10 @@ const courseQA = [
         name: "Instructor",
         date: "2024-08-10 14:50:55",
         avatar:
-          "https://images-na.ssl-images-amazon.com/images/I/61JGEsK4g7L.jpg",
-      },
-    ],
-  },
+          "https://images-na.ssl-images-amazon.com/images/I/61JGEsK4g7L.jpg"
+      }
+    ]
+  }
 ];
 
 export default courseQA;

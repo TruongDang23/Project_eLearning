@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { formatDistanceToNow } from 'date-fns'
-// import { useParams } from 'react-router-dom'
 
 import SearchIcon from '@mui/icons-material/Search'
 

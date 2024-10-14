@@ -17,9 +17,9 @@ import Loading from '~/screens/system/Loading'
 function DesignCourse() {
   const formData = new FormData()
 
-  const token = localStorage.getItem('token')
-  const userAuth = localStorage.getItem('userAuth')
-  const userData = JSON.parse(localStorage.getItem('userAuth'))
+  const token = sessionStorage.getItem('token')
+  const userAuth = sessionStorage.getItem('userAuth')
+  const userData = JSON.parse(sessionStorage.getItem('userAuth'))
   const navigate = useNavigate()
   const [isLoad, setIsLoad] = useState(false)
 

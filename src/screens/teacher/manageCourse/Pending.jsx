@@ -3,7 +3,6 @@ import { Items } from './PendingItem'
 import styled from 'styled-components'
 
 function PendingCourse({ course, reload, setReload }) {
-  console.log(course)
   return (
     <>
       {course.length == 0 && <Heading>No course pending</Heading>}

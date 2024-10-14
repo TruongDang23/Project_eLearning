@@ -56,7 +56,7 @@ const PopupPro = ({ handleClose, handleSave }) => {
                   ...prev,
                   projects: [...prev.projects, project]
                 })),
-                  handleClose()
+                handleClose()
               }}
             >
               Save

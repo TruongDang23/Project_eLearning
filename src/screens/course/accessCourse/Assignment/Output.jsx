@@ -15,9 +15,9 @@ function Output({ editorRef, language, testcases, setProgress }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("")
-  const token = localStorage.getItem('token')
-  const userAuth = localStorage.getItem('userAuth')
-  const num_topics = JSON.parse(localStorage.getItem('assignment')).topics.length
+  const token = sessionStorage.getItem('token')
+  const userAuth = sessionStorage.getItem('userAuth')
+  const num_topics = JSON.parse(sessionStorage.getItem('assignment')).topics.length
   const params = useParams()
   const [searchParam] = useSearchParams()
   const title = params.courseID + params.id + searchParam.get('page')
@@ -28,7 +28,7 @@ function Output({ editorRef, language, testcases, setProgress }) {
     let num_correct = 0
     for (let i = 1; i <= num_topics; i++) {
       let key = params.courseID + params.id + i
-      let value = JSON.parse(localStorage.getItem(key))
+      let value = JSON.parse(sessionStorage.getItem(key))
 
       if (value !== null) {
         if (value.result === 'Accepted') {
@@ -44,7 +44,7 @@ function Output({ editorRef, language, testcases, setProgress }) {
   }
 
   useEffect(() => {
-    const code = JSON.parse(localStorage.getItem(title))
+    const code = JSON.parse(sessionStorage.getItem(title))
     const isNull = (code === null) ? null : code.result
     if (isNull === 'Accepted') {
       setIsError(false)
@@ -73,7 +73,7 @@ function Output({ editorRef, language, testcases, setProgress }) {
       if (res.data === true)
       {
         let result = 'Accepted'
-        localStorage.setItem(title, JSON.stringify({ sourceCode, result }))
+        sessionStorage.setItem(title, JSON.stringify({ sourceCode, result }))
         handleProgress()
         setOutput(result)
         setIsError(false)
@@ -83,7 +83,7 @@ function Output({ editorRef, language, testcases, setProgress }) {
         let result = 'Wrong answer at testcase: ' + res.data.testcase + '\n' +
                       'Expected: ' + res.data.expected + '\n' +
                       'Found: ' + res.data.found
-        localStorage.setItem(title, JSON.stringify({ sourceCode, result }))
+        sessionStorage.setItem(title, JSON.stringify({ sourceCode, result }))
         setOutput(result);
         setIsError(true);
       }

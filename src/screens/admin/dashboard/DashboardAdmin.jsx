@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { useState } from 'react'
 import { styled, useTheme } from '@mui/material/styles'
 import { Helmet } from 'react-helmet' // dùng để thay đổi title của trang
@@ -216,6 +215,7 @@ function DashboardAdmin() {
                 text: 'Statistics',
                 icon: <QueryStatsIcon sx={{ fontSize: 35 }} />
               }
+            // eslint-disable-next-line no-unused-vars
             ].map((item, index) => (
               <ListItem
                 key={item.text}

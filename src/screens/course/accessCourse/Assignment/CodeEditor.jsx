@@ -17,10 +17,10 @@ function CodeEditor({ testcases }) {
   const [searchParam] = useSearchParams()
   const page = searchParam.get('page')
   const title = params.courseID + params.id + page
-  const code = JSON.parse(localStorage.getItem(title))
-  const userData = JSON.parse(localStorage.getItem('userAuth'))
-  const token = localStorage.getItem('token')
-  const userAuth = localStorage.getItem('userAuth')
+  const code = JSON.parse(sessionStorage.getItem(title))
+  const userData = JSON.parse(sessionStorage.getItem('userAuth'))
+  const token = sessionStorage.getItem('token')
+  const userAuth = sessionStorage.getItem('userAuth')
   const navigate = useNavigate()
 
   const onMount = (editor) => {
