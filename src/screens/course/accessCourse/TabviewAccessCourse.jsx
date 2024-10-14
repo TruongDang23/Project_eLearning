@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, useLocation } from 'react-router-dom';
+// import { useParams, useLocation } from 'react-router-dom'
 import { AppBar, Tabs, Tab, Box } from '@mui/material'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -8,7 +8,7 @@ import TabReview from './TabReview'
 import TabChatAI from './TabChatAI'
 import TabQA from './TabQA'
 
-import courseQA from '~/data/QAdata'
+// import courseQA from '~/data/QAdata'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -42,19 +42,17 @@ function a11yProps(index) {
   }
 }
 
-function TabviewAccessCourse({ accessCourseData }) {
+function TabviewAccessCourse({ accessCourseData, lectureId }) {
   const [value, setValue] = useState(0)
 
-  const location = useLocation()
+  // const location = useLocation()
   const [lectureQA, setLectureQA] = useState([])
 
   // Lấy lectureId từ query parameters
-  const searchParams = new URLSearchParams(location.search)
-  const lectureId = searchParams.get('id')
+  // const searchParams = new URLSearchParams(location.search)
+  // const lectureId = searchParams.get('id')
 
   useEffect(() => {
-    console.log('lectureId:', lectureId) // Kiểm tra giá trị của lectureId
-    console.log('accessCourseData:', accessCourseData) // Kiểm tra cấu trúc của accessCourseData
 
     // Lọc dữ liệu QnA dựa trên lectureId từ accessCourseData
     const filteredQA = []
@@ -65,7 +63,6 @@ function TabviewAccessCourse({ accessCourseData }) {
         }
       })
     })
-    console.log('filteredQA:', filteredQA) // Kiểm tra giá trị của filteredQA
     setLectureQA(filteredQA)
   }, [lectureId, accessCourseData])
 

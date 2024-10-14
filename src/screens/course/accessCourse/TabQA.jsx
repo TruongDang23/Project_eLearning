@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { formatDistanceToNow } from 'date-fns'
-import { useParams } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
 
 import SearchIcon from '@mui/icons-material/Search'
 
 function TabQA({ lectureQA }) {
-  console.log(lectureQA)
-  const [courseQA, setCourseQA] = useState(lectureQA)
+  // console.log(lectureQA)
+  const [courseQA, setCourseQA] = useState([])
   const [newResponse, setNewResponse] = useState('')
   const [replyingTo, setReplyingTo] = useState(null)
+
+  useEffect(() => {
+    setCourseQA(lectureQA)
+  }, [lectureQA])
+
 
   const handleResponseChange = (e) => setNewResponse(e.target.value)
 
