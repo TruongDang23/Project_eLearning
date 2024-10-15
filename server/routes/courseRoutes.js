@@ -133,124 +133,6 @@ module.exports = (connMysql, connMongo) => {
     })
   }
 
-  // Define your asynchronous functions
-  // const updateStatusOfCourse = async (courseID, status) => {
-  //   return new Promise((resolve, reject) => {
-  //     connMysql.getConnection((err, connection) => {
-  //       if (err) {
-  //         reject(err)
-  //       }
-  //       //Get information from mysql
-  //       let query = "UPDATE course SET status = ? WHERE courseID = ?"
-  //       connection.query(query, [status, courseID], async (error, results) => {
-  //         connection.release() //Giải phóng connection khi truy vấn xong
-  //         if (error) {
-  //           reject(err)
-  //         }
-  //         //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-  //         if (results.affectedRows > 0) resolve(true)
-  //       })
-  //     })
-  //   })
-  // }
-
-  // const deleteCourse = async (database_table, courseID) => {
-  //   return new Promise((resolve, reject) => {
-  //     connMysql.getConnection((err, connection) => {
-  //       if (err) {
-  //         reject(err)
-  //       }
-  //       //Get information from mysql
-  //       let query = "DELETE FROM ?? WHERE courseID = ?"
-  //       connection.query(
-  //         query,
-  //         [database_table, courseID],
-  //         async (error, results) => {
-  //           connection.release() //Giải phóng connection khi truy vấn xong
-  //           if (error) {
-  //             reject(err)
-  //           }
-  //           //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-  //           if (results.affectedRows > 0) resolve(true)
-  //         }
-  //       )
-  //     })
-  //   })
-  // }
-
-  // const addTerminateCourse = async (courseID, dateRange) => {
-  //   const to_time = dateRange[0]
-  //   const end_time = dateRange[1] == "" ? null : dateRange[1]
-
-  //   return new Promise((resolve, reject) => {
-  //     connMysql.getConnection((err, connection) => {
-  //       if (err) {
-  //         reject(err)
-  //       }
-  //       //Get information from mysql
-  //       let query =
-  //         "INSERT INTO terminated_course (courseID, to_time, end_time)\
-  //                    VALUES (?, ?, ?)"
-  //       connection.query(
-  //         query,
-  //         [courseID, to_time, end_time],
-  //         async (error, results) => {
-  //           connection.release() //Giải phóng connection khi truy vấn xong
-  //           if (error) {
-  //             reject(err)
-  //           }
-  //           //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-  //           if (results.affectedRows > 0) resolve(true)
-  //         }
-  //       )
-  //     })
-  //   })
-  // }
-
-  // const addPublishCourse = async (courseID, time) => {
-  //   return new Promise((resolve, reject) => {
-  //     connMysql.getConnection((err, connection) => {
-  //       if (err) {
-  //         reject(err)
-  //       }
-  //       //Get information from mysql
-  //       let query =
-  //         "INSERT INTO published_course (courseID, time)\
-  //                    VALUES (?, ?)"
-  //       connection.query(query, [courseID, time], async (error, results) => {
-  //         connection.release() //Giải phóng connection khi truy vấn xong
-  //         if (error) {
-  //           reject(err)
-  //         }
-  //         //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-  //         if (results.affectedRows > 0) resolve(true)
-  //       })
-  //     })
-  //   })
-  // }
-
-  // const addCreateCourse = async (courseID, time) => {
-  //   return new Promise((resolve, reject) => {
-  //     connMysql.getConnection((err, connection) => {
-  //       if (err) {
-  //         reject(err)
-  //       }
-  //       //Get information from mysql
-  //       let query =
-  //         "INSERT INTO created_course (courseID, time)\
-  //                    VALUES (?, ?)"
-  //       connection.query(query, [courseID, time], async (error, results) => {
-  //         connection.release() //Giải phóng connection khi truy vấn xong
-  //         if (error) {
-  //           reject(err)
-  //         }
-  //         //Vì mysql xong cuối cùng nên sẽ đảm nhận vai trò res.send(true)
-  //         if (results.affectedRows > 0) resolve(true)
-  //       })
-  //     })
-  //   })
-  // }
-
   const getReview = async (courseID) => {
     return new Promise((resolve, reject) => {
       connMysql.getConnection((err, connection) => {
@@ -866,7 +748,7 @@ module.exports = (connMysql, connMongo) => {
           const mongoData = await Course.find({
             courseID: { $in: courseID }
           }).select("keywords chapters")
-
+          console.log(mongoData[0].chapters[0].lectures[0].QnA)
           //Get review of this course
           const review = await getReview(courseID)
 

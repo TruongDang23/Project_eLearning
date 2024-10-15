@@ -11,9 +11,11 @@ function TabQA({ lectureQA }) {
   const [replyingTo, setReplyingTo] = useState(null)
 
   useEffect(() => {
+    //Call backend to get name and avatar with quesionerID and responseID
+    //...
+
     setCourseQA(lectureQA)
   }, [lectureQA])
-
 
   const handleResponseChange = (e) => setNewResponse(e.target.value)
 
