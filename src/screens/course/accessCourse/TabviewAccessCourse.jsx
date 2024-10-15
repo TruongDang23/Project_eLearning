@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 // import { useParams, useLocation } from 'react-router-dom'
 import { AppBar, Tabs, Tab, Box } from '@mui/material'
 import PropTypes from 'prop-types'
@@ -53,7 +53,6 @@ function TabviewAccessCourse({ accessCourseData, lectureId }) {
   // const lectureId = searchParams.get('id')
 
   useEffect(() => {
-
     // Lọc dữ liệu QnA dựa trên lectureId từ accessCourseData
     const filteredQA = []
     accessCourseData.chapters.forEach((chapter) => {
