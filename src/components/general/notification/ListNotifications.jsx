@@ -3,13 +3,12 @@ import NotifyPreview from './NotifyPreview'
 import { useState, useContext } from 'react'
 import Loading from '~/screens/system/Loading'
 
-
 import { NotificationContext } from '~/context/NotificationContext'
 
 function ListNotifications() {
-  const userData = JSON.parse(sessionStorage.getItem("userAuth"))
+  const userData = JSON.parse(sessionStorage.getItem('userAuth'))
 
-  const userID = userData ? userData.userID : ""
+  const userID = userData ? userData.userID : ''
 
   const { notifications, isLoading, markAsRead, unreadCount } =
     useContext(NotificationContext)
@@ -27,7 +26,7 @@ function ListNotifications() {
   }
 
   return (
-    <NotificationWrapper className="container white-space-small--top white-space-small">
+    <NotificationWrapper className="container">
       <h2 className="heading-tertiary">Notifications</h2>
       <div className="notifications">
         <div className="notification-list">
@@ -76,6 +75,10 @@ const NotificationWrapper = styled.section`
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 4.8rem;
   }
+
+  .heading-tertiary {
+    padding-top: 4rem;
+  }
   h2 {
     font-size: 3.6rem;
     text-align: center;
@@ -89,8 +92,17 @@ const NotificationWrapper = styled.section`
     height: 60vh;
     ${'' /* làm thanh cuộn  */}
     overflow-y: auto;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
+
+    background-color: #fff;
+    border-radius: 8px;
+    border: 2px solid #74c0fc;
+    box-shadow: 0 10px 20px rgba(44, 130, 201, 0.2);
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
+      transition: all ease 0.3s;
+    }
   }
   .notification-item {
     background-color: #fff;
@@ -103,8 +115,15 @@ const NotificationWrapper = styled.section`
   .notification-content {
     padding: 1.6rem;
     background-color: #fff;
-    border-radius: 10px;
-    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    border: 2px solid #74c0fc;
+    box-shadow: 0 10px 20px rgba(44, 130, 201, 0.2);
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
+      transition: all ease 0.3s;
+    }
     a {
       display: block;
       font-size: 1.6rem;
