@@ -376,6 +376,26 @@ module.exports = (connMysql, connMongo) => {
     return output === key ? true : false
   }
 
+  const getAvatarByID = async (userid) => {
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          reject(err)
+        } else {
+          //Get information from mysql
+          let query = `SELECT fullname, avatar from user WHERE userID = ?`
+          connection.query(query, [userid], async (error, inf) => {
+            connection.release() //Giải phóng connection khi truy vấn xong
+            if (error) {
+              reject(error)
+            }
+            resolve(inf[0])
+          })
+        }
+      })
+    })
+  }
+
   // Define user-related routes
   router.get("/getPublishCourse", verifyToken, async (req, res) => {
     if ((await isAdmin(req.userID)) === false) {
@@ -748,7 +768,6 @@ module.exports = (connMysql, connMongo) => {
           const mongoData = await Course.find({
             courseID: { $in: courseID }
           }).select("keywords chapters")
-          console.log(mongoData[0].chapters[0].lectures[0].QnA)
           //Get review of this course
           const review = await getReview(courseID)
 
@@ -1153,6 +1172,45 @@ module.exports = (connMysql, connMongo) => {
       setTimeout(() => {
         res.send(true);
       }, 2000);
+    }
+  })
+
+  // Define user-related routes
+  router.get("/getUserQnA", async (req, res) => {
+    const { lectureQA } = req.query
+
+    if (lectureQA.length > 0)
+    {
+      const QA = await Promise.all(lectureQA.map(async data => {
+        let infQuestion = await getAvatarByID(data.questionerID)
+
+        if (data.responses.length > 0)
+        {
+          const responses = await Promise.all(data.responses.map(async response => {
+            let infResponse = await getAvatarByID(response.responseID)
+            return {
+              ...response,
+              name: infResponse.fullname,
+              avatar: infResponse.avatar
+            }
+          }))
+
+          return {
+            ...data,
+            question: data.question,
+            date: data.date,
+            name: infQuestion.fullname,
+            avatar: infQuestion.avatar,
+            responses: responses
+          }
+        }
+      }))
+      res.send(QA)
+      res.end()
+    }
+    else {
+      res.send([])
+      res.end()
     }
   })
 

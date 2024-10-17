@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { formatDistanceToNow } from 'date-fns'
-
+import { useNavigate } from 'react-router-dom'
+import axios from "axios";
 import SearchIcon from '@mui/icons-material/Search'
 
 function TabQA({ lectureQA }) {
@@ -9,12 +10,34 @@ function TabQA({ lectureQA }) {
   const [courseQA, setCourseQA] = useState([])
   const [newResponse, setNewResponse] = useState('')
   const [replyingTo, setReplyingTo] = useState(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     //Call backend to get name and avatar with quesionerID and responseID
     //...
-
-    setCourseQA(lectureQA)
+    axios.get('http://localhost:3000/c/getUserQnA', {
+      params: {
+        lectureQA
+      }
+    })
+      .then(response => {
+        console.log(response.data)
+        setCourseQA(response.data)
+      })
+      .catch(error => {
+        //Server shut down
+        if (error.message === 'Network Error')
+          navigate('/server-shutdown')
+        //Connection error
+        if (error.response.status === 500)
+          navigate('/500error')
+        //Unauthorized. Need login
+        if (error.response.status === 401)
+          navigate('/401error')
+        //Forbidden. Token != userAuth
+        if (error.response.status === 403)
+          navigate('/403error')
+      })
   }, [lectureQA])
 
   const handleResponseChange = (e) => setNewResponse(e.target.value)
