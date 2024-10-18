@@ -1178,15 +1178,16 @@ module.exports = (connMysql, connMongo) => {
   // Define user-related routes
   router.get("/getUserQnA", async (req, res) => {
     const { lectureQA } = req.query
-
-    if (lectureQA.length > 0)
+    const lectures = (lectureQA) ? lectureQA : [] //Avoid case lectureQA is empty
+    if (lectures.length > 0)
     {
       const QA = await Promise.all(lectureQA.map(async data => {
         let infQuestion = await getAvatarByID(data.questionerID)
 
-        if (data.responses.length > 0)
+        let responses = (data.responses) ? data.responses : [] //Avoid case response is empty
+        if (responses.length > 0)
         {
-          const responses = await Promise.all(data.responses.map(async response => {
+          responses = await Promise.all(data.responses.map(async response => {
             let infResponse = await getAvatarByID(response.responseID)
             return {
               ...response,
@@ -1194,15 +1195,15 @@ module.exports = (connMysql, connMongo) => {
               avatar: infResponse.avatar
             }
           }))
+        }
 
-          return {
-            ...data,
-            question: data.question,
-            date: data.date,
-            name: infQuestion.fullname,
-            avatar: infQuestion.avatar,
-            responses: responses
-          }
+        return {
+          ...data,
+          question: data.question,
+          date: data.date,
+          name: infQuestion.fullname,
+          avatar: infQuestion.avatar,
+          responses: responses
         }
       }))
       res.send(QA)
