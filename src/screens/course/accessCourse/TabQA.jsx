@@ -4,26 +4,37 @@ import { formatDistanceToNow } from 'date-fns'
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 import SearchIcon from '@mui/icons-material/Search'
+import { useParams } from 'react-router-dom'
 
-function TabQA({ lectureQA }) {
+function TabQA({ lectureQA, setReload, lectureId }) {
   // console.log(lectureQA)
   const [courseQA, setCourseQA] = useState([])
   const [newResponse, setNewResponse] = useState('')
   const [newQuestion, setNewQuestion] = useState('')
   const [replyingTo, setReplyingTo] = useState(null)
+  const [reCall, setRecall] = useState(true)
   const navigate = useNavigate()
   const token = sessionStorage.getItem("token")
   const userAuth = sessionStorage.getItem("userAuth")
   const userData = JSON.parse(sessionStorage.getItem("userAuth"))
   const userID = userData ? userData.userID : ""
+  const { courseID } = useParams()
 
   useEffect(() => {
     //Call backend to get name and avatar with quesionerID and responseID
-    axios.get('http://localhost:3000/c/getUserQnA', {
-      params: {
-        lectureQA
+    axios.get('http://localhost:3000/c/getUserQnA',
+      {
+        params: {
+          lectureQA
+        }
+      },
+      {
+        headers: {
+          Token: token, // Thêm token và user vào header để đưa xuống Backend xác thực
+          user: userAuth
+        }
       }
-    })
+    )
       .then(response => {
         setCourseQA(response.data)
       })
@@ -43,6 +54,43 @@ function TabQA({ lectureQA }) {
       })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lectureQA])
+
+  useEffect(() => {
+    axios.post('http://localhost:3000/c/updateNewQA',
+      {
+        courseQA,
+        courseID,
+        lectureId
+      },
+      {
+        headers: {
+          Token: token, // Thêm token và user vào header để đưa xuống Backend xác thực
+          user: userAuth
+        }
+      }
+    )
+      // eslint-disable-next-line no-unused-vars
+      .then(response => {
+        setReload((prev) => ({ //Reload course data
+          reload: !prev.reload
+        }))
+      })
+      .catch(error => {
+        //Server shut down
+        if (error.message === 'Network Error')
+          navigate('/server-shutdown')
+        //Connection error
+        if (error.response.status === 500)
+          navigate('/500error')
+        //Unauthorized. Need login
+        if (error.response.status === 401)
+          navigate('/401error')
+        //Forbidden. Token != userAuth
+        if (error.response.status === 403)
+          navigate('/403error')
+      })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reCall])
 
   const handleResponseChange = (e) => setNewResponse(e.target.value)
   const handleSubmitChange = (e) => setNewQuestion(e.target.value)
@@ -66,8 +114,10 @@ function TabQA({ lectureQA }) {
       date: formattedDate,
       responses: []
     }
+
     setCourseQA((prev) => [...prev, newData])
     setNewQuestion('')
+    setRecall((prev) => !prev) //Recall API update QnA
   }
   const handleResponseSubmit = () => {
     if (newResponse.trim() && replyingTo !== null) {
@@ -104,6 +154,7 @@ function TabQA({ lectureQA }) {
       setCourseQA(updatedQA)
       setNewResponse('')
       setReplyingTo(null)
+      setRecall((prev) => !prev) //Recall API update QnA
     }
   }
 

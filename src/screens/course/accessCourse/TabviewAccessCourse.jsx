@@ -42,7 +42,7 @@ function a11yProps(index) {
   }
 }
 
-function TabviewAccessCourse({ accessCourseData, lectureId }) {
+function TabviewAccessCourse({ accessCourseData, lectureId, setReload }) {
   const [value, setValue] = useState(0)
 
   // const location = useLocation()
@@ -91,10 +91,10 @@ function TabviewAccessCourse({ accessCourseData, lectureId }) {
           <TabChatAI />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <TabReview accessCourseData={accessCourseData} />
+          <TabReview accessCourseData={accessCourseData} setReload={setReload} />
         </TabPanel>
         <TabPanel value={value} index={3}>
-          <TabQA lectureQA={lectureQA} courseData={accessCourseData} />
+          <TabQA lectureQA={lectureQA} setReload={setReload} lectureId={lectureId}/>
         </TabPanel>
       </div>
     </TabviewAccessCourseWrapper>

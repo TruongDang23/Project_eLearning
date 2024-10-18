@@ -1215,5 +1215,36 @@ module.exports = (connMysql, connMongo) => {
     }
   })
 
+  router.post("/updateNewQA", verifyToken, async (req, res) => {
+    const { courseQA, courseID, lectureId } = req.body
+    //Connect to MongoDB server
+    await connMongo
+    try {
+      if (courseQA.length > 0) {
+        // Find and update Q&A in specific courseID and lectureID
+        await Course.findOneAndUpdate(
+          {
+            courseID: courseID,
+            'chapters.lectures.id': lectureId
+          },
+          {
+            $set: {
+              'chapters.$[].lectures.$[lecture].QnA': courseQA
+            }
+          },
+          {
+            arrayFilters: [{ 'lecture.id': lectureId }],
+            new: true // Return the updated document
+          }
+        )
+      }
+    } catch (error) {
+      res.status(500).send('Error when submit Q&A')
+      res.end()
+    } finally {
+      res.send('submit success')
+      res.end()
+    }
+  })
   return router
 }
