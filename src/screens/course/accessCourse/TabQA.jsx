@@ -9,19 +9,22 @@ function TabQA({ lectureQA }) {
   // console.log(lectureQA)
   const [courseQA, setCourseQA] = useState([])
   const [newResponse, setNewResponse] = useState('')
+  const [newQuestion, setNewQuestion] = useState('')
   const [replyingTo, setReplyingTo] = useState(null)
   const navigate = useNavigate()
+  const token = sessionStorage.getItem("token")
+  const userAuth = sessionStorage.getItem("userAuth")
+  const userData = JSON.parse(sessionStorage.getItem("userAuth"))
+  const userID = userData ? userData.userID : ""
 
   useEffect(() => {
     //Call backend to get name and avatar with quesionerID and responseID
-    //...
     axios.get('http://localhost:3000/c/getUserQnA', {
       params: {
         lectureQA
       }
     })
       .then(response => {
-        console.log(response.data)
         setCourseQA(response.data)
       })
       .catch(error => {
@@ -38,10 +41,34 @@ function TabQA({ lectureQA }) {
         if (error.response.status === 403)
           navigate('/403error')
       })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lectureQA])
 
   const handleResponseChange = (e) => setNewResponse(e.target.value)
+  const handleSubmitChange = (e) => setNewQuestion(e.target.value)
 
+  const handleSubmitQA = () => {
+    const currentDate = new Date()
+    const formattedDate = currentDate
+      .toLocaleString('sv-SE', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      })
+      .replace(' ', ' ')
+
+    const newData = {
+      questionerID: userID,
+      question: newQuestion,
+      date: formattedDate,
+      responses: []
+    }
+    setCourseQA((prev) => [...prev, newData])
+    setNewQuestion('')
+  }
   const handleResponseSubmit = () => {
     if (newResponse.trim() && replyingTo !== null) {
       const updatedQA = courseQA.map((QA, index) => {
@@ -64,10 +91,8 @@ function TabQA({ lectureQA }) {
             responses: [
               {
                 response: newResponse,
-                name: 'Vinh', // thay đổi bằng tên người dùng ở đây
-                date: formattedDate,
-                avatar:
-                  'https://i.pinimg.com/564x/b3/ce/f7/b3cef71bf4f2247ec504f19885dd15e8.jpg'
+                responseID: userID,
+                date: formattedDate
               },
               ...QA.responses
             ]
@@ -195,8 +220,13 @@ function TabQA({ lectureQA }) {
       </div>
       <div className="QA-ask-question">
         <h3>Ask a question:</h3>
-        <textarea placeholder="Write your question here..." />
-        <button>Submit</button>
+        <textarea
+          value={newQuestion}
+          onChange={handleSubmitChange}
+          placeholder="Write your question here..." />
+        <button onClick={handleSubmitQA}>
+          Submit
+        </button>
       </div>
     </TabQAWrapper>
   )

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 // import { useParams, useLocation } from 'react-router-dom'
 import { AppBar, Tabs, Tab, Box } from '@mui/material'
 import PropTypes from 'prop-types'
@@ -94,7 +94,7 @@ function TabviewAccessCourse({ accessCourseData, lectureId }) {
           <TabReview accessCourseData={accessCourseData} />
         </TabPanel>
         <TabPanel value={value} index={3}>
-          <TabQA lectureQA={lectureQA} />
+          <TabQA lectureQA={lectureQA} courseData={accessCourseData} />
         </TabPanel>
       </div>
     </TabviewAccessCourseWrapper>
