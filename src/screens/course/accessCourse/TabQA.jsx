@@ -19,7 +19,7 @@ function TabQA({ lectureQA, setReload, lectureId }) {
   const userData = JSON.parse(sessionStorage.getItem("userAuth"))
   const userID = userData ? userData.userID : ""
   const { courseID } = useParams()
-
+  const url = window.location.href
   useEffect(() => {
     //Call backend to get name and avatar with quesionerID and responseID
     axios.get('http://localhost:3000/c/getUserQnA',
@@ -60,7 +60,8 @@ function TabQA({ lectureQA, setReload, lectureId }) {
       {
         courseQA,
         courseID,
-        lectureId
+        lectureId,
+        url
       },
       {
         headers: {

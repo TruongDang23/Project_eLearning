@@ -215,7 +215,7 @@ module.exports = (connMysql, connMongo) => {
     })
   }
 
-  const getCourseID = async() => {
+  const getNewCourseID = async() => {
     return new Promise((resolve, reject) => {
       connMysql.getConnection((err, connection) => {
         if (err) {
@@ -231,6 +231,114 @@ module.exports = (connMysql, connMongo) => {
           }
           resolve(data[0].newCourseID)
         })
+      })
+    })
+  }
+
+  const getNewNotifyID = async() => {
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          return reject(err)
+        }
+
+        const query = `SELECT CONCAT('N', LPAD(SUBSTRING(MAX(notifyID), 2) + 1, 3, '0')) AS newNotifyID
+                        FROM notify`
+        connection.query(query, (error, data) => {
+          connection.release()
+          if (error) {
+            return reject(error)
+          }
+          resolve(data[0].newNotifyID)
+        })
+      })
+    })
+  }
+
+  const getRandomTitle = () => {
+    const titles = [
+      "Bạn có một thông báo mới",
+      "Hãy kiểm tra thông báo của bạn",
+      "Thông báo mới đã đến",
+      "Cập nhật quan trọng cho bạn",
+      "Xem ngay thông báo mới"
+    ];
+
+    // Select a random title from the list
+    const randomIndex = Math.floor(Math.random() * titles.length);
+    return titles[randomIndex];
+  }
+
+  const getRandomMessage = (courseName) => {
+    const messages = [
+      `Có một bình luận mới trong khóa học ${courseName}.`,
+      `Khóa học ${courseName} có bình luận mới.`,
+      `Bạn có một bình luận mới trong khóa học ${courseName}.`,
+      `Một bình luận mới vừa được thêm vào khóa học ${courseName}.`,
+      `Xem ngay bình luận mới trong khóa học ${courseName}.`
+    ];
+
+    // Select a random message from the list
+    const randomIndex = Math.floor(Math.random() * messages.length);
+    return messages[randomIndex];
+  }
+
+  const getNameOfCourse = (courseID) => {
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          return reject(err)
+        }
+
+        const query = `SELECT title FROM course WHERE courseID = ?`
+        connection.query(query, [courseID], (error, data) => {
+          connection.release()
+          if (error) {
+            return reject(error)
+          }
+          resolve(data[0].title)
+        })
+      })
+    })
+  }
+
+  const getImageOfCourse = async (courseID) => {
+    //Connect to MongoDB server
+    await connMongo
+    //Get image_introduce from mongoDB
+    const image = await Course.findOne({
+      courseID: courseID
+    }).select("image_introduce")
+    return image.image_introduce
+  }
+
+  const getUserReceiveNotify = async (courseID) => {
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection(async (err) => {
+        if (err) {
+          reject(err)
+        }
+
+        try {
+          await mysqlTransaction.query("START TRANSACTION")
+
+          const students = `SELECT userID FROM enroll WHERE courseID = ?`
+
+          const [rowsStudents] = await mysqlTransaction.query(students, [courseID])
+
+          const instructor = `SELECT userID FROM course WHERE courseID = ?`
+          const [rowsIntructor] = await mysqlTransaction.query(instructor, [courseID])
+
+          await mysqlTransaction.query("COMMIT")
+
+          // Get list student who enroll this course
+          const userIDs = rowsStudents.map(row => row.userID)
+          // Get intructor who create this course
+          userIDs.push(rowsIntructor[0].userID)
+          resolve(userIDs)
+        } catch (error) {
+          reject(error)
+        }
       })
     })
   }
@@ -1016,7 +1124,7 @@ module.exports = (connMysql, connMongo) => {
     }
     else {
       const { structure } = req.body
-      const courseID = await getCourseID()
+      const courseID = await getNewCourseID()
       const userID = req.userID
 
       //Upload file video_introduce & image_introduce
@@ -1216,7 +1324,7 @@ module.exports = (connMysql, connMongo) => {
   })
 
   router.post("/updateNewQA", verifyToken, async (req, res) => {
-    const { courseQA, courseID, lectureId } = req.body
+    const { courseQA, courseID, lectureId, url } = req.body
 
     // Insert into Mysql & MongoDB (using transaction)
     connMysql.getConnection(async (err) => {
@@ -1245,16 +1353,28 @@ module.exports = (connMysql, connMongo) => {
               },
               {
                 arrayFilters: [{ 'lecture.id': lectureId }],
-                new: true // Return the updated document
-              },
-              {
+                new: true, // Return the updated document
                 session: mongoSession
               }
             )
-          }
 
-          //Insert into table Notify
-          let queryInsertNewNotify = `INSERT INTO notify (
+            //Promise.all to get data of (notifyID, title, message, routing, image_course | list userID)
+
+            // Using Promise.all to fetch all required values before inserting into DB
+            const [notifyID, title, nameOfCourse, image_course, listUserID] = await Promise.all([
+              getNewNotifyID(), // Get the new notifyID
+              getRandomTitle(), // Get a random title
+              getNameOfCourse(courseID), // Get the course name based on courseID
+              getImageOfCourse(courseID), // Get the image of the course
+              await getUserReceiveNotify(courseID) // Get the list of users who will receive the notification
+            ])
+
+            const message = getRandomMessage(nameOfCourse)
+
+            //End Promise.all
+
+            //Insert into table Notify
+            let queryInsertNewNotify = `INSERT INTO notify (
                         notifyID,
                         title,
                         message,
@@ -1263,50 +1383,51 @@ module.exports = (connMysql, connMongo) => {
                       VALUES (?, ?, ?, ?, ?)
                           `
 
-          //Insert into table receive_notify
-          let queryInsertNewReceive = `INSERT INTO receive_notify (
+            const [rowsnotify] = await mysqlTransaction.query(queryInsertNewNotify,
+              [
+                notifyID,
+                title,
+                message,
+                url,
+                image_course
+              ])
+
+            //Insert into table receive_notify
+            let queryInsertNewReceive = `INSERT INTO receive_notify (
                         notifyID,
                         userID,
                         time,
                         isRead)
                       VALUES (?, ?, ?, ?)`
 
-          //Promise.all to get data of (notifyID, title, message, routing, image_course | list userID)
+            for (const userID of listUserID) {
+              await mysqlTransaction.query(queryInsertNewReceive,
+                [
+                  notifyID,
+                  userID,
+                  time,
+                  false
+                ])
+            }
 
-          //End Promise.all
-          const [rowsnotify] = await mysqlTransaction.query(queryInsertNewNotify,
-            [
-              notifyID,
-              title,
-              message,
-              routing,
-              image_course
-            ])
+            if (rowsnotify.affectedRows == 0 )
+            {
+              await mysqlTransaction.query("ROLLBACK")
+              await mongoSession.abortTransaction()
+              res.send(false)
+              return
+            }
+            else
+            {
+              await mysqlTransaction.query("COMMIT")
+              await mongoSession.commitTransaction()
+              res.send(true)
+              res.end()
+            }
 
-          const [rowsreceive] = await mysqlTransaction.query(queryInsertNewReceive,
-            [
-              notifyID,
-              userID,
-              time,
-              'false'
-            ])
-
-          if (rowsnotify.affectedRows == 0 || rowsreceive.affectedRows == 0 )
-          {
-            await mysqlTransaction.query("ROLLBACK")
-            await mongoSession.abortTransaction()
-            res.send(false)
-            return
-          }
-          else
-          {
-            await mysqlTransaction.query("COMMIT")
-            await mongoSession.commitTransaction()
-            // res.send(true)
-            // res.end()
           }
         }
-        catch {
+        catch (error) {
           await mysqlTransaction.query("ROLLBACK")
           await mongoSession.abortTransaction()
           res.send(false)
