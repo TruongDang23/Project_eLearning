@@ -1217,6 +1217,103 @@ module.exports = (connMysql, connMongo) => {
 
   router.post("/updateNewQA", verifyToken, async (req, res) => {
     const { courseQA, courseID, lectureId } = req.body
+    connMysql.getConnection(async (err) => {
+      if (err) {
+        res.status(500).send(err)
+        return
+      }
+      else {
+        const mongoSession = await mongo.startSession()
+        const time = formatDateTime(new Date())
+        try {
+          mongoSession.startTransaction()
+          await mysqlTransaction.query("START TRANSACTION")
+
+          if (courseQA.length > 0) {
+            // Find and update Q&A in specific courseID and lectureID
+            await Course.findOneAndUpdate(
+              {
+                courseID: courseID,
+                'chapters.lectures.id': lectureId
+              },
+              {
+                $set: {
+                  'chapters.$[].lectures.$[lecture].QnA': courseQA
+                }
+              },
+              {
+                arrayFilters: [{ 'lecture.id': lectureId }],
+                new: true // Return the updated document
+              }
+            )
+
+            //Insert into notify table
+            let queryInsertNewNotify =
+                `INSERT INTO notify (
+                    notifyID
+                    title,
+                    message,
+                    routing,
+                    image_course)
+                  VALUES (?, ?, ?, ?, ?)
+              `
+
+            //Insert course information into table created_course
+            let queryInsertCreateCourse = `INSERT INTO created_course (
+            courseID,
+            time)
+          VALUES (?, ?)`
+
+            const [rowscourse] = await mysqlTransaction.query(queryInsertNewNotify,
+              [
+                courseID,
+                structure.type_of_course,
+                structure.title,
+                structure.method,
+                structure.language,
+                structure.price,
+                structure.currency,
+                structure.program,
+                structure.category,
+                structure.course_for,
+                'created',
+                structure.num_lecture,
+                userID
+              ])
+
+            const [rowscreated_course] = await mysqlTransaction.query(queryInsertCreateCourse,
+              [
+                courseID,
+                time
+              ])
+
+            if (rowscourse.affectedRows == 0 || rowscreated_course.affectedRows == 0 )
+            {
+              await mysqlTransaction.query("ROLLBACK")
+              await mongoSession.abortTransaction()
+              res.send(false)
+              return
+            }
+            else
+            {
+              await mysqlTransaction.query("COMMIT")
+              await mongoSession.commitTransaction()
+              // res.send(true)
+              // res.end()
+            }
+          }
+        }
+        catch {
+          await mysqlTransaction.query("ROLLBACK")
+          await mongoSession.abortTransaction()
+          res.send(false)
+          return
+        }
+        finally {
+          mongoSession.endSession()
+        }
+      }
+    })
     //Connect to MongoDB server
     await connMongo
     try {
