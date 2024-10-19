@@ -1217,6 +1217,8 @@ module.exports = (connMysql, connMongo) => {
 
   router.post("/updateNewQA", verifyToken, async (req, res) => {
     const { courseQA, courseID, lectureId } = req.body
+
+    // Insert into Mysql & MongoDB (using transaction)
     connMysql.getConnection(async (err) => {
       if (err) {
         res.status(500).send(err)
@@ -1244,63 +1246,64 @@ module.exports = (connMysql, connMongo) => {
               {
                 arrayFilters: [{ 'lecture.id': lectureId }],
                 new: true // Return the updated document
+              },
+              {
+                session: mongoSession
               }
             )
+          }
 
-            //Insert into notify table
-            let queryInsertNewNotify =
-                `INSERT INTO notify (
-                    notifyID
-                    title,
-                    message,
-                    routing,
-                    image_course)
-                  VALUES (?, ?, ?, ?, ?)
-              `
+          //Insert into table Notify
+          let queryInsertNewNotify = `INSERT INTO notify (
+                        notifyID,
+                        title,
+                        message,
+                        routing,
+                        image_course)
+                      VALUES (?, ?, ?, ?, ?)
+                          `
 
-            //Insert course information into table created_course
-            let queryInsertCreateCourse = `INSERT INTO created_course (
-            courseID,
-            time)
-          VALUES (?, ?)`
+          //Insert into table receive_notify
+          let queryInsertNewReceive = `INSERT INTO receive_notify (
+                        notifyID,
+                        userID,
+                        time,
+                        isRead)
+                      VALUES (?, ?, ?, ?)`
 
-            const [rowscourse] = await mysqlTransaction.query(queryInsertNewNotify,
-              [
-                courseID,
-                structure.type_of_course,
-                structure.title,
-                structure.method,
-                structure.language,
-                structure.price,
-                structure.currency,
-                structure.program,
-                structure.category,
-                structure.course_for,
-                'created',
-                structure.num_lecture,
-                userID
-              ])
+          //Promise.all to get data of (notifyID, title, message, routing, image_course | list userID)
 
-            const [rowscreated_course] = await mysqlTransaction.query(queryInsertCreateCourse,
-              [
-                courseID,
-                time
-              ])
+          //End Promise.all
+          const [rowsnotify] = await mysqlTransaction.query(queryInsertNewNotify,
+            [
+              notifyID,
+              title,
+              message,
+              routing,
+              image_course
+            ])
 
-            if (rowscourse.affectedRows == 0 || rowscreated_course.affectedRows == 0 )
-            {
-              await mysqlTransaction.query("ROLLBACK")
-              await mongoSession.abortTransaction()
-              res.send(false)
-              return
-            }
-            else
-            {
-              await mysqlTransaction.query("COMMIT")
-              await mongoSession.commitTransaction()
-              // res.send(true)
-              // res.end()
-            }
+          const [rowsreceive] = await mysqlTransaction.query(queryInsertNewReceive,
+            [
+              notifyID,
+              userID,
+              time,
+              'false'
+            ])
+
+          if (rowsnotify.affectedRows == 0 || rowsreceive.affectedRows == 0 )
+          {
+            await mysqlTransaction.query("ROLLBACK")
+            await mongoSession.abortTransaction()
+            res.send(false)
+            return
+          }
+          else
+          {
+            await mysqlTransaction.query("COMMIT")
+            await mongoSession.commitTransaction()
+            // res.send(true)
+            // res.end()
           }
         }
         catch {
@@ -1314,34 +1317,6 @@ module.exports = (connMysql, connMongo) => {
         }
       }
     })
-    //Connect to MongoDB server
-    await connMongo
-    try {
-      if (courseQA.length > 0) {
-        // Find and update Q&A in specific courseID and lectureID
-        await Course.findOneAndUpdate(
-          {
-            courseID: courseID,
-            'chapters.lectures.id': lectureId
-          },
-          {
-            $set: {
-              'chapters.$[].lectures.$[lecture].QnA': courseQA
-            }
-          },
-          {
-            arrayFilters: [{ 'lecture.id': lectureId }],
-            new: true // Return the updated document
-          }
-        )
-      }
-    } catch (error) {
-      res.status(500).send('Error when submit Q&A')
-      res.end()
-    } finally {
-      res.send('submit success')
-      res.end()
-    }
   })
   return router
 }
