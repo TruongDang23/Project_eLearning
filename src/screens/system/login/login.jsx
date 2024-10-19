@@ -50,11 +50,11 @@ function Login() {
         setMessage("Your account is locked. Please choose another one")
       else {
         const { token, userID, role } = res.data;
-        const userData = JSON.stringify({ userID, role });
+        const userData = JSON.stringify({ userID, role })
         alert("Login successfully")
         sessionStorage.setItem(`token`, token)
         sessionStorage.setItem(`userAuth`, userData)
-        navigate(`/`);
+        navigate(`/`)
       }
     } catch (error) {
       alert("An error occurred while trying to log in.");
@@ -63,7 +63,7 @@ function Login() {
   };
 
   const handleFailure = () => {
-    setMessage("An error occurred when logging in with Google!");
+    setMessage("An error occurred when logging in with Google!")
   };
 
   const checkLogin = async () => {

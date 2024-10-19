@@ -22,6 +22,11 @@ function ListNotifications() {
     }
   }
 
+  const handleClick = (courselink) => {
+    const url = courselink
+    window.open(url, '_blank')
+  }
+
   if (isLoading) {
     return <Loading />
   }
@@ -51,9 +56,7 @@ function ListNotifications() {
               <p>{selectedNotify.message}</p>
               <p>{new Date(selectedNotify.time).toLocaleString()}</p>
               <a
-                href={selectedNotify.routing}
-                target="_blank"
-                rel="noreferrer"
+                onClick={() => handleClick(selectedNotify.routing)}
                 style={{ color: 'inherit' }} // Sử dụng style trực tiếp nếu bạn không sử dụng prop color
               >
                 Go to Q&A
@@ -111,8 +114,11 @@ const NotificationWrapper = styled.section`
       color: #1971c2;
       margin-top: 1.6rem;
       text-decoration: none;
+      transition: all 0.3s ease; /* Thêm hiệu ứng chuyển đổi */
+      cursor: pointer;
       &:hover {
-        color: #155b96;
+        color: #187BCE;
+        font-size: 1.8rem; /* Kích thước chữ lớn hơn khi hover */
       }
     }
     .no-select {
