@@ -53,7 +53,6 @@ function TabviewAccessCourse({ accessCourseData, lectureId, setReload }) {
   // const lectureId = searchParams.get('id')
 
   useEffect(() => {
-
     // Lọc dữ liệu QnA dựa trên lectureId từ accessCourseData
     const filteredQA = []
     accessCourseData.chapters.forEach((chapter) => {

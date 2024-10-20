@@ -1,28 +1,21 @@
 /* eslint-disable no-unused-vars */
-import styled from "styled-components";
-import Avatar from "@mui/material/Avatar";
-import { formatDistanceToNow } from "date-fns";
+import styled from 'styled-components'
+import Avatar from '@mui/material/Avatar'
+import { formatDistanceToNow } from 'date-fns'
 
 function NotifyPreview({ notify, onClick }) {
-  const {
-    notifyID,
-    title,
-    message,
-    routing,
-    isRead,
-    image_course,
-    time
-  } = notify;
+  const { notifyID, title, message, routing, isRead, image_course, time } =
+    notify
 
   const timeAgo = formatDistanceToNow(new Date(time), {
     addSuffix: true
-  });
+  })
 
   return (
     <NotifyPreviewWrapper onClick={onClick}>
-      <div className={`notification-item ${!isRead ? "not-read" : ""}`}>
+      <div className={`notification-item ${!isRead ? 'not-read' : ''}`}>
         <div className="notification-item__avatar">
-          <Avatar src={image_course} />
+          <img alt={title} src={image_course} />
         </div>
         <div className="notification-item__content">
           <h3 className="notification-item__title">{title}</h3>
@@ -31,7 +24,7 @@ function NotifyPreview({ notify, onClick }) {
         </div>
       </div>
     </NotifyPreviewWrapper>
-  );
+  )
 }
 
 const NotifyPreviewWrapper = styled.div`
@@ -62,6 +55,13 @@ const NotifyPreviewWrapper = styled.div`
         height: 8rem;
         object-fit: cover;
       }
+
+      img {
+        width: 8rem;
+        height: 8rem;
+        object-fit: cover;
+        border-radius: 50%;
+      }
     }
 
     .notification-item__content {
@@ -87,6 +87,6 @@ const NotifyPreviewWrapper = styled.div`
       }
     }
   }
-`;
+`
 
-export default NotifyPreview;
+export default NotifyPreview

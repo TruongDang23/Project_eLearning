@@ -32,9 +32,9 @@ function Header() {
     })
 
     return () => {
-      socket.off('unreadCountUpdated'); // Clean up when component unmounts
+      socket.off('unreadCountUpdated') // Clean up when component unmounts
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setUnreadCount])
 
   const handleSearch = (event) => {
@@ -123,12 +123,12 @@ function Header() {
               My learning
             </a>
             <a>
-              <StyledBadge badgeContent={4} color="error">
+              <StyledBadge badgeContent={4} color="primary">
                 <ShoppingCartOutlinedIcon />
               </StyledBadge>
             </a>
             <a href="/notification">
-              <StyledBadge badgeContent={unreadCount} color="error">
+              <StyledBadge badgeContent={unreadCount} color="primary">
                 <NotificationsOutlinedIcon />
               </StyledBadge>
             </a>
@@ -248,7 +248,7 @@ const StyledBadge = styled(Badge)`
   transition: all 0.3s;
   ${'' /* giảm kích thước của badge */}
   .MuiBadge-badge {
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 600;
     padding: 0 2px;
   }
