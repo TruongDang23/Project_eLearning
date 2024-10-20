@@ -1,22 +1,129 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { formatDistanceToNow } from 'date-fns'
-
+import { useNavigate } from 'react-router-dom'
+import axios from "axios";
 import SearchIcon from '@mui/icons-material/Search'
+import { useParams } from 'react-router-dom'
+import io from 'socket.io-client'
 
-function TabQA({ lectureQA }) {
+function TabQA({ lectureQA, setReload, lectureId }) {
   // console.log(lectureQA)
   const [courseQA, setCourseQA] = useState([])
   const [newResponse, setNewResponse] = useState('')
+  const [newQuestion, setNewQuestion] = useState('')
   const [replyingTo, setReplyingTo] = useState(null)
+  const [reCall, setRecall] = useState(true)
+  const navigate = useNavigate()
+  const token = sessionStorage.getItem("token")
+  const userAuth = sessionStorage.getItem("userAuth")
+  const userData = JSON.parse(sessionStorage.getItem("userAuth"))
+  const userID = userData ? userData.userID : ""
+  const { courseID } = useParams()
+  const url = window.location.href
+  const socket = io('http://localhost:3001')
 
   useEffect(() => {
-    setCourseQA(lectureQA)
+    //Call backend to get name and avatar with quesionerID and responseID
+    axios.get('http://localhost:3000/c/getUserQnA',
+      {
+        params: {
+          lectureQA
+        }
+      },
+      {
+        headers: {
+          Token: token, // Thêm token và user vào header để đưa xuống Backend xác thực
+          user: userAuth
+        }
+      }
+    )
+      .then(response => {
+        setCourseQA(response.data)
+      })
+      .catch(error => {
+        //Server shut down
+        if (error.message === 'Network Error')
+          navigate('/server-shutdown')
+        //Connection error
+        if (error.response.status === 500)
+          navigate('/500error')
+        //Unauthorized. Need login
+        if (error.response.status === 401)
+          navigate('/401error')
+        //Forbidden. Token != userAuth
+        if (error.response.status === 403)
+          navigate('/403error')
+      })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lectureQA])
 
+  useEffect(() => {
+    axios.post('http://localhost:3000/c/updateNewQA',
+      {
+        courseQA,
+        courseID,
+        lectureId,
+        url
+      },
+      {
+        headers: {
+          Token: token, // Thêm token và user vào header để đưa xuống Backend xác thực
+          user: userAuth
+        }
+      }
+    )
+      // eslint-disable-next-line no-unused-vars
+      .then(response => {
+        socket.emit("newNotify", courseID, userID)
+        setReload((prev) => ({ //Reload course data
+          reload: !prev.reload
+        }))
+      })
+      .catch(error => {
+        //Server shut down
+        if (error.message === 'Network Error')
+          navigate('/server-shutdown')
+        //Connection error
+        if (error.response.status === 500)
+          navigate('/500error')
+        //Unauthorized. Need login
+        if (error.response.status === 401)
+          navigate('/401error')
+        //Forbidden. Token != userAuth
+        if (error.response.status === 403)
+          navigate('/403error')
+      })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reCall])
 
   const handleResponseChange = (e) => setNewResponse(e.target.value)
+  const handleSubmitChange = (e) => setNewQuestion(e.target.value)
 
+  const handleSubmitQA = () => {
+    const currentDate = new Date()
+    const formattedDate = currentDate
+      .toLocaleString('sv-SE', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      })
+      .replace(' ', ' ')
+
+    const newData = {
+      questionerID: userID,
+      question: newQuestion,
+      date: formattedDate,
+      responses: []
+    }
+
+    setCourseQA((prev) => [...prev, newData])
+    setNewQuestion('')
+    setRecall((prev) => !prev) //Recall API update QnA
+  }
   const handleResponseSubmit = () => {
     if (newResponse.trim() && replyingTo !== null) {
       const updatedQA = courseQA.map((QA, index) => {
@@ -39,10 +146,8 @@ function TabQA({ lectureQA }) {
             responses: [
               {
                 response: newResponse,
-                name: 'Vinh', // thay đổi bằng tên người dùng ở đây
-                date: formattedDate,
-                avatar:
-                  'https://i.pinimg.com/564x/b3/ce/f7/b3cef71bf4f2247ec504f19885dd15e8.jpg'
+                responseID: userID,
+                date: formattedDate
               },
               ...QA.responses
             ]
@@ -54,6 +159,7 @@ function TabQA({ lectureQA }) {
       setCourseQA(updatedQA)
       setNewResponse('')
       setReplyingTo(null)
+      setRecall((prev) => !prev) //Recall API update QnA
     }
   }
 
@@ -170,8 +276,13 @@ function TabQA({ lectureQA }) {
       </div>
       <div className="QA-ask-question">
         <h3>Ask a question:</h3>
-        <textarea placeholder="Write your question here..." />
-        <button>Submit</button>
+        <textarea
+          value={newQuestion}
+          onChange={handleSubmitChange}
+          placeholder="Write your question here..." />
+        <button onClick={handleSubmitQA}>
+          Submit
+        </button>
       </div>
     </TabQAWrapper>
   )

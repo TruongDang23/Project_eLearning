@@ -17,11 +17,11 @@ const courseSchema = new mongoose.Schema({
       type: { type: String },
       source: { type: String },
       QnA: [{
-        questionerID: { type: Number },
+        questionerID: { type: String },
         question: { type: String },
         date: { type: Date },
         responses: [{
-          responseID: { type: Number },
+          responseID: { type: String },
           response: { type: String },
           date: { type: Date }
         }]

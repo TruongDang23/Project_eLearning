@@ -5,7 +5,7 @@ import TabviewAccessCourse from "./TabviewAccessCourse";
 import PdfViewer from "./PdfViewer";
 import { useNavigate } from "react-router-dom";
 
-function MainContentAccessCourse({ accessCourseData, params, setProgress }) {
+function MainContentAccessCourse({ accessCourseData, params, setProgress, setReload }) {
   const type = params.get("type")
   const source = params.get("source")
   const id = params.get("id")
@@ -42,7 +42,7 @@ function MainContentAccessCourse({ accessCourseData, params, setProgress }) {
       ) : (
         navigate(`/course/${accessCourseData.courseID}/assignment/${id}?page=1`)
       )}
-      <TabviewAccessCourse accessCourseData={accessCourseData} lectureId={id} />
+      <TabviewAccessCourse accessCourseData={accessCourseData} lectureId={id} setReload={setReload} />
     </MainAccessCourseWrapper>
   );
 }
