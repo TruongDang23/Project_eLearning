@@ -53,7 +53,7 @@ const storage = new Storage({
 module.exports = (connMysql, connMongo) => {
   //Khởi tạo tham số router và cấp quyền CORS
   const router = express.Router()
-  const mysqlTransaction = connMysql.promise();
+  const mysqlTransaction = connMysql.promise()
   router.use(cors())
   router.use(express.json())
 
@@ -312,7 +312,7 @@ module.exports = (connMysql, connMongo) => {
     return image.image_introduce
   }
 
-  const getUserReceiveNotify = async (courseID) => {
+  const getUserReceiveNotify = async (courseID, userID) => {
     return new Promise((resolve, reject) => {
       connMysql.getConnection(async (err) => {
         if (err) {
@@ -322,9 +322,9 @@ module.exports = (connMysql, connMongo) => {
         try {
           await mysqlTransaction.query("START TRANSACTION")
 
-          const students = `SELECT userID FROM enroll WHERE courseID = ?`
+          const students = `SELECT userID FROM enroll WHERE courseID = ? AND userID != ?`
 
-          const [rowsStudents] = await mysqlTransaction.query(students, [courseID])
+          const [rowsStudents] = await mysqlTransaction.query(students, [courseID, userID])
 
           const instructor = `SELECT userID FROM course WHERE courseID = ?`
           const [rowsIntructor] = await mysqlTransaction.query(instructor, [courseID])
@@ -1366,7 +1366,7 @@ module.exports = (connMysql, connMongo) => {
               getRandomTitle(), // Get a random title
               getNameOfCourse(courseID), // Get the course name based on courseID
               getImageOfCourse(courseID), // Get the image of the course
-              await getUserReceiveNotify(courseID) // Get the list of users who will receive the notification
+              await getUserReceiveNotify(courseID, req.userID) // Get the list of users who will receive the notification
             ])
 
             const message = getRandomMessage(nameOfCourse)

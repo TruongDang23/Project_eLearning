@@ -24,7 +24,7 @@ export const NotificationProvider = ({ children }) => {
       if (notify.isRead === 0)
         count = count + 1
     })
-    socket.emit('updateUnreadCount', count, token)
+    socket.emit('updateUnreadCount', count, userID)
     setUnreadCount(count)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [notifications])

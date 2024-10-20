@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 import SearchIcon from '@mui/icons-material/Search'
 import { useParams } from 'react-router-dom'
+import io from 'socket.io-client'
 
 function TabQA({ lectureQA, setReload, lectureId }) {
   // console.log(lectureQA)
@@ -20,6 +21,8 @@ function TabQA({ lectureQA, setReload, lectureId }) {
   const userID = userData ? userData.userID : ""
   const { courseID } = useParams()
   const url = window.location.href
+  const socket = io('http://localhost:3001')
+
   useEffect(() => {
     //Call backend to get name and avatar with quesionerID and responseID
     axios.get('http://localhost:3000/c/getUserQnA',
@@ -72,6 +75,7 @@ function TabQA({ lectureQA, setReload, lectureId }) {
     )
       // eslint-disable-next-line no-unused-vars
       .then(response => {
+        socket.emit("newNotify", courseID, userID)
         setReload((prev) => ({ //Reload course data
           reload: !prev.reload
         }))
