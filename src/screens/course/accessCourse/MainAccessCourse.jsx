@@ -60,7 +60,7 @@ function MainAccessCourse({ accessCourseData, setReload }) {
 
   return (
     <MainAccessCourseWrapper className="white-space-small">
-      <MainContentAccessCourse accessCourseData={accessCourseData} params={searchParams} setProgress={setProgress}/>
+      <MainContentAccessCourse accessCourseData={accessCourseData} params={searchParams} setProgress={setProgress} setReload={setReload}/>
       <SideBarAccessCourse accessCourseData={accessCourseData} setParams={setSearchParams} setProgress={setProgress}/>
     </MainAccessCourseWrapper>
   );

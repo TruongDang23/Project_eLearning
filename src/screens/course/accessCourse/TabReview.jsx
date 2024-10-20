@@ -9,7 +9,7 @@ import { formatDistanceToNow } from "date-fns";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-function TabReview({ accessCourseData }) {
+function TabReview({ accessCourseData, setReload }) {
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState({ star: 0, message: "" });
 
@@ -42,9 +42,12 @@ function TabReview({ accessCourseData }) {
       );
 
       if (response.data.success) {
-        alert("Review submitted successfully");
-        setReviews([...reviews, { ...newReview, time: new Date() }]);
-        setNewReview({ star: 0, message: "" });
+        alert("Review submitted successfully")
+        setReviews([...reviews, { ...newReview, time: new Date() }])
+        setNewReview({ star: 0, message: "" })
+        setReload((prev) => ({
+          reload: !prev.reload
+        }))
       }
     } catch (error) {
       //console.error("Failed to submit review", error);

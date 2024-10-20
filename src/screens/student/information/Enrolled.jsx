@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 function Enrolled({ profile }) {
+
   return (
     <Wrapper>
       <div className="course">

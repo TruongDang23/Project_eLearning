@@ -16,6 +16,8 @@ function Header() {
   // eslint-disable-next-line no-unused-vars
   const [search, setSearch] = useSearchParams()
   const token = sessionStorage.getItem("token")
+  const userData = JSON.parse(sessionStorage.getItem('userAuth'))
+  const userID = userData ? userData.userID : ''
   const [title, setTitle] = useState(search.get('q') || '')
 
   const socket = io('http://localhost:3001')
@@ -24,8 +26,7 @@ function Header() {
   const { unreadCount, setUnreadCount } = useContext(NotificationContext)
 
   useEffect(() => {
-    const groupID = token
-    socket.emit('joinGroupIndividual', groupID)
+    socket.emit('joinGroupIndividual', userID)
     socket.on('unreadCountUpdated', (newUnreadCount) => {
       setUnreadCount(newUnreadCount)
     })
