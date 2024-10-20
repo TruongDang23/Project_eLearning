@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const http = require('http') // Thêm thư viện http
 const { Server } = require('socket.io') // Import Server từ socket.io
 const connMysql = require('./connMySql')
@@ -16,6 +17,31 @@ const io = new Server(server, {
     credentials: true
   }
 })
+
+const calculateUnRead = async(userID) => {
+  return new Promise((resolve, reject) => {
+    connMysql.getConnection(async (err) => {
+      if (err) {
+        reject(err)
+      }
+
+      try {
+        await mysqlTransaction.query("START TRANSACTION")
+
+        const students = `SELECT count(*) as unread from receive_notify WHERE userID = ? AND isRead = false`
+
+        const [rows] = await mysqlTransaction.query(students, [userID])
+
+        await mysqlTransaction.query("COMMIT")
+
+        resolve(rows[0].unread)
+      } catch (error) {
+        reject(error)
+      }
+    })
+  })
+}
+
 // Định nghĩa các sự kiện socket.io
 io.on('connection', (socket) => {
   socket.on('joinGroupIndividual', (groupID) => {
@@ -30,7 +56,6 @@ io.on('connection', (socket) => {
   })
 
   socket.on('newNotify', (courseID, userID) => {
-    console.log('New Notification: ', courseID, userID)
 
     connMysql.getConnection(async (err) => {
       if (err) { console.log(err) }
@@ -53,7 +78,9 @@ io.on('connection', (socket) => {
         userIDs.push(rowsIntructor[0].userID)
 
         for (const id of userIDs) {
+          const unreadNoti = await calculateUnRead(id)
           io.to(id).emit('receiveNewNotify')
+          io.to(id).emit('unreadCountUpdated', unreadNoti)
         }
       } catch (error) {
         console.log(error)

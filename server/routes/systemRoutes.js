@@ -455,7 +455,8 @@ module.exports = (connMysql, connMongo) => {
                time 
           from receive_notify as rece
           inner join notify as noti on noti.notifyID = rece.notifyID
-          where userID = ?`
+          where userID = ?
+          order by time desc`
         connection.query(query, [userID], async (error, notification) => {
           connection.release() //Giải phóng connection khi truy vấn xong
           if (error) {
