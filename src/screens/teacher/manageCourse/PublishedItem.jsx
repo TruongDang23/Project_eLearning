@@ -48,14 +48,14 @@ export function Items({ courseItem }) {
             >
               Go to course
             </a>
-            <a
+            {/* <a
               href="https://www.youtube.com/watch?v=9O1Hs1Yrg1w"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-edit"
             >
               Edit course
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

@@ -47,14 +47,14 @@ export function Items({ courseItem, reload, setReload }) {
               {courseItem.price} {courseItem.currency}
             </p>
             <div className="button">
-              <a
+              {/* <a
                 href="https://www.youtube.com/watch?v=9O1Hs1Yrg1w"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-edit"
               >
                 Edit course
-              </a>
+              </a> */}
               <button onClick={toggleCancel} className="btn-cancel">
                 Cancel
               </button>

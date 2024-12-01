@@ -173,7 +173,7 @@ function Login() {
                   <span className="custom-radio"></span>
                   Instructor
                 </label>
-                <label>
+                {/* <label>
                   <input
                     type="radio"
                     value="Admin"
@@ -182,7 +182,7 @@ function Login() {
                   />
                   <span className="custom-radio"></span>
                   Admin
-                </label>
+                </label> */}
               </div>
 
               {message && (
@@ -219,9 +219,9 @@ function Login() {
                   />
                 </div>
               </GoogleOAuthProvider>
-              <div className="forgot">
+              {/* <div className="forgot">
                 <a href="#">Forgot Password</a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

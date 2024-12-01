@@ -3,6 +3,7 @@ import Course from './Course'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Element } from 'react-scroll'
 
 const CourseListWrapper = styled.section`
   .courses {
@@ -43,7 +44,9 @@ function CourseList() {
 
   return (
     <CourseListWrapper className="container white-space-medium">
-      <h2 className="heading-tertiary">Courses</h2>
+      <Element name="courses">
+        <h2 className="heading-tertiary">Courses</h2>
+      </Element>
       <div className="courses">
         {courses.map((course) => (
           <Course key={course.course_id} course={course} />

@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import featureInstructor from "../assets/Instructor.png";
+import styled from 'styled-components'
+import featureInstructor from '../assets/wel-instructor.png'
+import { Link } from 'react-router-dom'
 
 function Instructor() {
   return (
@@ -15,11 +16,13 @@ function Instructor() {
             Instructors from around the world teach millions of learners on
             Udemi. We provide the tools and skills to teach what you love.
           </p>
-          <button className="btn">Start teaching today</button>
+          <Link to="/signup">
+            <button className="btn">Start teaching today</button>
+          </Link>
         </div>
       </div>
     </InstructorWrapper>
-  );
+  )
 }
 
 const InstructorWrapper = styled.section`
@@ -38,7 +41,7 @@ const InstructorWrapper = styled.section`
     align-items: center;
     justify-content: center;
     text-align: center;
-    
+
     .instructor-img {
       padding-left: 20rem;
       img {
@@ -46,11 +49,13 @@ const InstructorWrapper = styled.section`
         height: auto;
         object-fit: cover;
         border-radius: 10px;
+        border: 2px solid #74c0fc;
+        box-shadow: 0 10px 20px rgba(44, 130, 201, 0.2);
       }
     }
     .instructor-info {
       padding-right: 10rem;
-      
+
       p {
         font-size: 2rem;
         line-height: 1.6;
@@ -108,6 +113,6 @@ const InstructorWrapper = styled.section`
       }
     }
   }
-`;
+`
 
-export default Instructor;
+export default Instructor

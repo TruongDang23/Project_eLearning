@@ -72,12 +72,12 @@ function Header() {
                 />
               </a>
             </div>
-            <a href="/login" className="link">
+            {/* <a href="/login" className="link">
               Teach on EL-Space
             </a>
             <a href="/login" className="link">
               My Learning
-            </a>
+            </a> */}
           </div>
           <div className="authButtons">
             <Link to="/login">
@@ -116,17 +116,17 @@ function Header() {
                 />
               </a>
             </div>
-            <a href="/" className="link">
+            {/* <a href="/" className="link">
               Teach on EL-Space
-            </a>
+            </a> */}
             <a href="/student/my-learning" className="link">
               My learning
             </a>
-            <a>
+            {/* <a>
               <StyledBadge badgeContent={4} color="primary">
                 <ShoppingCartOutlinedIcon />
               </StyledBadge>
-            </a>
+            </a> */}
             <a href="/notification">
               <StyledBadge badgeContent={unreadCount} color="primary">
                 <NotificationsOutlinedIcon />

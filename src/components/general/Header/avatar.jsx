@@ -1,20 +1,25 @@
-import * as React from 'react'
-import Box from '@mui/material/Box'
-import Avatar from '@mui/material/Avatar'
-import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import Divider from '@mui/material/Divider'
-import IconButton from '@mui/material/IconButton'
-import Tooltip from '@mui/material/Tooltip'
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
-import Settings from '@mui/icons-material/Settings'
-import Logout from '@mui/icons-material/Logout'
-import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined'
-import SpaceDashboardOutlinedIcon from '@mui/icons-material/SpaceDashboardOutlined'
-import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined'
+import React, { useEffect, useState } from 'react'
+import {
+  Box,
+  Avatar,
+  Menu,
+  MenuItem,
+  ListItemIcon,
+  Divider,
+  IconButton,
+  Tooltip
+} from '@mui/material'
+import {
+  HelpOutline as HelpOutlineIcon,
+  Settings,
+  Logout,
+  AccountBoxOutlined as AccountBoxOutlinedIcon,
+  SpaceDashboardOutlined as SpaceDashboardOutlinedIcon,
+  BorderColorOutlined as BorderColorOutlinedIcon
+} from '@mui/icons-material'
+import ManageSearchIcon from '@mui/icons-material/ManageSearch'
+import DesignServicesIcon from '@mui/icons-material/DesignServices'
 import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 export default function AvatarAction({ setReload }) {
@@ -25,41 +30,28 @@ export default function AvatarAction({ setReload }) {
   const userID = userData ? userData.userID : ''
   const [avt, setAvt] = useState()
   const navigate = useNavigate()
+
   useEffect(() => {
     axios
       .get('http://localhost:3000/s/loadAvatar', {
-        params: {
-          userID
-        },
-        headers: {
-          Token: token, // Thêm token và user vào header để đưa xuống Backend xác thực
-          User: userAuth
-        }
+        params: { userID },
+        headers: { Token: token, User: userAuth }
       })
-      .then((response) => {
-        setAvt(response.data)
-      })
+      .then((response) => setAvt(response.data))
       .catch((error) => {
-        //Server shut down
+        const status = error.response?.status
         if (error.message === 'Network Error') navigate('/server-shutdown')
-        //Connection error
-        if (error.response.status === 500) navigate('/500error')
-        //Unauthorized. Need login
-        if (error.response.status === 401) navigate('/401error')
-        //Forbidden. Token != userAuth
-        if (error.response.status === 403) navigate('/403error')
+        else if (status === 500) navigate('/500error')
+        else if (status === 401) navigate('/401error')
+        else if (status === 403) navigate('/403error')
       })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-  const [anchorEl, setAnchorEl] = React.useState(null)
-  const open = Boolean(anchorEl)
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget)
-  }
+  }, [token, userAuth, userID, navigate])
 
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
+  const [anchorEl, setAnchorEl] = useState(null)
+  const open = Boolean(anchorEl)
+
+  const handleClick = (event) => setAnchorEl(event.currentTarget)
+  const handleClose = () => setAnchorEl(null)
 
   const handleLogout = () => {
     sessionStorage.clear()
@@ -67,32 +59,52 @@ export default function AvatarAction({ setReload }) {
     navigate('/')
   }
 
-  const handleInformation = () => {
-    userID[0] === 'A'
-      ? navigate('/Admin/information')
-      : userID[0] === 'S'
-      ? navigate('/Student/information')
-      : navigate('/Instructor/information')
-  }
-
-  const handleDashboard = () => {
-    userID[0] === 'A'
-      ? navigate('/Admin/dashboard')
-      : userID[0] === 'S'
-      ? navigate('/Student/dashboard')
-      : navigate('/Instructor/dashboard')
-  }
-
-  const handleProfile = () => {
-    userID[0] === 'S'
-      ? navigate('/Student/profile')
-      : navigate('/Instructor/profile')
-  }
+  const menuItems = [
+    userID[0] === 'A' && {
+      text: 'Dashboard',
+      icon: <SpaceDashboardOutlinedIcon fontSize="large" />,
+      action: () => navigate('/Admin/dashboard')
+    },
+    userID[0] === 'I' && {
+      text: 'Manage Courses',
+      icon: <ManageSearchIcon fontSize="large" />,
+      action: () => navigate('/instructor/manageCourse')
+    },
+    userID[0] === 'I' && {
+      text: 'Design Course',
+      icon: <DesignServicesIcon fontSize="large" />, // Sử dụng icon phù hợp
+      action: () => navigate('/instructor/designCourse') // Thay đường dẫn cho phù hợp
+    },
+    {
+      text: 'My Profile',
+      icon: <AccountBoxOutlinedIcon fontSize="large" />,
+      action: () =>
+        navigate(
+          userID[0] === 'S'
+            ? '/Student/profile'
+            : userID[0] === 'I'
+            ? '/Instructor/profile'
+            : '/Admin/profile'
+        )
+    },
+    {
+      text: 'Edit Profile',
+      icon: <BorderColorOutlinedIcon fontSize="large" />,
+      action: () =>
+        navigate(
+          userID[0] === 'S'
+            ? '/Student/information'
+            : userID[0] === 'I'
+            ? '/Instructor/information'
+            : '/Admin/information'
+        )
+    }
+  ].filter(Boolean) // Loại bỏ các mục null hoặc undefined
 
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        <Tooltip title={<h5>Information</h5>}>
+        <Tooltip title="Information">
           <IconButton
             onClick={handleClick}
             size="small"
@@ -119,19 +131,13 @@ export default function AvatarAction({ setReload }) {
         id="account-menu"
         open={open}
         onClose={handleClose}
-        onClick={handleClose}
         PaperProps={{
           elevation: 0,
           sx: {
             overflow: 'visible',
             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
             mt: 1.5,
-            '& .MuiAvatar-root': {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1
-            },
+            '& .MuiAvatar-root': { width: 32, height: 32, ml: -0.5, mr: 1 },
             '&::before': {
               content: '""',
               display: 'block',
@@ -150,43 +156,18 @@ export default function AvatarAction({ setReload }) {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         disableScrollLock={true}
       >
-        <MenuItem
-          sx={{ fontSize: '16px', color: '#333' }}
-          onClick={() => {
-            handleDashboard()
-          }}
-        >
-          <ListItemIcon>
-            <SpaceDashboardOutlinedIcon fontSize="large" />
-          </ListItemIcon>{' '}
-          Dashboard
-        </MenuItem>
-        <MenuItem
-          sx={{ fontSize: '16px', color: '#333' }}
-          onClick={() => {
-            handleProfile()
-            handleClose
-          }}
-        >
-          <ListItemIcon>
-            <AccountBoxOutlinedIcon fontSize="large" />
-          </ListItemIcon>
-          My Profile
-        </MenuItem>
-        <MenuItem
-          sx={{ fontSize: '16px', color: '#333' }}
-          onClick={() => {
-            handleInformation()
-            handleClose
-          }}
-        >
-          <ListItemIcon>
-            <BorderColorOutlinedIcon fontSize="large" />
-          </ListItemIcon>
-          Edit Profile
-        </MenuItem>
+        {menuItems.map(({ text, icon, action }, index) => (
+          <MenuItem
+            key={index}
+            sx={{ fontSize: '16px', color: '#333' }}
+            onClick={action}
+          >
+            <ListItemIcon>{icon}</ListItemIcon>
+            {text}
+          </MenuItem>
+        ))}
         <Divider />
-        <MenuItem
+        {/* <MenuItem
           sx={{ fontSize: '16px', color: '#333' }}
           onClick={handleClose}
         >
@@ -203,7 +184,7 @@ export default function AvatarAction({ setReload }) {
             <Settings fontSize="large" />
           </ListItemIcon>
           Settings
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem
           sx={{ fontSize: '16px', color: '#333' }}
           onClick={handleLogout}

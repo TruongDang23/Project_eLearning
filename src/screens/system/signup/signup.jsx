@@ -157,7 +157,7 @@ function Signup() {
                   <span className="custom-radio"></span>
                   Instructor
                 </label>
-                <label>
+                {/* <label>
                   <input
                     type="radio"
                     value="Admin"
@@ -166,7 +166,7 @@ function Signup() {
                   />
                   <span className="custom-radio"></span>
                   Admin
-                </label>
+                </label> */}
               </div>
 
               {message && (
