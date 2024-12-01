@@ -15,7 +15,7 @@ function Header() {
   const navigate = useNavigate()
   // eslint-disable-next-line no-unused-vars
   const [search, setSearch] = useSearchParams()
-  const token = sessionStorage.getItem("token")
+  const token = sessionStorage.getItem('token')
   const userData = JSON.parse(sessionStorage.getItem('userAuth'))
   const userID = userData ? userData.userID : ''
   const [title, setTitle] = useState(search.get('q') || '')
@@ -119,9 +119,12 @@ function Header() {
             {/* <a href="/" className="link">
               Teach on EL-Space
             </a> */}
-            <a href="/student/my-learning" className="link">
-              My learning
-            </a>
+
+            {userID[0] === 'S' && (
+              <a href="/student/my-learning" className="link">
+                My learning
+              </a>
+            )}
             {/* <a>
               <StyledBadge badgeContent={4} color="primary">
                 <ShoppingCartOutlinedIcon />
