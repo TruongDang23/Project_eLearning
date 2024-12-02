@@ -1,6 +1,12 @@
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
 
 function Enrolled({ profile }) {
+  const navigate = useNavigate()
+
+  const handleEditProfile = (courseID) => {
+    navigate('/course/details/' + courseID)
+  }
 
   return (
     <Wrapper>
@@ -22,9 +28,11 @@ function Enrolled({ profile }) {
                 </div>
                 <div className="course-item-content-btn">
                   <a
-                    href={`/course/details/${course.courseID}`}
+                    // href={`/course/details/${course.courseID}`}
+                    onClick={() => handleEditProfile(course.courseID)}
                     target="_blank"
                     rel="noreferrer"
+
                   >
                     Go to course
                   </a>
@@ -105,6 +113,7 @@ const Wrapper = styled.section`
             padding: 10px 20px;
             transition: background-color 0.3s;
             &:hover {
+              cursor: pointer;
               background-color: #0f6ab4;
             }
           }
