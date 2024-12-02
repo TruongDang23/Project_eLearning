@@ -27,7 +27,7 @@ function Course({ course }) {
         <Link to={`/course/infor/${courseID}`}>
           <button className="item-btn see-details-btn">See Details</button>
         </Link>
-        <button className="item-btn add-to-cart-btn">Add to Cart</button>
+        {/* <button className="item-btn add-to-cart-btn">Add to Cart</button> */}
       </div>
     </CourseWrapper>
   )
