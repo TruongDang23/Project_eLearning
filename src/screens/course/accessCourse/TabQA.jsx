@@ -173,7 +173,7 @@ function TabQA({ lectureQA, setReload, lectureId }) {
 
   return (
     <TabQAWrapper>
-      <div className="QA-filter">
+      {/* <div className="QA-filter">
         <div className="QA-filter-sortby">
           <h3>Sort by:</h3>
           <select>
@@ -199,7 +199,7 @@ function TabQA({ lectureQA, setReload, lectureId }) {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="QA-list-question">
         <h3>All questions:</h3>
         <div className="QA-question-content">

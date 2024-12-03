@@ -47,9 +47,9 @@ function Finish({
         </p>
         <p className="highscore">That is {percentage}%.</p>
       </div>
-      <div className="image-result">
+      {/* <div className="image-result">
         <img src={image} alt="gif" />
-      </div>
+      </div> */}
 
       <button
         className="btn btn-ui"

@@ -1,11 +1,14 @@
-import styled from "styled-components";
-import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
-import AssignmentIcon from "@mui/icons-material/Assignment";
-import QuizIcon from "@mui/icons-material/Quiz";
-import LocalAtmIcon from "@mui/icons-material/LocalAtm";
-import { Link } from "react-router-dom";
+import styled from 'styled-components'
+import VideoLibraryIcon from '@mui/icons-material/VideoLibrary'
+import AssignmentIcon from '@mui/icons-material/Assignment'
+import QuizIcon from '@mui/icons-material/Quiz'
+import LocalAtmIcon from '@mui/icons-material/LocalAtm'
+import { Link } from 'react-router-dom'
 
 function SideBar({ inforCourseData }) {
+  const handleBuyCourse = () => {
+    alert('You have bought this course')
+  }
   return (
     <SideBarWrapper>
       {/* Video */}
@@ -33,20 +36,22 @@ function SideBar({ inforCourseData }) {
             <LocalAtmIcon />
             <span>
               {inforCourseData.price == 0
-                ? "Free"
+                ? 'Free'
                 : `$${inforCourseData.price}`}
             </span>
           </li>
         </ul>
       </div>
       <div className="sidebar-buttons">
-        <button className="sidebar-button button-buy">Buy now</button>
+        <button className="sidebar-button button-buy" onClick={handleBuyCourse}>
+          Buy now
+        </button>
         <Link to={`/course/details/${inforCourseData.courseID}`}>
           <button className="sidebar-button button-goto">Go to course</button>
         </Link>
       </div>
     </SideBarWrapper>
-  );
+  )
 }
 const SideBarWrapper = styled.aside`
   align-self: start;
@@ -159,5 +164,5 @@ const SideBarWrapper = styled.aside`
       transform: translateY(0);
     }
   }
-`;
-export default SideBar;
+`
+export default SideBar
