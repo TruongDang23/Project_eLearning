@@ -1,7 +1,13 @@
 import styled from 'styled-components'
 import { format, parseISO } from 'date-fns'
+import { useNavigate } from 'react-router-dom'
 
 function Published({ profile }) {
+  const navigate = useNavigate()
+
+  const handleEditProfile = (courseID) => {
+    navigate('/course/details/' + courseID)
+  }
   return (
     <Wrapper>
       <div className="course">
@@ -28,7 +34,8 @@ function Published({ profile }) {
                   </div>
                   <div className="course-item-content-btn">
                     <a
-                      href={`/course/details/${course.courseID}`}
+                      // href={`/course/details/${course.courseID}`}
+                      onClick={() => handleEditProfile(course.courseID)}
                       target="_blank"
                       rel="noreferrer"
                     >

@@ -1,7 +1,14 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export function Items({ courseItem }) {
+  const navigate = useNavigate()
+
+  const handleGoToCourse = (courseID) => {
+    navigate(`/course/infor/${courseID}`)
+  }
+
   return (
     <Wrapper>
       <div key={courseItem.courseID} className="course-item">
@@ -41,9 +48,10 @@ export function Items({ courseItem }) {
           </p>
           <div className="button">
             <a
-              href={`/course/infor/${courseItem.courseID}`}
+              // href={`/course/infor/${courseItem.courseID}`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => handleGoToCourse(courseItem.courseID)}
               className="btn-view"
             >
               Go to course
