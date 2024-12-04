@@ -3,12 +3,16 @@ import ListNotifications from './ListNotifications'
 import { NotificationProvider } from '../../../context/NotificationContext'
 import Logo from '../../../assets/hdh.png'
 import Sticky from 'react-sticky-el'
+import { Helmet } from 'react-helmet'
 
 import styled from 'styled-components'
 
 function Notication() {
   return (
     <>
+      <Helmet>
+        <title>Notifications</title>
+      </Helmet>
       <Sticky disabled={window.innerWidth <= 768}>
         <GeneralHeader />
       </Sticky>
