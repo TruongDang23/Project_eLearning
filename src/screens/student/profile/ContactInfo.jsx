@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import BorderColorIcon from '@mui/icons-material/BorderColor'
 import Link from '@mui/material/Link'
+import { useNavigate } from 'react-router-dom'
 
 function ContactInfo({ userProfile }) {
   const {
@@ -13,6 +14,12 @@ function ContactInfo({ userProfile }) {
     country,
     social_network
   } = userProfile
+  const navigate = useNavigate()
+
+  const handleEditProfile = () => {
+    navigate('/student/information')
+  }
+
   return (
     <ContactInfoWrapper>
       <div className="contact-info">
@@ -24,13 +31,10 @@ function ContactInfo({ userProfile }) {
             <h2>
               {fullname}
               <span>
-                <Link
-                  href="/student/information"
-                  underline="none"
-                  target="_blank"
-                >
-                  <BorderColorIcon style={{ fontSize: 25 }} />
-                </Link>
+                <BorderColorIcon
+                  onClick={handleEditProfile}
+                  style={{ fontSize: 25 }}
+                />
               </span>
             </h2>
           </div>
@@ -85,7 +89,7 @@ const ContactInfoWrapper = styled.section`
     box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
     transition: all ease 0.3s;
   }
-  
+
   .contact-info {
     display: flex;
     align-items: center;

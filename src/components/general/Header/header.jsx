@@ -15,7 +15,7 @@ function Header() {
   const navigate = useNavigate()
   // eslint-disable-next-line no-unused-vars
   const [search, setSearch] = useSearchParams()
-  const token = sessionStorage.getItem("token")
+  const token = sessionStorage.getItem('token')
   const userData = JSON.parse(sessionStorage.getItem('userAuth'))
   const userID = userData ? userData.userID : ''
   const [title, setTitle] = useState(search.get('q') || '')
@@ -72,12 +72,12 @@ function Header() {
                 />
               </a>
             </div>
-            <a href="/login" className="link">
+            {/* <a href="/login" className="link">
               Teach on EL-Space
             </a>
             <a href="/login" className="link">
               My Learning
-            </a>
+            </a> */}
           </div>
           <div className="authButtons">
             <Link to="/login">
@@ -116,17 +116,20 @@ function Header() {
                 />
               </a>
             </div>
-            <a href="/" className="link">
+            {/* <a href="/" className="link">
               Teach on EL-Space
-            </a>
-            <a href="/student/my-learning" className="link">
-              My learning
-            </a>
-            <a>
+            </a> */}
+
+            {userID[0] === 'S' && (
+              <a href="/student/my-learning" className="link">
+                My learning
+              </a>
+            )}
+            {/* <a>
               <StyledBadge badgeContent={4} color="primary">
                 <ShoppingCartOutlinedIcon />
               </StyledBadge>
-            </a>
+            </a> */}
             <a href="/notification">
               <StyledBadge badgeContent={unreadCount} color="primary">
                 <NotificationsOutlinedIcon />

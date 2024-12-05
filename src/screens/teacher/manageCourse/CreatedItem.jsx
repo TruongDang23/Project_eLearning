@@ -1,8 +1,15 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 import { ApproveCourse } from '~/components/popup'
+import { useNavigate } from 'react-router-dom'
 
 export function Items({ courseItem, reload, setReload }) {
+  const navigate = useNavigate()
+
+  const handleGoToCourse = (courseID) => {
+    navigate(`/course/infor/${courseID}`)
+  }
+
   const [openAppr, setApprove] = useState(false)
 
   const toggleApprove = () => {
@@ -49,21 +56,22 @@ export function Items({ courseItem, reload, setReload }) {
             </p>
             <div className="button">
               <a
-                href={`/course/infor/${courseItem.courseID}`}
+                // href={`/course/infor/${courseItem.courseID}`}
+                onClick={() => handleGoToCourse(courseItem.courseID)}
                 className="btn-view"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Go to course
               </a>
-              <a
+              {/* <a
                 href="https://www.youtube.com/watch?v=9O1Hs1Yrg1w"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-edit"
               >
                 Edit course
-              </a>
+              </a> */}
               <button onClick={toggleApprove} className="btn-approval">
                 {/* <button onClick={toggleApprove}>Submit for approval</button> */}
                 Submit for approval

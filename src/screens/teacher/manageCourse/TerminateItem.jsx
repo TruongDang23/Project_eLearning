@@ -1,8 +1,15 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 import { AdjustContent } from '~/components/popup'
+import { useNavigate } from 'react-router-dom'
 
 export function Items({ courseItem, reload, setReload }) {
+  const navigate = useNavigate()
+
+  const handleGoToCourse = (courseID) => {
+    navigate(`/course/infor/${courseID}`)
+  }
+
   const [openAdjContent, setAdjContent] = useState(false)
 
   const toggleAdjContent = () => {
@@ -58,7 +65,8 @@ export function Items({ courseItem, reload, setReload }) {
             </p>
             <div className="button">
               <a
-                to={`/course/infor/${courseItem.courseID}`}
+                // to={`/course/infor/${courseItem.courseID}`}
+                onClick={() => handleGoToCourse(courseItem.courseID)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-view"

@@ -222,6 +222,7 @@ const CourseCardWrapper = styled.div`
     &:hover {
       box-shadow: 0 10px 20px rgba(44, 130, 201, 0.4);
       transition: all ease 0.3s;
+      cursor: pointer;
     }
 
     .course-card__img {

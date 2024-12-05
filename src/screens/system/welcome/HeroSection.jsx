@@ -20,9 +20,9 @@ function HeroSection() {
             your future. Start learning with us now!
           </p>
           <div className="heroBtns">
-            <a href="#Learning" className="heroBtnPrimary">
-              Start learning &rarr;
-            </a>
+            <Link to="courses" duration={500} offset={-10}>
+              <a className="heroBtnPrimary">Start learning &rarr;</a>
+            </Link>
             <Link to="learmore" duration={500} offset={-10}>
               <a className="heroBtnOutline">Learn more &darr;</a>
             </Link>

@@ -1,12 +1,18 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 import { TerminateCourse } from '~/components/popup/index'
+import { useNavigate } from 'react-router-dom'
 
 export function Items({ courseItem, reload, setReload }) {
+  const navigate = useNavigate()
   const [openTer, setopenTer] = useState(false)
 
   const toggleTer = () => {
     setopenTer(!openTer)
+  }
+
+  const handleGoToCourse = (courseID) => {
+    navigate(`/course/infor/${courseID}`)
   }
 
   return (
@@ -38,10 +44,10 @@ export function Items({ courseItem, reload, setReload }) {
             <p>Published</p>
             <div className="button">
               <a
-                href={`/course/infor/${courseItem.courseID}`}
+                // href={`/course/infor/${courseItem.courseID}`}
+                onClick={() => handleGoToCourse(courseItem.courseID)}
                 className="btn-view"
                 target="_blank"
-                rel="noopener noreferrer"
               >
                 Go to course
               </a>
