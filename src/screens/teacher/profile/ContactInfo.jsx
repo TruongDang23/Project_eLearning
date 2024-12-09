@@ -14,6 +14,10 @@ function ContactInfo({ userProfile }) {
     social_network
   } = userProfile
 
+  const handleOnCick = () => {
+    const url = `http://localhost:5173/instructor/information`
+    window.open(url, '_blank')
+  }
   return (
     <ContactInfoWrapper>
       <div className="contact-info">
@@ -24,11 +28,11 @@ function ContactInfo({ userProfile }) {
           <div className="contact-info__name">
             <h2>
               {fullname}
-              <span>
+              <span onClick={handleOnCick}>
                 <Link
-                  href="/instructor/information"
-                  underline="none"
-                  target="_blank"
+                  // href="/instructor/information"
+                  // underline="none"
+                  // target="_blank"
                 >
                   <BorderColorIcon style={{ fontSize: 25 }} />
                 </Link>
