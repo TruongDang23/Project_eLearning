@@ -11,6 +11,7 @@ import PopupUnLockAcc from './popupUnlockAcc'
 import PopupAdjustCourse from './popupAdjustCourse'
 import PopupApproveCourse from './popupApproveCourse'
 import PopupCancelMornitor from './popupCancelMornitor'
+import PopupBuyCourse from './popupBuyCourse'
 
 export function AddExpertise({ handleClose, handleSave }) {
   return (
@@ -87,5 +88,11 @@ export function ApproveCourse({ handleClose, course, reload, setReload }) {
 export function CancelApprove({ handleClose, course, reload, setReload }) {
   return (
     <PopupCancelMornitor handleClose={handleClose} course={course} reload={reload} setReload={setReload} />
+  )
+}
+
+export function BuyCourse({ handleClose, status }) {
+  return (
+    <PopupBuyCourse handleClose={handleClose} status={status} />
   )
 }

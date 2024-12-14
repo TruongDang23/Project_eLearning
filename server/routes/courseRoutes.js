@@ -16,6 +16,7 @@ const fs = require('fs')
 const { verifyToken } = require("../authenticate")
 
 //import model Course
+const User = require('../models/user')
 const Course = require("../models/courseInfor")
 
 //import library to connect ggcloud storage
@@ -500,6 +501,28 @@ module.exports = (connMysql, connMongo) => {
             resolve(inf[0])
           })
         }
+      })
+    })
+  }
+
+  const isEnrolled = async (courseID, userID) => {
+    return new Promise((resolve, reject) => {
+      connMysql.getConnection((err, connection) => {
+        if (err) {
+          reject(err)
+        }
+        let query = `SELECT 1 AS isEnrolled FROM projectelearning.enroll 
+                     WHERE courseID = ? AND userID = ?`
+        connection.query(query, [courseID, userID], (error, result) => {
+          connection.release()
+          if (error) {
+            reject(error)
+          } else if (result.length != 0) {
+            return resolve(true) //Đã tham gia khóa học rồi
+          } else {
+            return resolve(false) //Chưa tham gia khóa học
+          }
+        })
       })
     })
   }
@@ -1439,5 +1462,57 @@ module.exports = (connMysql, connMongo) => {
       }
     })
   })
+
+  // Define user-related routes
+  router.post("/buycourse", verifyToken, async (req, res) => {
+    if (req.userID[0] !== 'S') {
+      res.status(401).send()
+    }
+    else {
+      const { courseID } = req.body
+      const enrolled = await isEnrolled(courseID, req.userID)
+      if (enrolled) { //enrolled = true => Đã tham gia khóa học rồi
+        res.send('enrolled')
+      }
+      else { // Chưa tham gia khóa học
+        // Insert into Mysql & MongoDB (using transaction)
+        connMysql.getConnection(async (err, connection) => {
+          if (err) {
+            res.status(500).send(err)
+            return
+          }
+          else {
+            const time = formatDateTime(new Date())
+            //Insert new data into table learning
+            let query = "INSERT INTO enroll (courseID, userID, time)\
+                         VALUES (?, ?, ?)"
+            connection.query(
+              query,
+              [courseID, req.userID, time],
+              async (error) => {
+                connection.release() //Giải phóng connection khi truy vấn xong
+                if (error) {
+                  res.status(500).send(error)
+                }
+
+                // Nếu MySQL insert thành công
+                try {
+                  await User.findOneAndUpdate(
+                    { userID: req.userID }, // Tìm user trong MongoDB theo userID
+                    { $addToSet: { course_enrolled: courseID } }, // Thêm courseID vào mảng course_enrolled (tránh trùng lặp)
+                    { new: true } // Tùy chọn để trả về document sau khi cập nhật
+                  )
+                  res.status(201).send('created')
+                } catch (mongoError) {
+                  res.status(500).send(mongoError)
+                }
+              }
+            )
+          }
+        })
+      }
+    }
+  })
+
   return router
 }
