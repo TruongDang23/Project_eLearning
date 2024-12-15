@@ -19,13 +19,16 @@ export const NotificationProvider = ({ children }) => {
   const userID = userData ? userData.userID : ''
 
   useEffect(() => {
-    let count = 0
-    notifications.map((notify) => {
-      if (notify.isRead === 0)
-        count = count + 1
-    })
-    socket.emit('updateUnreadCount', count, userID)
-    setUnreadCount(count)
+    if (notifications) {
+      let count = 0
+      notifications.map((notify) => {
+        if (notify.isRead === 0)
+          count = count + 1
+      })
+      socket.emit('updateUnreadCount', count, userID)
+      setUnreadCount(count)
+    }
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [notifications])
 
