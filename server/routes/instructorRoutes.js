@@ -128,7 +128,7 @@ module.exports = (connMysql, connMongo) => {
                     FROM course as c\
                     INNER JOIN published_course as pc ON c.courseID = pc.courseID\
                     INNER JOIN user as u ON u.userID = c.userID\
-                    INNER JOIN avg_rating as avg ON avg.courseID = c.courseID\
+                    LEFT JOIN avg_rating as avg ON avg.courseID = c.courseID\
                     WHERE c.courseID IN (?)'
           connection.query(query, [courseID], async (error, courses) => {
             connection.release() //Giải phóng connection khi truy vấn xong
@@ -401,7 +401,6 @@ module.exports = (connMysql, connMongo) => {
             //Get data of user from mongoDB
             await connMongo
             const mongoData = await User.findOne({ userID: req.userID }).select()
-
             //Get information of course user enrolled
             let published
             try {
@@ -411,7 +410,6 @@ module.exports = (connMysql, connMongo) => {
             catch (error) {
               res.send(error)
             }
-
             //Merge data: Mysql + MongoDB + Course enrolled
             const mergeData = infor.map(inf => {
               return {

@@ -88,7 +88,7 @@ function SideBar({ inforCourseData }) {
         </div>
         <div className="sidebar-buttons">
           <button className="sidebar-button button-buy" onClick={handleBuyCourse}>
-          Buy now
+          Enroll now
           </button>
           <Link to={`/course/details/${inforCourseData.courseID}`}>
             <button className="sidebar-button button-goto">Go to course</button>
