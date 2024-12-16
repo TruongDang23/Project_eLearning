@@ -30,6 +30,7 @@ function MyLearning() {
         }
       })
       .then((response) => {
+        console.log(response.data)
         setUserMyLearning(response.data)
         setIsLoad(false) //Data is loaded successfully
       })

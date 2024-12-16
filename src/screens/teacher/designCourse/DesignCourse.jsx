@@ -48,6 +48,8 @@ function DesignCourse() {
     num_lecture: 0 //num_lecture sẽ phụ thuộc vào độ dài của chapters
   })
 
+  let lectureId = 1
+
   const handleSave = async () => {
     formData.append(
       `image_introduce-${userData.userID}`,
@@ -60,6 +62,7 @@ function DesignCourse() {
 
     structure.chapters.map((chapter) => {
       chapter.lectures.map((lecture) => {
+        lecture.id = lectureId++
         formData.append(
           `${lecture.source.name}-${userData.userID}`,
           lecture.source

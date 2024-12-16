@@ -71,7 +71,7 @@ export function Items({ courseItem, reload, setReload }) {
                 rel="noopener noreferrer"
                 className="btn-view"
               >
-                <button>Go to course</button>
+                Go to course
               </a>
               <button onClick={toggleAdjContent} className="btn-adjust">
                 Adjust Content
@@ -187,15 +187,26 @@ const Wrapper = styled.div`
           background-color: #155b96;
         }
 
-        .btn-adjust {
+        .btn-edit {
           background-color: #fff;
           color: #187bce;
           box-shadow: 0 0 0 2px #187bce;
         }
 
-        .btn-adjust:hover {
+        .btn-edit:hover {
           color: #fff;
           background-color: #187bce;
+        }
+
+        .btn-approval {
+          background-color: #fff;
+          color: #37b24d;
+          box-shadow: 0 0 0 2px #37b24d;
+        }
+
+        .btn-approval:hover {
+          color: #fff;
+          background-color: #37b24d;
         }
       }
     }

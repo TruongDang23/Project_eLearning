@@ -4,53 +4,104 @@ import AssignmentIcon from '@mui/icons-material/Assignment'
 import QuizIcon from '@mui/icons-material/Quiz'
 import LocalAtmIcon from '@mui/icons-material/LocalAtm'
 import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { BuyCourse } from '~/components/popup'
+import { useState } from 'react'
 
 function SideBar({ inforCourseData }) {
-  const handleBuyCourse = () => {
-    alert('You have bought this course')
+  const [openPub, setopenPub] = useState(false)
+  const [statusBuy, setStatus] = useState('')
+  const toggleBuy = (status) => {
+    setStatus(status)
+    setopenPub(!openPub)
   }
+
+  const { courseID } = useParams()
+  const token = sessionStorage.getItem('token')
+  const userAuth = sessionStorage.getItem('userAuth')
+  const handleBuyCourse = () => {
+    axios
+      .post('http://localhost:3000/c/buycourse',
+        { courseID },
+        {
+          headers: {
+            Token: token, // Thêm token và user vào header để đưa xuống Backend xác thực
+            user: userAuth
+          }
+        })
+      .then((response) => {
+        if (response.data === 'enrolled') {
+          toggleBuy('enrolled')
+        }
+        else if (response.data === 'created') {
+          toggleBuy('created')
+        }
+      })
+      .catch((error) => {
+        //Server shut down
+        if (error.message === 'Network Error') navigate('/server-shutdown')
+        //Connection error
+        if (error.response.status === 500) navigate('/500error')
+        //Unauthorized. Need login
+        if (error.response.status === 401) navigate('/401error')
+        //Forbidden. Token != userAuth
+        if (error.response.status === 403) navigate('/403error')
+      })
+  }
+  const navigate = useNavigate()
+
   return (
-    <SideBarWrapper>
-      {/* Video */}
-      <div className="sidebar-video">
-        <iframe
-          title="Course Introduction"
-          src={inforCourseData.video_introduce}
-        ></iframe>
-      </div>
-      <div className="sidebar-detail">
-        <ul>
-          <li>
-            <VideoLibraryIcon />
-            <span>{inforCourseData.videos} videos</span>
-          </li>
-          <li>
-            <AssignmentIcon />
-            <span>{inforCourseData.num_lecture} lectures</span>
-          </li>
-          <li>
-            <QuizIcon />
-            <span>Quizzes</span>
-          </li>
-          <li>
-            <LocalAtmIcon />
-            <span>
-              {inforCourseData.price == 0
-                ? 'Free'
-                : `$${inforCourseData.price}`}
-            </span>
-          </li>
-        </ul>
-      </div>
-      <div className="sidebar-buttons">
-        <button className="sidebar-button button-buy" onClick={handleBuyCourse}>
-          Buy now
-        </button>
-        <Link to={`/course/details/${inforCourseData.courseID}`}>
-          <button className="sidebar-button button-goto">Go to course</button>
-        </Link>
-      </div>
-    </SideBarWrapper>
+    <>
+      <SideBarWrapper>
+        {/* Video */}
+        <div className="sidebar-video">
+          <iframe
+            title="Course Introduction"
+            src={inforCourseData.video_introduce}
+          ></iframe>
+        </div>
+        <div className="sidebar-detail">
+          <ul>
+            <li>
+              <VideoLibraryIcon />
+              <span>{inforCourseData.videos} videos</span>
+            </li>
+            <li>
+              <AssignmentIcon />
+              <span>{inforCourseData.num_lecture} lectures</span>
+            </li>
+            <li>
+              <QuizIcon />
+              <span>Quizzes</span>
+            </li>
+            <li>
+              <LocalAtmIcon />
+              <span>
+                {inforCourseData.price == 0
+                  ? 'Free'
+                  : `$${inforCourseData.price}`}
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div className="sidebar-buttons">
+          <button className="sidebar-button button-buy" onClick={handleBuyCourse}>
+          Enroll now
+          </button>
+          <Link to={`/course/details/${inforCourseData.courseID}`}>
+            <button className="sidebar-button button-goto">Go to course</button>
+          </Link>
+        </div>
+
+      </SideBarWrapper>
+      {openPub && (
+        <BuyCourse
+          handleClose={toggleBuy} status={statusBuy}
+        />
+      )}
+    </>
   )
 }
 const SideBarWrapper = styled.aside`
